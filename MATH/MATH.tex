@@ -1,0 +1,1175 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+
+\newcommand{\msp}{\text{ }}
+\newcommand{\ligneh}{\msp | \msp}
+\newcommand{\si}{\text{ si }}
+\newcommand{\et}{\text{ et }}
+\newcommand{\ou}{\text{ ou }}
+\newcommand{\ch}{\text{ch}}
+\newcommand{\sh}{\text{sh}}
+
+\title{MATH}
+\author{Huang Ziwen}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\clearpage
+\section{Logique, ensembles et raisonnements}
+Chapitre 1
+\subsection{Méthodes de démonstration}
+\subsubsection{Montrer $P \implies Q$}
+Démonstration directe
+\begin{itemize}
+    \item Supposer $P$
+    \item Montrer $Q$
+\end{itemize}
+Démonstration par contraposée
+\begin{itemize}
+    \item Supposer non $P$
+    \item Montrer non $Q$
+\end{itemize}
+
+\subsubsection{Montrer l'équivalence $ P \iff Q $}
+Démonstration par double implication
+\begin{itemize}
+    \item Montrer $ P \implies Q $ (directe)
+    \item Montrer $ Q \implies P $ (réciproque)
+\end{itemize}
+
+\subsubsection{Disjonction}
+\begin{itemize}
+    \item $ P \textit{ ou } Q \iff ( \textit{non}( P ) \implies Q )$
+\end{itemize}
+
+\subsection{Outils de raisonnement}
+\begin{itemize}
+    \item Disjonction de cas
+    \item L'absurde
+    \item Récurrence (simple, double, forte)
+    \item Analyse-synthèse (analyse cachée)
+\end{itemize}
+
+\subsection{Quantificateurs}
+\subsubsection{$ \forall $ pour tout}
+Démonstration
+\begin{itemize}
+    \item Soit $ x $ dans l'ensemble de définition, sans imposant aucun condition
+\end{itemize}
+Démonstration d'une propriété dans l'implication
+\begin{itemize}
+    \item En particulier, prenons (une valeur bien choisie)
+\end{itemize}
+
+\subsubsection{$ \exists $ il existe}
+Démonstration
+\begin{itemize}
+    \item Choisir un $ x $ qui convient
+\end{itemize}
+
+\subsubsection{$ \exists! $ il existe un unique}
+Démonstration
+\begin{itemize}
+    \item Montrer l’unicité d'une solution sous réserve d'existence
+    \item Montrer que l'unique solution existe (qu'elle est bien solution)
+\end{itemize}
+
+\subsection{Ensembles}
+\subsubsection{Loi de Morgan}
+\begin{itemize}
+    \item $ \overline{A \cup B} = \overline{A}\cap\overline{B} $
+    \item $ \overline{A \cap B} = \overline{A}\cup\overline{B} $
+\end{itemize}
+
+\subsubsection{Unions}
+\[ \bigcup_{i \in I} A_i = \left\{x \in E | \exists i \in I, x \in A_i\right\} \]
+Éléments qui appartiennent à au moins un des $ A_i $
+\subsubsection{Intersections}
+\[ \bigcap_{i \in I} A_i = \left\{x \in E | \forall i \in I, x \in A_i\right\} \]
+Éléments qui appartiennent à tous les ensembles $ A_i $
+
+\clearpage
+\section{Trigonométrie et complexes}
+Chapitre 2.1, 2.2
+\subsection{Formules trigonométrique}
+\subsubsection{Formules de base}
+\begin{itemize}
+    \item $ \cos{(a+b)} = \cos{a}\cos{b}-\sin{a}\sin{b} $
+    \item $ \sin{(a+b)} = \sin{a}\cos{b}+\cos{a}\sin{b} $
+\end{itemize}
+
+\subsubsection{Formules de duplication}
+Dérivable depuis les formules de base
+\begin{itemize}
+    \item $ \sin{(2a)} = 2\sin{a}\cos{a} $
+    \item $ \cos{(2a)} = \cos^2{a} - \sin^2{a} = 2\cos^2{a} -1 = 1- 2\sin^2{a} $
+    \item En divisant les 2 au-dessus, $ \tan{(a+b)} = \frac{\tan{a}+\tan{b}}{1-\tan{a}\tan{b}} $
+\end{itemize}
+
+\subsubsection{Formules de linéarisation}
+Dérivable depuis les formules de base en cherchant le produit à droite.
+\begin{itemize}
+    \item 2 cosinus pour cosinus: $ \cos{a}\cos{b} = \frac{1}{2}(\cos{(a+b)}+\cos{(a-b)})  $
+    \item 2 sinus pour cosinus: $ \sin{a}\sin{b} = \frac{1}{2}(\cos{(a-b)}-\cos{(a+b)}) $
+    \item cosinus et sinus pour sinus: $ \sin{a}\cos{b} = \frac{1}{2}(\cos{(a-b)}-\cos{(a+b)}) $
+\end{itemize}
+
+\subsubsection{Formules de factorisation}
+Depuis les formules de linéarisation, prenons $ p = a+b $ et $ q = a-b $, d'où $ a = \frac{p+q}{2}, b = \frac{p-q}{2} $
+
+\subsubsection{Tangentes}
+Posons $ t=\tan{\frac{x}{2}} $
+\begin{itemize}
+    \item Formules de duplication et relation $\tan^2+1=\sec^2$: $ \cos{x} = \frac{1-t^2}{1+t^2} $
+    \item Formules de duplication et relation $\tan^2+1=\sec^2$: $ \sin{x} = \frac{2t}{1+t^2} $
+\end{itemize}
+
+\subsection{Équations trigonométriques}
+\subsubsection{Valeurs de l'égalité}
+Attention à la deuxième valeur pour sin et cos
+\begin{itemize}
+    \item $ \cos{a} = \cos{b} \iff (a \equiv b \msp [2\pi] \textit{ ou } a \equiv -b \msp [2\pi]) $
+    \item $ \sin{a} = \sin{b} \iff (a \equiv b \msp [2\pi] \textit{ ou } a \equiv \pi-b \msp [2\pi]) $
+    \item $ \tan{a} = \tan{b} \iff a \equiv b \msp [\pi] $
+\end{itemize}
+
+\subsection{Misc trigo}
+\subsubsection{Limite}
+\[ \lim_{\theta\to0}\frac{\sin{\theta}}{\theta} = 1 \] 
+\subsubsection{Inégalité de convexité $ |\sin{x}| \leq |x| $ }
+Par la dérivée de sinus, d'où la convexité, et l'égalité à 0
+
+\subsection{Propriétés des complexes}
+\subsubsection{L'écriture algébrique}
+$ z \in \mathbb{C} $ s'écrit $ z = \text{Re}(z) + i\text{Im} (z) $
+\begin{itemize}
+    \item L'unicité de l'écriture algébrique
+    \item $ z=Ae^{i\theta} \iff z = Acos{\theta} + iA\sin{\theta} $
+\end{itemize}
+
+\subsubsection{Conjugué}
+$ z = \text{Re}(z) + i\text{Im} (z) \iff \overline{z} = \text{Re}(z) - i\text{Im}(z) $
+
+\begin{itemize}
+    \item $\text{Re} (z) = \frac{z+\overline{z}}{2}$
+    \item $\text{Im} (z) = \frac{z-\overline{z}}{2i}$
+    \item $z=\overline{z} \iff z \in \mathbb{R}$
+    \item $z=-\overline{z} \iff z \in i\mathbb{R}$
+    \item $ z=e^{i\theta} \iff \overline{z}=e^{-i\theta} $
+    \item $ \overline{e^z} = e^{\overline{z}} $
+\end{itemize}
+
+\subsubsection{Module}
+$ |z| = \sqrt{\text{Re}(z)^2 + \text{Im}(z)^2} $
+
+\begin{itemize}
+    \item $ |z| \in \mathbb{R}_+ $
+    \item $|z|^2 = z\overline{z}$
+    \item $ |z| = 0 \iff z = 0 $
+    \item $ |z| = |\overline{z}| = |-z| $
+\end{itemize}
+
+\subsubsection{$\mathbb{U}=\{z\in\mathbb{C}:|z|=1\}$}
+
+\begin{itemize}
+    \item $z\in\mathbb{U} \iff \frac{1}{z}=\overline{z}$
+    \item $ e^{i\theta} \in \mathbb{U} $
+    \item Formules d'Euler - $ cos{\theta}=\frac{e^{i\theta} + e^{-i\theta}}{2} \text{ et } sin{\theta}=\frac{e^{i\theta} - e^{-i\theta}}{2i} $
+    \item Égalité trigonométrique - $ e^{i\theta} = e^{i\theta '} \iff \theta \equiv \theta' [2\pi] $
+    \item Formule de Moivre - $ \forall n \in \mathbb{Z}, e^{i\theta n} = (e^{i\theta})^n $ (Attention que la formule est valable seulement pour $ n \in \mathbb{Z} $
+\end{itemize}
+
+\noindent On déduit la factorisation par l'angle moitié avec les formules d'Euler.
+\[ e^{u\theta}+e^{i\theta'} = e^{i\frac{\theta+\theta'}{2}}(e^{i\frac{\theta-\theta'}{2}} + e^{i\frac{\theta'-\theta}{2}}) = e^{i\frac{\theta+\theta'}{2}}(2\cos{\frac{\theta-\theta'}{2}}) \]  
+\[ e^{u\theta}-e^{i\theta'} = e^{i\frac{\theta+\theta'}{2}}(e^{i\frac{\theta-\theta'}{2}} - e^{i\frac{\theta'-\theta}{2}}) = e^{i\frac{\theta+\theta'}{2}}(2i\sin{\frac{\theta-\theta'}{2}}) \]
+
+\noindent Ces formules sont utiles notamment pour $ \theta=0 $ donc $ e^{i\theta} = 1 $
+
+\subsubsection{Transformations du plan}
+
+\begin{itemize}
+    \item Translation de vecteur $ \vec{b} $ - $ z \mapsto z+b $
+    \item Rotation de centre $ \Omega $ et d'angle $ \theta $ - $ z \mapsto \omega + e^{i\theta}(z-\omega) $
+    \item Homothétie de centre $ \Omega $ et de rapport $ k $ - $ z \mapsto \omega + k(z-\omega) $
+\end{itemize}
+
+\subsection{Formules des complexes}
+\subsubsection{Inégalité triangulaire}
+\[ ||z|-|z'|| \leq |z \pm z'| \leq |z|+|z'| \]
+
+\noindent Pour montrer $ |z \pm z'| \leq |z|+|z'| $, on utilise une chaîne d'équivalences en élevant au carré, puis en développant pour obtenir $ \text{Re}(z'\overline{z}) \leq |zz'| $. \\
+
+\noindent Pour montrer $ ||z|-|z'|| \leq |z \pm z'| $, on applique $ |z| = |z+z'-z'| \leq |z+z'|+|z'| $
+
+\noindent On note le cas d'égalité. Les vecteurs qui représentent les affixes sont colinéaires et dans le même sens (d'où $\alpha \in \mathbb{R}_+ $ positif). 
+
+\[ |z+z'|=|z|+|z'| \iff (z=0 \text{ ou } \exists \alpha \in \mathbb{R}_+ : z'=\alpha z) \]
+
+\noindent Démonstration par double implication. 
+\begin{itemize}
+    \item Sens direct: Supposons $z \neq 0$. Chaîne d'équivalences pour montrer $\text{Re}(\overline{z}z') = |\overline{z}z'|$ donc $\overline{z}z' \in \mathbb{R}$. On a $ z' = \frac{z'\overline{z}z}{\overline{z}z} = \frac{z'\overline{z}}{|z|^2}z$
+    \item Sens réciproque: Disjonction de cas
+\end{itemize}
+
+\noindent On remarque que $ (z=0 \text{ ou } \exists \alpha \in \mathbb{R}_+ : z'=\alpha z) \iff (\exists \lambda \in \mathbb{R}_+ : z'=\lambda z \text{ ou } \exists \lambda \in \mathbb{R}_+ : z=\lambda z') $
+
+\subsubsection{Racines n-ième}
+Pour $a\in \mathbb{N}^*$, les racines n-ièmes de $ a = |a|e^{i\theta}$ sont les $ \sqrt[n]{|a|}e^{i\frac{\theta + 2k\pi}{n}} $ avec $ k \in \llbracket 0, n-1\rrbracket $ \\
+
+\noindent On remarque l'importance de l'intervalle pour que les éléments soient uniques. \\
+
+\noindent On note $\mathbb{U}_n$ les racines n-ièmes de l'unité. 
+\begin{itemize}
+    \item 1 est une racine
+    \item On note $j=e^{i\frac{2\pi}{3}} \in \mathbb{U}_3$
+\end{itemize}
+
+\subsection{Équations du second degré}
+\subsubsection{Racines carrées}
+\begin{itemize}
+    \item 0 admet une unique racine carrée (0)
+    \item Tout complexe non nul admet exactement 2 racines carrées opposées
+    \item $\sqrt{z}$ n'a de sens que pour $z\in\mathbb{R}_+$
+\end{itemize}
+
+\noindent Pour trouver les racines carrées de $z=x+iy$
+\[
+    z^2=a \iff 
+    \begin{cases} 
+        x^2-y^2=\text{Re}(a) \\
+        2xy = \text{Im}(a) \\
+        x^2+y^2 = |a|
+    \end{cases}
+\]
+
+\subsubsection{Formule quadratique appliquée aux complexes}
+\[z=\frac{-b\pm\sqrt \delta}{2}\]
+\noindent où le discriminant $ \Delta = b^2-4ac $ et $ \delta^2 = \Delta $ une racine carrée de $ \Delta $ \\
+
+\noindent On remarque que $ z_1 + z_2 = -\frac{b}{a} $ et $ z_1z_2 = \frac{c}{a} $
+
+\clearpage
+\section{Calculs algébriques}
+Chapitre 3
+\subsection{Sommes}
+\subsubsection{Propriétés}
+\begin{itemize}
+    \item Linéarité
+    \item Relation de Chasles - $ \sum_{k=n}^{q} = \sum_{k=n}^{p} + \sum_{k=p+1}^{q} $
+    \item Translation et retournement d'indice
+    \item Somme télescopique - $ \sum_{k=n}^{p}(x_{k+1} - x_k) = x_{p+1} - x_n $
+\end{itemize}
+
+\subsubsection{Sommes classiques}
+\begin{itemize}
+    \item $ \sum_{k=0}^{n}k = \frac{(n)(n+1)}{2} $
+    \item $ \sum_{k=0}^{n}k^2 = \frac{(n)(n+1)(2n+1)}{6} $
+    \item $ \sum_{k=0}^{n}k^3 = \frac{(n)^2(n+1)^2}{4} $
+    \item Progression arithmétique - $ \sum_{k=n}^{p}u_k = \frac{1}{2}(u_p+u_n)(p-n+1) $ (moyenne fois le nombre de termes)
+    \item Suite géométrique -  $ \sum_{k=0}^n q^k = 
+        \begin{cases}
+            \frac{1-q^{n+1}}{1-q} & \text{si } q \neq 1 \\
+            n+1 & \text{sinon}
+        \end{cases}
+    $
+\end{itemize}
+
+\subsection{Produits}
+\subsubsection{Propriétés}
+\begin{itemize}
+    \item Relation de Chasles
+    \item Translation et retournement d'indice
+    \item Produit télescopique - $ \prod_{k=n}^p \frac{x_{k+1}}{x_k} = \frac{x_{p+1}}{x_n} $
+\end{itemize}
+
+\subsubsection{Factorielle}
+\[ n! = \begin{cases}
+    \prod_{k=1}^n k & \text{si } n \geq 1 \\
+    1 & \text{si } n = 0
+\end{cases} \]
+
+\subsubsection{Coefficient binomial ($k$ parmi $n$)}
+\[ \binom{n}{k} = \begin{cases} 
+    \frac{n!}{k!(n-k)!} & \text{si } k \in \llbracket 0, n \rrbracket \\
+    0 & \text{sinon}
+\end{cases} \]
+\noindent Pour $ n \in \mathbb{N} $ et $ k \in \mathbb{Z} $
+
+\begin{itemize}
+    \item $ \binom{n}{0} = \binom{n}{n} = 1 $, $ \binom{n}{1} = n  $ et $ \binom{n}{2} = \frac{n(n-1)}{2} $
+    \item Formule de symétrie - $ \binom{n}{k} = \binom{n}{n-k} $ 
+    \item Formule de Pascal (triangle de Pascal) - $ \binom{n}{k} + \binom{n}{k+1} = \binom{n+1}{k+1} $
+    \item Formule du capitaine - $ \binom{n}{k} = \frac{n}{n}\binom{n-1}{k-1} $
+\end{itemize}
+
+\subsection{Formules}
+\subsubsection{Formule de Bernoulli}
+\[a^n - b^n = (a-b)\sum_{k=0}^{n-1}(a^kb^{n-1-k}) \]
+\noindent Démonstration - commencer par le terme à gauche \\
+\noindent Ce formule valable pour les matrices qui commutent
+
+\subsubsection{Sommes trigonométriques}
+\[ \sum_{k=0}^n\cos{(kx)} = \cos{(\frac{nx}{2})}[\frac{\sin(\frac{n+1}{2}x)}{\sin{\frac{x}{2}}}] \]
+\[ \sum_{k=0}^n\sin{(kx)} = \sin{(\frac{nx}{2})}[\frac{\sin(\frac{n+1}{2}x)}{\sin{\frac{x}{2}}}] \]
+
+\noindent Démonstration - suite géométrique $ \sum_{k=0}^{n} (e^{ix})^k = \sum_{k=0}^n\cos{(kx)} + i\sum_{k=0}^n\sin{(kx)} $. Il faut appliquer la factorisation par l'arc moitié. Attention au cas où $ e^{ix} = 1 $. 
+
+\subsubsection{Développement du carré}
+\[ (\sum_{i=1}^n x_i)^2 = \sum_{i=1}^n x_i^2 + 2\sum_{(i,j)\in\llbracket n, p \rrbracket, i<j}x_ix_j \]
+
+\noindent Concrètement - $ (a+b+c)^2 = a^2 + b^2 + c^2 + 2ab + 2ac + 2bc $
+
+\subsubsection{Formule du binôme de Newton}
+\[ (a+b)^n = \sum_{k=0}^{n}\binom{n}{k} a^kb^{n-k} \]
+
+\noindent Démonstration - par récurrence simple. 
+\\
+\noindent Ce formule valable pour les matrices qui commutent
+
+\subsubsection{Expression polynomiale de $\cos{(nx)}$ et $\sin{(nx)}$}
+\[ \cos{(nx)} = \sum_{p=0}^{\lfloor\frac{n}{2}\rfloor} \binom{n}{2p}(\cos{x})^{n-2p}(\cos^2{x} -1) \]
+\[ \sin{(nx)} = \sin{x}\sum_{p=0}^{\lfloor\frac{n-1}{2}\rfloor} \binom{n}{2p+1}(\cos{x})^{n-2p-1}(\cos^2{x} -1) \]
+
+\noindent Démonstration -
+\[ \cos{(nx)} + i\sin{(nx)} = e^{nx} = (\cos{x} + i\sin{x})^n \]
+\noindent Appliquer la formule du binôme de Newton et séparer les termes paires et impaires. 
+\clearpage
+\section{Applications}
+Chapitre 4
+\subsection{Définitions}
+
+Soit $f$, $g$ des applications
+\begin{align*}
+    f: & E \to F \\ 
+    & x\mapsto f(x) \\
+    \\
+    g: & G \to H \\ 
+    & x\mapsto g(x)
+\end{align*}
+
+\subsubsection{Vocabulaire}
+
+\begin{itemize}
+    \item $E$ et $G$ sont les ensembles de départ 
+    \item $F$ et $H$ sont les ensembles d'arrivée
+    \item $f = g \iff E=G \text{ et } F=H \text{ et } \forall x \in E, f(x)=g(x) $ - Attention à l'égalité des ensembles d'arrivée et de départ
+\end{itemize}
+
+\subsubsection{Injection}
+$f$ est injective si tout élément de $F$ a au plus un antécédent dans $E$. Plus souvent, on utilise la caractérisation suivante - 
+
+\[ \forall(x, x')\in \mathbb{R}^2, f(x)=f(x') \implies x=x' \]
+
+\begin{itemize}
+    \item Si $f$ et $g$ sont injectives, $g \circ f $ est injective
+    \item Si $g \circ f$ est injective, $f$ est injective (les images de $f$, si il y a des répétitions, ne peuvent pas être dé-répétés par $g$)
+\end{itemize}
+
+\subsubsection{Surjection}
+$f$ est injective si tout élément de $F$ a au moins un antécédent dans $E$. Plus souvent, on utilise la caractérisation suivante - 
+
+\[ \forall y \in F, \exists x \in E : y=f(x) \]
+
+\begin{itemize}
+    \item Si $f$ et $g$ sont surjectives, $g \circ f $ est surjective
+    \item Si $g \circ f$ est surjective, $g$ est surjective (si un antécédent n'existe même par pour $g$, $f$ ne peut l'inventer de nulle part)
+\end{itemize}
+
+\subsubsection{Bijection}
+$f$ est injective si tout élément de $F$ a un unique antécédent dans $E$ ($f$ est injective et surjective). Plus souvent, on utilise la caractérisation suivante -  
+
+\[ \forall y \in F, \exists ! x \in E : y=f(x) \]
+
+\noindent On peut noter la fonction qui donne les uniques antécédents $f^{-1}$ la bijection réciproque. \\
+
+\noindent Pour montrer la bijectivité, on peut:
+\begin{itemize}
+    \item Montrer l'unique antécédent de tout $y \in F$
+    \item Montrer l'injectivité et la surjectivité
+    \item Deviner la bijection réciproque et démontrer que les compositions donnent Id
+\end{itemize}
+
+\subsection{Applications particulières}
+\subsubsection{Application identité $\text{Id}_E$}
+\begin{align*} 
+    \text{Id}_E : & E \to E \\
+    & x \mapsto x
+\end{align*}
+
+\noindent L'application identité est bijective. 
+
+\subsubsection{Application indicatrice $\mathbb{1}_A$}
+\begin{align*} 
+    \mathbb{1}_A : & E \to \{0, 1\} \\
+    & x \mapsto \begin{cases}
+        1 & \text{si } x\in A \\
+        0 & \text{sinon}
+    \end{cases}
+\end{align*}
+\clearpage
+\section{Fonctions de la variable réelle}
+Chapitre 5
+\subsection{$\mathbb{R}$}
+\subsubsection{Relation d'ordre sur $\mathbb{R}$}
+\begin{itemize}
+    \item Réflexivité - $\forall x \in \mathbb{R}, x \leq x$
+    \item Transitivité - $\forall (x,y,z) \in \mathbb{R}^3, (x \leq y \text{ et } y \leq z) \implies x \leq z $
+    \item Antisymétrie - $\forall (x,y) \in \mathbb{R}^2, (x \leq y \text{ et } y \leq x) \implies x = y$
+\end{itemize}
+
+Attention que l'inégalité stricte n'est pas une relation d'ordre.
+
+\subsection{Intervalles}
+\subsubsection{Forme des intervalles}
+Définition d'un intervalle $I$ - 
+\[ \forall(x, y) \in I^2, x\leq y \implies [x, y] \subset I \]
+
+\noindent L'ensemble vide $ \emptyset $ et les singletons sont des intervalles dits triviaux. Les intervalles non-triviaux sont de l'une des 9 formes suivantes -
+\begin{itemize}
+    \item Segment - $[a, b]$
+    \item Intervalles semi-ouvert - $]a,b]$ et $[a,b[$
+    \item Intervalle ouvert - $]a,b[$
+    \item Demi-droite fermée - $]-\infty, b]$ et $[a, +\infty[$
+    \item Demi-droite ouverte - $]-\infty, b[$ et $]a, +\infty[$
+    \item Droite - $]-\infty,+\infty[$
+\end{itemize}
+
+\subsubsection{Paramétrisation des segments}
+\[ [a, b] = \{(1-\lambda)a + \lambda b \ | \ \lambda \in [0,1]\} = \{\mu a + (1-\mu) b \ | \ \mu \in [0,1]\} \]
+
+\noindent Démonstration - double inclusion. Sens direct - poser $ \lambda = \frac{x-a}{b-a} $. Sens réciproque - montrer $ a \leq x \leq b $ avec $ \lambda(b-a) $. 
+
+\subsection{Étude d'une fonction}
+\subsubsection{Parité}
+\begin{itemize}
+    \item Paire - symétrie l'axe des ordonnées - $ \begin{cases} \forall x \in D, -x \in D \\ \forall x \in D, f(-x)=f(x) \end{cases} $
+    \item Impaire - symétrie l'origine - $ \begin{cases} \forall x \in D, -x \in D \\ \forall x \in D, f(-x)=-f(x) \end{cases} $
+\end{itemize}
+Attention que la symétrie par rapport à 0 doit être respecté ($\forall x \in D, -x \in D$) \\
+\noindent La parité d'une fonction permet de restreindre son étude à $D \cap \mathbb{R}_+$ \\
+
+\noindent On note que toute fonction $f$ s'écrit comme somme une fonction paire $ \frac{f(x) + f(-x)}{2} $ et une fonction impaire $ \frac{f(x)-f(-x)}{2} $
+
+\subsubsection{Périodicité}
+Soit $T \in \mathbb{R}_+^*$ la période de $f$
+$f$ est T-périodique si $\begin{cases} \forall x \in D, x+T \in D \text{ et } x-T \in D \\ \forall x \in D, f(x)=f(x+T) \end{cases}$
+Attention que la T-périodicité du domaine $D$ doit être respecté ($\forall x \in D, x+T \in D \text{ et } x-T \in D$)
+
+\subsubsection{Monotonie}
+\begin{itemize}
+    \item Croissance - $\forall (x, y) \in D^2 , x \leq y \implies f(x) \leq f(y)$
+    \item Stricte croissance - $ \forall (x, y) \in D^2, x < y \implies f(x) < f(y) $
+    \item Décroissance - $\forall (x, y) \in D^2 , x \leq y \implies f(x) \geq f(y)$
+    \item Stricte décroissance - $ \forall (x, y) \in D^2, x < y \implies f(x) > f(y) $
+    \item (stricte) Monotonie - (stricte) croissance ou décroissance
+\end{itemize}
+
+\noindent Propriétés des composées
+\begin{itemize}
+    \item La composée de 2 fonctions monotones et de même sens de variations est croissante.
+    \item La composée de 2 fonctions monotones et de sens de variations contraire est décroissante.
+\end{itemize}
+
+\noindent La bijection réciproque d'une fonction strictement monotone et bijective et aussi strictement monotone et de même sens de variation. 
+
+\subsubsection{Extrema}
+\begin{itemize}
+    \item Majorée - $\exists M \in \mathbb{R} : \forall x \in D, f(x) \leq M$ - $M$ est un majorant de $f$
+    \item Maximum - le $f(a)$ qui est un majorant
+    \item Minorée - $\exists m \in \mathbb{R} : \forall x \in D, f(x) \geq m$ - $m$ est un minorant de $f$
+    \item Minimum - le $f(a)$ qui est un minorant
+    \item Bornée - $\exists C \in \mathbb{R} : \forall x \in D , |f(x)| \leq C $
+\end{itemize}
+
+\subsubsection{Asymptotes}
+\begin{itemize}
+    \item Asymptote verticale à $x=a$ - $\lim_{x \to a^{\pm}} f(x) = \pm \infty$
+    \item Asymptote horizontale à $y=b$ - $\lim_{x \to \pm \infty} f(x) = b$
+    \item Asymptote oblique à $y = ax+b$ - $\lim_{x \to \pm \infty} (f(x) - (ax + b)) = 0$
+\end{itemize}
+
+Pour identifier les asymptotes obliques, on remarque -
+\begin{itemize}
+    \item Condition nécessaire - $\lim_{x \to \pm \infty} f(x) = \pm \infty$
+    \item Conditions suffisantes - $\lim_{x\to \pm \infty} \frac{f(x)}{x} = a$ et $\lim_{x\to \pm \infty} (f(x)-ax) = b$
+\end{itemize}
+
+\subsubsection{Continuité}
+$f$ est continue en $a$ $\iff \lim_{x\to a}f(x) = f(a)$. L'ensemble des fonctions continues sur $I$ à valeurs dans $\mathbb{R}$ est noté $\mathcal{C}^0(I, \mathbb{R})$
+
+\begin{itemize}
+    \item Théorème des valeurs intermédiaires - Soit $(a, b) \in I^2$, $ a \leq b \implies \exists c \in [a, b]: \min(f(a), f(b)) \leq c \leq \max(f(a), f(b)) $
+\end{itemize}
+
+\subsubsection{Dérivée}
+\[ f' : x \mapsto \lim_{x \to a} \frac{f(x)-f(a)}{x-a}  \]
+
+\begin{itemize}
+    \item $ (fg)' = f'g + fg' $
+    \item $ (g \circ f)' = (g' \circ f) \times f' $
+    \item $ (f^{-1})' = \frac{1}{f' \circ f^{-1}} $ si $ f' $ ne s'annule pas
+\end{itemize}
+
+\noindent $f$ est de classe $\mathcal{C}^n$ sur $I$ si $f$ est $n$ fois dérivable sur $I$ et $f^{(n)}$ est continue sur $I$ (on note $\mathcal{C}^n(I, \mathbb{R})$ l'ensemble des fonctions de classe $n$). $\mathcal{C}^\infty$ de classe si $\forall n \in \mathbb{N}, f$ est de classe $\mathcal{C}^n$
+
+\noindent Vérifier toujours la domaine de dérivabilité avant de dériver. On s'intéresse au signe de $f'$ ce qui donne la croissance ou décroissance de $f$. Pour étudier le signe de $f'$ on a parfois besoin d'étudier $f''$ et/ou son image. 
+
+\clearpage
+\section{Fonctions usuelles}
+Chapitre 6
+\subsection{Fonction exponentielle}
+\subsubsection{Relation fondamentale}
+\[ \forall (x, y) \in \mathbb{R}^2, \exp(x+y) = \exp(x)\exp(y) \]
+
+\subsubsection{Propriétés}
+\begin{itemize}
+    \item Continue et dérivable sur $\mathbb{R}$
+    \item $ \exp' = \exp >0 $ donc $ \exp $ est strictement croissante sur $\mathbb{R}$
+    \item $ \exp(\mathbb{R}_+) = \mathbb{R}_+^* $
+    \item Inégalité de convexité - $ \forall x \in \mathbb{R}, e^x \geq x+1 $
+\end{itemize}
+
+\subsubsection{Logarithme népérienne}
+On note $ \ln $ la bijection réciproque de $ \exp $.
+
+\subsubsection{Logarithme de base $a$}
+\begin{align*}
+    \log_a :  \mathbb{R}_+^* &\to \mathbb{R} \\
+     x &\mapsto \frac{\ln{x}}{\ln{a}}
+\end{align*}
+
+\subsection{Croissances comparées}
+\begin{itemize}
+    \item $ \lim_{x\to +\infty} \frac{e^x}{x} = + \infty $ (Démonstration par l'inégalité de convexité avec $ e^\frac{x}{2} $)
+    \item $ \lim_{x\to -\infty} xe^x = 0 $
+    \item $ \lim_{x\to +\infty} \frac{\ln{x}}{x} = + \infty $
+    \item $ \lim_{x\to 0^+} x\ln{x} = 0 $
+\end{itemize}
+$e^x$ plus puissant que $x$, $x$ plus puissant que $\ln x$
+
+\subsection{Fonctions puissances}
+\begin{align*}
+    \forall x \in \mathbb{R}, \forall n \in \mathbb{N}, x^n &= \prod_{k=1}^n x  \\
+    \forall x \in \mathbb{R}^*, \forall k \in \mathbb{Z}, x^k &= \begin{cases}
+        \prod_{k=1}^n x & \text{si } k \in \mathbb{N} \\ 
+        \frac{1}{x^{-k}} & \text{sinon}
+    \end{cases}   \\
+    \forall x \in \mathbb{R}_+^*, \forall \alpha \in \mathbb{R}, x^n &= e^{\alpha \ln{x}}
+\end{align*}
+
+\begin{itemize}
+    \item $ (f_{\alpha})^{-1} = f_{\frac{1}{\alpha}} $
+    \item Pour $ \alpha > 0 $, $ f_{\alpha} $ admet une limite finie en $0$, on peut donc prolonger par continuité en posant $0^{\alpha}=0$
+\end{itemize}
+
+\subsection{Fonctions circulaires}
+\begin{itemize}
+    \item Cosinus - restriction à $[0, \pi]$ est bijective, d'où $ \arccos : [-1, 1] \to [0, \pi] $
+    \item Sinus - restriction à $[-\frac{\pi}{2}, \frac{\pi}{2}]$ est bijective, d'où $ \arcsin : [-1, 1] \to [-\frac{\pi}{2}, \frac{\pi}{2}] $
+    \item Tangente - restriction à $]-\frac{\pi}{2}, \frac{\pi}{2}[$ est bijective, d'où $ \arctan : \mathbb{R} \to ]-\frac{\pi}{2}, \frac{\pi}{2}[ $
+\end{itemize}
+
+\subsubsection{Dérivées}
+\begin{align*}
+    \forall x \in ]-1, 1[, \arccos'(x) &= -\frac{1}{\sqrt{1-x^2}} \\
+    \forall x \in ]-1, 1[, \arcsin'(x) &= \frac{1}{\sqrt{1-x^2}} \\
+    \forall x \in \mathbb{R}, \arctan'(x) &= \frac{1}{1+x^2}
+\end{align*}
+
+\noindent Attention aux valeurs exclus dans la domaine de dérivabilité. \\
+
+\noindent Démonstration - avec la formule de la dérivée des bijections réciproques. On utilise $ \sin^2 + \cos^2 = 1 $. Possibilité de s'inspirer de la longueur des côtés du rectangle. 
+
+\subsection{Fonctions hyperboliques}
+\begin{align*}
+    \text{ch} : \mathbb{R} &\to \mathbb{R} \\
+    x &\mapsto \frac{e^x+e^{-x}}{2} \\
+    \text{sh} : \mathbb{R} &\to \mathbb{R} \\
+    x &\mapsto \frac{e^x-e^{-x}}{2}
+\end{align*}
+
+\begin{itemize}
+    \item $ \text{sh}' = \text{ch} > 0 $
+    \item $ \text{ch} > \text{sh} $
+    \item $ \text{ch}(0) = 1 $ est un minimum
+\end{itemize}
+
+\noindent On a les formules analogues à celles de la trigonométrie
+\begin{itemize}
+    \item $\ch^2x - \sh^2x = 1$
+    \item $\ch (ix) = \cos{x}$
+    \item $\sh(ix) = i\sin{x}$
+\end{itemize}
+\noindent On a les formules analogues avec changement de signe lors d'un $\sh^2$
+
+\clearpage
+\section{Réels}
+Chapitre 7
+\subsection{Définitions}
+\begin{itemize}
+    \item Majorant $M$ de $A$ - $ \forall a \in A, a \leq M $
+    \item Minorant $M$ de $A$ - $ \forall a \in A, M \leq a $
+    \item Bornée - $ \exists M \in \mathbb{R} : \forall a \in A, |a| \leq M \iff A \text{ est majorée et minorée} $
+\end{itemize}
+
+\subsection{Bornes}
+\subsubsection{Borne supérieure}
+    \begin{itemize}
+        \item Un majorant
+        \item Le plus petit des majorants
+        \item Condition d'existence - toute partie non-vide et majorée de $\mathbb{R}$ possède une borne supérieure
+        \item $\max{A} = \sup{A} \iff \sup{A} \in A $
+        \item Condition d'un max - toute partie non-vide et majorée de $\mathbb{Z}$ possède un maximum
+        \item Si $A$ n'est pas majorée, $\sup{A} = +\infty$
+        \item Caractérisation epsilonesque - $ \begin{cases}
+            \forall a \in A, a \leq M \\
+            \forall \epsilon > 0, \exists a_0 \in A : m - \epsilon < a_0
+        \end{cases} $
+            \begin{itemize}
+                \item Démonstration $\implies$ - par définition de la borne supérieure 
+                \item Démonstration $\impliedby$ - en retrouvant la définition de la borne supérieure
+            \end{itemize}
+    \end{itemize}
+\subsubsection{Borne inférieure} 
+    \begin{itemize}
+        \item Un minorant
+        \item Le plus petit des minorants
+        \item Toute partie non-vide et minorée de $\mathbb{R}$ possède une borne supérieure
+        \item $\min{A} = \inf{A} \iff \inf{A} \in A $
+        \item Toute partie non-vide et minorée de $\mathbb{Z}$ possède un minimum
+        \item Si $A$ n'est pas minorée, $\inf{A} = -\infty$
+        \item Caractérisation epsilonesque - $ \begin{cases}
+            \forall a \in A, a \leq M \\
+            \forall \epsilon > 0, \exists a_0 \in A : a_0 < m - \epsilon
+        \end{cases} $
+    \end{itemize}
+
+\subsection{Partie entière}
+\[ \lfloor x \rfloor \leq x < \lfloor x \rfloor + 1 \]
+
+\begin{itemize}
+    \item Le plus grand entier plus petit que $x$
+    \item $ \max{\{ k \in \mathbb{Z} : k \leq x \}} $
+        \begin{itemize}
+            \item Démonstration de l'existence - A est une partie non-vide et majorée de $\mathbb{Z}$, et montrer que $\max A$ convient 
+            \item Démonstration de l'unicité - Par antisymétrie avec deux valeurs qui vérifie la propriété
+        \end{itemize}
+    \item Partie fractionnaire ($\{x\} = x- \lfloor x\rfloor$ notation non universelle)
+\end{itemize}
+
+\subsubsection{Approximations décimales}
+\[ x_n = \frac{\lfloor 10^n x \rfloor}{10^n} \]
+\begin{itemize}
+    \item $x_n$ est l'approximation décimale par défaut de $x$ à la précision $10^{-n}$
+    \item $y_n = x_n + \frac{1}{10^n}$ est l'approximation décimale par excès de $x$ à la précision $10^{-n}$
+    \item Ces suites convergent vers $x$ [Démonstration - définition de la partie entère et théorème d'encadrement]
+    \item $x_n$ est croissante
+    \item $y_n$ est décroissante
+\end{itemize}
+
+\clearpage
+\section{Matrices et systèmes linéaires}
+Chapitre 8
+\subsection{Systèmes linéaires}
+Système d'équations linéaires de $n$ équations à $p$ inconnues, tout système de la forme noté $(S)$
+
+\subsubsection{Définitions}
+\begin{itemize}
+    \item Coefficients - Les scalaires ($a_{i, j}$) le coefficient de $x_j$ dans la $i$-ième équation
+    \item Second membre - Le $n$-uplet des scalaires qui sont les constantes dans les équations
+    \item Homogène - Système sans second membre
+    \item Inconnues - Les $(x_1...x_n)$
+    \item Ensemble des solutions $\mathcal{S}$ - $\{(x_1...x_p)\in\mathbb{K}^p \text{ } | \text{ } \forall i \in \llbracket 1, n \rrbracket, \sum_{j=1}^{p}a_{i, j}x_j = b_i \}$
+    \begin{itemize}
+        \item Incompatible - Pas de solution $\mathcal{S} = \emptyset$
+        \item Compatible - Au moins une solution
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Opérations élémentaires}
+Notons $L_i$ les lignes d'un système linéaire.  On a les 3 opérations linéaires qui préservent les équivalences.
+
+\begin{itemize}
+    \item Échange de deux lignes - $ L_i \leftrightarrow L_j ((i, j) \in \llbracket 1, n\rrbracket^2) $
+    \item Multiplication d'une ligne par un scalaire non-nul - $ L_i \leftarrow \lambda L_i (i \in \llbracket 1, n\rrbracket, \lambda \in \mathbb{K}^*) $
+    \item Ajout à une ligne d'un multiple d'une autre ligne - $ L_i \leftarrow L_i + \lambda L_j ((i, j) \in \llbracket 1, n\rrbracket^2, i\neq j, 
+    \lambda \in \mathbb{K}) $
+\end{itemize}
+
+\subsection{Matrices $\mathcal{M}_{n, p}(\mathbb{K})$}
+Matrice à $n$ lignes et $p$ colonnes. 
+
+\subsubsection{Matrices remarquables}
+\begin{itemize}
+    \item Matrice identité $I_n$ = $(\delta_{i, j})_{1\leq i,j \leq n}$ - 1 sur la diagonale
+        \begin{itemize}
+            \item Symbole de Kronecker $\delta_{i, j} = \begin{cases} 1 &\text{si i = j} \\ 0 &\text{sinon} \end{cases} $
+        \end{itemize}
+    \item Matrice nulle $0_{n, p}$ - tous les coefficients sont nuls
+    \item Matrice élémentaire $E_{i, j} = (\delta_{i, k}\delta_{j, l})_{1\leq k\leq n \text{ , } 1 \leq l \leq p }$ - tous les coefficients sont nuls sauf $1$ en position $(i, j)$
+    \item Matrice nilpotente - $ \exists k \in \mathbb{N} : A^k = 0 $
+    \item Matrice symétrique - $ A^T = A \iff \forall(i,j)\in \llbracket 1, n \rrbracket^2, a_{j, i} = a_{i, j} $
+    \item Matrice antisymétrique - $ A^T = -A \iff \forall(i,j)\in \llbracket 1, n \rrbracket^2, a_{j, i} = -a_{i, j} $
+    \item Matrice diagonale - $ \forall(i,j)\in \llbracket 1, n \rrbracket^2, (i\neq j \implies a_{i, j} = 0) $
+    \item Matrice triangulaire supérieure - $ \forall(i,j)\in \llbracket 1, n \rrbracket^2, (i > j \implies a_{i, j} = 0) $
+        \begin{itemize}
+            \item Stable par combinaison linéaire et produit [Démonstration - par définition du produit]
+        \end{itemize}
+    \item Matrice triangulaire inférieure - $ \forall(i,j)\in \llbracket 1, n \rrbracket^2, (i > j \implies a_{i, j} = 0) $
+        \begin{itemize}
+            \item La transposée d'une matrice triangulaire inférieure est triangulaire supérieure (et vice-versa)
+            \item Même stabilité que triangulaire supérieure
+        \end{itemize}
+\end{itemize}
+
+\noindent On remarque que toute matrice carrée s'écrit comme la somme d'une matrice symétrique $ \frac{A + A^T}{2} $ et une matrice antisymétrique $ \frac{A - A^T}{2} $
+
+\subsubsection{Produit matriciel}
+\[ \forall (i, j) \in \llbracket 1, n \rrbracket \times \llbracket 1, p \rrbracket, [AB]_{i, j} = \sum_{k=1}^pa_{i, k}b_{k, j} \]
+
+\begin{itemize}
+    \item $ E_{i, j}^{(n, p)}E_{k, l}^{(p, q)} = \delta_{j, k}E_{i, l}^{(n, q)} $ - Démonstration par définition du produit matriciel et en séparant le terme où $i=l$
+\end{itemize}
+
+\subsubsection{Transposée}
+\[ \forall(i, j) \in \llbracket 1, n \rrbracket \times \llbracket 1, p \rrbracket, [A^T]_{i, j} = [A]j_i \]
+
+\begin{itemize}
+    \item $ (\lambda A+B)^T = \lambda A^T + B^T $
+    \item $ (AB)^T = B^TA^T $ - Attention à l'inversement
+    \item $ (A^T)^T = A $
+\end{itemize}
+
+\subsubsection{Opérations élémentaires}
+\begin{itemize}
+    \item Dilatation - multiplication de la $i$-ième ligne par $\lambda$
+        \begin{itemize}
+            \item $D_i(\lambda) = I_n + (\lambda-1)E_{i, i}$
+            \item $D_i(\lambda)A : L_i \leftarrow \lambda L_i$
+            \item $AD_i(\lambda) : C_i \leftarrow \lambda C_i$
+            \item $D_i(\lambda)^{-1} = D_i(\frac{1}{\lambda})$
+        \end{itemize}
+    \item Permutation - échange de la $i$-ième et la $j$-ième ligne
+        \begin{itemize}
+            \item $P_{i, j} = I_n - E_{i, i} - E_{j, j} + E_{i, j} + E_{j, i}$
+            \item $P_{i, j}A : L_i \leftrightarrow L_j$
+            \item $AP_{i, j} : C_i \leftrightarrow C_j$
+            \item $P_{i, j}^{-1} = P_{i, j}$
+        \end{itemize}
+    \item Transvection - $L_i \leftarrow L_i + \lambda L_j$
+        \begin{itemize}
+            \item $T_{i, j}(\lambda) = I_n + \lambda E_{i, j}$
+            \item $T_{i, j}(\lambda)A : L_i \leftarrow L_i + \lambda L_j$
+            \item $AT_{i, j}(\lambda) : C_j \leftarrow C_j + \lambda C_i$ (! $j$-ième colonne modifiée et non $i$-ième)
+            \item $T_{i, j}(\lambda)^{-1} = T_{i, j}(-\lambda)$
+        \end{itemize}
+\end{itemize}
+
+\noindent Ces opérations correspondent aux opérations sur un système d'équations linéaires. 
+
+\subsubsection{Matrices inversibles}
+\[ \text{GL}_n(\mathbb{K}) = \{ A \in \mathcal{M}_n(\mathbb{K}) \text{ } | \text{ } \exists B \in \mathcal{M}_n(\mathbb{K}) : AB = BA = I_n \} \]
+
+\begin{itemize}
+    \item $ (AB)^{-1} = B^{-1}A^{-1} $
+    \item $ (A^{-1})^{-1} = A $
+    \item $ (A^T)^{-1} = (A^{-1})^T $
+    \item $ (A^m)^{-1} = (A^{-1})^m = A^{-m} $
+    \item Les opérations élémentaires préservent l'inversibilité
+\end{itemize}
+
+\[ A \in \text{GL}_n(\mathbb{K}) \iff \forall B \in \mathcal{M}_{n, 1}(\mathbb{K}), \exists ! X \in \mathcal{M}_{n, 1}(\mathbb{K}) \text{ } | \text{ } AX = B \]
+
+\noindent Démonstration
+\begin{itemize}
+    \item Sens direct - $ X = A^{-1}B $ est la solution unique
+    \item Sens indirect - Décomposer $I_n$ en colonne, cette $I_n$ décomposée sert de second membre, la concaténation des $X$ résultats donne $A^{-1}$ (et vérifiée pour la multiplication à gauche). On vérifie la multiplication à droite en étudiant la différence avec $I_n$
+\end{itemize}
+
+\noindent On peut déduire $A^{-1}$ d'une matrice inversible en résolvant le système des équations linéaires représenté par $AX=B$. \\
+
+\noindent Pour les matrices inversible, il faut considérer les puissance négatives
+
+\subsection{Algorithme du pivot de Gauss}
+Soit $A \in \text{GL}_n(\mathbb{K})$
+\begin{enumerate}
+    \item Une dilatation et une permutation pour que $a_{1, 1} = 1$ [La première colonne est non-nulle]
+    \item Des transvections $ L_i \leftarrow L_i - a_{1, 1}L_1 $ pour que la 2e colonne est de la forme $(0 \msp 1 \msp ...) $
+    \item Itération jusqu'à obtenir une matrice triangulaire supérieure
+    \item Remonter l'algorithme de la gauche vers le haut, pour obtenir $I_n$
+\end{enumerate}
+
+\noindent On en déduit que une matrice triangulaire inversible a des coefficients diagonaux non nuls.
+
+\clearpage
+\section{Suites}
+Chapitre 9
+
+\subsection{Définitions}
+Une fonction de $\mathbb{N}$
+
+\begin{itemize}
+    \item Suite extraite - $ \forall n \in \mathbb{N}, v_n = u_{\phi(n)} $ avec $ \phi(n) $ la fonction extractrice $ \mathbb{N} \rightarrow \mathbb{N} $ strictement croissante ($ \forall n \in \mathbb{N}, \phi(n) \geq n $)
+    \item Monotonie pour les suites - $ (\forall(p, q) \in \mathbb{N}^2, p \leq q \implies u_p \leq u_q) \iff (\forall n \in \mathbb{N}, u_n \leq u_{n+1}) $
+    \begin{itemize}
+        \item Si le signe de $u_n$ est connu et constant APCR, on peut comparer $\frac{u_{n+1}}{u_n}$ avec $1$
+    \end{itemize}
+\end{itemize}
+
+\subsection{Limites}
+\[ u_n \longrightarrow l \in \mathbb{R} \iff \forall \epsilon > 0, \exists n_0 \in \mathbb{N} \msp | \msp \forall n \geq n_0, |u_n - l| \leq \epsilon \]
+\[ u_n \longrightarrow +\infty \iff \forall A \in \mathbb{R}, \exists n_0 \in \mathbb{N} \ligneh \forall n \geq n_0, u_n \geq A \]
+\[ u_n \longrightarrow -\infty \iff \forall A \in \mathbb{R}, \exists n_0 \in \mathbb{N} \ligneh \forall n \geq n_0, u_n \leq A \]
+
+\begin{itemize}
+    \item La limite est unique [Démonstration - $ \forall \epsilon > 0,  |l-l'| \leq \epsilon $ avec l'inégalité triangulaire, donc justifier $ l = l'$]
+    \item Condition suffisante de convergence - $ v_n \longrightarrow 0 \text{ et } |u_n - l| \leq v_n \text{ APCR} \implies u_n \longrightarrow l $
+    \item Condition nécessaire de convergence - $ u_n \longrightarrow l \implies u_n \text{ est bornée} $ [Démonstration - Par définition de la limite et inégalité triangulaire, montrer $ |u_n| = |(u_n - l) + l | \leq |l| + \epsilon $ APCR, et combiner avec la suite finie (donc bornée) pour les éléments avant ce rang]
+    \item $ u_n \longrightarrow u > 0 \implies (u_n) > 0 $ APCR (attention à l'inégalité stricte [Démonstration - $\epsilon = \frac{u}{2}$]
+    \item $ (u_n) \geq 0 \text{ APCR et } u_n \longrightarrow u \implies u \geq 0 $ (attention à l'inégalité large) [Démonstration - par l'absurde et le résultat au-dessus]
+    \item Le produit d'une suite bornée par une suite qui converge vers 0, converge vers 0
+    \item Pour une suite complexe, $ z_n \longrightarrow l \iff \begin{cases}
+        \text{Re}(z_n) \longrightarrow \text{Re}(l) \\
+        \text{Im}(z_n) \longrightarrow \text{Im}(l)
+    \end{cases} $
+\end{itemize}
+
+\subsubsection{Opérations sur les limites}
+Soit $\begin{cases}
+    u_n \longrightarrow u  \\ 
+    v_n \longrightarrow v
+\end{cases}$
+\begin{itemize}
+    \item $(|u_n|) \longrightarrow |u|$
+    \item $ \forall \lambda \in \mathbb{R}, (u_n + \lambda v_n) \longrightarrow u + \lambda v $
+    \item $ (u_n v_n) \longrightarrow uv $
+    \item $ (\frac{1}{u_n}) \longrightarrow \begin{cases}
+        \frac{1}{u} & \si u \neq 0 \\
+        +\infty & \si u = 0 \et u_n > 0 \text{ APCR} \\
+        -\infty & \si u = 0 \et u_n < 0 \text{ APCR} \\
+        \text{pas de limite} & \si u = 0 \et \text{signe de $u_n$ pas constant APCR}
+    \end{cases}$
+    \item $ (\frac{u_n}{v_n}) \longrightarrow \frac{u}{v} $
+    \item Pour une suite complexe - $\overline{u_n} \longrightarrow \overline{u}$
+\end{itemize}
+
+\subsubsection{Limites des suites extraites}
+\begin{itemize}
+    \item Toutes les suites extraites ont la même limite
+    \item S'il existe une suite extraite divergente, alors la suite est divergente
+    \item S'il existe deux suites extraites avec deux limites distinctes, alors la suite n'a pas de limite
+    \item Suites extraites paires et impaires - $ (u_{2p}) \longrightarrow l \text{ et } (u_{2p+1}) \longrightarrow l \implies (u_n) \longrightarrow l $
+\end{itemize}
+
+\subsubsection{Théorèmes d'existence}
+\begin{itemize}
+    \item Encadrement - $ \begin{cases}
+        u_n \longrightarrow l \\
+        w_n \longrightarrow l \\
+        u_n \leq v_n \leq w_n \text{ (APCR)}
+    \end{cases} \implies v_n \longrightarrow l $
+    \item Divergence par minoration - $ \begin{cases}
+        u_n \longrightarrow +\infty \\
+        u_n \leq v_n \text{ (APCR)}
+    \end{cases} \implies v_n +\infty $
+    \item Divergence par majoration - $ \begin{cases}
+        u_n \longrightarrow -\infty \\
+        v_n \leq u_n \text{ (APCR)}
+    \end{cases} \implies v_n -\infty $
+    \item Limite par comparaison - $ \begin{cases}
+        u_n \longrightarrow 0 \\
+        |v_n| \leq |u_n| 
+    \end{cases} \implies u_n \longrightarrow 0 $
+    \item Théorème de la limite monotone
+    \begin{itemize}
+        \item Croissante et majorée - $ u_n \longrightarrow \sup{u_n} $ [Démonstration - Posons $ l = \sup u_n $ $l - \epsilon$ n'est pas un majorant et $ l + \epsilon $ est un majorant ]
+        \item Décroissante et minorée - $ u_n \longrightarrow \inf{u_n} $ [Démonstration - $(-u_n) $ croissante et majorée]
+        \item Croissante et non-majorée - $ u_n \longrightarrow +\infty $ [Démonstration - Tout $A\in \mathbb{R}$ n'est pas un majorant]
+        \item Décroissante et non-minorée - $ u_n \longrightarrow -\infty $ [Démonstration - Tout $A\in \mathbb{R}$ n'est pas un minorant]
+    \end{itemize}
+\end{itemize}
+
+\subsection{Suites adjacents}
+Deux suites sont adjacentes si
+\begin{itemize}
+    \item Une des suites est croissante
+    \item L'autre est décroissante
+    \item $ u_n - v_n \longrightarrow 0 $
+\end{itemize}
+
+\noindent Quand on a besoin de comparer deux suites monotones, il est souvent utile de fixer $u_0$ qui est plus grand / petit que $u_n$
+
+\subsubsection{Propriétés}
+\begin{itemize}
+    \item $(u_n)$ et $(v_n)$ convergent vers la même limite $ l \in \mathbb{R}$
+    \item $ u_n \leq l \leq v_n $
+\end{itemize}
+Il est souvent utile de chercher 2 suites extraites adjacentes pour déterminer la limite d'une suite. 
+
+\subsection{Relations de comparaison}
+\begin{itemize}
+    \item $(u_n)$ négligeable devant $(v_n)$ : ($ u_n =o(v_n) $) - $ (\frac{u_n}{v_n}) \longrightarrow 0 $
+    \item $(u_n)$ dominée par $(v_n)$ : ($ u_n = \mathcal{O}(v_n) $) - $ (\frac{u_n}{v_n}) $ est bornée
+    \item $(u_n)$ équivalente à $(v_n)$ : ($ u_n \sim v_n $) - $ (\frac{u_n}{v_n}) \longrightarrow 1 $
+\end{itemize}
+
+\subsubsection{Propriétés}
+\begin{itemize}
+    \item $ u_n \sim v_n \iff u_n - v_n =o(v_n) $
+    \item $ =o \implies = \mathcal{O} $
+    \item $ \sim \implies \mathcal{O} $
+    \item Transitivité
+    \item Produit
+    \item Multiplication par $\lambda \in \mathbb{R}^*$ [non valable pour $\sim$]
+    \item Stabilité par somme [non valable pour $\sim$]
+\end{itemize}
+
+\subsubsection{Propriétés de $\sim$}
+\begin{itemize}
+    \item Conservation de limite
+    \item Conservation de signe APCR
+    \item Stabilité par puissance (toute puissance entier, puissances réelles si $u_n > 0$)
+    \item Encadrement - $u_n < v_n < w_n \et u_n \sim a \et w_n \sim a \implies v_n \sim a$
+\end{itemize}
+
+\subsubsection{Équivalences usuels}
+
+Petit $(u_n) \longrightarrow 0$
+\begin{itemize}
+    \item $\sin{(u_n)} \sim u_n$
+    \item $\tan{(u_n)} \sim u_n$
+    \item $\sh{(u_n)} \sim u_n$
+    \item $\arcsin{(u_n)} \sim u_n$
+    \item $\arctan{(u_n)} \sim u_n$
+\end{itemize}
+
+\noindent Petit $(u_n) \longrightarrow 0$ développement limité raccourci
+\begin{itemize}
+    \item $(1+u_n)^\alpha - 1 \sim \alpha u_n$
+    \item $e^{u_n} - 1 \sim u_n$
+    \item $\cos{(u_n)}-1 \sim -\frac{u_n^2}{2}$
+    \item $\ch{(u_n)}-1 \sim -\frac{u_n^2}{2}$
+\end{itemize}
+
+\noindent Wildcard $ \ln $ 
+\begin{itemize}
+    \item $\ln{(1+u_n)} \sim u_n$ (pour $u_n \longrightarrow 0$)
+    \item $\ln{(u_n)} \sim u_n - 1$ (pour $u_n \longrightarrow 1$)
+\end{itemize}
+
+\subsubsection{Croissances comparées}
+\[ (\ln{n})^a \ll n^b \ll q^n \ll n! \ll n^n \]
+
+\subsection{Suites particulières}
+
+\subsubsection{Suites arithmético-géométrique}
+\[ \forall n \in \mathbb{N}, u_{n+1} = a u_n + b \]
+\begin{itemize}
+    \item Si $a=1$, $(u_n)$ est une suite arithmétique
+    \item Si $b=0$, $(u_n)$ est une suite géométrique
+    \item Si $a\neq1$ - $ u_n = u_0 a^n + b \frac{1-a^n}{1-a} $ [Démonstration - posons $ l = al + b $ est soustraire de la définition pour obtenir une suite géométrique]
+\end{itemize}
+
+\subsubsection{Suites géométriques}
+Pour $q \in \mathbb{K}$, la suite géométrique $q^n$
+\begin{itemize}
+    \item Si $|q| < 1$, $q^n \longrightarrow 0$
+    \item Si $q= 1$, $q^n = 1$ 
+    \item Si $ q \in \mathbb{C} $, $q^n$ diverge
+    \item Si $ q \in \mathbb{R} \et q > 1 $, $q^n \longrightarrow +\infty$
+    \item Si $q \in \mathbb{R} \et q \leq 1 $, $q^n$ n'a pas de limite
+\end{itemize}
+
+\subsubsection{Suites récurrentes linéaires d'ordre 2}
+\[ \epsilon_{a, b} = \{ (u_n) \in \mathbb{K}^\mathbb{N} \ligneh \forall n \in \mathbb{N}, u_{n+2} = au_{n+1} + b \} \]
+\[ P = X^2 - aX - b \]
+
+On cherche l'unique formule explicite de la suite étant donné les conditions initiales $u_0$ $u_1$ 
+
+\begin{itemize}
+    \item Si $r$ est racine de l'équation caractéristique $P$, $ (r^n) \in \epsilon_{a,b} $
+    \item 2 racines distinctes - $ u_n = \alpha r_1^n + \beta r_2^n $
+    \item Une racine double - $ u_n = (\alpha + \beta n) r^n $
+    \item 2 racines complexes conjuguées (suites réelles) - On note $ r = \rho e^{\pm i \theta} $ alors $ u_n = \rho^n(\alpha \cos(n \theta) + \beta \sin(n\theta)) $
+\end{itemize}
+
+\subsubsection{Suites récurrentes d'ordre 1}
+\[ u_{n+1} = f(u_n) \]
+
+\begin{itemize}
+    \item $(u_n)$ est bien définie si $u_0 \in D$ et $f$ est stable par $D$
+    \item La signe de $f(x) - x$ donne la monotonie de $(u_n)$
+    \item Croissance de $f \implies$ monotonie de $(u_n)$
+    \item Décroissance de $f \implies (u_n)$ oscillante (on peut étudier la limite en considérant les suites extraites $u_{2n}$ et $u_{2n+1}$ avec leurs relation de récurrence $f \circ f$
+    \item Si $(u_n)$ converge vers $l$ et $f$ est continue en $l$, $f(l) = l$
+\end{itemize}
+
+\clearpage
+\section{Espaces Vectoriels}
+
+\subsection{Définitions}
+\subsubsection{$\mathbb{K}$-espaces vectoriels}
+\[ (E, +, \cdot) \]
+
+\begin{itemize}
+    \item $E$ est l'ensemble des vecteurs
+    \item $+$ est une loi de composition interne, qui agit sur 2 éléments de $E$
+    \item $\cdot$ est une loi de composition externe, qui agit sur un scalaire $\mathbb{K}$ et un élément de $E$
+\end{itemize}
+
+\noindent $ (E, +, \cdot) $ est un $\mathbb{K}$-espace vectoriel si:
+\begin{itemize}
+    \item $(E, +)$ est un groupe commutative
+        \begin{itemize}
+            \item Commutativité
+            \item $+$ une loi de composition interne
+            \item Associativité
+            \item Neutre ($0_E$) tel que $x+0_E = 0_E + x = x$
+            \item Symétrique ($-x$) tel que $x+(-x) = (-x) + x = 0_E$
+        \end{itemize}
+    \item Associativité mixte - $ \forall (\lambda, \mu) \in \mathbb{K}^2, \forall x \in E, \lambda \cdot (\mu \cdot x) = (\lambda \times \mu)\cdot x $
+    \item Distributivité de $+$ sur $\cdot$ - $ \forall (\lambda, \mu) \in \mathbb{K}^2, \forall x \in E, (\lambda + \mu) \cdot x = \lambda \cdot x + \mu \cdot x $
+    \item Distributivité de $\cdot$ sur $+$ - $ \forall \lambda \in \mathbb{K}, \forall (x, y) \in E^2, \lambda \cdot (x+y) = \lambda \cdot x + \lambda \cdot y $
+    \item $ 1_\mathbb{K} \cdot x = x $
+\end{itemize}
+
+\subsubsection{Sous-espaces vectoriels}
+Pour $ (E, +, \cdot) $ un K-ev, $F$ est un sous-espace vectoriel si
+\begin{enumerate}
+    \item $0_E \in F$
+    \item Stabilité par $+$
+    \item Stabilité par $\cdot$
+\end{enumerate}
+
+\begin{itemize}
+    \item Les conditions 2 et 3 sont équivalentes à la stabilité par combinaison linéaire.
+    \item Les ssevs d'un K-ev est un K-ev - on peut donc démontrer un K-ev en montrant qu'il s'agit d'un ssev d'un K-ev connu. [Démonstration - Propriétés héritées de $E$]
+    \item L'intersection des ssevs est un ssev
+\end{itemize}
+
+\subsection{Somme de ssevs}
+\[ F + G = \{ x \in E \ligneh \exists(x_F, x_G) \in F \times G, x = x_F + x_G \} \]
+\[ F \oplus G = \{ x \in E \ligneh \exists!(x_F, x_G) \in F \times G, x = x_F + x_G \} \]
+\[ F \oplus G \text{ est un ssev} \iff 0_E \in F \oplus G \iff F + G = F \oplus G \iff F \cap G = \{0_E\} \]
+
+\noindent $ F \cap G = {0_E} $ est utile pour montrer que $F+G$ est directe. On montre que $x \in F \cap G \implies x = 0_E $. Alt: On peut aussi déterminer l'unique décomposition de tout vecteur de $E$ comme somme par analye-synthèse.
+
+\noindent Si $E = F\oplus G$ alors $F$ et $G$ son supplémentaires de $E$.
+
+\subsection{Familles}
+
+\subsubsection{Vect}
+Sous-espace engendré par une famille finie de vecteurs ou une partie
+
+\[ \text{Vect}(a_1,...,a_n) = \{\sum_{i=1}^n \lambda_i a_i \ligneh (\lambda_1,...,\lambda_n) \in \mathbb{K}^n \} \]
+\[ \text{Vect}(A) = \{\sum_{i=1}^n \lambda_i a_i \ligneh n \in \mathbb{N}, (a_1,...,a_n) \in A^n, (\lambda_1,...,\lambda_n) \in \mathbb{K}^n \} \]
+
+\begin{itemize}
+    \item $\text{Vect}(A)$ est un ssev de E [Démonstration - $\text{Vect}(A) \in E, 0_E \in \text{Vect}(A) $, et stabilité par combinaison linéaire] - on peut donc montrer que $F$ est un ssev de $E$ en écrivant $F$ sous forme d'un Vect
+    \item $\text{Vect}(A)$ est le plus petit ssev de E qui contient A (Pour tout F un ssev de E, $ \text{Vect}(A) \subset F $) [Démonstration - $x \in \text{Vect}(A)$ est une combinaison linéaire des élements de $A$ donc de $F$ et $F$ est stable par combinaison linéaire]
+    \item $\text{Vect}(A)$ est l'intersection de tous les ssevs de E qui contiennent A [Démonstraiton - l'intersection est aussi un ssev contenant $A$ puis double inclusion]
+    \item Vect d'un vecteur - $ \text{Vect}(0_E) = {0_E} $ et $ \text{Vect}(x \neq 0_E) = \mathbb{K}x $ droite vectorielle
+    \item Vect de 2 vecteurs - $ \text{Vect}(x, y) = \text{Vect}(x) = \text{Vect}(y) $ si $x$ et $y$ sont colinéaires - sinon on a un plan vectoriel
+\end{itemize}
+
+\subsubsection{Familles libres et liées}
+\begin{itemize}
+    \item Libre (linéairement indépendant) - $ \sum_i \alpha_ix_i = 0 \implies \forall i, \alpha_i = 0 $
+    \item Liée - non-libre  - au moins un des vecteurs est combinaison linéaire des autres dans la famille
+\end{itemize}
+
+\noindent Une famille est libre $\iff \forall x \in \text{Vect}(E), x$ s'écrit de manière unique comme combinaison linéaire des vecteurs de $E$
+
+\subsubsection{Familles génératrices}
+\[ E = \text{Vect}(x_1,...,x_n) \]
+\noindent Il suffit de montrer $ E \subset \text{Vect}(x_1,...x_n) $ car le réciproque est automatique par stabilité par C.L. des ssevs. \\
+
+\noindent En particulier, les bases:
+\begin{itemize}
+    \item Une famille libre et génératrice. 
+    \item Tout vecteur de $E$ s'écrit de manière unique comme C.L. des vecteurs de la famille
+    \item Si $\mathcal{B}_F \et \mathcal{B}_G$ sont des bases de $F \et G$ et $E = F \oplus G$, alors $\mathcal{B}_F \cup \mathcal{B}_G$ est une base de $E$ adaptée. 
+    \item Si $x_1,...x_n$ est une base de $E$, on peut 'scinder' la base pour obtenir des supplémentaires $ E = \text{Vect}(x_1,...,x_p) \oplus \text{Vect}(x_{p+1},...,x_n) $
+\end{itemize}
+
+\clearpage
+\section{Applications linéaires}
+Pour $u: E \rightarrow F$, 
+\[ u \in \mathcal{L}(E, F) \iff \forall(x, y) \in E^2, \forall \lambda \in \mathbb{K}, u(\lambda x + y) = \lambda u(x) + u(y) \]
+
+\subsection{Définitions}
+\begin{itemize}
+    \item $\mathcal{L}(E) = \mathcal{L}(E, E)$ un endomorphisme de $E$
+    \item $\mathcal{L}(E, \mathbb{K}) = E^*$ une forme linéaire sur $E$
+    \item $u \in \mathcal{L}(E, F)$ bijective - un isomorphisme de $E$ dans $F$
+    \item $u \in \mathcal{L}(E)$ bijective - un automorphisme de $E$
+    \item $ \text{Ker } u = {x \in E \ligneh u(x) = 0_F} = u^{-1}(\{0_F\}) $
+\end{itemize}
+
+\subsection{Propriétés des A.Ls}
+\begin{itemize}
+    \item $u(0_E) = 0_F$
+    \item $\mathcal{L}(E, F)$ est stable par C.L. - $\mathcal{L}(E, F)$ est un ssev de $F^E$
+    \item $\mathcal{L}(E, F)$ est stable par composition
+    \item Pour $\tilde{E}$ un ssev de $E$, $u(\tilde{E})$ est un ssev de $F$
+    \item Pour $\tilde{F}$ un ssev de $F$, $u^{-1}(\tilde{F})$ est un ssev de $E$
+    \item $\text{Ker } u $ est un ssev de $E$
+    \item $\text{Im } u $ est un ssev de $E$
+    \item $u$ est injective $\iff$ $\text{Ker }u = \{0_E\} \iff (u(x) = 0_F \implies x = 0_E)$
+    \item $u$ est bijective $\iff$ $\text{Ker }u = \{0_E\} \et \text{Im }u = F $
+    \item Pour $B = (e_1,...,e_n)$ une base, et des vecteurs $f_1,...,f_n$, on caractérise une unique application linéaire - $ \forall i \in \llbracket 1, n \rrbracket, u(e_i) = f_i $
+    \item Pour $ E = E_1 \oplus E_2, u_1 \in \mathcal{L}(E_1, F), u_2 \in \mathcal{L}(E_2, F) $, on peut caractériser une unique application linéaire - $ \forall x \in E_1, u(x) = u_1(x) \et \forall x \in E_2, u(x) = u_2(x) $
+\end{itemize}
+
+\subsection{Propriétés des isomorphismes}
+\begin{itemize}
+    \item Stable par composition
+    \item La bijection réciproque d'un isomorphisme est un isomorphisme
+    \item $ \text{Im}(v \circ u) = \text{Im } v $
+    \item $ \text{Ker}(v \circ u) = \text{Ker } u $
+\end{itemize}
+
+\subsection{Des familles et des A.L.s}
+Uniquement dans cette section, $[x_i] = (x_1,...,x_n)$. $u \in \mathcal{L}(E, F)$
+\begin{itemize}
+    \item $u(\text{Vect}([x_i])) = \text{Vect}([u(x_i)])$
+    \item Pour $[x_i]$ une famille génératrice - $ [u(x_i)] $ est génératrice de $\text{Im } u$
+    \begin{itemize}
+        \item En particulier, pour $u$ surjective, $ [u(x_i)] $ est génératrice de $\text{Im } u = F$
+    \end{itemize}
+    \item Pour $u$ injective, $ [u(x_i)] $ est libre
+    \item Pour $u$ bijective, $ [u(x_i)] $ est une base de $F$
+    \item Si $ [x_i] $ liée, alors $ [u(x_i)] $ liée
+\end{itemize}
+
+\subsection{Endomorphismes remarqueables}
+\subsubsection{Homothéties}
+\[ h_\lambda = x \mapsto \lambda x \]
+\begin{itemize}
+    \item $ h_1 = \text{Id} $
+    \item Pour $ \lambda \neq 0 $, $ h_\lambda \in \text{GL}(E) \et h_\lambda^{-1} = h_{\frac{1}{\lambda}} $
+\end{itemize}
+
+\subsubsection{Projections et symétries}
+Pour $x \in E = E_1 \oplus E_2$, 
+\begin{enumerate}
+    \item  La projection sur $E_1$ parallèlement à $E_2$, $ p : x = x_1 + x_2 \mapsto x_1 $
+    \item La symétrie par rapport à $E_1$ parallèlement à $E_2$, $ s : x = x_1 + x_2 \mapsto x_1 - x_2 $
+\end{enumerate}
+
+\begin{itemize}
+    \item $ p \in \mathcal{L}(E) $
+    \item $ p^2 = p $
+    \item $ E_1 = \text{Im }p = \{x \in E \ligneh p(x) = x \} = \text{Ker}(p - \text{Id}_E) $
+    \item $ E_2 = \text{Ker }p$
+\end{itemize}
+
+\end{document}

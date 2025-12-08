@@ -1,0 +1,622 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{array}
+
+\title{PHYSIQUE}
+\author{Ziwen}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Incertitudes}
+\subsection{Incertitude de type A}
+Évaluation par méthodes statistiques avec plusieurs mesures
+\begin{itemize}
+    \item Résultat donne par moyenne arithmétique
+    \item L’écart-type expérimental $ s_{\text{exp}} = \sigma_{N-1} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(m_i-\overline{m})^2} $
+    \item L'incertitude-type (type A) $ s = \sqrt{\frac{1}{N}}s_{\text{exp}} $
+\end{itemize}
+
+\subsection{Incertitude de type B}
+Évaluation par des incertitudes données
+\subsubsection{Incertitude-type}
+Étant donné une incertitude de $ \pm a $, $ s_B = \frac{a}{\sqrt{3}} $. On fait toujours la division par $ \sqrt{3} $.
+\subsubsection{Propagation}
+Somme des carrés des dérivées partielles
+\[ s_B = \sqrt{\sum_{k=1}^{n}(\frac{\partial f}{\partial x_k}s(x_k))^2} \]
+
+\subsection{z-score}
+Z-score, $ z = \frac{M_{\text{mesure}} - M_{\text{réf}}}{s(M)} $
+\begin{itemize}
+    \item $ z \leq 2 $ indique la compatibilité avec le valeur de référence. 
+\end{itemize}
+
+\clearpage
+\section{Optique}
+\subsection{Définitions}
+\subsubsection{Milieux}
+\begin{itemize}
+    \item Homogène - Toutes les propriétés physiques sont identiques en tout point du milieu
+    \item Isotrope - Les propriétés physiques sont identiques dans toutes les directions de propagation
+    \item Un dioptre - La surface séparant deux milieux différents
+\end{itemize}
+
+\subsubsection{Systèmes optiques}
+\begin{itemize}
+    \item Stigmatique - Pour un couple de points $ (A, A') $, tous les rayons issus de $A$ et traversant le système optique passent par $A'$
+    \item Centré - Le système a un axe de symétrie (l'axe optique)
+    \item Plan transverse - Un plan perpendiculaire à l'axe optique
+    \item Aplanétique - Pour $A$ et $A'$ deux points conjugués et $B$ un point du plan transverse passant par $A$, le conjugué de $B$ (noté $B'$) est dans le plan transverse passant par $A'$
+    \item Foyer image $F'$ - L'image d'un objet situé à l'infini et sur l'axe optique
+    \item Foyer objet $F$ - L'objet d'une image situé à l'infini et sur l'axe optique
+    \item Afocal - Les foyers sont à l'infini
+\end{itemize}
+
+\subsubsection{L’œil}
+\begin{itemize}
+    \item Pupille - contenue dans l'iris, le diamètre est variable de 2 à 8 mm
+    \item Cristallin - muscle assimilable à une lentille mince convergente dont la distance focale est variable selon sa contraction
+    \item Rétine - cellules sensibles à la lumière, l'écran de l’œil
+    \item Punctum proximum - $ 0,25 \text{ m} $
+    \item Punctum remotum - à l'infini
+    \item Champ angulaire - l'angle du cône de vision - $ 40 \degree $  à $ 50 \degree $ (mais la zone de perception des détails est plus réduite à $ 1 \degree $).
+    \item Pouvoir séparateur - $ \epsilon = 1' = \frac{1}{60} \degree = 3*10^{-4} \text{ rad} $
+    \item Myopie - Cristallin trop convergeant, le Punctum Promximum est plus proche et le Ponctum Remotum n'est plus à l'infini.
+    \item Hypermétropie - Cristallin pas assez convergente, le Punctum Proximum plus loin et le Ponctum Remotum se trouve derrière l’œil. 
+\end{itemize}
+
+\subsubsection{Grandeurs}
+\begin{itemize}
+    \item Grandissement $\gamma $ - Par taille $ \gamma = \frac{\overline{A'B'}}{\overline{AB}} $. Pour objet et image à distance finie.
+    \item Puissance $ P $ - Angle sur taille $ P = \frac{\alpha '}{\overline{AB}} $. Pour objet à distance finie, mais image à distance infinie. Unité: dioptrie ($ \delta = \text{rad m}^{-1}  $)
+    \item Grossissement $ G $ - Par angle $ G = \frac{\alpha '}{\alpha } $. Pour objet et image à l'infini. 
+    \item Grandissement commercial $ G_c $ - Grossissement pour un objet au ponctum proximum $ G_c = \frac{\alpha '}{\beta} = \frac{P}{4} $. Attention aux signes. 
+\end{itemize}
+Notons que l'image est toujours au numérateur.
+
+\subsubsection{Lentilles}
+\begin{itemize}
+    \item Lentille mince - L'épaisseur est très petite devant les rayons de courbure des dioptres sphériques de la lentille. On considère que les sommets des deux dioptres et le centre optique (O) sont confondus. 
+    \item Distance focale - Distances du centre optique aux plans focales. Pour une lentille mince, $ f' = -f $. Pour une lentille convergente, $f$ est négatif car $F$ est devant $O$. 
+    \item Vergence $V$ - $V=\frac{1}{f'}$
+\end{itemize}
+
+\subsection{Indice optique $ n $}
+$ v = \frac{c}{n} \leq c $.
+Plus $ n $ est grand, plus le milieu est réfringent, plus la lumière ralentit. 
+
+\subsection{Formule de Cauchy}
+\[ n = a + \frac{b}{\lambda^2} \]
+
+\subsection{Propriétés des rayons lumineux}
+\begin{itemize}
+    \item Les rayons lumineux se propagent en ligne droite dans un milieu homogène et isotrope
+    \item La trajectoire suivie par la lumière ne dépend pas du sens de propagation
+    \item Les rayons lumineux sont indépendants entre eux
+\end{itemize}
+
+\subsection{Conditions de Gauss}
+Pour les systèmes optiques centrés, le stigmatisme et l'aplanétisme approchés sont vérifiés dans ces conditions.
+\begin{itemize}
+    \item Les rayons lumineux font un angle petit avec l'axe optique
+    \item Les rayons lumineux rencontrent les dioptres (et miroirs) au voisinage de leur sommet (intersection avec l'axe optique)
+    \item Les rayons rencontrent les dioptres et miroirs avec un angle d'incidence par rapport à leur normale qui est petit
+\end{itemize}
+
+\subsection{Théorèmes et démonstrations}
+
+\subsubsection{Première loi de Snell-Descartes - réflexion}
+\[ r = -i\]
+Attention aux angles algébriques. 
+
+\subsubsection{Deuxième loi Snell-Descartes - réfraction}
+\[ n_1\sin{i_1} = n_2\sin{i_2} \]
+
+\subsubsection{Réflexion totale}
+Il n'existe pas de rayon réfracté - $ \frac{n_i}{n_r} \sin{i} > 1 $. Une démonstration par contraposée (trouver les conditions pour avoir de la réfraction) est plus facile à justifier.
+\[i^{\text{lim}} = \arcsin{\frac{n_2}{n_1}} \]
+
+\subsubsection{Réfraction limite}
+L'angle maximal réfracté est limité.
+\[r^{\text{lim}} = \arcsin{\frac{n_1}{n_2}} \]
+
+\subsubsection{Tracée des rayons pour une lentille}
+\begin{itemize}
+    \item Un rayon passant par le centre optique n'est pas dévié.
+    \item Un rayon incident parallèle à l'axe optique donne un rayon transmis passant par le foyer image. 
+    \item Un rayon incident passant par le foyer objet donne un rayon transmis parallèle à l'axe optique. 
+\end{itemize}
+Utiliser ces règles pour tracer des rayons connus, pour construire les rayons quelconques. 
+\begin{itemize}
+    \item Pour un rayon incident, prendre un rayon connu qui croise le rayon incident par un des plans focales - les deux rayons transmis sont parallèles. 
+\end{itemize}
+
+\subsubsection{Théorème de Newton}
+Observer géométriquement avec Thalès. 
+\[\overline{FA} \cdot \overline{F'A'} = f'f=-f^2\]
+Attention aux signes algébriques. 
+
+\subsubsection{Théorème de Descartes}
+Observer géométriquement avec Thalès. Obtenir une relation linéaire avec $\overline{OA}$ $\overline{OA'}$ $\overline{OF'}$ puis diviser. 
+\[ \frac{1}{\overline{OA}}-\frac{1}{\overline{OA'}} = -\frac{1}{f'} \]
+Version lycée - $ \frac{1}{u}+\frac{1}{v}=\frac{1}{f} $
+
+\subsubsection{Théorème des Vergences}
+Pour 2 lentilles de distances focales $f_1$ et $f_2$, accolées tel que leurs centres optiques sont confondus, la distance focale des 2 lentilles $f$ est donnée par 
+\[ \frac{1}{f'} = \frac{1}{f_1'} + \frac{1}{f_2'} \]
+Démonstration par cherchons la distance d'un objet donnant une image à l'infini. La distance de l'objet intermédiaire est dans le plan focal objet de la deuxième lentille. Utiliser le théorème de Descartes. 
+
+\subsubsection{Distance minimale objet-écran - Méthode de Silbermann}
+On pose $ D = \overline{AA'} $ la distance entre l'objet et l'image (sur l'écran). On varie la position de la lentille. Par le théorème de Descartes, on obtient une équation du second degré.
+\[ \overline{OA'}^2 - \overline{OA'}\cdot D + D\cdot f' = 0 \]
+On a donc
+\[ D \geq 4f' \]
+
+\subsubsection{Autocollimation}
+Considérons un système optique lentille et miroir plan. On cherche à former une image dans le même plan que son objet. L'objet est dans le plan focal objet pour créer une image intermédiaire à l'infini, qui est reflétée par le miroir et qui forme l'image finale dans le plan focal objet. Ce principe est utile pour le réglage d'un collimateur aux TPs. 
+
+\subsubsection{Dispositifs à plusieurs lentilles}
+Un dispositif est composé de 3 parties
+\begin{itemize}
+    \item Objectif - du côté de l'objet
+    \item Réticule - point de réglage sans effet optique
+    \item Oculaire - du côté de l’œil
+\end{itemize}
+
+On cherche à établir le schéma de principe pour chercher les positions des objets, des objets intermédiaires, et l'image finale. Pour la plupart des dispositifs, l'image finale se trouve à l'infini pour que l'œil observateur n'ait pas besoin d’accommoder - l'objet intermédiaire se trouve donc dans le plan focal objet de l'oculaire. 
+
+\subsubsection{L'appareil photographique}
+L’appareil est modélisé par un diaphragme à l'entrée, un objectif juste derrière le diaphragme, et un capteur. 
+\begin{itemize}
+    \item Durée d'exposition - le temps d'ouverture d'un obturateur pour régler la quantité de lumière reçu par le capteur. 
+    \item Nombre d'ouverture - indique l'ouverture de diaphragme. $ N = \frac{f'}{D} $. Attention que l'ouverture de diaphragme $ D $ est au dénominateur. 
+    \item Distance hyperfocale - Pour un réglage à l'infini, le capteur est placé dans le plan focal image. La distance hyperfocale est la limite de netteté dans cette configuration. Tout objet plus loin que la distance hyperfocale $h$ jusqu'à l'infini est donc nette. On trace les rayons limites qui passent par les extrémités d'un pixel (de diamètre $\epsilon$) pour obtenir finalement $h = \frac{f'D}{\epsilon} = \frac{f'^2}{N\epsilon} $
+    \item Profondeur de champ - pour la mise au point sur un point $A$ quelconque (non à l'infini), on cherche les limites de netteté (indiqué par les objets $A_1$ et $A_2$ avec les rayons passant par les extrémités d'un pixel). On utilise la relation de Descartes pour $\overline{OA'}$, $\overline{OA_1'}$ et $\overline{OA_2'}$ et on exprime $\frac{\epsilon}{D}$ avec Thalès. On supprime le terme $\epsilon^2$ pour $\epsilon \ll D$ et on prend $ l - f' = l$ si $f' \ll l$ pour obtenir $\overline{A_1A_2}=\frac{2\epsilon l^2}{Df'} = 2\epsilon l^2\frac{N}{f'^2}$
+\end{itemize}
+
+\clearpage
+\section{Électrocinétique}
+
+\subsection{Définitions}
+
+\subsubsection{Intensité}
+L'intensité du courant électrique à travers une surface $S$ la charge totale qui traverse cette surface par unité de temps. (Unité: Ampère $A$) 
+\[i = \frac{dq}{dt}\]  
+
+\subsubsection{Potentiel}
+La tension est la différence de potentiel entre deux points. (Unité: Volt $V$)
+
+\subsubsection{Approximation des Régimes Quasi-Stationnaires ARQS}
+Si les grandeurs ne varient pas trop rapidement (par rapport à la vitesse de propagation des variations = vitesse de la lumière), les lois du régime constant restent applicables à chaque instant.
+\begin{itemize}
+    \item Régime constant - Les grandeurs sont constantes dans le temps
+    \item Dipôle - Circuit relié à l'extérieur par deux bornes 
+    \item Nœud - Point de jonction entre au moins 3 fils de connexion
+    \item Branche - Ensemble de dipôles montés en série entre deux nœuds. Les dipôles d'une branche sont traversés par le même courant.
+    \item Maille - Ensemble de branches formant un contours fermé qui passe une seule fois en un nœud donné. 
+\end{itemize}
+
+\subsubsection{Conventions}
+\begin{itemize}
+    \item Convention générateur - Tension $u$ au même sens que le courant $i$ - la puissance $P = ui$ positive est une puissance fournie. 
+    \item Convention récepteur - Tension $u$ et courant $i$ sont du sens contraire - la puissance $P = ui$ positive est une puissance reçue. 
+\end{itemize}
+
+\subsubsection{Point de fonctionnement}
+Le point de fonctionnement à un instant $t$ est le point de coordonnées $(u(t), i(t))$. Le tracé de l'ensemble des points de fonctionnement est la caractéristique du dipôle. 
+
+\begin{itemize}
+    \item Dipôle symétrique - caractéristique statique admet une symétrie centrale par rapport à l'origine (sinon: dipôle polarisé)
+    \item Dipôle passif - caractéristique passe par l'origine (sinon: dipôle actif)
+    \item Dipôle linéaire - $u(t)$ et $i(t)$ pour le dipôle sont liées par une équation différentielle linéaire à coefficients constants (sinon: dipôle non-linéaire)
+    
+\end{itemize}
+
+\subsection{Lois de Kirchhoff}
+
+\subsubsection{Loi des nœuds}
+\[ \sum i = 0 \]
+Il n'y a pas d'accumulation de charge dans un nœud. On peut appliquer directement la loi des nœuds dans un circuit donné pour réduire le nombre d'inconnues. 
+
+\noindent Cette loi peut être exprimée en termes de potentiel.
+
+\[ \sum_k \frac{V_k - V_0}{R_k} + \sum i = 0 \]
+
+\noindent Avec $V_k - V_0$ la tension sur la $ R_k $ et $V_0$ le potentiel au nœud. On peut retirer $V_0$ pour trouver le théorème de Millman. 
+
+\[ V_0 \sum_k \frac{1}{R_k} = \sum_k \frac{V_k}{R_k} + \sum i \]
+
+\noindent On utilise ce théorème en appliquant une masse (potentiel $ V_m = 0 \text{ V}$) dans le circuit où ça convient, et calculant ensuite les potentiels dans les points connus, pour trouver le potentiel dans un point qui nous intéresse. 
+
+\subsubsection{Loi des mailles}
+Pour une maille orientée
+\[ \sum u = 0 \]
+Cette loi est une conséquence de l'additivité des potentiels.
+
+\subsection{Théorème de superposition}
+Dans un réseau ne contenant que des dipôles linéaires, les tensions et les intensités sont la somme des tensions et intensités obtenues dans les différents variants du circuit où toutes les sources sauf une sont éteintes. 
+
+\subsection{Représentation complexe}
+Pour un signal $s(t) = A\cos{(\omega t + \phi)}$, on a la grandeur complexe 
+\[\underline{s}(t) = Ae^{j(\omega t + \phi)} = \underline{A}e^{j\omega t}\]
+\begin{enumerate}
+    \item $A$ - l'amplitude réelle
+    \item $\underline{A} = Ae^{j\phi}$ - l'amplitude complexe
+    \item $\phi$ - la phase initiale
+    \item $\omega t + \phi$ - la phase instantanée
+\end{enumerate}
+
+\noindent On peut représenter $\underline{s}$ dans le plan complexe (représentation de Fresnel). 
+
+\subsubsection{Propriétés}
+\begin{enumerate}
+    \item Dérivation - $ \underline{\dot{s}}(t) = j\omega\underline{s}(t) = \omega e^{j\frac{\pi}{2}} \underline{s}(t) $ - La dérivée est en quadrature avance
+    \item Intégration - $ \int \underline{s}(t) \text{ d}t = \frac{\underline{s}(t)}{j\omega} = \omega e^{-j\frac{\pi}{2}} \underline{s}(t) $ - La dérivée est en quadrature retard
+\end{enumerate}
+
+\subsubsection{Grandeurs sinusoïdaux}
+
+Pour une fonction $f$ $T$-périodique, et un signal $s$ sinusoïdal. 
+\begin{enumerate}
+    \item Valeur moyenne - $ \overline{f} = \langle f \rangle = \frac{1}{T}\int_{t_0}^{t_0+T} f(t) \text{ d}t $ - $ \overline{s} = 0 $
+    \item Valeur efficace (RMS) - $ f_{\text{eff}} = \sqrt{\langle f^2 \rangle} = \sqrt{\frac{1}{T}\int_{t_0}^{t_0+T} f(t)^2 \text{ d}t} $ - $ s_{\text{eff}} = \frac{A}{\sqrt{2}} $
+        \begin{enumerate}
+            \item Égalité de Parseval - $ f_{\text{eff}}^2 = A_0^2 + \sum_{n=1}^{+\infty} A_{\text{eff}}^2 $ avec $A_k$ le $k$-ième harmonique dans la série de Fourier du signal $f$
+        \end{enumerate}
+\end{enumerate}
+
+
+\subsection{Impédance}
+\[ \underline{u}(t) = \underline{Z}(\omega) \underline{i}(t) \]
+
+\noindent $\underline{Z}$ l'impédance complexe est un polynôme de $\omega$, et ne dépend pas du temps. Il peut aussi s'écrire sous forme exponentielle avec son argument $ \phi(\omega) $:
+
+\[ \underline{Z}(\omega) = |\underline{Z}(\omega)|e^{j\phi(\omega)} \]
+
+\subsubsection{Propriétés}
+L'impédance vérifie les mêmes propriétés que la résistance.
+\begin{enumerate}
+    \item L'association en série - $\underline{Z}_{eq}=\sum \underline{Z}$
+    \item L'association en parallèle - $\frac{1}{\underline{Z}_{eq}}=\sum \frac{1}{\underline{Z}}$
+    \item Loi des nœuds et théorèmes associés
+    \item Diviseur de tension et de courant
+\end{enumerate}
+
+\subsubsection{Puissances}
+\[ P(t) = U_{\text{eff}}I_{\text{eff}}[\cos{(2 \omega t - \phi) + \cos{\phi}}] \]
+
+\noindent Où $\cos{\phi}$ le facteur de puissance est une fonction de $\omega$ qui est définit par $\underline{Z}$.
+
+\[ \langle P(t) \rangle = U_{\text{eff}}I_{\text{eff}}\cos{\phi} = I_{\text{eff}}^2 \text{Re}(\underline{Z}) \]
+
+\noindent En moyenne,
+\begin{itemize}
+    \item La valeur efficace d'une tension est la valeur constante qui donnerait la même puissance reçue par le même résistor pendant la même durée
+    \item Seule la partie réelle d'un dipôle consomme de l'énergie
+    \item Pour un signal périodique quelconque, on peut déduire de l'égalité de Parseval que la puissance moyenne est la somme des puissances moyennes des signaux sinusoïdaux composants.
+\end{itemize}
+
+\subsection{Dipôles usuels}
+
+\subsubsection{Résistance}
+En convention récepteur - 
+\[ u = Ri \]
+Avec $R$ la résistance (unité: Ohm $\Omega$).
+
+\[\underline{Z}_R = R\]
+\noindent Pour un signal sinusoïdal, $u$ et $i$ en phase.
+
+\begin{itemize}
+    \item L'association en série - $R_{eq}=\sum R$
+    \item L'association en parallèle - $\frac{1}{R_{eq}}=\sum \frac{1}{R}$
+    \item Aspect énergétique - $ P = ui = Ri^2 = \frac{u^2}{R}$
+    \item Facteur de puissance $\cos{\phi} = 1$ - toujours de nature récepteur
+\end{itemize}
+
+On peut utiliser les règles de diviseur de tension et de courant.
+\begin{itemize}
+    \item Diviseur de tension (résistances en série) - $u_k = \frac{R_k}{\sum R}u$
+    \item Diviseur de courant (résistances en parallèle) - $i_k = \frac{\frac{1}{R_k}}{\sum \frac{1}{R}}u$
+\end{itemize}
+
+\subsubsection{Bobine}
+En convention récepteur - 
+\[ u = L\frac{di}{dt} \]
+Avec $L$ l'inductance (unité: Henry $H$).
+
+\[\underline{Z}_L = jL\omega\]
+\noindent Pour un signal sinusoïdal, $u$ est en quadrature avance par rapport à $i$.
+
+\begin{itemize}
+    \item L'association en série - $L_{eq}=\sum L$
+    \item L'association en parallèle - $\frac{1}{L_{eq}}=\sum \frac{1}{L}$
+    \item Aspect énergétique - $ P = L\frac{di}{dt}i=\frac{d}{dt}(\frac{1}{2}Li^2) $ d'où $ E = \frac{1}{2}Li^2 $ l'énergie instantanée emmagasinée dans la bobine
+    \item Facteur de puissance $\cos{\phi} = 0$ - en moyenne, la puissance reçue / fournie est nulle
+\end{itemize}
+
+\noindent En régime constant, $u = 0$, la bobine est équivalente à un fil. 
+
+\subsubsection{Condensateur}
+En convention récepteur - 
+\[ q = Cu \]
+Avec $C$ la capacité (unité: Farad $F$). On utilise souvent la dérivée
+\[ i = C\frac{du}{dt} \]
+
+\[\underline{Z}_C = \frac{1}{jC\omega} \]
+\noindent Pour un signal sinusoïdal, $u$ est en quadrature retard par rapport à $i$.
+
+\begin{itemize}
+    \item L'association en série - $\frac{1}{C_{eq}}=\sum \frac{1}{C}$
+    \item L'association en parallèle - $C_{eq}=\sum C$
+    \item La forme des associations est différente!
+    \item Aspect énergétique - $ P = C\frac{du}{dt}u=\frac{d}{dt}(\frac{1}{2}Cu^2) $ d'où $ E = \frac{1}{2}Cu^2 $ l'énergie instantanée emmagasinée dans le condensateur
+    \item Facteur de puissance $\cos{\phi} = 0$ - en moyenne, la puissance reçue / fournie est nulle
+\end{itemize}
+
+\noindent En régime constant, $i = 0$, le condensateur est équivalent à un interrupteur ouvert. 
+
+\subsubsection{Source de tension (Générateur de Thévenin)}
+Une source idéale de tension impose entre ses bornes une tension donnée $E$ (force électromotrice ou tension à vide). Une source réelle peut être modélisée par un générateur de Thévenin, avec caractéristique $u=E-ri$ où r est la résistance interne en série avec une source idéale. 
+
+\subsubsection{Source de courant (Générateur de Norton) [HP]}
+Une source idéale de courant impose un courant $I$ (courant électromoteur ou courant de court-circuit). Une source réelle peut être modélisée par un géné-rateur de Norton, avec caractéristique $u=I-\frac{u}{r}$ où r est la résistance interne en parallèle avec une source idéale. \\
+
+\noindent Le générateur de Norton est équivalent à un générateur de Thévenin avec une résistance interne $r$ et une tension à vide $ E = rI $. On peut démontrer que la tension $u$ et le courant $i$ sont les mêmes. 
+
+\subsubsection{Diode}
+La diode est un dipôle non-linéaire avec une tension seuil $u_s$ ($0,4 \text{ V}$ à $0,6 \text{ V}$)
+\begin{itemize}
+    \item $u < u_s$ - La diode est bloquée, la courant ne passe pas $i=0$
+    \item $u > u_s$ - La diode est passante. 
+\end{itemize}
+
+
+\subsection{Résolution des circuits}
+
+\subsubsection{Notions}
+\begin{itemize}
+    \item Régime constant / continu - toutes les grandeurs dans le circuit sont indépendants du temps
+    \item Régime permanent - les caractéristiques des grandeurs ne dépend pas du temps (e.g. source AC constant = régime permanent mais non constant)
+    \item Régime transitoire - le régime pendant le passage d'un régime à un autre
+\end{itemize}
+
+\noindent Pour le cas des signaux sinusoïdaux -
+\begin{itemize}
+    \item Déphasage - la différence entre les phases instantanées
+    \item Synchrone - déphasage constante
+    \begin{itemize}
+        \item En phase - $\Delta\phi = 0[2\pi]$
+        \item En opposition de phase - $\Delta\phi = \pm\pi[2\pi]$
+        \item En phase - $\Delta\phi = \pm\frac{\pi}{2}[2\pi]$
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Méthode (Équation différentielle)}
+\begin{enumerate}
+    \item Obtenir l'équation différentielle du circuit (lois de Kirchhoff)
+    \item La mettre sous forme canonique et identifier le type d'équation différentielle ainsi que les constantes
+    \item La solution de l'équation différentielle homogène de ... ordre est de la forme: [Déterminer la solution générale selon le type d'équation différentielle, et la solution particulière selon le second membre]
+    \item Chercher les conditions initiales
+        \begin{enumerate}
+            \item On suppose qu'à $t = 0^-$, le régime permanent constant est atteint depuis suffisamment longtemps.\\
+            \noindent [Dessiner le circuit équivalent. Les bobines se comportent comme un court-circuit et les condensateurs comme un interrupteur ouvert]
+            \item Par continuité $\begin{cases} \text{de la tension aux bornes d'un condensateur} \\ \text{du courant traversant la bobine} \end{cases}$, on a $\begin{cases} u(t=0^+) = u(t=0^-) \\ i(t=0^+) = i(t=0^-) \end{cases}$. \\
+            \noindent [Déterminer l'expression des grandeurs continues]
+        \end{enumerate}
+    \item Finalement, la solution [résoudre l'équation différentielle]
+\end{enumerate}
+
+\subsubsection{Circuits classiques}
+\begin{itemize}
+    \item Circuit RC - 1er ordre avec $\tau = RC$
+    \item Circuit RL - 1er ordre avec $\tau = \frac{L}{R}$
+    \item Circuit LC - Oscillateur harmonique avec $\omega_0 = \frac{1}{\sqrt{LC}}$
+    \item Circuit RLC - 2nd ordre (oscillateur amorti) avec $\omega_0 = \frac{1}{\sqrt{LC}}$ et $Q=\frac{1}{R}\sqrt{\frac{L}{C}}$
+\end{itemize}
+
+\subsection{Filtres}
+
+\subsubsection{Notions}
+\begin{itemize}
+    \item Filtre passif - contient uniquement des composants passifs (sinon: actif)
+    \item Pulsation de coupure $\omega_c$ avec $G(\omega_c) = \frac{G_{\text{asymp}}}{\sqrt{2}}$ (ou $G(\omega_c) = \frac{G_{\text{max}}}{\sqrt{2}}$ pour un filtre passe-bande)
+    \item Filtres linéaires - $H$ linéaire - on peut appliquer le principe de superposition et la décomposition en série de Fourier pour analyse tout signal périodique
+    \item Filtres non-linéaires - principe de superposition n'est plus valable - on observe un enrichissement du spectre du signal de sortie
+\end{itemize}
+
+\subsubsection{Fonctions de transfert}
+\begin{itemize}
+    \item Rapport d'une grandeur complexe de sortie et d'une grandeur complexe d'entrée
+    \item Habituellement $ \underline{H}(\omega) = \frac{\underline{u_s}}{\underline{u_e}} $
+    \item En générale, la fonction de transfert change selon la charge (ce qui est branché à la sortie
+    \begin{itemize}
+        \item Conditions idéals pour ne pas modifier la fonction de transfert lors de la mise en cascade des filtres - $\underline{Z}_s = 0, \underline{Z}_e = \infty$ - on aura $ \underline{H}_{\text{tot}} = \prod_{n} \underline{H}_n $
+    \end{itemize}
+    \item On définit la fonction de transfert intrinsèque pour une quadripôle en absence de charge
+    \item Gain $ G = |\underline{H}(\omega)| $ (en décibel - $ G_{\text{dB}} = 20\log{|\underline{H}(\omega)|} $), Phase $ \phi = \arg(\underline{H}(\omega)) $
+\end{itemize}
+
+\subsubsection{Méthode d'étude}
+\begin{enumerate}
+    \item Étude asymptotique en haute et basse fréquence pour déterminer le type de filtre
+    \item Obtenir une expression de $ \underline{H} $ avec pont diviseur (ou Théorème de Millman)
+    \item Identification du forme canonique (cf. table des filtres usuels)
+    \begin{itemize}
+        \item $H_\text{asymp/max}$
+        \item $\omega_c$ ou $\omega_0$
+        \item $Q$ pour 2e ordre
+    \end{itemize}
+    \item Étude asymptotique et valeur en $x = 1$, en $ G_{\text{dB}} $ et $ \underline{\phi}(\omega) $
+\end{enumerate}
+
+\clearpage
+\subsubsection{Filtres usuels}
+
+On a suppose que $H_{\text{asymp/max}} = 1$
+
+\scriptsize
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c|c|m{2cm}| } 
+     \hline
+      & $ \underline{N} $ & $ \underline{D} $ & $\underline{H}$ usuel & Type & $ \phi $ & Remarques  \\ 
+     \hline \hline
+     $R[\underline{C}]$ & $ 1 $ & $ 1 + j(\frac{\omega}{\omega_c}) $ & $ \frac{1}{1 + jx} $ & Passe-bas & $ 0 \rightarrow -\frac{\pi}{2} $ & Pente HF: $-20$ dB par décade [Intégrateur] \\
+     \hline
+     $[\underline{R}]C$ & $ j(\frac{\omega}{\omega_c}) $ & $ 1 + j(\frac{\omega}{\omega_c}) $ & $ \frac{jx}{1 + jx} $ & Passe-haut & $ \frac{\pi}{2} \rightarrow 0 $ & Pente BF: $+20$ dB par décade [Dérivateur] \\
+     \hline
+     $RL[\underline{C}]$ & $ 1 $ & $ 1 - (\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ \frac{1}{1 - x^2 +  j\frac{x}{Q}} $ & Passe-bas & $ 0 \rightarrow -\pi $ & Pente HF: $-40$ dB par décade [Double intégrateur]. Résonance pour $Q > \frac{1}{\sqrt{2}}$ \\
+     \hline
+     $R[\underline{L}]C$ & $ -(\frac{\omega}{\omega_0}) ^2$ & $ 1 - (\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ \frac{-x^2}{1 - x^2 +  j\frac{x}{Q}} $ & Passe-haut & $ \pi \rightarrow 0 $ & Pente BF: $+40$ dB par décade [Double dérivateur]. Résonance pour $Q > \frac{1}{\sqrt{2}}$ \\
+     \hline
+     $[\underline{R}]LC$ & $ j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ 1 - (\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ \frac{1}{1+jQ(x-\frac{1}{x})} $ & Passe-bande & $ \frac{\pi}{2} \rightarrow -\frac{\pi}{2} $ & Pente BF: $+20$ dB par décade [Dérivateur], Pente HF: $-20$ dB par décade [Intégrateur]. \\
+     \hline
+\end{tabular}
+\end{center}
+\normalsize
+
+\noindent Attention à la différence entre $\omega_c$ pour 1er ordre et $\omega_0$ pour 2e ordre
+
+\subsubsection{Comportement intégrateur et dérivateur}
+\begin{itemize}
+    \item Pente BF à $+20$ dB par decade - comportement dérivateur
+    \item Pente HF à $-20$ dB par decade - comportement intégrateur
+    \begin{itemize}
+        \item On peut intégrer sur une démi-période pour obtenir l'amplitude du signal de sortie 
+    \end{itemize}
+\end{itemize}
+
+\subsection{Amplificateur linéaire intégré}
+\subsubsection{Entrées et sortie}
+\begin{itemize}
+    \item Entrée inverseuse ($V_-$)
+    \item Entrée non-inverseuse ($V_+$)
+    \item Sortie avec tension ($V_S$) relative à la masse
+\end{itemize}
+
+\subsubsection{Caractéristique}
+\begin{itemize}
+    \item $ \epsilon = V_+ - V_- $
+    \item $ V_L < V_S < V_H $ - régime linéaire et $V_s = A_V\epsilon$ ($A$ l'amplification en tension / gain différentiel)
+    \item Régime de saturation - $ V_s = V_L $ ou $ V_s = V_H $
+\end{itemize}
+
+\subsubsection{ALI parfait}
+\begin{itemize}
+    \item Résistance d'entrée infinie donc courants d'entrée nuls
+    \item Résistance de sortie nulle, en série avec un générateur de tension idéal
+    \item $A_V$ infinie - régime linéaire uniquement pour $\epsilon = 0$
+\end{itemize}
+
+\noindent Remplacer l'ALI par ses composants supposés parfaits peut servir pour une étude asymptotique. 
+
+\subsubsection{Méthode d'étude système bouclé}
+\begin{enumerate}
+    \item Suppose que l'ALI est idéal
+    \item Détermination du régime de fonctionnement
+        \begin{itemize}
+            \item Si la rétroaction se fait sur l'entrée inverseuse - système stable - régime linéaire - $\epsilon = 0$ donc $V_-=V_+$
+            \item Si la rétroaction se fait sur l'entrée non-inverseuse, ou si le système est en boucle ouverte 0 - système instable - régime de saturation - $ V_s = V_{\text{sat}} $
+            \item Si de multiples rétroactions sur les deux entrées - étude complète nécessaire
+        \end{itemize}
+    \item Résolution mathématique pour obtenir $V_-, V_+, e(t), s(t)$
+\end{enumerate}
+
+\clearpage
+\section{Annexe}
+\subsection{Équations différentielles - solutions générales}
+
+\subsubsection{1er ordre - Solution exponentielle}
+\[ \dot{s}(t) + \frac{s(t)}{\tau} = f(t) \] 
+\begin{itemize}
+    \item $\tau$ le temps caractéristique - attention au signe!
+\end{itemize}
+Solution - 
+\[ s(t) = Ae^{-\frac{t}{\tau}} + s_p(t) \]
+        
+\subsubsection{2nd ordre sans terme à $\dot{s}$ - Oscillateur harmonique}
+\[ \ddot{s}(t) + \omega_0^2s = \omega_0^2s_{eq} \] 
+\begin{itemize}
+    \item $\omega_0$ la pulsion propre
+    \item $s_{eq}$ la position d'équilibre
+\end{itemize}
+Solution - 
+\[ s(t) = A\cos(\omega_0t)+B\sin(\omega_0t) + s_{eq} = D\cos(\omega_0t + \phi) + s_{eq} \]
+        
+\subsubsection{2nd ordre - Oscillateur amorti}
+\[ \ddot{s}(t) + \frac{\omega_0}{Q}\dot{s}(t) + \omega_0^2s(t) = f(t) \]
+\begin{itemize}
+    \item $\omega_0$ la pulsion propre
+    \item $Q$ le facteur de qualité
+\end{itemize}
+Solution - une forme avec $ e^{rt} $ d'où l'on trouve l'équation caractéristique $ r^2 + \frac{\omega_0}{Q}r + \omega_0^2 = 0 $
+\begin{itemize}
+    \item Régime apériodique ($Q < \frac{1}{2}$)
+        \[ r = -\frac{\omega_0}{2Q} \pm \frac{\omega_0}{2Q}\sqrt{1-4Q^2} \]
+        \[ s(t) = Ae^{r_1t} + Be^{r_2t} \]
+        Attention aux grandeurs relatives de $r_1$ et $r_2$, et que $r < 0$
+    \item Régime critique ($Q = \frac{1}{2}$)
+        \[ r = -\frac{\omega_0}{2Q} = -\omega_0 \]
+        \[ s(t) = (A + Bt)e^{\omega_0t} \]
+    \item Régime pseudo-périodique ($Q > \frac{1}{2}$)
+        \[ r = -\frac{\omega_0}{2Q}\pm j\omega_0\sqrt{1-\frac{1}{4Q^2}} \]
+        \begin{itemize}
+            \item $\tau = \frac{2Q}{\omega_0} $ le temps caractéristique
+            \item $ \omega_p = \omega_0\sqrt{1-\frac{1}{4Q^2}} < \omega_0 $ la pseudo-pulsation
+        \end{itemize}
+        \[ s(t) = (A\cos{(\omega_pt)} + B\sin{(\omega_pt)})e^{-\frac{t}{\tau}} \]
+        \noindent Le décrément logarithmique - $ \delta = |\ln{\frac{u(t) - u(t \rightarrow + \infty)}{u(t+T) - u(t \rightarrow + \infty)}}| = \frac{T}{\tau} = \frac{2\pi}{\sqrt{4Q^2-1}}$ - le décrément d'amplitude entre 2 pseudo-périodes - cette valeur est utile en TP pour trouver $Q$
+\end{itemize}
+
+\subsection{Équations différentielles - Solutions particulières}
+
+\subsubsection{Solution particulière constante}
+$ s_p(t) $ est la solution particulière qui dépend du second membre ($f(t)$)
+\begin{itemize}
+    \item Pour $f(t)=0$, il n'y a pas de second membre, $s_p(t)=0$
+    \item Pour $f(t)$ constante, on cherche $s_p(t)$ constante qui satisfait l'équation différentielle quand les dérivées de $s$ valent $0$
+\end{itemize}
+
+\subsubsection{Solution particulière - régime sinusoïdal forcé}
+Pour une équation différentielle de 2nd ordre avec $f(t)$ sinusoïdal de pulsation $\omega$ et $S_0, \dot{S_0}$ les amplitudes maximales qui dépendent des spécificités du système étudié, on a les amplitudes complexes en fonction de $ \omega $ suivantes:
+
+\[ \underline{S}(\omega) = S_0 \frac{1}{1-(\frac{\omega}{\omega_0})^2+j\frac{1}{Q}\frac{\omega}{\omega_0}} \]
+
+\noindent On obtient une pulsation de résonance si $ Q > \frac{1}{\sqrt{2}} $, et $ \omega_r = \omega_0 \sqrt{1-\frac{1}{2Q^2}} < \omega_0 $ [Démonstration - On étudie la fonction $ f(x) = (1-x^2)^2 + (\frac{1}{Q}x)^2 $ dont les variations sont les inverses des variations de $|\underline{S}(\omega)|$]. En pratique ces variations corresponds à la tension aux bornes d'un condensateur dans un circuit RLC-série, où le déplacement en mécanique. \\
+
+\noindent La dérivée, qui en pratique représente l'intensité (ou la tension aux bornes de la résistance) en RLC-série, ou la vitesse en mécanique, s'exprime sous la forme:
+
+\[ \underline{\dot{S}}(\omega) = S_0 Q \omega_0\frac{j \frac{1}{Q} \frac{\omega}{\omega_0}}{1-(\frac{\omega}{\omega_0})^2+j\frac{1}{Q}\frac{\omega}{\omega_0}} = \dot{S_0} \frac{1}{1+jQ(\frac{\omega}{\omega_0} - \frac{\omega_0}{\omega})} \]
+
+\noindent On observe une résonance évidente à $ \omega = \omega_0 $
+    
+\noindent Puissances (proportionnelles à $S\dot{S} \propto \dot{S}^2$, que l'on ne peut pas exprimer en notation complexe directement) 
+\[ P_{\text{moyenne}}(\omega) = P_{\text{max}} \frac{1}{1+Q^2(\frac{\omega}{\omega_0}-\frac{\omega}{\omega_0})^2} \]
+
+\noindent On observe la même résonance à $ \omega = \omega_0 $
+
+\noindent On définit la bande passante à $-3 \text{ dB}$ comme $ P_{\text{moyenne}}(\omega) \geq \frac{P_{\text{max}}}{2} $ ou $ \dot{S}(\omega) = \frac{\dot{S}_{\text{max}}}{\sqrt{2}}  $ 
+
+\[ \Delta \omega = \frac{\omega_0}{Q} \]
+
+\subsection{Approximations}
+\begin{itemize}
+    \item Approximation nulle
+    \[ a \pm b = a\]
+    \noindent Si $ b \ll a $ \\
+    \noindent Cette approximation doit être utilisée seulement si le résultat ne vaut pas 0. 
+    \item Approximation $ \epsilon $
+    \[ (1+\epsilon)^{\alpha} \approx 1+\alpha\epsilon \]
+    \noindent Si $ \epsilon \ll 1 $ \\
+    \noindent $\epsilon$ devrait être sans dimension  \\
+    \noindent On peut parfois utiliser simplement $=1$
+    \item Temps longs, temps courts
+    \[ s(t) = Ae^{-\frac{t}{\tau_1}} + Be^{-\frac{t}{\tau_2}} \]
+    Si $ \tau_1 \ll \tau_2 $, On peut traiter la partie $Be^{-\frac{t}{\tau_2}}$ constante au début, et la partie $Ae^{-\frac{t}{\tau_1}}$ à la suite
+\end{itemize}
+
+\end{document}
