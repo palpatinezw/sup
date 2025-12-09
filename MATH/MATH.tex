@@ -1162,14 +1162,28 @@ Uniquement dans cette section, $[x_i] = (x_1,...,x_n)$. $u \in \mathcal{L}(E, F)
 Pour $x \in E = E_1 \oplus E_2$, 
 \begin{enumerate}
     \item  La projection sur $E_1$ parallèlement à $E_2$, $ p : x = x_1 + x_2 \mapsto x_1 $
+    \begin{itemize}
+        \item $ p \in \mathcal{L}(E) $
+        \item $ p^2 = p $
+        \item $ E_1 = \text{Im }p = \{x \in E \ligneh p(x) = x \} = \text{Ker}(p - \text{Id}_E) $
+        \item $ E_2 = \text{Ker }p$
+        \item On peut caractériser $u$ un projecteur si $ u \in \mathcal{L}(E) \et u^2 = u $ - dans ce cas il est projecteur sur $\text{Im}(p)$ parallèlement à $\text{Ker}p$ [Démonstration - $x = (u(x)) + (x-u(x))$ décomposition unique]
+    \end{itemize}
     \item La symétrie par rapport à $E_1$ parallèlement à $E_2$, $ s : x = x_1 + x_2 \mapsto x_1 - x_2 $
+    \begin{itemize}
+        \item $ s \in \mathcal{L} $
+        \item $ s^2 = \text{Id} $ - $s \in \text{GL}(E) \et s^{-1}=s$
+        \item $ E_1 = \{ x \in E \ligneh s(x) = x \} = \text{Ker}(s-\text{Id}) $
+        \item $ E_2 = \{ x \in E \ligneh s(x) = -x \} = \text{Ker}(s+\text{Id}) $ 
+        \item On peut caractériser $u$ une symétrie si $ u \in \mathcal{L}(E) \et u^2 = \text{Id}_E $ - dans ce cas il est projecteur sur $\text{Ker}(s-\text{Id})$ parallèlement à $\text{Ker}(s+\text{Id})$ [Démonstration - $x = \frac{1}{2}(x + u(x)) + \frac{1}{2}(x-u(x))$ décomposition unique]
+    \end{itemize}
+    \item $s = 2p - \text{Id}$
 \end{enumerate}
 
-\begin{itemize}
-    \item $ p \in \mathcal{L}(E) $
-    \item $ p^2 = p $
-    \item $ E_1 = \text{Im }p = \{x \in E \ligneh p(x) = x \} = \text{Ker}(p - \text{Id}_E) $
-    \item $ E_2 = \text{Ker }p$
-\end{itemize}
+\subsection{Équations linéaires}
+Pour l'équation $u(x) = b$, s'il existe au moins une solution particulière $x_p (u(x_p) = b)$, alors 
+\[ \mathcal{S} = {x_p} + \text{Ker} u \]
+
+\noindent $\text{Ker}u$ est l'ensemble des solutions à l'équation homogène ($u(x) = 0$)
 
 \end{document}
