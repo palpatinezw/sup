@@ -6,8 +6,8 @@
 \usepackage{array}
 
 \title{PHYSIQUE}
-\author{Ziwen}
-\date{}
+\author{SALIKEL}
+\date{2025-2026 PCSI}
 
 \begin{document}
 
@@ -473,7 +473,7 @@ On a suppose que $H_{\text{asymp/max}} = 1$
      \hline
      $R[\underline{L}]C$ & $ -(\frac{\omega}{\omega_0}) ^2$ & $ 1 - (\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ \frac{-x^2}{1 - x^2 +  j\frac{x}{Q}} $ & Passe-haut & $ \pi \rightarrow 0 $ & Pente BF: $+40$ dB par décade [Double dérivateur]. Résonance pour $Q > \frac{1}{\sqrt{2}}$ \\
      \hline
-     $[\underline{R}]LC$ & $ j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ 1 - (\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ \frac{1}{1+jQ(x-\frac{1}{x})} $ & Passe-bande & $ \frac{\pi}{2} \rightarrow -\frac{\pi}{2} $ & Pente BF: $+20$ dB par décade [Dérivateur], Pente HF: $-20$ dB par décade [Intégrateur]. \\
+     $[\underline{R}]LC$ & $ j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ 1 - (\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ \frac{1}{1+jQ(x-\frac{1}{x})} $ & Passe-bande & $ \frac{\pi}{2} \rightarrow -\frac{\pi}{2} $ & Pente BF: $+20$ dB par décade [Dérivateur], Pente HF: $-20$ dB par décade [Intégrateur], Croisements des asymptotes varie selon $Q$  \\
      \hline
 \end{tabular}
 \end{center}
@@ -488,6 +488,14 @@ On a suppose que $H_{\text{asymp/max}} = 1$
     \begin{itemize}
         \item On peut intégrer sur une démi-période pour obtenir l'amplitude du signal de sortie 
     \end{itemize}
+\end{itemize}
+
+\subsubsection{Variations selon $Q$}
+Pour les secondes ordres passe-bas et pass-haut, on a $\frac{1}{\sqrt{2}}$ la valeur de $Q$ pour avoir de resonance. 
+\begin{itemize}
+    \item $Q < \frac{1}{\sqrt{2}}$ - Courbe en dessous de l'asymptote
+    \item $Q = \frac{1}{\sqrt{2}}$ - Courbe la plus proche de l'asymptote
+    \item $Q > \frac{1}{\sqrt{2}}$ - Courbe au dessus de l'asymptote, reonance à $w_r < w_0$
 \end{itemize}
 
 \subsection{Amplificateur linéaire intégré}
