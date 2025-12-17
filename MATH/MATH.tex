@@ -1181,9 +1181,68 @@ Pour $x \in E = E_1 \oplus E_2$,
 \end{enumerate}
 
 \subsection{Équations linéaires}
-Pour l'équation $u(x) = b$, s'il existe au moins une solution particulière $x_p (u(x_p) = b)$, alors 
+Pour l'équation $u(x) = b$, s'il existe au moins une solution particulière $x_p : (u(x_p) = b)$, alors 
 \[ \mathcal{S} = {x_p} + \text{Ker} u \]
 
-\noindent $\text{Ker}u$ est l'ensemble des solutions à l'équation homogène ($u(x) = 0$)
+\noindent $\text{Ker }u$ est l'ensemble des solutions à l'équation homogène ($u(x) = 0$)
+
+\subsection{Hyperplan}
+\[ \text{H est un hyperplan} \iff \exists \phi \in E^* \backslash \{0_{E^*}\} \ligneh H = \text{Ker }u \]
+
+\noindent $H$ est le noyau d'une forme linéaire non-nulle. \\
+
+\noindent Propriétés
+\begin{itemize}
+    \item Pour $a \in E \backslash H, E = H \oplus \text{Vect}(a)$
+    \item Pour $D \not \subset H $ une droite vectorielle, $ E = H \oplus D $. Pour tout $S$ tel que $E = H \oplus S$, $S$ est une droite vectorielle. 
+    \item Pour $ \text{Ker }\phi  = \text{Ker }\psi$, $\phi$ et $\psi$ sont proportionnelles
+    \item Pour $ (e_1,...,e_n) $ une base de E et $x = \sum_{i=0}^n x_i e_i$, $ H = \text{Ker }u = {\sum_{i=0}^n x_i e_i \ligneh \sum_{i=0}^n x_i u(e_i)} $
+\end{itemize}
+
+\clearpage
+\section{Calcul intégral}
+
+\subsection{Primitives}
+$F$ est une primitive de $f$ sur $I$ si $F$ est dérivable sur $I$ et $F' = f$. L'ensemble des primitives de $f$ est $ \{ F+c \ligneh c\in \mathbb{C} \} $
+
+\[ F : x \mapsto \int_{a}^{x} f(t) dt \]
+
+\noindent $F$ est l'unique primitive qui s'annule en $a$
+
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        $f$ & $F$ & $I$ \\
+        \hline
+        $x^n$ ($n \in \mathbb{N}$) & $\frac{x^{n+1}}{n+1}$ & $\mathbb{R}$ \\
+        \hline
+        $x^k$ ($k \in \mathbb{Z}\backslash\{-1\}$) & $\frac{x^{k+1}}{k+1}$ & $\mathbb{R}^*$ \\
+        \hline
+        $x^a$ ($a \in \mathbb{R}\backslash\{-1\}$) & $\frac{x^{a+1}}{a+1}$ & $\mathbb{R}_+^*$ \\
+        \hline
+        $\frac{1}{x}$ & $\ln{|x|}$ & $\mathbb{R}^*$ \\
+        \hline
+        $e^{kx}$ & $\frac{e^{kx}}{k}$ & $\mathbb{R}$ \\
+        \hline
+        $\cos{x}$ & $\sin{x}$ & $\mathbb{R}$ \\
+        \hline
+        $\sin{x}$ & $-\cos{x}$ & $\mathbb{R}$ \\
+        \hline
+        $1+tan^2{x} = \frac{1}{cos^2{x}}$ & $\tan{x}$ & $\bigcup_{k\in\mathbb{Z}} ] -\frac{\pi}{2} + k\pi, \frac{\pi}{2} + k\pi [$ \\
+        \hline
+        $tan{x} = - \frac{- \sin{x}}{\cos{x}}$ & $-\ln{|\cos{x}|}$ & $\bigcup_{k\in\mathbb{Z}} ] -\frac{\pi}{2} + k\pi, \frac{\pi}{2} + k\pi [$ \\
+        \hline
+        $\ch{x}$ & $\sh{x}$ & $\mathbb{R}$ \\
+        \hline
+        $\sh{x}$ & $\ch{x}$ & $\mathbb{R}$ \\
+        \hline
+        $\frac{1}{1+x^2}$ & $\arctan{x}$ & $\mathbb{R}$ \\
+        \hline
+        $\frac{1}{\sqrt{1-x^2}}$ & $\arcsin{x}$ & $]-1, 1 [$ \\
+        \hline
+        $-\frac{1}{\sqrt{1-x^2}}$ & $\arccos{x}$ & $]-1, 1 [$ \\
+        \hline
+    \end{tabular}
+\end{center}
 
 \end{document}

@@ -538,13 +538,42 @@ Pour les secondes ordres passe-bas et pass-haut, on a $\frac{1}{\sqrt{2}}$ la va
 \section{Superposition}
 
 \subsection{Ondes planes progressives unidimensionnelle}
+
+\[ s(x, t) = A\cos{(\omega t - k x + \phi)} \]
 \[ s(x, t) = s(x-ct, 0) = s(0, t-\frac{x}{c}) \]
-\[ s(x, t) = A\cos{(\omega t - k x + \phi)} = A\cos{(\omega(t-\frac{x}{c}) + \phi)} = A\cos{(kct- kx  + \phi)} \]
+\[ s(x, t) = A\cos{(\omega(t-\frac{x}{c}) + \phi)} = A\cos{(kct- kx  + \phi)} \]
 
 \begin{itemize}
     \item $ k = \frac{\omega}{c} $ la norme du vecteur d'onde 
+    \item $ v_{\phi} = \frac{\Delta x}{\Delta t} = c $ vitesse de phase est la célérité de l'onde ($\Delta x$ et $\Delta t$ entre deux points ayant la même phase)
     \item $ \lambda = \frac{2 \pi}{k} $ la période spatiale
     \item $ \sigma = \frac{1}{\lambda} $ le nombre d'onde
+\end{itemize}
+
+\subsection{Superposition de 2 ondes}
+
+\subsubsection{Intéference}
+Pour 2 ondes synchrones, on aura une onde résultant ayant la même fréquence d'amplitude:
+\[ A = \sqrt{A_1^2 + A_2^2 + 2A_1A_2\cos{\phi_1 - \phi_2}} \]
+
+\noindent Démonstration - Diagramme de Fresnel et Pythagore généralisé \\
+
+\noindent Intéférence avec 2 sources ponctuelles, séparées par une distance $a$ et de distance $D$ de l'écran
+\begin{itemize}
+    \item Interfrange $ i = \frac{D\lambda}{a} $ [Démonstration - On détermine $d_2 - d_1 = \frac{xa}{D}$ avec une développement limitée et on étudie l'amplitude à l'écran qui dépend du phase $\phi_i - \frac{2\pi}{\lambda}d_i$]
+\end{itemize} 
+\noindent 
+
+\subsection{Battements}
+Pour 2 ondes de pulsations légèrement différente
+\[ \omega_{\text{moy}} = \frac{\omega_1+\omega_2}{2} \]
+\[ \omega_{\text{mod}} = \frac{\omega_1-\omega_2}{2} \]
+
+\begin{itemize}
+    \item $\omega_{\text{mod}}$ la pulsation de modulation
+    \item $\omega_{\text{batt}} = 2\omega_{\text{mod}} = \omega_1-\omega_2$
+    \item $ s(t) = 2A\cos{(\omega_{\text{moy}} t + \phi_{\text{moy}})}\cos{(\omega_{\text{mod}} t + \phi_{\text{mod}})} $ pour 2 ondes de même amplitude
+    \item Pour des amplitudes différents, $A(t) = \sqrt{A_1^2 + A_2^2 + 2A_1A_2\cos{(\omega_{\text{batt}})}}$
 \end{itemize}
 
 \subsection{Misc}
@@ -557,6 +586,13 @@ Pour les secondes ordres passe-bas et pass-haut, on a $\frac{1}{\sqrt{2}}$ la va
 
 \clearpage
 \section{Annexe}
+\subsection{Formules mathématiques}
+\begin{itemize}
+    \item Pythagore généralisé - $ a^2 = b^2 + c^2 - 2bc\cos{\theta} $
+    \item Factorisation de cosinus - $ \cos{p} + \cos{q} = \cos{\frac{p+q}{2}}\cos{\frac{p-q}{2}} $ 
+\end{itemize}
+
+
 \subsection{Équations différentielles - solutions générales}
 
 \subsubsection{1er ordre - Solution exponentielle}
