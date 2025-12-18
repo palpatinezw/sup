@@ -1150,7 +1150,7 @@ Uniquement dans cette section, $[x_i] = (x_1,...,x_n)$. $u \in \mathcal{L}(E, F)
     \item Si $ [x_i] $ liée, alors $ [u(x_i)] $ liée
 \end{itemize}
 
-\subsection{Endomorphismes remarqueables}
+\subsection{Endomorphismes remarquables}
 \subsubsection{Homothéties}
 \[ h_\lambda = x \mapsto \lambda x \]
 \begin{itemize}
@@ -1164,7 +1164,7 @@ Pour $x \in E = E_1 \oplus E_2$,
     \item  La projection sur $E_1$ parallèlement à $E_2$, $ p : x = x_1 + x_2 \mapsto x_1 $
     \begin{itemize}
         \item $ p \in \mathcal{L}(E) $
-        \item $ p^2 = p $
+        \item $ p^2 = p $ - Condition nécessaire et suffisante d'être un projecteur
         \item $ E_1 = \text{Im }p = \{x \in E \ligneh p(x) = x \} = \text{Ker}(p - \text{Id}_E) $
         \item $ E_2 = \text{Ker }p$
         \item On peut caractériser $u$ un projecteur si $ u \in \mathcal{L}(E) \et u^2 = u $ - dans ce cas il est projecteur sur $\text{Im}(p)$ parallèlement à $\text{Ker}p$ [Démonstration - $x = (u(x)) + (x-u(x))$ décomposition unique]
@@ -1172,7 +1172,7 @@ Pour $x \in E = E_1 \oplus E_2$,
     \item La symétrie par rapport à $E_1$ parallèlement à $E_2$, $ s : x = x_1 + x_2 \mapsto x_1 - x_2 $
     \begin{itemize}
         \item $ s \in \mathcal{L} $
-        \item $ s^2 = \text{Id} $ - $s \in \text{GL}(E) \et s^{-1}=s$
+        \item $ s^2 = \text{Id} $ - $s \in \text{GL}(E) \et s^{-1}=s$ - - Condition nécessaire et suffisante d'être une symétrie
         \item $ E_1 = \{ x \in E \ligneh s(x) = x \} = \text{Ker}(s-\text{Id}) $
         \item $ E_2 = \{ x \in E \ligneh s(x) = -x \} = \text{Ker}(s+\text{Id}) $ 
         \item On peut caractériser $u$ une symétrie si $ u \in \mathcal{L}(E) \et u^2 = \text{Id}_E $ - dans ce cas il est projecteur sur $\text{Ker}(s-\text{Id})$ parallèlement à $\text{Ker}(s+\text{Id})$ [Démonstration - $x = \frac{1}{2}(x + u(x)) + \frac{1}{2}(x-u(x))$ décomposition unique]
@@ -1209,6 +1209,11 @@ $F$ est une primitive de $f$ sur $I$ si $F$ est dérivable sur $I$ et $F' = f$. 
 
 \noindent $F$ est l'unique primitive qui s'annule en $a$
 
+\subsubsection{Théorème fondamental du calcul intégral}
+\[ \int_{a}^{b} f(t) \text{ d}t = F(b) - F(a) \]
+
+\subsubsection{Primitives usuelles}
+
 \begin{center}
     \begin{tabular}{|c|c|c|}
         \hline
@@ -1244,5 +1249,40 @@ $F$ est une primitive de $f$ sur $I$ si $F$ est dérivable sur $I$ et $F' = f$. 
         \hline
     \end{tabular}
 \end{center}
+
+\subsection{Techniques}
+
+\subsubsection{Changement de variable (simple)}
+\[ \int u'(x) (f \circ u)(x) \text{ d}x = \int f(t) \text{ d}t, t = u(x) \]
+
+\subsubsection{Changement de variable (complexe)}
+\[ \int_{u(a)}^{u(b)} f(x) \text{ d}x = \int_{a}^{b} f(u(t)) u'(t) \text{ d}t \]
+
+\begin{enumerate}
+    \item On pose $x = u(t)$
+    \item On remplace $x$ par $u(t)$ et $\text{d}x$ par $u'(t) \text{ d}t$
+    \item On remplace les bornes de l'intégral par les antécédents de $u$
+\end{enumerate}
+
+\subsubsection{Intégration par parties}
+\[ \int u'v = uv - \int uv' \]
+
+\begin{enumerate}
+    \item On pose $u'$ et on obtient $u$ en intégrant
+    \item On pose $v$ et on obtient $v'$
+\end{enumerate}
+
+\subsection{Primitives particulières}
+
+\subsubsection{Passage aux complexes}
+Pour $e^{ax}\cos{(bx)}$ et $e^{ax}\sin{(bx)}$, on peut passer aux complexes et étudier $e^{(a+ib)x}$ et obtenir le résultat comme la partie réelle ou imaginaire de $ \frac{e^{(a+ib)x}}{a+ib} $
+
+\subsubsection{Inverse d'un polynôme}
+Pour $\frac{1}{f(x)}$
+\begin{itemize}
+    \item Pour $\Delta > 0$, on peut écrire $f(x) = a(x-x_1)(x-x_2)$ donc la fonction $ x \mapsto \frac{A}{x-x_1}+\frac{B}{x-x_2} $. On a une primitive $A \ln{|x -  x_1|} + B \ln{|x - x_2|}$
+    \item Pour $\Delta = 0$, on peut écrire $f(x) = a(x-x_0)^2$ donc la fonction $ x \mapsto \frac{1}{a(x-x_0)^2}$. On a une primitive $-\frac{1}{a(x-x_0)}$
+    \item Pour $\Delta < 0$, on peut écrire $f(x) = a (\frac{\delta}{2a})^2 [1 + (\frac{2ax}{\delta} + \frac{b}{\delta})^2] $ avec $\delta = \sqrt{-\Delta}$. On peut donc écrire la fonction $x \mapsto \frac{2}{\delta} \frac{\frac{2a}{\delta}}{1 + (\frac{2ax}{\delta} + \frac{b}{\delta})^2} $. On a une primitive $ \frac{2}{\delta} \arctan{\frac{2ax}{\delta} + \frac{b}{\delta}} $
+\end{itemize}
 
 \end{document}
