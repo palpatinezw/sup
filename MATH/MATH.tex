@@ -1285,4 +1285,50 @@ Pour $\frac{1}{f(x)}$
     \item Pour $\Delta < 0$, on peut écrire $f(x) = a (\frac{\delta}{2a})^2 [1 + (\frac{2ax}{\delta} + \frac{b}{\delta})^2] $ avec $\delta = \sqrt{-\Delta}$. On peut donc écrire la fonction $x \mapsto \frac{2}{\delta} \frac{\frac{2a}{\delta}}{1 + (\frac{2ax}{\delta} + \frac{b}{\delta})^2} $. On a une primitive $ \frac{2}{\delta} \arctan{\frac{2ax}{\delta} + \frac{b}{\delta}} $
 \end{itemize}
 
+\clearpage
+\section{Limites et continuités}
+\subsection{Limites}
+\subsubsection{Point de limite}
+Limite en $a \in \overline{I}\cap\mathbb{R}$:
+\[ [COND], \exists \eta > 0, \forall x \in I, (| x - a | \implies [LIM]) \]
+\[ [COND], \exists \eta > 0, \forall x \in \mathbb{R}, (x \in I \cap [a-\eta, a+\eta] \implies [LIM]) \]
+
+\noindent Limite sur un intervalle épointé ($a \in \mathring{I} \et f : I\backslash {a} $)
+\[ [COND], \exists \eta > 0, \forall x \in I\backslash {a}, (| x - a | \implies [LIM]) \]
+
+\noindent Limite en $\pm\infty$:
+\[ [COND], \exists B \in \mathbb{R}, \forall x \in I, (x \geq B \implies [LIM]) \]
+\[ [COND], \exists B \in \mathbb{R}, \forall x \in I, (x \leq B \implies [LIM]) \]
+
+\noindent Limites à gauche ($a^-$) 
+\[ [COND], \exists \eta > 0, \forall x \in I \cap ] - \infty, a [, (| x - a | \implies [LIM]) \]
+\[ [COND], \exists \eta > 0, \forall x \in \mathbb{R}, (x \in I \cap [a-\eta, a[ \implies [LIM]) \]
+
+\noindent Limites à droite ($a^+$) 
+\[ [COND], \exists \eta > 0, \forall x \in I \cap ] a, + \infty [, (| x - a | \implies [LIM]) \]
+\[ [COND], \exists \eta > 0, \forall x \in \mathbb{R}, (x \in I \cap ]a, a + \eta] \implies [LIM]) \]
+
+\subsubsection{Nature de limite}
+Limite réelle
+\[ \forall \epsilon > 0, [VAL], |f(x) - l| \leq \epsilon \]
+
+\noindent Limite $+ \infty$
+\[ \forall A \in \mathbb{R}, [VAL], f(x) \geq A \]
+\[ \forall A > 0, [VAL], f(x) \geq A \]
+
+\noindent Limite $- \infty$
+\[ \forall A \in \mathbb{R}, [VAL], f(x) \leq A \]
+\[ \forall A < 0, [VAL], f(x) \leq A \]
+
+
+\subsection{Propriétés}
+\begin{itemize}
+    \item La limite est unique
+    \item Si $f$ admet une limite en $a \in I$, $\lim_a f = f(a)$ et $f$ est continue en $a$.
+    \item Pour $f$ défini sur $a$, $ \lim_a f = l \iff \lim_{a^-} f = \lim_{a^+} f = f(a) = l $
+    \item Pour $f$ défini sur $a$, la limite épointée - $ \lim_{x \rightarrow a, x \neq a} f(x) $ pour exclure $f(a)$ dans la limite
+    \item Pour $f$ non défini sur $a$, $ \lim_a f = l \iff \lim_{a^-} f = \lim_{a^+} f = l $
+    \item Si $\lim_a f \in \mathbb{R}$, $f$ est bornée au voisinage de $a$
+\end{itemize}
+
 \end{document}

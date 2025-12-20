@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{textcomp}
 \usepackage{gensymb}
 \usepackage{array}
@@ -575,6 +576,24 @@ Pour 2 ondes de pulsations légèrement différente
     \item $ s(t) = 2A\cos{(\omega_{\text{moy}} t + \phi_{\text{moy}})}\cos{(\omega_{\text{mod}} t + \phi_{\text{mod}})} $ pour 2 ondes de même amplitude
     \item Pour des amplitudes différents, $A(t) = \sqrt{A_1^2 + A_2^2 + 2A_1A_2\cos{(\omega_{\text{batt}})}}$
 \end{itemize}
+
+\subsection{Onde stationnaire}
+La somme de deux ondes synchrones et de même amplitude, qui se propagent dans des sens opposées, donne:
+\[ 2A \cos{(\omega t + \phi)} \cos{(kx + \psi)} \]
+
+\begin{itemize}
+    \item Ventre - positions où $\cos{(kx + \psi)} = 1$ donc amplitude maximale
+    \item Noeud - positions où $\cos{(kx + \psi)} = 0$ donc amplitude nulle 
+    \item Séparation entre ventres ou entre noeuds - $ \frac{\lambda}{2} $
+    \item Séparation entre ventre et noeud - $ \frac{\lambda}{4} $
+\end{itemize}
+
+\subsubsection{Corde de Melde}
+!!
+
+\subsection{Diffraction}
+Pour un trou circulaire de diamètre $ D \lesssim \lambda $
+\[ \sin{\theta} \approx 1,22 \frac{\lambda}{D} \]
 
 \subsection{Misc}
 \begin{itemize}
