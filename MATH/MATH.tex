@@ -1320,15 +1320,53 @@ Limite réelle
 \[ \forall A \in \mathbb{R}, [VAL], f(x) \leq A \]
 \[ \forall A < 0, [VAL], f(x) \leq A \]
 
+\subsubsection{Continuité}
+\[\lim_a f = f(a)\]
+\[ \forall \epsilon > 0, \exists \eta > 0, \forall x \in I, (|x-a| \leq \eta \implies |f(x) - f(a)| \leq \eta) \]
+
+\noindent Continuité à gauche en $a$
+\[ \forall \epsilon > 0, \exists \eta > 0, \forall x \in I \cap ]a-\eta, a],|f(x) - f(a)| \leq \epsilon \]
+\[ \lim_{x \rightarrow a^-} f(x) = f(a) \]
+
+\noindent Continuité à droite en $a$
+\[ \forall \epsilon > 0, \exists \eta > 0, \forall x \in I \cap [a, a+\eta[,|f(x) - f(a)| \leq \epsilon \]
+\[ \lim_{x \rightarrow a^+} f(x) = f(a) \]
 
 \subsection{Propriétés}
 \begin{itemize}
     \item La limite est unique
-    \item Si $f$ admet une limite en $a \in I$, $\lim_a f = f(a)$ et $f$ est continue en $a$.
     \item Pour $f$ défini sur $a$, $ \lim_a f = l \iff \lim_{a^-} f = \lim_{a^+} f = f(a) = l $
     \item Pour $f$ défini sur $a$, la limite épointée - $ \lim_{x \rightarrow a, x \neq a} f(x) $ pour exclure $f(a)$ dans la limite
     \item Pour $f$ non défini sur $a$, $ \lim_a f = l \iff \lim_{a^-} f = \lim_{a^+} f = l $
     \item Si $\lim_a f \in \mathbb{R}$, $f$ est bornée au voisinage de $a$
+    \item Composition de limite - $\lim_a f = b \et \lim_b g = l \implies \lim_a g \circ f = l $
+    \item La continuité est stable par combinaison linéaire, produit, quotient et composition
 \end{itemize}
+
+\subsubsection{Caractérisation séquentielle}
+ \[ \lim_{x \rightarrow a} f(x) = l \iff \forall (u_n) \in I^{\mathbb{N}}, ( (u_n)_n \longrightarrow a \implies (f(u_n))_n \longrightarrow l ) \]
+
+\noindent On peut donc établir la limite de $f$ en $a$ en étudiant $u_n \longrightarrow a$ et $ (f(u_n))n $. Les limites sur les fonctions admettent donc des propriétés similaires que celles des suites.
+\begin{itemize}
+    \item Signe au voisinage de $a$ et la limite
+    \item Comparaisons entre 2 fonctions en comparent leurs limites
+    \item Théorème d'encadrement
+    \item Théorème de la limite monotone
+    \item Limites finies pour $x_0 \in E$ pour des fonctions monotones
+    \begin{itemize}
+        \item Si $f$ est croissante, $ \lim_{x \rightarrow x_0^-} f(x) \leq f(x_0) \leq \lim_{x \rightarrow x_0^+} $
+        \item Si $f$ est décroissante, $ \lim_{x \rightarrow x_0^+} f(x) \leq f(x_0) \leq \lim_{x \rightarrow x_0^-} $
+    \end{itemize}
+\end{itemize} 
+
+\subsection{Prolongement par continuité}
+Pour $ f: I \backslash {a} \rightarrow \mathbb{R} $, $f$ est prolongeable en $a$ s'il existe $\tilde{f}$
+\begin{itemize}
+    \item $\tilde{f} : I \rightarrow \mathbb{R}$
+    \item $\tilde{f}$ continue en $a$
+    \item $\tilde{f}_{|I \backslash {a}} = f$
+\end{itemize}
+
+\noindent Il faut que $\lim_a f = l \in \mathbb{R}$ alors $\tilde{f}(a) = l$
 
 \end{document}
