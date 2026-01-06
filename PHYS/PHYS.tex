@@ -6,6 +6,9 @@
 \usepackage{gensymb}
 \usepackage{array}
 
+\graphicspath{ {./img/} }
+\input{../headers.tex}
+
 \title{PHYSIQUE}
 \author{SALIKEL}
 \date{2025-2026 PCSI}
@@ -607,7 +610,89 @@ Pour un réseau de diffraction
     \item Vitesse de son dans l'eau $1500 \text{ m s}^{-1}$
 \end{itemize}
 
+\clearpage
+\section{Mécanique}
 
+\subsection{Définitions}
+\begin{itemize}
+    \item Cinématique du point - Domaine où l'on décrit les mouvements sans en chercher les causes
+    \item Dynamique - Domaine où l'on cherche à établir le lien entre les mouvements et les causes qui engendrent ces mouvements
+    \item Statique - Étude des équilibres des systèmes (cas particulier de la dynamique)
+    \item Système indéformable
+    \begin{itemize}
+        \item Solide indéformable - distance entre 2 points dans le solide est constante
+        \item Description du solide dans le système nécessite 6 paramètres (3 axes de position pour le centre d'inertie, 3 angles de rotation)
+    \end{itemize}
+    \item Point matériel
+    \begin{itemize}
+        \item On considère que la translation et néglige la rotation
+        \item Tous les points du solide ont le même mouvement - il suffit donc d'étudier un point (le centre d'inertie)
+    \end{itemize}
+\end{itemize}
+
+\subsection{Systèmes de coordonnées}
+\subsubsection{Définitions}
+\begin{itemize}
+    \item Système d'axes - axes de référence liées à un solide
+    \item Le vecteur position $ \overrightarrow{OM} $ est unique
+    \item On définit une base avec 3 vecteurs $ (\vec{e_1}, \vec{e_2}, \vec{e_3}) $
+    \begin{itemize}
+        \item Base unitaire - $ \| \vec{e_1} \| = \| \vec{e_2} \| = \| \vec{e_3} \| = 1 $
+        \item Base orthonormale - les 3 vecteurs sont orthogonaux
+        \item Base directe - $ \vec{e_1} \wedge \vec{e_2} = \vec{e_3} $
+    \end{itemize}
+    \item Repère - association d'une base avec un point d'origine
+\end{itemize}
+
+\subsubsection{Coordonnées cartésiennes}
+\[ (\vec{e_x}, \vec{e_y}, \vec{e_z}) \]
+\begin{center}
+    \includegraphics[height=6cm]{cartesienne.jpg}
+\end{center}
+\[ \overrightarrow{OM} = x \vec{e_x} + y \vec{e_y} + z \vec{e_z} \]
+
+\noindent Les 3 vecteurs de la base sont fixes
+
+\[ \dd \overrightarrow{OM} = \dx \vec{e_x} + \dy \vec{e_y} + \dz \vec{e_z} \]
+
+\subsubsection{Coordonnées cylindriques}
+\[ (\vec{e_r}, \vec{e_{\theta}}, \vec{e_z}) \]
+\begin{center}
+    \includegraphics[height=6cm]{cylindrique.jpg}
+\end{center}
+\[ \overrightarrow{OM} = r \vec{e_r} + z \vec{e_z} \]
+
+\noindent En cartésiennes, 
+\[ x = r \cos \theta \]
+\[ y = r \sin \theta \]
+\\
+\[ \vec{e_r} = \cos \theta \vec{e_x} + \sin \theta \vec{e_y} \]
+\[ \vec{e_{\theta}} = -\sin \theta \vec{e_x} + \cos \theta \vec{e_y} \]
+\[ \vec{e_z} = \vec{e_z} \]
+
+\noindent $\vec{e_z}$ est fixe, $\vec{e_r}$, $\vec{e_{\theta}}$ sont mobiles 
+
+\[ \dd \overrightarrow{OM} = \dr \, \vec{e_r} + r \, \dtheta \, \vec{e_{\theta}} + \dz \, \vec{e_z} \]
+
+\subsubsection{Coordonnées sphériques}
+\[ (\vec{e_r}, \vec{e_{\theta}}, \vec{e_{\phi}}) \]
+\begin{center}
+    \includegraphics[height=10cm]{spherique.jpg}
+\end{center}
+
+\[ \overrightarrow{OM} = r \vec{e_r} \]
+\noindent En cartésiennes, 
+\[ x = r \sin \theta \cos \phi \]
+\[ y = r \sin \theta \sin \phi \]
+\[ z = r \cos \theta \]
+\\
+\[ \vec{e_r} = \sin \theta \cos \phi \, \vec{e_x} + \sin \theta \sin \phi \, \vec{e_y} + \cos \theta \, \vec{e_z} \]
+\[ \vec{e_{\theta}} = \cos \theta \cos \phi \, \vec{e_x} + \cos \theta \sin \phi \, \vec{e_y} - \sin \theta \, \vec{e_z} \]
+\[ \vec{e_{\phi}} = - \sin \phi \, \vec{e_x} + \cos \phi \, \vec{e_y} \]
+
+\noindent Les 3 vecteurs de la base sont mobiles
+
+\[ \dd \overrightarrow{OM} = \dr \, \vec{e_r} + r \, \dtheta \, \vec{e_{\theta}} + r \sin \theta \, \dphi \, \vec{e_{\phi}}  \]
 
 \clearpage
 \section{Annexe}
@@ -615,6 +700,7 @@ Pour un réseau de diffraction
 \begin{itemize}
     \item Pythagore généralisé - $ a^2 = b^2 + c^2 - 2bc\cos{\theta} $
     \item Factorisation de cosinus - $ \cos{p} + \cos{q} = \cos{\frac{p+q}{2}}\cos{\frac{p-q}{2}} $ 
+    \item 
 \end{itemize}
 
 
