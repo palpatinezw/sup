@@ -604,12 +604,6 @@ Pour un réseau de diffraction
 \noindent Démonstration - avec différence de marche
 \noindent On peut étudier la déviation $D = \theta - \theta_i$
 
-\subsection{Misc}
-\begin{itemize}
-    \item Vitesse de son dans l'air $340 \text{ m s}^{-1}$
-    \item Vitesse de son dans l'eau $1500 \text{ m s}^{-1}$
-\end{itemize}
-
 \clearpage
 \section{Mécanique}
 
@@ -628,6 +622,15 @@ Pour un réseau de diffraction
         \item On considère que la translation et néglige la rotation
         \item Tous les points du solide ont le même mouvement - il suffit donc d'étudier un point (le centre d'inertie)
     \end{itemize}
+    \item Référentiel - repère muni d'une horloge
+    \item Équation horaire - l'équation donnant $ \overrightarrow{OM}(t) $
+    \item Trajectoire - l'ensemble des points parcourus par $M$ - équation de la trajectoire relie les coordonnées sans faire intervenir le temps
+    \item Vitesse - $ \vec{v}_{|R}(M) = \frac{\dd \overrightarrow{OM}}{\dt}_{|R} $ - colinéaire à la trajectoire
+    \item Accélération - $ \vec{a}_{|R}(M) = \frac{\dd \vec{v}_{|R}(M)}{\dt}_{|R} = \frac{\dd^2 \overrightarrow{OM}}{\dt^2}_{|R} $ - pointe vers la concavité de la trajectoire
+    \begin{itemize}
+        \item $ \frac{\dd \| \vec{v}_{\repr} \|}{\dt} = \| \vec{a}_{\repr} \| \cos \alpha $
+    \end{itemize}
+    \item Translation - Les directions du repère liée au solide sont fixes par rapport au référentiel d'étude
 \end{itemize}
 
 \subsection{Systèmes de coordonnées}
@@ -651,9 +654,12 @@ Pour un réseau de diffraction
 \end{center}
 \[ \overrightarrow{OM} = x \vec{e_x} + y \vec{e_y} + z \vec{e_z} \]
 
-\noindent Les 3 vecteurs de la base sont fixes
+\noindent Les 3 vecteurs de la base sont fixes \\
+\noindent Le mouvement en coordonnées cartésiennes
 
 \[ \dd \overrightarrow{OM} = \dx \vec{e_x} + \dy \vec{e_y} + \dz \vec{e_z} \]
+\[ \vec{v}_{\repr} = \dot{x} \vec{e_x} + \dot{y} \vec{e_y} + \dot{z} \vec{e_z} \]
+\[ \vec{a}_{\repr} = \ddot{x} \vec{e_x} + \ddot{y} \vec{e_y} + \ddot{z} \vec{e_z} \]
 
 \subsubsection{Coordonnées cylindriques}
 \[ (\vec{e_r}, \vec{e_{\theta}}, \vec{e_z}) \]
@@ -672,7 +678,25 @@ Pour un réseau de diffraction
 
 \noindent $\vec{e_z}$ est fixe, $\vec{e_r}$, $\vec{e_{\theta}}$ sont mobiles 
 
+\[ \frac{\dd \vec{e_r}}{dt}_{\repr} = \dot{\theta} \vec{e_{\theta}} \]
+\[ \frac{\dd \vec{e_{\theta}}}{dt}_{\repr} = -\dot{\theta} \vec{e_{r}} \]
+
+\noindent Le mouvement en coordonnées cylindriques
+
 \[ \dd \overrightarrow{OM} = \dr \, \vec{e_r} + r \, \dtheta \, \vec{e_{\theta}} + \dz \, \vec{e_z} \]
+\[ \vec{v}_{\repr} = \dot{r} \vec{e_r} + r \dot{\theta} \vec{e_{\theta}} + \dot{z} \vec{e_z} \]
+\[ \vec{a}_{\repr} = (\ddot{r} - r\dot{\theta}^2) \vec{e_r} + (r \ddot{\theta} + r \dot{r} \dot{\theta}) \vec{e_{\theta}} + \ddot{z} \vec{e_z} \]
+
+\subsubsection{Mouvement circulaire en coordonnées cylindriques}
+Pour un mouvement autour de l'axe $ \Delta = \vec{e_z} $, on a $\dot{r} = 0 \et \dot{z} = 0$
+
+\[ \overrightarrow{OM} = r \vec{e_r} \]
+\[ \vec{v}_{\repr} = r \dot{\theta} \vec{e_{\theta}} \]
+\[ \vec{a}_{\repr} = r\dot{\theta}^2 \vec{e_r} + r \ddot{\theta} \vec{e_{\theta}} = -\frac{\| \vec{v}_{\repr} \|^2}{r} \vec{e_r} + \frac{\dd v}{\dt} \vec{e_{\theta}} \]
+
+\noindent On définit le vecteur rotation
+\[ \vec{\Omega} = \dot{\theta} \vec{e_z} \]
+Avec $\dot{\theta}$ la vitesse angulaire
 
 \subsubsection{Coordonnées sphériques}
 \[ (\vec{e_r}, \vec{e_{\theta}}, \vec{e_{\phi}}) \]
@@ -692,7 +716,12 @@ Pour un réseau de diffraction
 
 \noindent Les 3 vecteurs de la base sont mobiles
 
+\[ \frac{\dd \vec{e_r}}{dt}_{\repr} = \dot{\theta} \vec{e_{\theta}} + \dot{\phi}\sin \theta \vec{e_{\phi}} \]
+
+\noindent Le mouvement en coordonnées sphériques
+
 \[ \dd \overrightarrow{OM} = \dr \, \vec{e_r} + r \, \dtheta \, \vec{e_{\theta}} + r \sin \theta \, \dphi \, \vec{e_{\phi}}  \]
+\[ \vec{v}_{\repr} = \dot{r} \vec{e_r} + r \dot{\theta} \vec{e_{\theta}} + r \dot{\phi} \sin \theta \vec{e_{\phi}} \]
 
 \clearpage
 \section{Annexe}
@@ -795,5 +824,11 @@ Pour une équation différentielle de 2nd ordre avec $f(t)$ sinusoïdal de pulsa
     Si $ \tau_1 \ll \tau_2 $, On peut traiter la partie $Be^{-\frac{t}{\tau_2}}$ constante au début, et la partie $Ae^{-\frac{t}{\tau_1}}$ à la suite
 \end{itemize}
 
+\subsection{Misc}
+\begin{itemize}
+    \item Vitesse de son dans l'air $340 \text{ m s}^{-1}$
+    \item Vitesse de son dans l'eau $1500 \text{ m s}^{-1}$
+    \item Rotation de la Terre sur son axe Nord-Sud $ \Omega_T = 23 \text{ h } 56 \text{ min } 4 \text{ s} = 7,2921 \times 10^{-5} \text{ rad s}^{-1} $
+\end{itemize}
 
 \end{document}
