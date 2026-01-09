@@ -631,6 +631,8 @@ Pour un réseau de diffraction
         \item $ \frac{\dd \| \vec{v}_{\repr} \|}{\dt} = \| \vec{a}_{\repr} \| \cos \alpha $
     \end{itemize}
     \item Translation - Les directions du repère liée au solide sont fixes par rapport au référentiel d'étude
+    \item Masse inerte - grandeur qui caractérise la capacité d'un système de resister à des contraintes pour modifier son mouvement (supposée indépendant du mouvement et du référentiel)
+    \item Masse grave - grandeur associée aux poids d'un objet (supposée équivalente à la masse inerte par principe d'équivalence)
 \end{itemize}
 
 \subsection{Systèmes de coordonnées}
@@ -722,6 +724,29 @@ Avec $\dot{\theta}$ la vitesse angulaire
 
 \[ \dd \overrightarrow{OM} = \dr \, \vec{e_r} + r \, \dtheta \, \vec{e_{\theta}} + r \sin \theta \, \dphi \, \vec{e_{\phi}}  \]
 \[ \vec{v}_{\repr} = \dot{r} \vec{e_r} + r \dot{\theta} \vec{e_{\theta}} + r \dot{\phi} \sin \theta \vec{e_{\phi}} \]
+
+\subsection{Dynamique}
+\subsubsection{Quantité de mouvement}
+\[ \vec{p}_{\repr}(M) = m \vec{v}_{\repr}(M) \]
+
+\noindent Pour un centre de gravité $G$ du système $S$ défini: $ (\sum_i) \overrightarrow{OG} = \sum_i m_i \overrightarrow{OM_i} \iff \sum_i m_i \overrightarrow{GM_i} = 0 $
+\[ \vec{p}_{\repr}(S) = \sum_i \vec{p}_{\repr}(M_i) = \vec{p}_{\repr}(G) = m_tot \vec{v}_{\repr}(G) \]
+
+\subsection{Forces}
+Grandeur vectorielle décrivant l'interaction capable de modifier et/ou de produire un mouvement ou une déformation du système
+
+\subsubsection{Forces à distance}
+\begin{itemize}
+    \item Force gravitationelle - $ \vec{F_G} = -\frac{G m_1 m_2}{\| \overrightarrow{M_1 M_2} \|^2}\vec{u_{12}} = -G m_1 m_2\frac{\overrightarrow{M_1 M_2}}{\| \overrightarrow{M_1 M_2} \|^3} $
+    \item Force colombienne - $ \vec{F_q} = \frac{q_1 q_2}{4 \pi \epsilon_0} \frac{1}{\| \overrightarrow{M_1 M_2} \|^2}\vec{u_{12}} =  \frac{q_1 q_2}{4 \pi \epsilon_0} \frac{\overrightarrow{M_1 M_2}}{\| \overrightarrow{M_1 M_2} \|^3} $
+\end{itemize}
+
+\subsubsection{Forces de contact}
+\begin{itemize}
+    \item Réaction normale d'un support $ \|\vec{R_N}\| $ - perpendiculaire au support, dirigé vers l'extérieur du support, contact avec le support tant que $ \|\vec{R_N}\| > 0 $
+    \item Tension d'un fil $ \vec{T} $ - selon le fils, dirigé vers le point fixe, fil tendu tant que $ \|\vec{T}\| > 0 $, $\vec{T} = \vec{0}$ si le fil est distendu
+    \item Force d'un ressort du type élastique $ \|\vec{F_r}\| = |k(l - l_v)| $ avec $k$ le constant de raideur et $l - l_v$ l'allongement du ressort
+\end{itemize}
 
 \clearpage
 \section{Annexe}
