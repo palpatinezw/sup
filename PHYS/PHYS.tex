@@ -556,15 +556,15 @@ Pour les secondes ordres passe-bas et pass-haut, on a $\frac{1}{\sqrt{2}}$ la va
 
 \subsection{Superposition de 2 ondes}
 
-\subsubsection{Intéference}
+\subsubsection{Interférence}
 Pour 2 ondes synchrones, on aura une onde résultant ayant la même fréquence d'amplitude:
-\[ A = \sqrt{A_1^2 + A_2^2 + 2A_1A_2\cos{\phi_1 - \phi_2}} \]
+\[ A = \sqrt{A_1^2 + A_2^2 + 2A_1A_2\cos{(\phi_1 - \phi_2)}} \]
 
 \noindent Démonstration - Diagramme de Fresnel et Pythagore généralisé \\
 
-\noindent Intéférence avec 2 sources ponctuelles, séparées par une distance $a$ et de distance $D$ de l'écran
+\noindent Interférence avec 2 sources ponctuelles, séparées par une distance $a$ et de distance $D$ de l'écran
 \begin{itemize}
-    \item Interfrange $ i = \frac{D\lambda}{a} $ [Démonstration - On détermine $d_2 - d_1 = \frac{xa}{D}$ avec une développement limitée et on étudie l'amplitude à l'écran qui dépend du phase $\phi_i - \frac{2\pi}{\lambda}d_i$]
+    \item Interfrange $ i = \frac{D\lambda}{a} $ [Démonstration - On détermine $d_2 - d_1 = \frac{xa}{D}$ avec une développement limitée et on étudie l'amplitude à l'écran qui dépend du phase $\phi_i - k d_i$]
 \end{itemize} 
 \noindent 
 
@@ -602,7 +602,7 @@ Pour un trou circulaire de diamètre $ D \lesssim \lambda $
 Pour un réseau de diffraction
 \[ \sin \theta_p - \sin \theta_i = p \frac{\lambda}{na} \]
 \noindent Démonstration - avec différence de marche
-\noindent On peut étudier la déviation $D = \theta - \theta_i$
+\noindent On peut étudier la déviation $D = \theta - \theta_i$ pour obtenir un minimum lorsque $ \theta = -\theta_i $ alors $ D_min = -2\theta_i = 2\theta $
 
 \clearpage
 \section{Mécanique}
@@ -746,15 +746,45 @@ Grandeur vectorielle décrivant l'interaction capable de modifier et/ou de produ
     \item Réaction normale d'un support $ \|\vec{R_N}\| $ - perpendiculaire au support, dirigé vers l'extérieur du support, contact avec le support tant que $ \|\vec{R_N}\| > 0 $
     \item Tension d'un fil $ \vec{T} $ - selon le fils, dirigé vers le point fixe, fil tendu tant que $ \|\vec{T}\| > 0 $, $\vec{T} = \vec{0}$ si le fil est distendu
     \item Force d'un ressort du type élastique $ \|\vec{F_r}\| = |k(l - l_v)| $ avec $k$ le constant de raideur et $l - l_v$ l'allongement du ressort
+    \item Force de frottement fluide $ f = -\lambda [\vec{v}_{\repr}(M) - \vec{v}_{\repr}(fluide)] = -\lambda \vec{v}_{\repr}(M) $ - valable pour nommbre de Reynolds $R_R < 1$
+    \item Frottement solide - lois d'Amontons-Coulomb
+    \begin{itemize}
+        \item Cas du non-glissement $\vec{v}_{\repr}(M) = \vec{0}$ - $ \vec{R_T} = -\sum_i \vec{F_i} $ tant que $\|\vec{R_T}\| < fs\|\vec{R_N}\|$
+        \item \item Cas du glissement $ \vec{R_T} = f_d \vec{R_N} $ tant que $ \|\vec{v}_{\repr}(M)\| > 0 $
+        \item $f_d < f_s$ (en général, $f_d \approx f_s$)
+    \end{itemize}
 \end{itemize}
+
+\subsubsection{1ère loi de Newton - principe d'inertie}
+Dans les référentiels galiléens, un point matérial isolé est animé d'un mouvement rectilinge uniforme.
+\begin{itemize}
+    \item La vitesse et la quantité de mouvement sont constantes.
+    \item Tous les référentiels galiléens sont en translation rectilinge uniforme les uns par rapport aux autres
+    \item Ce principe nous permet de trouver les référentiels galiléens
+\end{itemize}
+
+\subsubsection{2ème lois de Newton - principe fondamental de la dynamique}
+\[ \frac{\dd \vec{p}_{\repr}(M)}{\dt}_{\repr} = \sum_i \vec{F_i} \]
+\[ m \vec{a}_{\repr}(M) = \sum_i \vec{F_i} \]
+
+\subsubsection{3ème loi de Newton - principe de l'action réciproque}
+\[\vec{F}_{B \rightarrow A} = -\vec{F}_{A \rightarrow B}\]
+\noindent Avec $\vec{F}_{B \rightarrow A} \et \vec{F}_{A \rightarrow B}$ selon la droite d'action $AB$
+
+\subsection{Méthode}
+\begin{enumerate}
+    \item Définir le système (point matérial / système de points)
+    \item Définir le référentiel (galiléen ou non)
+    \item Bilan des actions (forces, moments de forces) - dans un système de coordonnées choisi
+    \item Résolution à l'aide d'une loi 
+\end{enumerate}
 
 \clearpage
 \section{Annexe}
 \subsection{Formules mathématiques}
 \begin{itemize}
     \item Pythagore généralisé - $ a^2 = b^2 + c^2 - 2bc\cos{\theta} $
-    \item Factorisation de cosinus - $ \cos{p} + \cos{q} = \cos{\frac{p+q}{2}}\cos{\frac{p-q}{2}} $ 
-    \item 
+    \item Factorisation de cosinus - $ \cos{p} + \cos{q} = 2 \cos{\frac{p+q}{2}}\cos{\frac{p-q}{2}} $ 
 \end{itemize}
 
 
