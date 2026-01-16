@@ -771,6 +771,30 @@ Dans les référentiels galiléens, un point matérial isolé est animé d'un mo
 \[\vec{F}_{B \rightarrow A} = -\vec{F}_{A \rightarrow B}\]
 \noindent Avec $\vec{F}_{B \rightarrow A} \et \vec{F}_{A \rightarrow B}$ selon la droite d'action $AB$
 
+\subsection{Énergie}
+\subsubsection{Puissance}
+\[ \mathcal{P}_{\repr}(\vec{F}(M)) =  \vec{F}(M) \cdot \vec{v}_{\repr}(M) \]
+\begin{itemize}
+    \item $ \mathcal{P}_{\repr}(\vec{F}(M)) > 0 $ - force motrice
+    \item $ \mathcal{P}_{\repr}(\vec{F}(M)) < 0 $ - force resistante 
+    \item $ \mathcal{P}_{\repr}(\vec{F}(M)) = 0 $ - changement de direction sans changer la norme de la vitesse
+\end{itemize}
+
+\subsubsection{Travail}
+Pour un déplacement élémentaire $\dd \overrightarrow{OM}$, on a le travail élémentaire
+\[ \delta W_{\repr}(\vec{F}(M)) = \vec{F}(M) \cdot \dd \overrightarrow{OM} \]
+\begin{itemize}
+    \item $ \mathcal{P}_{\repr}(\vec{F}) = \frac{\delta W_{\repr}(\vec{F}(M))}{\dt} $
+\end{itemize}
+
+Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \rightarrow 2}$
+\[ W_{M_1 \rightarrow M_2 \repr}(\vec{F}) = \int_{\Gamma_{1 \rightarrow 2}}  \delta W_{\repr}(\vec{F}) = \int_{\Gamma_{1 \rightarrow 2}}  \vec{F} \cdot \dd \overrightarrow{OM} \]
+
+\subsubsection{Énergie cinétique}
+\[ E_{c \repr} = \frac{1}{2} m \vec{v}_{\repr}^2 \]
+\[ \dd E_{c \repr} = \sum_i \delta W_{\repr}(\vec{F_i}) \]
+\[ \frac{\dd E_{c \repr}}{\dt} = \sum_i \mathcal{P}_{\repr}(\vec{F_i}) \]
+
 \subsection{Méthode}
 \begin{enumerate}
     \item Définir le système (point matérial / système de points)

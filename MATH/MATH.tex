@@ -1394,6 +1394,52 @@ Pour $ f: I \backslash {a} \rightarrow \mathbb{R} $, $f$ est prolongeable en $a$
     \item 0 ne divise que lui-même, tous les entiers divise 0
     \item Si $ a \neq 0 \et b | a $, $|b| \leq |a|$
     \item $(a|b \et b|a) \implies a = \pm b$
+    \item Divisibilité stable par combinaison linéaire et produit
 \end{itemize}
+
+\subsection{Nombres premiers}
+Tout entier naturel admettant exactement deux diviseurs dans $\mathbb{N}$
+
+\[ \forall (a, b) \in \mathbb{N}, p = ab \implies (a = 1 \ou b = 1) \]
+
+\begin{itemize}
+    \item Tout entier $\geq 2$ possède au moins un diviseur premier
+    \item Pour $p$ premier, $p | ab \implies (p | a \ou p | b) $
+    \item On peut décomposer tout $n \in \mathbb{N}$ en facteurs premiers de manière unique
+\end{itemize}
+
+\subsection{PGCD et PPCM}
+\subsubsection{Algorithme d'Euclide}
+\[ a = bq + r \implies D_{a, b} = D_{b, r} \]
+
+\subsubsection{PGCD}
+\[ a \wedge b = \max (D_{a, b}) \]
+\[ \prod_{i=1}^n p_i^{\min (\nu_i, \mu_i)} \]
+\begin{itemize}
+    \item Le dernier reste non nul dans l'algorithme d'Euclide corresponde au PGCD
+\end{itemize}
+
+\subsubsection{PPCM}
+\[a \vee b = \min (|a|\mathbb{N}^* \cap |b|\mathbb{N}^*)\]
+\[ a \mathbb{Z} \cap b \mathbb{Z} = (a \vee b) \mathbb{Z} \]
+\[ \prod_{i=1}^n p_i^{\max (\nu_i, \mu_i)} \]
+
+\subsubsection{Lien}
+\[ (a \wedge b) \times (a \vee b) = |ab| \]
+
+\clearpage
+\section{Polynômes}
+\[ \mathbb{K}[X] \]
+
+\subsection{Lois}
+\begin{itemize}
+    \item $A+B$ - $c_n = a_n + b_n$
+    \item $\lambda \cdot A$ - $c_n = \lambda a_n$
+    \item $A \times B$ - $ c_n = \sum_{i=0}^n a_i b_{n-i} $
+\end{itemize}
+
+\subsection{Formules}
+\subsubsection{Formule de Vandermonde}
+\[ {m + n \choose p} = \sum_{k=0}^p {m \choose k}{n \choose p-k}  \]
 
 \end{document}
