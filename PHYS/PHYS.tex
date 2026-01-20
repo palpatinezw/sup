@@ -652,7 +652,7 @@ Pour un réseau de diffraction
 \subsubsection{Coordonnées cartésiennes}
 \[ (\vec{e_x}, \vec{e_y}, \vec{e_z}) \]
 \begin{center}
-    \includegraphics[height=6cm]{cartesienne.jpg}
+    \includegraphics[height=4cm]{cartesienne.jpg}
 \end{center}
 \[ \overrightarrow{OM} = x \vec{e_x} + y \vec{e_y} + z \vec{e_z} \]
 
@@ -666,14 +666,14 @@ Pour un réseau de diffraction
 \subsubsection{Coordonnées cylindriques}
 \[ (\vec{e_r}, \vec{e_{\theta}}, \vec{e_z}) \]
 \begin{center}
-    \includegraphics[height=6cm]{cylindrique.jpg}
+    \includegraphics[height=5cm]{cylindrique.jpg}
 \end{center}
 \[ \overrightarrow{OM} = r \vec{e_r} + z \vec{e_z} \]
 
 \noindent En cartésiennes, 
 \[ x = r \cos \theta \]
 \[ y = r \sin \theta \]
-\\
+\noindent On exprime les axes
 \[ \vec{e_r} = \cos \theta \vec{e_x} + \sin \theta \vec{e_y} \]
 \[ \vec{e_{\theta}} = -\sin \theta \vec{e_x} + \cos \theta \vec{e_y} \]
 \[ \vec{e_z} = \vec{e_z} \]
@@ -703,7 +703,7 @@ Avec $\dot{\theta}$ la vitesse angulaire
 \subsubsection{Coordonnées sphériques}
 \[ (\vec{e_r}, \vec{e_{\theta}}, \vec{e_{\phi}}) \]
 \begin{center}
-    \includegraphics[height=10cm]{spherique.jpg}
+    \includegraphics[height=8cm]{spherique.jpg}
 \end{center}
 
 \[ \overrightarrow{OM} = r \vec{e_r} \]
@@ -711,7 +711,7 @@ Avec $\dot{\theta}$ la vitesse angulaire
 \[ x = r \sin \theta \cos \phi \]
 \[ y = r \sin \theta \sin \phi \]
 \[ z = r \cos \theta \]
-\\
+\noindent On exprime les axes
 \[ \vec{e_r} = \sin \theta \cos \phi \, \vec{e_x} + \sin \theta \sin \phi \, \vec{e_y} + \cos \theta \, \vec{e_z} \]
 \[ \vec{e_{\theta}} = \cos \theta \cos \phi \, \vec{e_x} + \cos \theta \sin \phi \, \vec{e_y} - \sin \theta \, \vec{e_z} \]
 \[ \vec{e_{\phi}} = - \sin \phi \, \vec{e_x} + \cos \phi \, \vec{e_y} \]
@@ -771,6 +771,9 @@ Dans les référentiels galiléens, un point matérial isolé est animé d'un mo
 \[\vec{F}_{B \rightarrow A} = -\vec{F}_{A \rightarrow B}\]
 \noindent Avec $\vec{F}_{B \rightarrow A} \et \vec{F}_{A \rightarrow B}$ selon la droite d'action $AB$
 
+\subsubsection{Théorème de Cauchy}
+Le système $\dot{x} = v \et \dot{v} = \frac{1}{m}F(x, v, t)$ muni des conditions initiales admet une unique solution.
+
 \subsection{Énergie}
 \subsubsection{Puissance}
 \[ \mathcal{P}_{\repr}(\vec{F}(M)) =  \vec{F}(M) \cdot \vec{v}_{\repr}(M) \]
@@ -794,6 +797,55 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
 \[ E_{c \repr} = \frac{1}{2} m \vec{v}_{\repr}^2 \]
 \[ \dd E_{c \repr} = \sum_i \delta W_{\repr}(\vec{F_i}) \]
 \[ \frac{\dd E_{c \repr}}{\dt} = \sum_i \mathcal{P}_{\repr}(\vec{F_i}) \]
+
+\subsubsection{Énergie potentielle}
+Une force est dérivante d'une énergie potentielle si son travail est indépendant du chemin suivie
+\[ \delta W_{\repr} = F \cdot \dd \overrightarrow{OM} = -\dd E_p \]
+\[ \vec{F} = - \vec{\text{grad}} E_p \]
+
+\subsubsection{Énergie mécanique}
+\[ E_{m\repr} = E_{c\repr} + \sum_i E_{p, i \repr} \]
+\[ \dd E_{m\repr} = \sum_k \delta W_{\repr}(\vec{F_k}) \]
+
+\noindent $\vec{F_k}$ sont des forces non-conservatives \\
+
+\noindent Un mouvement est possible uniquement si $E_{m\repr} \geq E_{p \text{ tot}}$ car $E_{c\repr} \geq 0$.
+\begin{itemize}
+    \item Position d'équilibre - les extrema d'énergie potentielle
+    \item Système à l'équilibre - la vitesse et l'accélération sont nulles 
+    \begin{itemize}
+        \item Équilibre stable - quand on écart le système de sa poition d'équilibre, il revient vers sa position d'équilibre - énergie potentielle est minimale et $ \frac{\dd E_p(x_{\text{eq}})}{\dx} > 0 $
+        \item Équilibre instable - quand on écart le système de sa position d'équilibre, il s'en éloigne - énergie potentielle est maximale et $ \frac{\dd E_p(x_{\text{eq}})}{\dx} < 0 $
+    \end{itemize}
+    \item Expressions générales pour un système au voisinage d'une position d'équilibre [Démonstration - développement limité en $x_{\text{eq}}$ de $F$ et $E_p$]
+    \begin{itemize}
+        \item Équilibre stable - tout système conservatif se comporte comme un oscillateur harmonique de $ \omega_0 = \sqrt{\frac{1}{m}\frac{\dd ^2 E_p(x_{\text{eq}})}{\dx^2}} $
+        \item Équilibre instable - le système s'éloigne selon une équation exponentielle de temps caractéristique $\tau$
+    \end{itemize}
+    \item État lié - mouvement possible entre deux points d'arrêts
+    \item État de diffusion - un seul point de reboussement. Si le système approche et rebousse le chemin, il ne revient plus
+    \item Barrière d'énergie potentielle - limite le mouvement entre 2 états possibles
+\end{itemize}
+
+\subsection{Potrait de phase}
+\begin{itemize}
+    \item Plan de phase - $(x, v)$ avec l'état du système représenté par $(x(t), v(t))$
+    \item Trajectoire de phase - l'ensemble des points $P$ pour des conditions initiales données
+    \item Portrait de phase - toutes les trajectoires
+    \item Au dessus de l'axe $Ox$, $v > 0$, sens de parcours vers le droite
+    \item En dessous de l'axe $Ox$, $v < 0$, sens de parcours vers la gauche
+    \item Point singulier - $\dot{x} = 0 \et \dot{v}=0$ - système en équilibre
+\end{itemize}
+
+\subsubsection{Système en évolution libre}
+\begin{itemize}
+    \item $F(x, v)$ ne dépendent pas du temps (pas de force externe du système)
+    \item 2 trajectoires de phase ne se coupent pas
+    \item Évolution cyclique - trajectoire de phase fermée
+    \item Un point singulier est le point de terminaison ou de départ d'une trajectoire. Plusieurs trajectoires peuvent s'y trouver, mais elles ne se coupent pas
+    \item Point de reboussement - $v = 0$ - l'axe $Ox$ est coupée verticalement
+    \item Les points singulier et les points de reboussement se trouvent sur l'axe $Ox$. Tous les points sur l'axe est soit un point singulier ($F = 0, \dot{v}=0$ [la tangente est une forme indeterminée]), soit un point de reboussement ($F \neq 0$ [tangente $ = \infty$])
+\end{itemize}
 
 \subsection{Méthode}
 \begin{enumerate}
@@ -830,6 +882,14 @@ Solution -
 \end{itemize}
 Solution - 
 \[ s(t) = A\cos(\omega_0t)+B\sin(\omega_0t) + s_{eq} = D\cos(\omega_0t + \phi) + s_{eq} \]
+
+\subsubsection{2nd ordre sans terme à $\dot{s}$ - Croissance exponentielle}
+\[ \ddot{s}(t) - \frac{1}{\tau ^ 2} s = \omega_0^2s_{eq} \] 
+\begin{itemize}
+    \item $\tau$ le temps caractéristique - attention au signe - le terme à $s$ est négatif!
+\end{itemize}
+Solution - 
+\[ s(t) = A e^{\frac{-t}{\tau}} + B e^{\frac{t}{\tau}} \]
         
 \subsubsection{2nd ordre - Oscillateur amorti}
 \[ \ddot{s}(t) + \frac{\omega_0}{Q}\dot{s}(t) + \omega_0^2s(t) = f(t) \]

@@ -1430,6 +1430,7 @@ Tout entier naturel admettant exactement deux diviseurs dans $\mathbb{N}$
 \clearpage
 \section{Polynômes}
 \[ \mathbb{K}[X] \]
+\[ P = \sum_{n=0}^{+\infty} a_n X^n \]
 
 \subsection{Lois}
 \begin{itemize}
@@ -1437,6 +1438,25 @@ Tout entier naturel admettant exactement deux diviseurs dans $\mathbb{N}$
     \item $\lambda \cdot A$ - $c_n = \lambda a_n$
     \item $A \times B$ - $ c_n = \sum_{i=0}^n a_i b_{n-i} $
 \end{itemize}
+
+\subsubsection{Propriétés}
+\begin{itemize}
+    \item Les inversibles de $\mathbb{K}[X]$ sont des polynômes constants non nuls
+    \item $\mathbb{K}_n[X]$ est l'ensemble des polynômes de degré au plus $n$
+    \item Toute famille finie de polynômes non nuls et à degrés échelonnés est libre
+\end{itemize}
+
+\subsubsection{Degré}
+Le $n$ du plus grand coefficient non-nul (coefficient dominant). 
+\begin{itemize}
+    \item $ \deg (P + Q) \leq \max(\deg P, \deg Q) , = \si \deg P \neq \deg Q $
+    \item $ \deg (PQ) = \deg P + \deg Q $
+    \item $ \deg (\lambda P) = \deg P \si \lambda \neq 0 $
+    \item $ \deg (P \circ Q) = \deg P \times \deg Q $ si $Q$ n'est pas un polynôme constant
+\end{itemize}
+
+\subsection{Arithmétique dans $\mathbb{K}[X]$}
+\[ B|A \iff \exists Q \in \mathbb{K}[X] : A = BQ \]
 
 \subsection{Formules}
 \subsubsection{Formule de Vandermonde}
