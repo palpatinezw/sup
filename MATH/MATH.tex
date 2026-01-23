@@ -1227,9 +1227,9 @@ $F$ est une primitive de $f$ sur $I$ si $F$ est dérivable sur $I$ et $F' = f$. 
         \hline
         $\sin{x}$ & $-\cos{x}$ & $\mathbb{R}$ \\
         \hline
-        $1+tan^2{x} = \frac{1}{cos^2{x}}$ & $\tan{x}$ & $\bigcup_{k\in\mathbb{Z}} ] -\frac{\pi}{2} + k\pi, \frac{\pi}{2} + k\pi [$ \\
+        $1+\tan^2{x} = \frac{1}{cos^2{x}}$ & $\tan{x}$ & $\bigcup_{k\in\mathbb{Z}} ] -\frac{\pi}{2} + k\pi, \frac{\pi}{2} + k\pi [$ \\
         \hline
-        $tan{x} = - \frac{- \sin{x}}{\cos{x}}$ & $-\ln{|\cos{x}|}$ & $\bigcup_{k\in\mathbb{Z}} ] -\frac{\pi}{2} + k\pi, \frac{\pi}{2} + k\pi [$ \\
+        $\tan{x} = - \frac{- \sin{x}}{\cos{x}}$ & $-\ln{|\cos{x}|}$ & $\bigcup_{k\in\mathbb{Z}} ] -\frac{\pi}{2} + k\pi, \frac{\pi}{2} + k\pi [$ \\
         \hline
         $\ch{x}$ & $\sh{x}$ & $\mathbb{R}$ \\
         \hline
@@ -1249,11 +1249,11 @@ $F$ est une primitive de $f$ sur $I$ si $F$ est dérivable sur $I$ et $F' = f$. 
 \subsubsection{Changement de variable (simple)}
 \[ \int u'(x) (f \circ u)(x) \text{ d}x = \int f(t) \text{ d}t, t = u(x) \]
 
-\subsubsection{Changement de variable (complexe)}
+\subsubsection{Changement de variable (important)}
 \[ \int_{u(a)}^{u(b)} f(x) \text{ d}x = \int_{a}^{b} f(u(t)) u'(t) \text{ d}t \]
 
 \begin{enumerate}
-    \item On pose $x = u(t)$
+    \item On pose $x = u(t)$ avec $u \in \mathcal{C}^0$
     \item On remplace $x$ par $u(t)$ et $\text{d}x$ par $u'(t) \text{ d}t$
     \item On remplace les bornes de l'intégral par les antécédents de $u$
 \end{enumerate}
@@ -1262,8 +1262,8 @@ $F$ est une primitive de $f$ sur $I$ si $F$ est dérivable sur $I$ et $F' = f$. 
 \[ \int u'v = uv - \int uv' \]
 
 \begin{enumerate}
-    \item On pose $u'$ et on obtient $u$ en intégrant
-    \item On pose $v$ et on obtient $v'$
+    \item On pose $u'$ et on obtient $u$ en intégrant, avec $u \in \mathcal{C}^0$
+    \item On pose $v \in \mathcal{C}^0$ et on obtient $v'$
 \end{enumerate}
 
 \subsection{Primitives particulières}
@@ -1276,7 +1276,7 @@ Pour $\frac{1}{f(x)}$
 \begin{itemize}
     \item Pour $\Delta > 0$, on peut écrire $f(x) = a(x-x_1)(x-x_2)$ donc la fonction $ x \mapsto \frac{A}{x-x_1}+\frac{B}{x-x_2} $. On a une primitive $A \ln{|x -  x_1|} + B \ln{|x - x_2|}$
     \item Pour $\Delta = 0$, on peut écrire $f(x) = a(x-x_0)^2$ donc la fonction $ x \mapsto \frac{1}{a(x-x_0)^2}$. On a une primitive $-\frac{1}{a(x-x_0)}$
-    \item Pour $\Delta < 0$, on peut écrire $f(x) = a (\frac{\delta}{2a})^2 [1 + (\frac{2ax}{\delta} + \frac{b}{\delta})^2] $ avec $\delta = \sqrt{-\Delta}$. On peut donc écrire la fonction $x \mapsto \frac{2}{\delta} \frac{\frac{2a}{\delta}}{1 + (\frac{2ax}{\delta} + \frac{b}{\delta})^2} $. On a une primitive $ \frac{2}{\delta} \arctan{\frac{2ax}{\delta} + \frac{b}{\delta}} $
+    \item Pour $\Delta < 0$, on peut écrire $f(x) = a (\frac{\delta}{2a})^2 [1 + (\frac{2ax}{\delta} + \frac{b}{\delta})^2] $ avec $\delta = \sqrt{-\Delta}$. On peut donc écrire la fonction $x \mapsto \frac{2}{\delta} \frac{\frac{2a}{\delta}}{1 + (\frac{2ax}{\delta} + \frac{b}{\delta})^2} $. On a une primitive $ \frac{2}{\delta} \arctan{(\frac{2ax}{\delta} + \frac{b}{\delta})} $
 \end{itemize}
 
 \clearpage
@@ -1284,22 +1284,22 @@ Pour $\frac{1}{f(x)}$
 \subsection{Limites}
 \subsubsection{Point de limite}
 Limite en $a \in \overline{I}\cap\mathbb{R}$:
-\[ [COND], \exists \eta > 0, \forall x \in I, (| x - a | \implies [LIM]) \]
+\[ [COND], \exists \eta > 0, \forall x \in I, (| x - a | \leq \eta \implies [LIM]) \]
 \[ [COND], \exists \eta > 0, \forall x \in \mathbb{R}, (x \in I \cap [a-\eta, a+\eta] \implies [LIM]) \]
 
 \noindent Limite sur un intervalle épointé ($a \in \mathring{I} \et f : I\backslash {a} $)
-\[ [COND], \exists \eta > 0, \forall x \in I\backslash {a}, (| x - a | \implies [LIM]) \]
+\[ [COND], \exists \eta > 0, \forall x \in I\backslash {a}, (| x - a | \leq \eta \implies [LIM]) \]
 
 \noindent Limite en $\pm\infty$:
 \[ [COND], \exists B \in \mathbb{R}, \forall x \in I, (x \geq B \implies [LIM]) \]
 \[ [COND], \exists B \in \mathbb{R}, \forall x \in I, (x \leq B \implies [LIM]) \]
 
 \noindent Limites à gauche ($a^-$) 
-\[ [COND], \exists \eta > 0, \forall x \in I \cap ] - \infty, a [, (| x - a | \implies [LIM]) \]
+\[ [COND], \exists \eta > 0, \forall x \in I \cap ] - \infty, a [, (| x - a | \leq \eta \implies [LIM]) \]
 \[ [COND], \exists \eta > 0, \forall x \in \mathbb{R}, (x \in I \cap [a-\eta, a[ \implies [LIM]) \]
 
 \noindent Limites à droite ($a^+$) 
-\[ [COND], \exists \eta > 0, \forall x \in I \cap ] a, + \infty [, (| x - a | \implies [LIM]) \]
+\[ [COND], \exists \eta > 0, \forall x \in I \cap ] a, + \infty [, (| x - a | \leq \eta \implies [LIM]) \]
 \[ [COND], \exists \eta > 0, \forall x \in \mathbb{R}, (x \in I \cap ]a, a + \eta] \implies [LIM]) \]
 
 \subsubsection{Nature de limite}
@@ -1380,7 +1380,7 @@ Pour $ f: I \backslash {a} \rightarrow \mathbb{R} $, $f$ est prolongeable en $a$
 
 \begin{itemize}
     \item Attention aux valeurs de $f(a) \et f(b)$ pour $f$ strictement croissante ou décroissante
-    \item Si $f$ monotone sur $I$ et $f(I)$ est un intervalle, $f$ est continue sur $I$
+    \item Conséquence - Si $f$ monotone sur $I$ et $f(I)$ est un intervalle, $f$ est continue sur $I$
 \end{itemize}
 
 \clearpage
