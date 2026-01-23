@@ -6,6 +6,10 @@
 
 \input{../headers.tex}
 
+\setlength{\emergencystretch}{3em}
+\hbadness=10000
+\vbadness=10000
+
 \title{MATH}
 \author{KATEKKUTER}
 \date{}
@@ -920,10 +924,15 @@ Il est souvent utile de chercher 2 suites extraites adjacentes pour déterminer 
     \item $ u_n \sim v_n \iff u_n - v_n =o(v_n) $
     \item $ =o \implies = \mathcal{O} $
     \item $ \sim \implies \mathcal{O} $
-    \item Transitivité
+    \item Transitivité (et transitivité mixte) 
+    \begin{itemize}
+        \item $ =o \sim \implies =o$
+        \item $ =o =\mathcal{O} \implies =o$
+        \item $ =\mathcal{O} =o \implies =o $
+    \end{itemize}
     \item Produit
-    \item Multiplication par $\lambda \in \mathbb{R}^*$ [non valable pour $\sim$]
-    \item Stabilité par somme [non valable pour $\sim$]
+    \item Multiplication d'un des termes par $\lambda \in \mathbb{R}^*$ [non valable pour $\sim$]
+    \item Stabilité par somme [non valable pour $\sim$ - surtout pas de somme pour des équivalents]
 \end{itemize}
 
 \subsubsection{Propriétés de $\sim$}
@@ -969,7 +978,7 @@ Petit $(u_n) \longrightarrow 0$
 \begin{itemize}
     \item Si $a=1$, $(u_n)$ est une suite arithmétique
     \item Si $b=0$, $(u_n)$ est une suite géométrique
-    \item Si $a\neq1$ - $ u_n = u_0 a^n + b \frac{1-a^n}{1-a} $ [Démonstration - posons $ l = al + b $ est soustraire de la définition pour obtenir une suite géométrique]
+    \item Si $a\neq1$ - $ u_n = u_0 a^n + b \frac{1-a^n}{1-a} $ [Démonstration - posons $ l = al + b $ et soustraire de la définition pour obtenir une suite géométrique]
 \end{itemize}
 
 \subsubsection{Suites géométriques}
@@ -1002,9 +1011,16 @@ On cherche l'unique formule explicite de la suite étant donné les conditions i
     \item $(u_n)$ est bien définie si $u_0 \in D$ et $f$ est stable par $D$
     \item La signe de $f(x) - x$ donne la monotonie de $(u_n)$
     \item Croissance de $f \implies$ monotonie de $(u_n)$
-    \item Décroissance de $f \implies (u_n)$ oscillante (on peut étudier la limite en considérant les suites extraites $u_{2n}$ et $u_{2n+1}$ avec leurs relation de récurrence $f \circ f$
+    \item Décroissance de $f \implies (u_n)$ oscillante (on peut étudier la limite en considérant les suites extraites $u_{2n}$ et $u_{2n+1}$ avec leurs relation de récurrence $f \circ f$)
     \item Si $(u_n)$ converge vers $l$ et $f$ est continue en $l$, $f(l) = l$
 \end{itemize}
+
+\subsection{Théorème de Cesàro}
+Pour $ u_n \longrightarrow l \in \mathbb{C} , (\beta_n) \in (\mathbb{R}_+^*)^{\mathbb{N}} , \beta_n \longrightarrow +\infty $
+
+\[ \frac{1}{\sum_{k=0}^{n} \beta_k} \sum_{k=0}^{n} \beta_k u_k \longrightarrow l \]
+
+\noindent La moyenne pondérée d'une suite tend vers sa limite. [Démonstration - $\frac{1}{\sum_{k=0}^{n} \beta_k} \sum_{k=0}^{n} \beta_k u_k - l = \frac{\sum_{k=0}^{n} \beta_k (u_k - l)}{\sum_{k=0}^{n} \beta_k}$, puis appliquer l'inégalité triangulaire et découper la somme au numérateur en $ 0 $ à $ n_0 - 1 $ (à valeur finie, donc la terme $\longrightarrow 0$ donc $\leq \frac{\epsilon}{2}$ APCR) et $ n_0 $ à $ n \longrightarrow +\infty $ avec $n_0$ pour $\frac{\epsilon}{2} > 0$ ]
 
 \clearpage
 \section{Espaces Vectoriels}
@@ -1253,7 +1269,7 @@ $F$ est une primitive de $f$ sur $I$ si $F$ est dérivable sur $I$ et $F' = f$. 
 \[ \int_{u(a)}^{u(b)} f(x) \text{ d}x = \int_{a}^{b} f(u(t)) u'(t) \text{ d}t \]
 
 \begin{enumerate}
-    \item On pose $x = u(t)$ avec $u \in \mathcal{C}^0$
+    \item On pose $x = u(t)$ avec $u \in \mathcal{C}^1$
     \item On remplace $x$ par $u(t)$ et $\text{d}x$ par $u'(t) \text{ d}t$
     \item On remplace les bornes de l'intégral par les antécédents de $u$
 \end{enumerate}
@@ -1262,8 +1278,8 @@ $F$ est une primitive de $f$ sur $I$ si $F$ est dérivable sur $I$ et $F' = f$. 
 \[ \int u'v = uv - \int uv' \]
 
 \begin{enumerate}
-    \item On pose $u'$ et on obtient $u$ en intégrant, avec $u \in \mathcal{C}^0$
-    \item On pose $v \in \mathcal{C}^0$ et on obtient $v'$
+    \item On pose $u'$ et on obtient $u$ en intégrant, avec $u \in \mathcal{C}^1$
+    \item On pose $v \in \mathcal{C}^1$ et on obtient $v'$
 \end{enumerate}
 
 \subsection{Primitives particulières}
@@ -1461,6 +1477,6 @@ Le $n$ du plus grand coefficient non-nul (coefficient dominant).
 
 \subsection{Formules}
 \subsubsection{Formule de Vandermonde}
-\[ {m + n \choose p} = \sum_{k=0}^p {m \choose k}{n \choose p-k}  \]
+\[ \binom{m+n}{p} = \sum_{k=0}^p \binom{m}{k} \binom{n}{p-k}  \]
 
 \end{document}
