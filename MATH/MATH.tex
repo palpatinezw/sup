@@ -163,6 +163,7 @@ $ z = \text{Re}(z) + i\text{Im} (z) \iff \overline{z} = \text{Re}(z) - i\text{Im
     \item $z=-\overline{z} \iff z \in i\mathbb{R}$
     \item $ z=e^{i\theta} \iff \overline{z}=e^{-i\theta} $
     \item $ \overline{e^z} = e^{\overline{z}} $
+    \item $ (x-z)(x-\overline{z}) = x^2 - 2 \text{Re}(z) + |z|^2 $
 \end{itemize}
 
 \subsubsection{Module}
@@ -305,7 +306,7 @@ Chapitre 3
     \item $ \binom{n}{0} = \binom{n}{n} = 1 $, $ \binom{n}{1} = n  $ et $ \binom{n}{2} = \frac{n(n-1)}{2} $
     \item Formule de symétrie - $ \binom{n}{k} = \binom{n}{n-k} $ 
     \item Formule de Pascal (triangle de Pascal) - $ \binom{n}{k} + \binom{n}{k+1} = \binom{n+1}{k+1} $
-    \item Formule du capitaine - $ \binom{n}{k} = \frac{n}{n}\binom{n-1}{k-1} $
+    \item Formule du capitaine - $ \binom{n}{k} = \frac{n}{k}\binom{n-1}{k-1} $
 \end{itemize}
 
 \subsection{Formules}
@@ -329,8 +330,14 @@ Chapitre 3
 \[ (a+b)^n = \sum_{k=0}^{n}\binom{n}{k} a^kb^{n-k} \]
 
 \noindent Démonstration - par récurrence simple. 
-\\
-\noindent Ce formule valable pour les matrices qui commutent
+\\ \\
+\noindent Ce formule est valable pour tout objet mathématique dont la loi $\times$ est communtative (e.g. matrices qui commutent, polynômes)
+
+
+\subsubsection{Formule de Vandermonde}
+\[ \binom{m+n}{p} = \sum_{k=0}^p \binom{m}{k} \binom{n}{p-k}  \]
+
+\noindent Démonstration - En développant $(1 + x)^{m+n}$ de deux manières différentes
 
 \subsubsection{Expression polynomiale de $\cos{(nx)}$ et $\sin{(nx)}$}
 \[ \cos{(nx)} = \sum_{p=0}^{\lfloor\frac{n}{2}\rfloor} \binom{n}{2p}(\cos{x})^{n-2p}(\cos^2{x} -1)^p \]
@@ -514,6 +521,7 @@ $f$ est continue en $a$ $\iff \lim_{x\to a}f(x) = f(a)$. L'ensemble des fonction
     \item $ (fg)' = f'g + fg' $
     \item $ (g \circ f)' = (g' \circ f) \times f' $
     \item $ (f^{-1})' = \frac{1}{f' \circ f^{-1}} $ si $ f' $ ne s'annule pas
+    \item $ (fg)^{(n)} = \sum_{k=0}^{n} \binom{n}{k} f^{(k)}g^{(n-k)} $
 \end{itemize}
 
 \noindent $f$ est de classe $\mathcal{C}^n$ sur $I$ si $f$ est $n$ fois dérivable sur $I$ et $f^{(n)}$ est continue sur $I$ (on note $\mathcal{C}^n(I, \mathbb{R})$ l'ensemble des fonctions de classe $n$). $\mathcal{C}^\infty$ de classe si $\forall n \in \mathbb{N}, f$ est de classe $\mathcal{C}^n$
@@ -1446,7 +1454,7 @@ Tout entier naturel admettant exactement deux diviseurs dans $\mathbb{N}$
 
 \clearpage
 \section{Polynômes}
-\[ \mathbb{K}[X] \]
+$ \mathbb{K}[X] $
 \[ P = \sum_{n=0}^{+\infty} a_n X^n \]
 
 \subsection{Lois}
@@ -1458,14 +1466,17 @@ Tout entier naturel admettant exactement deux diviseurs dans $\mathbb{N}$
 
 \subsubsection{Propriétés}
 \begin{itemize}
+    \item $X = (0, 1, 0, \dots)$, $X^k$ a le $1$ au $k$-ième position
     \item Les inversibles de $\mathbb{K}[X]$ sont des polynômes constants non nuls
     \item $\mathbb{K}_n[X]$ est l'ensemble des polynômes de degré au plus $n$
     \item Toute famille finie de polynômes non nuls et à degrés échelonnés est libre
+    \item $\tilde{P}$ est la fonction polynomiale associée à un polynôme
 \end{itemize}
 
 \subsubsection{Degré}
-Le $n$ du plus grand coefficient non-nul (coefficient dominant). 
+Le $n$ du plus grand coefficient non-nul (coefficient dominant).
 \begin{itemize}
+    \item $ \deg(0) = - \infty$
     \item $ \deg (P + Q) \leq \max(\deg P, \deg Q) , = \si \deg P \neq \deg Q $
     \item $ \deg (PQ) = \deg P + \deg Q $
     \item $ \deg (\lambda P) = \deg P \si \lambda \neq 0 $
@@ -1475,8 +1486,44 @@ Le $n$ du plus grand coefficient non-nul (coefficient dominant).
 \subsection{Arithmétique dans $\mathbb{K}[X]$}
 \[ B|A \iff \exists Q \in \mathbb{K}[X] : A = BQ \]
 
-\subsection{Formules}
-\subsubsection{Formule de Vandermonde}
-\[ \binom{m+n}{p} = \sum_{k=0}^p \binom{m}{k} \binom{n}{p-k}  \]
+\subsubsection{Division euclidienne}
+\[ A = BQ + R \]
+
+\noindent Avec $\deg (R) < \deg(B)$.
+
+\begin{itemize}
+    \item Ce couple $(Q, R)$ est unique
+    \item $B | A \iff R = 0$
+\end{itemize}
+
+\subsubsection{Racines}
+\[ \alpha \text{ est une racine de Q} \iff (X-\alpha)|Q \]
+
+\begin{itemize}
+    \item Pour $(\alpha_1,\dots,\alpha_n)$ sont des racines, $\prod_{i=1}^n (X-\alpha_i) | Q$
+    \item Critère d'égalité - Deux polynômes de $\mathbb{K}_n [X]$ qui coïncident en $n+1$ racines alors c'est le polynôme nul
+    \item Polynôme scindé - $P = \lambda (X-\alpha_1)\dots(X-\alpha_n)$ - Tout polynôme non nul de $\mathbb{C}[X]$ est scindé sur $\mathbb{C}$
+\end{itemize}
+
+\noindent On a les caractérisations des multiplicité
+\begin{itemize}
+    \item $(X-\alpha)^m | P \et (X-\alpha)^{m+1} \not | P $
+    \item $ \exists Q \in \mathbb{K}[X], P = (X-\alpha)^m Q \et Q(\alpha) = 0 $
+    \item $ P(\alpha) = P'(\alpha) = \dots = P^{(m-1)}(\alpha) = 0 \et P^{m}(\alpha) \neq 0 $ 
+\end{itemize}
+
+\subsection{Dérivation}
+\[ P' = \sum_{k=1}^{+\infty}ka_kX^{k-1} = \sum_{k=0}^{+\infty}(k+1)a_{k+1}X^k \]
+
+\begin{itemize}
+    \item Par récurrence, $P^{(n)} = \sum_{n}^{\infty} \frac{k!}{(k-n)!} a_k X^{k-n} = \sum_{k=0}^{+\infty} \frac{(k+n)!}{k!}a_{k+n} X^k $
+    \item Les lois ressemble à celles pour les dérivés des fonctions
+\end{itemize}
+
+\subsection{Formule de Taylor}
+\[ P = \sum_{k=0}^{+\infty} \frac{P^{(k)}(\alpha)}{k!}(X-\alpha)^k \]
+
+\subsection{Polynômes irréductibles}
+\[ P \text{ non constant et } (P = AB \implies A \in \mathbb{K}^* \ou B \in \mathbb{K}^*) \]
 
 \end{document}
