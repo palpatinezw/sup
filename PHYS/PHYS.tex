@@ -780,6 +780,18 @@ Dans les référentiels galiléens, un point matérial isolé est animé d'un mo
 \subsubsection{Théorème de Cauchy}
 Le système $\dot{x} = v \et \dot{v} = \frac{1}{m}F(x, v, t)$ muni des conditions initiales admet une unique solution.
 
+\subsubsection{Moment cinétique}
+\[ \overrightarrow{L_{O\repr}}(M) = \overrightarrow{OM} \wedge \vec{p}_{\repr}(M) \]
+\[ L_{\Delta \repr}(M) = \overrightarrow{L_{O\repr}}(M) \cdot \vec{u}_{\Delta} = mr^2\dot{\theta} \]
+
+\begin{itemize}
+    \item Le moment d'inertie $J_{\Delta}(M) = mr^2$
+    \item Pour un solide indéformable, $ L_{\Delta \repr}(S) = J_{\Delta}(S) \dot{\theta} $ avec $ J_{\Delta}(S) = \int r^2 \dd m $
+\end{itemize}
+
+\noindent Pour un solide indéformable
+\[  \]
+
 \subsection{Énergie}
 \subsubsection{Puissance}
 \[ \mathcal{P}_{\repr}(\vec{F}(M)) =  \vec{F}(M) \cdot \vec{v}_{\repr}(M) \]
@@ -833,6 +845,34 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
     \item Barrière d'énergie potentielle - limite le mouvement entre 2 états possibles
 \end{itemize}
 
+\subsection{Champ électrostatique et magnétostatique}
+\subsubsection{Force de Lorentz}
+\[ \vec{F_L} = q[\vec{E} + \vec{v}_{\repr} \wedge \vec{B}] \]
+
+\begin{itemize}
+    \item La partie $q\vec{E}$ est la force électrique
+    \item La partie $q\vec{v}_{\repr} \wedge \vec{B}$ est la forme magnétique
+    \item $\vec{E}$, $\vec{B}$ et $\vec{v}_{\repr}$ dépendent du référentiel, mais $\vec{F_L}$ n'en dépende pas
+    \item La force magnétique est plus importante que la force électrique
+    \item La force de gravité est négligeable devant la force de Lorentz
+\end{itemize}
+
+\subsubsection{Potentiel}
+\[ \vec{E} = \frac{Q}{4\pi\epsilon_0} \frac{\overrightarrow{OM}}{\|\overrightarrow{OM}\|^3} \]
+\[ V = \frac{Q}{4\pi\epsilon_0} \frac{1}{\|\overrightarrow{OM}\|} \]
+
+\begin{itemize}
+    \item $\vec{E}$ dérive d'un potentiel $V$
+    \item $\vec{E} = - \grad V $
+    \item La force électrique dérive d'une énergie potentielle $E_p = qV$
+    \item La force magnétique ne travaille pas
+\end{itemize}
+
+\subsubsection{Champ magnétique uniforme et stationnaire}
+On choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec{v_0}$ est dans le plan $(yOz)$. On aura un mouvement uniforme selon $\vec{e_z}$, et un mouvement circulaire de rayon $R = \frac{v_0 \sin \alpha}{|q|B}$. C'est un mouvement hélicoïde. \\
+
+\noindent Démonstration - on pose $ \underline{u} = x + jy $ et on résout une équation différentiel d'ordre 1 en $ \underline{\dot{u}} $
+
 \subsection{Potrait de phase}
 \begin{itemize}
     \item Plan de phase - $(x, v)$ avec l'état du système représenté par $(x(t), v(t))$
@@ -865,29 +905,6 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
     \end{itemize}
 \end{enumerate}
 
-\subsection{Champ électrostatique et magnétostatique}
-\subsubsection{Force de Lorentz}
-\[ \vec{F_L} = q[\vec{E} + \vec{v}_{\repr} \wedge \vec{B}] \]
-
-\begin{itemize}
-    \item La partie $q\vec{E}$ est la force électrique
-    \item La partie $q\vec{v}_{\repr} \wedge \vec{B}$ est la forme magnétique
-    \item $\vec{E}$, $\vec{B}$ et $\vec{v}_{\repr}$ dépendent du référentiel, mais $\vec{F_L}$ n'en dépende pas
-    \item La force magnétique est plus importante que la force électrique
-    \item La force de gravité est négligeable devant la force de Lorentz
-\end{itemize}
-
-\subsubsection{Potentiel}
-\[ \vec{E} = \frac{Q}{4\pi\epsilon_0} \frac{\overrightarrow{OM}}{\|\overrightarrow{OM}\|^3} \]
-\[ V = \frac{Q}{4\pi\epsilon_0} \frac{1}{\|\overrightarrow{OM}\|} \]
-
-\begin{itemize}
-    \item $\vec{E}$ dérive d'un potentiel $V$
-    \item $\vec{E} = - \grad V $
-    \item La force électrique dérive d'une énergie potentielle $E_p = qV$
-    \item La force magnétique ne travaille pas
-\end{itemize}
-
 \clearpage
 \section{Annexe}
 \subsection{Formules mathématiques}
@@ -895,7 +912,6 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
     \item Pythagore généralisé - $ a^2 = b^2 + c^2 - 2bc\cos{\theta} $
     \item Factorisation de cosinus - $ \cos{p} + \cos{q} = 2 \cos{\frac{p+q}{2}}\cos{\frac{p-q}{2}} $ 
 \end{itemize}
-
 
 \subsection{Équations différentielles - solutions générales}
 

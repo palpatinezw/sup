@@ -22,3 +22,9 @@
 # *.ps
 # *.eps
 # *.pdf
+
+## Other
+__pycache__/*
+
+## TIPE section isolation
+TIPE

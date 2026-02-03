@@ -80,6 +80,12 @@ Démonstration
     \item Montrer que l'unique solution existe (qu'elle est bien solution)
 \end{itemize}
 
+\subsubsection{Unicité en cas d'existence}
+\begin{itemize}
+    \item Soit deux élements qui respecte le cahier des charges
+    \item Montrer l'égalité
+\end{itemize}
+
 \subsection{Ensembles}
 \subsubsection{Loi de Morgan}
 \begin{itemize}
@@ -1500,6 +1506,8 @@ Le $n$ du plus grand coefficient non-nul (coefficient dominant).
 \[ \alpha \text{ est une racine de Q} \iff (X-\alpha)|Q \]
 
 \begin{itemize}
+    \item Théorème d'Alembert-Gauss - tout polynôme non constant possède au moins une racine dans $\mathbb{C}$
+    \item Pour $\mathbb{R}[X]$, $\omega$ est une racine $\iff$ $\overline{\omega}$ est une racine
     \item Pour $(\alpha_1,\dots,\alpha_n)$ sont des racines, $\prod_{i=1}^n (X-\alpha_i) | Q$
     \item Critère d'égalité - Deux polynômes de $\mathbb{K}_n [X]$ qui coïncident en $n+1$ racines alors c'est le polynôme nul
     \item Polynôme scindé - $P = \lambda (X-\alpha_1)\dots(X-\alpha_n)$ - Tout polynôme non nul de $\mathbb{C}[X]$ est scindé sur $\mathbb{C}$
@@ -1523,7 +1531,34 @@ Le $n$ du plus grand coefficient non-nul (coefficient dominant).
 \subsection{Formule de Taylor}
 \[ P = \sum_{k=0}^{+\infty} \frac{P^{(k)}(\alpha)}{k!}(X-\alpha)^k \]
 
+\begin{itemize}
+    \item On somme jusqu'à $n$ pour des polynômes de degré $n$
+\end{itemize}
+
 \subsection{Polynômes irréductibles}
 \[ P \text{ non constant et } (P = AB \implies A \in \mathbb{K}^* \ou B \in \mathbb{K}^*) \]
+
+\begin{itemize}
+    \item Les irréductibles de $\mathbb{C}[X]$ sont les polynômes de degré 1 [Démonstration - Analyse : théroème d'Alembert Gauss - Synthèse : passage au degré]
+    \item Les irréductibles de $\mathbb{R}[X]$ sont les polynômes de degré 1 et de degré 2 sans racines réelles [Démonstration pour degré $>1$ - Analyse : montrer que les racines sont réelles par l'absurde, puis utiliser la divisibilité avec le conjugué de cette racine - Synthèse : passage au degré et par l'absurde]
+    \item Tout polynôme non constant se factorise en produit de polynômes irréductibles
+\end{itemize}
+
+\subsection{Rélations coefficients racines}
+\begin{itemize}
+    \item Somme des racines $ = -\frac{a_{d-1}}{a_d} $
+    \item Produit des racines $ = (-1)^d \frac{a_0}{a_d} $
+\end{itemize}
+
+\subsubsection{Cas particuliers}
+\begin{itemize}
+    \item Degré 2 - $x_1 + x_2 = -\frac{b}{a} \et x_1x_2 = \frac{c}{a}$
+    \item Degré 3 - $X^3 - \sigma_1 X^2 + \sigma_2 X - \sigma_3$
+    \begin{itemize}
+        \item $\sigma_1 = x_1 + x_2 + x_3$
+        \item $\sigma_2 = x_1x_2 + x_1x_3 + x_2x_3$
+        \item $\sigma_3 = x_1 x_2 x_3$
+    \end{itemize}
+\end{itemize}
 
 \end{document}
