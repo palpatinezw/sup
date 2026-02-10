@@ -738,6 +738,15 @@ Avec $\dot{\theta}$ la vitesse angulaire
 \noindent Pour un centre de gravité $G$ du système $S$ défini: $ (\sum_i) \overrightarrow{OG} = \sum_i m_i \overrightarrow{OM_i} \iff \sum_i m_i \overrightarrow{GM_i} = 0 $
 \[ \vec{p}_{\repr}(S) = \sum_i \vec{p}_{\repr}(M_i) = \vec{p}_{\repr}(G) = m_tot \vec{v}_{\repr}(G) \]
 
+\subsubsection{Moment cinétique}
+\[ \overrightarrow{L_{O\repr}}(M) = \overrightarrow{OM} \wedge \vec{p}_{\repr}(M) \]
+\[ L_{\Delta \repr}(M) = \overrightarrow{L_{O\repr}}(M) \cdot \vec{u}_{\Delta} = mr^2\dot{\theta} \]
+
+\begin{itemize}
+    \item Le moment d'inertie $J_{\Delta}(M) = mr^2$
+    \item Pour un solide indéformable, $ L_{\Delta \repr}(S) = J_{\Delta}(S) \dot{\theta} $ avec $ J_{\Delta}(S) = \int r^2 \dd m $
+\end{itemize}
+
 \subsection{Forces}
 Grandeur vectorielle décrivant l'interaction capable de modifier et/ou de produire un mouvement ou une déformation du système
 
@@ -773,6 +782,21 @@ Dans les référentiels galiléens, un point matérial isolé est animé d'un mo
 \[ \frac{\dd \vec{p}_{\repr}(M)}{\dt}_{\repr} = \sum_i \vec{F_i} \]
 \[ m \vec{a}_{\repr}(M) = \sum_i \vec{F_i} \]
 
+\begin{itemize}
+    \item Pour un système, uniquement les forces extérieures interviennent car la somme des forces intérieures s'annule (par principe des actions réciproques)
+    \item Pour un système de centre d'inertie $G$ on a - $ m \vec{a}_{\repr}(G) = \sum_{\text{ext}} \vec{F} $
+\end{itemize}
+
+\noindent En passant aux moments, on a le théorème du moment cinétique
+
+\[ \frac{\dd \overrightarrow{L_{O\repr}}(M)}{\dt} = \sum_{i} \overrightarrow{M_O}(\vec{F_i}(M)) \]
+\[ J_{\Delta}(M)\ddot{\theta} = \sum_{i} \overrightarrow{M_{\Delta}}(\vec{F_i}(M)) \]
+
+\begin{itemize}
+    \item Pour un système, uniquement les forces extérieures interviennent car la somme des moments des forces intérieures s'annule (par principe des actions réciproques)
+    \item Pour un système indéformable - $ J_{\Delta}(\mathcal{S}) \ddot{\theta} = \sum_{\text{ext}}M_{\Delta}(\vec{F}) $
+\end{itemize}
+
 \subsubsection{3ème loi de Newton - principe de l'action réciproque}
 \[\vec{F}_{B \rightarrow A} = -\vec{F}_{A \rightarrow B}\]
 \noindent Avec $\vec{F}_{B \rightarrow A} \et \vec{F}_{A \rightarrow B}$ selon la droite d'action $AB$
@@ -780,17 +804,22 @@ Dans les référentiels galiléens, un point matérial isolé est animé d'un mo
 \subsubsection{Théorème de Cauchy}
 Le système $\dot{x} = v \et \dot{v} = \frac{1}{m}F(x, v, t)$ muni des conditions initiales admet une unique solution.
 
-\subsubsection{Moment cinétique}
-\[ \overrightarrow{L_{O\repr}}(M) = \overrightarrow{OM} \wedge \vec{p}_{\repr}(M) \]
-\[ L_{\Delta \repr}(M) = \overrightarrow{L_{O\repr}}(M) \cdot \vec{u}_{\Delta} = mr^2\dot{\theta} \]
+\subsubsection{Moment d'une force}
+\[ \vec{M}_O = \overrightarrow{OM} \wedge \vec{F} \]
+\[ M_\Delta = \vec{M}_O \cdot \vec{u_\Delta} \]
 
 \begin{itemize}
-    \item Le moment d'inertie $J_{\Delta}(M) = mr^2$
-    \item Pour un solide indéformable, $ L_{\Delta \repr}(S) = J_{\Delta}(S) \dot{\theta} $ avec $ J_{\Delta}(S) = \int r^2 \dd m $
+    \item Le moment d'une force $\vec{F}$ par rapport à l'axe $ \Delta $ est nulle - $\vec{F}$ coupe l'axe $\Delta$ ou $\vec{F}$ est parallèle à l'axe $\Delta$
+    \item Bras de levier $d$ la distance la plus courte entre l'axe $\Delta$ et la droite d'action de la force - $M_\Delta = \pm d \| \vec{F} \| $
 \end{itemize}
 
-\noindent Pour un solide indéformable
-\[  \]
+\subsubsection{Couple}
+La somme des $\vec{M}_O \neq \vec{0}$ mais la somme des $\vec{F} = \vec{0}$ - dans ce cas $\vec{\Gamma} = \vec{M}_O$ est indépendant de $O$
+
+\begin{itemize}
+    \item Pour un couple de 2 forces $\vec{F}$ et $-\vec{F}$ agissant sur $M_1$ et $M_2$, $\vec{\Gamma} = \overrightarrow{M_1M_2} \wedge \vec{F}$
+    \item Torsion - $\vec{\Gamma} = -C\theta \vec{u}_\Delta$ avec $C$ la constante de torsion
+\end{itemize}
 
 \subsection{Énergie}
 \subsubsection{Puissance}
@@ -799,6 +828,14 @@ Le système $\dot{x} = v \et \dot{v} = \frac{1}{m}F(x, v, t)$ muni des condition
     \item $ \mathcal{P}_{\repr}(\vec{F}(M)) > 0 $ - force motrice
     \item $ \mathcal{P}_{\repr}(\vec{F}(M)) < 0 $ - force resistante 
     \item $ \mathcal{P}_{\repr}(\vec{F}(M)) = 0 $ - changement de direction sans changer la norme de la vitesse
+\end{itemize}
+
+\noindent En rotation,
+\[ \mathcal{P}_{\repr}(\vec{F}(M)) = M_{\Delta}(\vec{F}(M)) \cdot \dot{\theta} \]
+
+\begin{itemize}
+    \item Pour un système déformable, le travail des forces intérieures n'est pas forcément non-nulle
+    \item Pour un système indéformable, la puissance des forces intérieures est nulle
 \end{itemize}
 
 \subsubsection{Travail}
@@ -815,6 +852,9 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
 \[ E_{c \repr} = \frac{1}{2} m \vec{v}_{\repr}^2 \]
 \[ \dd E_{c \repr} = \sum_i \delta W_{\repr}(\vec{F_i}) \]
 \[ \frac{\dd E_{c \repr}}{\dt} = \sum_i \mathcal{P}_{\repr}(\vec{F_i}) \]
+
+\noindent Pour un système $\mathcal{S}$ indéformable en rotation autour d'un axe $\Delta$
+\[ E_{c \repr} = \frac{1}{2} J_{\Delta}(\mathcal{S}) \dot{\theta}^2 \]
 
 \subsubsection{Énergie potentielle}
 Une force est dérivante d'une énergie potentielle si son travail est indépendant du chemin suivie

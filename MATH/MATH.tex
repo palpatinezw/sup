@@ -328,7 +328,7 @@ Chapitre 3
 \noindent Démonstration - suite géométrique $ \sum_{k=0}^{n} (e^{ix})^k = \sum_{k=0}^n\cos{(kx)} + i\sum_{k=0}^n\sin{(kx)} $. Il faut appliquer la factorisation par l'arc moitié. Attention au cas où $ e^{ix} = 1 $. 
 
 \subsubsection{Développement du carré}
-\[ (\sum_{i=1}^n x_i)^2 = \sum_{i=1}^n x_i^2 + 2\sum_{(i,j)\in\llbracket n, p \rrbracket, i<j}x_ix_j \]
+\[ (\sum_{i=1}^n x_i)^2 = \sum_{i=1}^n x_i^2 + 2\sum_{\substack{(i,j)\in\llbracket n , p \rrbracket \\ i<j} }x_ix_j \]
 
 \noindent Concrètement - $ (a+b+c)^2 = a^2 + b^2 + c^2 + 2ab + 2ac + 2bc $
 
@@ -513,26 +513,8 @@ Pour identifier les asymptotes obliques, on remarque -
     \item Conditions suffisantes - $\lim_{x\to \pm \infty} \frac{f(x)}{x} = a$ et $\lim_{x\to \pm \infty} (f(x)-ax) = b$
 \end{itemize}
 
-\subsubsection{Continuité}
-$f$ est continue en $a$ $\iff \lim_{x\to a}f(x) = f(a)$. L'ensemble des fonctions continues sur $I$ à valeurs dans $\mathbb{R}$ est noté $\mathcal{C}^0(I, \mathbb{R})$
-
-\begin{itemize}
-    \item Théorème des valeurs intermédiaires - Soit $(a, b) \in I^2$, $ a \leq b \implies \exists c \in [a, b]: \min(f(a), f(b)) \leq c \leq \max(f(a), f(b)) $
-\end{itemize}
-
-\subsubsection{Dérivée}
-\[ f' : x \mapsto \lim_{x \to a} \frac{f(x)-f(a)}{x-a}  \]
-
-\begin{itemize}
-    \item $ (fg)' = f'g + fg' $
-    \item $ (g \circ f)' = (g' \circ f) \times f' $
-    \item $ (f^{-1})' = \frac{1}{f' \circ f^{-1}} $ si $ f' $ ne s'annule pas
-    \item $ (fg)^{(n)} = \sum_{k=0}^{n} \binom{n}{k} f^{(k)}g^{(n-k)} $
-\end{itemize}
-
-\noindent $f$ est de classe $\mathcal{C}^n$ sur $I$ si $f$ est $n$ fois dérivable sur $I$ et $f^{(n)}$ est continue sur $I$ (on note $\mathcal{C}^n(I, \mathbb{R})$ l'ensemble des fonctions de classe $n$). $\mathcal{C}^\infty$ de classe si $\forall n \in \mathbb{N}, f$ est de classe $\mathcal{C}^n$
-
-\noindent Vérifier toujours la domaine de dérivabilité avant de dériver. On s'intéresse au signe de $f'$ ce qui donne la croissance ou décroissance de $f$. Pour étudier le signe de $f'$ on a parfois besoin d'étudier $f''$ et/ou son image. 
+\subsubsection{Remarque}
+Vérifier toujours la domaine de dérivabilité avant de dériver. On s'intéresse au signe de $f'$ ce qui donne la croissance ou décroissance de $f$. Pour étudier le signe de $f'$ on a parfois besoin d'étudier $f''$ et/ou son image. 
 
 \clearpage
 \section{Fonctions usuelles}
@@ -1027,6 +1009,7 @@ On cherche l'unique formule explicite de la suite étant donné les conditions i
     \item Croissance de $f \implies$ monotonie de $(u_n)$
     \item Décroissance de $f \implies (u_n)$ oscillante (on peut étudier la limite en considérant les suites extraites $u_{2n}$ et $u_{2n+1}$ avec leurs relation de récurrence $f \circ f$)
     \item Si $(u_n)$ converge vers $l$ et $f$ est continue en $l$, $f(l) = l$
+    \item Si $f$ est contractante et $f$ admet un point fixe, $(u_n)$ converge vers le point fixe
 \end{itemize}
 
 \subsection{Théorème de Cesàro}
@@ -1099,7 +1082,7 @@ Sous-espace engendré par une famille finie de vecteurs ou une partie
 \begin{itemize}
     \item $\text{Vect}(A)$ est un ssev de E [Démonstration - $\text{Vect}(A) \in E, 0_E \in \text{Vect}(A) $, et stabilité par combinaison linéaire] - on peut donc montrer que $F$ est un ssev de $E$ en écrivant $F$ sous forme d'un Vect
     \item $\text{Vect}(A)$ est le plus petit ssev de E qui contient A (Pour tout F un ssev de E, $ \text{Vect}(A) \subset F $) [Démonstration - $x \in \text{Vect}(A)$ est une combinaison linéaire des élements de $A$ donc de $F$ et $F$ est stable par combinaison linéaire]
-    \item $\text{Vect}(A)$ est l'intersection de tous les ssevs de E qui contiennent A [Démonstraiton - l'intersection est aussi un ssev contenant $A$ puis double inclusion]
+    \item $\text{Vect}(A)$ est l'intersection de tous les ssevs de E qui contiennent A [Démonstration - l'intersection est aussi un ssev contenant $A$ puis double inclusion]
     \item Vect d'un vecteur - $ \text{Vect}(0_E) = {0_E} $ et $ \text{Vect}(x \neq 0_E) = \mathbb{K}x $ droite vectorielle
     \item Vect de 2 vecteurs - $ \text{Vect}(x, y) = \text{Vect}(x) = \text{Vect}(y) $ si $x$ et $y$ sont colinéaires - sinon on a un plan vectoriel
 \end{itemize}
@@ -1399,6 +1382,7 @@ Pour $ f: I \backslash {a} \rightarrow \mathbb{R} $, $f$ est prolongeable en $a$
 
 \begin{itemize}
     \item Pour $f$ continue sur un intervalle non-trivial et à valeurs réelles 
+    \item Soit $(a, b) \in I^2$, $ a \leq b \implies \exists c \in [a, b]: \min(f(a), f(b)) \leq c \leq \max(f(a), f(b)) $
     \item Si $f(a)f(b) \leq 0$, $f$ s'annule au moins une fois entre $a$ et $b$
     \item Généralisation - avec limites $< 0 \ou > 0$
     \item Pour des fonctions strictement monotones, on a l'injectivité donc la bijectivité entre $f(a)$ et $f(b)$
@@ -1559,6 +1543,78 @@ Le $n$ du plus grand coefficient non-nul (coefficient dominant).
         \item $\sigma_2 = x_1x_2 + x_1x_3 + x_2x_3$
         \item $\sigma_3 = x_1 x_2 x_3$
     \end{itemize}
+\end{itemize}
+
+\subsection{Décomposition en élements simples}
+\subsubsection{Définitions}
+\begin{itemize}
+    \item Fonction rationelle - $x \mapsto \frac{P(x)}{Q(x)}$
+    \item Pôle - zéros du dénominateur $Q$
+    \item Fonction rationelle à pôles simples - $Q$ est scindé à racines simples
+    \item Partie entière $E$ - $ \frac{P(x)}{Q(x)} = E(x) + \frac{R(x)}{Q(x)} $ avec $\deg R < \deg Q$
+\end{itemize}
+
+\[ \frac{P(x)}{\prod_{i=1}^n (x- \alpha_i) } = E(x) + \sum_{k=1}^{n} \frac{\lambda_k}{x-\alpha_k} \]
+\[ \lambda_k = \frac{P(\alpha_k)}{\prod_{\substack{i=1 \\ i \neq k}}^{n}(\alpha_k - \alpha_i)} = \frac{P(\alpha_k)}{Q'(\alpha_k)} \]
+
+\clearpage
+
+\section{Dérivation}
+
+\[ f'(a) = \lim_{\substack{x \rightarrow a \\ x \neq a}} = \frac{f(x) - f(a)}{x-a} = \lim_{\substack{h \rightarrow 0 \\ h \neq 0}} = \frac{f(a+h) - f(a)}{h} \]
+\subsection{Propriétés}
+\begin{itemize}
+    \item $f$ est dérivable en $a \iff \forall x \in I, f(x) = f(a) + l(x-a) + (x-a)\epsilon(x) $ avec $lim_{x\rightarrow a} \epsilon(x) = 0$. Dans ce cas, $l = f'(a)$
+    \item La courbe représentative de $f$ au point d'abscisse $a$ - $y = f(a) + f'(a)(x-a)$
+    \item Pour $a \in \mathring{I}$, $f$ admet un extremum local et $f$ dérivable en $a \implies f'(a) = 0$ 
+    \item $f$ est dérivable $\iff$ $f$ est dérivable à gauche et à droite (limites à gauche et à droite)
+\end{itemize}
+
+\subsubsection{Opérations}
+\begin{itemize}
+    \item $ (fg)' = f'g + fg' $
+    \item $ (g \circ f)' = (g' \circ f) \times f' $
+    \item $ (\frac{f}{g})' = \frac{f'g - fg'}{g^2} $
+    \item $ (f^{-1})' = \frac{1}{f' \circ f^{-1}} $ si $ f' $ ne s'annule pas
+    \item $ (fg)^{(n)} = \sum_{k=0}^{n} \binom{n}{k} f^{(k)}g^{(n-k)} $
+\end{itemize}
+
+\subsubsection{Classe}
+
+\begin{itemize}
+    \item $f$ est de classe $\mathcal{C}^n$ sur $I$ si $f$ est $n$ fois dérivable sur $I$ et $f^{(n)}$ est continue sur $I$
+    \item $\mathcal{C}^\infty$ de classe $\infty$ si $\forall n \in \mathbb{N}, f$ est de classe $\mathcal{C}^n$
+    \item $\forall p \in \mathbb{N}, \mathcal{C}^p$ est stable par C.L., produit, passage à l'inverse (si elle ne s'annule pas), composition et passage à la bijection réciproque (si $f'$ ne s'annule pas)
+\end{itemize}  
+
+\subsection{Théroème de Rolle}
+Pour $f$ continue et à valeurs rélles sur $[a, b]$, dérivable sur $]a, b[$, et $f(a) = f(b)$, $\exists c \in ]a, b[ | f'(c) = 0$
+
+\begin{itemize}
+    \item Démonstration - théorème des bornes atteintes
+    \item Généralisation (théorème des accroissements finis) pour $f(a) \neq f(b)$ - $\exists c \in ]a, b[ | f(b) - f(a) = (b-a)f'(c)$
+\end{itemize}
+
+\subsection{Fonctions lipschitziennes}
+$f$ est $M-lipschitzienne$ - 
+\[ \forall (x, y) \in I^2, |f(x) - f(y)| \leq M |x-y| \]
+
+\begin{itemize}
+    \item $f$ contractante - $M \in [0, 1[$
+    \item Si $f'$ est borné par $M$, $f$ est $M$-lipschitzienne
+\end{itemize}
+
+\subsection{Convexité}
+\[ \forall (a, b) \in I^2, \forall \lambda \in [0, 1], f(\lambda a + (1-\lambda) b) \leq \lambda f(a) + (1-\lambda)f(b) \]
+
+\begin{itemize}
+    \item La sécante $AB$ a pour équation $y = \frac{f(b) - f(a)}{b-a}(x-a) + f(a)$
+    \item $f$ est convexe $\implies$ le graphe de $f$ entre $A \et B$ est en dessous de la sécante $AB$
+    \item $f$ est convexe $\iff$ f est au-dessus de toutes ses tangentes
+    \item Inégalité des 3 pentes - $\forall (a, t, b) \in I^3, a < t < b \implies \frac{f(t)-f(a)}{t-a} \leq \frac{f(b)-f(a)}{b-a} \leq \frac{f(t)-f(b)}{t-b}$
+    \item $f$ est convexe sur I $\iff f'$ est croissante sur $I$ pour une fonction dérivable en $I$ (ou continue en $I$ et dérivable en $\mathring{I}$) [Démonstration : Sens direct - en montrant l'inégalité des 3 pentes et prenant la limite; Sens indirect - Théorème des accroissements finies]
+    \item $f$ est convexe $\iff$ $f'' \geq 0$ (pour une fonction 2 fois dérivable)
+    \item $f$ est continue et dérivable à gauche et à droite (pas forcément dérivable) en tout point de $\mathring{I}$
 \end{itemize}
 
 \end{document}
