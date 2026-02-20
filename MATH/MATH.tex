@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{stmaryrd}
 
@@ -1593,6 +1594,7 @@ Pour $f$ continue et à valeurs rélles sur $[a, b]$, dérivable sur $]a, b[$, e
 \begin{itemize}
     \item Démonstration - théorème des bornes atteintes
     \item Généralisation (théorème des accroissements finis) pour $f(a) \neq f(b)$ - $\exists c \in ]a, b[ | f(b) - f(a) = (b-a)f'(c)$
+    \item Application - il est souvent utile de poser une fonction auxiliaire auxquelles on applique le théorème de Rolle
 \end{itemize}
 
 \subsection{Fonctions lipschitziennes}
@@ -1615,6 +1617,54 @@ $f$ est $M-lipschitzienne$ -
     \item $f$ est convexe sur I $\iff f'$ est croissante sur $I$ pour une fonction dérivable en $I$ (ou continue en $I$ et dérivable en $\mathring{I}$) [Démonstration : Sens direct - en montrant l'inégalité des 3 pentes et prenant la limite; Sens indirect - Théorème des accroissements finies]
     \item $f$ est convexe $\iff$ $f'' \geq 0$ (pour une fonction 2 fois dérivable)
     \item $f$ est continue et dérivable à gauche et à droite (pas forcément dérivable) en tout point de $\mathring{I}$
+\end{itemize}
+
+\clearpage
+\section{Dénombrement}
+
+\subsection{Cardinal}
+\begin{itemize}
+    \item Ensemble fini - il existe $n \in \mathbb{N}*$ tel qu'il existe une bijection entre $E$ et $ \llbracket 1, n \rrbracket $ - $|E| = n$
+    \item $E$ et $F$ en bijection ont le même Cardinal
+    \item Pour $E$ fini - $A \subsetneq E \implies |A| < |E|$ [Démonstration - récurrence sur tout ensemble de cardinalité $n$]
+    \item $(|A| = |E| \et A \subset E) \implies A = E$
+    \item Formule de Poincaré - $|E \cup F| = |E| + |F| - |E \cap F|$
+    \item $|E \backslash F| = |E| - |E \cap F|$
+    \item $|E \times F| = |E||F|$
+    \item $|F^E| = |F|^{|E|}$
+    \item $|\mathcal{P}(E)| = 2^{|E|}$ [Démonstration - bijection entre $\mathcal{P}(E)$ et $\{0, 1\}^E$ - $A \mapsto \mathbb{1}_A$]
+\end{itemize}
+
+\subsubsection{Applications}
+Pour $f:E \rightarrow F$
+\begin{itemize}
+    \item $f(E)$ est fini
+    \item $|f(E)| \leq |E| \et |f(E)| = |E| \iff f$ injective
+    \item Pour $f$ bijective, $|E| = |F|$
+    \item Pour $f$ injective, $|E| \leq |F|$ - il y en a $\frac{|F|!}{(|F|-|E|)!}$ possibilités [Démonstration - revient à choisir un $|E|$-arrangement des élements de $F$ à associer aux élements de $E$]
+    \item Pour $f$ surjective $|E| \geq |F|$ - il y en a $|E|!$ possibilités
+    \item Si $|E|=|F|$, alors surjectivité ou injectivité implique l'autre (donc bijectivité)
+\end{itemize}
+
+\subsection{Vocabulaire combinatoire}
+\begin{itemize}
+    \item $p$-liste / $p$-uplet - $E^p$ - liste de $p$ éléments de $E$ (répétitions autorisées, ordre compté) - nombre de $p$-listes $= n^p$
+    \item $p$-arrangement - $p$-liste deux à deux distincts - nombre de $p$-arrangements $=\frac{n!}{(n-p)!}$
+    \item Permutation - une bijection de $E$ dans $E$ - nombre de permutations $=|E|!$
+    \item $p$-combinaison / $p$-partie - partie de $E$ à $p$ éléments distinctes (ordre pas compté) - nombre de $p$-combinaisons $=\binom{|E|}{p}$ [Démonstration - chaque $p$-combinaison correspond à $p!$ $p$-arrangements] 
+\end{itemize}
+
+\clearpage
+\section{Dimension finie}
+
+\subsection{Définition}
+\begin{itemize}
+    \item Dimension finie - $E$ possède une famille génératrice
+    \item Toute famille libre d'éléments de $E$ peut être complétée en une base de $E$ à partir des éléments de $G$ ($G$ est une famille génératrice) [Démonstration - considérons une famille libre de cardinalité maximale]
+    \item TBE Théorème de la base extraite - on peut extraire une base de tout famille génératrice finie d'un K-ev 
+    \item TBI Théorème de la base incomplète - Toute famille libre de vecteurs de $E$ peut être complétée en une base
+    \item Toutes les bases de $E$ ont le même cardinal. 
+    \item Toute famille de $n+1$ vecteurs de $E$ est liée
 \end{itemize}
 
 \end{document}
