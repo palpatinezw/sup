@@ -548,7 +548,7 @@ On note $ \ln $ la bijection réciproque de $ \exp $.
     \item $ \lim_{x\to +\infty} \frac{\ln{x}}{x} = + \infty $
     \item $ \lim_{x\to 0^+} x\ln{x} = 0 $
 \end{itemize}
-$e^x$ plus puissant que $x$, $x$ plus puissant que $\ln x$
+$e^x$ plus puissant que $x$, $x$ plus puissant que $\ln x$. Les limites restent les mêmes pour $e^{\alpha x}$, $(\ln x)^\beta$ et $x^\gamma$ pour $\alpha , \beta , \gamma \in \mathbb{R}^+_*$
 
 \subsection{Fonctions puissances}
 \begin{align*}
@@ -1151,10 +1151,10 @@ Uniquement dans cette section, $[x_i] = (x_1,...,x_n)$. $u \in \mathcal{L}(E, F)
     \item $u(\text{Vect}([x_i])) = \text{Vect}([u(x_i)])$
     \item Pour $[x_i]$ une famille génératrice - $ [u(x_i)] $ est génératrice de $\text{Im } u$
     \begin{itemize}
-        \item En particulier, pour $u$ surjective, $ [u(x_i)] $ est génératrice de $\text{Im } u = F$
+        \item En particulier, $u$ surjective $ \iff [u(x_i)] $ est génératrice de $\text{Im } u = F$
     \end{itemize}
-    \item Pour $u$ injective, $ [u(x_i)] $ est libre
-    \item Pour $u$ bijective, $ [u(x_i)] $ est une base de $F$
+    \item $u$ injective $ \iff [u(x_i)] $ est libre
+    \item $u$ bijective $ \iff [u(x_i)] $ est une base de $F$
     \item Si $ [x_i] $ liée, alors $ [u(x_i)] $ liée
 \end{itemize}
 
@@ -1663,8 +1663,42 @@ Pour $f:E \rightarrow F$
     \item Toute famille libre d'éléments de $E$ peut être complétée en une base de $E$ à partir des éléments de $G$ ($G$ est une famille génératrice) [Démonstration - considérons une famille libre de cardinalité maximale]
     \item TBE Théorème de la base extraite - on peut extraire une base de tout famille génératrice finie d'un K-ev 
     \item TBI Théorème de la base incomplète - Toute famille libre de vecteurs de $E$ peut être complétée en une base
-    \item Toutes les bases de $E$ ont le même cardinal. 
+    \item Toutes les bases de $E$ ont le même cardinal = $\dim E$. 
+    \begin{itemize}
+        \item $ \iff B $ est une famille libre maximale
+        \item $ \iff B $ est une famille génératrice minimale
+    \end{itemize}
     \item Toute famille de $n+1$ vecteurs de $E$ est liée
+\end{itemize}
+
+\subsection{Isomorphismes}
+$u$ est une AL de $E$ dans $F$
+\begin{itemize}
+    \item $E$ et $F$ sont isomorphe $\iff \dim E = \dim F$ 
+    \item Pour $\dim E = \dim F$, on a la bijectivité de $u$ dès qu'on a l'une des conditions suffisantes - 
+    \begin{itemize}
+        \item $u$ injective
+        \item $u$ surjective
+        \item $u$ inversible à droite
+        \item $u$ inversible à gauche
+    \end{itemize}
+    \item $u$ inj $\implies \dim E \leq \dim F$ 
+    \item $u$ surj $\implies \dim E \geq \dim F$
+    \item $u$ inj $\implies \dim E = \dim F$
+\end{itemize}
+
+\subsection{Sous espaces vectoriels}
+\begin{itemize}
+    \item $\dim F = \dim E$ avec $\dim F = \dim E \iff F = E$ pour $F$ un ssev de $E$
+    \item Tout ssev de $E$ fini admet un supplémentaires
+    \item Pour $E = F \bigoplus G$, $\dim E = \dim F + \dim G$
+    \item Formule de Grassmann - $\dim (F+G) = \dim F + \dim F - \dim (F \cap G)$ [Démonstration - Considérons $H$ un supplémentaire de $F \cap G$ dans $F$ et montrer $F+G = H \bigoplus G$]
+\end{itemize}
+
+\subsubsection{Dimensions misc}
+\begin{itemize}
+    \item $\dim (E \times F) = \dim E + \dim F$ [Démonstration - construire une base de $E\times F$ à partir des bases de $E$ et $F$]
+    \item $\dim \mathcal{L}(E, F) = \dim E \times \dim F$ [Démonstration - considérons $\phi : u \mapsto (u(e_1), \dots , u(e_n))$]
 \end{itemize}
 
 \end{document}

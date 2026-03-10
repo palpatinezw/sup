@@ -793,8 +793,19 @@ Grandeur vectorielle décrivant l'interaction capable de modifier et/ou de produ
         \begin{itemize}
             \item Si $e=0$, trajectoire circulaire
             \item Si $0<e<1$, trajectoire elliptique en état liée
+            \begin{itemize}
+                \item Périgée - le point à la plus courte distance avec $O$ - $r_P = \frac{p}{1+e}$
+                \item Apogée - le point à la plus grande distance avec $O$ - $r_A = \frac{p}{1-e}$
+                \item Demi grand-axe $a = \frac{r_A + r_P}{2} = \frac{p}{1-e^2}$
+                \item Constante des aires $C = r_A v_A = r_P v_P$ (vitesses radiales nulles)
+                \item $E_{m\repr} - \frac{K}{2a}$ [Démonstration - soustraire $r_A^2 E_{m\repr}$ et $r_P^2 E_{m\repr}$]
+            \end{itemize}
             \item Si $e=1$, séparatrice du mouvement, trajectoire parabolique
             \item Si $e>1$, trajectoire hyperbolique en état libre
+            \begin{itemize}
+                \item Asymptote à $\theta_l = \arccos (-\frac{1}{e})$ et $2\pi - \theta_l$
+            \end{itemize}
+        \item 3e loi de Képler - $\frac{T^2}{r^3} = -\frac{4 \pi^2 m}{K}$
         \end{itemize}
     \end{itemize}
 \end{itemize}
@@ -970,6 +981,47 @@ On choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec
 
 \noindent Démonstration - on pose $ \underline{u} = x + jy $ et on résout une équation différentiel d'ordre 1 en $ \underline{\dot{u}} $
 
+\subsection{Fluides}
+\subsubsection{Définitions}
+\begin{itemize}
+    \item Particule de fluide - un volume infinitésimal à l'échelle mésoscopique
+    \item Échelle mésoscopique - un volume contenant un grand nombre de molécules / atomes microscopiques, mais qui est infinitésimal devant l'échelle macroscopique
+    \item L'équilibre thermodynamique local - on peut définir $P$, $T$, $\rho$ uniforme à l'échelle mésoscopique
+    \item Fluide incompressible - coefficient de compression isotherme nul - volume indépendant de pression
+    \item Fluide homogène - masse volumique constant dans le fluide
+\end{itemize}
+
+\subsubsection{Force volumique}
+\[ \vec{f_p} = - \grad P \]
+\begin{itemize}
+    \item C'est une force VOLUMIQUE (force par volume mésoscopique)
+    \item En statique, pour une fluide au repos dans un référentiel galiléen, $\rho (M) \vec{g} - \grad P = \vec{0}$
+\end{itemize}
+
+\subsubsection{Fluide incompressible et homogène}
+Avec les hypothèse d'un fluide
+\begin{enumerate}
+    \item À l'équilibre thermodynamique local
+    \item Au repos dans le référentiel $R$ galiléen
+    \item Dans un champ de pesanteur $\vec{g}$ uniforme selon $-\vec{e_z}$
+    \item Incompressible
+    \item Homogène
+\end{enumerate}
+
+\[ P(z) = P_0 - \rho g z \]
+
+\subsubsection{Gaz parfait}
+Avec les hypothèse d'un fluide
+\begin{enumerate}
+    \item À l'équilibre thermodynamique local
+    \item Au repos dans le référentiel $R$ galiléen
+    \item Dans un champ de pesanteur $\vec{g}$ uniforme selon $-\vec{e_z}$
+    \item Assimilable à un gaz parfait
+\end{enumerate}
+
+\[ P(z) = P_0 e^{-\frac{M_{\text{mol}}gz}{RT}} = P_0 e^{-\frac{m_{\text{gaz}}gz}{kT}} \]
+
+\noindent [Démonstration - Avec la loi des gaz parfaits, $P = \rho \frac{RT}{M_{\text{mol}}} = \rho \frac{kT}{m_{\text{gaz}}} $]
 
 \subsection{Méthode}
 \begin{enumerate}
@@ -990,6 +1042,7 @@ On choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec
 \begin{itemize}
     \item Pythagore généralisé - $ a^2 = b^2 + c^2 - 2bc\cos{\theta} $
     \item Factorisation de cosinus - $ \cos{p} + \cos{q} = 2 \cos{\frac{p+q}{2}}\cos{\frac{p-q}{2}} $ 
+    \item Dérivée partielle et taux d'accroissement - $f(x+\dx) - f(x) = \frac{\partial f}{\partial x} dx$
 \end{itemize}
 
 \subsection{Équations différentielles - solutions générales}
