@@ -125,6 +125,8 @@ Attention aux angles algébriques.
 \subsubsection{Deuxième loi Snell-Descartes - réfraction}
 \[ n_1\sin{i_1} = n_2\sin{i_2} \]
 
+\noindent Le rayon refracté appartient au plan d'incidence défini par le rayon incident et la normale au dioptre au point d'incidence
+
 \subsubsection{Réflexion totale}
 Il n'existe pas de rayon réfracté - $ \frac{n_i}{n_r} \sin{i} > 1 $. Une démonstration par contraposée (trouver les conditions pour avoir de la réfraction) est plus facile à justifier.
 \[i^{\text{lim}} = \arcsin{\frac{n_2}{n_1}} \]
@@ -694,7 +696,7 @@ Pour un réseau de diffraction avec un pas de réseau de $a$, le $p$-ième ordre
 
 \[ \dd \overrightarrow{OM} = \dr \, \vec{e_r} + r \, \dtheta \, \vec{e_{\theta}} + \dz \, \vec{e_z} \]
 \[ \vec{v}_{\repr} = \dot{r} \vec{e_r} + r \dot{\theta} \vec{e_{\theta}} + \dot{z} \vec{e_z} \]
-\[ \vec{a}_{\repr} = (\ddot{r} - r\dot{\theta}^2) \vec{e_r} + (r \ddot{\theta} + r \dot{r} \dot{\theta}) \vec{e_{\theta}} + \ddot{z} \vec{e_z} \]
+\[ \vec{a}_{\repr} = (\ddot{r} - r\dot{\theta}^2) \vec{e_r} + (r \ddot{\theta} + 2 \dot{r} \dot{\theta}) \vec{e_{\theta}} + \ddot{z} \vec{e_z} \]
 
 \subsubsection{Mouvement circulaire en coordonnées cylindriques}
 Pour un mouvement autour de l'axe $ \Delta = \vec{e_z} $, on a $\dot{r} = 0 \et \dot{z} = 0$

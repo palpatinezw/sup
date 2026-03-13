@@ -146,18 +146,12 @@ Attention à la deuxième valeur pour sin et cos
     \item $ \tan{a} = \tan{b} \iff a \equiv b \msp [\pi] $
 \end{itemize}
 
-\subsection{Misc trigo}
-\subsubsection{Limite}
-\[ \lim_{\theta\to0}\frac{\sin{\theta}}{\theta} = 1 \] 
-\subsubsection{Inégalité de convexité $ |\sin{x}| \leq |x| $ }
-Par la dérivée de sinus, d'où la convexité, et l'égalité à 0
-
 \subsection{Propriétés des complexes}
 \subsubsection{L'écriture algébrique}
 $ z \in \mathbb{C} $ s'écrit $ z = \text{Re}(z) + i\text{Im} (z) $
 \begin{itemize}
     \item L'unicité de l'écriture algébrique
-    \item $ z=Ae^{i\theta} \iff z = Acos{\theta} + iA\sin{\theta} $
+    \item $ z=Ae^{i\theta} \iff z = A\cos{\theta} + iA\sin{\theta} $
 \end{itemize}
 
 \subsubsection{Conjugué}
@@ -1501,7 +1495,7 @@ Le $n$ du plus grand coefficient non-nul (coefficient dominant).
 \noindent On a les caractérisations des multiplicité
 \begin{itemize}
     \item $(X-\alpha)^m | P \et (X-\alpha)^{m+1} \not | P $
-    \item $ \exists Q \in \mathbb{K}[X], P = (X-\alpha)^m Q \et Q(\alpha) = 0 $
+    \item $ \exists Q \in \mathbb{K}[X], P = (X-\alpha)^m Q \et Q(\alpha) \neq 0 $
     \item $ P(\alpha) = P'(\alpha) = \dots = P^{(m-1)}(\alpha) = 0 \et P^{m}(\alpha) \neq 0 $ 
 \end{itemize}
 
@@ -1598,7 +1592,7 @@ Pour $f$ continue et à valeurs rélles sur $[a, b]$, dérivable sur $]a, b[$, e
 \end{itemize}
 
 \subsection{Fonctions lipschitziennes}
-$f$ est $M-lipschitzienne$ - 
+$f$ est $M$-lipschitzienne - 
 \[ \forall (x, y) \in I^2, |f(x) - f(y)| \leq M |x-y| \]
 
 \begin{itemize}
@@ -1695,7 +1689,32 @@ $u$ est une AL de $E$ dans $F$
     \item Formule de Grassmann - $\dim (F+G) = \dim F + \dim F - \dim (F \cap G)$ [Démonstration - Considérons $H$ un supplémentaire de $F \cap G$ dans $F$ et montrer $F+G = H \bigoplus G$]
 \end{itemize}
 
-\subsubsection{Dimensions misc}
+\subsection{Rang}
+Pour $u \in \mathcal{L}(E, F)$
+
+\[ \rg(x_1,\dots,x_n) = \dim(\Vect(x_1, \dots, x_n)) \]
+\[ \rg (u) = \dim(\text{Im}(u)) \]
+
+\begin{itemize}
+    \item $ \rg(x_1,\dots,x_n) = n \iff (x_1,\dots,x_n) $ est libre
+    \item $ \rg(u) \leq \dim(F) $ (égalité $\iff$ surjective)
+    \item $ \rg(u) \leq \dim(E) $ (égalité $\iff$ injective)
+    \item $ \rg(v \circ u) \leq \min(\rg(u), \rg (v)) $
+    \item Pour $v$ un isomorphisme, $ \rg(v \circ u) = \rg(u \circ v) = \rg(u) $
+\end{itemize}
+
+\subsubsection{Théorème du rang}
+
+\[ \dim E = \dim( \ker u ) + \rg(u) \]
+
+\noindent [Démonstration - Pour $S$ tel que $E = S \oplus \ker (u)$, $u$ est un isomorphisme de $S$ dans $\text{Im}(u)$]
+
+\begin{itemize}
+    \item Une forme linéaire est soit nulle, soit surjective
+    \item Pour $H$ un hyperplan, $\dim H = \dim E - 1$
+\end{itemize}
+
+\subsection{Dimensions misc}
 \begin{itemize}
     \item $\dim (E \times F) = \dim E + \dim F$ [Démonstration - construire une base de $E\times F$ à partir des bases de $E$ et $F$]
     \item $\dim \mathcal{L}(E, F) = \dim E \times \dim F$ [Démonstration - considérons $\phi : u \mapsto (u(e_1), \dots , u(e_n))$]
