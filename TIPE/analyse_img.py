@@ -33,9 +33,9 @@ def extraction_intensite(image_path:str, yh:float, yb:float, showplots=False, de
     band = img_rgb[y1:y2, :, :]  # shape: (thickness, W, 3)
 
     # ---- INTENSITY EXTRACTION ----
-    band_gray = (0.299 * band[:, :, 0] +
-                0.587 * band[:, :, 1] +
-                0.114 * band[:, :, 2])
+    band_gray = (0.2989 * band[:, :, 0] +
+                0.5870 * band[:, :, 1] +
+                0.1140 * band[:, :, 2])
     intensity = band_gray.mean(axis=0)  # intensity vs x
 
     # per-channel mean intensity vs x
