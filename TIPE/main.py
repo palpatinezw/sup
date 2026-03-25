@@ -5,6 +5,8 @@ from datetime import datetime
 import numpy as np
 
 bande = (40, 100) # bande d'extraction par defaut
+xMin = 10
+xWidth = 700 # Il faut OBLIGATOIREMENT assurer que cette valeur reste constante
 
 m = 0
 c = 0
@@ -23,8 +25,13 @@ def ajusterBande(l, h, sample=None):
     global bande 
     bande = (l, h)
     if sample:
-        extraction_intensite(sample, l, h, debug=True)
+        extraction_intensite(sample, l, h, xMin, xMin + xWidth, debug=True)
     print(f"Bande: [ {l} , {h} ]")
+
+def ajusterX(x):
+    global xMin
+    xMin = x
+    print(f"X width: [ {xMin} , {xMin + xWidth} ] (width : {xWidth})")
 
 # e.g. calibrer("img/samplecalib.png", [405, 532, 650])
 def calibrer(img, pics):
@@ -34,7 +41,7 @@ def calibrer(img, pics):
         :param img: chemin de l'image de calibratoin
         :param pics: liste des longueurs d'onde des pics attendus
     """
-    intensite, r, g, b = extraction_intensite(img, bande[0], bande[1])
+    intensite, r, g, b = extraction_intensite(img, bande[0], bande[1], xMin, xMin + xWidth)
     res = calibration(pics, intensite)
     global m
     global c
@@ -51,10 +58,10 @@ def analyse(img):
     if m == 0:
         print("Analyse non effectuée - erreur de calibration")
         return
-    intensite, r, g, b = extraction_intensite(img, bande[0], bande[1])
+    intensite, r, g, b = extraction_intensite(img, bande[0], bande[1], xMin, xMin + xWidth)
     now = datetime.now()
     resultatstr = f"Extraction [ {img} ] effectuee {str(now)}\n"
-    resultatstr += f"Calibration: {m}*x + {c}\n\n"
+    resultatstr += f"Calibration: {m}*x + {c} [Largeur {xWidth}]\n\n"
     resultatstr += f"pixel, longueur d'onde, intensite, r, g, b\n"
     for i in range(len(intensite)):
         resultatstr += f"{i}, {pixelToLongueur(i)}, {intensite[i]}, {r[i]}, {g[i]}, {b[i]}\n"
@@ -74,7 +81,7 @@ def parse(filename):
     r_vals = []
     g_vals = []
     b_vals = []
-    longueur = []
+    longeur = []
 
     with open(filename, "r") as f:
         lines = f.readlines()
@@ -101,7 +108,7 @@ def parse(filename):
 
         _, wavelength, intensity, r, g, b = parts
 
-        longueur.append(float(wavelength))
+        longeur.append(float(wavelength))
         intensities.append(float(intensity))
         r_vals.append(float(r))
         g_vals.append(float(g))
@@ -112,5 +119,15 @@ def parse(filename):
         "r": np.array(r_vals),
         "g": np.array(g_vals),
         "b": np.array(b_vals),
-        "longueurs": np.array(longueur),
+        "longeurs": np.array(longeur),
+    }
+
+def getAbsorbance(base, spectre):
+    """
+    :param: base (objet retourné par parse())
+    :param: spectre (objet retourné par parse())
+    """
+    return {
+        "longeurs": base["longeurs"],
+        "absorbance": -np.log( spectre["intensities"] / base["intensities"] )
     }

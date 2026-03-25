@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-def extraction_intensite(image_path:str, yh:float, yb:float, showplots=False, debug=False):
+def extraction_intensite(image_path:str, yh:float, yb:float, xl:float, xr:float, showplots=False, debug=False):
     """
     Extraction en intensite moyenne, entre les hauteurs yh (en haut) et yb (en bas)
     
@@ -12,6 +12,10 @@ def extraction_intensite(image_path:str, yh:float, yb:float, showplots=False, de
     :type yh: float
     :param yb: seuil d'analyse en bas
     :type yb: float
+    :param xl: seuil d'analyse à gauche
+    :type xl: float
+    :param xr: seuil d'analyse à droite
+    :type xr: float
     :param showplots: affichage des graphiques d'intensité
     :type showplots: bool
     :param debug: affichage d'image pour debouggage
@@ -29,8 +33,10 @@ def extraction_intensite(image_path:str, yh:float, yb:float, showplots=False, de
     # ---- CLAMP BAND RANGE ----
     y1 = max(0, yh)
     y2 = min(H, yb)
+    x1 = max(0, xl)
+    x2 = min(W, xr)
 
-    band = img_rgb[y1:y2, :, :]  # shape: (thickness, W, 3)
+    band = img_rgb[y1:y2, x1:x2, :]  # shape: (thickness, W, 3)
 
     # ---- INTENSITY EXTRACTION ----
     band_gray = (0.2989 * band[:, :, 0] +
@@ -67,8 +73,8 @@ def extraction_intensite(image_path:str, yh:float, yb:float, showplots=False, de
     # DEBUG - show image sampled
     if debug:
         debugimg = img_rgb.copy()
-        cv2.line(debugimg, (0, y1), (W-1, y1), (255, 0, 0), 2) # type: ignore
-        cv2.line(debugimg, (0, y2-1), (W-1, y2-1), (255, 0, 0), 2) # type: ignore
+        cv2.line(debugimg, (x1, y1), (x2, y1), (255, 0, 0), 2) # type: ignore
+        cv2.line(debugimg, (x1, y2-1), (x2, y2-1), (255, 0, 0), 2) # type: ignore
 
         plt.figure()
         plt.imshow(debugimg)
