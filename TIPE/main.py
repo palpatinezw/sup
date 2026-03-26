@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 import numpy as np
 
-bande = (40, 100) # bande d'extraction par defaut
-xMin = 10
-xWidth = 700 # Il faut OBLIGATOIREMENT assurer que cette valeur reste constante
+bande = (760, 780) # bande d'extraction par defaut
+xMin = 1200
+xWidth = 500 # Il faut OBLIGATOIREMENT assurer que cette valeur reste constante
 
-m = 0
-c = 0
+m = -0.6036
+c = 675.3
 
 def pixelToLongueur(pxl):
     return m*pxl + c

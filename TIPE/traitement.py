@@ -10,9 +10,8 @@ def calibration(longueurs, intensites):
     :param intensites: liste des intensites lineaires
     """
     n = len(longueurs)
-    longueurs.sort(reverse=True)
 
-    min_distance = 5        # minimum separation between peaks (in index units)
+    min_distance = 20        # minimum separation between peaks (in index units)
     min_prominence = 10      # how "stand-out" a peak must be (tune this)
 
     peaks, props = find_peaks(intensites, distance=min_distance, prominence=min_prominence)
@@ -21,6 +20,7 @@ def calibration(longueurs, intensites):
         peaks = peaks[order[:n]]
 
     peaks = np.sort(peaks)
+    print(peaks)
 
     slope, intercept, r, p, se = stats.linregress(longueurs, peaks)
 
