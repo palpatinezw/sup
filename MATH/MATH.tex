@@ -506,6 +506,7 @@ Pour identifier les asymptotes obliques, on remarque -
 \begin{itemize}
     \item Condition nécessaire - $\lim_{x \to \pm \infty} f(x) = \pm \infty$
     \item Conditions suffisantes - $\lim_{x\to \pm \infty} \frac{f(x)}{x} = a$ et $\lim_{x\to \pm \infty} (f(x)-ax) = b$
+    \item On peut aussi faire un développement limité
 \end{itemize}
 
 \subsubsection{Remarque}
@@ -904,60 +905,7 @@ Deux suites sont adjacentes si
 Il est souvent utile de chercher 2 suites extraites adjacentes pour déterminer la limite d'une suite. 
 
 \subsection{Relations de comparaison}
-\begin{itemize}
-    \item $(u_n)$ négligeable devant $(v_n)$ : ($ u_n =o(v_n) $) - $ (\frac{u_n}{v_n}) \longrightarrow 0 $
-    \item $(u_n)$ dominée par $(v_n)$ : ($ u_n = \mathcal{O}(v_n) $) - $ (\frac{u_n}{v_n}) $ est bornée
-    \item $(u_n)$ équivalente à $(v_n)$ : ($ u_n \sim v_n $) - $ (\frac{u_n}{v_n}) \longrightarrow 1 $
-\end{itemize}
-
-\subsubsection{Propriétés}
-\begin{itemize}
-    \item $ u_n \sim v_n \iff u_n - v_n =o(v_n) $
-    \item $ =o \implies = \mathcal{O} $
-    \item $ \sim \implies \mathcal{O} $
-    \item Transitivité (et transitivité mixte) 
-    \begin{itemize}
-        \item $ =o \sim \implies =o$
-        \item $ =o =\mathcal{O} \implies =o$
-        \item $ =\mathcal{O} =o \implies =o $
-    \end{itemize}
-    \item Produit
-    \item Multiplication d'un des termes par $\lambda \in \mathbb{R}^*$ [non valable pour $\sim$]
-    \item Stabilité par somme [non valable pour $\sim$ - surtout pas de somme pour des équivalents]
-\end{itemize}
-
-\subsubsection{Propriétés de $\sim$}
-\begin{itemize}
-    \item Conservation de limite
-    \item Conservation de signe APCR
-    \item Stabilité par puissance (toute puissance entier, puissances réelles si $u_n > 0$)
-    \item Encadrement - $u_n < v_n < w_n \et u_n \sim a \et w_n \sim a \implies v_n \sim a$
-\end{itemize}
-
-\subsubsection{Équivalences usuels}
-
-Petit $(u_n) \longrightarrow 0$
-\begin{itemize}
-    \item $\sin{(u_n)} \sim u_n$
-    \item $\tan{(u_n)} \sim u_n$
-    \item $\sh{(u_n)} \sim u_n$
-    \item $\arcsin{(u_n)} \sim u_n$
-    \item $\arctan{(u_n)} \sim u_n$
-\end{itemize}
-
-\noindent Petit $(u_n) \longrightarrow 0$ développement limité raccourci
-\begin{itemize}
-    \item $(1+u_n)^\alpha - 1 \sim \alpha u_n$
-    \item $e^{u_n} - 1 \sim u_n$
-    \item $\cos{(u_n)}-1 \sim -\frac{u_n^2}{2}$
-    \item $\ch{(u_n)}-1 \sim -\frac{u_n^2}{2}$
-\end{itemize}
-
-\noindent Wildcard $ \ln $ 
-\begin{itemize}
-    \item $\ln{(1+u_n)} \sim u_n$ (pour $u_n \longrightarrow 0$)
-    \item $\ln{(u_n)} \sim u_n - 1$ (pour $u_n \longrightarrow 1$)
-\end{itemize}
+c.f. Chap 19
 
 \subsubsection{Croissances comparées}
 \[ (\ln{n})^a \ll n^b \ll q^n \ll n! \ll n^n \]
@@ -1718,6 +1666,207 @@ Pour $u \in \mathcal{L}(E, F)$
 \begin{itemize}
     \item $\dim (E \times F) = \dim E + \dim F$ [Démonstration - construire une base de $E\times F$ à partir des bases de $E$ et $F$]
     \item $\dim \mathcal{L}(E, F) = \dim E \times \dim F$ [Démonstration - considérons $\phi : u \mapsto (u(e_1), \dots , u(e_n))$]
+\end{itemize}
+
+\clearpage
+\section{Analyse asymptotique}
+
+\subsection{Relations de comparaison}
+\begin{itemize}
+    \item $(f)$ négligeable devant $(g)$ : ($ f \underset{a}= o(g) $) - $ (\frac{f}{g}) \underset{x \rightarrow a}{\longrightarrow}  0 $
+    \item $(f)$ dominée par $(g)$ : ($ f = \underset{a}{\mathcal{O}} (g) $) - $ (\frac{f}{g}) $ est bornée au voisinage de $a$
+    \item $(f)$ équivalente à $(g)$ : ($ f \underset{a}\sim g $) - $ (\frac{f}{g}) \underset{x \rightarrow a}{\longrightarrow}  1 $
+\end{itemize}
+
+\subsubsection{Propriétés}
+\begin{itemize}
+    \item $ f \sim g \iff f - g =o(g) $
+    \item $ =o \implies = \mathcal{O} $
+    \item $ \sim \implies \mathcal{O} $
+    \item Transitivité (et transitivité mixte) 
+    \begin{itemize}
+        \item $ =o \sim \implies =o$
+        \item $ =o =\mathcal{O} \implies =o$
+        \item $ =\mathcal{O} =o \implies =o $
+    \end{itemize}
+    \item Produit
+    \item Multiplication d'un des termes par $\lambda \in \mathbb{R}^*$ [non valable pour $\sim$]
+    \item Stabilité par somme [non valable pour $\sim$ - surtout pas de somme pour des équivalents]
+\end{itemize}
+
+\subsubsection{Propriétés de $\sim$}
+\begin{itemize}
+    \item Conservation de limite
+    \item Conservation de signe APCR
+    \item Stabilité par puissance (toute puissance entier, puissances réelles si $f > 0$)
+    \item Encadrement - $f < g < h \et f \sim a \et h \sim a \implies g \sim a$
+\end{itemize}
+
+\subsubsection{Équivalences usuels}
+
+En $0$
+\begin{itemize}
+    \item $\sin{(x)} \sim x$
+    \item $\tan{(x)} \sim x$
+    \item $\sh{(x)} \sim x$
+    \item $\arcsin{(x)} \sim x$
+    \item $\arctan{(x)} \sim x$
+    \item $(1+x)^\alpha - 1 \sim \alpha x$
+    \item $e^{x} - 1 \sim x$
+    \item $\cos{(x)}-1 \sim -\frac{x^2}{2}$
+    \item $\ch{(x)}-1 \sim -\frac{x^2}{2}$
+    \item $\ln{(1+x)} \sim x$
+\end{itemize}
+
+\subsection{Développement limité}
+DL d'ordre $n$ en $a$ ($\dl{n}{a}$)
+\[ f(x) = \sum_{k=0}^{n} c_k(x-a)^k + \underset{a}{o}((x-a)^n) \]
+
+\begin{itemize}
+    \item $\sum_{k=0}^{n} c_k(x-a)^k$ est la partie régulière (unique)
+    \item Si $f$ admet un $\dl{n}{a}$, alors on peut tronquer le DL pour obtenir un $\dl{p}{a}$ pour $p \in \llbracket 0, n \rrbracket$
+    \item $f$ admet $\dl{0}{a} \iff \lim_{a} f \in \mathbb{R}$
+    \item $f$ admet $\dl{1}{a} \iff f$ dérivable en $a$
+\end{itemize}
+
+\subsubsection{Primitivation}
+Si $f'(x) = \sum_{k=0}^{n} c_k (x-a)^k + o_a ((x-a)^n)$, 
+\[ f(x) = f(a) + \sum_{k=0}^{n} \frac{c_k}{k+1}(x-a)^{k+1} + \underset{a}{o}((x-a)^{n+1}) \]
+
+\subsubsection{Formule de Taylor-Young}
+Pour $f \in \mathcal{C}^{n}$
+\[ f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!} (x-a)^k + \underset{a}{o} ((x-a)^n) \]
+
+\subsubsection{DL usuels en $0$}
+\begin{itemize}
+    \item $e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \dots = \sum_{k=0}^{n}\frac{x^k}{k!} + o(x^n)$
+    \item $\ch (x) = 1 + \frac{x^2}{2} + \dots = \sum_{k=0}^{n}\frac{x^{2k}}{(2k)!} + o(x^{2n})$
+    \item $\sh (x) = x + \frac{x^3}{6} + \dots = \sum_{k=0}^{n}\frac{x^{2k+1}}{(2k+1)!} + o(x^{2n+1})$
+    \item $\cos (x) = 1 - \frac{x^2}{2} + \dots = \sum_{k=0}^{n} (-1)^k \frac{x^{2k}}{(2k)!} + o(x^{2n})$
+    \item $\sin (x) = x - \frac{x^3}{6} + \dots = \sum_{k=0}^{n} (-1)^k \frac{x^{2k+1}}{(2k+1)!} + o(x^{2n+1})$
+    \item $\ln (1 - x) = - x - \frac{x^2}{2} - \frac{x^3}{3} + \dots = \sum_{k=0}^{n} (-\frac{x^k}{k}) + o(x^n)$
+    \item $(1+x)^\alpha = 1 + \alpha x + \frac{(\alpha)(\alpha - 1)}{2}x^2 + \dots = \sum_{k=0}^{n}\binom{\alpha}{k} x^k + o(x^n)$
+    \item $\frac{1}{1-x} = 1 + x + x^2 + \dots = \sum_{k=0}^{n} x^k + o(x^n)$
+\end{itemize}
+
+\subsection{Techniques de résolution}
+\subsubsection{DL d'un quotient}
+Si $g$ possède une limite finie non-nulle en $a$, alors on écrit:
+\[ \frac{f}{g} = \frac{f}{l} \frac{1}{1-(1-\frac{g}{l})} \]
+\noindent $(1-\frac{g}{l}) \underset{x \rightarrow a} \longrightarrow 0$ - on applique donc le DL de $\frac{1}{1-u}$
+
+\subsubsection{Courbe comparée à la tangente}
+Avec un $\dl{p}{a}$ avec $p \geq 2$, 
+\[ f(x) - [f'(a)(x-a) + f(a)] \underset{a}{\sim} c_p(x-a)^p \]
+
+\noindent On déduit la position de la courbe par rapport à la tangente par la conservation de la signe dans les équivalences. En particulier, si $p$ est pair et $f'(a) = 0$, on a un extremum local en $a$ 
+
+\subsubsection{Asymptote oblique}
+On cherche 
+\[ \frac{f(x)}{x} = a + \frac{b}{x} + \frac{c}{x^2} + \underset{\pm \infty}{o} (\frac{1}{x^2}) \]
+\noindent Pour cela, on pose $h = \frac{1}{x} \underset{x \rightarrow \pm \infty}{\longrightarrow} 0$ et on étudie le $\dl{2}{0}$ de $h \cdot f(\frac{1}{h})$
+
+\subsubsection{DL d'une bijection réciproque}
+Comme $f \circ f^{-1} = \text{Id}$ et $x = x + o(x^n)$, on peut déterminer le DL de $f^{-1}$ si avec ceux de $f$ par unicité du DL. \\
+\noindent Il faut d'abord montrer l'existence d'un DL pour $f^{-1}$ par la stabilité de class $\mathcal{C}^n$ si $f'$ ne s'annule pas
+
+\clearpage
+\section{Matrices et Applications Linéaires}
+On note $ \mathcal{B} = (e_1, e_2, \dots) = [(e_i)] $ une base quelconque, et $ \mathcal{C} = [(\epsilon)_i] $ la base canonique, d'un K-ev non nul de dimension finie.
+
+\subsection{Définitions}
+\[ \mat_{\mathcal{B}}(x = \sum_i \alpha_i e_i ) = \begin{pmatrix}
+    \vdots \\
+    \alpha_i \\
+    \vdots
+\end{pmatrix} \]
+\[ \mat_{\mathcal{B}, \mathcal{C}}(u) = \mat_{\mathcal{C}}(u(e_1), \dots) \]
+
+\begin{itemize}
+    \item Chaque colonne représente un vecteur, exprimé dans la base tel que le coefficient de $e_j$ est dans la $j$-ième colonne
+    \item La représentation matricielle dans une base est unique
+    \item L'application représentation matricielle $ \mathcal{L}(E, F) \rightarrow \mathcal{M}_{n, p}(\mathbb{K}) : u \mapsto \mat_{\mathcal{B}, \mathcal{C}} $ est un isomorphisme (linéaire et bijective)
+\end{itemize}
+
+\subsubsection{Propriétés}
+\begin{itemize}
+    \item $ \mat_{\mathcal{B}, \mathcal{D}}(v \circ u) = \mat_{\mathcal{C}, \mathcal{D}}(v) \times \mat_{\mathcal{B}, \mathcal{C}}(u) $
+    \item $u$ est un isomorphisme $\iff \mat (u)$ est inversible - $ (\mat_{\mathcal{B, C}}(u))^{-1} = \mat_{\mathcal{C, B}}(u^{-1}) $
+    \item $ [(x_i)] $ est une base de $E \iff \mat ([x_i]) $ est inversible 
+\end{itemize}
+
+\subsection{Application linéaire canoniquement associée}
+Pour $A \in \mathcal{M}_{n, p}(\mathbb{K})$
+
+\begin{align*}
+    u_A : \mathbb{K}^p & \rightarrow \mathbb{K}^n \\
+    A & \mapsto AX
+\end{align*}
+
+\begin{itemize}
+    \item $ \ker A = \ker u_A = {X \in \mathbb{K^p} | AX = 0} $
+    \item $ \text{Im} A = \text{Im} u_A = {AX | X \in \mathbb{K}^p} = \Vect([(c_i)]) $ avec $[(c_i)]$ les colonnes de $A$
+    \item $ \rg A = \dim \text{Im} A = \rg u_A = \rg \Vect([(c_i)]) $
+    \begin{itemize}
+        \item Théorème du rang - $p = \dim(\ker A) + \rg A$ avec $p$ le nombre de colonnes de $A$
+        \item $\rg A \leq \min(n, p)$
+        \item $\rg AB \leq \min(\rg A, \rg B)$
+        \item $\rg u = \rg (\mat (u))$ irrespective des bases
+        \item $\rg(A^T) = \rg A$
+    \end{itemize}
+\end{itemize}
+
+\noindent Par les propriétés des applications linéaires, on déduit
+\begin{itemize}
+    \item Pour $P$ inversible, $\text{Im}(AP) = \text{Im } A$
+    \item Pour $Q$ inversible, $\ker (QA) = \ker Q$
+    \item La multiplication par une matrice inversible conserve le rang
+\end{itemize}
+
+\noindent De plus, on déduit des caractérisations d'inversibilité par les caractérisations des isomorphismes en dimension finie
+\begin{itemize}
+    \item $\ker A = {0}$
+    \item $\text{Im} A = \mathbb{K}^n$
+    \item $\rg A = n$
+    \item $A$ est inversible à gauche OU à droite
+\end{itemize}
+
+\subsection{Changements de base}
+\[ P_{\mathcal{B} \rightarrow \mathcal{B}'} = \mat_{\mathcal{B}}(\mathcal{B}') = \mat_{\mathcal{B}',\mathcal{B}}(\text{Id}_E) \]
+\begin{itemize}
+    \item La nouvelle base exprimée dans l'ancienne base
+    \item $ P_{\mathcal{B} \rightarrow \mathcal{B}'}^{-1} = P_{\mathcal{B}' \rightarrow \mathcal{B}} $
+    \item Pour $X$ représentant $x \in E$, $ X' = P^{-1}X $ - Attention au $-1$
+    \item Pour $A$ représentant $u\in \mathcal{L}(E [\mathcal{B}, \mathcal{B'}], F [\mathcal{C}, \mathcal{C'}])$, $A' = P_{\mathcal{C}\rightarrow\mathcal{C}'}^{-1}AP_{\mathcal{B}\rightarrow\mathcal{B}'}^{-1}$
+\end{itemize}
+
+\subsection{Relations entre matrices}
+\begin{itemize}
+    \item Matrices équivalentes - il existe des matrices inversibles $P$ et $Q$ tel que $B = QAP$
+    \begin{itemize}
+        \item $A \et B$ sont équivalentes $\iff A \et B$ représentent la même application linéaire
+    \end{itemize} 
+    \item Matrices semblables - il existe une matrice inversible $P$ =tel que $B = P^{-1}AP$
+    \begin{itemize}
+        \item $A \et B$ sont semblables $\iff A \et B$ représentent le même endomorphisme
+    \end{itemize} 
+\end{itemize}
+
+\clearpage
+\section{Équations différentielles linéaires}
+
+\subsection{Premier ordre}
+Pour $(a, b) \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$ dérivable de $I$ dans $\mathbb{K}$
+\[ y' + a(x)y = b(x) \]
+
+\noindent Les solutions sont des la forme
+
+\[ x \mapsto (\int_{}^{x} b(t) e^{A(t)} \dt)e^{-A(x)} + Ce^{-A(x)} \]
+
+\begin{itemize}
+    \item L'ensembles des solutions homogènes $ = \Vect (e^{-A(x)})$
+    \item On trouve la solution particulière en posant $y_p : x \mapsto C(x)e^{-A(x)}$ et on cherche $C(x)$ en résolvant $y_p' - a(x)y = b(x)$
+    \item Problème de Cauchy - si on pose de plus $y(x_0) = y_0$, on a une unique solution pour $y$
 \end{itemize}
 
 \end{document}

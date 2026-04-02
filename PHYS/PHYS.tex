@@ -508,18 +508,22 @@ Pour les secondes ordres passe-bas et pass-haut, on a $\frac{1}{\sqrt{2}}$ la va
     \item $Q > \frac{1}{\sqrt{2}}$ - Courbe au dessus de l'asymptote, reonance à $w_r < w_0$
 \end{itemize}
 
+\noindent Pour des variations d'un filtre passe-bande, voir section sur les resonances dans les annexes.
+
 \subsection{Amplificateur linéaire intégré}
 \subsubsection{Entrées et sortie}
 \begin{itemize}
     \item Entrée inverseuse ($V_-$)
     \item Entrée non-inverseuse ($V_+$)
-    \item Sortie avec tension ($V_S$) relative à la masse
+    \item Sortie avec tension ($V_s$) relative à la masse
+    \item Tensions d'alimentation $V_L$ et $V_H$ - et une tension de saturation de l'ALI $V_{\text{sat}}$
 \end{itemize}
 
 \subsubsection{Caractéristique}
 \begin{itemize}
     \item $ \epsilon = V_+ - V_- $
-    \item $ V_L < V_S < V_H $ - régime linéaire et $V_s = A_V\epsilon$ ($A$ l'amplification en tension / gain différentiel)
+    \item $ -V_{\text{sat}} < V_s < +V_{\text{sat}} $ - régime linéaire et $V_s = A_V\epsilon$ ($A$ l'amplification en tension / gain différentiel)
+    \item En régime linéaire, il faut que $|V_s| < V_{\text{sat}}$
     \item Régime de saturation - $ V_s = V_L $ ou $ V_s = V_H $
 \end{itemize}
 
@@ -527,7 +531,7 @@ Pour les secondes ordres passe-bas et pass-haut, on a $\frac{1}{\sqrt{2}}$ la va
 \begin{itemize}
     \item Résistance d'entrée infinie donc courants d'entrée nuls
     \item Résistance de sortie nulle, en série avec un générateur de tension idéal
-    \item $A_V$ infinie - régime linéaire uniquement pour $\epsilon = 0$
+    \item $A_V$ infinie - régime linéaire $\iff \epsilon = 0$
 \end{itemize}
 
 \noindent Remplacer l'ALI par ses composants supposés parfaits peut servir pour une étude asymptotique. 
@@ -537,8 +541,8 @@ Pour les secondes ordres passe-bas et pass-haut, on a $\frac{1}{\sqrt{2}}$ la va
     \item Suppose que l'ALI est idéal
     \item Détermination du régime de fonctionnement
         \begin{itemize}
-            \item Si la rétroaction se fait sur l'entrée inverseuse - système stable - régime linéaire - $\epsilon = 0$ donc $V_-=V_+$
-            \item Si la rétroaction se fait sur l'entrée non-inverseuse, ou si le système est en boucle ouverte 0 - système instable - régime de saturation - $ V_s = V_{\text{sat}} $
+            \item Si la rétroaction se fait sur l'entrée inverseuse - système stable - régime linéaire - $\epsilon = 0$ donc $V_-=V_+$. Il faut parfois ensuite verifier que $|V_s| < V_{\text{sat}}$
+            \item Si la rétroaction se fait sur l'entrée non-inverseuse, ou si le système est en boucle ouverte 0 - système instable - régime de saturation - $ |V_s| = V_{\text{sat}} $
             \item Si de multiples rétroactions sur les deux entrées - étude complète nécessaire
         \end{itemize}
     \item Résolution mathématique pour obtenir $V_-, V_+, e(t), s(t)$
@@ -983,18 +987,107 @@ On choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec
 
 \noindent Démonstration - on pose $ \underline{u} = x + jy $ et on résout une équation différentiel d'ordre 1 en $ \underline{\dot{u}} $
 
-\subsection{Fluides}
-\subsubsection{Définitions}
+\subsection{Méthode}
+\begin{enumerate}
+    \item Définir le système (point matérial / système de points)
+    \item Définir le référentiel (galiléen ou non)
+    \item Bilan des actions (forces, moments de forces) - dans un système de coordonnées choisi
+    \item Résolution à l'aide d'une loi 
+    \begin{itemize}
+        \item Principe fondamental de la dynamique / Théorème du quantité de mouvement
+        \item Théorème de l'énergie cinétique / mécanique
+        \item Théorème du moment cinétique
+    \end{itemize}
+\end{enumerate}
+
+\clearpage
+\section{Thermodynamique}
+
+\subsection{Définitions}
 \begin{itemize}
-    \item Particule de fluide - un volume infinitésimal à l'échelle mésoscopique
     \item Échelle mésoscopique - un volume contenant un grand nombre de molécules / atomes microscopiques, mais qui est infinitésimal devant l'échelle macroscopique
-    \item L'équilibre thermodynamique local - on peut définir $P$, $T$, $\rho$ uniforme à l'échelle mésoscopique
+    \begin{itemize}
+        \item Particule de fluide - un volume infinitésimal à l'échelle mésoscopique
+    \end{itemize}
+    \item Système
+    \begin{itemize}
+        \item Ouvert - échange de particules et d'énergie
+        \item Fermé - échange d'énergie mais pas de particules
+        \item Isolé - aucun échange avec l'extérieur
+    \end{itemize}
+    \item L'équilibre thermodynamique local - on peut définir les paramètres d'états uniforme à l'échelle mésoscopique
+    \item Variables d'état - paramètre dont la variation ne dépend pas du chemin suivie
+    \begin{itemize}
+        \item Extensive - additif pour une partition du système
+        \item Intensive - même valeur pour tout sous-système
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Fonctions d'états}
+\begin{itemize}
+    \item $P$ pression
+    \item $T$ température cinétique
+    \begin{itemize}
+        \item Pour un gaz parfait monoatomique - $\frac{3}{2}k_B T =  \langle E_c \rangle = \frac{1}{2}m \langle v^2 \rangle$
+    \end{itemize}
+    \item $U$ énergie interne - somme des énergies cinétiques des particules et des énergies potentielles entre particules
+    \begin{itemize}
+        \item L'énergie totale d'un système $ E_{\repr} = E_{m \repr} + U $
+        \item Pour un gaz parfait monoatomique - $U = \frac{3}{2}nRT$
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Types de transformations}
+\begin{itemize}
+    \item Iso- (constant dans le système) ou Mono- (constant à l'extérieur du système)
+    \begin{itemize}
+        \item -therme - $\dd T = 0$
+        \item -bare - $\dd P = 0$ 
+        \item -chore - $\dd V = 0$
+        \item -entropique - $\dd S = 0$
+    \end{itemize}
+    \item Adiabatique - $\delta Q = 0$ 
+    \item Quasi-statique - transformation du système suffisamment lente pour considérer que l'on passe par une succession d'états d'équilibres d'équilibre thermodynamique local
+    \item Mécaniquement réversible - pas de frottements
+    \item Polytropique - équation d'état défini par $PV^k$ constant
+    \begin{itemize}
+        \item $k=0$ - transformation isobare
+        \item $k=1$ - gaz parfait
+        \item $k=\gamma$ - isentropique (pour un gaz parfait)
+        \item $k \rightarrow +\infty$ - isochore
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Coefficients thermoélastiques}
+\begin{itemize}
+    \item $C_V = \frac{\partial U}{\partial T}|_V$ - Capacité thermique / calorifique à volume constant
+    \item $C_P = \frac{\partial H}{\partial T}|_P$ - Capacité thermique / calorifique à pression constant
+    \item $\chi_T = -\frac{1}{V} \frac{\partial V}{\partial P}|_T = \frac{1}{\rho} \frac{\partial \rho}{\partial P}|_T$ - Coefficient de compressibilité isotherme
+    \item $\alpha = \frac{1}{V}\frac{\partial V}{\partial T}|_P = -\frac{1}{\rho} \frac{\partial \rho}{\partial T}|_P$ - Coefficient de dilatation isobare
+    \item $\beta = \frac{1}{\beta}\frac{\partial P}{\partial T}|_V$ - Coefficient de dilatation isochore
+\end{itemize}
+
+\subsubsection{Types de phases}
+\begin{itemize}
+    \item Fluide - liquide ou gaz
+    \item Phase condensée - solide ou liquide
+    \item Types de phases
+    \begin{itemize}
+        \item Incompressible - $\chi_T = 0$ - $V$ et $\rho$ indépendants de $P$
+        \item Indilatable - $\alpha = 0$ - $V$ et $\rho$ indépendants de $T$
+        \item Incompressible et indilatable - $V$ constante
+        \item Homogène - $\rho$ constante
+    \end{itemize}
+\end{itemize}
+
+\subsection{Mécanique des fluides}
+\begin{itemize}
     \item Fluide incompressible - coefficient de compression isotherme nul - volume indépendant de pression
     \item Fluide homogène - masse volumique constant dans le fluide
 \end{itemize}
 
 \subsubsection{Force volumique}
-\[ \vec{f_p} = - \grad P \]
+\[ \vec{f_p} = \frac{\dd^3 \vec{F_p}}{\dd^3 \tau_M} = - \grad P \]
 \begin{itemize}
     \item C'est une force VOLUMIQUE (force par volume mésoscopique)
     \item En statique, pour une fluide au repos dans un référentiel galiléen, $\rho (M) \vec{g} - \grad P = \vec{0}$
@@ -1019,24 +1112,94 @@ Avec les hypothèse d'un fluide
     \item Au repos dans le référentiel $R$ galiléen
     \item Dans un champ de pesanteur $\vec{g}$ uniforme selon $-\vec{e_z}$
     \item Assimilable à un gaz parfait
+    \item L'atomsphère est isotherme
 \end{enumerate}
 
 \[ P(z) = P_0 e^{-\frac{M_{\text{mol}}gz}{RT}} = P_0 e^{-\frac{m_{\text{gaz}}gz}{kT}} \]
 
 \noindent [Démonstration - Avec la loi des gaz parfaits, $P = \rho \frac{RT}{M_{\text{mol}}} = \rho \frac{kT}{m_{\text{gaz}}} $]
 
-\subsection{Méthode}
-\begin{enumerate}
-    \item Définir le système (point matérial / système de points)
-    \item Définir le référentiel (galiléen ou non)
-    \item Bilan des actions (forces, moments de forces) - dans un système de coordonnées choisi
-    \item Résolution à l'aide d'une loi 
+\subsection{Gaz parfait}
+\begin{itemize}
+    \item Molécules du gaz supposées ponctuelles
+    \item Molécules sont sans intéractions entre elles
+\end{itemize}
+
+\noindent Un gaz réel à faible pression (quelques bars) peut être assimilé à un gaz parfait. 
+
+\subsubsection{Théorie cinétique du gaz parfait}
+\[ P = \frac{1}{3}n_Vm \langle v^2 \rangle \]
+\[ PV = Nk_B T = nRT \]
+
+\noindent [Démonstration - c.f. T1-2] \\
+
+\noindent Pour un gaz parfait monoatomique
+
+\begin{itemize}
+    \item $\frac{3}{2}k_B T =  \langle E_c \rangle = \frac{1}{2}m \langle v^2 \rangle$
+    \item $U = \frac{3}{2}nRT$
+    \item $C_V = \frac{3}{2}nR$
+\end{itemize}
+
+\subsubsection{Gaz parfaits diatomiques}
+
+Pour un gaz parfait diatomique, on compte 7 degrés de liberté
+\begin{itemize}
+    \item 3 translations ($x$, $y$, $z$) comme pour un gaz monoatomique
+    \item 2 rotations 
+    \item 2 liés à la vibration (1 à l'énergie cinétique et 1 à l'énergie potentielle)
+\end{itemize}
+
+\noindent Par théorème d'équipartition de l'énergie, chaque degré de liberté contribue $\frac{1}{2}k_BT$ à l'énergie totale du système
+\begin{itemize}
+    \item À basses températures, on a uniquement les translations, $U = \frac{3}{2}k_BT$ comme pour des gaz monoatomiques
+    \item À températures ambiantes, on a les translations et les rotations, mais pas de vibrations, $U = \frac{5}{2}k_BT$
+    \item À hautes températures, on a les translations, les rotations, et les vibrations, $U = \frac{7}{2}k_BT$
+\end{itemize}
+
+\subsubsection{Modèle de Van der Waals}
+\[ (P + a \frac{n^2}{v^2})(V- nb) = nRT \]
+
+\begin{itemize}
+    \item Correction du pression - $\propto n^2$ le nombre d'intéractions entre des paires de molécules
+    \item Correction du pression - $\propto \frac{1}{V^2}$ car la force des intéractions intermoléculaires $\propto \frac{1}{r^6}$
+    \item Correction du volume - $\propto n$ associé à la dimension finie des molécules
+\end{itemize}
+
+\subsection{Premier principe de la thermodynamique}
+\[ dE_{m\repr} + dU = \delta W_{\repr} + \delta Q \]
+
+\begin{itemize}
+    \item $U$ est extensive et est une fonction d'état
+    \item La formule est valable pour un système fermé
+    \item Dans le cas où le système est au repos et on a une évolution finie, $\delta U = W_{\repr} + Q$
+\end{itemize}
+
+\subsubsection{Travail mécanique de la pression}
+\[ \delta W = - P_{\text{contact}} dV \]
+
+\begin{itemize}
+    \item Pour une transformation quasi-statique et mécaniquement réversible, $P_{\text{contact}} = P$ du système, donc $ \delta W = - P dV $
+    \item Pour un fluide en écoulement, $\delta W = P_1 \dd V_1 - P_2 \dd V_2$ 
     \begin{itemize}
-        \item Principe fondamental de la dynamique / Théorème du quantité de mouvement
-        \item Théorème de l'énergie cinétique / mécanique
-        \item Théorème du moment cinétique
+        \item $P_1 \dd V_1$ travail d'admission pour le fluide qui "entre dans le système"
+        \item $ - P_2 \dd V_2$ travail de refoulement pour le fluide qui "part du système" 
     \end{itemize}
-\end{enumerate}
+\end{itemize}
+
+\subsubsection{Transfert thermique}
+\begin{itemize}
+    \item Normalement, $Q$ ne peut pas être calculé ou mesuré directement
+    \item 3 types de transferts thermiques
+    \begin{itemize}
+        \item Conduction - transfert par collisions entre particules microscopiques
+        \item Convection - mouvement du fluide 
+        \item Rayonnement thermique - ondes électromagnétiques
+    \end{itemize}
+    \item Pour la convection - $ \frac{\delta Q}{\dt} = -hS(T - T_{\text{ext}}) $
+\end{itemize}
+
+% Enthalpie T3 pg 4
 
 \clearpage
 \section{Annexe}
@@ -1045,6 +1208,7 @@ Avec les hypothèse d'un fluide
     \item Pythagore généralisé - $ a^2 = b^2 + c^2 - 2bc\cos{\theta} $
     \item Factorisation de cosinus - $ \cos{p} + \cos{q} = 2 \cos{\frac{p+q}{2}}\cos{\frac{p-q}{2}} $ 
     \item Dérivée partielle et taux d'accroissement - $f(x+\dx) - f(x) = \frac{\partial f}{\partial x} dx$
+    \item Dérivée partielle - $\dd f(x, y) = \frac{\partial f}{\partial x} \dx + \frac{\partial f}{\partial y} \dy$
 \end{itemize}
 
 \subsection{Équations différentielles - solutions générales}
@@ -1132,6 +1296,8 @@ Pour une équation différentielle de 2nd ordre avec $f(t)$ sinusoïdal de pulsa
 
 \[ \Delta \omega = \frac{\omega_0}{Q} \]
 
+\noindent La relation $Q = \frac{\omega_0}{\Delta \omega}$ est très utile en TP. 
+
 \subsection{Approximations}
 \begin{itemize}
     \item Approximation nulle
@@ -1153,6 +1319,7 @@ Pour une équation différentielle de 2nd ordre avec $f(t)$ sinusoïdal de pulsa
     \item Vitesse de son dans l'air $340 \text{ m s}^{-1}$
     \item Vitesse de son dans l'eau $1500 \text{ m s}^{-1}$
     \item Rotation de la Terre sur son axe Nord-Sud $ \Omega_T = 23 \text{ h } 56 \text{ min } 4 \text{ s} = 7,2921 \times 10^{-5} \text{ rad s}^{-1} $
+    \item Coefficient de compressibilité isotherme de l'eau $5 \times 10^{-10} \text{ Pa}^{-1}$
 \end{itemize}
 
 \end{document}
