@@ -462,7 +462,9 @@ Définition d'un intervalle $I$ -
 Attention que la symétrie par rapport à 0 doit être respecté ($\forall x \in D, -x \in D$) \\
 \noindent La parité d'une fonction permet de restreindre son étude à $D \cap \mathbb{R}_+$ \\
 
-\noindent On note que toute fonction $f$ s'écrit comme somme une fonction paire $ \frac{f(x) + f(-x)}{2} $ et une fonction impaire $ \frac{f(x)-f(-x)}{2} $
+\noindent On note que toute fonction $f$ s'écrit comme somme une fonction paire $ \frac{f(x) + f(-x)}{2} $ et une fonction impaire $ \frac{f(x)-f(-x)}{2} $. \\
+
+\noindent La dérivée d'une fonction paire est impaire et la dérivée d'une fonction impaire est paire. 
 
 \subsubsection{Périodicité}
 Soit $T \in \mathbb{R}_+^*$ la période de $f$
@@ -1655,7 +1657,7 @@ Pour $u \in \mathcal{L}(E, F)$
 
 \[ \dim E = \dim( \ker u ) + \rg(u) \]
 
-\noindent [Démonstration - Pour $S$ tel que $E = S \oplus \ker (u)$, $u$ est un isomorphisme de $S$ dans $\text{Im}(u)$]
+\noindent [Démonstration - Pour $S$ un supplémentaire de $\ker (u)$ ($E = S \oplus \ker (u)$), $u$ induit un isomorphisme de $S$ dans $\text{Im}(u)$]
 
 \begin{itemize}
     \item Une forme linéaire est soit nulle, soit surjective
@@ -1804,9 +1806,9 @@ Pour $A \in \mathcal{M}_{n, p}(\mathbb{K})$
 \end{align*}
 
 \begin{itemize}
-    \item $ \ker A = \ker u_A = {X \in \mathbb{K^p} | AX = 0} $
-    \item $ \text{Im} A = \text{Im} u_A = {AX | X \in \mathbb{K}^p} = \Vect([(c_i)]) $ avec $[(c_i)]$ les colonnes de $A$
-    \item $ \rg A = \dim \text{Im} A = \rg u_A = \rg \Vect([(c_i)]) $
+    \item $ \ker A = \ker u_A = \{X \in \mathbb{K^p} | AX = 0\} $
+    \item $ \text{Im} A = \text{Im} u_A = \{AX | X \in \mathbb{K}^p\} = \Vect([(c_i)]) $ avec $[(c_i)]$ les colonnes de $A$
+    \item $ \rg A = \dim \text{Im} A = \rg u_A = \rg (\Vect([(c_i)])) $
     \begin{itemize}
         \item Théorème du rang - $p = \dim(\ker A) + \rg A$ avec $p$ le nombre de colonnes de $A$
         \item $\rg A \leq \min(n, p)$
@@ -1865,8 +1867,118 @@ Pour $(a, b) \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$ dérivable de $I$ d
 
 \begin{itemize}
     \item L'ensembles des solutions homogènes $ = \Vect (e^{-A(x)})$
-    \item On trouve la solution particulière en posant $y_p : x \mapsto C(x)e^{-A(x)}$ et on cherche $C(x)$ en résolvant $y_p' - a(x)y = b(x)$
+    \item Méthode de la variation de la constante - on trouve la solution particulière en posant $y_p : x \mapsto C(x)e^{-A(x)}$ et on cherche $C(x)$ en résolvant $y_p' - a(x)y = b(x)$
     \item Problème de Cauchy - si on pose de plus $y(x_0) = y_0$, on a une unique solution pour $y$
 \end{itemize}
+
+\subsubsection{Solutions particulières remarquables}
+$y' + ay = e^{\lambda x}$ pour $a \et \lambda$ des constantes,  on a:
+\begin{itemize}
+    \item Si $\lambda \neq -a$, $y_p : x \mapsto Ce^{\lambda x}$ (Ici, $C = \frac{1}{\lambda + a}$, mais à redémontrer)
+    \item Si $\lambda = -a$, $y_p : x \mapsto xe^{\lambda x}$
+\end{itemize}
+
+\noindent Si on a $P(x)$ une fonction polynomiale, $y' + ay = P(x)e^{\lambda x}$ 
+\begin{itemize}
+    \item Si $\lambda \neq -a$, $y_p : x \mapsto R(x)e^{\lambda x}$
+    \item Si $\lambda = -a$, $y_p : x \mapsto xR(x)e^{\lambda x}$
+\end{itemize}
+\noindent avec $R$ un polynôme du même degré que $P$
+
+\subsection{Second ordre à coefficients constants}
+Pour $(a, b) \in \mathbb{K}^2, f \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$ dérivable de $I$ dans $\mathbb{K}$
+\[ y'' + ay'+ by = f \]
+
+\begin{itemize}
+    \item $ (x \mapsto e^{\lambda x}) $ est une solution de l'équation homogène $ \iff \lambda^2 + a \lambda + b = 0 $ [équation caractéristique] $ \iff \lambda $ est une racine de $ P = X^2 + aX + b $ [polynôme caractéristique]
+    \begin{itemize}
+        \item $\lambda_1 \et \lambda_2$ 2 racines distinctes - $\Vect (e^{\lambda_1 x}, e^{\lambda_2 x})$
+        \item $\lambda_0$ racine double - $\Vect (xe^{\lambda_0 x}, e^{\lambda_0 x})$
+        \item Dans $\mathbb{R}$ avec 2 racines complexes conjuguées $\lambda = r \pm i \omega$ - $\Vect (\cos (\omega x), \sin(\omega x))$
+    \end{itemize}
+    \item L'ensemble des solutions homogène est un plan vectoriel
+    \item Il existe toujours une solution particulière
+    \item Problème de Cauchy - si on pose $y(x_0) = y_0 \et y'(x_0) = y1$, il existe une unique solution
+\end{itemize}
+
+\subsubsection{Solutions particulières remarquables}
+\[ y'' + ay' + by = Ae^{\lambda x} \]
+\begin{itemize}
+    \item Il existe une solution particulière de la forme $x \mapsto Cx^m e^{\lambda}x$ où $m$ est la multiplicité de $\lambda$ dans le polynôme caractéristique
+    \item Pour un second membre trigonométrique, on considère la partie réelle / imaginaire de l'équation avec second membre $Ae^{i\omega}$
+    \item Pour un second membre $P(x)e^{\lambda x}$, on cherche une solution particulière de la forme $x \mapsto R(x) x^m e^{\lambda}x$ avec $R$ du même degré que $P$
+\end{itemize}
+
+\clearpage
+\section{Probabilités sur un univers fini}
+
+\subsection{Définitions}
+\begin{itemize}
+    \item Eventualité $\omega$ - un résultat possible d'une expérience aléatoire
+    \item Univers $\Omega$ - l'ensemble des éventualités d'une expérience aléatoire
+    \item Évènement aléatoire - un ensemble des éventualités $\omega \in \Omega$
+    \item Évènement élémentaire - $\{\omega\}$
+    \item Évènements incompatibles - $ A \cap B = \emptyset $
+    \item Système complet d'évènements $(A_i)$ - $\begin{cases}
+        \forall (i, j) \in \llbracket 1, n \rrbracket^2 \text{ distinctes}, A_i \neq A_j \\
+        \bigcup A_i = \Omega
+    \end{cases}$
+\end{itemize}
+
+\subsection{Probabilité}
+$(\Omega, P)$ un espace probabilisé
+\[ P: \mathcal{P}(\Omega) \rightarrow [0, 1] \]
+
+\begin{itemize}
+    \item $P(\Omega) = 1$
+    \item $P(A \sqcup B) = P(A) + P(B)$
+\end{itemize}
+
+\subsubsection{Propriétés}
+\begin{itemize}
+    \item Pour un système complet d'évènements, 
+    \begin{itemize}
+        \item $\sum P(A_i) = 1$
+        \item $P(B) = \sum P(B\cap A_i)$
+    \end{itemize}
+    \item Une distribution de probabilités sur $E$ - une famille de réels positifs indexée sur $E$ de somme 1 - $P$ est entièrement déterminée par une distribution de probabilités
+    \item Probabilité uniforme - $P(A) = \frac{|A|}{|\Omega|}$
+\end{itemize}
+
+\subsubsection{Conditionnement}
+\[ P_B(A) = \frac{P(A \cap B)}{P(B)} \]
+
+\begin{itemize}
+    \item $P_B$ est une probabilité sur $\Omega$
+    \item Formule des probabilités composées - $P(A \cap B) = P(A) \times P_A(B)$
+    \item Formule de Bayes - $P_B(A) = \frac{P_A(B) \times P(A)}{P(B)}$
+    \item Pour un système complet d'évènements, $P(B) = \sum P_{A_i}(B) \times P(A_i)$
+\end{itemize}
+
+\subsubsection{Indépendance}
+\[ A \ind B \iff P(A \cap B) = P(A) \times P(B) \iff P_B(A) = P(A) \]
+
+\begin{itemize}
+    \item Si $A$ et $B$ sont indépendants, $A$ et $\overline{B}$ aussi
+    \item Pour une famille, on distingue 2 à 2 indépendante et mutuellement indépendante ( $\forall I\in \mathcal{P}(\llbracket 1, n \rrbracket)$ non-vide $ P(\bigcap_{i \in I} A_i) = \prod_{i \in I} P(A_i) $ )
+\end{itemize}
+
+\clearpage
+\section{Intégration sur un segment}
+
+\subsection{Fonctions en escalier}
+
+\subsubsection{Définitions}
+\begin{itemize}
+    \item Subdivision du segment $[a,b]$ - suite finie $\sigma$ strictement croissante de $n + 1 $ éléments tel que $a = a_0$ et $a_n = b$
+    \item Pas de la subdivision - l'écart maximal entre deux éléments de la subdivision
+    \item Subdivision $\sigma '$ plus fine que $\sigma$ - tout point de $\sigma$ est aussi dans $\sigma '$
+    \item Subdivision régulière - écart constant entre 2 éléments 
+    \item Fonction en escalier - il existe une subdivision adaptée $\sigma = (a_k)_{0\leq k \leq n}$ à la fonction $f$ tel que $\forall k \in \llbracket 1, n \rrbracket, f_{] a_{k-1}, a_k [}$ est constante
+    \item Toute subdivision plus fine qu'une subdivision adaptée à $f$ en escalier est une subdivision adaptée à $f$
+    \item Norme infinie - $ \| f \|_{\infty} = \sup_{[a,b]} |f(x)| $ - toute fonction en escalier sur $[a,b]$ prend un nombre fini de valeurs et est bornée
+    \item Intégrale sur un segment - $\int_{[a, b]} f = I(f, \sigma) = \sum_{k=1}^{n} (a_k - a_{k-1})\lambda_k $ pour $\sigma = (a_k)$ une subdivision adaptée à $f$ et $f_{]a_k, a_{k-1}[} = \lambda_k$
+\end{itemize}
+
 
 \end{document}
