@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 import numpy as np
 
-bande = (760, 780) # bande d'extraction par defaut
-xMin = 1200
+bande = (700, 750) # bande d'extraction par defaut
+xMin = 970
 xWidth = 500 # Il faut OBLIGATOIREMENT assurer que cette valeur reste constante
 
 m = -0.6036
