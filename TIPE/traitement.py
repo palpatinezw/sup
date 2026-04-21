@@ -11,8 +11,8 @@ def calibration(longueurs, intensites):
     """
     n = len(longueurs)
 
-    min_distance = 20        # minimum separation between peaks (in index units)
-    min_prominence = 10      # how "stand-out" a peak must be (tune this)
+    min_distance = 10        # minimum separation between peaks (in index units)
+    min_prominence = 5      # how "stand-out" a peak must be (tune this)
 
     peaks, props = find_peaks(intensites, distance=min_distance, prominence=min_prominence)
     if len(peaks) > n:
@@ -20,8 +20,11 @@ def calibration(longueurs, intensites):
         peaks = peaks[order[:n]]
 
     peaks = np.sort(peaks)
-    print(peaks)
+    longueurs.sort(reverse=True)
+    print(f"[.] Detections de pics: {peaks}")
 
-    slope, intercept, r, p, se = stats.linregress(longueurs, peaks)
+    slope, intercept, r, p, se = stats.linregress(peaks, longueurs)
+
+    print(f"[.] Regression linéaire: {slope, intercept, r, p, se}")
 
     return slope, intercept # type:ignore

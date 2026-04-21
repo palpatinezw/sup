@@ -1,15 +1,33 @@
 from analyse_img import extraction_intensite
 from traitement import calibration
 import matplotlib.pyplot as plt
+from matplotlib.widgets import RectangleSelector
 from datetime import datetime
 import numpy as np
+import os
+import cv2
 
 bande = (700, 750) # bande d'extraction par defaut
-xMin = 970
-xWidth = 500 # Il faut OBLIGATOIREMENT assurer que cette valeur reste constante
+xMin = 2291
+xWidth = 1091 # Il faut OBLIGATOIREMENT assurer que cette valeur reste constante
 
-m = -0.6036
-c = 675.3
+m = -0.3285
+c = 704.6
+
+def charger_image(chemin_fichier):
+    """
+    Charge l'image depuis le disque et la convertit en tableaux numpy.
+    Retourne l'image BGR (OpenCV) et RGB (matplotlib).
+    """
+    if not os.path.exists(chemin_fichier):
+        raise FileNotFoundError(f"Image introuvable : {chemin_fichier}")
+
+    img_bgr = cv2.imread(chemin_fichier)          # OpenCV lit en BGR
+    img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)  # type: ignore # Conversion RGB
+
+    print(f"[✓] Image chargée : {chemin_fichier}")
+    print(f"    Dimensions : {img_rgb.shape[1]} × {img_rgb.shape[0]} pixels")
+    return img_rgb
 
 def pixelToLongueur(pxl):
     return m*pxl + c
@@ -26,12 +44,45 @@ def ajusterBande(l, h, sample=None):
     bande = (l, h)
     if sample:
         extraction_intensite(sample, l, h, xMin, xMin + xWidth, debug=True)
-    print(f"Bande: [ {l} , {h} ]")
+    print(f"[✓] Bande: [ {l} , {h} ]")
 
-def ajusterX(x):
-    global xMin
+def ajusterX(x, xw=None):
+    global xMin, xWidth
     xMin = x
-    print(f"X width: [ {xMin} , {xMin + xWidth} ] (width : {xWidth})")
+    if xw != None:
+        print("[!] Attention ! Modification de largueur de bande !")
+        xWidth = xw
+    print(f"[✓] X width: [ {xMin} , {xMin + xWidth} ] (width : {xWidth})")
+
+class SelecteurROI:
+    """
+    Outil interactif pour délimiter à la souris la bande spectrale
+    sur l'image (le spectre horizontal issu du réseau de diffraction).
+    """
+    def __init__(self, img_rgb):
+        self.img = img_rgb
+        self.roi = None          # (x1, y1, x2, y2) en pixels
+        self.confirme = False
+
+    def selectionner(self):
+        fig, ax = plt.subplots(figsize=(12, 6))
+        ax.imshow(self.img)
+        ax.set_title("Tracez un rectangle autour de la bande spectrale\n"
+                     "puis fermez la fenêtre.", fontsize=11)
+
+        def on_select(eclick, erelease):
+            x1, y1 = int(eclick.xdata), int(eclick.ydata)
+            x2, y2 = int(erelease.xdata), int(erelease.ydata)
+            self.roi = (min(x1,x2), min(y1,y2), max(x1,x2), max(y1,y2))
+            print(f"[ROI] x1={self.roi[0]}, y1={self.roi[1]}, "
+                  f"x2={self.roi[2]}, y2={self.roi[3]}")
+
+        rs = RectangleSelector(ax, on_select, useblit=True,
+                               button=[1], minspanx=5, minspany=5, # type: ignore
+                               spancoords='pixels', interactive=True)
+        plt.tight_layout()
+        plt.show()
+        return self.roi
 
 # e.g. calibrer("img/samplecalib.png", [405, 532, 650])
 def calibrer(img, pics):
@@ -47,7 +98,7 @@ def calibrer(img, pics):
     global c
     m = res[0]
     c = res[1]
-    print(f"Calibration effectuée: {m}*x + {c}")
+    print(f"[✓] Calibration effectuée: {m}*x + {c}")
 
 def analyse(img):
     """
@@ -56,19 +107,20 @@ def analyse(img):
         :param img: chemin de l'image à analyser
     """
     if m == 0:
-        print("Analyse non effectuée - erreur de calibration")
+        print("[X] Analyse non effectuée - erreur de calibration")
         return
     intensite, r, g, b = extraction_intensite(img, bande[0], bande[1], xMin, xMin + xWidth)
     now = datetime.now()
     resultatstr = f"Extraction [ {img} ] effectuee {str(now)}\n"
-    resultatstr += f"Calibration: {m}*x + {c} [Largeur {xWidth}]\n\n"
+    resultatstr += f"Calibration: {m}*x + {c} [largueur {xMin} + {xWidth}]\n\n"
     resultatstr += f"pixel, longueur d'onde, intensite, r, g, b\n"
     for i in range(len(intensite)):
         resultatstr += f"{i}, {pixelToLongueur(i)}, {intensite[i]}, {r[i]}, {g[i]}, {b[i]}\n"
     with open(f"out/resultat_{now.strftime("%Y%m%d-%H%M%S")}.txt", "w") as f:
         f.write(resultatstr)
 
-    print(f"Analyse simple effectuée [ out/resultat_{now.strftime("%Y%m%d-%H%M%S")}.txt ]")
+    print(f"[✓] Analyse simple effectuée [ out/resultat_{now.strftime("%Y%m%d-%H%M%S")}.txt ]")
+    return f"out/resultat_{now.strftime("%Y%m%d-%H%M%S")}.txt"
 
 def parse(filename):
     """
@@ -131,3 +183,83 @@ def getAbsorbance(base, spectre):
         "longeurs": base["longeurs"],
         "absorbance": -np.log( spectre["intensities"] / base["intensities"] )
     }
+
+def run():
+    """
+    Execute l'intégralité du code pour effecteur une analyse de spectre complète.
+    """
+
+    # Calibration (facultative)
+    print(f"[.] La droite de calibration est actuellement {m} x + {c} [{xMin} (largueur {xWidth})]")
+    calibrate = input("[?] Voulez-vous effectuer une calibration ? (y/n): ") == 'y'
+
+    while calibrate:
+        calibrate_file = input("[?] Entrer le nom du fichier de calibration : ")
+        calib_roi = None
+        
+        print("[→] Sélection interactive de la ROI...")
+        sel = SelecteurROI(charger_image(calibrate_file))
+        roi = sel.selectionner()
+        if roi is None:
+            print("[!] Aucune ROI sélectionnée. Arrêt.")
+
+        ajusterBande(roi[1], roi[3])  # type: ignore
+        ajusterX(roi[0], roi[2]-roi[0]) # type: ignore
+
+        calibrate_peaks = input("[?] Entrer les longueurs d'onde des pics (en nm, separes de virgules) : ")
+        calibrer(calibrate_file, [int(x) for x in calibrate_peaks.split(",")])
+        
+        calibrate = input(f"[?] La droite de calibration est actuellement {m} x + {c} - voulez-vous re-effectuer une calibration ? (y/n): ") == 'y'
+    
+    print(f"[!] Sauvegarder la calibration ! {m} x + {c} [{xMin} (largueur {xWidth})]")
+
+    
+    blanc = []
+    spectres = []
+    absrs = []
+    continueanalysis = True
+
+    while continueanalysis:
+        continueanalysis = False
+        print(f"[.] Debut d'analyse {len(spectres)}")
+
+        blanc_file = input("[?] Entrer le nom du BLANC : ")
+        print("[→] Sélection interactive de la ROI...")
+        sel = SelecteurROI(charger_image(blanc_file))
+        roi = sel.selectionner()
+        if roi is None:
+            print("[!] Aucune ROI sélectionnée. Arrêt.")
+        ajusterBande(roi[1], roi[3])  # type: ignore
+        if abs(roi[0] - xMin) > 100: # type: ignore
+            print(f"[!] Attention : ecart important entre xMin selectionne {roi[0]} et xMin de calibration {xMin}") # type: ignore
+        
+        print("[.] Analyse du BLANC")
+        blanc_res = analyse(blanc_file)
+        blanc.append(parse(blanc_res))
+
+        spectre_file = input("[?] Entrer le nom du fichier : ")
+
+        print("[→] Sélection interactive de la ROI...")
+        sel = SelecteurROI(charger_image(spectre_file))
+        roi = sel.selectionner()
+        if roi is None:
+            print("[!] Aucune ROI sélectionnée. Arrêt.")
+        ajusterBande(roi[1], roi[3])  # type: ignore
+        if abs(roi[0] - xMin) > 100: # type: ignore
+            print(f"[!] Attention : ecart important entre xMin selectionne {roi[0]} et xMin de calibration {xMin}") # type: ignore
+        
+        print(f"[.] Analyse du spectre {len(spectres)}")
+        spectre_res = analyse(spectre_file)
+        spectres.append(parse(spectre_res))
+        absrs.append(getAbsorbance(blanc[-1], spectres[-1]))
+
+        for i in range(len(absrs)):
+            absr = absrs[i]
+            plt.plot(absr["longeurs"], absr["absorbance"], label=f"Spectre {i}")
+        plt.legend()
+        plt.show()
+
+        continueanalysis = input("[?] Voulez-vous continuer ? (y/n): ") == 'y'
+
+
+# analyse_complete()
