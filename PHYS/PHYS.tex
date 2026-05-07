@@ -1046,6 +1046,14 @@ On choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec
     \end{itemize}
 \end{itemize}
 
+\subsubsection{Diagrammes usuels}
+
+\begin{itemize}
+    \item Diagramme de Watt - $(P,V)$ avec $V$ la volume de la machine
+    \item Diagramme de Clapeyron - $(P, V)$ ou $(P, v)$ du système (souvent le gaz seul)
+    \item Diagramme entropique - $(T, S)$
+\end{itemize}
+
 \subsubsection{Types de transformations}
 \begin{itemize}
     \item Iso- (constant dans le système) ou Mono- (constant à l'extérieur du système)
@@ -1078,7 +1086,7 @@ On choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec
     \item $C_P = \frac{\partial H}{\partial T}|_P$ - Capacité thermique / calorifique à pression constant
     \item $\chi_T = -\frac{1}{V} \frac{\partial V}{\partial P}|_T = \frac{1}{\rho} \frac{\partial \rho}{\partial P}|_T$ - Coefficient de compressibilité isotherme
     \item $\alpha = \frac{1}{V}\frac{\partial V}{\partial T}|_P = -\frac{1}{\rho} \frac{\partial \rho}{\partial T}|_P$ - Coefficient de dilatation isobare
-    \item $\beta = \frac{1}{\beta}\frac{\partial P}{\partial T}|_V$ - Coefficient de dilatation isochore
+    \item $\beta = \frac{1}{P}\frac{\partial P}{\partial T}|_V$ - Coefficient de dilatation isochore
 \end{itemize}
 
 \subsubsection{Types de phases}
@@ -1103,6 +1111,7 @@ On choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec
     \end{itemize}
     \item Enthalpie de changement d'état - $Q$ nécessaire pour la transition de phase pour un système isotherme et isobare
     \item Énergie interne de changement d'état - $Q$ nécessaire pour la transition de phase isochore et monotherme, dans le vide. 
+    \item Entropie de changement d'état - $s_{\phi_1 \rightarrow \phi_2} = \frac{h_{\phi_1 \rightarrow \phi_2}(T)}{T}$
 \end{itemize}
 
 \subsubsection{Variance}
@@ -1115,6 +1124,11 @@ Pour $K$ espèces nomléculaires sous $\phi$ phases distinctes,
     \item Pour un corps diphasé, $\nu = 1$ - courbe de transition de phase
     \item Pour un corps triphasé, $\nu = 0$ - c'est le point triple où les trois phases peuvent coexister
     \item Point critique - au-delà du point critique sur la courbe de transition liquide-vapeur, on n'observe plus de transition entre liquide et vapeur
+    \begin{itemize}
+        \item Le ménisque devient de moins en moins net quand on s'approche du point critique
+        \item Pour une transition liquide-vapeur $\rightarrow$ fluide supercritique, on observe l'opalescence critique (la compressibilité diverge, donc les fluctuations de la densité aussi, ce qui provoque la diffusion de la lumière)
+        \item Pour un transition fluide supercritique $\rightarrow$ liquide-vapeur, on observe la coalescence dû à des gouttelettes de liquides qui apparaissent et se coalescent.
+    \end{itemize}
 \end{itemize}
 
 \subsection{Mécanique des fluides}
@@ -1169,7 +1183,7 @@ Avec les hypothèse d'un fluide
 \end{itemize}
 
 \subsection{Premier principe de la thermodynamique}
-\[ dE_{m\repr} + dU = \delta W_{\repr} + \delta Q \]
+\[ \dd E_{m\repr} + \dd U = \delta W_{\repr} + \delta Q \]
 
 \begin{itemize}
     \item $U$ est extensive et est une fonction d'état
@@ -1221,6 +1235,10 @@ On considère une enceinte isolée contenant 2 gaz séparés par une paroi.
     \item Pour une paroi mobile mais les deux gaz à la même température, $\dd S = \frac{P_1 - P_2}{T} \dd V_1 \geq 0$ donc $\dd V_1$ est de même signe que $P_1 - P_2$ - mouvement du paroi au sens plus haute pression $\rightarrow$ plus basse pression
 \end{itemize}
 
+\subsubsection{Troisième principe de la thermodynamique}
+
+L'entropie d'un corps pur parfaitement cristallisé tend vers 0 J K$^{-1}$ lorsque sa température tend vers $0$ K
+
 \subsection{Gaz parfait}
 \begin{itemize}
     \item Molécules du gaz supposées ponctuelles
@@ -1254,9 +1272,9 @@ Pour un gaz parfait diatomique, on compte 7 degrés de liberté
 
 \noindent Par théorème d'équipartition de l'énergie, chaque degré de liberté contribue $\frac{1}{2}k_BT$ à l'énergie totale du système
 \begin{itemize}
-    \item À basses températures, on a uniquement les translations, $U = \frac{3}{2}k_BT$ comme pour des gaz monoatomiques
-    \item À températures ambiantes, on a les translations et les rotations, mais pas de vibrations, $U = \frac{5}{2}k_BT$
-    \item À hautes températures, on a les translations, les rotations, et les vibrations, $U = \frac{7}{2}k_BT$
+    \item À basses températures, on a uniquement les translations, $U = \frac{3}{2}N k_BT$ comme pour des gaz monoatomiques
+    \item À températures ambiantes, on a les translations et les rotations, mais pas de vibrations, $U = \frac{5}{2} N k_BT$
+    \item À hautes températures, on a les translations, les rotations, et les vibrations, $U = \frac{7}{2} N k_BT$
 \end{itemize}
 
 \subsubsection{Généralisation}
@@ -1264,7 +1282,8 @@ On définit la coefficient de Laplace
 \[ \gamma = \frac{C_P}{C_V} > 1 \]
 
 \begin{itemize}
-    \item Par définition, $\dd U = C_V \dd T \et \dd H = C_P \dd T$
+    \item $\dd U = C_V \dd T \et \dd H = C_P \dd T$
+    \item $\dd S = \frac{nR}{\gamma - 1} \frac{1}{T} \dd T + nR \frac{1}{V} \dd V = \dd (\frac{nR}{\gamma - 1} \ln(TV^{\gamma -1}))$
     \item Relation de Mayer - $C_P - C_V = nR$
     \item $C_V = \frac{nR}{\gamma - 1}$
     \item $C_P = \frac{nR\gamma}{\gamma - 1}$
@@ -1277,7 +1296,9 @@ On définit la coefficient de Laplace
 \begin{itemize}
     \item Correction du pression - $\propto n^2$ le nombre d'intéractions entre des paires de molécules
     \item Correction du pression - $\propto \frac{1}{V^2}$ car la force des intéractions intermoléculaires $\propto \frac{1}{r^6}$
+    \item Correction du pression $\geq 0$ - pression réelle plus faible qu'attendue
     \item Correction du volume - $\propto n$ associé à la dimension finie des molécules
+    \item Correction du volume - $\leq 0$ - volume plus grand qu'attendue
 \end{itemize}
 
 \subsection{Phases condensées incompressibles et indilatables}
@@ -1295,17 +1316,105 @@ On définit la coefficient de Laplace
     \item On intègre pour obtenir $\Delta U$ à partir d'un chemin fictif sur un palier de changement d'état (isotherme), puis un changement de température sur une courbe d'ébullition, puis un palier de changement d'état (isotherme)
 \end{enumerate}
 
+On applique le même raisonnement pour d'autres fonctions d'états (e.g. énergie interne ou entropie)
+
 \subsubsection{Détente de Joule-Gay-Lussac}
 On considère 2 enceintes reliées, une contenant du vide et l'autre contenant un gaz. 
 
 \begin{itemize}
     \item La detente lors de l'ouverture du robinet séparant les enceintes est isoénergétique $\Delta U = 0$ [Démonstration - prenons comme système fermé {gaz + vide + parois} - on a une évolution isochore et adiabatique donc $\Delta U_{\text{gaz}} + \Delta U_{\text{parois}} = 0$. On applique les équations reliant $\Delta U$ à $\Delta T$ pour un gaz parfait et le parois assimilé à un solide incompressible et indilatable pour obtenir $\Delta T = 0$]
+    \item Pour la transformation finalement isotherme - $\Delta S = nR \ln(\frac{V_f}{V_i})$
     \item Pour un gaz réel, $\Delta T < 0$
 \end{itemize}
 
 \subsubsection{Détente de Joule-Thomson}
 On considère un fluide en écoulement lent, stationnaire et horizontal traversant un milieu poreux qui sépare le fluide à gauche ($P_1, V_1$) avec le fluide à droite ($P_2, V_2$).
 
+\begin{itemize}
+    \item $\Delta H = 0$ [Démonstration - reprendre la démonstration du premier principe industriel, appliquée au milieu poreux dont le transfert thermique et le travail est 0]
+    \item $\Delta S = nR \ln(\frac{V_f}{V_i}) = nR \ln(\frac{P_i}{P_f})$ [Démonstration - avec $\dd T = 0$ ou avec $\dd H = 0$]
+\end{itemize}
+
+\subsection{Machines thermiques cycliques}
+Le système à son état initial. 
+
+\begin{itemize}
+    \item $\Delta U = 0$, $\Delta H = 0$, $\Delta S = 0$.
+    \item Comme $\Delta U = W + Q = 0$, les diagrammes de Clapeyron et entropique tournent dans le même sens (horaire pour un cycle moteur, trigo pour un cycle récepteur)
+\end{itemize}
+
+\subsubsection{Machine monotherme}
+Une machine monotherme cyclique n'existe pas. (Énoncé de Kelvin-Planck du second principe) \\
+
+Pour qu'un système cyclique fournisse du travail, il doit nécessairement échanger un transfert thermique avec au moins deux sources de températures différentes \\
+
+[Démonstration - Le signe de $Q$ est fixé par le 2e principe, ce qui fixe le signe de $W$ par le 1er principe]
+
+\subsubsection{Inégalité de Clausius}
+
+\[ \sum_k \frac{Q_k}{T_k} \leq 0 \]
+
+[Démonstration - 2e principe]
+\begin{itemize}
+    \item Le cycle est réversible $ \iff \sum_k \frac{Q_k}{T_k} = 0 $ - égalité de Carnot-Clausius
+    \item Par le premier principe, on a de plus $\sum_k Q_k = -W$
+\end{itemize}
+
+\subsubsection{Diagramme de Raveau}
+\begin{center}
+    \includegraphics[height=5cm]{raveau.jpg}
+\end{center}
+
+\begin{enumerate}
+    \item $W < 0, Q_c > 0, Q_f < 0$ - domaine moteur
+    \begin{itemize}
+        \item $\eta = 1 + \frac{Q_f}{Q_c} \leq 1 - \frac{T_f}{T_c}$
+        \item Cycle de Carnot - 2 isothermes et 2 adiabatiques (isentropiques)
+    \end{itemize}
+    \item $W > 0, Q_c > 0, Q_f < 0$ - transfert thermique de la source chaude vers la source froide
+    \item $W > 0, Q_c < 0, Q_f < 0$ - chauffage des 2 sources
+    \item $W > 0, Q_c > 0, Q_f < 0$ - transfert de la source froide vers la source chaude - domaine pompe à chaleur / machines frigorifiques
+    \begin{itemize}
+        \item Machine frigorifiques - $e = -\frac{Q_f}{Q_c + Q_f} \leq \frac{T_f}{T_c - T_f}$
+        \item Pompe à chaleur - $e = \frac{Q_c}{Q_c + Q_f} \leq \frac{T_c}{T_c - T_f}$
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Moteur à explosion}
+
+\begin{enumerate}
+    \item Admission à pression atmosphèrique
+    \item Compression supposé adiabatique (isentropique)
+    \item Explosion (modélisé par chauffage isochore)
+    \item Détente supposé adiabatique (isentropique)
+    \item Échappement (supposé en 2 étapes, homogenéisation de pression de manière isochore puis refoulement)
+\end{enumerate}
+
+\[ \eta = 1 - \frac{1}{\alpha^{\gamma - 1}} \]
+
+Avec $\alpha = \frac{V_{\max}}{V_{\min}}$ \\
+
+[Démonstration - Avec conservation de $TV^{\gamma - 1}$ pour les transformations adiabatiques et l'expression de rendement pour un moteur]
+
+\clearpage
+
+\section{Induction}
+
+\subsection{Champ magnétique}
+\subsubsection{Propriétés}
+\begin{itemize}
+    \item Les invariances du champ magnétique sont les même que celles de ses sources
+    \item Les plans de symétrie du champ magnétique sont des plans d'antisymétrie de ses sources et inversement
+    \item Pour un solénoïde infini, $\overrightarrow{B_{\text{int}}} = \mu_0 n I \vec{e_z}$ et $\overrightarrow{B_{\text{ext}}} = \vec{0}$
+\end{itemize}
+
+\subsubsection{Dipôle magnétique}
+\[ \vec{\mathcal{M}} = I \vec{S} \]
+
+\begin{itemize}
+    \item À une distance très grande devant la taille caractéristique du dipôle, on a l'approximation dipôlaire. Le champ magnétique créé est $\frac{\mu_0}{4 \pi} \frac{3(\vec{\mathcal{M}} \cdot \vec{r})\vec{r} - \vec{\mathcal{M}}r^2}{r^5}$
+    \item L'allure des lignes de champ magnétique est $r = \lambda \sin^2 \theta$ [Démonstration - sur la ligne de champ, $\dd \overrightarrow{OM}$ est tangent au champ magnétique donc $\dd \overrightarrow{OM} \wedge \vec{B} = \vec{0}$]
+\end{itemize}
 
 \clearpage
 

@@ -23,18 +23,12 @@
 
 \clearpage
 \section{Logique, ensembles et raisonnements}
-Chapitre 1
 \subsection{Méthodes de démonstration}
 \subsubsection{Montrer $P \implies Q$}
-Démonstration directe
+
 \begin{itemize}
-    \item Supposer $P$
-    \item Montrer $Q$
-\end{itemize}
-Démonstration par contraposée
-\begin{itemize}
-    \item Supposer non $P$
-    \item Montrer non $Q$
+    \item Démonstration directe - supposons $P$, montrons $Q$
+    \item Démonstration par contraposée - supposons non $Q$, montrons non $P$
 \end{itemize}
 
 \subsubsection{Montrer l'équivalence $ P \iff Q $}
@@ -46,7 +40,7 @@ Démonstration par double implication
 
 \subsubsection{Disjonction}
 \begin{itemize}
-    \item $ P \textit{ ou } Q \iff ( \textit{non}( P ) \implies Q )$
+    \item $ P \ou Q \iff ( \text{non}( P ) \implies Q )$
 \end{itemize}
 
 \subsection{Outils de raisonnement}
@@ -54,37 +48,23 @@ Démonstration par double implication
     \item Disjonction de cas
     \item L'absurde
     \item Récurrence (simple, double, forte)
-    \item Analyse-synthèse (analyse cachée)
+    \item Analyse-synthèse
 \end{itemize}
 
 \subsection{Quantificateurs}
 \subsubsection{$ \forall $ pour tout}
-Démonstration
-\begin{itemize}
-    \item Soit $ x $ dans l'ensemble de définition, sans imposant aucun condition
-\end{itemize}
-Démonstration d'une propriété dans l'implication
-\begin{itemize}
-    \item En particulier, prenons (une valeur bien choisie)
-\end{itemize}
+Démonstration - soit $ x $ dans l'ensemble de définition quelconque
+
+Quand on a une propriété pour tout, on peut prendre en particulier une valeur bien choisie
 
 \subsubsection{$ \exists $ il existe}
-Démonstration
-\begin{itemize}
-    \item Choisir un $ x $ qui convient
-\end{itemize}
+Démonstration - choisir un $ x $ qui convient
 
 \subsubsection{$ \exists! $ il existe un unique}
 Démonstration
 \begin{itemize}
-    \item Montrer l’unicité d'une solution sous réserve d'existence
-    \item Montrer que l'unique solution existe (qu'elle est bien solution)
-\end{itemize}
-
-\subsubsection{Unicité en cas d'existence}
-\begin{itemize}
-    \item Soit deux élements qui respecte le cahier des charges
-    \item Montrer l'égalité
+    \item Montrer l'unicité d'une solution sous réserve d'existence (montrer l'égalité de 2 solutions, ou par analyse)
+    \item Montrer que l'unique solution existe (synthèse)
 \end{itemize}
 
 \subsection{Ensembles}
@@ -103,7 +83,6 @@ Démonstration
 
 \clearpage
 \section{Trigonométrie et complexes}
-Chapitre 2.1, 2.2
 \subsection{Formules trigonométrique}
 \subsubsection{Formules de base}
 \begin{itemize}
@@ -187,11 +166,11 @@ $ |z| = \sqrt{\text{Re}(z)^2 + \text{Im}(z)^2} $
     \item Formule de Moivre - $ \forall n \in \mathbb{Z}, e^{i\theta n} = (e^{i\theta})^n $ (Attention que la formule est valable seulement pour $ n \in \mathbb{Z} $
 \end{itemize}
 
-\noindent On déduit la factorisation par l'angle moitié avec les formules d'Euler.
+On déduit la factorisation par l'angle moitié avec les formules d'Euler.
 \[ e^{i\theta}+e^{i\theta'} = e^{i\frac{\theta+\theta'}{2}}(e^{i\frac{\theta-\theta'}{2}} + e^{i\frac{\theta'-\theta}{2}}) = e^{i\frac{\theta+\theta'}{2}}(2\cos{\frac{\theta-\theta'}{2}}) \]  
 \[ e^{i\theta}-e^{i\theta'} = e^{i\frac{\theta+\theta'}{2}}(e^{i\frac{\theta-\theta'}{2}} - e^{i\frac{\theta'-\theta}{2}}) = e^{i\frac{\theta+\theta'}{2}}(2i\sin{\frac{\theta-\theta'}{2}}) \]
 
-\noindent Ces formules sont utiles notamment pour $ \theta=0 $ donc $ e^{i\theta} = 1 $
+Ces formules sont utiles notamment pour $ \theta=0 $ donc $ e^{i\theta} = 1 $
 
 \subsubsection{Transformations du plan}
 
@@ -229,7 +208,9 @@ Pour $a\in \mathbb{N}^*$, les racines n-ièmes de $ a = |a|e^{i\theta}$ sont les
 \noindent On note $\mathbb{U}_n$ les racines n-ièmes de l'unité. 
 \begin{itemize}
     \item 1 est une racine
-    \item On note $j=e^{i\frac{2\pi}{3}} \in \mathbb{U}_3$
+    \item On note $j=e^{i\frac{2\pi}{3}} = -\frac{1}{2} + i \frac{\sqrt{3}}{2} \in \mathbb{U}_3$
+    \item $x^2 + x + 1 = (x - j)(x - j^2)$
+    \item $x^2 - x + 1 = (x + j)(x + j^2)$
 \end{itemize}
 
 \subsection{Équations du second degré}
@@ -1438,7 +1419,7 @@ Le $n$ du plus grand coefficient non-nul (coefficient dominant).
     \item Théorème d'Alembert-Gauss - tout polynôme non constant possède au moins une racine dans $\mathbb{C}$
     \item Pour $\mathbb{R}[X]$, $\omega$ est une racine $\iff$ $\overline{\omega}$ est une racine
     \item Pour $(\alpha_1,\dots,\alpha_n)$ sont des racines, $\prod_{i=1}^n (X-\alpha_i) | Q$
-    \item Critère d'égalité - Deux polynômes de $\mathbb{K}_n [X]$ qui coïncident en $n+1$ racines alors c'est le polynôme nul
+    \item Critère d'égalité - Deux polynômes de $\mathbb{K}_n [X]$ qui coïncident en $n+1$ points sont égaux [Démonstration - un polynôme de $\mathbb{K}_n [X]$ avec $n+1$ racines est le polynôme nul]
     \item Polynôme scindé - $P = \lambda (X-\alpha_1)\dots(X-\alpha_n)$ - Tout polynôme non nul de $\mathbb{C}[X]$ est scindé sur $\mathbb{C}$
 \end{itemize}
 
@@ -1547,7 +1528,7 @@ $f$ est $M$-lipschitzienne -
 
 \begin{itemize}
     \item $f$ contractante - $M \in [0, 1[$
-    \item Si $f'$ est borné par $M$, $f$ est $M$-lipschitzienne
+    \item Si $f'$ est borné par $M$, $f$ est $M$-lipschitzienne (inégalité des accroissements finis)
 \end{itemize}
 
 \subsection{Convexité}
@@ -1561,6 +1542,13 @@ $f$ est $M$-lipschitzienne -
     \item $f$ est convexe sur I $\iff f'$ est croissante sur $I$ pour une fonction dérivable en $I$ (ou continue en $I$ et dérivable en $\mathring{I}$) [Démonstration : Sens direct - en montrant l'inégalité des 3 pentes et prenant la limite; Sens indirect - Théorème des accroissements finies]
     \item $f$ est convexe $\iff$ $f'' \geq 0$ (pour une fonction 2 fois dérivable)
     \item $f$ est continue et dérivable à gauche et à droite (pas forcément dérivable) en tout point de $\mathring{I}$
+\end{itemize}
+
+\subsubsection{Inégalités de convexités usuelles}
+\begin{itemize}
+    \item $\ln(1+x) \leq x$ 
+    \item $e^x \geq 1-x$ 
+    \item $\sin x \leq x$ sur $[0, \pi]$ et $\sin x \geq \frac{2}{\pi}x$ sur $[x, \frac{\pi}{2}]$
 \end{itemize}
 
 \clearpage
@@ -1848,7 +1836,7 @@ Pour $A \in \mathcal{M}_{n, p}(\mathbb{K})$
     \begin{itemize}
         \item $A \et B$ sont équivalentes $\iff A \et B$ représentent la même application linéaire
     \end{itemize} 
-    \item Matrices semblables - il existe une matrice inversible $P$ =tel que $B = P^{-1}AP$
+    \item Matrices semblables (HP) - il existe une matrice inversible $P$ tel que $B = P^{-1}AP$
     \begin{itemize}
         \item $A \et B$ sont semblables $\iff A \et B$ représentent le même endomorphisme
     \end{itemize} 
@@ -1863,7 +1851,7 @@ Pour $(a, b) \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$ dérivable de $I$ d
 
 \noindent Les solutions sont des la forme
 
-\[ x \mapsto (\int_{}^{x} b(t) e^{A(t)} \dt)e^{-A(x)} + Ce^{-A(x)} \]
+\[ x \mapsto Ce^{-A(x)} + (\int_{}^{x} b(t) e^{A(t)} \dt)e^{-A(x)} \]
 
 \begin{itemize}
     \item L'ensembles des solutions homogènes $ = \Vect (e^{-A(x)})$
@@ -1894,7 +1882,7 @@ Pour $(a, b) \in \mathbb{K}^2, f \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$
     \begin{itemize}
         \item $\lambda_1 \et \lambda_2$ 2 racines distinctes - $\Vect (e^{\lambda_1 x}, e^{\lambda_2 x})$
         \item $\lambda_0$ racine double - $\Vect (xe^{\lambda_0 x}, e^{\lambda_0 x})$
-        \item Dans $\mathbb{R}$ avec 2 racines complexes conjuguées $\lambda = r \pm i \omega$ - $\Vect (\cos (\omega x), \sin(\omega x))$
+        \item Dans $\mathbb{R}$ avec 2 racines complexes conjuguées $\lambda = r \pm i \omega$ - $\Vect (e^{rx} \cos (\omega x), e^{rx} \sin(\omega x))$
     \end{itemize}
     \item L'ensemble des solutions homogène est un plan vectoriel
     \item Il existe toujours une solution particulière
@@ -1904,7 +1892,7 @@ Pour $(a, b) \in \mathbb{K}^2, f \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$
 \subsubsection{Solutions particulières remarquables}
 \[ y'' + ay' + by = Ae^{\lambda x} \]
 \begin{itemize}
-    \item Il existe une solution particulière de la forme $x \mapsto Cx^m e^{\lambda}x$ où $m$ est la multiplicité de $\lambda$ dans le polynôme caractéristique
+    \item Il existe une solution particulière de la forme $x \mapsto Cx^m e^{\lambda x}$ où $m$ est la multiplicité de $\lambda$ dans le polynôme caractéristique
     \item Pour un second membre trigonométrique, on considère la partie réelle / imaginaire de l'équation avec second membre $Ae^{i\omega}$
     \item Pour un second membre $P(x)e^{\lambda x}$, on cherche une solution particulière de la forme $x \mapsto R(x) x^m e^{\lambda}x$ avec $R$ du même degré que $P$
 \end{itemize}
@@ -1967,8 +1955,6 @@ $(\Omega, P)$ un espace probabilisé
 \section{Intégration sur un segment}
 
 \subsection{Fonctions en escalier}
-
-\subsubsection{Définitions}
 \begin{itemize}
     \item Subdivision du segment $[a,b]$ - suite finie $\sigma$ strictement croissante de $n + 1 $ éléments tel que $a = a_0$ et $a_n = b$
     \item Pas de la subdivision - l'écart maximal entre deux éléments de la subdivision
@@ -1980,5 +1966,94 @@ $(\Omega, P)$ un espace probabilisé
     \item Intégrale sur un segment - $\int_{[a, b]} f = I(f, \sigma) = \sum_{k=1}^{n} (a_k - a_{k-1})\lambda_k $ pour $\sigma = (a_k)$ une subdivision adaptée à $f$ et $f_{]a_k, a_{k-1}[} = \lambda_k$
 \end{itemize}
 
+\subsection{Fonctions continues par morceaux}
+\begin{itemize}
+    \item Définition - il existe une subdivision adaptée $\sigma = (a_k)_{0\leq k \leq n}$ à la fonction $f$ tel que $\forall k \in \llbracket 1, n \rrbracket, f_{] a_{k-1}, a_k [}$ est continue et prolongeable par continuité en $a_{k-1} \et a_{k}$
+    \item Pour toute fonction $f$ CPM, il existe une suite $(\phi_n)$ de fonctions en escalier qui converge uniformément vers $f$ ($\| f - \phi_n \|_{\infty} \longrightarrow 0$)
+    \item Cette suite $(\int_{[a, b]} \phi_n)_n$ converge et sa limite ne dépend pas du choix de $(\phi_n)$ - on définit donc $\int_{[a, b]} f = \lim_{n \rightarrow +\infty} \int_{[a, b]} \phi_n$
+\end{itemize}
+
+\subsection{Propriétés de l'intégrale}
+\begin{itemize}
+    \item Inégalité triangulaire intégrale - $ |\int_{a}^{b} f| \leq \int_{a}^{b} |f| $ (!Attention à l'ordre des bornes!)
+    \item Égalité de $f$ et $g$ sauf en un nombre fini de points - $\int_a^b f = \int_a^b g$
+    \item Positivité et croissance
+    \item Stricte positivité - si $f \geq 0$ et $f$ continue en $x_0$ et $f(x_0) > 0$, alors $\int_{a}^{b} > 0$
+    \item Valeur moyenne de $f$ - $\frac{1}{b-a}\int_{a}^{b} f > 0$
+\end{itemize}
+
+\subsubsection{Calcul intégrale}
+\begin{itemize}
+    \item Pour $f$ paire - $\int_{-a}^a f = 2 \int_0^a f$
+    \item Pour $f$ impaire - $\int_{-a}^a f = 0$
+    \item Pour $f$ $T$-périodique - $\int_{a}^{a+T} = \int_{0}^{T}$
+    \item Critère de nullité - pour $f$ continue et de signe constant, $\int_{a}^{b} f = 0 \iff f = 0$
+    \item Inégalité de Cauchy-Schwarz - $(\int_{a}^{b} fg)^2 \leq (\int_{a}^{b}f^2)(\int_{a}^{b}g^2)$
+\end{itemize}
+
+\subsection{Formule de Taylor}
+Pour $f \in \mathcal{C}^{n+1}$
+\[ f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k + \int_{a}^{x} \frac{(x-t)^n}{n!}f^{(n+1)} (t) \dt \]
+
+\subsubsection{Inégalité de Taylor-Lagrange}
+\[ |f(x) - \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k| \leq \frac{|x-a|^{n+1}}{(n+1)!} M_{n+1} \]
+
+Avec $M_{n+1}$ un majorant de $|f^{(n+1)}|$ sur le segment $[a \leftrightarrow x]$.
+
+\subsection{Sommes de Riemann}
+\[ \frac{b-a}{n}\sum_{k=0}^{n-1} f(a + k\frac{b-a}{n}) \underset{n\rightarrow +\infty}{\longrightarrow} \int_{a}^{b} f \]
+
+La somme peut aller de $1$ à $n$ \\
+
+En particulier, $\frac{1}{n}\sum_{0}^{n-1} f(\frac{k}{n}) \longrightarrow \int_{0}^{1} f$ \\
+
+Identifier une somme de Riemann permet de démontrer la convergence d'une suite et trouver sa limite. 
+
+\clearpage
+
+\section{Espaces préhilbertiens réels}
+\subsection{Définitions}
+\subsubsection{Produit scalaire}
+Toute forme bilinéaire, symétrique, définie et positive sur $E$. 
+\begin{itemize}
+    \item Forme bilinéaire - application de $E \times E \rightarrow R$ linéaire à gauche et à droite
+    \item Symétrique - $\phi (x, y) = \phi (y, x)$
+    \item Positivie - $\phi (x, x) \geq 0$
+    \item Définie - $\phi(x, x) = 0 \implies x = 0_E$
+    \item Espace préhilbertien réel - un $\mathbb{R}$-espace vectoriel muni d'un produit scalaire
+    \item Espace euclidien - un $\mathbb{R}$-espace vectoriel de dimension fini muni d'un produit scalaire
+\end{itemize}
+
+Produits scalaires de référence
+\begin{itemize}
+    \item Produit scalaire canonique sur $\mathbb{R}^n$ - $\langle X, Y \rangle = \sum x_k y_k$
+    \item Produit scalaire canonique sur $\mathcal{M}_{n, p}(\mathbb{R})$ - $\langle A, B \rangle = \text{Tr}(A^T B)$
+    \item Sur $\mathcal{C}^0([a, b], \mathbb{R})$ - $\langle f, g \rangle = \int_{a}^{b} fg$
+    \item Sur $\mathbb{R}[X]$ - $\langle P, Q \rangle = \int_{0}^{1} P(x)Q(x) \dx$
+\end{itemize}
+
+\subsubsection{Norme}
+Toute application $N: E \rightarrow R_+$ qui vérifie
+\begin{enumerate}
+    \item Séparation - $N(x) = 0 \implies x = 0_E$
+    \item Homogénéité - $N(\lambda x) = |\lambda| N(x)$
+    \item Sous-additivité - $N(x+y) \leq N(x) + N(y)$
+\end{enumerate}
+
+\begin{itemize}
+    \item Distance associée à une norme - $d: (x, y) \mapsto N(x-y)$
+    \item Norme associée au produit scalaire - $\|\cdot\| : x \mapsto \sqrt{\langle x, x \rangle}$ 
+\end{itemize}
+
+\subsection{Théorèmes}
+\subsubsection{Inégalité de Cauchy-Schwarz}
+\[ \forall (x, y) \in E^2, \langle x, y \rangle ^2 \leq \langle x, x \rangle\langle y, y \rangle \]
+\[ \langle x, y \rangle ^2 = \langle x, x \rangle\langle y, y \rangle \iff (x, y) \text{ est liée} \]
+
+[Démonstration - Considérons le discriminant de $P:\lambda \mapsto \langle \lambda x + y, \lambda x + y \rangle$ qui est une fonction polynomiale à valeurs positifs]
+
+\begin{itemize}
+    \item Sur $\mathcal{C}^0([a, b], \mathbb{R})$, $(\int_{a}^{b} fg )^2 \leq (\int_{a}^{b} f^2)(\int_{a}^{b} g^2)$
+\end{itemize}
 
 \end{document}

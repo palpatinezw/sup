@@ -232,21 +232,25 @@ def run():
         ajusterBande(roi[1], roi[3])  # type: ignore
         if abs(roi[0] - xMin) > 100: # type: ignore
             print(f"[!] Attention : ecart important entre xMin selectionne {roi[0]} et xMin de calibration {xMin}") # type: ignore
+            ajusterBande(roi[1], roi[3], blanc_file) # type: ignore
         
         print("[.] Analyse du BLANC")
         blanc_res = analyse(blanc_file)
         blanc.append(parse(blanc_res))
 
-        spectre_file = input("[?] Entrer le nom du fichier : ")
+        spectre_file = input("[?] Entrer le nom du fichier (vide pour utiliser le même fichier que le blanc) : ")
 
         print("[→] Sélection interactive de la ROI...")
+        if spectre_file == "":
+            spectre_file = blanc_file
         sel = SelecteurROI(charger_image(spectre_file))
         roi = sel.selectionner()
         if roi is None:
             print("[!] Aucune ROI sélectionnée. Arrêt.")
         ajusterBande(roi[1], roi[3])  # type: ignore
         if abs(roi[0] - xMin) > 100: # type: ignore
-            print(f"[!] Attention : ecart important entre xMin selectionne {roi[0]} et xMin de calibration {xMin}") # type: ignore
+            print(f"[!] Attention : ecart important entre xMin selectionné {roi[0]} et xMin de calibration {xMin}") # type: ignore
+            ajusterBande(roi[1], roi[3], spectre_file) # type: ignore
         
         print(f"[.] Analyse du spectre {len(spectres)}")
         spectre_res = analyse(spectre_file)

@@ -1,0 +1,121 @@
+\documentclass{article}
+
+\usepackage{etoolbox}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue
+}
+
+\setlength{\parindent}{0pt}
+
+% =====================================
+% QUOTE SYSTEM CORE
+% =====================================
+
+\newcounter{quotecounter}
+
+% List of used quotes
+\def\usedquotes{}
+
+% -----------------
+% Declare a quote
+% -----------------
+\newcommand{\declarequote}[3]{%
+  \expandafter\newcommand\csname quote@#1\endcsname{#2}%
+  \expandafter\newcommand\csname source@#1\endcsname{#3}%
+  \expandafter\gdef\csname refs@#1\endcsname{}%
+}
+
+\newcommand{\vml}{Vingt milles lieues sous les mers}
+\newcommand{\lmi}{Le mur invisible}
+\newcommand{\gcg}{La connaissance de la vie}
+
+% -----------------
+% Register quote (only once)
+% -----------------
+\newcommand{\registerquote}[1]{%
+  \ifcsundef{used@#1}{%
+    \expandafter\gdef\csname used@#1\endcsname{}%
+    \ifx\usedquotes\empty
+      \xdef\usedquotes{#1}%
+    \else
+      \xdef\usedquotes{\usedquotes,#1}%
+    \fi
+  }{}
+}
+
+% -----------------
+% Use a quote
+% -----------------
+\newcommand{\usequote}[1]{%
+    \stepcounter{quotecounter}%
+    \hypertarget{quote:#1:\thequotecounter}{}%
+        - \textit{\csname quote@#1\endcsname}
+        - (\csname source@#1\endcsname)
+    \registerquote{#1}%
+    \expandafter\gappto\csname refs@#1\endcsname{%
+        \hyperlink{quote:#1:\thequotecounter}{\thepage}, %
+    }% 
+}
+
+% -----------------
+% Print all references automatically (robust version)
+% -----------------
+\newcommand{\printallquotes}{%
+  \section*{Citations}
+  \begingroup
+  % Split comma-separated list manually
+  \def\do##1{%
+    \ifstrempty{##1}{}{% skip empty
+      \paragraph{}
+    \noindent \csname quote@##1\endcsname
+      \textit{ - \csname source@##1\endcsname}
+      
+      (\textit{cf} p\csname refs@##1\endcsname)
+    }%
+  }%
+  \def\listtemp{}%
+  \edef\listtemp{\usedquotes}%
+  \edef\doitems{\noexpand\docsvlist{\listtemp}}%
+  \doitems
+  \endgroup
+}
+
+% =====================================
+% QUOTE DATABASE
+% =====================================
+
+\declarequote{gcg1}{Connaître c'est analyser}{\gcg, p11 - xvii}
+\declarequote{gcg2}{Décomposer, mesurer, expliquer, identifier, mettre en équation}{\gcg, p11 - xvii}
+\declarequote{gcg3}{Savoir pour savoir, ce n'est guère plus sensé que manger pour manger}{\gcg, p11 - xvii}
+\declarequote{gcg4}{On jouit non des lois de la nature, mais de la nature}{\gcg, p11 - xvii}
+\declarequote{gcg5}{On ne vit pas de savoir}{p11 - xvii}
+
+% =====================================
+% DOCUMENT
+% =====================================
+
+\begin{document}
+
+\section{Canguilhem - La connaissance de la vie}
+
+\subsection{Définitions}
+
+\subsubsection{Définition de la connaissance}
+
+\usequote{gcg1} \\
+\usequote{gcg2} [Définition du savoir] \\
+
+Mais c'est une définition qui ne marche pas pour la biologie. \\
+
+\usequote{gcg3} \\
+\usequote{gcg4} [connaître vs appréciation] \\
+\usequote{gcg5} [connaissance n'alimente pas la vie] \\
+
+\newpage
+
+\printallquotes
+
+\end{document}
