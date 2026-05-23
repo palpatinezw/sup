@@ -38,8 +38,8 @@
 Somme des carrés des dérivées partielles
 \[ s_B = \sqrt{\sum_{k=1}^{n}(\frac{\partial f}{\partial x_k}s(x_k))^2} \]
 
-\subsection{z-score}
-Z-score, $ z = \frac{M_{\text{mesure}} - M_{\text{réf}}}{s(M)} $
+\subsection{Z-score}
+\[ z = \frac{|M_{\text{mesure}} - M_{\text{réf}}|}{s(M)} \]
 \begin{itemize}
     \item $ z \leq 2 $ indique la compatibilité avec le valeur de référence. 
 \end{itemize}
@@ -250,18 +250,6 @@ Cette loi est une conséquence de l'additivité des potentiels.
 
 \subsection{Théorème de superposition}
 Dans un réseau ne contenant que des dipôles linéaires, les tensions et les intensités sont la somme des tensions et intensités obtenues dans les différents variants du circuit où toutes les sources sauf une sont éteintes. 
-
-\subsection{Représentation complexe}
-Pour un signal $s(t) = A\cos{(\omega t + \phi)}$, on a la grandeur complexe 
-\[\underline{s}(t) = Ae^{j(\omega t + \phi)} = \underline{A}e^{j\omega t}\]
-\begin{enumerate}
-    \item $A$ - l'amplitude réelle
-    \item $\underline{A} = Ae^{j\phi}$ - l'amplitude complexe
-    \item $\phi$ - la phase initiale
-    \item $\omega t + \phi$ - la phase instantanée
-\end{enumerate}
-
-\noindent On peut représenter $\underline{s}$ dans le plan complexe (représentation de Fresnel). 
 
 \subsubsection{Propriétés}
 \begin{enumerate}
@@ -763,21 +751,7 @@ Grandeur vectorielle décrivant l'interaction capable de modifier et/ou de produ
     \item Force colombienne - $ \vec{F_q} = \frac{q_1 q_2}{4 \pi \epsilon_0} \frac{1}{\| \overrightarrow{M_1 M_2} \|^2}\vec{u_{12}} =  \frac{q_1 q_2}{4 \pi \epsilon_0} \frac{\overrightarrow{M_1 M_2}}{\| \overrightarrow{M_1 M_2} \|^3} $
 \end{itemize}
 
-\subsubsection{Forces de contact}
-\begin{itemize}
-    \item Réaction normale d'un support $ \|\vec{R_N}\| $ - perpendiculaire au support, dirigé vers l'extérieur du support, contact avec le support tant que $ \|\vec{R_N}\| > 0 $
-    \item Tension d'un fil $ \vec{T} $ - selon le fils, dirigé vers le point fixe, fil tendu tant que $ \|\vec{T}\| > 0 $, $\vec{T} = \vec{0}$ si le fil est distendu
-    \item Force d'un ressort du type élastique $ \|\vec{F_r}\| = |k(l - l_v)| $ avec $k$ le constant de raideur et $l - l_v$ l'allongement du ressort
-    \item Force de frottement fluide $ f = -\lambda [\vec{v}_{\repr}(M) - \vec{v}_{\repr}(\text{fluide})] = -\lambda \vec{v}_{\repr}(M) $ - valable pour nommbre de Reynolds $R_R < 1$
-    \item Frottement solide - lois d'Amontons-Coulomb
-    \begin{itemize}
-        \item Cas du non-glissement $\vec{v}_{\repr}(M) = \vec{0}$ - $ \vec{R_T} = -\sum_i \vec{F_i} $ tant que $\|\vec{R_T}\| < f_s\|\vec{R_N}\|$
-        \item Cas du glissement $ \vec{R_T} = f_d \vec{R_N} $ tant que $ \|\vec{v}_{\repr}(M)\| > 0 $
-        \item $f_d < f_s$ (en général, $f_d \approx f_s$)
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{Intéractions newtoniennes}
+\subsection{Intéractions newtoniennes}
 \[ \vec{F} = \frac{K}{r^2}\vec{e_r} \]
 \begin{itemize}
     \item Force gravitationelle et coulombienne
@@ -816,92 +790,6 @@ Grandeur vectorielle décrivant l'interaction capable de modifier et/ou de produ
     \end{itemize}
 \end{itemize}
 
-\subsubsection{1ère loi de Newton - principe d'inertie}
-Dans les référentiels galiléens, un point matérial isolé est animé d'un mouvement rectilinge uniforme.
-\begin{itemize}
-    \item La vitesse et la quantité de mouvement sont constantes.
-    \item Tous les référentiels galiléens sont en translation rectilinge uniforme les uns par rapport aux autres
-    \item Ce principe nous permet de trouver les référentiels galiléens
-\end{itemize}
-
-\subsubsection{2ème lois de Newton - principe fondamental de la dynamique}
-\[ \frac{\dd \vec{p}_{\repr}(M)}{\dt}_{\repr} = \sum_i \vec{F_i} \]
-\[ m \vec{a}_{\repr}(M) = \sum_i \vec{F_i} \]
-
-\begin{itemize}
-    \item Pour un système, uniquement les forces extérieures interviennent car la somme des forces intérieures s'annule (par principe des actions réciproques)
-    \item Pour un système de centre d'inertie $G$ on a le théorème de la quantité de mouvement (TQM) - $ m \vec{a}_{\repr}(G) = \sum_{\text{ext}} \vec{F} $
-\end{itemize}
-
-\noindent En passant aux moments, on a le théorème du moment cinétique
-
-\[ \frac{\dd \overrightarrow{L_{O\repr}}(M)}{\dt} = \sum_{i} \overrightarrow{M_O}(\vec{F_i}(M)) \]
-\[ J_{\Delta}(M)\ddot{\theta} = \sum_{i} \overrightarrow{M_{\Delta}}(\vec{F_i}(M)) \]
-
-\begin{itemize}
-    \item Pour un système, uniquement les forces extérieures interviennent car la somme des moments des forces intérieures s'annule (par principe des actions réciproques)
-    \item Pour un système indéformable - $ J_{\Delta}(\mathcal{S}) \ddot{\theta} = \sum_{\text{ext}}M_{\Delta}(\vec{F}) $
-\end{itemize}
-
-\subsubsection{3ème loi de Newton - principe de l'action réciproque}
-\[\vec{F}_{B \rightarrow A} = -\vec{F}_{A \rightarrow B}\]
-\noindent Avec $\vec{F}_{B \rightarrow A} \et \vec{F}_{A \rightarrow B}$ selon la droite d'action $AB$
-
-\subsubsection{Théorème de Cauchy}
-Le système $\dot{x} = v \et \dot{v} = \frac{1}{m}F(x, v, t)$ muni des conditions initiales admet une unique solution.
-
-\subsubsection{Moment d'une force}
-\[ \vec{M}_O = \overrightarrow{OM} \wedge \vec{F} \]
-\[ M_\Delta = \vec{M}_O \cdot \vec{u_\Delta} \]
-
-\begin{itemize}
-    \item Le moment d'une force $\vec{F}$ par rapport à l'axe $ \Delta $ est nulle - $\vec{F}$ coupe l'axe $\Delta$ ou $\vec{F}$ est parallèle à l'axe $\Delta$
-    \item Bras de levier $d$ la distance la plus courte entre l'axe $\Delta$ et la droite d'action de la force - $M_\Delta = \pm d \| \vec{F} \| $
-\end{itemize}
-
-\subsubsection{Couple}
-La somme des $\vec{M}_O \neq \vec{0}$ mais la somme des $\vec{F} = \vec{0}$ - dans ce cas $\vec{\Gamma} = \vec{M}_O$ est indépendant de $O$
-
-\begin{itemize}
-    \item Pour un couple de 2 forces $\vec{F}$ et $-\vec{F}$ agissant sur $M_1$ et $M_2$, $\vec{\Gamma} = \overrightarrow{M_1M_2} \wedge \vec{F}$
-    \item Torsion - $\vec{\Gamma} = -C\theta \vec{u}_\Delta$ avec $C$ la constante de torsion
-\end{itemize}
-
-\subsection{Énergie}
-\subsubsection{Puissance}
-\[ \mathcal{P}_{\repr}(\vec{F}(M)) =  \vec{F}(M) \cdot \vec{v}_{\repr}(M) \]
-\begin{itemize}
-    \item $ \mathcal{P}_{\repr}(\vec{F}(M)) > 0 $ - force motrice
-    \item $ \mathcal{P}_{\repr}(\vec{F}(M)) < 0 $ - force resistante 
-    \item $ \mathcal{P}_{\repr}(\vec{F}(M)) = 0 $ - changement de direction sans changer la norme de la vitesse
-\end{itemize}
-
-\noindent En rotation,
-\[ \mathcal{P}_{\repr}(\vec{F}(M)) = M_{\Delta}(\vec{F}(M)) \cdot \dot{\theta} \]
-
-\begin{itemize}
-    \item Pour un système déformable, le travail des forces intérieures n'est pas forcément non-nulle
-    \item Pour un système indéformable, la puissance des forces intérieures est nulle
-\end{itemize}
-
-\subsubsection{Travail}
-Pour un déplacement élémentaire $\dd \overrightarrow{OM}$, on a le travail élémentaire
-\[ \delta W_{\repr}(\vec{F}(M)) = \vec{F}(M) \cdot \dd \overrightarrow{OM} \]
-\begin{itemize}
-    \item $ \mathcal{P}_{\repr}(\vec{F}) = \frac{\delta W_{\repr}(\vec{F}(M))}{\dt} $
-\end{itemize}
-
-Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \rightarrow 2}$
-\[ W_{M_1 \rightarrow M_2 \repr}(\vec{F}) = \int_{\Gamma_{1 \rightarrow 2}}  \delta W_{\repr}(\vec{F}) = \int_{\Gamma_{1 \rightarrow 2}}  \vec{F} \cdot \dd \overrightarrow{OM} \]
-
-\subsubsection{Énergie cinétique}
-\[ E_{c \repr} = \frac{1}{2} m \vec{v}_{\repr}^2 \]
-\[ \dd E_{c \repr} = \sum_i \delta W_{\repr}(\vec{F_i}) \]
-\[ \frac{\dd E_{c \repr}}{\dt} = \sum_i \mathcal{P}_{\repr}(\vec{F_i}) \]
-
-\noindent Pour un système $\mathcal{S}$ indéformable en rotation autour d'un axe $\Delta$ fixe dans $\mathcal{R}$
-\[ E_{c \repr} = \frac{1}{2} J_{\Delta}(\mathcal{S}) \dot{\theta}^2 \]
-
 \subsubsection{Énergie potentielle}
 Une force est dérivante d'une énergie potentielle si son travail est indépendant du chemin suivie
 \[ \delta W_{\repr} = F \cdot \dd \overrightarrow{OM} = -\dd E_p \]
@@ -938,6 +826,107 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
 
 \noindent Pour une intéraction newtonienne, Avec la loi des aires ($r^2 \dot{\theta} = C$), on a
 \[ E_{m\repr} = \frac{1}{2}m\dot{r}^2 + \frac{1}{2}m\frac{C^2}{r^2} + \frac{K}{r} \]
+
+\subsubsection{Forces de contact}
+\begin{itemize}
+    \item Réaction normale d'un support $ \|\vec{R_N}\| $ - perpendiculaire au support, dirigé vers l'extérieur du support, contact avec le support tant que $ \|\vec{R_N}\| > 0 $
+    \item Tension d'un fil $ \vec{T} $ - selon le fils, dirigé vers le point fixe, fil tendu tant que $ \|\vec{T}\| > 0 $, $\vec{T} = \vec{0}$ si le fil est distendu
+    \item Force d'un ressort du type élastique $ \|\vec{F_r}\| = |k(l - l_v)| $ avec $k$ le constant de raideur et $l - l_v$ l'allongement du ressort
+    \item Force de frottement fluide $ f = -\lambda [\vec{v}_{\repr}(M) - \vec{v}_{\repr}(\text{fluide})] = -\lambda \vec{v}_{\repr}(M) $ - valable pour nommbre de Reynolds $R_R < 1$
+    \item Frottement solide - lois d'Amontons-Coulomb
+    \begin{itemize}
+        \item Cas du non-glissement $\vec{v}_{\repr}(M) = \vec{0}$ - $ \vec{R_T} = -\sum_i \vec{F_i} $ tant que $\|\vec{R_T}\| < f_s\|\vec{R_N}\|$
+        \item Cas du glissement $ \vec{R_T} = f_d \vec{R_N} $ tant que $ \|\vec{v}_{\repr}(M)\| > 0 $
+        \item $f_d < f_s$ (en général, $f_d \approx f_s$)
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Moment d'une force}
+\[ \vec{M}_O = \overrightarrow{OM} \wedge \vec{F} \]
+\[ M_\Delta = \vec{M}_O \cdot \vec{u_\Delta} \]
+
+\begin{itemize}
+    \item Le moment d'une force $\vec{F}$ par rapport à l'axe $ \Delta $ est nulle - $\vec{F}$ coupe l'axe $\Delta$ ou $\vec{F}$ est parallèle à l'axe $\Delta$
+    \item Bras de levier $d$ la distance la plus courte entre l'axe $\Delta$ et la droite d'action de la force - $M_\Delta = \pm d \| \vec{F} \| $
+\end{itemize}
+
+\subsubsection{Couple}
+La somme des $\vec{M}_O \neq \vec{0}$ mais la somme des $\vec{F} = \vec{0}$ - dans ce cas $\vec{\Gamma} = \vec{M}_O$ est indépendant de $O$
+
+\begin{itemize}
+    \item Pour un couple de 2 forces $\vec{F}$ et $-\vec{F}$ agissant sur $M_1$ et $M_2$, $\vec{\Gamma} = \overrightarrow{M_1M_2} \wedge \vec{F}$
+    \item Torsion - $\vec{\Gamma} = -C\theta \vec{u}_\Delta$ avec $C$ la constante de torsion
+\end{itemize}
+
+\subsubsection{1ère loi de Newton - principe d'inertie}
+Dans les référentiels galiléens, un point matérial isolé est animé d'un mouvement rectilinge uniforme.
+\begin{itemize}
+    \item La vitesse et la quantité de mouvement sont constantes.
+    \item Tous les référentiels galiléens sont en translation rectilinge uniforme les uns par rapport aux autres
+    \item Ce principe nous permet de trouver les référentiels galiléens
+\end{itemize}
+
+\subsubsection{2ème loi de Newton - principe fondamental de la dynamique}
+Pour un point matérial dans un référentiel galiléen
+\[ \frac{\dd \vec{p}_{\repr}(M)}{\dt}_{\repr} = \sum_i \vec{F_i} \]
+\[ m \vec{a}_{\repr}(M) = \sum_i \vec{F_i} \]
+
+\begin{itemize}
+    \item Pour un système, uniquement les forces extérieures interviennent car la somme des forces intérieures s'annule (par principe des actions réciproques)
+    \item Pour un solide indéformable de centre d'inertie $G$ on a le théorème de la quantité de mouvement (TQM) - $ m \vec{a}_{\repr}(G) = \sum_{\text{ext}} \vec{F} $
+\end{itemize}
+
+\noindent En passant aux moments, on a le théorème du moment cinétique pour un solide indéformable autour du point / de l'axe fixe dans un référentiel galiléen
+
+\[ \frac{\dd \overrightarrow{L_{O\repr}}(M)}{\dt} = \sum_{i} \overrightarrow{M_O}(\vec{F_i}(M)) \]
+\[ J_{\Delta}(M)\ddot{\theta} = \sum_{i} \overrightarrow{M_{\Delta}}(\vec{F_i}(M)) \]
+
+\begin{itemize}
+    \item Pour un système, uniquement les forces extérieures interviennent car la somme des moments des forces intérieures s'annule (par principe des actions réciproques)
+    \item Pour un système indéformable - $ J_{\Delta}(\mathcal{S}) \ddot{\theta} = \sum_{\text{ext}}M_{\Delta}(\vec{F}) $
+\end{itemize}
+
+\subsubsection{3ème loi de Newton - principe de l'action réciproque}
+\[\vec{F}_{B \rightarrow A} = -\vec{F}_{A \rightarrow B}\]
+\noindent Avec $\vec{F}_{B \rightarrow A} \et \vec{F}_{A \rightarrow B}$ selon la droite d'action $AB$
+
+\subsubsection{Théorème de Cauchy}
+Le système $\dot{x} = v \et \dot{v} = \frac{1}{m}F(x, v, t)$ muni des conditions initiales admet une unique solution.
+
+\subsection{Énergie}
+\subsubsection{Puissance}
+\[ \mathcal{P}_{\repr}(\vec{F}(M)) =  \vec{F}(M) \cdot \vec{v}_{\repr}(M) \]
+\begin{itemize}
+    \item $ \mathcal{P}_{\repr}(\vec{F}(M)) > 0 $ - force motrice
+    \item $ \mathcal{P}_{\repr}(\vec{F}(M)) < 0 $ - force resistante 
+    \item $ \mathcal{P}_{\repr}(\vec{F}(M)) = 0 $ - changement de direction sans changer la norme de la vitesse
+\end{itemize}
+
+\noindent En rotation,
+\[ \mathcal{P}_{\repr}(\vec{F}(M)) = M_{\Delta}(\vec{F}(M)) \cdot \dot{\theta} \]
+
+\begin{itemize}
+    \item Pour un système déformable, le travail des forces intérieures n'est pas forcément non-nulle
+    \item Pour un système indéformable, la puissance des forces intérieures est nulle
+\end{itemize}
+
+\subsubsection{Travail}
+Pour un déplacement élémentaire $\dd \overrightarrow{OM}$, on a le travail élémentaire
+\[ \delta W_{\repr}(\vec{F}(M)) = \vec{F}(M) \cdot \dd \overrightarrow{OM} \]
+\begin{itemize}
+    \item $ \mathcal{P}_{\repr}(\vec{F}) = \frac{\delta W_{\repr}(\vec{F}(M))}{\dt} $
+\end{itemize}
+
+Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \rightarrow 2}$
+\[ W_{M_1 \rightarrow M_2 \repr}(\vec{F}) = \int_{\Gamma_{1 \rightarrow 2}}  \delta W_{\repr}(\vec{F}) = \int_{\Gamma_{1 \rightarrow 2}}  \vec{F} \cdot \dd \overrightarrow{OM} \]
+
+\subsubsection{Énergie cinétique}
+\[ E_{c \repr} = \frac{1}{2} m \vec{v}_{\repr}^2 \]
+\[ \dd E_{c \repr} = \sum_i \delta W_{\repr}(\vec{F_i}) \]
+\[ \frac{\dd E_{c \repr}}{\dt} = \sum_i \mathcal{P}_{\repr}(\vec{F_i}) \]
+
+\noindent Pour un système $\mathcal{S}$ indéformable en rotation autour d'un axe $\Delta$ fixe dans $\mathcal{R}$
+\[ E_{c \repr} = \frac{1}{2} J_{\Delta}(\mathcal{S}) \dot{\theta}^2 \]
 
 \subsection{Potrait de phase}
 \begin{itemize}
@@ -1043,6 +1032,7 @@ On choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec
     \item $S$ entropie - $\dd S = \frac{1}{T}\dd U + \frac{P}{T} \dd V$ (identité thermodynamique)
     \begin{itemize}
         \item $\dd U = T \dd S - P \dd V$
+        \item $\dd H = T \dd S + V \dd P$
     \end{itemize}
 \end{itemize}
 
@@ -1132,16 +1122,12 @@ Pour $K$ espèces nomléculaires sous $\phi$ phases distinctes,
 \end{itemize}
 
 \subsection{Mécanique des fluides}
-\begin{itemize}
-    \item Fluide incompressible - coefficient de compression isotherme nul - volume indépendant de pression
-    \item Fluide homogène - masse volumique constant dans le fluide
-\end{itemize}
 
 \subsubsection{Force volumique}
 \[ \vec{f_p} = \frac{\dd^3 \vec{F_p}}{\dd^3 \tau_M} = - \grad P \]
 \begin{itemize}
     \item C'est une force VOLUMIQUE (force par volume mésoscopique)
-    \item En statique, pour une fluide au repos dans un référentiel galiléen, $\rho (M) \vec{g} - \grad P = \vec{0}$
+    \item Pour une fluide au repos dans un référentiel galiléen, $\rho (M) \vec{g} - \grad P = \vec{0}$
 \end{itemize}
 
 \subsubsection{Fluide incompressible et homogène}
@@ -1163,7 +1149,7 @@ Avec les hypothèse d'un fluide
     \item Au repos dans le référentiel $R$ galiléen
     \item Dans un champ de pesanteur $\vec{g}$ uniforme selon $-\vec{e_z}$
     \item Assimilable à un gaz parfait
-    \item L'atomsphère est isotherme
+    \item Isotherme
 \end{enumerate}
 
 \[ P(z) = P_0 e^{-\frac{M_{\text{mol}}gz}{RT}} = P_0 e^{-\frac{m_{\text{gaz}}gz}{kT}} \]
@@ -1189,10 +1175,24 @@ Avec les hypothèse d'un fluide
     \item $U$ est extensive et est une fonction d'état
     \item La formule est valable pour un système fermé
     \item Dans le cas où le système est au repos et on a une évolution finie, $\delta U = W_{\repr} + Q$
+    \item Souvent, on néglige les variations de l'énergie mécanique
 \end{itemize}
 
 \noindent Pour une transformation monobare tel que $P_i = P_f = P_{\text{ext}}$
 \[ \Delta H = Q \]
+
+\subsubsection{Premier principe industriel}
+Pour une machine en écoulement permenant 
+\[ \sum_{\text{sorties}} (e_{m,i} + h_i)D_i - \sum_{\text{entrées}} (e_{m, i} + h_i)D_i = (w_m + q_m)\sum D_i \]
+
+\begin{itemize}
+    \item $e_m$ énergie mécanique massique
+    \item $h$ enthalpie massique
+    \item $D_i$ débit massique ($\geq 0$ non-algébrique)
+    \item $w_m$ travail massique par la machine
+    \item $q_m$ transfert thermique massique par la machine
+    \item Pour une seule entrée et une seule sortie, $\Delta e_m + \Delta h = w_m + q_m$
+\end{itemize}
 
 \subsubsection{Transfert thermique}
 \begin{itemize}
@@ -1206,26 +1206,14 @@ Avec les hypothèse d'un fluide
     \item Pour la convection - $ \frac{\delta Q}{\dt} = -hS(T - T_{\text{ext}}) $
 \end{itemize}
 
-\subsubsection{Premier principe industriel}
-Pour une machine en écoulement permenant 
-\[ \sum_{\text{sorties}} (e_{m,i} + h_i)D_i - \sum_{\text{entrées}} (e_{m, i} + h_i)D_i = (w_m + q_m)\sum D_i \]
-
-\begin{itemize}
-    \item $e_m$ énergie mécanique massique
-    \item $h$ enthalpie massique
-    \item $D_i$ débit massique
-    \item $w_m$ travail massique par la machine
-    \item $q_m$ transfert thermique massique par la machine
-    \item Pour une seule entrée et une seule sortie, $\Delta e_m + \Delta h = w_m + q_m$
-\end{itemize}
-
 \subsection{Second principe de la thermodynamique}
 \[ \dd S = \delta S_{\text{échangée}} + \delta S_{\text{créée}} \]
 
 \begin{itemize}
     \item $\delta S_{\text{échangée}} = \frac{\delta Q}{T_{\text{rés}}}$ avec $T_{\text{rés}}$ la température du réservoir responsable pour l'échange thermique avec le système
-    \item $\delta S_{\text{créée}} \geq 0$
+    \item $\delta S_{\text{créée}} \geq 0 \et \delta S_{\text{créée}}= 0 \iff $ la transformation est réversible
     \item Pour une transformation adiabatique, $\dd S \geq 0$
+    \item On peut calculer $\dd S = \frac{1}{T}\dd U + \frac{P}{T} \dd V$ par l'identité thermodynamique
 \end{itemize}
 
 \subsubsection{Conséquences}
@@ -1287,7 +1275,7 @@ On définit la coefficient de Laplace
     \item Relation de Mayer - $C_P - C_V = nR$
     \item $C_V = \frac{nR}{\gamma - 1}$
     \item $C_P = \frac{nR\gamma}{\gamma - 1}$
-    \item Pour une transformation adiabatique, on a $PV^{\gamma}$ constante
+    \item Pour une transformation adiabatique réversible (isentropique), on a $PV^{\gamma}$ constante
 \end{itemize}
 
 \subsubsection{Modèle de Van der Waals}
@@ -1313,17 +1301,22 @@ On définit la coefficient de Laplace
 \begin{enumerate}
     \item Sur un palier de changement d'état (isobare et isotherme) - $\dd h = \dx_v h_{\text{vap}}(T)$ 
     \item Sur la courbe d'ébullition (liquide incompressible indilatable seule avec une boule de vapeur) - $ \dd h = c(T) \dd T $ avec $c$ supposé constante sur des échelles de températures raisonnables
-    \item On intègre pour obtenir $\Delta U$ à partir d'un chemin fictif sur un palier de changement d'état (isotherme), puis un changement de température sur une courbe d'ébullition, puis un palier de changement d'état (isotherme)
+    \item On obtient $\Delta h$ à partir d'un chemin fictif sur un palier de changement d'état (isotherme), puis un changement de température sur une courbe d'ébullition, puis un palier de changement d'état (isotherme)
 \end{enumerate}
 
 On applique le même raisonnement pour d'autres fonctions d'états (e.g. énergie interne ou entropie)
+
+\begin{itemize}
+    \item Pour l'entropie, on a $s_{\text{vap}} = \frac{h_{\text{vap}}}{T}$
+    \item Sur la courbe d'ébullition pour un fluide incompressible indilatable, l'indentité thermodynamique donne $\dd S = \frac{C}{T} \dd T$
+\end{itemize}
 
 \subsubsection{Détente de Joule-Gay-Lussac}
 On considère 2 enceintes reliées, une contenant du vide et l'autre contenant un gaz. 
 
 \begin{itemize}
     \item La detente lors de l'ouverture du robinet séparant les enceintes est isoénergétique $\Delta U = 0$ [Démonstration - prenons comme système fermé {gaz + vide + parois} - on a une évolution isochore et adiabatique donc $\Delta U_{\text{gaz}} + \Delta U_{\text{parois}} = 0$. On applique les équations reliant $\Delta U$ à $\Delta T$ pour un gaz parfait et le parois assimilé à un solide incompressible et indilatable pour obtenir $\Delta T = 0$]
-    \item Pour la transformation finalement isotherme - $\Delta S = nR \ln(\frac{V_f}{V_i})$
+    \item $\Delta S = nR \ln(\frac{V_f}{V_i})$ [Démonstration - transformtion isotherme avec identité thermodynamique]
     \item Pour un gaz réel, $\Delta T < 0$
 \end{itemize}
 
@@ -1332,7 +1325,7 @@ On considère un fluide en écoulement lent, stationnaire et horizontal traversa
 
 \begin{itemize}
     \item $\Delta H = 0$ [Démonstration - reprendre la démonstration du premier principe industriel, appliquée au milieu poreux dont le transfert thermique et le travail est 0]
-    \item $\Delta S = nR \ln(\frac{V_f}{V_i}) = nR \ln(\frac{P_i}{P_f})$ [Démonstration - avec $\dd T = 0$ ou avec $\dd H = 0$]
+    \item $\Delta S = nR \ln(\frac{V_f}{V_i}) = nR \ln(\frac{P_i}{P_f})$ [Démonstration - identité thermodynamique avec $\dd T = 0$ ou avec $\dd H = 0$]
 \end{itemize}
 
 \subsection{Machines thermiques cycliques}
@@ -1350,15 +1343,14 @@ Pour qu'un système cyclique fournisse du travail, il doit nécessairement écha
 
 [Démonstration - Le signe de $Q$ est fixé par le 2e principe, ce qui fixe le signe de $W$ par le 1er principe]
 
-\subsubsection{Inégalité de Clausius}
-
+\subsubsection{Généralités}
+\[ \sum_k Q_k = -W \]
+[Démonstration - 1er principe] \\ \\
+Inégalité de Clausius
 \[ \sum_k \frac{Q_k}{T_k} \leq 0 \]
+[Démonstration - 2e principe] \\ \\
 
-[Démonstration - 2e principe]
-\begin{itemize}
-    \item Le cycle est réversible $ \iff \sum_k \frac{Q_k}{T_k} = 0 $ - égalité de Carnot-Clausius
-    \item Par le premier principe, on a de plus $\sum_k Q_k = -W$
-\end{itemize}
+Le cycle est réversible $ \iff \sum_k \frac{Q_k}{T_k} = 0 $ - égalité de Carnot-Clausius
 
 \subsubsection{Diagramme de Raveau}
 \begin{center}
@@ -1368,15 +1360,15 @@ Pour qu'un système cyclique fournisse du travail, il doit nécessairement écha
 \begin{enumerate}
     \item $W < 0, Q_c > 0, Q_f < 0$ - domaine moteur
     \begin{itemize}
-        \item $\eta = 1 + \frac{Q_f}{Q_c} \leq 1 - \frac{T_f}{T_c}$
+        \item $\eta = \frac{|W|}{Q_c} = 1 + \frac{Q_f}{Q_c} \leq 1 - \frac{T_f}{T_c}$
         \item Cycle de Carnot - 2 isothermes et 2 adiabatiques (isentropiques)
     \end{itemize}
     \item $W > 0, Q_c > 0, Q_f < 0$ - transfert thermique de la source chaude vers la source froide
     \item $W > 0, Q_c < 0, Q_f < 0$ - chauffage des 2 sources
     \item $W > 0, Q_c > 0, Q_f < 0$ - transfert de la source froide vers la source chaude - domaine pompe à chaleur / machines frigorifiques
     \begin{itemize}
-        \item Machine frigorifiques - $e = -\frac{Q_f}{Q_c + Q_f} \leq \frac{T_f}{T_c - T_f}$
-        \item Pompe à chaleur - $e = \frac{Q_c}{Q_c + Q_f} \leq \frac{T_c}{T_c - T_f}$
+        \item Machine frigorifiques - $e = \frac{|Q_f|}{W} = -\frac{Q_f}{Q_c + Q_f} \leq \frac{T_f}{T_c - T_f}$
+        \item Pompe à chaleur - $e = = \frac{Q_c}{W} = \frac{Q_c}{Q_c + Q_f} \leq \frac{T_c}{T_c - T_f}$
     \end{itemize}
 \end{enumerate}
 
@@ -1412,8 +1404,69 @@ Avec $\alpha = \frac{V_{\max}}{V_{\min}}$ \\
 \[ \vec{\mathcal{M}} = I \vec{S} \]
 
 \begin{itemize}
-    \item À une distance très grande devant la taille caractéristique du dipôle, on a l'approximation dipôlaire. Le champ magnétique créé est $\frac{\mu_0}{4 \pi} \frac{3(\vec{\mathcal{M}} \cdot \vec{r})\vec{r} - \vec{\mathcal{M}}r^2}{r^5}$
-    \item L'allure des lignes de champ magnétique est $r = \lambda \sin^2 \theta$ [Démonstration - sur la ligne de champ, $\dd \overrightarrow{OM}$ est tangent au champ magnétique donc $\dd \overrightarrow{OM} \wedge \vec{B} = \vec{0}$]
+    \item À une distance très grande devant la taille caractéristique du dipôle, on a l'approximation dipôlaire
+    \item Le champ magnétique créé est $\frac{\mu_0}{4 \pi} \frac{3(\vec{\mathcal{M}} \cdot \vec{r})\vec{r} - \vec{\mathcal{M}}r^2}{r^5}$ [HP]
+    \item L'allure des lignes de champ magnétique est $r = \lambda \sin^2 \theta$ [HP - Démonstration - sur la ligne de champ, $\dd \overrightarrow{OM}$ est tangent au champ magnétique donc $\dd \overrightarrow{OM} \wedge \vec{B} = \vec{0}$]
+\end{itemize}
+
+\subsubsection{Flux}
+\[ \dd \phi = \vec{B}\cdot \dd \vec{S} \]
+
+\begin{itemize}
+    \item En Weber $\text{Wb}$
+    \item Flux propre $\phi_p = Li$ le flux à travers un circuit dû à son propre champ magnétique
+    \begin{itemize}
+        \item $L$ inductance propre
+        \item Pour une bobine assimilée à un solénoïde infini, $\phi_p = \mu_0 \frac{N^2}{l} i S$ donc $L = \mu_0 \frac{N^2}{L}S$
+    \end{itemize}
+    \item Inductance mutuelle $M$ entre deux circuits $\phi_{1 \rightarrow 2} = M i_1 \et \phi_{2 \rightarrow 1} = M i_2$ 
+    \begin{itemize}
+        \item Pour une grande bobine 1 contenant une petite bobine 2, $M = \mu_0 \frac{N_1 N_2}{l} S_2$
+    \end{itemize}
+\end{itemize}
+
+\subsection{Force de Laplace}
+\[ \overrightarrow{F_{\text{mag}}} = q \vec{v} \wedge \vec{B}  \]
+\[ \dd \overrightarrow{F_{L}} = I \vec{\dd l} \wedge \vec{B} \]
+
+\begin{itemize}
+    \item La force élémentaire de Laplace est dû à l'effet du Hall, et n'est pas directement à cause de la force magnétique
+    \item Pour les rails de Laplce, pour un courant de $M$ vers $N$, $\vec{F_L} = I \overrightarrow{MN} \wedge \vec{B}$
+    \item Pour tout circuit fermé dans un champ magnétique uniforme et stationnaire, la résultante des forces de Laplace est nulle
+    \item Pour une spire en rotation autour de l'axe $\vec{e_z}$ avec un champ magnétique uniforme selon $\vec{e_x}$, $\vec{\Gamma_L} = ISB \cos \theta \vec{e_z} = \vec{\mathcal{M}} \wedge \vec{B}$ [On intègre $\dd M_O(M) = \overrightarrow{OM} \wedge \dd \vec{F_L}$ pour tout point $M$ dans le spire. On pourrait éventuellement se limiter à intégrer uniquement sur les 2 côtés horizontals par un seul calcul. ]
+\end{itemize}
+
+\subsubsection{Généralisation}
+Pour un moment dipolaire magnétique $\vec{\mathcal{M}}$ dans un champ magnétique uniforme et stationnaire
+\begin{itemize}
+    \item La résultant des forces de Laplace est nulle
+    \item $\vec{\Gamma_L} = \vec{\mathcal{M}}\wedge \vec{B}$
+    \item $E_p = - \vec{\mathcal{M}} \cdot \vec{B}$
+    \begin{itemize}
+        \item Position d'équilibre stable correspondant à la position parallèle - alignement du dipôle avec le champ magnétique
+        \item Position d'équilibre instable correspondant à la position antiparallèle - dipôle opposé au champ magnétique
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Moteur synchrone}
+\begin{itemize}
+    \item 2 paires de bobines de Helmholtz réalise un champ magnétique tournant
+    \item Pour un angle $\alpha$ entre le champ magnétique tournant et le dipôle magnétique du moteur, $\Gamma_L = \mathcal{M}B \sin \alpha$
+\end{itemize}
+
+\subsection{Induction électromagnétique}
+\begin{enumerate}
+    \item Un courant est induit dans un circuit fermé, ou une tension induite aux bornes d'un circuit ouvert, lorsque le circuit est fixe dans un champ magnétique qui varie avec le temps, ou lorsque le circuit est en mouvement dans un champ magnétique non-uniforme
+    \item Loi de Lenz - les phénomènes d'induction s'opposent, par leurs effets, aux causes qui leur ont donné naissance
+    \item Loi de Faraday - $e = - \frac{\dd \phi}{\dt}$ la force électromotrice induite
+\end{enumerate}
+
+\subsubsection{Induction de Neumann}
+Circuits fixes dans des champs magnétiques qui varient dans le temps.
+
+\begin{itemize}
+    \item Auto-inductance d'un circuit - $e = - L\frac{\dd i}{\dt}$ (cf. Bobines en électrocinétique)
+    \item Bobines couplées - $e_1 = -L_1 \frac{\dd i_1}{\dt} - M \frac{\dd i_2}{\dt}$ et $e_2 = -L_2 \frac{\dd i_2}{\dt} - M \frac{\dd i_1}{\dt}$
 \end{itemize}
 
 \clearpage
@@ -1426,6 +1479,19 @@ Avec $\alpha = \frac{V_{\max}}{V_{\min}}$ \\
     \item Dérivée partielle et taux d'accroissement - $f(x+\dx) - f(x) = \frac{\partial f}{\partial x} dx$
     \item Dérivée partielle - $\dd f(x, y) = \frac{\partial f}{\partial x} \dx + \frac{\partial f}{\partial y} \dy$
 \end{itemize}
+
+\subsection{Représentation complexe}
+Pour un signal $s(t) = A\cos{(\omega t + \phi)}$, on a la grandeur complexe 
+\[\underline{s}(t) = Ae^{j(\omega t + \phi)} = \underline{A}e^{j\omega t}\]
+\begin{enumerate}
+    \item $A$ - l'amplitude réelle
+    \item $\underline{A} = Ae^{j\phi}$ - l'amplitude complexe sans la partie variable $e^{j\omega t}$
+    \item $\phi$ - la phase initiale
+    \item $\omega t + \phi$ - la phase instantanée
+\end{enumerate}
+
+\noindent On peut représenter $\underline{s}$ dans le plan complexe (représentation de Fresnel). 
+
 
 \subsection{Équations différentielles - solutions générales}
 
@@ -1536,6 +1602,7 @@ Pour une équation différentielle de 2nd ordre avec $f(t)$ sinusoïdal de pulsa
     \item Vitesse de son dans l'eau $1500 \text{ m s}^{-1}$
     \item Rotation de la Terre sur son axe Nord-Sud $ \Omega_T = 23 \text{ h } 56 \text{ min } 4 \text{ s} = 7,2921 \times 10^{-5} \text{ rad s}^{-1} $
     \item Coefficient de compressibilité isotherme de l'eau $5 \times 10^{-10} \text{ Pa}^{-1}$
+    \item Champ magnétique terrestre $2 \times 10^{-5} \text{ T}$
 \end{itemize}
 
 \end{document}

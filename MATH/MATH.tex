@@ -88,6 +88,7 @@ Démonstration
 \begin{itemize}
     \item $ \cos{(a+b)} = \cos{a}\cos{b}-\sin{a}\sin{b} $
     \item $ \sin{(a+b)} = \sin{a}\cos{b}+\cos{a}\sin{b} $
+    \item En divisant les 2 au-dessus, $ \tan{(a+b)} = \frac{\tan{a}+\tan{b}}{1-\tan{a}\tan{b}} $
 \end{itemize}
 
 \subsubsection{Formules de duplication}
@@ -95,7 +96,6 @@ Dérivable depuis les formules de base
 \begin{itemize}
     \item $ \sin{(2a)} = 2\sin{a}\cos{a} $
     \item $ \cos{(2a)} = \cos^2{a} - \sin^2{a} = 2\cos^2{a} -1 = 1- 2\sin^2{a} $
-    \item En divisant les 2 au-dessus, $ \tan{(a+b)} = \frac{\tan{a}+\tan{b}}{1-\tan{a}\tan{b}} $
 \end{itemize}
 
 \subsubsection{Formules de linéarisation}
@@ -619,6 +619,7 @@ Chapitre 7
         \item $\min{A} = \inf{A} \iff \inf{A} \in A $
         \item Toute partie non-vide et minorée de $\mathbb{Z}$ possède un minimum
         \item Si $A$ n'est pas minorée, $\inf{A} = -\infty$
+        \item Pour $ A \subset \mathbb{R}_+, \inf(A^2) = (\inf A)^2 $
         \item Caractérisation epsilonesque - $ \begin{cases}
             \forall a \in A, a \leq M \\
             \forall \epsilon > 0, \exists a_0 \in A : a_0 < m - \epsilon
@@ -1665,7 +1666,7 @@ Pour $u \in \mathcal{L}(E, F)$
 \begin{itemize}
     \item $(f)$ négligeable devant $(g)$ : ($ f \underset{a}= o(g) $) - $ (\frac{f}{g}) \underset{x \rightarrow a}{\longrightarrow}  0 $
     \item $(f)$ dominée par $(g)$ : ($ f = \underset{a}{\mathcal{O}} (g) $) - $ (\frac{f}{g}) $ est bornée au voisinage de $a$
-    \item $(f)$ équivalente à $(g)$ : ($ f \underset{a}\sim g $) - $ (\frac{f}{g}) \underset{x \rightarrow a}{\longrightarrow}  1 $
+    \item $(f)$ équivalente à $(g)$ : ($ f \underset{a}\sim g $) - $ (\frac{f}{g}) \underset{x \rightarrow a}{\longrightarrow}  1 $ (Dans le cas où $g$ s'annule, $\exists \delta \, | \, f = \delta g \et \delta \underset{x \rightarrow a}{\longrightarrow} 1$)
 \end{itemize}
 
 \subsubsection{Propriétés}
@@ -1886,13 +1887,12 @@ Pour $(a, b) \in \mathbb{K}^2, f \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$
     \end{itemize}
     \item L'ensemble des solutions homogène est un plan vectoriel
     \item Il existe toujours une solution particulière
-    \item Problème de Cauchy - si on pose $y(x_0) = y_0 \et y'(x_0) = y1$, il existe une unique solution
+    \item Problème de Cauchy - si on pose $y(x_0) = y_0 \et y'(x_0) = y_1$, il existe une unique solution
 \end{itemize}
 
 \subsubsection{Solutions particulières remarquables}
-\[ y'' + ay' + by = Ae^{\lambda x} \]
 \begin{itemize}
-    \item Il existe une solution particulière de la forme $x \mapsto Cx^m e^{\lambda x}$ où $m$ est la multiplicité de $\lambda$ dans le polynôme caractéristique
+    \item Pour un second membre $Ae^{\lambda x}$, il existe une solution particulière de la forme $x \mapsto Cx^m e^{\lambda x}$ où $m$ est la multiplicité de $\lambda$ dans le polynôme caractéristique
     \item Pour un second membre trigonométrique, on considère la partie réelle / imaginaire de l'équation avec second membre $Ae^{i\omega}$
     \item Pour un second membre $P(x)e^{\lambda x}$, on cherche une solution particulière de la forme $x \mapsto R(x) x^m e^{\lambda}x$ avec $R$ du même degré que $P$
 \end{itemize}
@@ -1957,8 +1957,8 @@ $(\Omega, P)$ un espace probabilisé
 \subsection{Fonctions en escalier}
 \begin{itemize}
     \item Subdivision du segment $[a,b]$ - suite finie $\sigma$ strictement croissante de $n + 1 $ éléments tel que $a = a_0$ et $a_n = b$
-    \item Pas de la subdivision - l'écart maximal entre deux éléments de la subdivision
-    \item Subdivision $\sigma '$ plus fine que $\sigma$ - tout point de $\sigma$ est aussi dans $\sigma '$
+    \item Pas d'une subdivision - l'écart maximal entre deux éléments
+    \item Subdivision $\sigma '$ plus fine que $\sigma$ - tout point de $\sigma \in \sigma '$
     \item Subdivision régulière - écart constant entre 2 éléments 
     \item Fonction en escalier - il existe une subdivision adaptée $\sigma = (a_k)_{0\leq k \leq n}$ à la fonction $f$ tel que $\forall k \in \llbracket 1, n \rrbracket, f_{] a_{k-1}, a_k [}$ est constante
     \item Toute subdivision plus fine qu'une subdivision adaptée à $f$ en escalier est une subdivision adaptée à $f$
@@ -1975,10 +1975,11 @@ $(\Omega, P)$ un espace probabilisé
 
 \subsection{Propriétés de l'intégrale}
 \begin{itemize}
-    \item Inégalité triangulaire intégrale - $ |\int_{a}^{b} f| \leq \int_{a}^{b} |f| $ (!Attention à l'ordre des bornes!)
+    \item Inégalité triangulaire intégrale - $ |\int_{a}^{b} f| \leq \int_{a}^{b} |f| $ (!Pour $a < b$!)
     \item Égalité de $f$ et $g$ sauf en un nombre fini de points - $\int_a^b f = \int_a^b g$
     \item Positivité et croissance
-    \item Stricte positivité - si $f \geq 0$ et $f$ continue en $x_0$ et $f(x_0) > 0$, alors $\int_{a}^{b} > 0$
+    \item Stricte positivité - si $f \geq 0$, $f$ continue en $x_0$ et $f(x_0) > 0$, alors $\int_{a}^{b} > 0$
+    \item Critère de nullité - pour $f$ continue et de signe constant, $\int_{a}^{b} f = 0 \iff f = 0$
     \item Valeur moyenne de $f$ - $\frac{1}{b-a}\int_{a}^{b} f > 0$
 \end{itemize}
 
@@ -1987,7 +1988,6 @@ $(\Omega, P)$ un espace probabilisé
     \item Pour $f$ paire - $\int_{-a}^a f = 2 \int_0^a f$
     \item Pour $f$ impaire - $\int_{-a}^a f = 0$
     \item Pour $f$ $T$-périodique - $\int_{a}^{a+T} = \int_{0}^{T}$
-    \item Critère de nullité - pour $f$ continue et de signe constant, $\int_{a}^{b} f = 0 \iff f = 0$
     \item Inégalité de Cauchy-Schwarz - $(\int_{a}^{b} fg)^2 \leq (\int_{a}^{b}f^2)(\int_{a}^{b}g^2)$
 \end{itemize}
 
@@ -1996,7 +1996,7 @@ Pour $f \in \mathcal{C}^{n+1}$
 \[ f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k + \int_{a}^{x} \frac{(x-t)^n}{n!}f^{(n+1)} (t) \dt \]
 
 \subsubsection{Inégalité de Taylor-Lagrange}
-\[ |f(x) - \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k| \leq \frac{|x-a|^{n+1}}{(n+1)!} M_{n+1} \]
+\[ \left |f(x) - \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k \right | \leq \frac{|x-a|^{n+1}}{(n+1)!} M_{n+1} \]
 
 Avec $M_{n+1}$ un majorant de $|f^{(n+1)}|$ sur le segment $[a \leftrightarrow x]$.
 
@@ -2018,7 +2018,7 @@ Toute forme bilinéaire, symétrique, définie et positive sur $E$.
 \begin{itemize}
     \item Forme bilinéaire - application de $E \times E \rightarrow R$ linéaire à gauche et à droite
     \item Symétrique - $\phi (x, y) = \phi (y, x)$
-    \item Positivie - $\phi (x, x) \geq 0$
+    \item Positive - $\phi (x, x) \geq 0$
     \item Définie - $\phi(x, x) = 0 \implies x = 0_E$
     \item Espace préhilbertien réel - un $\mathbb{R}$-espace vectoriel muni d'un produit scalaire
     \item Espace euclidien - un $\mathbb{R}$-espace vectoriel de dimension fini muni d'un produit scalaire
@@ -2029,7 +2029,7 @@ Produits scalaires de référence
     \item Produit scalaire canonique sur $\mathbb{R}^n$ - $\langle X, Y \rangle = \sum x_k y_k$
     \item Produit scalaire canonique sur $\mathcal{M}_{n, p}(\mathbb{R})$ - $\langle A, B \rangle = \text{Tr}(A^T B)$
     \item Sur $\mathcal{C}^0([a, b], \mathbb{R})$ - $\langle f, g \rangle = \int_{a}^{b} fg$
-    \item Sur $\mathbb{R}[X]$ - $\langle P, Q \rangle = \int_{0}^{1} P(x)Q(x) \dx$
+    \item Sur $\mathbb{R}[X]$ - $\langle P, Q \rangle = \int_{a}^{b} P(x)Q(x) \dx$
 \end{itemize}
 
 \subsubsection{Norme}
@@ -2043,6 +2043,31 @@ Toute application $N: E \rightarrow R_+$ qui vérifie
 \begin{itemize}
     \item Distance associée à une norme - $d: (x, y) \mapsto N(x-y)$
     \item Norme associée au produit scalaire - $\|\cdot\| : x \mapsto \sqrt{\langle x, x \rangle}$ 
+    \item Vecteur unitaire - $\|x\| = 1$
+    \item Pour tout $x \neq 0$, $ \frac{x}{\|x\|} $ est un vecteur unitaire
+\end{itemize}
+
+\subsubsection{Orthogonalité}
+\[ x \perp y \iff \langle x, y \rangle = 0 \]
+\[ A \perp B \iff \forall a \in A, \forall b \in B, \langle a, b \rangle = 0 \iff A \subset B^{\perp} \iff B \subset A^{\perp} \]
+
+Pour une partie $A$ (pas forcément un ssev)
+\begin{itemize}
+    \item $A^{\perp}$ est un ssev
+    \item $A \subset B \implies B^{\perp} \subset A^{\perp}$
+    \item $A^{\perp} = (\Vect (A))^{\perp}$
+    \item $A \subset (A^{\perp})^{\perp}$
+    \item Pour un espace euclidien, $A = (A^{\perp})^{\perp}$
+    \item Si $A$ est un ssev, $A \cap A^{\perp} = \{0_E\}$
+    \item Famille orthogonale - éléments deux à deux orthogonaux
+    \item Famille orthonormée - famille orthogonale de vecteurs unitaires
+    \item Toute famille orthogonale de vecteurs non nuls est libre
+\end{itemize}
+
+\subsubsection{Distance}
+\[ d(x, F) = \underset{y \in F}{\inf} \| x-y \| \]
+\begin{itemize}
+    \item Pour $F$ de dimension finie, la distance est atteinte uniquement en $p_F(x)$ - $d(x, F) = \|x-p_F(x)\|$
 \end{itemize}
 
 \subsection{Théorèmes}
@@ -2053,7 +2078,124 @@ Toute application $N: E \rightarrow R_+$ qui vérifie
 [Démonstration - Considérons le discriminant de $P:\lambda \mapsto \langle \lambda x + y, \lambda x + y \rangle$ qui est une fonction polynomiale à valeurs positifs]
 
 \begin{itemize}
+    \item Sur $\mathbb{R}^n, \left (\sum_{k=1}^{n} \lambda_i \mu_i \right )^2 \leq \left ( \sum_{k=1}^{n} \lambda_i^2 \right ) \left ( \sum_{k=1}^{n} \mu_i^2 \right )$
     \item Sur $\mathcal{C}^0([a, b], \mathbb{R})$, $(\int_{a}^{b} fg )^2 \leq (\int_{a}^{b} f^2)(\int_{a}^{b} g^2)$
 \end{itemize}
+
+\subsubsection{Égalité de Minkowski}
+Pour $\| \cdot \|$ la norme associée à un produit scalaire
+\[ \|x+y\| = \|x\| + \|y\| \iff (x, y) \text{ est positivement liée} \]
+
+\subsubsection{Identités remarquables}
+\begin{itemize}
+    \item $ \|x+y\|^2 = \|x\|^2 + 2\langle x, y \rangle + \|y\|^2 $
+    \item $ \|x-y\|^2 = \|x\|^2 - 2\langle x, y \rangle + \|y\|^2 $
+    \item $ \|x\|^2 - \|y\|^2 = \langle x+y, x-y \rangle $
+    \item $ \langle x, y \rangle = \frac{1}{4}(\|x+y\|^2 - \|x-y\|^2) $
+\end{itemize}
+
+\subsubsection{Théorème de Pythagore}
+\[ \langle x, y \rangle = 0 \iff \|x+y\|^2 = \|x\|^2 + \|y\|^2 \]
+
+\begin{itemize}
+    \item Pour une famille orthogonale de vecteurs, $ \left\| \sum x_k \right\|^2 = \sum \|x_k\|^2 $
+\end{itemize}
+
+\subsubsection{Base orthonormée}
+
+\begin{itemize}
+    \item Algorithme de Gram-Schmidt - toute famille libre $(e_1,\dots,e_n)$ peut être orthonormalisée en une famille orthonormée $(f_1,\dots,f_n)$
+    \begin{itemize}
+        \item De plus, $\forall k \in \llbracket 1, n \rrbracket, \Vect (e_1, \dots, e_k) = \Vect (f_1, \dots, f_k)$
+        \item $f_1 = \frac{e_1}{\|e_1\|}$
+        \item On construit les vecteurs $(f_2, \dots, f_n)$ tel que \[ f_k = \frac{g_k}{\|g_k\|} \text{ où } g_k = e_k - \sum_{i=1}^{k-1} \langle e_k, f_i \rangle f_i = e_k - \sum_{i=1}^{k-1} \frac{1}{\|g_i\|^2} \langle e_k, g_i \rangle g_i  \]
+    \end{itemize}
+    \item Tout espace euclidien admet une base orthonormée
+    \item $\langle x, e_k \rangle$ sont les coordonnées de $x$ dans la base orthonormée $(e_1, \dots, e_n)$ - $ x = \sum_{k=1}^{n} \langle x, e_k \rangle e_k $
+    \item Produit scalaire - $ \langle x, y \rangle = \sum_{k=1}^{n} x_k y_k $
+    \item Norme - $ \|x\| = \sqrt{\sum_{k=1}^{n} x_k^2} $
+    \item Le théorème de la base adaptée et de la base incomplète s'applique pour des bases orthonormées en particulier
+\end{itemize}
+
+\subsubsection{Supplémentaire orthogonal}
+\begin{itemize}
+    \item Pour $E$ un espace préhilbertien et $F$ un ssev, l'unique supplémentaire orthogonal de $F$ dans $E$ (sous réserve d'existence) est $F^{\perp}$
+    \item Pour $E$ un espace préhilbertien et $F$ un ssev de dimension finie, $E = F \overset{\perp}{\oplus} F^{\perp}$ [Démonstration - Décompoer en $F$ et $F^{\perp}$ par analyse-synthèse.]
+\end{itemize}
+
+\subsubsection{Projection orthogonale}
+\begin{itemize}
+    \item $p_F$ la projection orthogonale sur F (parallèlement à $F^{\perp}$)
+    \item $p_F(x)$ est le projété orthogonale de $x$ sur $F$
+    \item Inégalité de Bessel - $ \| p_F(x) \| \leq \|x\| $
+    \item Avec une base orthonormée de $F$ - $ p_F(x) = \sum_{k=1}^{n} \langle x, e_k \rangle e_k $
+\end{itemize}
+
+\clearpage
+\section{Séries numériques}
+\subsection{Définitions}
+\begin{itemize}
+    \item Série de terme général $u_n = \sum u_n = \left( \sum_{k=0}^{n}u_k \right)_{n \in \mathbb{N}}$
+    \item Somme partielle d'ordre $n$ - $\sum_{k=0}^{n}u_k$
+    \item Pour une série convergente, somme de la série $\sum_{k=0}^{+\infty} u_k$
+    \item Pour une série convergente, reste de rang $n$ de la série $R_n = \sum_{k=0}^{+\infty} u_k - \sum_{k=0}^{n} u_k$
+    \begin{itemize}
+        \item Par téléscopage, $u_n = R_{n-1} - R_n$
+    \end{itemize}
+    \item Série de terme général $u_n$ est absolument convergente $\iff \sum |u_n| \conv \iff (u_n)$ est sommable)
+\end{itemize}
+
+\subsubsection{Propriétés}
+\begin{itemize}
+    \item $S_n \text{ converge } \implies u_n \longrightarrow 0$
+    \item Si $(u_n) \not \longrightarrow 0$, $S_n$ diverge grossièrement
+    \item $ (u_n) \text{ converge } \iff \sum (u_{n+1} - u_n) \conv $ - $\sum_{n=0}^{+\infty} (u_{n+1} - u_n) = \underset{n \rightarrow + \infty}{\lim} u_n - u_0$
+    \item Si $\sum u_n \et \sum v_n \conv, \sum_{n=0}^{+\infty} (\lambda u_n + v_n) = \lambda \sum_{n=0}^{+\infty} u_n + \sum_{n=0}^{+\infty} v_n $
+\end{itemize}
+
+\subsubsection{Propriétés des séries à termes positifs}
+\begin{itemize}
+    \item Une SATP est croissante
+    \item $\sum u_n \conv \iff (\sum u_n) \text{ est majorée}$
+    \item Si $0 \leq u_n \leq v_n \et (\sum v_n) \conv$, alors $(\sum u_n) \conv$ et $\sum_{0}^{+\infty} u_n \leq \sum_{0}^{+\infty} v_n$
+    \item Pour des SATPs $u_n \sim v_n$, $\sum u_n \et \sum v_n$ sont de même nature
+\end{itemize}
+
+\subsubsection{Propriétés de la convergence absolue}
+\begin{itemize}
+    \item Convergence absolue $\implies$ convergence et $\left |\sum_{n=0}^{+ \infty} u_n \right | \leq \sum_{n=0}^{+\infty} |u_n|$
+    \item Pour des SATPs, convergence absolue $\iff$ convergence
+    \item $u_n =\mathcal{O}(v_n) \et \sum v_n $ converge absolument $\implies \sum u_n$ converge absolument
+\end{itemize}
+
+\subsubsection{Comparaison série-intégrale}
+Pour $\sum f(n)$ avec $f$ une fonction continue et décroissante sur $[0, +\infty[$
+\[ \int_{0}^{n+1} f \leq  \sum_{k=0}^{n} f(k) \leq f(0) + \int_{0}^{n} f \]
+
+[Démonstration - écrire un encadrement pour $f(k)$ avec des intégrales de $k$ à $k+1$ et de $k-1$ à $k$, puis sommer]
+\begin{itemize}
+    \item L'inégalité change de signe pour des fonctions décroissantes
+    \item L'inégalité s'adapte pour des fonctions définitions APCR
+\end{itemize}
+
+\subsection{Séries particulières}
+\subsubsection{Série géométrique}
+\[ \sum q^n \conv \iff |q| < 1 \]
+\[ \sum_{n=0}^{+\infty} q^n = \frac{1}{1-q} \]
+
+\begin{itemize}
+    \item Somme partielle - $\sum_{k=0}^{n} q^k = \frac{1 - q^{n+1}}{1-q}$
+\end{itemize}
+
+\subsubsection{Série exponentielle}
+\[ \sum_{n=0}^{+\infty} \frac{z^n}{n!} = e^z \]
+
+[Démonstration - On encadre la série avec l'inégalité de Taylor-Langrange en 0 à l'ordre $n$ évalué en 1 pour la fonction $f : t \mapsto e^{tz}$]
+
+\subsubsection{Série de Riemann}
+$\alpha \in \mathbb{R}$
+\[ \sum_{n \geq 1} \frac{1}{n^\alpha} \conv \iff \alpha > 1 \]
+
+[Démonstration - Pour $\alpha < 0$, le terme général diverge. Sinon, $t \mapsto \frac{1}{t^{\alpha}}$ est décroissante - on utilise l'encadrement intégrale avec un disjonction pour $\alpha = 1$]
 
 \end{document}
