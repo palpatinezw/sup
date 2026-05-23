@@ -133,7 +133,7 @@ def parse(filename):
     r_vals = []
     g_vals = []
     b_vals = []
-    longeur = []
+    longueur = []
 
     with open(filename, "r") as f:
         lines = f.readlines()
@@ -160,7 +160,7 @@ def parse(filename):
 
         _, wavelength, intensity, r, g, b = parts
 
-        longeur.append(float(wavelength))
+        longueur.append(float(wavelength))
         intensities.append(float(intensity))
         r_vals.append(float(r))
         g_vals.append(float(g))
@@ -171,7 +171,7 @@ def parse(filename):
         "r": np.array(r_vals),
         "g": np.array(g_vals),
         "b": np.array(b_vals),
-        "longeurs": np.array(longeur),
+        "longueurs": np.array(longueur),
     }
 
 def getAbsorbance(base, spectre):
@@ -180,7 +180,7 @@ def getAbsorbance(base, spectre):
     :param: spectre (objet retourné par parse())
     """
     return {
-        "longeurs": base["longeurs"],
+        "longueurs": base["longueurs"],
         "absorbance": -np.log( spectre["intensities"] / base["intensities"] )
     }
 
@@ -259,11 +259,53 @@ def run():
 
         for i in range(len(absrs)):
             absr = absrs[i]
-            plt.plot(absr["longeurs"], absr["absorbance"], label=f"Spectre {i}")
+            plt.plot(absr["longueurs"], absr["absorbance"], label=f"Spectre {i}")
         plt.legend()
         plt.show()
 
         continueanalysis = input("[?] Voulez-vous continuer ? (y/n): ") == 'y'
+    
+    exportnom = input("[?] Sous quel nom voulez-vous sauvegarder les spectres ? (vide pour passer): ")
+    if exportnom == "": return
 
+    with open(f"out/{exportnom}.csv", "w") as f:
+        f.write("longueur")
+        for i in range(len(absrs)):
+            f.write(f",spectre {i}")
+        f.write("\n")
+
+        for j in range(len(absrs[0]["longueurs"])):
+            f.write(f"{absrs[0]["longueurs"][j]}")
+            for i in range(len(absrs)):
+                absr = absrs[i]
+                f.write(f",{absr["absorbance"][j]}")
+            f.write("\n")
+
+def generateAbsorbanceCsv(basefiles, spectrefiles):
+    """
+        Génère un fichier CSV contenant les longueurs d'ondes et les absorbances calculées à partir d'un fichier de base (blanc) et une liste de fichiers de spectres.
+
+        :param basefile: chemin vers le fichier de base (blanc)
+        :param spectrefiles: liste de chemins vers les fichiers de spectres à analyser
+    """
+    now = datetime.now()
+    
+    base = parse(basefiles[0])
+    with open(f"out/absorbance-{now.strftime('%Y%m%d-%H%M%S')}.csv", "w") as f:
+        f.write("longueur")
+        for spectrefile in spectrefiles:
+            f.write(f",absorbance_{spectrefile}")
+        f.write("\n")
+
+        for i in range(len(base["longueurs"])):
+            f.write(f"{base['longueurs'][i]}")
+            for j in range(len(spectrefiles)):
+                spectrefile = spectrefiles[j]
+                basefile = basefiles[j] if j < len(basefiles) else basefiles[0]
+                spectre = parse(spectrefile)
+                curbase = parse(basefile)
+                absorbance = -np.log( spectre["intensities"][i] / curbase["intensities"][i] )
+                f.write(f",{absorbance}")
+            f.write("\n")
 
 # analyse_complete()
