@@ -561,8 +561,8 @@ if __name__ == "__main__":
     # ╚═══════════════════════════════════════════════════════╝
 
     # Chemin vers votre image capturée par smartphone
-    IMAGE_ECHANTILLON = "img/SOLs2-3.png"
-    IMAGE_REFERENCE   = "img/BLANCs2-3.png"   # None si pas de référence
+    IMAGE_ECHANTILLON = "img/s3/dil4.jpg"
+    IMAGE_REFERENCE   = "img/s3/dil4.jpg"   # None si pas de référence
 
     # Points de calibration mesurés sur vos images avec les lasers :
     # Photographiez chaque laser, notez le pixel du centre de la raie.

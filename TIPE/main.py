@@ -8,11 +8,11 @@ import os
 import cv2
 
 bande = (700, 750) # bande d'extraction par defaut
-xMin = 2291
-xWidth = 1091 # Il faut OBLIGATOIREMENT assurer que cette valeur reste constante
+xMin = 2619
+xWidth = 934 # Il faut OBLIGATOIREMENT assurer que cette valeur reste constante
 
-m = -0.3285
-c = 704.6
+m = -0.2664195129856975
+c = 663.5294963737288
 
 def charger_image(chemin_fichier):
     """
