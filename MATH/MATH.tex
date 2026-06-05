@@ -106,15 +106,16 @@ Dérivable depuis les formules de base en cherchant le produit à droite.
     \item cosinus et sinus pour sinus: $ \sin{a}\cos{b} = \frac{1}{2}(\cos{(a-b)}-\cos{(a+b)}) $
 \end{itemize}
 
-\subsubsection{Formules de factorisation}
-Depuis les formules de linéarisation, prenons $ p = a+b $ et $ q = a-b $, d'où $ a = \frac{p+q}{2}, b = \frac{p-q}{2} $
+On obtient les formules de factorisation en prenant $ p = a+b $ et $ q = a-b $, d'où $ a = \frac{p+q}{2}, b = \frac{p-q}{2} $
 
 \subsubsection{Tangentes}
-Posons $ t=\tan{\frac{x}{2}} $
+Posons $ t=\tan{\frac{x}{2}} $. Avec 
 \begin{itemize}
-    \item Formules de duplication et relation $\tan^2+1=\sec^2$: $ \cos{x} = \frac{1-t^2}{1+t^2} $
-    \item Formules de duplication et relation $\tan^2+1=\sec^2$: $ \sin{x} = \frac{2t}{1+t^2} $
+    \item $ \cos{x} = \frac{1-t^2}{1+t^2} $
+    \item $ \sin{x} = \frac{2t}{1+t^2} $
 \end{itemize}
+
+[Démonstration - formules de duplication et relation $\tan^2+1=\sec^2$]
 
 \subsection{Équations trigonométriques}
 \subsubsection{Valeurs de l'égalité}
@@ -129,12 +130,12 @@ Attention à la deuxième valeur pour sin et cos
 \subsubsection{L'écriture algébrique}
 $ z \in \mathbb{C} $ s'écrit $ z = \text{Re}(z) + i\text{Im} (z) $
 \begin{itemize}
-    \item L'unicité de l'écriture algébrique
+    \item L'écriture algébrique est unique
     \item $ z=Ae^{i\theta} \iff z = A\cos{\theta} + iA\sin{\theta} $
 \end{itemize}
 
 \subsubsection{Conjugué}
-$ z = \text{Re}(z) + i\text{Im} (z) \iff \overline{z} = \text{Re}(z) - i\text{Im}(z) $
+\[ z = \text{Re}(z) + i\text{Im} (z) \iff \overline{z} = \text{Re}(z) - i\text{Im}(z) \]
 
 \begin{itemize}
     \item $\text{Re} (z) = \frac{z+\overline{z}}{2}$
@@ -147,7 +148,7 @@ $ z = \text{Re}(z) + i\text{Im} (z) \iff \overline{z} = \text{Re}(z) - i\text{Im
 \end{itemize}
 
 \subsubsection{Module}
-$ |z| = \sqrt{\text{Re}(z)^2 + \text{Im}(z)^2} $
+\[ |z| = \sqrt{\text{Re}(z)^2 + \text{Im}(z)^2} \]
 
 \begin{itemize}
     \item $ |z| \in \mathbb{R}_+ $
@@ -156,14 +157,16 @@ $ |z| = \sqrt{\text{Re}(z)^2 + \text{Im}(z)^2} $
     \item $ |z| = |\overline{z}| = |-z| $
 \end{itemize}
 
-\subsubsection{$\mathbb{U}=\{z\in\mathbb{C}:|z|=1\}$}
+\subsubsection{Complexes de module 1}
+
+\[ \mathbb{U}=\{z\in\mathbb{C}:|z|=1\} \]
 
 \begin{itemize}
     \item $z\in\mathbb{U} \iff \frac{1}{z}=\overline{z}$
     \item $ e^{i\theta} \in \mathbb{U} $
-    \item Formules d'Euler - $ cos{\theta}=\frac{e^{i\theta} + e^{-i\theta}}{2} \text{ et } sin{\theta}=\frac{e^{i\theta} - e^{-i\theta}}{2i} $
+    \item Formules d'Euler - $ \cos{\theta}=\frac{e^{i\theta} + e^{-i\theta}}{2} \text{ et } \sin{\theta}=\frac{e^{i\theta} - e^{-i\theta}}{2i} $
     \item Égalité trigonométrique - $ e^{i\theta} = e^{i\theta '} \iff \theta \equiv \theta' [2\pi] $
-    \item Formule de Moivre - $ \forall n \in \mathbb{Z}, e^{i\theta n} = (e^{i\theta})^n $ (Attention que la formule est valable seulement pour $ n \in \mathbb{Z} $
+    \item Formule de Moivre - $e^{i\theta n} = (e^{i\theta})^n $ (! Valable seulement pour $ n \in \mathbb{Z} $)
 \end{itemize}
 
 On déduit la factorisation par l'angle moitié avec les formules d'Euler.
@@ -184,31 +187,25 @@ Ces formules sont utiles notamment pour $ \theta=0 $ donc $ e^{i\theta} = 1 $
 \subsubsection{Inégalité triangulaire}
 \[ ||z|-|z'|| \leq |z \pm z'| \leq |z|+|z'| \]
 
-\noindent Pour montrer $ |z \pm z'| \leq |z|+|z'| $, on utilise une chaîne d'équivalences en élevant au carré, puis en développant pour obtenir $ \text{Re}(z'\overline{z}) \leq |zz'| $. \\
+Démonstration - pour $ |z \pm z'| \leq |z|+|z'| $, on utilise une chaîne d'équivalences en élevant au carré, puis en développant pour obtenir $ \text{Re}(z'\overline{z}) \leq |zz'| $. Pour $ ||z|-|z'|| \leq |z \pm z'| $, on applique $ |z| = |z+z'-z'| \leq |z+z'|+|z'| $ \\
 
-\noindent Pour montrer $ ||z|-|z'|| \leq |z \pm z'| $, on applique $ |z| = |z+z'-z'| \leq |z+z'|+|z'| $
-
-\noindent On note le cas d'égalité. Les vecteurs qui représentent les affixes sont colinéaires et dans le même sens (d'où $\alpha \in \mathbb{R}_+ $ positif). 
+Cas d'égalité. 
 
 \[ |z+z'|=|z|+|z'| \iff (z=0 \text{ ou } \exists \alpha \in \mathbb{R}_+ : z'=\alpha z) \]
 
-\noindent Démonstration par double implication. 
-\begin{itemize}
-    \item Sens direct: Supposons $z \neq 0$. Chaîne d'équivalences pour montrer $\text{Re}(\overline{z}z') = |\overline{z}z'|$ donc $\overline{z}z' \in \mathbb{R}$. On a $ z' = \frac{z'\overline{z}z}{\overline{z}z} = \frac{z'\overline{z}}{|z|^2}z$
-    \item Sens réciproque: Disjonction de cas
-\end{itemize}
+Les vecteurs qui représentent les affixes sont positivement liés. \\
 
-\noindent On remarque que $ (z=0 \text{ ou } \exists \alpha \in \mathbb{R}_+ : z'=\alpha z) \iff (\exists \lambda \in \mathbb{R}_+ : z'=\lambda z \text{ ou } \exists \lambda \in \mathbb{R}_+ : z=\lambda z') $
+Démonstration - Sens direct: Supposons $z \neq 0$. Chaîne d'équivalences pour montrer $\text{Re}(\overline{z}z') = |\overline{z}z'|$ donc $\overline{z}z' \in \mathbb{R}$. On a $ z' = \frac{z'\overline{z}z}{\overline{z}z} = \frac{z'\overline{z}}{|z|^2}z$. Sens réciproque: Disjonction de cas.
 
 \subsubsection{Racines n-ième}
 Pour $a\in \mathbb{N}^*$, les racines n-ièmes de $ a = |a|e^{i\theta}$ sont les $ \sqrt[n]{|a|}e^{i\frac{\theta + 2k\pi}{n}} $ avec $ k \in \llbracket 0, n-1\rrbracket $ \\
 
 \noindent On remarque l'importance de l'intervalle pour que les éléments soient uniques. \\
 
-\noindent On note $\mathbb{U}_n$ les racines n-ièmes de l'unité. 
+\noindent $\mathbb{U}_n$ - racines n-ièmes de l'unité. 
 \begin{itemize}
-    \item 1 est une racine
-    \item On note $j=e^{i\frac{2\pi}{3}} = -\frac{1}{2} + i \frac{\sqrt{3}}{2} \in \mathbb{U}_3$
+    \item 1 est une racine $n$-ième
+    \item $j=e^{i\frac{2\pi}{3}} = -\frac{1}{2} + i \frac{\sqrt{3}}{2} \in \mathbb{U}_3$
     \item $x^2 + x + 1 = (x - j)(x - j^2)$
     \item $x^2 - x + 1 = (x + j)(x + j^2)$
 \end{itemize}
@@ -239,7 +236,6 @@ Pour $a\in \mathbb{N}^*$, les racines n-ièmes de $ a = |a|e^{i\theta}$ sont les
 
 \clearpage
 \section{Calculs algébriques}
-Chapitre 3
 \subsection{Sommes}
 \subsubsection{Propriétés}
 \begin{itemize}
@@ -294,8 +290,9 @@ Chapitre 3
 \subsection{Formules}
 \subsubsection{Formule de Bernoulli}
 \[a^n - b^n = (a-b)\sum_{k=0}^{n-1}(a^kb^{n-1-k}) \]
-\noindent Démonstration - commencer par le terme à gauche \\
-\noindent Ce formule valable pour les matrices qui commutent
+Démonstration - commencer par le terme à gauche. \\
+
+Ce formule valable pour les objets qui commutent
 
 \subsubsection{Sommes trigonométriques}
 \[ \sum_{k=0}^n\cos{(kx)} = \cos{(\frac{nx}{2})}[\frac{\sin(\frac{n+1}{2}x)}{\sin{\frac{x}{2}}}] \]
@@ -313,8 +310,7 @@ Chapitre 3
 
 \noindent Démonstration - par récurrence simple. 
 \\ \\
-\noindent Ce formule est valable pour tout objet mathématique dont la loi $\times$ est communtative (e.g. matrices qui commutent, polynômes)
-
+\noindent Ce formule est valable pour les objets qui commutent
 
 \subsubsection{Formule de Vandermonde}
 \[ \binom{m+n}{p} = \sum_{k=0}^p \binom{m}{k} \binom{n}{p-k}  \]
@@ -330,14 +326,12 @@ Chapitre 3
 \noindent Appliquer la formule du binôme de Newton et séparer les termes paires et impaires. 
 \clearpage
 \section{Applications}
-Chapitre 4
 \subsection{Définitions}
 
 Soit $f$, $g$ des applications
 \begin{align*}
     f: & E \to F \\ 
     & x\mapsto f(x) \\
-    \\
     g: & G \to H \\ 
     & x\mapsto g(x)
 \end{align*}
@@ -347,11 +341,11 @@ Soit $f$, $g$ des applications
 \begin{itemize}
     \item $E$ et $G$ sont les ensembles de départ 
     \item $F$ et $H$ sont les ensembles d'arrivée
-    \item $f = g \iff E=G \text{ et } F=H \text{ et } \forall x \in E, f(x)=g(x) $ - Attention à l'égalité des ensembles d'arrivée et de départ
+    \item $f = g \iff E=G \text{ et } F=H \text{ et } \forall x \in E, f(x)=g(x) $ - L'égalité des ensembles d'arrivée et de départ et des antécédents
 \end{itemize}
 
 \subsubsection{Injection}
-$f$ est injective si tout élément de $F$ a au plus un antécédent dans $E$. Plus souvent, on utilise la caractérisation suivante - 
+Tout élément de $F$ a au plus un antécédent dans $E$
 
 \[ \forall(x, x')\in \mathbb{R}^2, f(x)=f(x') \implies x=x' \]
 
@@ -361,27 +355,27 @@ $f$ est injective si tout élément de $F$ a au plus un antécédent dans $E$. P
 \end{itemize}
 
 \subsubsection{Surjection}
-$f$ est injective si tout élément de $F$ a au moins un antécédent dans $E$. Plus souvent, on utilise la caractérisation suivante - 
+Tout élément de $F$ a au moins un antécédent dans $E$
 
 \[ \forall y \in F, \exists x \in E : y=f(x) \]
 
 \begin{itemize}
     \item Si $f$ et $g$ sont surjectives, $g \circ f $ est surjective
-    \item Si $g \circ f$ est surjective, $g$ est surjective (si un antécédent n'existe même par pour $g$, $f$ ne peut l'inventer de nulle part)
+    \item Si $g \circ f$ est surjective, $g$ est surjective (si un antécédent n'existe même par pour $g$, $f$ ne peut pas le créer)
 \end{itemize}
 
 \subsubsection{Bijection}
-$f$ est injective si tout élément de $F$ a un unique antécédent dans $E$ ($f$ est injective et surjective). Plus souvent, on utilise la caractérisation suivante -  
+Tout élément de $F$ a un unique antécédent dans $E$ (injective et surjective)
 
 \[ \forall y \in F, \exists ! x \in E : y=f(x) \]
 
-\noindent On peut noter la fonction qui donne les uniques antécédents $f^{-1}$ la bijection réciproque. \\
+\noindent Pour $f$ bijective, la bijection réciproque $f^{-1}$. \\
 
-\noindent Pour montrer la bijectivité, on peut:
+\noindent Pour montrer la bijectivité:
 \begin{itemize}
     \item Analyse-Synthèse - Trouver l'unique antécédent de tout $y \in F$ puis vérifier que cet antécédent est dans $E$
     \item Montrer l'injectivité et la surjectivité
-    \item Deviner la bijection réciproque et démontrer que les compositions donnent Id
+    \item Deviner la bijection réciproque et montrer que les compositions donnent Id
 \end{itemize}
 
 \subsection{Applications particulières}
@@ -401,10 +395,10 @@ $f$ est injective si tout élément de $F$ a un unique antécédent dans $E$ ($f
         0 & \text{sinon}
     \end{cases}
 \end{align*}
+
 \clearpage
 \section{Fonctions de la variable réelle}
-Chapitre 5
-\subsection{$\mathbb{R}$}
+\subsection{Les réels}
 \subsubsection{Relation d'ordre sur $\mathbb{R}$}
 \begin{itemize}
     \item Réflexivité - $\forall x \in \mathbb{R}, x \leq x$
@@ -412,14 +406,14 @@ Chapitre 5
     \item Antisymétrie - $\forall (x,y) \in \mathbb{R}^2, (x \leq y \text{ et } y \leq x) \implies x = y$
 \end{itemize}
 
-Attention que l'inégalité stricte n'est pas une relation d'ordre.
+L'inégalité stricte n'est pas une relation d'ordre (pas antisymétrique).
 
 \subsection{Intervalles}
 \subsubsection{Forme des intervalles}
 Définition d'un intervalle $I$ - 
 \[ \forall(x, y) \in I^2, x\leq y \implies [x, y] \subset I \]
 
-\noindent L'ensemble vide $ \emptyset $ et les singletons sont des intervalles dits triviaux. Les intervalles non-triviaux sont de l'une des 9 formes suivantes -
+\noindent L'ensemble vide $ \emptyset $ et les singletons sont des intervalles triviaux. Les intervalles non-triviaux sont de l'une des 9 formes suivantes -
 \begin{itemize}
     \item Segment - $[a, b]$
     \item Intervalles semi-ouvert - $]a,b]$ et $[a,b[$
@@ -440,16 +434,17 @@ Définition d'un intervalle $I$ -
     \item Paire - symétrie l'axe des ordonnées - $ \begin{cases} \forall x \in D, -x \in D \\ \forall x \in D, f(-x)=f(x) \end{cases} $
     \item Impaire - symétrie l'origine - $ \begin{cases} \forall x \in D, -x \in D \\ \forall x \in D, f(-x)=-f(x) \end{cases} $
 \end{itemize}
-Attention que la symétrie par rapport à 0 doit être respecté ($\forall x \in D, -x \in D$) \\
-\noindent La parité d'une fonction permet de restreindre son étude à $D \cap \mathbb{R}_+$ \\
+La symétrie par rapport à 0 de l'ensemble de départ doit être respecté !
 
-\noindent On note que toute fonction $f$ s'écrit comme somme une fonction paire $ \frac{f(x) + f(-x)}{2} $ et une fonction impaire $ \frac{f(x)-f(-x)}{2} $. \\
-
-\noindent La dérivée d'une fonction paire est impaire et la dérivée d'une fonction impaire est paire. 
+\begin{itemize}
+    \item La parité d'une fonction permet de restreindre son étude à $D \cap \mathbb{R}_+$ 
+    \item Toute fonction $f$ s'écrit comme somme une fonction paire $ \frac{f(x) + f(-x)}{2} $ et une fonction impaire $ \frac{f(x)-f(-x)}{2} $.
+    \item La dérivée d'une fonction paire est impaire et la dérivée d'une fonction impaire est paire. 
+\end{itemize}
 
 \subsubsection{Périodicité}
-Soit $T \in \mathbb{R}_+^*$ la période de $f$
-$f$ est T-périodique si $\begin{cases} \forall x \in D, x+T \in D \text{ et } x-T \in D \\ \forall x \in D, f(x)=f(x+T) \end{cases}$
+\[ f \text{ est T-périodique } \iff \begin{cases} \forall x \in D, x+T \in D \text{ et } x-T \in D \\ \forall x \in D, f(x)=f(x+T) \end{cases} \]
+
 Attention que la T-périodicité du domaine $D$ doit être respecté ($\forall x \in D, x+T \in D \text{ et } x-T \in D$)
 
 \subsubsection{Monotonie}
@@ -459,15 +454,10 @@ Attention que la T-périodicité du domaine $D$ doit être respecté ($\forall x
     \item Décroissance - $\forall (x, y) \in D^2 , x \leq y \implies f(x) \geq f(y)$
     \item Stricte décroissance - $ \forall (x, y) \in D^2, x < y \implies f(x) > f(y) $
     \item (stricte) Monotonie - (stricte) croissance ou décroissance
-\end{itemize}
-
-\noindent Propriétés des composées
-\begin{itemize}
     \item La composée de 2 fonctions monotones et de même sens de variations est croissante.
     \item La composée de 2 fonctions monotones et de sens de variations contraire est décroissante.
+    \item La bijection réciproque d'une fonction strictement monotone et bijective et aussi strictement monotone et de même sens de variation. 
 \end{itemize}
-
-\noindent La bijection réciproque d'une fonction strictement monotone et bijective et aussi strictement monotone et de même sens de variation. 
 
 \subsubsection{Extrema}
 \begin{itemize}
@@ -497,7 +487,6 @@ Vérifier toujours la domaine de dérivabilité avant de dériver. On s'intéres
 
 \clearpage
 \section{Fonctions usuelles}
-Chapitre 6
 \subsection{Fonction exponentielle}
 \subsubsection{Relation fondamentale}
 \[ \forall (x, y) \in \mathbb{R}^2, \exp(x+y) = \exp(x)\exp(y) \]
@@ -505,13 +494,13 @@ Chapitre 6
 \subsubsection{Propriétés}
 \begin{itemize}
     \item Continue et dérivable sur $\mathbb{R}$
-    \item $ \exp' = \exp >0 $ donc $ \exp $ est strictement croissante sur $\mathbb{R}$
+    \item $ \exp' = \exp >0 $ - $ \exp $ est strictement croissante sur $\mathbb{R}$
     \item $ \exp(\mathbb{R}_+) = \mathbb{R}_+^* $
     \item Inégalité de convexité - $ \forall x \in \mathbb{R}, e^x \geq x+1 $
 \end{itemize}
 
 \subsubsection{Logarithme népérienne}
-On note $ \ln $ la bijection réciproque de $ \exp $.
+$ \ln $ la bijection réciproque de $ \exp $.
 
 \subsubsection{Logarithme de base $a$}
 \begin{align*}
@@ -573,10 +562,6 @@ $e^x$ plus puissant que $x$, $x$ plus puissant que $\ln x$. Les limites restent 
     \item $ \text{sh}' = \text{ch} > 0 $
     \item $ \text{ch} > \text{sh} $
     \item $ \text{ch}(0) = 1 $ est un minimum
-\end{itemize}
-
-\noindent On a les formules analogues à celles de la trigonométrie
-\begin{itemize}
     \item $\ch^2x - \sh^2x = 1$
     \item $\ch (ix) = \cos{x}$
     \item $\sh(ix) = i\sin{x}$
@@ -585,7 +570,6 @@ $e^x$ plus puissant que $x$, $x$ plus puissant que $\ln x$. Les limites restent 
 
 \clearpage
 \section{Réels}
-Chapitre 7
 \subsection{Définitions}
 \begin{itemize}
     \item Majorant $M$ de $A$ - $ \forall a \in A, a \leq M $
@@ -596,7 +580,7 @@ Chapitre 7
 \subsection{Bornes}
 \subsubsection{Borne supérieure}
     \begin{itemize}
-        \item Un majorant
+        \item En particulier un majorant
         \item Le plus petit des majorants
         \item Condition d'existence - toute partie non-vide et majorée de $\mathbb{R}$ possède une borne supérieure
         \item $\max{A} = \sup{A} \iff \sup{A} \in A $
@@ -608,12 +592,12 @@ Chapitre 7
         \end{cases} $
             \begin{itemize}
                 \item Démonstration $\implies$ - par définition de la borne supérieure 
-                \item Démonstration $\impliedby$ - en retrouvant la définition de la borne supérieure
+                \item Démonstration $\impliedby$ - retrouver la définition de la borne supérieure
             \end{itemize}
     \end{itemize}
 \subsubsection{Borne inférieure} 
     \begin{itemize}
-        \item Un minorant
+        \item En particulier un minorant
         \item Le plus petit des minorants
         \item Toute partie non-vide et minorée de $\mathbb{R}$ possède une borne supérieure
         \item $\min{A} = \inf{A} \iff \inf{A} \in A $
@@ -915,7 +899,7 @@ Pour $q \in \mathbb{K}$, la suite géométrique $q^n$
 \end{itemize}
 
 \subsubsection{Suites récurrentes linéaires d'ordre 2}
-\[ \epsilon_{a, b} = \{ (u_n) \in \mathbb{K}^\mathbb{N} \ligneh \forall n \in \mathbb{N}, u_{n+2} = au_{n+1} + b \} \]
+\[ \epsilon_{a, b} = \{ (u_n) \in \mathbb{K}^\mathbb{N} \ligneh \forall n \in \mathbb{N}, u_{n+2} = au_{n+1} + bu_n \} \]
 \[ P = X^2 - aX - b \]
 
 On cherche l'unique formule explicite de la suite étant donné les conditions initiales $u_0$ $u_1$ 
@@ -1833,11 +1817,11 @@ Pour $A \in \mathcal{M}_{n, p}(\mathbb{K})$
 
 \subsection{Relations entre matrices}
 \begin{itemize}
-    \item Matrices équivalentes - il existe des matrices inversibles $P$ et $Q$ tel que $B = QAP$
+    \item Matrices équivalentes (HP) - il existe des matrices inversibles $P$ et $Q$ tel que $B = QAP$
     \begin{itemize}
         \item $A \et B$ sont équivalentes $\iff A \et B$ représentent la même application linéaire
     \end{itemize} 
-    \item Matrices semblables (HP) - il existe une matrice inversible $P$ tel que $B = P^{-1}AP$
+    \item Matrices semblables - il existe une matrice inversible $P$ tel que $B = P^{-1}AP$
     \begin{itemize}
         \item $A \et B$ sont semblables $\iff A \et B$ représentent le même endomorphisme
     \end{itemize} 
@@ -1887,7 +1871,7 @@ Pour $(a, b) \in \mathbb{K}^2, f \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$
     \end{itemize}
     \item L'ensemble des solutions homogène est un plan vectoriel
     \item Il existe toujours une solution particulière
-    \item Problème de Cauchy - si on pose $y(x_0) = y_0 \et y'(x_0) = y_1$, il existe une unique solution
+    \item Problème de Cauchy - si on pose $y(x_0) = y_0 \et y'(x_0) = y_1$, il existe une unique solution (! Meme $x_0$ pour les 2 points)
 \end{itemize}
 
 \subsubsection{Solutions particulières remarquables}
@@ -2185,6 +2169,7 @@ Pour $\sum f(n)$ avec $f$ une fonction continue et décroissante sur $[0, +\inft
 
 \begin{itemize}
     \item Somme partielle - $\sum_{k=0}^{n} q^k = \frac{1 - q^{n+1}}{1-q}$
+    \item La somme commence à $n = 0$
 \end{itemize}
 
 \subsubsection{Série exponentielle}
@@ -2192,10 +2177,309 @@ Pour $\sum f(n)$ avec $f$ une fonction continue et décroissante sur $[0, +\inft
 
 [Démonstration - On encadre la série avec l'inégalité de Taylor-Langrange en 0 à l'ordre $n$ évalué en 1 pour la fonction $f : t \mapsto e^{tz}$]
 
+\begin{itemize}
+    \item La somme commence à $n = 0$
+\end{itemize}
+
 \subsubsection{Série de Riemann}
 $\alpha \in \mathbb{R}$
 \[ \sum_{n \geq 1} \frac{1}{n^\alpha} \conv \iff \alpha > 1 \]
 
 [Démonstration - Pour $\alpha < 0$, le terme général diverge. Sinon, $t \mapsto \frac{1}{t^{\alpha}}$ est décroissante - on utilise l'encadrement intégrale avec un disjonction pour $\alpha = 1$]
+
+\clearpage
+\section{Variables aléatoires}
+\subsection{Définition}
+\begin{itemize}
+    \item Application de $\Omega \rightarrow X(\Omega)$ avec $X(\Omega)$ l'ensemble des variables tirées des résultats
+    \item Application indicatrice de $A$ - $\Omega \rightarrow \{0, 1\} : \omega \mapsto \begin{cases}
+        0 & \si \omega \in A \\
+        1 & \text{ sinon}
+    \end{cases}$
+    \item Pour $f$ définie sur $X(\Omega)$, $f(X)$ est une variable aléatoire
+    \begin{itemize}
+        \item $P(f(X) = y) = P(X \in f^{-1}(\{y\}))$
+    \end{itemize}
+    \item $X^{-1}(A) = \{ \omega \in \Omega | X(\omega) \in A\} = \{ X \in A\}$
+    \begin{itemize}
+        \item $(\{X = x\})_{x \in X(\Omega)}$ est un système complet d'évènements de $\Omega$
+    \end{itemize}
+    \item $X$ presque sûrement égale à $a \iff P(X=a) = 1$
+    \item Indépendance - $X \ind Y$
+    \begin{itemize}
+        \item $\forall A \subset X(\Omega), \forall B \subset Y(\Omega), P(X \in A, Y \in B) = P(X \in A)P(Y \in B) $
+        \item $\forall x \in X(\Omega), \forall y \in Y(\Omega), P(X = x, Y = y) = P(X = x)P(Y = y)$
+    \end{itemize} 
+    \item Indépendance mutuelle $X_1 \dots X_n$
+    \begin{itemize}
+        \item $ \forall (A_1 \dots A_n)\! \in \prod_{i=1}^{n} \mathcal{P}(X_i(\Omega)), P(\bigcap_{i=1}^n X_i \in A_i) = \prod_{i=1}^{n}P(X_i \in A_i) $
+        \item $ \forall (x_1 \dots x_n) \in \prod_{i=1}^{n} X_i(\Omega), P(\bigcap_{i=1}^n X_1 =x_i) = \prod_{i=1}^{n}P(X_i = x_i) $
+        \item Toute sous-famille de variables aléatoires mutuellement indépendantes est mutuellement indépendante
+        \item Lemme des coalitions - pour $X_1 \dots X_n$ mutuellement indépendant, $f(X_1\dots X_k) \et g(X_{k+1}\dots X_n)$ sont indépendantes
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Lois}
+\begin{itemize}
+    \item Loi d'une variable aléatoire - $P_X(A) = P(X \in A) = \sum_{x \in A} P(X = x)$
+    \begin{itemize}
+        \item $X \sim Y$ - $X$ et $Y$ suivent la même loi - $X(\Omega) = Y(\Omega) \et \forall x \in X(\Omega), P(X=x)=P(Y=x)$
+        \item $X \sim Y \implies f(X) \sim f(Y)$
+    \end{itemize}
+    \item Loi conjointe du couple de variables aléatoires - $P_{(X, Y)}(A \times B) = P((X \in A) \cap (Y \in B)) = P(X \in A, Y \in B)$
+    \begin{itemize}
+        \item Lois marginales du couple - $P(X = x) = \sum_{y \in Y(\Omega)} P(X = x, Y=y)$
+    \end{itemize}
+    \item Loi conditionelle de $X$ sachant $A$ - $P_{X|A}(B) = P_A(X \in B)$
+    \begin{itemize}
+        \item $P_{X|Y=y}(\{x\}) = P_{\{Y=y\}}(X=x) = \frac{P(X=x,Y=y)}{P(Y=y)}$
+    \end{itemize}
+\end{itemize}
+
+\subsection{Espérance}
+\[ \mathbb{E}(X) = \sum_{\omega \in \Omega} X(\omega)P({\omega}) = \sum_{x \in X(\Omega)} xP(X=x) \]
+
+\begin{itemize}
+    \item $X$ centrée - $\mathbb{E}(X) = 0$
+    \item Linéarité $\mathbb{E}(\lambda X + Y) = \lambda \mathbb{E}(X) + \mathbb{E}(Y)$
+    \item Positivité - $X \geq 0 \implies \mathbb{E}(X) \geq 0$
+    \item Croissance - $X \leq Y \implies \mathbb{E}(X) \leq \mathbb{E}(Y)$
+    \item Inégalité triangulaire - $|\mathbb{E}(X)| \leq \mathbb{E}(|X|)$
+    \item Formule de transfert - $\mathbb{E}(f(X)) = \sum_{x\in X(\Omega)} f(x)P(X=x)$
+    \item Inégalité ``de Cauchy-Schwarz'' - $|\mathbb{E}(XY)| \leq \sqrt{\mathbb{E}(X^2)\mathbb{E}(Y^2)}$
+    \item Pour $X \ind Y, \mathbb{E}(XY) = \mathbb{E}(X)\mathbb{E}(Y)$
+\end{itemize}
+
+\subsection{Variance}
+Formule de Koenig-Huygens
+\[ \mathbb{V}(X) = \mathbb{E} \left ((X - \mathbb{E}(X))^2 \right ) = \mathbb{E}(X^2) - \mathbb{E}(X)^2 \]
+
+\begin{itemize}
+    \item Écart type $\sigma(X) = \sqrt{\mathbb{V}(X)}$
+    \item $\mathbb{V}(aX+b) = a^2\mathbb{V}(X)$
+\end{itemize}
+
+\subsubsection{Covariance}
+Formule de Koenig-Huygens
+\[ \cov (X, Y) = \mathbb{E}( \, (X - \mathbb{E}(X))(Y - \mathbb{E}(Y)) \, ) = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y) \]
+
+\begin{itemize}
+    \item $X, Y$ décorrélées - $\cov (X, Y) = 0$
+    \item Indépendance $\implies$ décorrélées
+    \item $\cov$ est une forme bilinéaire symétrique et positive (mais pas défini donc pas un produit scalaire)
+    \item $\mathbb{V}(X) = \mathbb{V}(X) + 2 \cov (X, Y) + \mathbb{V}(Y)$
+    \item Inégalité ``de Cauchy-Schwarz'' - $|\cov (X, Y)| \leq \sigma (X) \sigma (Y)$
+    \item $\mathbb{V}(X_1 + \dots X_n) = \sum_{k=1}^{n} \mathbb{V}(X_k) + 2 \sum_{1 \leq i < j \leq n} \cov(X_i, X_j)$
+\end{itemize}
+
+\subsection{Inégalités}
+\subsubsection{Inégalité de Markov}
+Pour $a > 0$,
+\[ P(|X| \geq a) \leq \frac{\mathbb{E}(|X|)}{a} \]
+
+Démonstration - $|X| \geq \mathbb{1}_{ \{|X| \geq a\} }$
+
+\subsubsection{Inégalité de Bienaymé-Tchebychev}
+Pour $\epsilon > 0$
+\[ P( | X - \mathbb{E}(X) | \geq \epsilon ) \leq \frac{\mathbb{V}(X)}{\epsilon^2} \]
+
+Démonstration - on applique l'inégalité de Markov pour $|X - \mathbb{E}(X)|^2 \geq \epsilon^2$
+
+\begin{itemize}
+    \item En prenant $\epsilon = \sigma(X)$, on a des inégalités de concentration
+    \item Loi faible des grands nombres - pour $\overline{X_n}$ la moyenne de $(X_1,\dots,X_n)$ des échantillons indépendants des variables aléatoires suivant la même loi, $P(|\overline{X_n} - \mathbb{E}(X)| \geq \epsilon) \leq \frac{\sigma^2}{n \epsilon^2} \underset{n \rightarrow +\infty}{\longrightarrow} 0 $
+\end{itemize}
+
+\subsection{Lois usuelles}
+\subsubsection{Loi uniforme}
+\[ X \sim \mathcal{U}(E) \]
+\[ X(\Omega) = E \et \forall x \in E, P(X=x) = \frac{1}{\text{Card}(E)} \]
+
+\begin{itemize}
+    \item $\mathbb{E}(X) = \frac{n+1}{2}$
+    \item $\mathbb{V}(X) = \frac{n^2-1}{12}$
+\end{itemize}
+
+\subsubsection{Loi de Bernoulli}
+\[ X \sim \mathcal{B}(p) \]
+\[ X(\Omega) = \{0, 1\} \et P(X=1) = p \]
+
+\begin{itemize}
+    \item $\mathbb{E}(X) = p$
+    \item $\mathbb{V}(X) = p(1-p)$
+\end{itemize}
+
+\subsubsection{Loi binomiale}
+\[ X \sim \mathcal{B}(n, p) \]
+\[ X(\Omega) = \llbracket 0, n \rrbracket \et P(X=k) = \binom{n}{k} p^k (1-p)^{n-k} \]
+
+\begin{itemize}
+    \item $\mathbb{E}(X) = np$
+    \item $\mathbb{V}(X) = np(1-p)$
+    \item Pour $X_1,\dots,X_n \sim \mathcal{B}(p)$, $\sum_{i=1}^{n} X_i \sim \mathcal{B}(n, p)$ 
+\end{itemize}
+
+\clearpage
+\section{Déterminants}
+
+Dans ce chapitre, 
+\begin{itemize}
+    \item Les vecteurs sont dans $E$ de dimension $n$
+    \item $[x_i] = (x_1,...,x_n)$ 
+    \item $\mathcal{B} = [e_i]$ est une base de $E$
+\end{itemize}
+
+\subsection{Définitions}
+\subsubsection{Déterminant d'une famille}
+
+\[ \det_{\mathcal{B}} : E^n \rightarrow \mathbb{K} \]
+
+\begin{itemize}
+    \item Le déterminant d'une famille de $E$ dans la base $\mathcal{B}$ est l'unique forme $n$-linéaire alternée vérifiant $\det_{\mathcal{B}}(\mathcal{B}) = 1$
+    \begin{itemize}
+        \item Forme $n$-linéaire - application de $E^n \rightarrow \mathbb{K}$ linéaire par rapport à chacune de ses variables
+        \item Forme $n$-linéaire alternée - $ x_i = x_j \et i \neq j \implies \phi([x_i]) = 0 $
+        \item Forme $n$-linéaire antisymétrique - $\phi (x_1,\dots,x_i,\dots,x_j,\dots,x_n) = -\phi (x_1,\dots,x_j,\dots,x_i,\dots,x_n)$
+        \item Alternée $\iff$ antisymétrique
+    \end{itemize}
+    \item Toute forme $n$-linéaire alternée $\phi$ est de la forme $\phi = \phi(\mathcal{B})\det_{\mathcal{B}}$
+    \begin{itemize}
+        \item Formule de changement des bases - $\det_{\mathcal{B}'} = \det_{\mathcal{B'}}(\mathcal{B}) \det_{\mathcal{B}}$
+        \item $ \det_{\mathcal{B'}}(\mathcal{B}) \det_{\mathcal{B}}(\mathcal{B'}) = 1$
+    \end{itemize}
+    \item $[x_i]$ liée $\implies \det_{\mathcal{B}}([x_i]) = 0$
+    \item $\det_{\mathcal{B}}([x_i]) = 0$ est inchangé si on ajoute à un vecteur une combinaison linéaire des autres
+    \item $[x_i]$ est une base de $E \iff \det_{\mathcal{B}}([x_i]) = 0$
+\end{itemize}
+
+\subsubsection{Déterminant d'un endomorphisme}
+
+\[ \det u = \det_{\mathcal{B}}([u(e_i)]) \]
+
+\begin{itemize}
+    \item $\det u$ est l'unique scalaire tel que $\forall \mathcal{B}, \forall [x_i], \det_{\mathcal{B}}([u(x_i)]) = \det u \det_{\mathcal{B}}([x_i])$ [Démonstration - existence et unicité. Existence - $\det_{\mathcal{B}} \circ u$ est une forme $n$-linéaire alternée puis justifier l'indépendance de la base choisie par la formule de changement de base. Unicité - on applique l'égalité à $\mathcal{B}$]
+    \item $\det(\lambda \text{Id}_E) = \lambda^{\dim E}$
+    \item $\det(u \circ v) = \det u \det v = \det (v \circ u)$
+    \item $u \text{GL}(E) \iff \det u \neq 0$ (Dans le cas d'inversibilité, $\det (u^{-1}) = \frac{1}{\det u}$)
+\end{itemize}
+
+\subsubsection{Déterminant d'une matrice}
+
+\[ \det A = \det_{\mathcal{B}_c}([C_i]) \]
+$[C_i]$ la famille des colonnes de $A$ exprimée dans la base canonique de $\mathbb{K}^n$
+
+\begin{itemize}
+    \item $\det \mat_{\mathcal{B}}([x_i]) = \det_{\mathcal{B}}([x_i])$
+    \item $\det (\mat_{\mathcal{B}} (u))) = \det u$ pour tout endomorphisme $u$ dans n'importe quelle base
+    \item $\det (\lambda A) = \lambda^nA$
+    \item $\det (AB) = \det A \det B = \det (BA)$
+    \item $\det (P^{-1}AP) = \det A$ - deux matrices semblables ont le même déterminant
+    \item $A \in \text{GL}_n (\mathbb{K}) \iff \det A \neq 0$ (Dans le cas d'inversibilité, $\det (A{-1}) = \frac{1}{\det A}$)
+    \item $\det A^T = \det A$
+\end{itemize}
+
+\subsection{Calcul de déterminant}
+\subsubsection{Matrices de petite taille}
+
+\[ \begin{vmatrix}
+a & b\\
+c & d
+\end{vmatrix} = ad - bc \]
+
+Règle de Sarrus:
+\[ \begin{vmatrix}
+a & b & c\\
+d & e & f\\
+g & h & i
+\end{vmatrix} = aei + bfg + cdh - ceg - afh - bdi \]
+
+\subsubsection{Matrices particulières}
+\begin{itemize}
+    \item Matrice diagonale - $\det (\text{diag} (\lambda_1,\dots,\lambda_n)) = \prod_{i=1}^{n} \lambda_i$
+    \item Matrice triangulaire - produit des coefficients diagonaux
+    \item Matrice de transvection - $\det T_{i, j}(\lambda) = 1$ [Démonstration - $T_{i, j}(\lambda) = I_n + \lambda E_{i, j}$ avec $\lambda E_{i, j}$ l'ajout d'un combinaison linéaire du $i$-ième colonne à la $j$-ième]
+    \item Matrice de permutation - $\det P_{i, j} = -1$ [Démonstration - antisymétrie du déterminant]
+    \item Matrice de dilatation - $\det D_{i}(\lambda) = \lambda$
+\end{itemize}
+
+\subsubsection{Développement suivant une ligne}
+\[ \det A = \sum_{i=1}^{n} a_{i, j}(-1)^{i+j} \det (A_{i, j}) \]
+
+avec $A_{i, j}$ la matrice extraite en supprimant la $i$-ème ligne et la $j$-ième colonne. \\
+
+Plus généralement, pour
+
+\[ 
+A=
+\left(
+\begin{array}{c|c}
+A' &
+\begin{array}{c}
+a_{1,n}\\
+\vdots\\
+a_{n-1,n}
+\end{array}
+\\ \hline
+0 \ \cdots \ 0 & a_{n,n}
+\end{array}
+\right)
+ \]
+On a 
+\[ \det A = a_{n, n} \det A' \]
+
+On peut aussi développer suivant une ligne
+
+\clearpage
+\section{Fonctions de deux variables}
+
+\subsection{Continuité}
+Continuité en $a \in U$ un ouvert de $\mathbb{R}^2$ 
+\[ \forall \epsilon > 0, \exists \delta > 0 \ligneh \forall z \in U, \|z-a\| \leq \delta \implies \| f(z) - f(a) \| \leq \epsilon \]
+\[ \lim_{(x, y) \rightarrow (\alpha, \beta)} f(x, y) = f(\alpha, \beta) \]
+
+\begin{itemize}
+    \item Boule ouvert de $\mathbb{R}^2$ - $B(a, r) = \{ z \in \mathbb{R}^2 \ligneh \|z-a\| < r \}$
+    \item Ouvert de $\mathbb{R}^2$ - $\forall a \in U, \exists r > 0 | B(a, r) \subset U$
+    \item $\underset{x \rightarrow \alpha}{\lim} ( \underset{y \rightarrow \beta}{\lim} f(x, y) ) \neq \underset{(x, y) \rightarrow (\alpha, \beta)}{\lim} f(x, y)$
+    \item Continuité stable par combinaison linéaire, produit, inverse (si la fonction ne s'annule pas), et composé (tout type)
+    \item Toute fonction polynomiale de $\mathbb{R}^2$ sont continues
+\end{itemize}
+
+\subsection{Dérivation}
+
+\begin{itemize}
+    \item Dérivabilité selon $v \in \mathbb{R}^2$ en $a$ - $D_v f(a) = \underset{t \rightarrow 0}{\lim} \frac{f(a+tv) - f(a)}{t}$
+    \item Première dérivée partielle en $a = (\alpha, \beta)$ - $\partial_1 f(a) = D_{\epsilon_1} f(a) = f_1'(\alpha)$ avec $f_1 : x \mapsto f(x, \beta)$ la première application partielle de $f$ en $a$
+    \item Deuxième dérivée partielle en $a = (\alpha, \beta)$ - $\partial_2 f(a) = D_{\epsilon_2} f(a) = f_2'(\beta)$ avec $f_2 : x \mapsto f(\alpha, 2)$ la deuxième application partielle de $f$ en $a$
+    \item Gradient de $f$ en $a$ - $\nabla f (a) = (\partial_1 (a), \partial_2 (a))$
+    \item Les expressions des dérivés et du gradient pour une combinaison linéaire, produit, et inverse (si la fonction ne s'annule pas) d'une fonction à deux variables dérivables sont analogues à les expressions pour les fonctions à variable réelle
+    \item Classe $\mathcal{C}^1$ - $f$ admet des dérivées partielles continues 
+    \begin{itemize}
+        \item $\mathcal{C}^1 \subset \mathcal{C}^0$
+        \item $\mathcal{C}^1$ stable par combinaison linéaire, produit, inverse (si la fonction ne s'annule pas), et composé (tout type)
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Dérivé d'un composée}
+
+\begin{itemize}
+    \item Cas $f : U \rightarrow \mathbb{R}, \theta : \text{Im}(f) \rightarrow \mathbb{R}$
+    \begin{itemize}
+        \item $\theta \circ f : U \rightarrow \mathbb{R}$
+        \item $\partial_{\underset{2}{1}}(\theta \circ f) = (\theta'\circ f) \times \partial_{\underset{2}{1}}f$
+        \item $\nabla (\theta \circ f) = (\theta' \circ f) \times \nabla f$
+    \end{itemize}
+    \item Cas $ \gamma = (\gamma_1 : \mathbb{R} \rightarrow \mathbb{R}, \gamma_2 : \mathbb{R} \rightarrow \mathbb{R}) : \mathbb{R} \rightarrow \mathbb{R}^2, f : \text{Im}(\gamma) \rightarrow R$ (1ère règle de la chaîne)
+    \begin{itemize}
+        \item 
+    \end{itemize}
+\end{itemize}
+
+\subsection{Développement limité à l'ordre 1}
+\[ f(z) = f(a) + \langle \nabla f(a) \ligneh z-a \rangle + \underset{z \rightarrow a}{o}(\|z-a\|) \]
+
+\begin{itemize}
+    \item Plan tangent au graphe de $f$ en $(a, f(a))$ - $z = f(a) + \langle \nabla f(a) \ligneh z-a \rangle$
+\end{itemize}
 
 \end{document}

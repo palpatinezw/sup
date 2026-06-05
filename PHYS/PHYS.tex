@@ -80,25 +80,25 @@ Somme des carrés des dérivées partielles
 
 \subsubsection{Grandeurs}
 \begin{itemize}
-    \item Grandissement $\gamma $ - Par taille $ \gamma = \frac{\overline{A'B'}}{\overline{AB}} $. Pour objet et image à distance finie.
-    \item Puissance $ P $ - Angle sur taille $ P = \frac{\alpha '}{\overline{AB}} $. Pour objet à distance finie, mais image à distance infinie. Unité: dioptrie ($ \delta = \text{rad m}^{-1}  $)
-    \item Grossissement $ G $ - Par angle $ G = \frac{\alpha '}{\alpha } $. Pour objet et image à l'infini. 
-    \item Grandissement commercial $ G_c $ - Grossissement pour un objet au ponctum proximum $ G_c = \frac{\alpha '}{\beta} = \frac{P}{4} $. Attention aux signes. 
+    \item Grandissement $ \gamma = \frac{\overline{A'B'}}{\overline{AB}} $ - rapport des tailles. (Objet et image à distance finie)
+    \item Puissance $ P = \frac{\alpha '}{\overline{AB}} $ - angle sur taille. (Objet à distance finie, mais image à distance infinie) Unité: dioptrie ($ \delta = \text{rad m}^{-1}  $)
+    \item Grossissement $ G = \frac{\alpha '}{\alpha } $ - rapport des angles. (Objet et image à l'infini) 
+    \item Grandissement commercial $ G_c = \frac{\alpha '}{\beta} = \frac{P}{4} $ - grossissement pour un objet au ponctum proximum.  
 \end{itemize}
-Notons que l'image est toujours au numérateur.
+L'image est toujours au numérateur.
 
 \subsubsection{Lentilles}
 \begin{itemize}
     \item Lentille mince - L'épaisseur est très petite devant les rayons de courbure des dioptres sphériques de la lentille. On considère que les sommets des deux dioptres et le centre optique (O) sont confondus. 
     \item Distance focale - Distances du centre optique aux plans focales. Pour une lentille mince, $ f' = -f $. Pour une lentille convergente, $f$ est négatif car $F$ est devant $O$. 
-    \item Vergence $V$ - $V=\frac{1}{f'}$
+    \item Vergence $V=\frac{1}{f'}$
 \end{itemize}
 
 \subsection{Indice optique $ n $}
 $ v = \frac{c}{n} \leq c $.
-Plus $ n $ est grand, plus le milieu est réfringent, plus la lumière ralentit. 
+Plus $ n $ est grand, plus le milieu est réfringent. 
 
-\subsection{Formule de Cauchy}
+\subsubsection{Formule de Cauchy}
 \[ n = a + \frac{b}{\lambda^2} \]
 
 \subsection{Propriétés des rayons lumineux}
@@ -128,8 +128,10 @@ Attention aux angles algébriques.
 \noindent Le rayon refracté appartient au plan d'incidence défini par le rayon incident et la normale au dioptre au point d'incidence
 
 \subsubsection{Réflexion totale}
-Il n'existe pas de rayon réfracté - $ \frac{n_i}{n_r} \sin{i} > 1 $. Une démonstration par contraposée (trouver les conditions pour avoir de la réfraction) est plus facile à justifier.
+Il n'existe pas de rayon réfracté - $ \frac{n_i}{n_r} \sin{i} > 1 $. 
 \[i^{\text{lim}} = \arcsin{\frac{n_2}{n_1}} \]
+
+Démonstration - par contraposée, trouver les conditions pour la réfraction
 
 \subsubsection{Réfraction limite}
 L'angle maximal réfracté est limité.
@@ -141,30 +143,31 @@ L'angle maximal réfracté est limité.
     \item Un rayon incident parallèle à l'axe optique donne un rayon transmis passant par le foyer image. 
     \item Un rayon incident passant par le foyer objet donne un rayon transmis parallèle à l'axe optique. 
 \end{itemize}
-Utiliser ces règles pour tracer des rayons connus, pour construire les rayons quelconques. 
+On utilise ces règles pour tracer des rayons connus.
 \begin{itemize}
     \item Pour un rayon incident, prendre un rayon connu qui croise le rayon incident par un des plans focales - les deux rayons transmis sont parallèles. 
 \end{itemize}
 
 \subsubsection{Théorème de Newton}
-Observer géométriquement avec Thalès. 
 \[\overline{FA} \cdot \overline{F'A'} = f'f=-f^2\]
-Attention aux signes algébriques. 
+Attention aux signes algébriques. \\
 
-\subsubsection{Théorème de Descartes}
-Observer géométriquement avec Thalès. Obtenir une relation linéaire avec $\overline{OA}$ $\overline{OA'}$ $\overline{OF'}$ puis diviser. 
+Démonstration - Thalès
+
+\subsubsection{Théorème de Descartes} 
 \[ \frac{1}{\overline{OA}}-\frac{1}{\overline{OA'}} = -\frac{1}{f'} \]
-Version lycée - $ \frac{1}{u}+\frac{1}{v}=\frac{1}{f} $
+
+Démonstration - Obtenir une relation linéaire avec $\overline{OA}$ $\overline{OA'}$ $\overline{OF'}$ avec Thalès puis diviser.
 
 \subsubsection{Théorème des Vergences}
 Pour 2 lentilles de distances focales $f_1$ et $f_2$, accolées tel que leurs centres optiques sont confondus, la distance focale des 2 lentilles $f$ est donnée par 
 \[ \frac{1}{f'} = \frac{1}{f_1'} + \frac{1}{f_2'} \]
-Démonstration par cherchons la distance d'un objet donnant une image à l'infini. La distance de l'objet intermédiaire est dans le plan focal objet de la deuxième lentille. Utiliser le théorème de Descartes. 
+Démonstration - chercher la distance d'un objet donnant une image à l'infini. La distance de l'objet intermédiaire est dans le plan focal objet de la deuxième lentille. On applique le théorème de Descartes. 
 
 \subsubsection{Distance minimale objet-écran - Méthode de Silbermann}
-On pose $ D = \overline{AA'} $ la distance entre l'objet et l'image (sur l'écran). On varie la position de la lentille. Par le théorème de Descartes, on obtient une équation du second degré.
+On pose $ D = \overline{AA'} $ la distance entre l'objet et l'image (sur l'écran). On varie la position de la lentille. On a:
 \[ \overline{OA'}^2 - \overline{OA'}\cdot D + D\cdot f' = 0 \]
-On a donc
+par le théorème de Descartes, d'où
 \[ D \geq 4f' \]
 
 \subsubsection{Autocollimation}
@@ -602,8 +605,13 @@ Pour un trou circulaire de diamètre $ D \lesssim \lambda $
 \noindent
 Pour un réseau de diffraction avec un pas de réseau de $a$, le $p$-ième ordre est donné par:
 \[ \sin \theta_p - \sin \theta_i = p \frac{\lambda}{na} \]
-\noindent avec $n$ l'indice optique du milieu. Démonstration - avec différence de marche
+\noindent avec $n$ l'indice optique du milieu. Démonstration - avec différence de marche \\
 \noindent On peut étudier la déviation $D = \theta - \theta_i$ pour obtenir un minimum lorsque $ \theta = -\theta_i $ alors $ D_{\text{min}} = -2\theta_i = 2\theta $
+
+\subsubsection{goniomètre}
+On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $D_{\text{min}} = \Delta \theta$. On a pour la diffraction du $n$-ième ordre,
+
+\[ \lambda = \frac{2n_{\text{milieu}}a}{n}\sin (\frac{D_{\text{min}}}{2}) \]
 
 \clearpage
 \section{Mécanique}
@@ -778,7 +786,7 @@ Grandeur vectorielle décrivant l'interaction capable de modifier et/ou de produ
                 \item Apogée - le point à la plus grande distance avec $O$ - $r_A = \frac{p}{1-e}$
                 \item Demi grand-axe $a = \frac{r_A + r_P}{2} = \frac{p}{1-e^2}$
                 \item Constante des aires $C = r_A v_A = r_P v_P$ (vitesses radiales nulles)
-                \item $E_{m\repr} - \frac{K}{2a}$ [Démonstration - soustraire $r_A^2 E_{m\repr}$ et $r_P^2 E_{m\repr}$]
+                \item $E_{m\repr} = \frac{K}{2a}$ [Démonstration - soustraire $r_A^2 E_{m\repr}$ et $r_P^2 E_{m\repr}$]
             \end{itemize}
             \item Si $e=1$, séparatrice du mouvement, trajectoire parabolique
             \item Si $e>1$, trajectoire hyperbolique en état libre
@@ -1467,6 +1475,141 @@ Circuits fixes dans des champs magnétiques qui varient dans le temps.
 \begin{itemize}
     \item Auto-inductance d'un circuit - $e = - L\frac{\dd i}{\dt}$ (cf. Bobines en électrocinétique)
     \item Bobines couplées - $e_1 = -L_1 \frac{\dd i_1}{\dt} - M \frac{\dd i_2}{\dt}$ et $e_2 = -L_2 \frac{\dd i_2}{\dt} - M \frac{\dd i_1}{\dt}$
+    \item Énergie magnétique - $E_{\text{mag}} = \frac{1}{2}L_1i_1^2 + \frac{1}{2}L_2i_2^2 + Mi_1i_2$
+    \item Coefficient de couplage - $k = \frac{|M|}{\sqrt{L_1L_2}} \leq 1$ (couplage parfait - $M^2 = L_1L_2$)
+\end{itemize}
+
+\subsubsection{Induction de Lorentz}
+Circuits mobiles dans des champs magnétiques stationnaires (mais non uniformes)
+
+\begin{enumerate}
+    \item Expliciter le phénomène d'induction
+    \begin{enumerate}
+        \item Cause (force externe / générateur)
+        \item Variation qui mène à une variation de $\phi$
+        \item Loi de Faraday - $e(t)$ induite par la 
+        \item Loi de Lenz - opposition à la cause
+    \end{enumerate}
+    \item Trouver les équations mécaniques et électriques
+    \item Résoudre les équations couplées
+\end{enumerate}
+
+La puissance de la force de Laplace dû au courant induit est égale et opposée à la puissance de force électromotrice induite 
+\[ \mathcal{P}_L + \mathcal{P}_{\text{fem}} = 0 \]
+
+Cette relation permet de trouver la force électromotrice induite dans le cas du flux coupé. \\
+
+Exemples classiques:
+
+\begin{itemize}
+    \item Rails de Laplace générateurs - $F_{\text{ext}} \rightarrow \ddot{x} \rightarrow \dot{x} \rightarrow \frac{\dd \phi}{\dt} \rightarrow e(t) \rightarrow i(t) \rightarrow F_L$ 
+    \item Rails de Laplace moteurs - $E \rightarrow i(t) \rightarrow F_L \rightarrow \ddot{x} \rightarrow \dot{x} \rightarrow \frac{\dd \phi}{\dt} \rightarrow e(t)$
+    \item Alternateur - $\Gamma_{\text{ext}} \rightarrow \ddot{\theta} \rightarrow \omega \rightarrow \frac{\dd \phi}{\dt} \rightarrow e(t) \rightarrow i(t) \rightarrow \vec{\mathcal{M}} \rightarrow \Gamma_L$
+\end{itemize}
+
+
+
+\subsubsection{Transformateur parfait}
+\begin{enumerate}
+    \item Couplage parfait - ligne de champs magnétiques sont intégralement canalisées d'un enroulement vers l'autre
+    \item Les résistances des enroulements sont négligeables
+    \item Les pertes d'énergies sont négligeables
+\end{enumerate}
+On définit le rapport de transformation
+\[ m = \frac{N_2}{N_1} = \frac{u_2}{u_1} = \frac{\phi_2}{\phi_1} = \frac{\sqrt{L_2}}{\sqrt{L_1}} \]
+
+\begin{itemize}
+    \item Le couplage étant parfait, $M = \sqrt{L_1L_2}$
+    \item Les pertes d'énergies étant négaligeable, $u_1i_1 + u_2i_2 = 0$ donc $\frac{i_2}{i_1} = -\frac{1}{m}$
+\end{itemize}
+
+\clearpage
+
+\section{Mécanique quantique}
+
+\subsection{Dualité onde-particule de la lumière}
+\[ E = h\nu \]
+\[ p = \frac{E}{c} = \frac{h}{\lambda} \]
+
+\begin{itemize}
+    \item Le photon a une masse nulle
+    \item Vitesse de la lumière $c = 3,00 \times 10^8 \text{ m s}^{-1}$
+\end{itemize}
+
+\subsubsection{Expériences}
+
+\begin{itemize}
+    \item Effet photoélectrique
+    \begin{itemize}
+        \item Émission d'électrons par un métal lorsqu'il est éclairé par un rayonnement supérieure à une fréquence seuil $\nu_s = \frac{W}{h}$ avec $W$ le travail d'extraction
+        \item L'énergie cinétique maximale de l'électron émis - $E_{c\text{,max}} = h\nu - W$
+    \end{itemize}
+    \item Diffusion compton
+    \begin{itemize}
+        \item Après collision d'un particule de rayonnement avec un électron au repos, la longueur d'onde du rayonnement est modifiée
+    \end{itemize}
+    \item Lame semi-réfléchissant
+    \begin{itemize}
+        \item Une source de photons uniques est dirigé vers une lame semi-réfléchissant inclinée
+        \item $P_{\text{transmise}} = P_{\text{réfléchie}} = \frac{1}{2}P_{\text{incident}}$ et $P \propto A^2$
+        \item $A_{\text{transmise}} = A_{\text{réfléchie}} = \frac{1}{\sqrt{2}}A_{\text{incident}}$ (vérifié expérimentalement - comportement ondulatoire)
+        \item Avec un détecteur de pics, on observe que les signaux sont composées de pics de très brève durée à des instants aléatoires et que les pics n'arrivent jamais simultanément (pas de coïncidence - comportement corpusculaire)
+    \end{itemize}
+\end{itemize}
+
+\subsection{Dualité onde-particule de la matière}
+
+\[ \lambda_{\text{DB}} = \frac{h}{p} \]
+
+\begin{itemize}
+    \item Le comportement ondulatoire est mise en évidence par la diffraction et l'intérférence des électrons, des neutrons ou des atomes
+    \begin{itemize}
+        \item $p(M) \neq p_1(M) + p_2(M)$ - la probabilité de détecter une particule en $M$ à travers 2 fentes n'est pas la somme des probabilités pour chacune des fentes
+    \end{itemize}
+    \item Principe de complémentarité - une particule quantique ne peut se comporter en même temps comme une onde et comme un corpuscule
+\end{itemize}
+
+\subsection{Principe d'indetermination de Heisenberg}
+\[ \Delta x \Delta p \geq \frac{\hbar}{2} \]
+
+\begin{itemize}
+    \item $\hbar = \frac{h}{2\pi}$
+\end{itemize}
+
+\subsection{Quantification de l'énergie d'une particule}
+
+\begin{itemize}
+    \item Un grandeur est quantifiée s'il ne prend qu'une suite de valeurs discrètes
+    \item L'énergie d'une particule quantique confinée dans l'espace est quantifiée - niveaux d'énergies
+    \item État fondamental - niveau d'énergie le plus bas
+    \item État excité - niveaux d'énergie plus élevés
+    \item Transitions entre niveaux d'énergie
+    \begin{itemize}
+        \item Niveau plus haut $\rightarrow$ plus bas - un photon dont l'énergie correspond à la différence d'énergie entre les niveaux est émis
+        \item Niveau plus bas $\rightarrow$ plus haut - un photon dont l'énergie correspond à la différence d'énergie entre les niveaux est absorbé
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Modèle planétaire de Bohr}
+\begin{itemize}
+    \item Électrons sont en mouvement circulaire subissant la force coulombienne du noyau (intéraction newtonienne)
+    \item On pose $L_O = n \hbar$ - moment cinétique quantifié 
+    \item Les rayons d'orbites, et l'énergie des électrons sont quantifiés
+\end{itemize}
+
+\subsubsection{Puits infini à 1 dimension}
+
+\[ E_p(x) = \begin{cases}
+    +\infty & \si x < 0 \\
+    0 & \si 0 < x < L \\
+    +\infty & \si x > L
+\end{cases} \]
+
+\begin{itemize}
+    \item La particule est confinée en $0 < x < L$
+    \item L'onde associée à la particule est une onde stationnaire
+    \item Par continuité de la fonction d'onde, l'onde présente un noeud de vibration en $x=0$ et $x=L$
+    \item La longueur d'onde est alors quantifiée (c.f. Superposition)
 \end{itemize}
 
 \clearpage
@@ -1492,6 +1635,11 @@ Pour un signal $s(t) = A\cos{(\omega t + \phi)}$, on a la grandeur complexe
 
 \noindent On peut représenter $\underline{s}$ dans le plan complexe (représentation de Fresnel). 
 
+\begin{itemize}
+    \item Pour passer en complexe, on cherche une expression complexe dont la partie réelle vaut l'expression réelle
+    \item On cherche à pouvoir éliminer $e^{j\omega t}$ afin d'avoir une relation indépendant du temps (régime permanent)
+    \item $\cos(\omega t) = \text{Re}(e^{j \omega t}) \et \sin(\omega t) = \text{Re}(-je^{j \omega t})$
+\end{itemize}
 
 \subsection{Équations différentielles - solutions générales}
 
