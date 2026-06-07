@@ -2443,6 +2443,10 @@ Continuité en $a \in U$ un ouvert de $\mathbb{R}^2$
     \item $\underset{x \rightarrow \alpha}{\lim} ( \underset{y \rightarrow \beta}{\lim} f(x, y) ) \neq \underset{(x, y) \rightarrow (\alpha, \beta)}{\lim} f(x, y)$
     \item Continuité stable par combinaison linéaire, produit, inverse (si la fonction ne s'annule pas), et composé (tout type)
     \item Toute fonction polynomiale de $\mathbb{R}^2$ sont continues
+    \item Maximum local - $\exists \delta > 0, \forall z, \|z-a\| \leq \delta \implies f(z) \leq f(a)$
+    \begin{itemize}
+        \item On étudie plutôt $f(a+v) - f(a)$ au lieu de $f(z) - f(a)$ directement
+    \end{itemize}
 \end{itemize}
 
 \subsection{Dérivation}
@@ -2452,6 +2456,11 @@ Continuité en $a \in U$ un ouvert de $\mathbb{R}^2$
     \item Première dérivée partielle en $a = (\alpha, \beta)$ - $\partial_1 f(a) = D_{\epsilon_1} f(a) = f_1'(\alpha)$ avec $f_1 : x \mapsto f(x, \beta)$ la première application partielle de $f$ en $a$
     \item Deuxième dérivée partielle en $a = (\alpha, \beta)$ - $\partial_2 f(a) = D_{\epsilon_2} f(a) = f_2'(\beta)$ avec $f_2 : x \mapsto f(\alpha, 2)$ la deuxième application partielle de $f$ en $a$
     \item Gradient de $f$ en $a$ - $\nabla f (a) = (\partial_1 (a), \partial_2 (a))$
+    \item $D_v f(a) = \langle \nabla f(a) \ligneh v \rangle$
+    \item Point critique - $\nabla f (a) = 0$
+    \begin{itemize}
+        \item $\nabla f (a) = 0$ est une condition nécessaire d'extrema
+    \end{itemize}
     \item Les expressions des dérivés et du gradient pour une combinaison linéaire, produit, et inverse (si la fonction ne s'annule pas) d'une fonction à deux variables dérivables sont analogues à les expressions pour les fonctions à variable réelle
     \item Classe $\mathcal{C}^1$ - $f$ admet des dérivées partielles continues 
     \begin{itemize}
@@ -2471,7 +2480,15 @@ Continuité en $a \in U$ un ouvert de $\mathbb{R}^2$
     \end{itemize}
     \item Cas $ \gamma = (\gamma_1 : \mathbb{R} \rightarrow \mathbb{R}, \gamma_2 : \mathbb{R} \rightarrow \mathbb{R}) : \mathbb{R} \rightarrow \mathbb{R}^2, f : \text{Im}(\gamma) \rightarrow R$ (1ère règle de la chaîne)
     \begin{itemize}
-        \item 
+        \item $ f \circ \gamma : \mathbb{R} \in \mathbb{R} $
+        \item $ (f \circ \gamma)'(t) = \partial_1 f (\gamma(t)) \gamma ' (t) + \partial_2 f (\gamma(t)) \gamma ' (t) $
+        \item $ (f \circ \gamma)'(t) = \langle \nabla f (\gamma (t) ) \ligneh \gamma ' (t) \rangle $
+    \end{itemize}
+    \item Cas $\Phi = (\phi_1 : \mathbb{R}^2 \rightarrow \mathbb{R}, \phi_2 : \mathbb{R}^2 \rightarrow \mathbb{R}) : \mathbb{R}^2 \rightarrow \mathbb{R}^2, f : \text{Im}(\Phi) \rightarrow \mathbb{R}$
+    \begin{itemize}
+        \item $ f \circ \Phi = \mathbb{R}^2 \rightarrow \mathbb{R} $
+        \item $ \partial_1 (f \circ \Phi)(a) = \partial_1 f(\Phi(a)) \partial_1 \phi_1(a) + \partial_2 f(\Phi(a)) \partial_1 \phi_2(a) $
+        \item $ \partial_2 (f \circ \Phi)(a) = \partial_1 f(\Phi(a)) \partial_2 \phi_1(a) + \partial_2 f(\Phi(a)) \partial_2 \phi_2(a) $
     \end{itemize}
 \end{itemize}
 
