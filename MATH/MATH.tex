@@ -438,8 +438,8 @@ La symétrie par rapport à 0 de l'ensemble de départ doit être respecté !
 
 \begin{itemize}
     \item La parité d'une fonction permet de restreindre son étude à $D \cap \mathbb{R}_+$ 
-    \item Toute fonction $f$ s'écrit comme somme une fonction paire $ \frac{f(x) + f(-x)}{2} $ et une fonction impaire $ \frac{f(x)-f(-x)}{2} $.
-    \item La dérivée d'une fonction paire est impaire et la dérivée d'une fonction impaire est paire. 
+    \item Toute fonction $f$ s'écrit comme somme d'une fonction paire $ \frac{f(x) + f(-x)}{2} $ et une fonction impaire $ \frac{f(x)-f(-x)}{2} $.
+    \item La dérivée d'une fonction paire est impaire et vice versa. 
 \end{itemize}
 
 \subsubsection{Périodicité}
@@ -453,10 +453,10 @@ Attention que la T-périodicité du domaine $D$ doit être respecté ($\forall x
     \item Stricte croissance - $ \forall (x, y) \in D^2, x < y \implies f(x) < f(y) $
     \item Décroissance - $\forall (x, y) \in D^2 , x \leq y \implies f(x) \geq f(y)$
     \item Stricte décroissance - $ \forall (x, y) \in D^2, x < y \implies f(x) > f(y) $
-    \item (stricte) Monotonie - (stricte) croissance ou décroissance
+    \item (stricte) monotonie - (stricte) croissance ou décroissance
     \item La composée de 2 fonctions monotones et de même sens de variations est croissante.
-    \item La composée de 2 fonctions monotones et de sens de variations contraire est décroissante.
-    \item La bijection réciproque d'une fonction strictement monotone et bijective et aussi strictement monotone et de même sens de variation. 
+    \item La composée de 2 fonctions monotones et de sens de variations contraires est décroissante.
+    \item La bijection réciproque d'une fonction strictement monotone est strictement monotone et de même sens de variation. 
 \end{itemize}
 
 \subsubsection{Extrema}
@@ -470,20 +470,20 @@ Attention que la T-périodicité du domaine $D$ doit être respecté ($\forall x
 
 \subsubsection{Asymptotes}
 \begin{itemize}
-    \item Asymptote verticale à $x=a$ - $\lim_{x \to a^{\pm}} f(x) = \pm \infty$
-    \item Asymptote horizontale à $y=b$ - $\lim_{x \to \pm \infty} f(x) = b$
-    \item Asymptote oblique à $y = ax+b$ - $\lim_{x \to \pm \infty} (f(x) - (ax + b)) = 0$
+    \item Asymptote verticale à $x=a$ - $\underset{x \to a^{\pm}}{\lim} f(x) = \pm \infty$
+    \item Asymptote horizontale à $y=b$ - $\underset{x \to \pm \infty}{\lim f(x)} = b$
+    \item Asymptote oblique à $y = ax+b$ - $\underset{x \to \pm \infty}{\lim} (f(x) - (ax + b)) = 0$
 \end{itemize}
 
-Pour identifier les asymptotes obliques, on remarque -
+Pour identifier les asymptotes obliques -
 \begin{itemize}
-    \item Condition nécessaire - $\lim_{x \to \pm \infty} f(x) = \pm \infty$
-    \item Conditions suffisantes - $\lim_{x\to \pm \infty} \frac{f(x)}{x} = a$ et $\lim_{x\to \pm \infty} (f(x)-ax) = b$
+    \item Condition nécessaire - $\underset{x \to \pm \infty}{\lim} f(x) = \pm \infty$
+    \item Conditions suffisantes - $\underset{x\to \pm \infty}{\lim} \frac{f(x)}{x} = a$ et $\underset{x\to \pm \infty}{\lim} (f(x)-ax) = b$
     \item On peut aussi faire un développement limité
 \end{itemize}
 
 \subsubsection{Remarque}
-Vérifier toujours la domaine de dérivabilité avant de dériver. On s'intéresse au signe de $f'$ ce qui donne la croissance ou décroissance de $f$. Pour étudier le signe de $f'$ on a parfois besoin d'étudier $f''$ et/ou son image. 
+Vérifier toujours la domaine de dérivabilité avant de dériver. Dans l'étude du signe de $f'$, on a parfois besoin d'étudier $f''$
 
 \clearpage
 \section{Fonctions usuelles}
@@ -500,7 +500,7 @@ Vérifier toujours la domaine de dérivabilité avant de dériver. On s'intéres
 \end{itemize}
 
 \subsubsection{Logarithme népérienne}
-$ \ln $ la bijection réciproque de $ \exp $.
+$ \ln $ - la bijection réciproque de $ \exp $.
 
 \subsubsection{Logarithme de base $a$}
 \begin{align*}
@@ -579,36 +579,32 @@ $e^x$ plus puissant que $x$, $x$ plus puissant que $\ln x$. Les limites restent 
 
 \subsection{Bornes}
 \subsubsection{Borne supérieure}
-    \begin{itemize}
-        \item En particulier un majorant
-        \item Le plus petit des majorants
-        \item Condition d'existence - toute partie non-vide et majorée de $\mathbb{R}$ possède une borne supérieure
-        \item $\max{A} = \sup{A} \iff \sup{A} \in A $
-        \item Condition d'un max - toute partie non-vide et majorée de $\mathbb{Z}$ possède un maximum
-        \item Si $A$ n'est pas majorée, $\sup{A} = +\infty$
-        \item Caractérisation epsilonesque - $ \begin{cases}
-            \forall a \in A, a \leq M \\
-            \forall \epsilon > 0, \exists a_0 \in A : m - \epsilon < a_0
-        \end{cases} $
-            \begin{itemize}
-                \item Démonstration $\implies$ - par définition de la borne supérieure 
-                \item Démonstration $\impliedby$ - retrouver la définition de la borne supérieure
-            \end{itemize}
-    \end{itemize}
+\begin{itemize}
+    \item En particulier un majorant
+    \item Le plus petit des majorants
+    \item Condition d'existence - toute partie non-vide et majorée de $\mathbb{R}$ possède une borne supérieure
+    \item $\max{A} = \sup{A} \iff \sup{A} \in A $
+    \item Condition d'un max - toute partie non-vide et majorée de $\mathbb{Z}$ possède un maximum
+    \item Si $A$ n'est pas majorée, $\sup{A} = +\infty$
+    \item Caractérisation epsilonesque - $ \begin{cases}
+        \forall a \in A, a \leq M \\
+        \forall \epsilon > 0, \exists a_0 \in A : m - \epsilon < a_0
+    \end{cases} $
+\end{itemize}
 \subsubsection{Borne inférieure} 
-    \begin{itemize}
-        \item En particulier un minorant
-        \item Le plus petit des minorants
-        \item Toute partie non-vide et minorée de $\mathbb{R}$ possède une borne supérieure
-        \item $\min{A} = \inf{A} \iff \inf{A} \in A $
-        \item Toute partie non-vide et minorée de $\mathbb{Z}$ possède un minimum
-        \item Si $A$ n'est pas minorée, $\inf{A} = -\infty$
-        \item Pour $ A \subset \mathbb{R}_+, \inf(A^2) = (\inf A)^2 $
-        \item Caractérisation epsilonesque - $ \begin{cases}
-            \forall a \in A, a \leq M \\
-            \forall \epsilon > 0, \exists a_0 \in A : a_0 < m - \epsilon
-        \end{cases} $
-    \end{itemize}
+\begin{itemize}
+    \item En particulier un minorant
+    \item Le plus petit des minorants
+    \item Toute partie non-vide et minorée de $\mathbb{R}$ possède une borne supérieure
+    \item $\min{A} = \inf{A} \iff \inf{A} \in A $
+    \item Toute partie non-vide et minorée de $\mathbb{Z}$ possède un minimum
+    \item Si $A$ n'est pas minorée, $\inf{A} = -\infty$
+    \item Pour $ A \subset \mathbb{R}_+, \inf(A^2) = (\inf A)^2 $
+    \item Caractérisation epsilonesque - $ \begin{cases}
+        \forall a \in A, a \leq M \\
+        \forall \epsilon > 0, \exists a_0 \in A : a_0 < m - \epsilon
+    \end{cases} $
+\end{itemize}
 
 \subsection{Partie entière}
 \[ \lfloor x \rfloor \leq x < \lfloor x \rfloor + 1 \]
@@ -628,21 +624,20 @@ $e^x$ plus puissant que $x$, $x$ plus puissant que $\ln x$. Les limites restent 
 \begin{itemize}
     \item $x_n$ est l'approximation décimale par défaut de $x$ à la précision $10^{-n}$
     \item $y_n = x_n + \frac{1}{10^n}$ est l'approximation décimale par excès de $x$ à la précision $10^{-n}$
-    \item Ces suites convergent vers $x$ [Démonstration - définition de la partie entère et théorème d'encadrement]
+    \item Ces suites convergent vers $x$ [Démonstration - définition  et encadrement]
     \item $x_n$ est croissante
     \item $y_n$ est décroissante
 \end{itemize}
 
 \clearpage
 \section{Matrices et systèmes linéaires}
-Chapitre 8
 \subsection{Systèmes linéaires}
-Système d'équations linéaires de $n$ équations à $p$ inconnues, tout système de la forme noté $(S)$
+Système d'équations linéaires de $n$ équations à $p$ inconnues, noté $(S)$
 
 \subsubsection{Définitions}
 \begin{itemize}
     \item Coefficients - Les scalaires ($a_{i, j}$) le coefficient de $x_j$ dans la $i$-ième équation
-    \item Second membre - Le $n$-uplet des scalaires qui sont les constantes dans les équations
+    \item Second membre - $n$-uplet des scalaires qui sont les constantes dans les équations
     \item Homogène - Système sans second membre
     \item Inconnues - Les $(x_1...x_n)$
     \item Ensemble des solutions $\mathcal{S}$ - $\{(x_1...x_p)\in\mathbb{K}^p \text{ } | \text{ } \forall i \in \llbracket 1, n \rrbracket, \sum_{j=1}^{p}a_{i, j}x_j = b_i \}$
@@ -650,16 +645,6 @@ Système d'équations linéaires de $n$ équations à $p$ inconnues, tout systè
         \item Incompatible - Pas de solution $\mathcal{S} = \emptyset$
         \item Compatible - Au moins une solution
     \end{itemize}
-\end{itemize}
-
-\subsubsection{Opérations élémentaires}
-Notons $L_i$ les lignes d'un système linéaire.  On a les 3 opérations linéaires qui préservent les équivalences.
-
-\begin{itemize}
-    \item Échange de deux lignes - $ L_i \leftrightarrow L_j ((i, j) \in \llbracket 1, n\rrbracket^2) $
-    \item Multiplication d'une ligne par un scalaire non-nul - $ L_i \leftarrow \lambda L_i (i \in \llbracket 1, n\rrbracket, \lambda \in \mathbb{K}^*) $
-    \item Ajout à une ligne d'un multiple d'une autre ligne - $ L_i \leftarrow L_i + \lambda L_j ((i, j) \in \llbracket 1, n\rrbracket^2, i\neq j, 
-    \lambda \in \mathbb{K}) $
 \end{itemize}
 
 \subsection{Matrices $\mathcal{M}_{n, p}(\mathbb{K})$}
@@ -672,29 +657,28 @@ Matrice à $n$ lignes et $p$ colonnes.
             \item Symbole de Kronecker $\delta_{i, j} = \begin{cases} 1 &\text{si i = j} \\ 0 &\text{sinon} \end{cases} $
         \end{itemize}
     \item Matrice nulle $0_{n, p}$ - tous les coefficients sont nuls
-    \item Matrice élémentaire $E_{i, j} = (\delta_{i, k}\delta_{j, l})_{1\leq k\leq n \text{ , } 1 \leq l \leq p }$ - tous les coefficients sont nuls sauf $1$ en position $(i, j)$
+    \item Matrice élémentaire $E_{i, j} = (\delta_{i, k}\delta_{j, l})_{1\leq k\leq n, 1 \leq l \leq p }$ - tous les coefficients sont nuls sauf $1$ en position $(i, j)$
     \item Matrice nilpotente - $ \exists k \in \mathbb{N} : A^k = 0 $
     \item Matrice symétrique - $ A^T = A \iff \forall(i,j)\in \llbracket 1, n \rrbracket^2, a_{j, i} = a_{i, j} $
     \item Matrice antisymétrique - $ A^T = -A \iff \forall(i,j)\in \llbracket 1, n \rrbracket^2, a_{j, i} = -a_{i, j} $
     \item Matrice diagonale - $ \forall(i,j)\in \llbracket 1, n \rrbracket^2, (i\neq j \implies a_{i, j} = 0) $
     \item Matrice triangulaire supérieure - $ \forall(i,j)\in \llbracket 1, n \rrbracket^2, (i > j \implies a_{i, j} = 0) $
         \begin{itemize}
-            \item Stable par combinaison linéaire et produit [Démonstration - par définition du produit]
+            \item Stable par combinaison linéaire et produit
         \end{itemize}
     \item Matrice triangulaire inférieure - $ \forall(i,j)\in \llbracket 1, n \rrbracket^2, (i > j \implies a_{i, j} = 0) $
         \begin{itemize}
             \item La transposée d'une matrice triangulaire inférieure est triangulaire supérieure (et vice-versa)
-            \item Même stabilité que triangulaire supérieure
+            \item Stable par combinaison linéaire et produit
         \end{itemize}
+    \item Toute matrice carrée s'écrit comme la somme d'une matrice symétrique $ \frac{A + A^T}{2} $ et une matrice antisymétrique $ \frac{A - A^T}{2} $
 \end{itemize}
-
-\noindent On remarque que toute matrice carrée s'écrit comme la somme d'une matrice symétrique $ \frac{A + A^T}{2} $ et une matrice antisymétrique $ \frac{A - A^T}{2} $
 
 \subsubsection{Produit matriciel}
 \[ \forall (i, j) \in \llbracket 1, n \rrbracket \times \llbracket 1, p \rrbracket, [AB]_{i, j} = \sum_{k=1}^pa_{i, k}b_{k, j} \]
 
 \begin{itemize}
-    \item $ E_{i, j}^{(n, p)}E_{k, l}^{(p, q)} = \delta_{j, k}E_{i, l}^{(n, q)} $ - Démonstration par définition du produit matriciel et en séparant le terme où $i=l$
+    \item $ E_{i, j}^{(n, p)}E_{k, l}^{(p, q)} = \delta_{j, k}E_{i, l}^{(n, q)} $ [Démonstration - séparant le terme où $i=l$]
 \end{itemize}
 
 \subsubsection{Transposée}
@@ -735,6 +719,9 @@ Matrice à $n$ lignes et $p$ colonnes.
 
 \subsubsection{Matrices inversibles}
 \[ \text{GL}_n(\mathbb{K}) = \{ A \in \mathcal{M}_n(\mathbb{K}) \text{ } | \text{ } \exists B \in \mathcal{M}_n(\mathbb{K}) : AB = BA = I_n \} \]
+\[ A \in \text{GL}_n(\mathbb{K}) \iff \forall B \in \mathcal{M}_{n, 1}(\mathbb{K}), \exists ! X \in \mathcal{M}_{n, 1}(\mathbb{K}) \text{ } | \text{ } AX = B \]
+
+Démonstration [Sens indirect - Décomposer $I_n$ en colonne, cette $I_n$ décomposée sert de second membre, la concaténation des $X$ résultats donne $A^{-1}$ (et vérifiée pour la multiplication à gauche). On vérifie la multiplication à droite en étudiant la différence avec $I_n$]
 
 \begin{itemize}
     \item $ (AB)^{-1} = B^{-1}A^{-1} $
@@ -744,13 +731,9 @@ Matrice à $n$ lignes et $p$ colonnes.
     \item Les opérations élémentaires préservent l'inversibilité
 \end{itemize}
 
-\[ A \in \text{GL}_n(\mathbb{K}) \iff \forall B \in \mathcal{M}_{n, 1}(\mathbb{K}), \exists ! X \in \mathcal{M}_{n, 1}(\mathbb{K}) \text{ } | \text{ } AX = B \]
 
-\noindent Démonstration
-\begin{itemize}
-    \item Sens direct - $ X = A^{-1}B $ est la solution unique
-    \item Sens indirect - Décomposer $I_n$ en colonne, cette $I_n$ décomposée sert de second membre, la concaténation des $X$ résultats donne $A^{-1}$ (et vérifiée pour la multiplication à gauche). On vérifie la multiplication à droite en étudiant la différence avec $I_n$
-\end{itemize}
+
+\noindent 
 
 \noindent On peut déduire $A^{-1}$ d'une matrice inversible en résolvant le système des équations linéaires représenté par $AX=B$. \\
 
@@ -769,7 +752,6 @@ Soit $A \in \text{GL}_n(\mathbb{K})$
 
 \clearpage
 \section{Suites}
-Chapitre 9
 
 \subsection{Définitions}
 Une fonction de $\mathbb{N}$
@@ -778,7 +760,7 @@ Une fonction de $\mathbb{N}$
     \item Suite extraite - $ \forall n \in \mathbb{N}, v_n = u_{\phi(n)} $ avec $ \phi(n) $ la fonction extractrice $ \mathbb{N} \rightarrow \mathbb{N} $ strictement croissante ($ \forall n \in \mathbb{N}, \phi(n) \geq n $)
     \item Monotonie pour les suites - $ (\forall(p, q) \in \mathbb{N}^2, p \leq q \implies u_p \leq u_q) \iff (\forall n \in \mathbb{N}, u_n \leq u_{n+1}) $
     \begin{itemize}
-        \item Si le signe de $u_n$ est connu et constant APCR, on peut comparer $\frac{u_{n+1}}{u_n}$ avec $1$
+        \item Pour $u_n$ de signe constant APCR, on peut comparer $\frac{u_{n+1}}{u_n}$ avec $1$
     \end{itemize}
 \end{itemize}
 
@@ -856,21 +838,17 @@ Soit $\begin{cases}
 \end{itemize}
 
 \subsection{Suites adjacents}
-Deux suites sont adjacentes si
-\begin{itemize}
+\begin{enumerate}
     \item Une des suites est croissante
     \item L'autre est décroissante
     \item $ u_n - v_n \longrightarrow 0 $
-\end{itemize}
-
-\noindent Quand on a besoin de comparer deux suites monotones, il est souvent utile de fixer $u_0$ qui est plus grand / petit que $u_n$
-
-\subsubsection{Propriétés}
+\end{enumerate}
 \begin{itemize}
     \item $(u_n)$ et $(v_n)$ convergent vers la même limite $ l \in \mathbb{R}$
     \item $ u_n \leq l \leq v_n $
+    \item Pour comparer deux suites monotones, on peut fixer $u_0$ qui est plus grand / petit que $u_n$
+    \item On peut chercher 2 suites extraites adjacentes pour déterminer la limite d'une suite. 
 \end{itemize}
-Il est souvent utile de chercher 2 suites extraites adjacentes pour déterminer la limite d'une suite. 
 
 \subsection{Relations de comparaison}
 c.f. Chap 19
@@ -918,9 +896,9 @@ On cherche l'unique formule explicite de la suite étant donné les conditions i
     \item $(u_n)$ est bien définie si $u_0 \in D$ et $f$ est stable par $D$
     \item La signe de $f(x) - x$ donne la monotonie de $(u_n)$
     \item Croissance de $f \implies$ monotonie de $(u_n)$
-    \item Décroissance de $f \implies (u_n)$ oscillante (on peut étudier la limite en considérant les suites extraites $u_{2n}$ et $u_{2n+1}$ avec leurs relation de récurrence $f \circ f$)
+    \item Décroissance de $f \implies (u_n)$ oscillante (on peut étudier les suites extraites $u_{2n}$ et $u_{2n+1}$ avec leurs relation de récurrence $f \circ f$)
     \item Si $(u_n)$ converge vers $l$ et $f$ est continue en $l$, $f(l) = l$
-    \item Si $f$ est contractante et $f$ admet un point fixe, $(u_n)$ converge vers le point fixe
+    \item Si $f$ est contractante et admet un point fixe, $(u_n)$ converge vers lui
 \end{itemize}
 
 \subsection{Théorème de Cesàro}
@@ -939,8 +917,8 @@ Pour $ u_n \longrightarrow l \in \mathbb{C} , (\beta_n) \in (\mathbb{R}_+^*)^{\m
 
 \begin{itemize}
     \item $E$ est l'ensemble des vecteurs
-    \item $+$ est une loi de composition interne, qui agit sur 2 éléments de $E$
-    \item $\cdot$ est une loi de composition externe, qui agit sur un scalaire $\mathbb{K}$ et un élément de $E$
+    \item $+$ loi de composition interne, qui agit sur 2 éléments de $E$
+    \item $\cdot$ loi de composition externe, qui agit sur un scalaire et un élément de $E$
 \end{itemize}
 
 \noindent $ (E, +, \cdot) $ est un $\mathbb{K}$-espace vectoriel si:
@@ -968,8 +946,8 @@ Pour $ (E, +, \cdot) $ un K-ev, $F$ est un sous-espace vectoriel si
 \end{enumerate}
 
 \begin{itemize}
-    \item Les conditions 2 et 3 sont équivalentes à la stabilité par combinaison linéaire.
-    \item Les ssevs d'un K-ev est un K-ev - on peut donc démontrer un K-ev en montrant qu'il s'agit d'un ssev d'un K-ev connu. [Démonstration - Propriétés héritées de $E$]
+    \item Conditions 2 et 3 - stabilité par combinaison linéaire.
+    \item Les ssevs d'un K-ev est un K-ev - on peut donc démontrer un K-ev en montrant qu'il s'agit d'un ssev d'un K-ev connu. 
     \item L'intersection des ssevs est un ssev
 \end{itemize}
 
@@ -978,9 +956,9 @@ Pour $ (E, +, \cdot) $ un K-ev, $F$ est un sous-espace vectoriel si
 \[ F \oplus G = \{ x \in E \ligneh \exists!(x_F, x_G) \in F \times G, x = x_F + x_G \} \]
 \[ F \oplus G \text{ est un ssev} \iff 0_E \in F \oplus G \iff F + G = F \oplus G \iff F \cap G = \{0_E\} \]
 
-\noindent $ F \cap G = {0_E} $ est utile pour montrer que $F+G$ est directe. On montre que $x \in F \cap G \implies x = 0_E $. Alt: On peut aussi déterminer l'unique décomposition de tout vecteur de $E$ comme somme par analye-synthèse.
+On peut montrer $ F \cap G = {0_E} $ pour montrer que $F+G$ est directe ($x \in F \cap G \implies x = 0_E $). On peut aussi déterminer l'unique décomposition de tout vecteur de $E$ comme somme par analye-synthèse. \\
 
-\noindent Si $E = F\oplus G$ alors $F$ et $G$ son supplémentaires de $E$.
+Si $E = F\oplus G$ alors $F$ et $G$ son supplémentaires de $E$.
 
 \subsection{Familles}
 
@@ -991,7 +969,7 @@ Sous-espace engendré par une famille finie de vecteurs ou une partie
 \[ \text{Vect}(A) = \{\sum_{i=1}^n \lambda_i a_i \ligneh n \in \mathbb{N}, (a_1,...,a_n) \in A^n, (\lambda_1,...,\lambda_n) \in \mathbb{K}^n \} \]
 
 \begin{itemize}
-    \item $\text{Vect}(A)$ est un ssev de E [Démonstration - $\text{Vect}(A) \in E, 0_E \in \text{Vect}(A) $, et stabilité par combinaison linéaire] - on peut donc montrer que $F$ est un ssev de $E$ en écrivant $F$ sous forme d'un Vect
+    \item $\text{Vect}(A)$ est un ssev de E [Démonstration - $\text{Vect}(A) \in E, 0_E \in \text{Vect}(A) $, et stabilité par combinaison linéaire] - on peut montrer que $F$ est un ssev de $E$ en écrivant $F$ sous forme d'un Vect
     \item $\text{Vect}(A)$ est le plus petit ssev de E qui contient A (Pour tout F un ssev de E, $ \text{Vect}(A) \subset F $) [Démonstration - $x \in \text{Vect}(A)$ est une combinaison linéaire des élements de $A$ donc de $F$ et $F$ est stable par combinaison linéaire]
     \item $\text{Vect}(A)$ est l'intersection de tous les ssevs de E qui contiennent A [Démonstration - l'intersection est aussi un ssev contenant $A$ puis double inclusion]
     \item Vect d'un vecteur - $ \text{Vect}(0_E) = {0_E} $ et $ \text{Vect}(x \neq 0_E) = \mathbb{K}x $ droite vectorielle
@@ -1013,7 +991,7 @@ Sous-espace engendré par une famille finie de vecteurs ou une partie
 \noindent En particulier, les bases:
 \begin{itemize}
     \item Une famille libre et génératrice. 
-    \item Tout vecteur de $E$ s'écrit de manière unique comme C.L. des vecteurs de la famille
+    \item Tout vecteur de $E$ s'écrit de manière unique comme C.L. des vecteurs de la base
     \item Si $\mathcal{B}_F \et \mathcal{B}_G$ sont des bases de $F \et G$ et $E = F \oplus G$, alors $\mathcal{B}_F \cup \mathcal{B}_G$ est une base de $E$ adaptée. 
     \item Si $x_1,...x_n$ est une base de $E$, on peut 'scinder' la base pour obtenir des supplémentaires $ E = \text{Vect}(x_1,...,x_p) \oplus \text{Vect}(x_{p+1},...,x_n) $
 \end{itemize}
@@ -1085,7 +1063,7 @@ Pour $x \in E = E_1 \oplus E_2$,
         \item $ p^2 = p $ - Condition nécessaire et suffisante d'être un projecteur
         \item $ E_1 = \text{Im }p = \{x \in E \ligneh p(x) = x \} = \text{Ker}(p - \text{Id}_E) $
         \item $ E_2 = \text{Ker }p$
-        \item On peut caractériser $u$ un projecteur si $ u \in \mathcal{L}(E) \et u^2 = u $ - dans ce cas il est projecteur sur $\text{Im}(p)$ parallèlement à $\text{Ker}p$ [Démonstration - $x = (u(x)) + (x-u(x))$ décomposition unique]
+        \item On peut caractériser $u$ un projecteur si $ u \in \mathcal{L}(E) \et u^2 = u $ - dans ce cas il est projecteur sur $\text{Im}(p)$ parallèlement à $\text{Ker }p$ [Démonstration - $x = (u(x)) + (x-u(x))$ décomposition unique]
     \end{itemize}
     \item La symétrie par rapport à $E_1$ parallèlement à $E_2$, $ s : x = x_1 + x_2 \mapsto x_1 - x_2 $
     \begin{itemize}
@@ -1240,14 +1218,11 @@ Limite réelle
 
 \subsubsection{Continuité}
 \[\lim_a f = f(a)\]
-\[ \forall \epsilon > 0, \exists \eta > 0, \forall x \in I, (|x-a| \leq \eta \implies |f(x) - f(a)| \leq \eta) \]
 
 \noindent Continuité à gauche en $a$
-\[ \forall \epsilon > 0, \exists \eta > 0, \forall x \in I \cap ]a-\eta, a],|f(x) - f(a)| \leq \epsilon \]
 \[ \lim_{x \rightarrow a^-} f(x) = f(a) \]
 
 \noindent Continuité à droite en $a$
-\[ \forall \epsilon > 0, \exists \eta > 0, \forall x \in I \cap [a, a+\eta[,|f(x) - f(a)| \leq \epsilon \]
 \[ \lim_{x \rightarrow a^+} f(x) = f(a) \]
 
 \subsection{Propriétés}
@@ -1266,7 +1241,7 @@ Limite réelle
 \subsubsection{Caractérisation séquentielle}
  \[ \lim_{x \rightarrow a} f(x) = l \iff \forall (u_n) \in I^{\mathbb{N}}, ( (u_n)_n \longrightarrow a \implies (f(u_n))_n \longrightarrow l ) \]
 
-\noindent On peut donc établir la limite de $f$ en $a$ en étudiant $u_n \longrightarrow a$ et $ (f(u_n))n $. Les limites sur les fonctions admettent donc des propriétés similaires que celles des suites.
+\noindent On peut donc établir la limite de $f$ en $a$ en étudiant $u_n \longrightarrow a$ et $ (f(u_n))n $. Les limites des fonctions admettent des propriétés similaires que celles des suites.
 \begin{itemize}
     \item Signe au voisinage de $a$ et la limite
     \item Comparaisons entre 2 fonctions en comparent leurs limites
@@ -1290,16 +1265,15 @@ Pour $ f: I \backslash {a} \rightarrow \mathbb{R} $, $f$ est prolongeable en $a$
 \noindent Il faut que $\lim_a f = l \in \mathbb{R}$ alors $\tilde{f}(a) = l$
 
 \subsection{Théorème des valeurs intermédiaires}
-
+Pour $f$ continue sur un intervalle non-trivial et à valeurs réelles 
 \begin{itemize}
-    \item Pour $f$ continue sur un intervalle non-trivial et à valeurs réelles 
-    \item Soit $(a, b) \in I^2$, $ a \leq b \implies \exists c \in [a, b]: \min(f(a), f(b)) \leq c \leq \max(f(a), f(b)) $
+    \item $\exists c \in [a, b]: \min(f(a), f(b)) \leq c \leq \max(f(a), f(b)) $
     \item Si $f(a)f(b) \leq 0$, $f$ s'annule au moins une fois entre $a$ et $b$
     \item Généralisation - avec limites $< 0 \ou > 0$
     \item Pour des fonctions strictement monotones, on a l'injectivité donc la bijectivité entre $f(a)$ et $f(b)$
-    \item Généralisation T.V.I - $ x \in ] \lim_a f, \lim_b f [ $ admet un antécédent par $f$ dans $] a, b [$
+    \item Généralisation - $ x \in ] \lim_a f, \lim_b f [ $ admet un antécédent par $f$ dans $] a, b [$
     \item L'image d'un intervalle est une intervalle
-    \item Théorème des bornes atteintes - toute fonction continue sur un segment $[a, b]$ est bornée et $\exists (c, d) \in [a, b]^2 , \forall x \in [a, b], \min f = f(c) \leq f(x) \leq f(d) = \max f$ - $ f([a, b]) = [\min f, \max f] $
+    \item Théorème des bornes atteintes - toute fonction continue sur un segment $[a, b]$ est bornée et atteint ses bornes
 \end{itemize}
 
 \subsection{Théorème de la bijection monotone}
@@ -1339,16 +1313,14 @@ Tout entier naturel admettant exactement deux diviseurs dans $\mathbb{N}$
 \[ a = bq + r \implies D_{a, b} = D_{b, r} \]
 
 \subsubsection{PGCD}
-\[ a \wedge b = \max (D_{a, b}) \]
-\[ \prod_{i=1}^n p_i^{\min (\nu_i, \mu_i)} \]
+\[ a \wedge b = \max (D_{a, b}) = \prod_{i=1}^n p_i^{\min (\nu_i, \mu_i)} \]
 \begin{itemize}
     \item Le dernier reste non nul dans l'algorithme d'Euclide corresponde au PGCD
 \end{itemize}
 
 \subsubsection{PPCM}
-\[a \vee b = \min (|a|\mathbb{N}^* \cap |b|\mathbb{N}^*)\]
+\[a \vee b = \min (|a|\mathbb{N}^* \cap |b|\mathbb{N}^*) = \prod_{i=1}^n p_i^{\max (\nu_i, \mu_i)}\]
 \[ a \mathbb{Z} \cap b \mathbb{Z} = (a \vee b) \mathbb{Z} \]
-\[ \prod_{i=1}^n p_i^{\max (\nu_i, \mu_i)} \]
 
 \subsubsection{Lien}
 \[ (a \wedge b) \times (a \vee b) = |ab| \]
@@ -1420,10 +1392,10 @@ Le $n$ du plus grand coefficient non-nul (coefficient dominant).
 
 \begin{itemize}
     \item Par récurrence, $P^{(n)} = \sum_{n}^{\infty} \frac{k!}{(k-n)!} a_k X^{k-n} = \sum_{k=0}^{+\infty} \frac{(k+n)!}{k!}a_{k+n} X^k $
-    \item Les lois ressemble à celles pour les dérivés des fonctions
+    \item Les lois ressemble à celles pour les dérivés des fonctions polynomiales
 \end{itemize}
 
-\subsection{Formule de Taylor}
+\subsubsection{Formule de Taylor}
 \[ P = \sum_{k=0}^{+\infty} \frac{P^{(k)}(\alpha)}{k!}(X-\alpha)^k \]
 
 \begin{itemize}
@@ -1475,10 +1447,10 @@ Le $n$ du plus grand coefficient non-nul (coefficient dominant).
 \[ f'(a) = \lim_{\substack{x \rightarrow a \\ x \neq a}} = \frac{f(x) - f(a)}{x-a} = \lim_{\substack{h \rightarrow 0 \\ h \neq 0}} = \frac{f(a+h) - f(a)}{h} \]
 \subsection{Propriétés}
 \begin{itemize}
-    \item $f$ est dérivable en $a \iff \forall x \in I, f(x) = f(a) + l(x-a) + (x-a)\epsilon(x) $ avec $lim_{x\rightarrow a} \epsilon(x) = 0$. Dans ce cas, $l = f'(a)$
+    \item $f$ est dérivable en $a \iff \forall x \in I, f(x) = f(a) + l(x-a) + (x-a)\epsilon(x) $ avec $\lim_{x\rightarrow a} \epsilon(x) = 0$. Dans ce cas, $l = f'(a)$
     \item La courbe représentative de $f$ au point d'abscisse $a$ - $y = f(a) + f'(a)(x-a)$
     \item Pour $a \in \mathring{I}$, $f$ admet un extremum local et $f$ dérivable en $a \implies f'(a) = 0$ 
-    \item $f$ est dérivable $\iff$ $f$ est dérivable à gauche et à droite (limites à gauche et à droite)
+    \item $f$ est dérivable $\iff$ $f$ est dérivable à gauche et à droite 
 \end{itemize}
 
 \subsubsection{Opérations}
@@ -1493,27 +1465,30 @@ Le $n$ du plus grand coefficient non-nul (coefficient dominant).
 \subsubsection{Classe}
 
 \begin{itemize}
-    \item $f$ est de classe $\mathcal{C}^n$ sur $I$ si $f$ est $n$ fois dérivable sur $I$ et $f^{(n)}$ est continue sur $I$
+    \item $f$ de classe $\mathcal{C}^n$ sur $I$ - $f$ est $n$ fois dérivable sur $I$ et $f^{(n)}$ est continue sur $I$
     \item $\mathcal{C}^\infty$ de classe $\infty$ si $\forall n \in \mathbb{N}, f$ est de classe $\mathcal{C}^n$
-    \item $\forall p \in \mathbb{N}, \mathcal{C}^p$ est stable par C.L., produit, passage à l'inverse (si elle ne s'annule pas), composition et passage à la bijection réciproque (si $f'$ ne s'annule pas)
+    \item $\mathcal{C}^n$ est stable par C.L., produit, passage à l'inverse (si $f$ ne s'annule pas), composition et passage à la bijection réciproque (si $f'$ ne s'annule pas)
 \end{itemize}  
 
 \subsection{Théroème de Rolle}
-Pour $f$ continue et à valeurs rélles sur $[a, b]$, dérivable sur $]a, b[$, et $f(a) = f(b)$, $\exists c \in ]a, b[ | f'(c) = 0$
+Pour $f$ continue et à valeurs rélles sur $[a, b]$, dérivable sur $]a, b[$ et $f(a) = f(b)$
+\[\exists c \in ]a, b[ \ligneh f'(c) = 0\]
+
+Généralisation (égalité des accroissements finis) sans $f(a) = f(b)$
+
+\[\exists c \in ]a, b[ \ligneh f(b) - f(a) = (b-a)f'(c)\]
 
 \begin{itemize}
     \item Démonstration - théorème des bornes atteintes
-    \item Généralisation (théorème des accroissements finis) pour $f(a) \neq f(b)$ - $\exists c \in ]a, b[ | f(b) - f(a) = (b-a)f'(c)$
-    \item Application - il est souvent utile de poser une fonction auxiliaire auxquelles on applique le théorème de Rolle
+    \item Application - il est souvent utile de poser une fonction auxiliaire pour appliquer le théorème de Rolle / EAF, éventuellement plusieurs fois
 \end{itemize}
 
 \subsection{Fonctions lipschitziennes}
-$f$ est $M$-lipschitzienne - 
 \[ \forall (x, y) \in I^2, |f(x) - f(y)| \leq M |x-y| \]
 
 \begin{itemize}
     \item $f$ contractante - $M \in [0, 1[$
-    \item Si $f'$ est borné par $M$, $f$ est $M$-lipschitzienne (inégalité des accroissements finis)
+    \item $|f'| \leq M \implies f$ est $M$-lipschitzienne (inégalité des accroissements finis)
 \end{itemize}
 
 \subsection{Convexité}
@@ -1523,10 +1498,10 @@ $f$ est $M$-lipschitzienne -
     \item La sécante $AB$ a pour équation $y = \frac{f(b) - f(a)}{b-a}(x-a) + f(a)$
     \item $f$ est convexe $\implies$ le graphe de $f$ entre $A \et B$ est en dessous de la sécante $AB$
     \item $f$ est convexe $\iff$ f est au-dessus de toutes ses tangentes
-    \item Inégalité des 3 pentes - $\forall (a, t, b) \in I^3, a < t < b \implies \frac{f(t)-f(a)}{t-a} \leq \frac{f(b)-f(a)}{b-a} \leq \frac{f(t)-f(b)}{t-b}$
-    \item $f$ est convexe sur I $\iff f'$ est croissante sur $I$ pour une fonction dérivable en $I$ (ou continue en $I$ et dérivable en $\mathring{I}$) [Démonstration : Sens direct - en montrant l'inégalité des 3 pentes et prenant la limite; Sens indirect - Théorème des accroissements finies]
+    \item Inégalité des 3 pentes - pour $a < t < b, \frac{f(t)-f(a)}{t-a} \leq \frac{f(b)-f(a)}{b-a} \leq \frac{f(t)-f(b)}{t-b}$
+    \item $f$ est convexe sur I $\iff f'$ est croissante sur $I$ (pour une fonction dérivable en $I$ ou continue en $I$ et dérivable en $\mathring{I}$) [Démonstration : Sens direct - en montrant l'inégalité des 3 pentes et prenant la limite; Sens indirect - Théorème des accroissements finies]
     \item $f$ est convexe $\iff$ $f'' \geq 0$ (pour une fonction 2 fois dérivable)
-    \item $f$ est continue et dérivable à gauche et à droite (pas forcément dérivable) en tout point de $\mathring{I}$
+    \item $f$ convexe est continue et dérivable à gauche et à droite (pas forcément dérivable) en tout point de $\mathring{I}$
 \end{itemize}
 
 \subsubsection{Inégalités de convexités usuelles}
@@ -1542,7 +1517,7 @@ $f$ est $M$-lipschitzienne -
 \subsection{Cardinal}
 \begin{itemize}
     \item Ensemble fini - il existe $n \in \mathbb{N}*$ tel qu'il existe une bijection entre $E$ et $ \llbracket 1, n \rrbracket $ - $|E| = n$
-    \item $E$ et $F$ en bijection ont le même Cardinal
+    \item $E$ et $F$ en bijection ont le même cardinal
     \item Pour $E$ fini - $A \subsetneq E \implies |A| < |E|$ [Démonstration - récurrence sur tout ensemble de cardinalité $n$]
     \item $(|A| = |E| \et A \subset E) \implies A = E$
     \item Formule de Poincaré - $|E \cup F| = |E| + |F| - |E \cap F|$
@@ -1560,15 +1535,15 @@ Pour $f:E \rightarrow F$
     \item Pour $f$ bijective, $|E| = |F|$
     \item Pour $f$ injective, $|E| \leq |F|$ - il y en a $\frac{|F|!}{(|F|-|E|)!}$ possibilités [Démonstration - revient à choisir un $|E|$-arrangement des élements de $F$ à associer aux élements de $E$]
     \item Pour $f$ surjective $|E| \geq |F|$ - il y en a $|E|!$ possibilités
-    \item Si $|E|=|F|$, alors surjectivité ou injectivité implique l'autre (donc bijectivité)
+    \item Pour $|E|=|F|$, surjectivité $\iff$ injectivité $\iff$ bijectivité
 \end{itemize}
 
 \subsection{Vocabulaire combinatoire}
 \begin{itemize}
-    \item $p$-liste / $p$-uplet - $E^p$ - liste de $p$ éléments de $E$ (répétitions autorisées, ordre compté) - nombre de $p$-listes $= n^p$
-    \item $p$-arrangement - $p$-liste deux à deux distincts - nombre de $p$-arrangements $=\frac{n!}{(n-p)!}$
-    \item Permutation - une bijection de $E$ dans $E$ - nombre de permutations $=|E|!$
-    \item $p$-combinaison / $p$-partie - partie de $E$ à $p$ éléments distinctes (ordre pas compté) - nombre de $p$-combinaisons $=\binom{|E|}{p}$ [Démonstration - chaque $p$-combinaison correspond à $p!$ $p$-arrangements] 
+    \item $p$-liste / $p$-uplet - $E^p$ - liste de $p$ éléments de $E$ (répétitions autorisées, ordre compté) - nombre $= n^p$
+    \item $p$-arrangement - $p$-liste deux à deux distincts - nombre $=\frac{n!}{(n-p)!}$
+    \item Permutation - une bijection de $E$ dans $E$ - nombre $=|E|!$
+    \item $p$-combinaison / $p$-partie - partie de $E$ à $p$ éléments distinctes (ordre pas compté) - nombre $=\binom{|E|}{p}$ [Démonstration - chaque $p$-combinaison correspond à $p!$ $p$-arrangements] 
 \end{itemize}
 
 \clearpage
@@ -1576,15 +1551,12 @@ Pour $f:E \rightarrow F$
 
 \subsection{Définition}
 \begin{itemize}
-    \item Dimension finie - $E$ possède une famille génératrice
+    \item Dimension finie - $E$ possède une famille génératrice de cardinal $n \in \mathbb{N}$
     \item Toute famille libre d'éléments de $E$ peut être complétée en une base de $E$ à partir des éléments de $G$ ($G$ est une famille génératrice) [Démonstration - considérons une famille libre de cardinalité maximale]
     \item TBE Théorème de la base extraite - on peut extraire une base de tout famille génératrice finie d'un K-ev 
     \item TBI Théorème de la base incomplète - Toute famille libre de vecteurs de $E$ peut être complétée en une base
     \item Toutes les bases de $E$ ont le même cardinal = $\dim E$. 
-    \begin{itemize}
-        \item $ \iff B $ est une famille libre maximale
-        \item $ \iff B $ est une famille génératrice minimale
-    \end{itemize}
+    \item $B$ est une base $ \iff B $ est libre maximal $\iff B $ est génératrice minimale
     \item Toute famille de $n+1$ vecteurs de $E$ est liée
 \end{itemize}
 
@@ -1592,7 +1564,7 @@ Pour $f:E \rightarrow F$
 $u$ est une AL de $E$ dans $F$
 \begin{itemize}
     \item $E$ et $F$ sont isomorphe $\iff \dim E = \dim F$ 
-    \item Pour $\dim E = \dim F$, on a la bijectivité de $u$ dès qu'on a l'une des conditions suffisantes - 
+    \item Pour $\dim E = \dim F$, des conditions suffisantes de bijectivité - 
     \begin{itemize}
         \item $u$ injective
         \item $u$ surjective
@@ -1608,8 +1580,8 @@ $u$ est une AL de $E$ dans $F$
 \begin{itemize}
     \item $\dim F = \dim E$ avec $\dim F = \dim E \iff F = E$ pour $F$ un ssev de $E$
     \item Tout ssev de $E$ fini admet un supplémentaires
-    \item Pour $E = F \bigoplus G$, $\dim E = \dim F + \dim G$
-    \item Formule de Grassmann - $\dim (F+G) = \dim F + \dim F - \dim (F \cap G)$ [Démonstration - Considérons $H$ un supplémentaire de $F \cap G$ dans $F$ et montrer $F+G = H \bigoplus G$]
+    \item Pour $E = F \oplus G$, $\dim E = \dim F + \dim G$
+    \item Formule de Grassmann - $\dim (F+G) = \dim F + \dim F - \dim (F \cap G)$ [Démonstration - Considérons $H$ un supplémentaire de $F \cap G$ dans $F$ et montrer $F+G = H \oplus G$]
 \end{itemize}
 
 \subsection{Rang}
@@ -1666,7 +1638,7 @@ Pour $u \in \mathcal{L}(E, F)$
     \end{itemize}
     \item Produit
     \item Multiplication d'un des termes par $\lambda \in \mathbb{R}^*$ [non valable pour $\sim$]
-    \item Stabilité par somme [non valable pour $\sim$ - surtout pas de somme pour des équivalents]
+    \item Stabilité par somme [sauf $\sim$ - PAS DE SOMME des équivalents]
 \end{itemize}
 
 \subsubsection{Propriétés de $\sim$}
@@ -1677,9 +1649,7 @@ Pour $u \in \mathcal{L}(E, F)$
     \item Encadrement - $f < g < h \et f \sim a \et h \sim a \implies g \sim a$
 \end{itemize}
 
-\subsubsection{Équivalences usuels}
-
-En $0$
+\subsubsection{Équivalences usuels en 0}
 \begin{itemize}
     \item $\sin{(x)} \sim x$
     \item $\tan{(x)} \sim x$
@@ -1705,7 +1675,7 @@ DL d'ordre $n$ en $a$ ($\dl{n}{a}$)
 \end{itemize}
 
 \subsubsection{Primitivation}
-Si $f'(x) = \sum_{k=0}^{n} c_k (x-a)^k + o_a ((x-a)^n)$, 
+Si $f'(x) = \sum_{k=0}^{n} c_k (x-a)^k + \underset{a}{o} ((x-a)^n)$, 
 \[ f(x) = f(a) + \sum_{k=0}^{n} \frac{c_k}{k+1}(x-a)^{k+1} + \underset{a}{o}((x-a)^{n+1}) \]
 
 \subsubsection{Formule de Taylor-Young}
@@ -1742,8 +1712,8 @@ On cherche
 \noindent Pour cela, on pose $h = \frac{1}{x} \underset{x \rightarrow \pm \infty}{\longrightarrow} 0$ et on étudie le $\dl{2}{0}$ de $h \cdot f(\frac{1}{h})$
 
 \subsubsection{DL d'une bijection réciproque}
-Comme $f \circ f^{-1} = \text{Id}$ et $x = x + o(x^n)$, on peut déterminer le DL de $f^{-1}$ si avec ceux de $f$ par unicité du DL. \\
-\noindent Il faut d'abord montrer l'existence d'un DL pour $f^{-1}$ par la stabilité de class $\mathcal{C}^n$ si $f'$ ne s'annule pas
+Comme $f \circ f^{-1} = \text{Id}$ et $x = x + o(x^n)$, on peut déterminer le DL de $f^{-1}$ avec ceux de $f$ \\
+Il faut d'abord montrer l'existence d'un DL pour $f^{-1}$ par la stabilité de $\mathcal{C}^n$ si $f'$ ne s'annule pas
 
 \clearpage
 \section{Matrices et Applications Linéaires}
@@ -1772,18 +1742,17 @@ On note $ \mathcal{B} = (e_1, e_2, \dots) = [(e_i)] $ une base quelconque, et $ 
 
 \subsection{Application linéaire canoniquement associée}
 Pour $A \in \mathcal{M}_{n, p}(\mathbb{K})$
-
 \begin{align*}
     u_A : \mathbb{K}^p & \rightarrow \mathbb{K}^n \\
     A & \mapsto AX
 \end{align*}
 
 \begin{itemize}
-    \item $ \ker A = \ker u_A = \{X \in \mathbb{K^p} | AX = 0\} $
-    \item $ \text{Im} A = \text{Im} u_A = \{AX | X \in \mathbb{K}^p\} = \Vect([(c_i)]) $ avec $[(c_i)]$ les colonnes de $A$
+    \item $ \ker A = \ker u_A = \{X \in \mathbb{K^p} \ligneh AX = 0\} $
+    \item $ \text{Im} A = \text{Im} u_A = \{AX \ligneh X \in \mathbb{K}^p\} = \Vect([(c_i)]) $  ($[(c_i)]$ les colonnes de $A$)
     \item $ \rg A = \dim \text{Im} A = \rg u_A = \rg (\Vect([(c_i)])) $
     \begin{itemize}
-        \item Théorème du rang - $p = \dim(\ker A) + \rg A$ avec $p$ le nombre de colonnes de $A$
+        \item Théorème du rang - $p = \dim(\ker A) + \rg A$ ($p$ le nombre de colonnes)
         \item $\rg A \leq \min(n, p)$
         \item $\rg AB \leq \min(\rg A, \rg B)$
         \item $\rg u = \rg (\mat (u))$ irrespective des bases
@@ -1840,8 +1809,8 @@ Pour $(a, b) \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$ dérivable de $I$ d
 
 \begin{itemize}
     \item L'ensembles des solutions homogènes $ = \Vect (e^{-A(x)})$
-    \item Méthode de la variation de la constante - on trouve la solution particulière en posant $y_p : x \mapsto C(x)e^{-A(x)}$ et on cherche $C(x)$ en résolvant $y_p' - a(x)y = b(x)$
-    \item Problème de Cauchy - si on pose de plus $y(x_0) = y_0$, on a une unique solution pour $y$
+    \item Méthode de la variation de la constante - On pose $y_p : x \mapsto C(x)e^{-A(x)}$ et on cherche $C(x)$ en résolvant $y_p' - a(x)y = b(x)$
+    \item Problème de Cauchy - si $y(x_0) = y_0$, on a une unique solution pour $y$
 \end{itemize}
 
 \subsubsection{Solutions particulières remarquables}
@@ -1863,7 +1832,7 @@ Pour $(a, b) \in \mathbb{K}^2, f \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$
 \[ y'' + ay'+ by = f \]
 
 \begin{itemize}
-    \item $ (x \mapsto e^{\lambda x}) $ est une solution de l'équation homogène $ \iff \lambda^2 + a \lambda + b = 0 $ [équation caractéristique] $ \iff \lambda $ est une racine de $ P = X^2 + aX + b $ [polynôme caractéristique]
+    \item $ (x \mapsto e^{\lambda x}) $ est solution de l'équation homogène $ \iff \lambda $ est racine de $ P = X^2 + aX + b $ [polynôme caractéristique]
     \begin{itemize}
         \item $\lambda_1 \et \lambda_2$ 2 racines distinctes - $\Vect (e^{\lambda_1 x}, e^{\lambda_2 x})$
         \item $\lambda_0$ racine double - $\Vect (xe^{\lambda_0 x}, e^{\lambda_0 x})$
@@ -1898,8 +1867,7 @@ Pour $(a, b) \in \mathbb{K}^2, f \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$
 \end{itemize}
 
 \subsection{Probabilité}
-$(\Omega, P)$ un espace probabilisé
-\[ P: \mathcal{P}(\Omega) \rightarrow [0, 1] \]
+$(\Omega, P)$ un espace probabilisé muni de $P: \mathcal{P}(\Omega) \rightarrow [0, 1]$
 
 \begin{itemize}
     \item $P(\Omega) = 1$
@@ -1908,12 +1876,9 @@ $(\Omega, P)$ un espace probabilisé
 
 \subsubsection{Propriétés}
 \begin{itemize}
-    \item Pour un système complet d'évènements, 
-    \begin{itemize}
-        \item $\sum P(A_i) = 1$
-        \item $P(B) = \sum P(B\cap A_i)$
-    \end{itemize}
-    \item Une distribution de probabilités sur $E$ - une famille de réels positifs indexée sur $E$ de somme 1 - $P$ est entièrement déterminée par une distribution de probabilités
+    \item Pour un système complet d'évènements $P(B) = \sum P(B\cap A_i)$
+    \item Distribution de probabilités - famille de $\mathbb{R}_+$ indexée sur $E$ de somme 1
+    \item $P$ est entièrement déterminée par une distribution de probabilités
     \item Probabilité uniforme - $P(A) = \frac{|A|}{|\Omega|}$
 \end{itemize}
 
@@ -1923,7 +1888,7 @@ $(\Omega, P)$ un espace probabilisé
 \begin{itemize}
     \item $P_B$ est une probabilité sur $\Omega$
     \item Formule des probabilités composées - $P(A \cap B) = P(A) \times P_A(B)$
-    \item Formule de Bayes - $P_B(A) = \frac{P_A(B) \times P(A)}{P(B)}$
+    \item Formule de Bayes - $P_B(A) \times P(B) = P_A(B) \times P(A)$
     \item Pour un système complet d'évènements, $P(B) = \sum P_{A_i}(B) \times P(A_i)$
 \end{itemize}
 
@@ -1932,7 +1897,7 @@ $(\Omega, P)$ un espace probabilisé
 
 \begin{itemize}
     \item Si $A$ et $B$ sont indépendants, $A$ et $\overline{B}$ aussi
-    \item Pour une famille, on distingue 2 à 2 indépendante et mutuellement indépendante ( $\forall I\in \mathcal{P}(\llbracket 1, n \rrbracket)$ non-vide $ P(\bigcap_{i \in I} A_i) = \prod_{i \in I} P(A_i) $ )
+    \item On distingue indépendance 2 à 2 et indépendance mutuelle
 \end{itemize}
 
 \clearpage
@@ -1959,7 +1924,7 @@ $(\Omega, P)$ un espace probabilisé
 
 \subsection{Propriétés de l'intégrale}
 \begin{itemize}
-    \item Inégalité triangulaire intégrale - $ |\int_{a}^{b} f| \leq \int_{a}^{b} |f| $ (!Pour $a < b$!)
+    \item Inégalité triangulaire intégrale - $ |\int_{a}^{b} f| \leq \int_{a}^{b} |f| $ (! Pour $a < b$)
     \item Égalité de $f$ et $g$ sauf en un nombre fini de points - $\int_a^b f = \int_a^b g$
     \item Positivité et croissance
     \item Stricte positivité - si $f \geq 0$, $f$ continue en $x_0$ et $f(x_0) > 0$, alors $\int_{a}^{b} > 0$
@@ -2005,11 +1970,7 @@ Toute forme bilinéaire, symétrique, définie et positive sur $E$.
     \item Positive - $\phi (x, x) \geq 0$
     \item Définie - $\phi(x, x) = 0 \implies x = 0_E$
     \item Espace préhilbertien réel - un $\mathbb{R}$-espace vectoriel muni d'un produit scalaire
-    \item Espace euclidien - un $\mathbb{R}$-espace vectoriel de dimension fini muni d'un produit scalaire
-\end{itemize}
-
-Produits scalaires de référence
-\begin{itemize}
+    \item Espace euclidien - espace préhilbertien réel de dimension fini 
     \item Produit scalaire canonique sur $\mathbb{R}^n$ - $\langle X, Y \rangle = \sum x_k y_k$
     \item Produit scalaire canonique sur $\mathcal{M}_{n, p}(\mathbb{R})$ - $\langle A, B \rangle = \text{Tr}(A^T B)$
     \item Sur $\mathcal{C}^0([a, b], \mathbb{R})$ - $\langle f, g \rangle = \int_{a}^{b} fg$
@@ -2027,8 +1988,7 @@ Toute application $N: E \rightarrow R_+$ qui vérifie
 \begin{itemize}
     \item Distance associée à une norme - $d: (x, y) \mapsto N(x-y)$
     \item Norme associée au produit scalaire - $\|\cdot\| : x \mapsto \sqrt{\langle x, x \rangle}$ 
-    \item Vecteur unitaire - $\|x\| = 1$
-    \item Pour tout $x \neq 0$, $ \frac{x}{\|x\|} $ est un vecteur unitaire
+    \item Vecteur unitaire - $\|x\| = 1$ - pour $x \neq 0$, $ \frac{x}{\|x\|} $ est unitaire
 \end{itemize}
 
 \subsubsection{Orthogonalité}
@@ -2122,17 +2082,17 @@ Pour $\| \cdot \|$ la norme associée à un produit scalaire
     \item Série de terme général $u_n = \sum u_n = \left( \sum_{k=0}^{n}u_k \right)_{n \in \mathbb{N}}$
     \item Somme partielle d'ordre $n$ - $\sum_{k=0}^{n}u_k$
     \item Pour une série convergente, somme de la série $\sum_{k=0}^{+\infty} u_k$
-    \item Pour une série convergente, reste de rang $n$ de la série $R_n = \sum_{k=0}^{+\infty} u_k - \sum_{k=0}^{n} u_k$
+    \item Pour une série convergente, reste de rang $n$ - $R_n = \sum_{k=0}^{+\infty} u_k - \sum_{k=0}^{n} u_k$
     \begin{itemize}
         \item Par téléscopage, $u_n = R_{n-1} - R_n$
     \end{itemize}
-    \item Série de terme général $u_n$ est absolument convergente $\iff \sum |u_n| \conv \iff (u_n)$ est sommable)
+    \item Série de terme général $u_n$ est absolument convergente $\iff \sum |u_n| \conv \iff (u_n)$ est sommable
 \end{itemize}
 
 \subsubsection{Propriétés}
 \begin{itemize}
     \item $S_n \text{ converge } \implies u_n \longrightarrow 0$
-    \item Si $(u_n) \not \longrightarrow 0$, $S_n$ diverge grossièrement
+    \item $(u_n) \not \longrightarrow 0 \implies S_n$ diverge grossièrement
     \item $ (u_n) \text{ converge } \iff \sum (u_{n+1} - u_n) \conv $ - $\sum_{n=0}^{+\infty} (u_{n+1} - u_n) = \underset{n \rightarrow + \infty}{\lim} u_n - u_0$
     \item Si $\sum u_n \et \sum v_n \conv, \sum_{n=0}^{+\infty} (\lambda u_n + v_n) = \lambda \sum_{n=0}^{+\infty} u_n + \sum_{n=0}^{+\infty} v_n $
 \end{itemize}
@@ -2141,7 +2101,7 @@ Pour $\| \cdot \|$ la norme associée à un produit scalaire
 \begin{itemize}
     \item Une SATP est croissante
     \item $\sum u_n \conv \iff (\sum u_n) \text{ est majorée}$
-    \item Si $0 \leq u_n \leq v_n \et (\sum v_n) \conv$, alors $(\sum u_n) \conv$ et $\sum_{0}^{+\infty} u_n \leq \sum_{0}^{+\infty} v_n$
+    \item Si $0 \leq u_n \leq v_n \et (\sum v_n) \conv$, $(\sum u_n) \conv$ et $\sum_{0}^{+\infty} u_n \leq \sum_{0}^{+\infty} v_n$
     \item Pour des SATPs $u_n \sim v_n$, $\sum u_n \et \sum v_n$ sont de même nature
 \end{itemize}
 
@@ -2159,7 +2119,7 @@ Pour $\sum f(n)$ avec $f$ une fonction continue et décroissante sur $[0, +\inft
 [Démonstration - écrire un encadrement pour $f(k)$ avec des intégrales de $k$ à $k+1$ et de $k-1$ à $k$, puis sommer]
 \begin{itemize}
     \item L'inégalité change de signe pour des fonctions décroissantes
-    \item L'inégalité s'adapte pour des fonctions définitions APCR
+    \item L'inégalité s'adapte pour des fonctions définies APCR
 \end{itemize}
 
 \subsection{Séries particulières}
@@ -2191,7 +2151,8 @@ $\alpha \in \mathbb{R}$
 \section{Variables aléatoires}
 \subsection{Définition}
 \begin{itemize}
-    \item Application de $\Omega \rightarrow X(\Omega)$ avec $X(\Omega)$ l'ensemble des variables tirées des résultats
+    \item Application de $\Omega \rightarrow X(\Omega)$
+    \item $X(\Omega)$ l'ensemble des variables tirées des résultats
     \item Application indicatrice de $A$ - $\Omega \rightarrow \{0, 1\} : \omega \mapsto \begin{cases}
         0 & \si \omega \in A \\
         1 & \text{ sinon}
@@ -2200,7 +2161,7 @@ $\alpha \in \mathbb{R}$
     \begin{itemize}
         \item $P(f(X) = y) = P(X \in f^{-1}(\{y\}))$
     \end{itemize}
-    \item $X^{-1}(A) = \{ \omega \in \Omega | X(\omega) \in A\} = \{ X \in A\}$
+    \item $X^{-1}(A) = \{ \omega \in \Omega \ligneh X(\omega) \in A\} = \{ X \in A\}$
     \begin{itemize}
         \item $(\{X = x\})_{x \in X(\Omega)}$ est un système complet d'évènements de $\Omega$
     \end{itemize}
@@ -2277,7 +2238,7 @@ Formule de Koenig-Huygens
 Pour $a > 0$,
 \[ P(|X| \geq a) \leq \frac{\mathbb{E}(|X|)}{a} \]
 
-Démonstration - $|X| \geq \mathbb{1}_{ \{|X| \geq a\} }$
+Démonstration - $|X| \geq a \, \mathbb{1}_{ \{|X| \geq a\} }$
 
 \subsubsection{Inégalité de Bienaymé-Tchebychev}
 Pour $\epsilon > 0$
@@ -2287,12 +2248,12 @@ Démonstration - on applique l'inégalité de Markov pour $|X - \mathbb{E}(X)|^2
 
 \begin{itemize}
     \item En prenant $\epsilon = \sigma(X)$, on a des inégalités de concentration
-    \item Loi faible des grands nombres - pour $\overline{X_n}$ la moyenne de $(X_1,\dots,X_n)$ des échantillons indépendants des variables aléatoires suivant la même loi, $P(|\overline{X_n} - \mathbb{E}(X)| \geq \epsilon) \leq \frac{\sigma^2}{n \epsilon^2} \underset{n \rightarrow +\infty}{\longrightarrow} 0 $
+    \item Loi faible des grands nombres - pour $\overline{X_n}$ la moyenne de $n$ échantillons indépendants suivant la même loi, $P(|\overline{X_n} - \mathbb{E}(X)| \geq \epsilon) \leq \frac{\sigma^2}{n \epsilon^2} \underset{n \rightarrow +\infty}{\longrightarrow} 0 $
 \end{itemize}
 
 \subsection{Lois usuelles}
-\subsubsection{Loi uniforme}
-\[ X \sim \mathcal{U}(E) \]
+\subsubsection{Loi uniforme $ X \sim \mathcal{U}(E) $}
+
 \[ X(\Omega) = E \et \forall x \in E, P(X=x) = \frac{1}{\text{Card}(E)} \]
 
 \begin{itemize}
@@ -2300,8 +2261,8 @@ Démonstration - on applique l'inégalité de Markov pour $|X - \mathbb{E}(X)|^2
     \item $\mathbb{V}(X) = \frac{n^2-1}{12}$
 \end{itemize}
 
-\subsubsection{Loi de Bernoulli}
-\[ X \sim \mathcal{B}(p) \]
+\subsubsection{Loi de Bernoulli $ X \sim \mathcal{B}(p) $}
+
 \[ X(\Omega) = \{0, 1\} \et P(X=1) = p \]
 
 \begin{itemize}
@@ -2309,8 +2270,8 @@ Démonstration - on applique l'inégalité de Markov pour $|X - \mathbb{E}(X)|^2
     \item $\mathbb{V}(X) = p(1-p)$
 \end{itemize}
 
-\subsubsection{Loi binomiale}
-\[ X \sim \mathcal{B}(n, p) \]
+\subsubsection{Loi binomiale $ X \sim \mathcal{B}(n, p) $}
+
 \[ X(\Omega) = \llbracket 0, n \rrbracket \et P(X=k) = \binom{n}{k} p^k (1-p)^{n-k} \]
 
 \begin{itemize}
@@ -2321,34 +2282,25 @@ Démonstration - on applique l'inégalité de Markov pour $|X - \mathbb{E}(X)|^2
 
 \clearpage
 \section{Déterminants}
-
-Dans ce chapitre, 
-\begin{itemize}
-    \item Les vecteurs sont dans $E$ de dimension $n$
-    \item $[x_i] = (x_1,...,x_n)$ 
-    \item $\mathcal{B} = [e_i]$ est une base de $E$
-\end{itemize}
+Vecteurs dans $E$ de dimension $n$, $[x_i] = (x_1,...,x_n)$, $\mathcal{B} = [e_i]$ une base de $E$
 
 \subsection{Définitions}
 \subsubsection{Déterminant d'une famille}
 
-\[ \det_{\mathcal{B}} : E^n \rightarrow \mathbb{K} \]
+L'unique forme $n$-linéaire alternée vérifiant $\det_{\mathcal{B}}(\mathcal{B}) = 1$
 
 \begin{itemize}
-    \item Le déterminant d'une famille de $E$ dans la base $\mathcal{B}$ est l'unique forme $n$-linéaire alternée vérifiant $\det_{\mathcal{B}}(\mathcal{B}) = 1$
-    \begin{itemize}
-        \item Forme $n$-linéaire - application de $E^n \rightarrow \mathbb{K}$ linéaire par rapport à chacune de ses variables
-        \item Forme $n$-linéaire alternée - $ x_i = x_j \et i \neq j \implies \phi([x_i]) = 0 $
-        \item Forme $n$-linéaire antisymétrique - $\phi (x_1,\dots,x_i,\dots,x_j,\dots,x_n) = -\phi (x_1,\dots,x_j,\dots,x_i,\dots,x_n)$
-        \item Alternée $\iff$ antisymétrique
-    \end{itemize}
+    \item Forme $n$-linéaire - $E^n \rightarrow \mathbb{K}$ linéaire par rapport à chacune de ses variables
+    \item Alternée - $ x_i = x_j \et i \neq j \implies \phi([x_i]) = 0 $
+    \item Antisymétrique - $\phi (x_1,\dots,x_i,\dots,x_j,\dots,x_n) = -\phi (x_1,\dots,x_j,\dots,x_i,\dots,x_n)$
+    \item Alternée $\iff$ antisymétrique
     \item Toute forme $n$-linéaire alternée $\phi$ est de la forme $\phi = \phi(\mathcal{B})\det_{\mathcal{B}}$
     \begin{itemize}
         \item Formule de changement des bases - $\det_{\mathcal{B}'} = \det_{\mathcal{B'}}(\mathcal{B}) \det_{\mathcal{B}}$
         \item $ \det_{\mathcal{B'}}(\mathcal{B}) \det_{\mathcal{B}}(\mathcal{B'}) = 1$
     \end{itemize}
     \item $[x_i]$ liée $\implies \det_{\mathcal{B}}([x_i]) = 0$
-    \item $\det_{\mathcal{B}}([x_i]) = 0$ est inchangé si on ajoute à un vecteur une combinaison linéaire des autres
+    \item $\det_{\mathcal{B}}([x_i])$ inchangé par ajout à un vecteur une CL des autres $([x_i])$
     \item $[x_i]$ est une base de $E \iff \det_{\mathcal{B}}([x_i]) = 0$
 \end{itemize}
 
@@ -2357,10 +2309,10 @@ Dans ce chapitre,
 \[ \det u = \det_{\mathcal{B}}([u(e_i)]) \]
 
 \begin{itemize}
-    \item $\det u$ est l'unique scalaire tel que $\forall \mathcal{B}, \forall [x_i], \det_{\mathcal{B}}([u(x_i)]) = \det u \det_{\mathcal{B}}([x_i])$ [Démonstration - existence et unicité. Existence - $\det_{\mathcal{B}} \circ u$ est une forme $n$-linéaire alternée puis justifier l'indépendance de la base choisie par la formule de changement de base. Unicité - on applique l'égalité à $\mathcal{B}$]
+    \item $\det u$ est l'unique scalaire tel que $\forall \mathcal{B}, \forall [x_i], \det_{\mathcal{B}}([u(x_i)]) = \det u \det_{\mathcal{B}}([x_i])$ 
     \item $\det(\lambda \text{Id}_E) = \lambda^{\dim E}$
     \item $\det(u \circ v) = \det u \det v = \det (v \circ u)$
-    \item $u \text{GL}(E) \iff \det u \neq 0$ (Dans le cas d'inversibilité, $\det (u^{-1}) = \frac{1}{\det u}$)
+    \item $u \in \text{GL}(E) \iff \det u \neq 0$ (Dans le cas d'inversibilité, $\det (u^{-1}) = \frac{1}{\det u}$)
 \end{itemize}
 
 \subsubsection{Déterminant d'une matrice}
@@ -2370,11 +2322,11 @@ $[C_i]$ la famille des colonnes de $A$ exprimée dans la base canonique de $\mat
 
 \begin{itemize}
     \item $\det \mat_{\mathcal{B}}([x_i]) = \det_{\mathcal{B}}([x_i])$
-    \item $\det (\mat_{\mathcal{B}} (u))) = \det u$ pour tout endomorphisme $u$ dans n'importe quelle base
+    \item $\det (\mat_{\mathcal{B}} (u))) = \det u$ dans n'importe quelle base
     \item $\det (\lambda A) = \lambda^nA$
     \item $\det (AB) = \det A \det B = \det (BA)$
     \item $\det (P^{-1}AP) = \det A$ - deux matrices semblables ont le même déterminant
-    \item $A \in \text{GL}_n (\mathbb{K}) \iff \det A \neq 0$ (Dans le cas d'inversibilité, $\det (A{-1}) = \frac{1}{\det A}$)
+    \item $A \in \text{GL}_n (\mathbb{K}) \iff \det A \neq 0$ (Si inversible, $\det (A{-1}) = \frac{1}{\det A}$)
     \item $\det A^T = \det A$
 \end{itemize}
 
@@ -2397,8 +2349,8 @@ g & h & i
 \begin{itemize}
     \item Matrice diagonale - $\det (\text{diag} (\lambda_1,\dots,\lambda_n)) = \prod_{i=1}^{n} \lambda_i$
     \item Matrice triangulaire - produit des coefficients diagonaux
-    \item Matrice de transvection - $\det T_{i, j}(\lambda) = 1$ [Démonstration - $T_{i, j}(\lambda) = I_n + \lambda E_{i, j}$ avec $\lambda E_{i, j}$ l'ajout d'un combinaison linéaire du $i$-ième colonne à la $j$-ième]
-    \item Matrice de permutation - $\det P_{i, j} = -1$ [Démonstration - antisymétrie du déterminant]
+    \item Matrice de transvection - $\det T_{i, j}(\lambda) = 1$ [Démonstration - $T_{i, j}(\lambda) = I_n + \lambda E_{i, j}$ ajout d'une CL des autres vecteurs]
+    \item Matrice de permutation - $\det P_{i, j} = -1$ [Démonstration - antisymétrie]
     \item Matrice de dilatation - $\det D_{i}(\lambda) = \lambda$
 \end{itemize}
 
@@ -2439,7 +2391,7 @@ Continuité en $a \in U$ un ouvert de $\mathbb{R}^2$
 
 \begin{itemize}
     \item Boule ouvert de $\mathbb{R}^2$ - $B(a, r) = \{ z \in \mathbb{R}^2 \ligneh \|z-a\| < r \}$
-    \item Ouvert de $\mathbb{R}^2$ - $\forall a \in U, \exists r > 0 | B(a, r) \subset U$
+    \item Ouvert de $\mathbb{R}^2$ - $\forall a \in U, \exists r > 0 \ligneh B(a, r) \subset U$
     \item $\underset{x \rightarrow \alpha}{\lim} ( \underset{y \rightarrow \beta}{\lim} f(x, y) ) \neq \underset{(x, y) \rightarrow (\alpha, \beta)}{\lim} f(x, y)$
     \item Continuité stable par combinaison linéaire, produit, inverse (si la fonction ne s'annule pas), et composé (tout type)
     \item Toute fonction polynomiale de $\mathbb{R}^2$ sont continues
@@ -2457,11 +2409,8 @@ Continuité en $a \in U$ un ouvert de $\mathbb{R}^2$
     \item Deuxième dérivée partielle en $a = (\alpha, \beta)$ - $\partial_2 f(a) = D_{\epsilon_2} f(a) = f_2'(\beta)$ avec $f_2 : x \mapsto f(\alpha, 2)$ la deuxième application partielle de $f$ en $a$
     \item Gradient de $f$ en $a$ - $\nabla f (a) = (\partial_1 (a), \partial_2 (a))$
     \item $D_v f(a) = \langle \nabla f(a) \ligneh v \rangle$
-    \item Point critique - $\nabla f (a) = 0$
-    \begin{itemize}
-        \item $\nabla f (a) = 0$ est une condition nécessaire d'extrema
-    \end{itemize}
-    \item Les expressions des dérivés et du gradient pour une combinaison linéaire, produit, et inverse (si la fonction ne s'annule pas) d'une fonction à deux variables dérivables sont analogues à les expressions pour les fonctions à variable réelle
+    \item Point critique - $\nabla f (a) = 0$ - condition nécessaire d'extrema pour fonction de classe $\mathcal{C}^1$
+    \item Les expressions des dérivés et du gradient pour une CL, produit, et inverse (si la fonction ne s'annule pas) d'une fonction de deux variables dérivables sont analogues à les expressions pour les fonctions de variable réelle
     \item Classe $\mathcal{C}^1$ - $f$ admet des dérivées partielles continues 
     \begin{itemize}
         \item $\mathcal{C}^1 \subset \mathcal{C}^0$
@@ -2472,21 +2421,18 @@ Continuité en $a \in U$ un ouvert de $\mathbb{R}^2$
 \subsubsection{Dérivé d'un composée}
 
 \begin{itemize}
-    \item Cas $f : U \rightarrow \mathbb{R}, \theta : \text{Im}(f) \rightarrow \mathbb{R}$
+    \item Cas $f : U \rightarrow \mathbb{R}, \theta : \text{Im}(f)\rightarrow \mathbb{R}$, alors $\theta \circ f : U \rightarrow \mathbb{R}$
     \begin{itemize}
-        \item $\theta \circ f : U \rightarrow \mathbb{R}$
         \item $\partial_{\underset{2}{1}}(\theta \circ f) = (\theta'\circ f) \times \partial_{\underset{2}{1}}f$
         \item $\nabla (\theta \circ f) = (\theta' \circ f) \times \nabla f$
     \end{itemize}
-    \item Cas $ \gamma = (\gamma_1 : \mathbb{R} \rightarrow \mathbb{R}, \gamma_2 : \mathbb{R} \rightarrow \mathbb{R}) : \mathbb{R} \rightarrow \mathbb{R}^2, f : \text{Im}(\gamma) \rightarrow R$ (1ère règle de la chaîne)
+    \item Cas $ \gamma = (\gamma_1 : \mathbb{R} \rightarrow \mathbb{R}, \gamma_2 : \mathbb{R} \rightarrow \mathbb{R}) : \mathbb{R} \rightarrow \mathbb{R}^2, f : \text{Im}(\gamma) \rightarrow \mathbb{R}$, alors $ f \circ \gamma : \mathbb{R} \in \mathbb{R} $ (1ère règle de la chaîne)
     \begin{itemize}
-        \item $ f \circ \gamma : \mathbb{R} \in \mathbb{R} $
         \item $ (f \circ \gamma)'(t) = \partial_1 f (\gamma(t)) \gamma ' (t) + \partial_2 f (\gamma(t)) \gamma ' (t) $
         \item $ (f \circ \gamma)'(t) = \langle \nabla f (\gamma (t) ) \ligneh \gamma ' (t) \rangle $
     \end{itemize}
-    \item Cas $\Phi = (\phi_1 : \mathbb{R}^2 \rightarrow \mathbb{R}, \phi_2 : \mathbb{R}^2 \rightarrow \mathbb{R}) : \mathbb{R}^2 \rightarrow \mathbb{R}^2, f : \text{Im}(\Phi) \rightarrow \mathbb{R}$
+    \item Cas $\Phi = (\phi_1 : \mathbb{R}^2 \rightarrow \mathbb{R}, \phi_2 : \mathbb{R}^2 \rightarrow \mathbb{R}) : \mathbb{R}^2 \rightarrow \mathbb{R}^2, f : \text{Im}(\Phi) \rightarrow \mathbb{R}$, alors $ f \circ \Phi = \mathbb{R}^2 \rightarrow \mathbb{R} $ (2ème règle de la chaîne)
     \begin{itemize}
-        \item $ f \circ \Phi = \mathbb{R}^2 \rightarrow \mathbb{R} $
         \item $ \partial_1 (f \circ \Phi)(a) = \partial_1 f(\Phi(a)) \partial_1 \phi_1(a) + \partial_2 f(\Phi(a)) \partial_1 \phi_2(a) $
         \item $ \partial_2 (f \circ \Phi)(a) = \partial_1 f(\Phi(a)) \partial_2 \phi_1(a) + \partial_2 f(\Phi(a)) \partial_2 \phi_2(a) $
     \end{itemize}
