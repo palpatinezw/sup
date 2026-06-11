@@ -23,20 +23,26 @@
 
 \section{Incertitudes}
 \subsection{Incertitude de type A}
-Évaluation par méthodes statistiques avec plusieurs mesures
+Évaluation par méthodes statistiques (moyenne de plusieurs mesures)
 \begin{itemize}
-    \item Résultat donne par moyenne arithmétique
-    \item L’écart-type expérimental $ s_{\text{exp}} = \sigma_{N-1} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(m_i-\overline{m})^2} $
+    \item L'écart-type expérimental $ s_{\text{exp}} = \sigma_{N-1} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(m_i-\overline{m})^2} $
     \item L'incertitude-type (type A) $ s = \sqrt{\frac{1}{N}}s_{\text{exp}} $
 \end{itemize}
 
 \subsection{Incertitude de type B}
 Évaluation par des incertitudes données
 \subsubsection{Incertitude-type}
-Étant donné une incertitude de $ \pm a $, $ s_B = \frac{a}{\sqrt{3}} $. On fait toujours la division par $ \sqrt{3} $.
+Étant donné une incertitude de $ \pm a $
+
+\[ s_B = \frac{a}{\sqrt{3}} \]
+
 \subsubsection{Propagation}
-Somme des carrés des dérivées partielles
 \[ s_B = \sqrt{\sum_{k=1}^{n}(\frac{\partial f}{\partial x_k}s(x_k))^2} \]
+
+\begin{itemize}
+    \item Pour $y = \sum \lambda_ix_1$, $s_y^2 = \sum \lambda_i^2 s_{x_i}^2 $
+    \item Pour $y = \prod x_1^{\lambda_i}$, $\frac{s_y^2}{y^2} = \sum \lambda_i^2 \frac{s_{x_i}^2}{x_i} $
+\end{itemize}
 
 \subsection{Z-score}
 \[ z = \frac{|M_{\text{mesure}} - M_{\text{réf}}|}{s(M)} \]
@@ -49,53 +55,54 @@ Somme des carrés des dérivées partielles
 \subsection{Définitions}
 \subsubsection{Milieux}
 \begin{itemize}
-    \item Homogène - Toutes les propriétés physiques sont identiques en tout point du milieu
-    \item Isotrope - Les propriétés physiques sont identiques dans toutes les directions de propagation
-    \item Un dioptre - La surface séparant deux milieux différents
+    \item Homogène - Propriétés physiques identiques en tout point du mlieu
+    \item Isotrope - Propriétés physiques identiques dans toutes les directions de propagation
+    \item Dioptre - Surface séparant deux milieux différents
 \end{itemize}
 
 \subsubsection{Systèmes optiques}
 \begin{itemize}
-    \item Stigmatique - Pour un couple de points $ (A, A') $, tous les rayons issus de $A$ et traversant le système optique passent par $A'$
+    \item Stigmatique - Pour un couple de points $ (A, A') $, tous les rayons issus de $A$ traversant le système optique passent par $A'$
     \item Centré - Le système a un axe de symétrie (l'axe optique)
-    \item Plan transverse - Un plan perpendiculaire à l'axe optique
+    \item Plan transverse - Plan perpendiculaire à l'axe optique
     \item Aplanétique - Pour $A$ et $A'$ deux points conjugués et $B$ un point du plan transverse passant par $A$, le conjugué de $B$ (noté $B'$) est dans le plan transverse passant par $A'$
     \item Foyer image $F'$ - L'image d'un objet situé à l'infini et sur l'axe optique
     \item Foyer objet $F$ - L'objet d'une image situé à l'infini et sur l'axe optique
-    \item Afocal - Les foyers sont à l'infini
+    \item Afocal - Système optique dont les foyers sont à l'infini
 \end{itemize}
 
 \subsubsection{L’œil}
 \begin{itemize}
     \item Pupille - contenue dans l'iris, le diamètre est variable de 2 à 8 mm
     \item Cristallin - muscle assimilable à une lentille mince convergente dont la distance focale est variable selon sa contraction
-    \item Rétine - cellules sensibles à la lumière, l'écran de l’œil
-    \item Punctum proximum - $ 0,25 \text{ m} $
-    \item Punctum remotum - à l'infini
-    \item Champ angulaire - l'angle du cône de vision - $ 40 \degree $  à $ 50 \degree $ (mais la zone de perception des détails est plus réduite à $ 1 \degree $).
-    \item Pouvoir séparateur - $ \epsilon = 1' = \frac{1}{60} \degree = 3*10^{-4} \text{ rad} $
+    \item Rétine - cellules sensibles à la lumière, l'écran de l'œil
     \item Myopie - Cristallin trop convergeant, le Punctum Promximum est plus proche et le Ponctum Remotum n'est plus à l'infini.
-    \item Hypermétropie - Cristallin pas assez convergente, le Punctum Proximum plus loin et le Ponctum Remotum se trouve derrière l’œil. 
+    \item Hypermétropie - Cristallin pas assez convergente, le Punctum Proximum plus loin et le Ponctum Remotum se trouve derrière l'œil. 
 \end{itemize}
+
+Des données sur l'oeil se trouvent dans l'annexe. 
 
 \subsubsection{Grandeurs}
 \begin{itemize}
     \item Grandissement $ \gamma = \frac{\overline{A'B'}}{\overline{AB}} $ - rapport des tailles. (Objet et image à distance finie)
     \item Puissance $ P = \frac{\alpha '}{\overline{AB}} $ - angle sur taille. (Objet à distance finie, mais image à distance infinie) Unité: dioptrie ($ \delta = \text{rad m}^{-1}  $)
     \item Grossissement $ G = \frac{\alpha '}{\alpha } $ - rapport des angles. (Objet et image à l'infini) 
-    \item Grandissement commercial $ G_c = \frac{\alpha '}{\beta} = \frac{P}{4} $ - grossissement pour un objet au ponctum proximum.  
+    \item Grandissement commercial $ G_c = \frac{\alpha '}{\beta} = \frac{P}{4} $ - grossissement pour un objet au ponctum proximum ($0,25$ m).  
 \end{itemize}
 L'image est toujours au numérateur.
 
 \subsubsection{Lentilles}
 \begin{itemize}
     \item Lentille mince - L'épaisseur est très petite devant les rayons de courbure des dioptres sphériques de la lentille. On considère que les sommets des deux dioptres et le centre optique (O) sont confondus. 
-    \item Distance focale - Distances du centre optique aux plans focales. Pour une lentille mince, $ f' = -f $. Pour une lentille convergente, $f$ est négatif car $F$ est devant $O$. 
+    \item Distance focale - Distances du centre optique aux plans focales. 
+    \item Pour une lentille mince, $ f' = -f $. 
+    \item Pour une lentille convergente, $f$ est négatif car $F$ est devant $O$. 
     \item Vergence $V=\frac{1}{f'}$
 \end{itemize}
 
 \subsection{Indice optique $ n $}
-$ v = \frac{c}{n} \leq c $.
+\[ v = \frac{c}{n} \leq c \]
+
 Plus $ n $ est grand, plus le milieu est réfringent. 
 
 \subsubsection{Formule de Cauchy}
@@ -118,9 +125,10 @@ Pour les systèmes optiques centrés, le stigmatisme et l'aplanétisme approché
 
 \subsection{Théorèmes et démonstrations}
 
+Les angles sont algébriques
+
 \subsubsection{Première loi de Snell-Descartes - réflexion}
 \[ r = -i\]
-Attention aux angles algébriques. 
 
 \subsubsection{Deuxième loi Snell-Descartes - réfraction}
 \[ n_1\sin{i_1} = n_2\sin{i_2} \]
@@ -157,7 +165,7 @@ Démonstration - Thalès
 \subsubsection{Théorème de Descartes} 
 \[ \frac{1}{\overline{OA}}-\frac{1}{\overline{OA'}} = -\frac{1}{f'} \]
 
-Démonstration - Obtenir une relation linéaire avec $\overline{OA}$ $\overline{OA'}$ $\overline{OF'}$ avec Thalès puis diviser.
+Démonstration - Exprimer $\frac{\overline{A'B'}}{\overline{AB}}$ de 2 manières pour obtenir une relation linéaire avec $\overline{OA}$ $\overline{OA'}$ $\overline{OF'}$ avec Thalès que l'on divise.
 
 \subsubsection{Théorème des Vergences}
 Pour 2 lentilles de distances focales $f_1$ et $f_2$, accolées tel que leurs centres optiques sont confondus, la distance focale des 2 lentilles $f$ est donnée par 
@@ -165,30 +173,31 @@ Pour 2 lentilles de distances focales $f_1$ et $f_2$, accolées tel que leurs ce
 Démonstration - chercher la distance d'un objet donnant une image à l'infini. La distance de l'objet intermédiaire est dans le plan focal objet de la deuxième lentille. On applique le théorème de Descartes. 
 
 \subsubsection{Distance minimale objet-écran - Méthode de Silbermann}
-On pose $ D = \overline{AA'} $ la distance entre l'objet et l'image (sur l'écran). On varie la position de la lentille. On a:
-\[ \overline{OA'}^2 - \overline{OA'}\cdot D + D\cdot f' = 0 \]
-par le théorème de Descartes, d'où
 \[ D \geq 4f' \]
+
+Démonstration - On pose $ D = \overline{AA'} $ la distance entre l'objet et l'image (sur l'écran) et on varie la position de la lentille. Avec Descartes, on a $ \overline{OA'}^2 - \overline{OA'}\cdot D + D\cdot f' = 0 $ et il faut des solutions réelles de $\overline{OA'}$
 
 \subsubsection{Autocollimation}
 Considérons un système optique lentille et miroir plan. On cherche à former une image dans le même plan que son objet. L'objet est dans le plan focal objet pour créer une image intermédiaire à l'infini, qui est reflétée par le miroir et qui forme l'image finale dans le plan focal objet. Ce principe est utile pour le réglage d'un collimateur aux TPs. 
 
 \subsubsection{Dispositifs à plusieurs lentilles}
-Un dispositif est composé de 3 parties
-\begin{itemize}
+\begin{enumerate}
     \item Objectif - du côté de l'objet
     \item Réticule - point de réglage sans effet optique
-    \item Oculaire - du côté de l’œil
-\end{itemize}
+    \item Oculaire - du côté de l'œil
+\end{enumerate}
 
-On cherche à établir le schéma de principe pour chercher les positions des objets, des objets intermédiaires, et l'image finale. Pour la plupart des dispositifs, l'image finale se trouve à l'infini pour que l'œil observateur n'ait pas besoin d’accommoder - l'objet intermédiaire se trouve donc dans le plan focal objet de l'oculaire. 
+\begin{itemize}
+    \item On cherche à établir le schéma de principe pour chercher les positions des objets, des objets intermédiaires, et l'image finale.
+    \item Typiquement, l'image finale se trouve à l'infini pour que l'œil n'ait pas besoin d'accommoder (dans ce cas, l'objet intermédiaire se trouve donc dans le plan focal objet de l'oculaire)
+\end{itemize}
 
 \subsubsection{L'appareil photographique}
 L’appareil est modélisé par un diaphragme à l'entrée, un objectif juste derrière le diaphragme, et un capteur. 
 \begin{itemize}
     \item Durée d'exposition - le temps d'ouverture d'un obturateur pour régler la quantité de lumière reçu par le capteur. 
     \item Nombre d'ouverture - indique l'ouverture de diaphragme. $ N = \frac{f'}{D} $. Attention que l'ouverture de diaphragme $ D $ est au dénominateur. 
-    \item Distance hyperfocale - Pour un réglage à l'infini, le capteur est placé dans le plan focal image. La distance hyperfocale est la limite de netteté dans cette configuration. Tout objet plus loin que la distance hyperfocale $h$ jusqu'à l'infini est donc nette. On trace les rayons limites qui passent par les extrémités d'un pixel (de diamètre $\epsilon$) pour obtenir finalement $h = \frac{f'D}{\epsilon} = \frac{f'^2}{N\epsilon} $
+    \item Distance hyperfocale - Pour un réglage à l'infini, le capteur est placé dans le plan focal image. La distance hyperfocale est la limite de netteté dans cette configuration. Tout objet plus loin que la distance hyperfocale $h$ jusqu'à l'infini est donc nette. On trace les rayons limites qui passent par les extrémités d'un pixel (de diamètre $\epsilon$) pour obtenir $h = \frac{f'D}{\epsilon} = \frac{f'^2}{N\epsilon} $
     \item Profondeur de champ - pour la mise au point sur un point $A$ quelconque (non à l'infini), on cherche les limites de netteté (indiqué par les objets $A_1$ et $A_2$ avec les rayons passant par les extrémités d'un pixel). On utilise la relation de Descartes pour $\overline{OA'}$, $\overline{OA_1'}$ et $\overline{OA_2'}$ et on exprime $\frac{\epsilon}{D}$ avec Thalès. On supprime le terme $\epsilon^2$ pour $\epsilon \ll D$ et on prend $ l - f' = l$ si $f' \ll l$ pour obtenir $\overline{A_1A_2}=\frac{2\epsilon l^2}{Df'} = 2\epsilon l^2\frac{N}{f'^2}$
 \end{itemize}
 
@@ -198,11 +207,11 @@ L’appareil est modélisé par un diaphragme à l'entrée, un objectif juste de
 \subsection{Définitions}
 
 \subsubsection{Intensité}
-L'intensité du courant électrique à travers une surface $S$ la charge totale qui traverse cette surface par unité de temps. (Unité: Ampère $A$) 
 \[i = \frac{dq}{dt}\]  
+Charge totale traversant une surface $S$ par unité de temps. (Unité: Ampère $A$) 
 
 \subsubsection{Potentiel}
-La tension est la différence de potentiel entre deux points. (Unité: Volt $V$)
+Différence de potentiel entre deux points. (Unité: Volt $V$)
 
 \subsubsection{Approximation des Régimes Quasi-Stationnaires ARQS}
 Si les grandeurs ne varient pas trop rapidement (par rapport à la vitesse de propagation des variations = vitesse de la lumière), les lois du régime constant restent applicables à chaque instant.
@@ -240,27 +249,20 @@ Il n'y a pas d'accumulation de charge dans un nœud. On peut appliquer directeme
 
 \[ \sum_k \frac{V_k - V_0}{R_k} + \sum i = 0 \]
 
-\noindent Avec $V_k - V_0$ la tension sur la $ R_k $ et $V_0$ le potentiel au nœud. On peut retirer $V_0$ pour trouver le théorème de Millman. 
+\noindent Avec $V_k - V_0$ la tension sur la $ R_k $ et $V_0$ le potentiel au nœud. On isole $V_0$ pour trouver le théorème de Millman. 
 
-\[ V_0 \sum_k \frac{1}{R_k} = \sum_k \frac{V_k}{R_k} + \sum i \]
+\[ V_0 = \frac{\sum_k \frac{V_k}{R_k} + \sum i}{\sum_k \frac{1}{R_k}} \]
 
-\noindent On utilise ce théorème en appliquant une masse (potentiel $ V_m = 0 \text{ V}$) dans le circuit où ça convient, et calculant ensuite les potentiels dans les points connus, pour trouver le potentiel dans un point qui nous intéresse. 
+\noindent On utilise ce théorème en appliquant une masse (potentiel $ V_m = 0 \text{ V}$) dans le circuit où ça convient, et calculant ensuite les potentiels dans les points connus, pour trouver le potentiel dans un point $V_0$ qui nous intéresse. 
 
 \subsubsection{Loi des mailles}
-Pour une maille orientée
 \[ \sum u = 0 \]
-Cette loi est une conséquence de l'additivité des potentiels.
+Pour une maille orientée. Conséquence de l'additivité des potentiels.
 
 \subsection{Théorème de superposition}
 Dans un réseau ne contenant que des dipôles linéaires, les tensions et les intensités sont la somme des tensions et intensités obtenues dans les différents variants du circuit où toutes les sources sauf une sont éteintes. 
 
-\subsubsection{Propriétés}
-\begin{enumerate}
-    \item Dérivation - $ \underline{\dot{s}}(t) = j\omega\underline{s}(t) = \omega e^{j\frac{\pi}{2}} \underline{s}(t) $ - La dérivée est en quadrature avance
-    \item Intégration - $ \int \underline{s}(t) \text{ d}t = \frac{\underline{s}(t)}{j\omega} = \omega e^{-j\frac{\pi}{2}} \underline{s}(t) $ - La dérivée est en quadrature retard
-\end{enumerate}
-
-\subsubsection{Grandeurs sinusoïdaux}
+\subsection{Grandeurs sinusoïdaux}
 
 Pour une fonction $f$ $T$-périodique, et un signal $s$ sinusoïdal. 
 \begin{enumerate}
@@ -336,7 +338,7 @@ Avec $L$ l'inductance (unité: Henry $H$).
 \begin{itemize}
     \item L'association en série - $L_{eq}=\sum L$
     \item L'association en parallèle - $\frac{1}{L_{eq}}=\sum \frac{1}{L}$
-    \item Aspect énergétique - $ P = L\frac{di}{dt}i=\frac{d}{dt}(\frac{1}{2}Li^2) $ d'où $ E = \frac{1}{2}Li^2 $ l'énergie instantanée emmagasinée dans la bobine
+    \item $ P = L\frac{di}{dt}i=\frac{d}{dt}(\frac{1}{2}Li^2) $ d'où $ E = \frac{1}{2}Li^2 $ l'énergie instantanée emmagasinée dans la bobine
     \item Facteur de puissance $\cos{\phi} = 0$ - en moyenne, la puissance reçue / fournie est nulle
 \end{itemize}
 
@@ -345,8 +347,8 @@ Avec $L$ l'inductance (unité: Henry $H$).
 \subsubsection{Condensateur}
 En convention récepteur - 
 \[ q = Cu \]
-Avec $C$ la capacité (unité: Farad $F$). On utilise souvent la dérivée
 \[ i = C\frac{du}{dt} \]
+Avec $C$ la capacité (unité: Farad $F$). On utilise souvent la dérivée
 
 \[\underline{Z}_C = \frac{1}{jC\omega} \]
 \noindent Pour un signal sinusoïdal, $u$ est en quadrature retard par rapport à $i$.
@@ -372,7 +374,7 @@ Une source idéale de courant impose un courant $I$ (courant électromoteur ou c
 \subsubsection{Diode}
 La diode est un dipôle non-linéaire avec une tension seuil $u_s$ ($0,4 \text{ V}$ à $0,6 \text{ V}$)
 \begin{itemize}
-    \item $u < u_s$ - La diode est bloquée, la courant ne passe pas $i=0$
+    \item $u < u_s$ - La diode est bloquée, le courant ne passe pas $i=0$
     \item $u > u_s$ - La diode est passante. 
 \end{itemize}
 
@@ -397,17 +399,16 @@ La diode est un dipôle non-linéaire avec une tension seuil $u_s$ ($0,4 \text{ 
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Méthode (Équation différentielle)}
+\subsubsection{Méthode}
 \begin{enumerate}
     \item Obtenir l'équation différentielle du circuit (lois de Kirchhoff)
     \item La mettre sous forme canonique et identifier le type d'équation différentielle ainsi que les constantes
-    \item La solution de l'équation différentielle homogène de ... ordre est de la forme: [Déterminer la solution générale selon le type d'équation différentielle, et la solution particulière selon le second membre]
+    \item La solution de l'équation différentielle est de la forme: [Déterminer la solution générale et la solution particulière (c.f. Annexe)]
     \item Chercher les conditions initiales
         \begin{enumerate}
             \item On suppose qu'à $t = 0^-$, le régime permanent constant est atteint depuis suffisamment longtemps.\\
             \noindent [Dessiner le circuit équivalent. Les bobines se comportent comme un court-circuit et les condensateurs comme un interrupteur ouvert]
-            \item Par continuité $\begin{cases} \text{de la tension aux bornes d'un condensateur} \\ \text{du courant traversant la bobine} \end{cases}$, on a $\begin{cases} u(t=0^+) = u(t=0^-) \\ i(t=0^+) = i(t=0^-) \end{cases}$. \\
-            \noindent [Déterminer l'expression des grandeurs continues]
+            \item Par continuité $\begin{cases} \text{de la tension aux bornes d'un condensateur} \\ \text{du courant traversant la bobine} \end{cases}$, on a $\begin{cases} u(t=0^+) = u(t=0^-) \\ i(t=0^+) = i(t=0^-) \end{cases}$ [Expression des grandeurs continues]
         \end{enumerate}
     \item Finalement, la solution [résoudre l'équation différentielle]
 \end{enumerate}
@@ -432,11 +433,10 @@ La diode est un dipôle non-linéaire avec une tension seuil $u_s$ ($0,4 \text{ 
 
 \subsubsection{Fonctions de transfert}
 \begin{itemize}
-    \item Rapport d'une grandeur complexe de sortie et d'une grandeur complexe d'entrée
-    \item Habituellement $ \underline{H}(\omega) = \frac{\underline{u_s}}{\underline{u_e}} $
-    \item En générale, la fonction de transfert change selon la charge (ce qui est branché à la sortie
+    \item Rapport entre grandeurs complexes de sortie et d'entrée - $ \underline{H}(\omega) = \frac{\underline{u_s}}{\underline{u_e}} $
+    \item En générale, la fonction de transfert change selon la charge 
     \begin{itemize}
-        \item Conditions idéals pour ne pas modifier la fonction de transfert lors de la mise en cascade des filtres - $\underline{Z}_s = 0, \underline{Z}_e = \infty$ - on aura $ \underline{H}_{\text{tot}} = \prod_{n} \underline{H}_n $
+        \item Conditions idéals pour ne pas modifier la fonction de transfert lors de la mise en cascade des filtres - $\underline{Z}_s = 0, \underline{Z}_e = \infty$ alors $ \underline{H}_{\text{tot}} = \prod_{n} \underline{H}_n $
     \end{itemize}
     \item On définit la fonction de transfert intrinsèque pour une quadripôle en absence de charge
     \item Gain $ G = |\underline{H}(\omega)| $ (en décibel - $ G_{\text{dB}} = 20\log{|\underline{H}(\omega)|} $), Phase $ \phi = \arg(\underline{H}(\omega)) $
@@ -455,11 +455,8 @@ La diode est un dipôle non-linéaire avec une tension seuil $u_s$ ($0,4 \text{ 
     \item Étude asymptotique et valeur en $x = 1$, en $ G_{\text{dB}} $ et $ \underline{\phi}(\omega) $
 \end{enumerate}
 
-\clearpage
 \subsubsection{Filtres usuels}
-
 On a suppose que $H_{\text{asymp/max}} = 1$
-
 \scriptsize
 \begin{center}
 \begin{tabular}{ |c|c|c|c|c|c|m{2cm}| } 
@@ -470,9 +467,9 @@ On a suppose que $H_{\text{asymp/max}} = 1$
      \hline
      $[\underline{R}]C$ & $ j(\frac{\omega}{\omega_c}) $ & $ 1 + j(\frac{\omega}{\omega_c}) $ & $ \frac{jx}{1 + jx} $ & Passe-haut & $ \frac{\pi}{2} \rightarrow 0 $ & Pente BF: $+20$ dB par décade [Dérivateur] \\
      \hline
-     $RL[\underline{C}]$ & $ 1 $ & $ 1 - (\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ \frac{1}{1 - x^2 +  j\frac{x}{Q}} $ & Passe-bas & $ 0 \rightarrow -\pi $ & Pente HF: $-40$ dB par décade [Double intégrateur]. Résonance pour $Q > \frac{1}{\sqrt{2}}$ \\
+     $RL[\underline{C}]$ & $ 1 $ & $ 1 - (\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ \frac{1}{1 - x^2 +  j\frac{x}{Q}} $ & Passe-bas & $ 0 \rightarrow -\pi $ & Pente HF: $-40$ dB par décade [Double intégrateur]. \\
      \hline
-     $R[\underline{L}]C$ & $ -(\frac{\omega}{\omega_0}) ^2$ & $ 1 - (\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ \frac{-x^2}{1 - x^2 +  j\frac{x}{Q}} $ & Passe-haut & $ \pi \rightarrow 0 $ & Pente BF: $+40$ dB par décade [Double dérivateur]. Résonance pour $Q > \frac{1}{\sqrt{2}}$ \\
+     $R[\underline{L}]C$ & $ -(\frac{\omega}{\omega_0}) ^2$ & $ 1 - (\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ \frac{-x^2}{1 - x^2 +  j\frac{x}{Q}} $ & Passe-haut & $ \pi \rightarrow 0 $ & Pente BF: $+40$ dB par décade [Double dérivateur]. \\
      \hline
      $[\underline{R}]LC$ & $ j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ 1 - (\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ \frac{1}{1+jQ(x-\frac{1}{x})} $ & Passe-bande & $ \frac{\pi}{2} \rightarrow -\frac{\pi}{2} $ & Pente BF: $+20$ dB par décade [Dérivateur], Pente HF: $-20$ dB par décade [Intégrateur], Croisements des asymptotes varie selon $Q$  \\
      \hline
@@ -492,14 +489,13 @@ On a suppose que $H_{\text{asymp/max}} = 1$
 \end{itemize}
 
 \subsubsection{Variations selon $Q$}
-Pour les secondes ordres passe-bas et pass-haut, on a $\frac{1}{\sqrt{2}}$ la valeur de $Q$ pour avoir de resonance. 
 \begin{itemize}
     \item $Q < \frac{1}{\sqrt{2}}$ - Courbe en dessous de l'asymptote
     \item $Q = \frac{1}{\sqrt{2}}$ - Courbe la plus proche de l'asymptote
-    \item $Q > \frac{1}{\sqrt{2}}$ - Courbe au dessus de l'asymptote, reonance à $w_r < w_0$
+    \item $Q > \frac{1}{\sqrt{2}}$ - Courbe au dessus de l'asymptote, resonance à $w_r < w_0$
 \end{itemize}
 
-\noindent Pour des variations d'un filtre passe-bande, voir section sur les resonances dans les annexes.
+c.f. Annexe surtout pour passe-bande
 
 \subsection{Amplificateur linéaire intégré}
 \subsubsection{Entrées et sortie}
@@ -507,7 +503,7 @@ Pour les secondes ordres passe-bas et pass-haut, on a $\frac{1}{\sqrt{2}}$ la va
     \item Entrée inverseuse ($V_-$)
     \item Entrée non-inverseuse ($V_+$)
     \item Sortie avec tension ($V_s$) relative à la masse
-    \item Tensions d'alimentation $V_L$ et $V_H$ - et une tension de saturation de l'ALI $V_{\text{sat}}$
+    \item Tensions d'alimentation $V_L$ et $V_H$ - et tension de saturation $V_{\text{sat}}$
 \end{itemize}
 
 \subsubsection{Caractéristique}
@@ -532,9 +528,9 @@ Pour les secondes ordres passe-bas et pass-haut, on a $\frac{1}{\sqrt{2}}$ la va
     \item Suppose que l'ALI est idéal
     \item Détermination du régime de fonctionnement
         \begin{itemize}
-            \item Si la rétroaction se fait sur l'entrée inverseuse - système stable - régime linéaire - $\epsilon = 0$ donc $V_-=V_+$. Il faut parfois ensuite verifier que $|V_s| < V_{\text{sat}}$
-            \item Si la rétroaction se fait sur l'entrée non-inverseuse, ou si le système est en boucle ouverte 0 - système instable - régime de saturation - $ |V_s| = V_{\text{sat}} $
-            \item Si de multiples rétroactions sur les deux entrées - étude complète nécessaire
+            \item Rétroaction sur l'entrée inverseuse - système stable - régime linéaire - $\epsilon = 0$ donc $V_-=V_+$. Il faut parfois ensuite verifier que $|V_s| < V_{\text{sat}}$
+            \item Rétroaction sur l'entrée non-inverseuse, ou si le système est en boucle ouverte - système instable - régime de saturation - $ |V_s| = V_{\text{sat}} $
+            \item Multiples rétroactions sur les deux entrées - étude complète  [HP]
         \end{itemize}
     \item Résolution mathématique pour obtenir $V_-, V_+, e(t), s(t)$
 \end{enumerate}
@@ -565,7 +561,7 @@ Pour 2 ondes synchrones, on aura une onde résultant ayant la même fréquence d
 
 \noindent Interférence avec 2 sources ponctuelles, séparées par une distance $a$ et de distance $D$ de l'écran
 \begin{itemize}
-    \item Interfrange $ i = \frac{D\lambda}{a} $ [Démonstration - On détermine $d_2 - d_1 = \frac{xa}{D}$ avec une développement limitée et on étudie l'amplitude à l'écran qui dépend du phase $\phi_i - k d_i$]
+    \item Interfrange $ i = \frac{D\lambda}{a} $ [Démonstration - On détermine $d_2 - d_1 = \frac{xa}{D}$ avec une développement limitée et on étudie l'amplitude à l'écran qui dépend de la phase $\phi_i - k d_i$]
 \end{itemize} 
 \noindent 
 
@@ -585,7 +581,7 @@ Pour 2 ondes de pulsations légèrement différente
 La somme de deux ondes synchrones et de même amplitude, qui se propagent dans des sens opposées, donne:
 \[ 2A \cos{(\omega t + \phi)} \cos{(kx + \psi)} \]
 
-\noindent Démonstration - sommation des deux ondes synchrones avec formule de factorisation pour cos
+\noindent Démonstration - sommation avec formule de factorisation pour cos
 
 \begin{itemize}
     \item Ventre - positions où $\cos{(kx + \psi)} = 1$ donc amplitude maximale
@@ -596,19 +592,23 @@ La somme de deux ondes synchrones et de même amplitude, qui se propagent dans d
 \end{itemize}
 
 \subsubsection{Corde de Melde}
-!!
+\begin{itemize}
+    \item Onde stationnaire avec noeuds imposés aux bornes
+    \item Modes propres en $\lambda_n = \frac{2L}{n}$
+\end{itemize}
 
 \subsection{Diffraction}
 Pour un trou circulaire de diamètre $ D \lesssim \lambda $
 \[ \sin{\theta} \approx 1,22 \frac{\lambda}{D} \]
 
 \noindent
-Pour un réseau de diffraction avec un pas de réseau de $a$, le $p$-ième ordre est donné par:
+Pour un réseau de diffraction avec un pas de réseau de $a$, le $p$-ième ordre:
 \[ \sin \theta_p - \sin \theta_i = p \frac{\lambda}{na} \]
 \noindent avec $n$ l'indice optique du milieu. Démonstration - avec différence de marche \\
+
 \noindent On peut étudier la déviation $D = \theta - \theta_i$ pour obtenir un minimum lorsque $ \theta = -\theta_i $ alors $ D_{\text{min}} = -2\theta_i = 2\theta $
 
-\subsubsection{goniomètre}
+\subsubsection{Goniomètre}
 On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $D_{\text{min}} = \Delta \theta$. On a pour la diffraction du $n$-ième ordre,
 
 \[ \lambda = \frac{2n_{\text{milieu}}a}{n}\sin (\frac{D_{\text{min}}}{2}) \]
@@ -618,26 +618,23 @@ On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $
 
 \subsection{Définitions}
 \begin{itemize}
-    \item Cinématique du point - Domaine où l'on décrit les mouvements sans en chercher les causes
+    \item Cinématique du point - domaine où l'on décrit les mouvements sans en chercher les causes
     \item Dynamique - Domaine où l'on cherche à établir le lien entre les mouvements et les causes qui engendrent ces mouvements
     \item Statique - Étude des équilibres des systèmes (cas particulier de la dynamique)
     \item Système indéformable
     \begin{itemize}
-        \item Solide indéformable - distance entre 2 points dans le solide est constante
+        \item Solide indéformable - distance entre 2 points du solide est constante
         \item Description du solide dans le système nécessite 6 paramètres (3 axes de position pour le centre d'inertie, 3 angles de rotation)
-    \end{itemize}
-    \item Point matériel
-    \begin{itemize}
-        \item On considère que la translation et néglige la rotation
         \item Tous les points du solide ont le même mouvement - il suffit donc d'étudier un point (le centre d'inertie)
     \end{itemize}
+    \item Point matériel - On ne considère que la translation et néglige la rotation
     \item Référentiel - repère muni d'une horloge
     \item Équation horaire - l'équation donnant $ \overrightarrow{OM}(t) $
     \item Trajectoire - l'ensemble des points parcourus par $M$ - équation de la trajectoire relie les coordonnées sans faire intervenir le temps
     \item Vitesse - $ \vec{v}_{|R}(M) = \frac{\dd \overrightarrow{OM}}{\dt}_{|R} $ - colinéaire à la trajectoire
     \item Accélération - $ \vec{a}_{|R}(M) = \frac{\dd \vec{v}_{|R}(M)}{\dt}_{|R} = \frac{\dd^2 \overrightarrow{OM}}{\dt^2}_{|R} $ - pointe vers la concavité de la trajectoire
     \begin{itemize}
-        \item $ \frac{\dd \| \vec{v}_{\repr} \|}{\dt} = \| \vec{a}_{\repr} \| \cos \alpha $
+        \item $ \frac{\dd \| \vec{v}_{\repr} \|}{\dt} = \| \vec{a}_{\repr} \| \cos \alpha $ ($\alpha$ angle entre mouvement et accélération)
     \end{itemize}
     \item Translation - Les directions du repère liée au solide sont fixes par rapport au référentiel d'étude
     \item Masse inerte - grandeur qui caractérise la capacité d'un système de resister à des contraintes pour modifier son mouvement (supposée indépendant du mouvement et du référentiel)
@@ -649,17 +646,14 @@ On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $
 \begin{itemize}
     \item Système d'axes - axes de référence liées à un solide
     \item Le vecteur position $ \overrightarrow{OM} $ est unique
-    \item On définit une base avec 3 vecteurs $ (\vec{e_1}, \vec{e_2}, \vec{e_3}) $
+    \item On définit une base unitaire orthonormée $ (\vec{e_1}, \vec{e_2}, \vec{e_3}) $
     \begin{itemize}
-        \item Base unitaire - $ \| \vec{e_1} \| = \| \vec{e_2} \| = \| \vec{e_3} \| = 1 $
-        \item Base orthonormale - les 3 vecteurs sont orthogonaux
         \item Base directe - $ \vec{e_1} \wedge \vec{e_2} = \vec{e_3} $
     \end{itemize}
     \item Repère - association d'une base avec un point d'origine
 \end{itemize}
 
-\subsubsection{Coordonnées cartésiennes}
-\[ (\vec{e_x}, \vec{e_y}, \vec{e_z}) \]
+\subsubsection{Coordonnées cartésiennes $(\vec{e_x}, \vec{e_y}, \vec{e_z})$}
 \begin{center}
     \includegraphics[height=4cm]{cartesienne.jpg}
 \end{center}
@@ -672,8 +666,7 @@ On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $
 \[ \vec{v}_{\repr} = \dot{x} \vec{e_x} + \dot{y} \vec{e_y} + \dot{z} \vec{e_z} \]
 \[ \vec{a}_{\repr} = \ddot{x} \vec{e_x} + \ddot{y} \vec{e_y} + \ddot{z} \vec{e_z} \]
 
-\subsubsection{Coordonnées cylindriques}
-\[ (\vec{e_r}, \vec{e_{\theta}}, \vec{e_z}) \]
+\subsubsection{Coordonnées cylindriques $(\vec{e_r}, \vec{e_{\theta}}, \vec{e_z}) $}
 \begin{center}
     \includegraphics[height=5cm]{cylindrique.jpg}
 \end{center}
@@ -709,8 +702,7 @@ Pour un mouvement autour de l'axe $ \Delta = \vec{e_z} $, on a $\dot{r} = 0 \et 
 \[ \vec{\Omega} = \dot{\theta} \vec{e_z} \]
 Avec $\dot{\theta}$ la vitesse angulaire
 
-\subsubsection{Coordonnées sphériques}
-\[ (\vec{e_r}, \vec{e_{\theta}}, \vec{e_{\phi}}) \]
+\subsubsection{Coordonnées sphériques $ (\vec{e_r}, \vec{e_{\theta}}, \vec{e_{\phi}}) $}
 \begin{center}
     \includegraphics[height=8cm]{spherique.jpg}
 \end{center}
@@ -738,15 +730,15 @@ Avec $\dot{\theta}$ la vitesse angulaire
 \subsubsection{Quantité de mouvement}
 \[ \vec{p}_{\repr}(M) = m \vec{v}_{\repr}(M) \]
 
-\noindent Pour un centre de gravité $G$ du système $S$ défini: $ (\sum_i) \overrightarrow{OG} = \sum_i m_i \overrightarrow{OM_i} \iff \sum_i m_i \overrightarrow{GM_i} = 0 $
-\[ \vec{p}_{\repr}(S) = \sum_i \vec{p}_{\repr}(M_i) = \vec{p}_{\repr}(G) = m_tot \vec{v}_{\repr}(G) \]
+Centre de gravité $G$ du système $S$: $ (\sum_i) \overrightarrow{OG} = \sum_i m_i \overrightarrow{OM_i} \iff \sum_i m_i \overrightarrow{GM_i} = 0 $
+\[ \vec{p}_{\repr}(S) = \sum_i \vec{p}_{\repr}(M_i) = \vec{p}_{\repr}(G) = m_{\text{tot}} \vec{v}_{\repr}(G) \]
 
 \subsubsection{Moment cinétique}
 \[ \overrightarrow{L_{O\repr}}(M) = \overrightarrow{OM} \wedge \vec{p}_{\repr}(M) \]
 \[ L_{\Delta \repr}(M) = \overrightarrow{L_{O\repr}}(M) \cdot \vec{u}_{\Delta} = mr^2\dot{\theta} \]
 
 \begin{itemize}
-    \item Le moment d'inertie $J_{\Delta}(M) = mr^2$
+    \item Moment d'inertie $J_{\Delta}(M) = mr^2$
     \item Pour un solide indéformable, $ L_{\Delta \repr}(S) = J_{\Delta}(S) \dot{\theta} $ avec $ J_{\Delta}(S) = \int r^2 \dd m $
 \end{itemize}
 
@@ -759,52 +751,24 @@ Grandeur vectorielle décrivant l'interaction capable de modifier et/ou de produ
     \item Force colombienne - $ \vec{F_q} = \frac{q_1 q_2}{4 \pi \epsilon_0} \frac{1}{\| \overrightarrow{M_1 M_2} \|^2}\vec{u_{12}} =  \frac{q_1 q_2}{4 \pi \epsilon_0} \frac{\overrightarrow{M_1 M_2}}{\| \overrightarrow{M_1 M_2} \|^3} $
 \end{itemize}
 
-\subsection{Intéractions newtoniennes}
-\[ \vec{F} = \frac{K}{r^2}\vec{e_r} \]
+\subsubsection{Forces de contact}
 \begin{itemize}
-    \item Force gravitationelle et coulombienne
-    \item Répulsive si $K>0$, attractive si $K<0$
-    \item Centrale de centre $O$, donc $\overrightarrow{L_{O\repr}} = \cste$
+    \item Réaction normale d'un support $ \|\vec{R_N}\| $ - perpendiculaire au support, dirigé vers l'extérieur du support, contact avec le support tant que $ \|\vec{R_N}\| > 0 $
+    \item Tension d'un fil $ \vec{T} $ - selon le fils, dirigé vers le point fixe, fil tendu tant que $ \|\vec{T}\| > 0 $, $\vec{T} = \vec{0}$ si le fil est distendu
+    \item Force d'un ressort du type élastique $ \|\vec{F_r}\| = |k(l - l_v)| $ avec $k$ le constant de raideur et $l - l_v$ l'allongement du ressort
+    \item Force de frottement fluide $ f = -\lambda [\vec{v}_{\repr}(M) - \vec{v}_{\repr}(\text{fluide})] = -\lambda \vec{v}_{\repr}(M) $ - valable pour nommbre de Reynolds $R_R < 1$
+    \item Frottement solide - lois d'Amontons-Coulomb
     \begin{itemize}
-        \item La trajectoire reste dans un plan
-        \item Loi des aires - $C = r^2 \dot{\theta}$ constant
-    \end{itemize}
-    \item Eccentricité - $\vec{e} = -\frac{mC}{K}\vec{v_{\repr}} - \vec{e_{\theta}}$ - constante du mouvement
-    \begin{itemize}
-        \item $r = \frac{p}{\epsilon + e\cos{\theta}}$ avec $\epsilon = \begin{cases}
-            +1 & \si K<0 \\
-            -1 & \si K>0 
-        \end{cases}$
-        \item $E_{m\repr} = \frac{K^2}{2mC^2}(e^2-1)$ [Démonstration - calculer $e^2$]
-        \item Pour $K>0$ répulsive, on a $e>1$, la trajectoire est une hyperbole
-        \item Pour $K<0$
-        \begin{itemize}
-            \item Si $e=0$, trajectoire circulaire
-            \item Si $0<e<1$, trajectoire elliptique en état liée
-            \begin{itemize}
-                \item Périgée - le point à la plus courte distance avec $O$ - $r_P = \frac{p}{1+e}$
-                \item Apogée - le point à la plus grande distance avec $O$ - $r_A = \frac{p}{1-e}$
-                \item Demi grand-axe $a = \frac{r_A + r_P}{2} = \frac{p}{1-e^2}$
-                \item Constante des aires $C = r_A v_A = r_P v_P$ (vitesses radiales nulles)
-                \item $E_{m\repr} = \frac{K}{2a}$ [Démonstration - soustraire $r_A^2 E_{m\repr}$ et $r_P^2 E_{m\repr}$]
-            \end{itemize}
-            \item Si $e=1$, séparatrice du mouvement, trajectoire parabolique
-            \item Si $e>1$, trajectoire hyperbolique en état libre
-            \begin{itemize}
-                \item Asymptote à $\theta_l = \arccos (-\frac{1}{e})$ et $2\pi - \theta_l$
-            \end{itemize}
-        \item 3e loi de Képler - $\frac{T^2}{r^3} = -\frac{4 \pi^2 m}{K}$
-        \end{itemize}
+        \item Non-glissement $\vec{v}_{\repr}(M) = \vec{0}$ - $ \vec{R_T} = -\sum \vec{F} $ tant que $\|\vec{R_T}\| < f_s\|\vec{R_N}\|$
+        \item Glissement $ \vec{R_T} = f_d \vec{R_N} $ tant que $ \|\vec{v}_{\repr}(M)\| > 0 $
+        \item $f_d < f_s$ (en général, $f_d \approx f_s$)
     \end{itemize}
 \end{itemize}
 
 \subsubsection{Énergie potentielle}
-Une force est dérivante d'une énergie potentielle si son travail est indépendant du chemin suivie
+Une force est dérivante d'une énergie potentielle si son travail est indépendant du chemin suivi
 \[ \delta W_{\repr} = F \cdot \dd \overrightarrow{OM} = -\dd E_p \]
-\[ \vec{F} = - \vec{\text{grad}} E_p \]
-
-\noindent Pour une intéraction newtonienne
-\[ E_p = \frac{K}{r} + \cste \]
+\[ \vec{F} = - \grad E_p \]
 
 \subsubsection{Énergie mécanique}
 \[ E_{m\repr} = E_{c\repr} + \sum_i E_{p, i \repr} \]
@@ -822,7 +786,7 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
         \item Équilibre stable - quand on écart le système de sa poition d'équilibre, il revient vers sa position d'équilibre - énergie potentielle est minimale et $ \frac{\dd E_p(x_{\text{eq}})}{\dx} > 0 $
         \item Équilibre instable - quand on écart le système de sa position d'équilibre, il s'en éloigne - énergie potentielle est maximale et $ \frac{\dd E_p(x_{\text{eq}})}{\dx} < 0 $
     \end{itemize}
-    \item Expressions générales pour un système au voisinage d'une position d'équilibre [Démonstration - développement limité en $x_{\text{eq}}$ de $F$ et $E_p$]
+    \item Expressions générales pour un système au voisinage d'une position d'équilibre [Démonstration - développement limité en $x_{\text{eq}}$ de $F$ ou $E_p$]
     \begin{itemize}
         \item Équilibre stable - tout système conservatif se comporte comme un oscillateur harmonique de $ \omega_0 = \sqrt{\frac{1}{m}\frac{\dd ^2 E_p(x_{\text{eq}})}{\dx^2}} $
         \item Équilibre instable - le système s'éloigne selon une équation exponentielle de temps caractéristique $\tau$
@@ -830,23 +794,6 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
     \item État lié - mouvement possible entre deux points d'arrêts
     \item État de diffusion - un seul point de reboussement. Si le système approche et rebousse le chemin, il ne revient plus
     \item Barrière d'énergie potentielle - limite le mouvement entre 2 états possibles
-\end{itemize}
-
-\noindent Pour une intéraction newtonienne, Avec la loi des aires ($r^2 \dot{\theta} = C$), on a
-\[ E_{m\repr} = \frac{1}{2}m\dot{r}^2 + \frac{1}{2}m\frac{C^2}{r^2} + \frac{K}{r} \]
-
-\subsubsection{Forces de contact}
-\begin{itemize}
-    \item Réaction normale d'un support $ \|\vec{R_N}\| $ - perpendiculaire au support, dirigé vers l'extérieur du support, contact avec le support tant que $ \|\vec{R_N}\| > 0 $
-    \item Tension d'un fil $ \vec{T} $ - selon le fils, dirigé vers le point fixe, fil tendu tant que $ \|\vec{T}\| > 0 $, $\vec{T} = \vec{0}$ si le fil est distendu
-    \item Force d'un ressort du type élastique $ \|\vec{F_r}\| = |k(l - l_v)| $ avec $k$ le constant de raideur et $l - l_v$ l'allongement du ressort
-    \item Force de frottement fluide $ f = -\lambda [\vec{v}_{\repr}(M) - \vec{v}_{\repr}(\text{fluide})] = -\lambda \vec{v}_{\repr}(M) $ - valable pour nommbre de Reynolds $R_R < 1$
-    \item Frottement solide - lois d'Amontons-Coulomb
-    \begin{itemize}
-        \item Cas du non-glissement $\vec{v}_{\repr}(M) = \vec{0}$ - $ \vec{R_T} = -\sum_i \vec{F_i} $ tant que $\|\vec{R_T}\| < f_s\|\vec{R_N}\|$
-        \item Cas du glissement $ \vec{R_T} = f_d \vec{R_N} $ tant que $ \|\vec{v}_{\repr}(M)\| > 0 $
-        \item $f_d < f_s$ (en général, $f_d \approx f_s$)
-    \end{itemize}
 \end{itemize}
 
 \subsubsection{Moment d'une force}
@@ -859,7 +806,7 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
 \end{itemize}
 
 \subsubsection{Couple}
-La somme des $\vec{M}_O \neq \vec{0}$ mais la somme des $\vec{F} = \vec{0}$ - dans ce cas $\vec{\Gamma} = \vec{M}_O$ est indépendant de $O$
+$\sum \vec{F} = \vec{0}$ et $\sum \vec{M}_O \neq \vec{0}$ - alors $\vec{\Gamma} = \vec{M}_O$ est indépendant de $O$
 
 \begin{itemize}
     \item Pour un couple de 2 forces $\vec{F}$ et $-\vec{F}$ agissant sur $M_1$ et $M_2$, $\vec{\Gamma} = \overrightarrow{M_1M_2} \wedge \vec{F}$
@@ -876,27 +823,26 @@ Dans les référentiels galiléens, un point matérial isolé est animé d'un mo
 
 \subsubsection{2ème loi de Newton - principe fondamental de la dynamique}
 Pour un point matérial dans un référentiel galiléen
-\[ \frac{\dd \vec{p}_{\repr}(M)}{\dt}_{\repr} = \sum_i \vec{F_i} \]
-\[ m \vec{a}_{\repr}(M) = \sum_i \vec{F_i} \]
+\[ \frac{\dd \vec{p}_{\repr}(M)}{\dt}_{\repr} = m \vec{a}_{\repr}(M) = \sum \vec{F} \]
 
 \begin{itemize}
-    \item Pour un système, uniquement les forces extérieures interviennent car la somme des forces intérieures s'annule (par principe des actions réciproques)
+    \item Pour un système, uniquement les forces extérieures interviennent (somme des forces intérieures s'annule par principe des actions réciproques)
     \item Pour un solide indéformable de centre d'inertie $G$ on a le théorème de la quantité de mouvement (TQM) - $ m \vec{a}_{\repr}(G) = \sum_{\text{ext}} \vec{F} $
 \end{itemize}
 
-\noindent En passant aux moments, on a le théorème du moment cinétique pour un solide indéformable autour du point / de l'axe fixe dans un référentiel galiléen
+\noindent En passant aux moments, on a le théorème du moment cinétique autour du point / de l'axe fixe dans un référentiel galiléen
 
 \[ \frac{\dd \overrightarrow{L_{O\repr}}(M)}{\dt} = \sum_{i} \overrightarrow{M_O}(\vec{F_i}(M)) \]
 \[ J_{\Delta}(M)\ddot{\theta} = \sum_{i} \overrightarrow{M_{\Delta}}(\vec{F_i}(M)) \]
 
 \begin{itemize}
-    \item Pour un système, uniquement les forces extérieures interviennent car la somme des moments des forces intérieures s'annule (par principe des actions réciproques)
+    \item Pour un système, uniquement les forces extérieures interviennent (Moments des forces intérieures s'annule par principe des actions réciproques)
     \item Pour un système indéformable - $ J_{\Delta}(\mathcal{S}) \ddot{\theta} = \sum_{\text{ext}}M_{\Delta}(\vec{F}) $
 \end{itemize}
 
 \subsubsection{3ème loi de Newton - principe de l'action réciproque}
 \[\vec{F}_{B \rightarrow A} = -\vec{F}_{A \rightarrow B}\]
-\noindent Avec $\vec{F}_{B \rightarrow A} \et \vec{F}_{A \rightarrow B}$ selon la droite d'action $AB$
+\noindent Avec $\vec{F}_{B \rightarrow A} \et \vec{F}_{A \rightarrow B}$ selon la même droite d'action $AB$
 
 \subsubsection{Théorème de Cauchy}
 Le système $\dot{x} = v \et \dot{v} = \frac{1}{m}F(x, v, t)$ muni des conditions initiales admet une unique solution.
@@ -956,34 +902,6 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
     \item Un système évolue réversiblement, par le renversement du temps, le potrait de phase est symmétrique par rapport à l'axe $Ox$
 \end{itemize}
 
-\subsection{Champ électrostatique et magnétostatique}
-\subsubsection{Force de Lorentz}
-\[ \vec{F_L} = q[\vec{E} + \vec{v}_{\repr} \wedge \vec{B}] \]
-
-\begin{itemize}
-    \item La partie $q\vec{E}$ est la force électrique
-    \item La partie $q\vec{v}_{\repr} \wedge \vec{B}$ est la forme magnétique
-    \item $\vec{E}$, $\vec{B}$ et $\vec{v}_{\repr}$ dépendent du référentiel, mais $\vec{F_L}$ n'en dépende pas
-    \item La force magnétique est plus importante que la force électrique
-    \item La force de gravité est négligeable devant la force de Lorentz
-\end{itemize}
-
-\subsubsection{Potentiel}
-\[ \vec{E} = \frac{Q}{4\pi\epsilon_0} \frac{\overrightarrow{OM}}{\|\overrightarrow{OM}\|^3} \]
-\[ V = \frac{Q}{4\pi\epsilon_0} \frac{1}{\|\overrightarrow{OM}\|} \]
-
-\begin{itemize}
-    \item $\vec{E}$ dérive d'un potentiel $V$
-    \item $\vec{E} = - \grad V $
-    \item La force électrique dérive d'une énergie potentielle $E_p = qV$
-    \item La force magnétique ne travaille pas
-\end{itemize}
-
-\subsubsection{Champ magnétique uniforme et stationnaire}
-On choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec{v_0}$ est dans le plan $(yOz)$. On aura un mouvement uniforme selon $\vec{e_z}$, et un mouvement circulaire de rayon $R = \frac{v_0 \sin \alpha}{|q|B}$. C'est un mouvement hélicoïde. \\
-
-\noindent Démonstration - on pose $ \underline{u} = x + jy $ et on résout une équation différentiel d'ordre 1 en $ \underline{\dot{u}} $
-
 \subsection{Méthode}
 \begin{enumerate}
     \item Définir le système (point matérial / système de points)
@@ -997,12 +915,77 @@ On choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec
     \end{itemize}
 \end{enumerate}
 
+
+\subsection{Forces particulières}
+\subsubsection{Force de Lorentz}
+\[ \vec{F_L} = q[\vec{E} + \vec{v}_{\repr} \wedge \vec{B}] \]
+
+\begin{itemize}
+    \item La partie $q\vec{E}$ est la force électrique
+    \item La partie $q\vec{v}_{\repr} \wedge \vec{B}$ est la force magnétique
+    \item $\vec{E}$, $\vec{B}$ et $\vec{v}_{\repr}$ dépendent du référentiel, mais $\vec{F_L}$ n'en dépende pas
+    \item La force magnétique est plus importante que la force électrique
+    \item La force de gravité est négligeable devant la force de Lorentz
+\end{itemize}
+
+\[ \vec{E} = \frac{Q}{4\pi\epsilon_0} \frac{\overrightarrow{OM}}{\|\overrightarrow{OM}\|^3} \]
+\[ V = \frac{Q}{4\pi\epsilon_0} \frac{1}{\|\overrightarrow{OM}\|} \]
+
+\begin{itemize}
+    \item $\vec{E}$ dérive d'un potentiel $V$
+    \item $\vec{E} = - \grad V $
+    \item La force électrique dérive d'une énergie potentielle $E_p = qV$
+    \item La force magnétique ne travaille pas
+    \item Dans un champ magnétique uniforme et stationnaire, le mouvement est hélicoïdale [Démonstration - on choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec{v_0}$ est dans le plan $(yOz)$. On aura un mouvement uniforme selon $\vec{e_z}$, et un mouvement circulaire de rayon $R = \frac{v_0 \sin \alpha}{|q|B}$ apres résultion en posant $ \underline{u} = x + jy $]
+\end{itemize}
+
+\subsubsection{Intéractions newtoniennes}
+\[ \vec{F} = \frac{K}{r^2}\vec{e_r} \]
+\begin{itemize}
+    \item Force gravitationelle et coulombienne
+    \item Répulsive si $K>0$, attractive si $K<0$
+    \item Centrale de centre $O$, donc $\overrightarrow{L_{O\repr}} = \cste$
+    \begin{itemize}
+        \item La trajectoire reste dans un plan
+        \item Loi des aires - $C = r^2 \dot{\theta}$ constant
+    \end{itemize}
+    \item Dérive d'un potentiel - $E_p = \frac{K}{r} + \cste$
+    \item $E_{m\repr} = \frac{1}{2}m\dot{r}^2 + \frac{1}{2}m\frac{C^2}{r^2} + \frac{K}{r}$ avec la loi des aires
+    \item Eccentricité - $\vec{e} = -\frac{mC}{K}\vec{v_{\repr}} - \vec{e_{\theta}}$ - constante du mouvement
+    \begin{itemize}
+        \item $r = \frac{p}{\epsilon + e\cos{\theta}}$ avec $\epsilon = \begin{cases}
+            +1 & \si K<0 \\
+            -1 & \si K>0 
+        \end{cases}$
+        \item $E_{m\repr} = \frac{K^2}{2mC^2}(e^2-1)$ [Démonstration - calculer $e^2$]
+        \item Pour $K>0$ répulsive, on a $e>1$, la trajectoire est une hyperbole
+        \item Pour $K<0$
+        \begin{itemize}
+            \item Si $e=0$, trajectoire circulaire
+            \item Si $0<e<1$, trajectoire elliptique en état liée
+            \begin{itemize}
+                \item Périgée - le point à la plus courte distance avec $O$ - $r_P = \frac{p}{1+e}$
+                \item Apogée - le point à la plus grande distance avec $O$ - $r_A = \frac{p}{1-e}$
+                \item Demi grand-axe $a = \frac{r_A + r_P}{2} = \frac{p}{1-e^2}$
+                \item Constante des aires $C = r_A v_A = r_P v_P$ (vitesses radiales nulles)
+                \item $E_{m\repr} = \frac{K}{2a}$ [Démonstration - soustraire $r_A^2 E_{m\repr}$ et $r_P^2 E_{m\repr}$]
+            \end{itemize}
+            \item Si $e=1$, séparatrice du mouvement, trajectoire parabolique
+            \item Si $e>1$, trajectoire hyperbolique en état libre
+            \begin{itemize}
+                \item Asymptote à $\theta_l = \arccos (-\frac{1}{e})$ et $2\pi - \theta_l$
+            \end{itemize}
+        \item 3e loi de Képler - $\frac{T^2}{r^3} = -\frac{4 \pi^2 m}{K}$
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
 \clearpage
 \section{Thermodynamique}
 
 \subsection{Définitions}
 \begin{itemize}
-    \item Échelle mésoscopique - un volume contenant un grand nombre de molécules / atomes microscopiques, mais qui est infinitésimal devant l'échelle macroscopique
+    \item Échelle mésoscopique - un volume avec un grand nombre de molécules/atomes microscopiques, mais infinitésimal à l'échelle macroscopique
     \begin{itemize}
         \item Particule de fluide - un volume infinitésimal à l'échelle mésoscopique
     \end{itemize}
@@ -1012,8 +995,8 @@ On choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec
         \item Fermé - échange d'énergie mais pas de particules
         \item Isolé - aucun échange avec l'extérieur
     \end{itemize}
-    \item L'équilibre thermodynamique local - on peut définir les paramètres d'états uniforme à l'échelle mésoscopique
-    \item Variables d'état - paramètre dont la variation ne dépend pas du chemin suivie
+    \item Équilibre thermodynamique local - on peut définir les paramètres d'états uniforme à l'échelle mésoscopique
+    \item Variables d'état - la variation ne dépend pas du chemin suivie
     \begin{itemize}
         \item Extensive - additif pour une partition du système
         \item Intensive - même valeur pour tout sous-système
@@ -1048,7 +1031,7 @@ On choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec
 
 \begin{itemize}
     \item Diagramme de Watt - $(P,V)$ avec $V$ la volume de la machine
-    \item Diagramme de Clapeyron - $(P, V)$ ou $(P, v)$ du système (souvent le gaz seul)
+    \item Diagramme de Clapeyron - $(P, V)$ (du système, souvent le gaz seul)
     \item Diagramme entropique - $(T, S)$
 \end{itemize}
 
@@ -1067,7 +1050,7 @@ On choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec
     \item Réversible - Quasi-statique et constamment à l'équilibre thermodynamique avec l'extérieur $\iff$ quasi-statique et possible d'inverses le sens du transformation en passant par les mêmes états
     \begin{itemize}
         \item Réversible implique en particulier mécaniquement réversible
-        \item L'irreversibilité peut aussi être dû à est inhomogénéités des fonctions d'états
+        \item Des inhomogénéités des fonctions d'états sont causes d'irreversibilité 
     \end{itemize}
     \item Polytropique - équation d'état défini par $PV^k$ constant
     \begin{itemize}
@@ -1117,7 +1100,7 @@ Pour $K$ espèces nomléculaires sous $\phi$ phases distinctes,
 \[ \nu = K + 2 - \phi \]
 
 \begin{itemize}
-    \item $\nu$ Variance - nombre de degrés de liberté thermodynamique - nombre maximal de variables d'états intensives pour définir un état d'équilibre du système
+    \item $\nu$ Variance - nombre de degrés de liberté thermodynamique - nombre maximal de variables d'états intensives pour définir un état d'équilibre
     \item Pour un corps pur homogène, $\nu = 2$ - plan vectoriel
     \item Pour un corps diphasé, $\nu = 1$ - courbe de transition de phase
     \item Pour un corps triphasé, $\nu = 0$ - c'est le point triple où les trois phases peuvent coexister
@@ -1125,7 +1108,7 @@ Pour $K$ espèces nomléculaires sous $\phi$ phases distinctes,
     \begin{itemize}
         \item Le ménisque devient de moins en moins net quand on s'approche du point critique
         \item Pour une transition liquide-vapeur $\rightarrow$ fluide supercritique, on observe l'opalescence critique (la compressibilité diverge, donc les fluctuations de la densité aussi, ce qui provoque la diffusion de la lumière)
-        \item Pour un transition fluide supercritique $\rightarrow$ liquide-vapeur, on observe la coalescence dû à des gouttelettes de liquides qui apparaissent et se coalescent.
+        \item Pour un transition fluide supercritique $\rightarrow$ liquide-vapeur, on observe la coalescence des gouttelettes de liquides.
     \end{itemize}
 \end{itemize}
 
@@ -1139,26 +1122,12 @@ Pour $K$ espèces nomléculaires sous $\phi$ phases distinctes,
 \end{itemize}
 
 \subsubsection{Fluide incompressible et homogène}
-Avec les hypothèse d'un fluide
-\begin{enumerate}
-    \item À l'équilibre thermodynamique local
-    \item Au repos dans le référentiel $R$ galiléen
-    \item Dans un champ de pesanteur $\vec{g}$ uniforme selon $-\vec{e_z}$
-    \item Incompressible
-    \item Homogène
-\end{enumerate}
+Pour un fluide incompressible et homogène, à l'équilibre thermodynamique local au repos dans le référentiel $R$ galiléen dans un champ de pesanteur $\vec{g}$ uniforme selon $-\vec{e_z}$
 
 \[ P(z) = P_0 - \rho g z \]
 
-\subsubsection{Gaz parfait}
-Avec les hypothèse d'un fluide
-\begin{enumerate}
-    \item À l'équilibre thermodynamique local
-    \item Au repos dans le référentiel $R$ galiléen
-    \item Dans un champ de pesanteur $\vec{g}$ uniforme selon $-\vec{e_z}$
-    \item Assimilable à un gaz parfait
-    \item Isotherme
-\end{enumerate}
+\subsubsection{Pression atmosphèrique}
+Dans un atmosphère isotherme assimilable à un gaz parfait à l'équilibre thermodynamique local au repos dans le référentiel $R$ galiléen dans un champ de pesanteur $\vec{g}$ uniforme selon $-\vec{e_z}$
 
 \[ P(z) = P_0 e^{-\frac{M_{\text{mol}}gz}{RT}} = P_0 e^{-\frac{m_{\text{gaz}}gz}{kT}} \]
 
@@ -1171,19 +1140,19 @@ Avec les hypothèse d'un fluide
     \item Pour une transformation quasi-statique et mécaniquement réversible, $P_{\text{contact}} = P$ du système, donc $ \delta W = - P \dd V $
     \item Pour un fluide en écoulement, $\delta W = P_1 \dd V_1 - P_2 \dd V_2$ 
     \begin{itemize}
-        \item $P_1 \dd V_1$ travail d'admission pour le fluide qui "entre dans le système"
-        \item $ - P_2 \dd V_2$ travail de refoulement pour le fluide qui "part du système" 
+        \item $P_1 \dd V_1$ travail d'admission pour le fluide qui ``entre dans le système"
+        \item $ - P_2 \dd V_2$ travail de refoulement pour le fluide qui ``part du système" 
     \end{itemize}
 \end{itemize}
 
 \subsection{Premier principe de la thermodynamique}
+Pour un système fermé
 \[ \dd E_{m\repr} + \dd U = \delta W_{\repr} + \delta Q \]
 
 \begin{itemize}
     \item $U$ est extensive et est une fonction d'état
-    \item La formule est valable pour un système fermé
-    \item Dans le cas où le système est au repos et on a une évolution finie, $\delta U = W_{\repr} + Q$
-    \item Souvent, on néglige les variations de l'énergie mécanique
+    \item Pour un système est au repos en évolution finie, $\delta U = W_{\repr} + Q$
+    \item Souvent, on peut négliger les variations de l'énergie mécanique
 \end{itemize}
 
 \noindent Pour une transformation monobare tel que $P_i = P_f = P_{\text{ext}}$
@@ -1279,20 +1248,20 @@ On définit la coefficient de Laplace
 
 \begin{itemize}
     \item $\dd U = C_V \dd T \et \dd H = C_P \dd T$
-    \item $\dd S = \frac{nR}{\gamma - 1} \frac{1}{T} \dd T + nR \frac{1}{V} \dd V = \dd (\frac{nR}{\gamma - 1} \ln(TV^{\gamma -1}))$
+    \item $\dd S = \frac{nR}{\gamma - 1} \frac{1}{T} \dd T + nR \frac{1}{V} \dd V = \dd (\frac{nR}{\gamma - 1} \ln(TV^{\gamma -1}))$ [Démonstration - par identité thermodynamique et loi des gaz parfaits]
     \item Relation de Mayer - $C_P - C_V = nR$
     \item $C_V = \frac{nR}{\gamma - 1}$
     \item $C_P = \frac{nR\gamma}{\gamma - 1}$
-    \item Pour une transformation adiabatique réversible (isentropique), on a $PV^{\gamma}$ constante
+    \item Une transformation adiabatique réversible est isentropique - $PV^{\gamma} = $ cste 
 \end{itemize}
 
 \subsubsection{Modèle de Van der Waals}
 \[ (P + a \frac{n^2}{v^2})(V- nb) = nRT \]
 
 \begin{itemize}
-    \item Correction du pression - $\propto n^2$ le nombre d'intéractions entre des paires de molécules
-    \item Correction du pression - $\propto \frac{1}{V^2}$ car la force des intéractions intermoléculaires $\propto \frac{1}{r^6}$
-    \item Correction du pression $\geq 0$ - pression réelle plus faible qu'attendue
+    \item Correction de pression - $\propto n^2$ intéractions entre paires de molécules
+    \item Correction de pression - $\propto \frac{1}{V^2}$ les forces intermoléculaires $\propto \frac{1}{r^6}$
+    \item Correction de pression $\geq 0$ - pression réelle plus faible qu'attendue
     \item Correction du volume - $\propto n$ associé à la dimension finie des molécules
     \item Correction du volume - $\leq 0$ - volume plus grand qu'attendue
 \end{itemize}
@@ -1301,18 +1270,18 @@ On définit la coefficient de Laplace
 \begin{itemize}
     \item $V$ constante et indépendant et $T$ et $P$
     \item $C_V = \frac{\dd U}{\dt}$
-    \item Expériementalement, $\dd (PV) \ll \dd U$ donc $\dd U \approx \dd H$ donc on définit $C = C_V = C_P$
+    \item Expériementalement, $\dd (PV) \ll \dd U$ donc $\dd U \approx \dd H$ donc $C = C_V = C_P$
 \end{itemize}
 
 \subsection{Méthodes}
 \subsubsection{Calcul d'un changement d'état}
 \begin{enumerate}
-    \item Sur un palier de changement d'état (isobare et isotherme) - $\dd h = \dx_v h_{\text{vap}}(T)$ 
-    \item Sur la courbe d'ébullition (liquide incompressible indilatable seule avec une boule de vapeur) - $ \dd h = c(T) \dd T $ avec $c$ supposé constante sur des échelles de températures raisonnables
+    \item On applique le théorème des moments sur un palier de changement d'état (isobare et isotherme) - $\dd h = \dx_v h_{\text{vap}}(T)$ 
+    \item Sur la courbe d'ébullition (liquide incompressible indilatable saturant) - $ \dd h = c \dd T $ avec $c$ supposé constante
     \item On obtient $\Delta h$ à partir d'un chemin fictif sur un palier de changement d'état (isotherme), puis un changement de température sur une courbe d'ébullition, puis un palier de changement d'état (isotherme)
 \end{enumerate}
 
-On applique le même raisonnement pour d'autres fonctions d'états (e.g. énergie interne ou entropie)
+Même raisonnement pour d'autres fonctions d'états (e.g. $U$ ou $S$)
 
 \begin{itemize}
     \item Pour l'entropie, on a $s_{\text{vap}} = \frac{h_{\text{vap}}}{T}$
@@ -1320,24 +1289,24 @@ On applique le même raisonnement pour d'autres fonctions d'états (e.g. énergi
 \end{itemize}
 
 \subsubsection{Détente de Joule-Gay-Lussac}
-On considère 2 enceintes reliées, une contenant du vide et l'autre contenant un gaz. 
+2 enceintes reliées, une contenant du vide et l'autre contenant un gaz. 
 
 \begin{itemize}
-    \item La detente lors de l'ouverture du robinet séparant les enceintes est isoénergétique $\Delta U = 0$ [Démonstration - prenons comme système fermé {gaz + vide + parois} - on a une évolution isochore et adiabatique donc $\Delta U_{\text{gaz}} + \Delta U_{\text{parois}} = 0$. On applique les équations reliant $\Delta U$ à $\Delta T$ pour un gaz parfait et le parois assimilé à un solide incompressible et indilatable pour obtenir $\Delta T = 0$]
-    \item $\Delta S = nR \ln(\frac{V_f}{V_i})$ [Démonstration - transformtion isotherme avec identité thermodynamique]
+    \item La detente lors de l'ouverture du robinet séparant les enceintes est isoénergétique $\Delta U = 0$ [Démonstration - prenons comme système fermé {gaz + vide + parois}. L'évolution est isochore et adiabatique donc $\Delta U_{\text{gaz}} + \Delta U_{\text{parois}} = 0$. On relie $\Delta U \et \Delta T$ pour un gaz parfait et le parois assimilé à un solide incompressible et indilatable pour obtenir $\Delta T = 0$]
+    \item $\Delta S = nR \ln(\frac{V_f}{V_i})$ [Démonstration - transformation isotherme et identité thermodynamique]
     \item Pour un gaz réel, $\Delta T < 0$
 \end{itemize}
 
 \subsubsection{Détente de Joule-Thomson}
-On considère un fluide en écoulement lent, stationnaire et horizontal traversant un milieu poreux qui sépare le fluide à gauche ($P_1, V_1$) avec le fluide à droite ($P_2, V_2$).
+Fluide en écoulement lent, stationnaire et horizontal traversant un milieu poreux qui sépare le fluide à gauche ($P_1, V_1$) avec le fluide à droite ($P_2, V_2$).
 
 \begin{itemize}
-    \item $\Delta H = 0$ [Démonstration - reprendre la démonstration du premier principe industriel, appliquée au milieu poreux dont le transfert thermique et le travail est 0]
+    \item $\Delta H = 0$ [Démonstration - Premier principe industriel avec $q = 0 \et w = 0$]
     \item $\Delta S = nR \ln(\frac{V_f}{V_i}) = nR \ln(\frac{P_i}{P_f})$ [Démonstration - identité thermodynamique avec $\dd T = 0$ ou avec $\dd H = 0$]
 \end{itemize}
 
 \subsection{Machines thermiques cycliques}
-Le système à son état initial. 
+Le système retourne à son état initial. 
 
 \begin{itemize}
     \item $\Delta U = 0$, $\Delta H = 0$, $\Delta S = 0$.
@@ -1345,11 +1314,9 @@ Le système à son état initial.
 \end{itemize}
 
 \subsubsection{Machine monotherme}
-Une machine monotherme cyclique n'existe pas. (Énoncé de Kelvin-Planck du second principe) \\
+Une machine monotherme cyclique n'existe pas. (Énoncé de Kelvin-Planck du second principe). Pour qu'un système cyclique fournisse du travail, il doit nécessairement échanger un transfert thermique avec au moins deux sources de températures différentes \\
 
-Pour qu'un système cyclique fournisse du travail, il doit nécessairement échanger un transfert thermique avec au moins deux sources de températures différentes \\
-
-[Démonstration - Le signe de $Q$ est fixé par le 2e principe, ce qui fixe le signe de $W$ par le 1er principe]
+[Démonstration - Signes de $Q$ puis $W$ fixé par le 2e principe et le 1er principe]
 
 \subsubsection{Généralités}
 \[ \sum_k Q_k = -W \]
@@ -1387,7 +1354,7 @@ Le cycle est réversible $ \iff \sum_k \frac{Q_k}{T_k} = 0 $ - égalité de Carn
     \item Compression supposé adiabatique (isentropique)
     \item Explosion (modélisé par chauffage isochore)
     \item Détente supposé adiabatique (isentropique)
-    \item Échappement (supposé en 2 étapes, homogenéisation de pression de manière isochore puis refoulement)
+    \item Échappement supposé en 2 étapes (homogenéisation isochore de pression puis refoulement)
 \end{enumerate}
 
 \[ \eta = 1 - \frac{1}{\alpha^{\gamma - 1}} \]
@@ -1403,7 +1370,7 @@ Avec $\alpha = \frac{V_{\max}}{V_{\min}}$ \\
 \subsection{Champ magnétique}
 \subsubsection{Propriétés}
 \begin{itemize}
-    \item Les invariances du champ magnétique sont les même que celles de ses sources
+    \item Les invariances du champ magnétique sont les invariances de ses sources
     \item Les plans de symétrie du champ magnétique sont des plans d'antisymétrie de ses sources et inversement
     \item Pour un solénoïde infini, $\overrightarrow{B_{\text{int}}} = \mu_0 n I \vec{e_z}$ et $\overrightarrow{B_{\text{ext}}} = \vec{0}$
 \end{itemize}
@@ -1414,7 +1381,7 @@ Avec $\alpha = \frac{V_{\max}}{V_{\min}}$ \\
 \begin{itemize}
     \item À une distance très grande devant la taille caractéristique du dipôle, on a l'approximation dipôlaire
     \item Le champ magnétique créé est $\frac{\mu_0}{4 \pi} \frac{3(\vec{\mathcal{M}} \cdot \vec{r})\vec{r} - \vec{\mathcal{M}}r^2}{r^5}$ [HP]
-    \item L'allure des lignes de champ magnétique est $r = \lambda \sin^2 \theta$ [HP - Démonstration - sur la ligne de champ, $\dd \overrightarrow{OM}$ est tangent au champ magnétique donc $\dd \overrightarrow{OM} \wedge \vec{B} = \vec{0}$]
+    \item L'allure des lignes de champ magnétique est $r = \lambda \sin^2 \theta$ [HP]
 \end{itemize}
 
 \subsubsection{Flux}
@@ -1429,7 +1396,7 @@ Avec $\alpha = \frac{V_{\max}}{V_{\min}}$ \\
     \end{itemize}
     \item Inductance mutuelle $M$ entre deux circuits $\phi_{1 \rightarrow 2} = M i_1 \et \phi_{2 \rightarrow 1} = M i_2$ 
     \begin{itemize}
-        \item Pour une grande bobine 1 contenant une petite bobine 2, $M = \mu_0 \frac{N_1 N_2}{l} S_2$
+        \item Pour une grande bobine 1 contenant une bobine 2, $M = \mu_0 \frac{N_1 N_2}{l} S_2$
     \end{itemize}
 \end{itemize}
 
@@ -1441,11 +1408,11 @@ Avec $\alpha = \frac{V_{\max}}{V_{\min}}$ \\
     \item La force élémentaire de Laplace est dû à l'effet du Hall, et n'est pas directement à cause de la force magnétique
     \item Pour les rails de Laplce, pour un courant de $M$ vers $N$, $\vec{F_L} = I \overrightarrow{MN} \wedge \vec{B}$
     \item Pour tout circuit fermé dans un champ magnétique uniforme et stationnaire, la résultante des forces de Laplace est nulle
-    \item Pour une spire en rotation autour de l'axe $\vec{e_z}$ avec un champ magnétique uniforme selon $\vec{e_x}$, $\vec{\Gamma_L} = ISB \cos \theta \vec{e_z} = \vec{\mathcal{M}} \wedge \vec{B}$ [On intègre $\dd M_O(M) = \overrightarrow{OM} \wedge \dd \vec{F_L}$ pour tout point $M$ dans le spire. On pourrait éventuellement se limiter à intégrer uniquement sur les 2 côtés horizontals par un seul calcul. ]
+    \item Pour une spire en rotation autour de l'axe $\vec{e_z}$ avec un champ magnétique uniforme selon $\vec{e_x}$, $\vec{\Gamma_L} = ISB \cos \theta \vec{e_z} = \vec{\mathcal{M}} \wedge \vec{B}$ [On intègre $\dd M_O(M) = \overrightarrow{OM} \wedge \dd \vec{F_L}$ pour tout point $M$. On pourrait se limiter à intégrer uniquement sur les 2 côtés horizontals]
 \end{itemize}
 
 \subsubsection{Généralisation}
-Pour un moment dipolaire magnétique $\vec{\mathcal{M}}$ dans un champ magnétique uniforme et stationnaire
+Un moment dipolaire magnétique $\vec{\mathcal{M}}$ dans un champ $\vec{B}$ uniforme et stationnaire
 \begin{itemize}
     \item La résultant des forces de Laplace est nulle
     \item $\vec{\Gamma_L} = \vec{\mathcal{M}}\wedge \vec{B}$
@@ -1464,7 +1431,7 @@ Pour un moment dipolaire magnétique $\vec{\mathcal{M}}$ dans un champ magnétiq
 
 \subsection{Induction électromagnétique}
 \begin{enumerate}
-    \item Un courant est induit dans un circuit fermé, ou une tension induite aux bornes d'un circuit ouvert, lorsque le circuit est fixe dans un champ magnétique qui varie avec le temps, ou lorsque le circuit est en mouvement dans un champ magnétique non-uniforme
+    \item Un courant est induit dans un circuit fermé (ou tension ux bornes d'un circuit ouvert), lorsque le circuit est dans un champ magnétique non-stationnaire, ou en mouvement dans un champ magnétique non-uniforme
     \item Loi de Lenz - les phénomènes d'induction s'opposent, par leurs effets, aux causes qui leur ont donné naissance
     \item Loi de Faraday - $e = - \frac{\dd \phi}{\dt}$ la force électromotrice induite
 \end{enumerate}
@@ -1480,14 +1447,14 @@ Circuits fixes dans des champs magnétiques qui varient dans le temps.
 \end{itemize}
 
 \subsubsection{Induction de Lorentz}
-Circuits mobiles dans des champs magnétiques stationnaires (mais non uniformes)
+Circuits mobiles dans des champs magnétiques stationnaires
 
 \begin{enumerate}
     \item Expliciter le phénomène d'induction
     \begin{enumerate}
         \item Cause (force externe / générateur)
         \item Variation qui mène à une variation de $\phi$
-        \item Loi de Faraday - $e(t)$ induite par la 
+        \item Loi de Faraday - $e(t)$ induite, puis $i(t)$
         \item Loi de Lenz - opposition à la cause
     \end{enumerate}
     \item Trouver les équations mécaniques et électriques
@@ -1497,10 +1464,7 @@ Circuits mobiles dans des champs magnétiques stationnaires (mais non uniformes)
 La puissance de la force de Laplace dû au courant induit est égale et opposée à la puissance de force électromotrice induite 
 \[ \mathcal{P}_L + \mathcal{P}_{\text{fem}} = 0 \]
 
-Cette relation permet de trouver la force électromotrice induite dans le cas du flux coupé. \\
-
-Exemples classiques:
-
+Cette relation permet aussi de trouver la force électromotrice induite. 
 \begin{itemize}
     \item Rails de Laplace générateurs - $F_{\text{ext}} \rightarrow \ddot{x} \rightarrow \dot{x} \rightarrow \frac{\dd \phi}{\dt} \rightarrow e(t) \rightarrow i(t) \rightarrow F_L$ 
     \item Rails de Laplace moteurs - $E \rightarrow i(t) \rightarrow F_L \rightarrow \ddot{x} \rightarrow \dot{x} \rightarrow \frac{\dd \phi}{\dt} \rightarrow e(t)$
@@ -1641,6 +1605,12 @@ Pour un signal $s(t) = A\cos{(\omega t + \phi)}$, on a la grandeur complexe
     \item $\cos(\omega t) = \text{Re}(e^{j \omega t}) \et \sin(\omega t) = \text{Re}(-je^{j \omega t})$
 \end{itemize}
 
+\subsubsection{Propriétés}
+\begin{enumerate}
+    \item Dérivation - $ \underline{\dot{s}}(t) = j\omega\underline{s}(t) = \omega e^{j\frac{\pi}{2}} \underline{s}(t) $ - La dérivée est en quadrature avance
+    \item Intégration - $ \int \underline{s}(t) \text{ d}t = \frac{\underline{s}(t)}{j\omega} = \omega e^{-j\frac{\pi}{2}} \underline{s}(t) $ - La dérivée est en quadrature retard
+\end{enumerate}
+
 \subsection{Équations différentielles - solutions générales}
 
 \subsubsection{1er ordre - Solution exponentielle}
@@ -1746,6 +1716,11 @@ Pour une équation différentielle de 2nd ordre avec $f(t)$ sinusoïdal de pulsa
 
 \subsection{Misc}
 \begin{itemize}
+    \item Diamètre de la pupille - 2 à 8 mm
+    \item Punctum proximum de l'oeil - $ 0,25 \text{ m} $
+    \item Punctum remotum de l'oeil - à l'infini
+    \item Champ angulaire - l'angle du cône de vision - $ 40 \degree $  à $ 50 \degree $ (mais la zone de perception des détails est plus réduite à $ 1 \degree $).
+    \item Pouvoir séparateur de l'oeil - $ \epsilon = 1' = \frac{1}{60} \degree = 3*10^{-4} \text{ rad} $
     \item Vitesse de son dans l'air $340 \text{ m s}^{-1}$
     \item Vitesse de son dans l'eau $1500 \text{ m s}^{-1}$
     \item Rotation de la Terre sur son axe Nord-Sud $ \Omega_T = 23 \text{ h } 56 \text{ min } 4 \text{ s} = 7,2921 \times 10^{-5} \text{ rad s}^{-1} $
