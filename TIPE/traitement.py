@@ -11,8 +11,8 @@ def calibration(longueurs, intensites):
     """
     n = len(longueurs)
 
-    min_distance = 10        # minimum separation between peaks (in index units)
-    min_prominence = 5      # how "stand-out" a peak must be (tune this)
+    min_distance = 10
+    min_prominence = 5
 
     peaks, props = find_peaks(intensites, distance=min_distance, prominence=min_prominence)
     if len(peaks) > n:

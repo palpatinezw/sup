@@ -2,30 +2,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.signal import savgol_filter
 
-# =========================
-# Paramètres
-# =========================
-
 fichier_entree = "excel/mystere a lisser.csv"
 fichier_sortie = "excel/mystere_lisse.csv"
 
 window_length = 21  # doit être impair
 polyorder = 3
 
-# =========================
-# Lecture des données
-# =========================
-
 data = pd.read_csv(fichier_entree, sep=";", header=None)
 
-# Les longueurs d'onde ne sont pas présentes :
-# on utilise simplement l'indice des lignes comme abscisse.
 x = range(len(data))
 
-# =========================
 # Lissage
-# =========================
-
 data_lisse = data.apply( # type:ignore
     lambda col: savgol_filter(col, window_length, polyorder) #type:ignore
 )
