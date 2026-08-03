@@ -1,10 +1,12 @@
-\documentclass{article}
+\documentclass[oneside]{book}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{textcomp}
 \usepackage{gensymb}
 \usepackage{array}
+\usepackage{titlesec}
+\usepackage[margin=1in]{geometry}
 
 \graphicspath{ {./img/} }
 \input{../headers.tex}
@@ -13,30 +15,49 @@
 \hbadness=10000
 \vbadness=10000
 
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}
+  {}            % empty label -> no "Chapter 1"
+  {0pt}
+  {\Huge}
+
+\titlespacing*{\chapter}
+  {0pt}    % left margin
+  {0pt}    % space before the title
+  {10pt}   % space after the title
+  
+\makeatletter
+\renewcommand{\chaptermark}[1]{%
+  \markboth{\thechapter.\ #1}{}%
+}
+\makeatother
+
 \title{PHYSIQUE}
 \author{SALIKEL}
-\date{2025-2026 PCSI}
+\date{2025-2027 PCSI / PC*}
 
 \begin{document}
 
 \maketitle
 
-\section{Incertitudes}
-\subsection{Incertitude de type A}
+\tableofcontents
+
+\chapter{Incertitudes}
+\section{Incertitude de type A}
 Évaluation par méthodes statistiques (moyenne de plusieurs mesures)
 \begin{itemize}
     \item L'écart-type expérimental $ s_{\text{exp}} = \sigma_{N-1} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(m_i-\overline{m})^2} $
     \item L'incertitude-type (type A) $ s = \sqrt{\frac{1}{N}}s_{\text{exp}} $
 \end{itemize}
 
-\subsection{Incertitude de type B}
+\section{Incertitude de type B}
 Évaluation par des incertitudes données
-\subsubsection{Incertitude-type}
+\subsection{Incertitude-type}
 Étant donné une incertitude de $ \pm a $
 
 \[ s_B = \frac{a}{\sqrt{3}} \]
 
-\subsubsection{Propagation}
+\subsection{Propagation}
 \[ s_B = \sqrt{\sum_{k=1}^{n}(\frac{\partial f}{\partial x_k}s(x_k))^2} \]
 
 \begin{itemize}
@@ -44,23 +65,23 @@
     \item Pour $y = \prod x_1^{\lambda_i}$, $\frac{s_y^2}{y^2} = \sum \lambda_i^2 \frac{s_{x_i}^2}{x_i} $
 \end{itemize}
 
-\subsection{Z-score}
+\section{Z-score}
 \[ z = \frac{|M_{\text{mesure}} - M_{\text{réf}}|}{s(M)} \]
 \begin{itemize}
     \item $ z \leq 2 $ indique la compatibilité avec le valeur de référence. 
 \end{itemize}
 
 \clearpage
-\section{Optique}
-\subsection{Définitions}
-\subsubsection{Milieux}
+\chapter{Optique}
+\section{Définitions}
+\subsection{Milieux}
 \begin{itemize}
     \item Homogène - Propriétés physiques identiques en tout point du mlieu
     \item Isotrope - Propriétés physiques identiques dans toutes les directions de propagation
     \item Dioptre - Surface séparant deux milieux différents
 \end{itemize}
 
-\subsubsection{Systèmes optiques}
+\subsection{Systèmes optiques}
 \begin{itemize}
     \item Stigmatique - Pour un couple de points $ (A, A') $, tous les rayons issus de $A$ traversant le système optique passent par $A'$
     \item Centré - Le système a un axe de symétrie (l'axe optique)
@@ -71,7 +92,7 @@
     \item Afocal - Système optique dont les foyers sont à l'infini
 \end{itemize}
 
-\subsubsection{L’œil}
+\subsection{L’œil}
 \begin{itemize}
     \item Pupille - contenue dans l'iris, le diamètre est variable de 2 à 8 mm
     \item Cristallin - muscle assimilable à une lentille mince convergente dont la distance focale est variable selon sa contraction
@@ -82,16 +103,16 @@
 
 Des données sur l'oeil se trouvent dans l'annexe. 
 
-\subsubsection{Grandeurs}
+\subsection{Grandeurs}
 \begin{itemize}
     \item Grandissement $ \gamma = \frac{\overline{A'B'}}{\overline{AB}} $ - rapport des tailles. (Objet et image à distance finie)
     \item Puissance $ P = \frac{\alpha '}{\overline{AB}} $ - angle sur taille. (Objet à distance finie, mais image à distance infinie) Unité: dioptrie ($ \delta = \text{rad m}^{-1}  $)
     \item Grossissement $ G = \frac{\alpha '}{\alpha } $ - rapport des angles. (Objet et image à l'infini) 
-    \item Grandissement commercial $ G_c = \frac{\alpha '}{\beta} = \frac{P}{4} $ - grossissement pour un objet au ponctum proximum ($0,25$ m).  
+    \item Grossissement commercial $ G_c = \frac{\alpha '}{\beta} = \frac{P}{4} $ ($\alpha$ l'angle de l'objet défini par les conditions d'utilisation, $\beta$ l'angle de l'objet )
 \end{itemize}
 L'image est toujours au numérateur.
 
-\subsubsection{Lentilles}
+\subsection{Lentilles}
 \begin{itemize}
     \item Lentille mince - L'épaisseur est très petite devant les rayons de courbure des dioptres sphériques de la lentille. On considère que les sommets des deux dioptres et le centre optique (O) sont confondus. 
     \item Distance focale - Distances du centre optique aux plans focales. 
@@ -100,22 +121,22 @@ L'image est toujours au numérateur.
     \item Vergence $V=\frac{1}{f'}$
 \end{itemize}
 
-\subsection{Indice optique $ n $}
+\section{Indice optique $ n $}
 \[ v = \frac{c}{n} \leq c \]
 
 Plus $ n $ est grand, plus le milieu est réfringent. 
 
-\subsubsection{Formule de Cauchy}
+\subsection{Formule de Cauchy}
 \[ n = a + \frac{b}{\lambda^2} \]
 
-\subsection{Propriétés des rayons lumineux}
+\section{Propriétés des rayons lumineux}
 \begin{itemize}
     \item Les rayons lumineux se propagent en ligne droite dans un milieu homogène et isotrope
     \item La trajectoire suivie par la lumière ne dépend pas du sens de propagation
     \item Les rayons lumineux sont indépendants entre eux
 \end{itemize}
 
-\subsection{Conditions de Gauss}
+\section{Conditions de Gauss}
 Pour les systèmes optiques centrés, le stigmatisme et l'aplanétisme approchés sont vérifiés dans ces conditions.
 \begin{itemize}
     \item Les rayons lumineux font un angle petit avec l'axe optique
@@ -123,29 +144,29 @@ Pour les systèmes optiques centrés, le stigmatisme et l'aplanétisme approché
     \item Les rayons rencontrent les dioptres et miroirs avec un angle d'incidence par rapport à leur normale qui est petit
 \end{itemize}
 
-\subsection{Théorèmes et démonstrations}
+\section{Théorèmes et démonstrations}
 
 Les angles sont algébriques
 
-\subsubsection{Première loi de Snell-Descartes - réflexion}
+\subsection{Première loi de Snell-Descartes - réflexion}
 \[ r = -i\]
 
-\subsubsection{Deuxième loi Snell-Descartes - réfraction}
+\subsection{Deuxième loi Snell-Descartes - réfraction}
 \[ n_1\sin{i_1} = n_2\sin{i_2} \]
 
 \noindent Le rayon refracté appartient au plan d'incidence défini par le rayon incident et la normale au dioptre au point d'incidence
 
-\subsubsection{Réflexion totale}
+\subsection{Réflexion totale}
 Il n'existe pas de rayon réfracté - $ \frac{n_i}{n_r} \sin{i} > 1 $. 
 \[i^{\text{lim}} = \arcsin{\frac{n_2}{n_1}} \]
 
 Démonstration - par contraposée, trouver les conditions pour la réfraction
 
-\subsubsection{Réfraction limite}
+\subsection{Réfraction limite}
 L'angle maximal réfracté est limité.
 \[r^{\text{lim}} = \arcsin{\frac{n_1}{n_2}} \]
 
-\subsubsection{Tracée des rayons pour une lentille}
+\subsection{Tracée des rayons pour une lentille}
 \begin{itemize}
     \item Un rayon passant par le centre optique n'est pas dévié.
     \item Un rayon incident parallèle à l'axe optique donne un rayon transmis passant par le foyer image. 
@@ -156,31 +177,37 @@ On utilise ces règles pour tracer des rayons connus.
     \item Pour un rayon incident, prendre un rayon connu qui croise le rayon incident par un des plans focales - les deux rayons transmis sont parallèles. 
 \end{itemize}
 
-\subsubsection{Théorème de Newton}
+\subsection{Théorème de Newton}
 \[\overline{FA} \cdot \overline{F'A'} = f'f=-f^2\]
 Attention aux signes algébriques. \\
 
 Démonstration - Thalès
 
-\subsubsection{Théorème de Descartes} 
+\subsection{Théorème de Descartes} 
 \[ \frac{1}{\overline{OA}}-\frac{1}{\overline{OA'}} = -\frac{1}{f'} \]
 
 Démonstration - Exprimer $\frac{\overline{A'B'}}{\overline{AB}}$ de 2 manières pour obtenir une relation linéaire avec $\overline{OA}$ $\overline{OA'}$ $\overline{OF'}$ avec Thalès que l'on divise.
 
-\subsubsection{Théorème des Vergences}
+\subsection{Théorème des Vergences}
 Pour 2 lentilles de distances focales $f_1$ et $f_2$, accolées tel que leurs centres optiques sont confondus, la distance focale des 2 lentilles $f$ est donnée par 
 \[ \frac{1}{f'} = \frac{1}{f_1'} + \frac{1}{f_2'} \]
 Démonstration - chercher la distance d'un objet donnant une image à l'infini. La distance de l'objet intermédiaire est dans le plan focal objet de la deuxième lentille. On applique le théorème de Descartes. 
 
-\subsubsection{Distance minimale objet-écran - Méthode de Silbermann}
+\subsection{Méthode de Bessel}
+On pose $ D = \overline{AA'} $ la distance entre l'objet et l'écran. Avec $d$ la distance entre les deux positions de netteté
+
+\[ f' = \frac{D^2 - d^2}{4D} \]
+
+En particulier la méthode de Silbermann, on a les conditions d'avoir une image nette
+
 \[ D \geq 4f' \]
 
-Démonstration - On pose $ D = \overline{AA'} $ la distance entre l'objet et l'image (sur l'écran) et on varie la position de la lentille. Avec Descartes, on a $ \overline{OA'}^2 - \overline{OA'}\cdot D + D\cdot f' = 0 $ et il faut des solutions réelles de $\overline{OA'}$
+Démonstration - Avec Descartes, étudions un polynôme en $\overline{OA}$
 
-\subsubsection{Autocollimation}
+\subsection{Autocollimation}
 Considérons un système optique lentille et miroir plan. On cherche à former une image dans le même plan que son objet. L'objet est dans le plan focal objet pour créer une image intermédiaire à l'infini, qui est reflétée par le miroir et qui forme l'image finale dans le plan focal objet. Ce principe est utile pour le réglage d'un collimateur aux TPs. 
 
-\subsubsection{Dispositifs à plusieurs lentilles}
+\subsection{Dispositifs à plusieurs lentilles}
 \begin{enumerate}
     \item Objectif - du côté de l'objet
     \item Réticule - point de réglage sans effet optique
@@ -192,7 +219,7 @@ Considérons un système optique lentille et miroir plan. On cherche à former u
     \item Typiquement, l'image finale se trouve à l'infini pour que l'œil n'ait pas besoin d'accommoder (dans ce cas, l'objet intermédiaire se trouve donc dans le plan focal objet de l'oculaire)
 \end{itemize}
 
-\subsubsection{L'appareil photographique}
+\subsection{L'appareil photographique}
 L’appareil est modélisé par un diaphragme à l'entrée, un objectif juste derrière le diaphragme, et un capteur. 
 \begin{itemize}
     \item Durée d'exposition - le temps d'ouverture d'un obturateur pour régler la quantité de lumière reçu par le capteur. 
@@ -202,18 +229,18 @@ L’appareil est modélisé par un diaphragme à l'entrée, un objectif juste de
 \end{itemize}
 
 \clearpage
-\section{Électrocinétique}
+\chapter{Électrocinétique}
 
-\subsection{Définitions}
+\section{Définitions}
 
-\subsubsection{Intensité}
+\subsection{Intensité}
 \[i = \frac{dq}{dt}\]  
 Charge totale traversant une surface $S$ par unité de temps. (Unité: Ampère $A$) 
 
-\subsubsection{Potentiel}
+\subsection{Potentiel}
 Différence de potentiel entre deux points. (Unité: Volt $V$)
 
-\subsubsection{Approximation des Régimes Quasi-Stationnaires ARQS}
+\subsection{Approximation des Régimes Quasi-Stationnaires ARQS}
 Si les grandeurs ne varient pas trop rapidement (par rapport à la vitesse de propagation des variations = vitesse de la lumière), les lois du régime constant restent applicables à chaque instant.
 \begin{itemize}
     \item Régime constant - Les grandeurs sont constantes dans le temps
@@ -223,13 +250,13 @@ Si les grandeurs ne varient pas trop rapidement (par rapport à la vitesse de pr
     \item Maille - Ensemble de branches formant un contours fermé qui passe une seule fois en un nœud donné. 
 \end{itemize}
 
-\subsubsection{Conventions}
+\subsection{Conventions}
 \begin{itemize}
     \item Convention générateur - Tension $u$ au même sens que le courant $i$ - la puissance $P = ui$ positive est une puissance fournie. 
     \item Convention récepteur - Tension $u$ et courant $i$ sont du sens contraire - la puissance $P = ui$ positive est une puissance reçue. 
 \end{itemize}
 
-\subsubsection{Point de fonctionnement}
+\subsection{Point de fonctionnement}
 Le point de fonctionnement à un instant $t$ est le point de coordonnées $(u(t), i(t))$. Le tracé de l'ensemble des points de fonctionnement est la caractéristique du dipôle. 
 
 \begin{itemize}
@@ -239,9 +266,9 @@ Le point de fonctionnement à un instant $t$ est le point de coordonnées $(u(t)
     
 \end{itemize}
 
-\subsection{Lois de Kirchhoff}
+\section{Lois de Kirchhoff}
 
-\subsubsection{Loi des nœuds}
+\subsection{Loi des nœuds}
 \[ \sum i = 0 \]
 Il n'y a pas d'accumulation de charge dans un nœud. On peut appliquer directement la loi des nœuds dans un circuit donné pour réduire le nombre d'inconnues. 
 
@@ -255,14 +282,14 @@ Il n'y a pas d'accumulation de charge dans un nœud. On peut appliquer directeme
 
 \noindent On utilise ce théorème en appliquant une masse (potentiel $ V_m = 0 \text{ V}$) dans le circuit où ça convient, et calculant ensuite les potentiels dans les points connus, pour trouver le potentiel dans un point $V_0$ qui nous intéresse. 
 
-\subsubsection{Loi des mailles}
+\subsection{Loi des mailles}
 \[ \sum u = 0 \]
 Pour une maille orientée. Conséquence de l'additivité des potentiels.
 
-\subsection{Théorème de superposition}
+\section{Théorème de superposition}
 Dans un réseau ne contenant que des dipôles linéaires, les tensions et les intensités sont la somme des tensions et intensités obtenues dans les différents variants du circuit où toutes les sources sauf une sont éteintes. 
 
-\subsection{Grandeurs sinusoïdaux}
+\section{Grandeurs sinusoïdaux}
 
 Pour une fonction $f$ $T$-périodique, et un signal $s$ sinusoïdal. 
 \begin{enumerate}
@@ -274,14 +301,14 @@ Pour une fonction $f$ $T$-périodique, et un signal $s$ sinusoïdal.
 \end{enumerate}
 
 
-\subsection{Impédance}
+\section{Impédance}
 \[ \underline{u}(t) = \underline{Z}(\omega) \underline{i}(t) \]
 
 \noindent $\underline{Z}$ l'impédance complexe est un polynôme de $\omega$, et ne dépend pas du temps. Il peut aussi s'écrire sous forme exponentielle avec son argument $ \phi(\omega) $:
 
 \[ \underline{Z}(\omega) = |\underline{Z}(\omega)|e^{j\phi(\omega)} \]
 
-\subsubsection{Propriétés}
+\subsection{Propriétés}
 L'impédance vérifie les mêmes propriétés que la résistance.
 \begin{enumerate}
     \item L'association en série - $\underline{Z}_{eq}=\sum \underline{Z}$
@@ -290,7 +317,7 @@ L'impédance vérifie les mêmes propriétés que la résistance.
     \item Diviseur de tension et de courant
 \end{enumerate}
 
-\subsubsection{Puissances}
+\subsection{Puissances}
 \[ P(t) = U_{\text{eff}}I_{\text{eff}}[\cos{(2 \omega t - \phi) + \cos{\phi}}] \]
 
 \noindent Où $\cos{\phi}$ le facteur de puissance est une fonction de $\omega$ qui est définit par $\underline{Z}$.
@@ -304,9 +331,9 @@ L'impédance vérifie les mêmes propriétés que la résistance.
     \item Pour un signal périodique quelconque, on peut déduire de l'égalité de Parseval que la puissance moyenne est la somme des puissances moyennes des signaux sinusoïdaux composants.
 \end{itemize}
 
-\subsection{Dipôles usuels}
+\section{Dipôles usuels}
 
-\subsubsection{Résistance}
+\subsection{Résistance}
 En convention récepteur - 
 \[ u = Ri \]
 Avec $R$ la résistance (unité: Ohm $\Omega$).
@@ -327,7 +354,7 @@ On peut utiliser les règles de diviseur de tension et de courant.
     \item Diviseur de courant (résistances en parallèle) - $i_k = \frac{\frac{1}{R_k}}{\sum \frac{1}{R}}u$
 \end{itemize}
 
-\subsubsection{Bobine}
+\subsection{Bobine}
 En convention récepteur - 
 \[ u = L\frac{di}{dt} \]
 Avec $L$ l'inductance (unité: Henry $H$).
@@ -344,7 +371,7 @@ Avec $L$ l'inductance (unité: Henry $H$).
 
 \noindent En régime constant, $u = 0$, la bobine est équivalente à un fil. 
 
-\subsubsection{Condensateur}
+\subsection{Condensateur}
 En convention récepteur - 
 \[ q = Cu \]
 \[ i = C\frac{du}{dt} \]
@@ -363,15 +390,15 @@ Avec $C$ la capacité (unité: Farad $F$). On utilise souvent la dérivée
 
 \noindent En régime constant, $i = 0$, le condensateur est équivalent à un interrupteur ouvert. 
 
-\subsubsection{Source de tension (Générateur de Thévenin)}
+\subsection{Source de tension (Générateur de Thévenin)}
 Une source idéale de tension impose entre ses bornes une tension donnée $E$ (force électromotrice ou tension à vide). Une source réelle peut être modélisée par un générateur de Thévenin, avec caractéristique $u=E-ri$ où r est la résistance interne en série avec une source idéale. 
 
-\subsubsection{Source de courant (Générateur de Norton) [HP]}
+\subsection{Source de courant (Générateur de Norton) [HP]}
 Une source idéale de courant impose un courant $I$ (courant électromoteur ou courant de court-circuit). Une source réelle peut être modélisée par un géné-rateur de Norton, avec caractéristique $u=I-\frac{u}{r}$ où r est la résistance interne en parallèle avec une source idéale. \\
 
 \noindent Le générateur de Norton est équivalent à un générateur de Thévenin avec une résistance interne $r$ et une tension à vide $ E = rI $. On peut démontrer que la tension $u$ et le courant $i$ sont les mêmes. 
 
-\subsubsection{Diode}
+\subsection{Diode}
 La diode est un dipôle non-linéaire avec une tension seuil $u_s$ ($0,4 \text{ V}$ à $0,6 \text{ V}$)
 \begin{itemize}
     \item $u < u_s$ - La diode est bloquée, le courant ne passe pas $i=0$
@@ -379,9 +406,9 @@ La diode est un dipôle non-linéaire avec une tension seuil $u_s$ ($0,4 \text{ 
 \end{itemize}
 
 
-\subsection{Résolution des circuits}
+\section{Résolution des circuits}
 
-\subsubsection{Notions}
+\subsection{Notions}
 \begin{itemize}
     \item Régime constant / continu - toutes les grandeurs dans le circuit sont indépendants du temps
     \item Régime permanent - les caractéristiques des grandeurs ne dépend pas du temps (e.g. source AC constant = régime permanent mais non constant)
@@ -399,7 +426,7 @@ La diode est un dipôle non-linéaire avec une tension seuil $u_s$ ($0,4 \text{ 
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Méthode}
+\subsection{Méthode}
 \begin{enumerate}
     \item Obtenir l'équation différentielle du circuit (lois de Kirchhoff)
     \item La mettre sous forme canonique et identifier le type d'équation différentielle ainsi que les constantes
@@ -413,7 +440,7 @@ La diode est un dipôle non-linéaire avec une tension seuil $u_s$ ($0,4 \text{ 
     \item Finalement, la solution [résoudre l'équation différentielle]
 \end{enumerate}
 
-\subsubsection{Circuits classiques}
+\subsection{Circuits classiques}
 \begin{itemize}
     \item Circuit RC - 1er ordre avec $\tau = RC$
     \item Circuit RL - 1er ordre avec $\tau = \frac{L}{R}$
@@ -421,9 +448,9 @@ La diode est un dipôle non-linéaire avec une tension seuil $u_s$ ($0,4 \text{ 
     \item Circuit RLC - 2nd ordre (oscillateur amorti) avec $\omega_0 = \frac{1}{\sqrt{LC}}$ et $Q=\frac{1}{R}\sqrt{\frac{L}{C}}$
 \end{itemize}
 
-\subsection{Filtres}
+\section{Filtres}
 
-\subsubsection{Notions}
+\subsection{Notions}
 \begin{itemize}
     \item Filtre passif - contient uniquement des composants passifs (sinon: actif)
     \item Pulsation de coupure $\omega_c$ avec $G(\omega_c) = \frac{G_{\text{asymp}}}{\sqrt{2}}$ (ou $G(\omega_c) = \frac{G_{\text{max}}}{\sqrt{2}}$ pour un filtre passe-bande)
@@ -431,7 +458,7 @@ La diode est un dipôle non-linéaire avec une tension seuil $u_s$ ($0,4 \text{ 
     \item Filtres non-linéaires - principe de superposition n'est plus valable - on observe un enrichissement du spectre du signal de sortie
 \end{itemize}
 
-\subsubsection{Fonctions de transfert}
+\subsection{Fonctions de transfert}
 \begin{itemize}
     \item Rapport entre grandeurs complexes de sortie et d'entrée - $ \underline{H}(\omega) = \frac{\underline{u_s}}{\underline{u_e}} $
     \item En générale, la fonction de transfert change selon la charge 
@@ -442,7 +469,7 @@ La diode est un dipôle non-linéaire avec une tension seuil $u_s$ ($0,4 \text{ 
     \item Gain $ G = |\underline{H}(\omega)| $ (en décibel - $ G_{\text{dB}} = 20\log{|\underline{H}(\omega)|} $), Phase $ \phi = \arg(\underline{H}(\omega)) $
 \end{itemize}
 
-\subsubsection{Méthode d'étude}
+\subsection{Méthode d'étude}
 \begin{enumerate}
     \item Étude asymptotique en haute et basse fréquence pour déterminer le type de filtre
     \item Obtenir une expression de $ \underline{H} $ avec pont diviseur (ou Théorème de Millman)
@@ -455,11 +482,11 @@ La diode est un dipôle non-linéaire avec une tension seuil $u_s$ ($0,4 \text{ 
     \item Étude asymptotique et valeur en $x = 1$, en $ G_{\text{dB}} $ et $ \underline{\phi}(\omega) $
 \end{enumerate}
 
-\subsubsection{Filtres usuels}
+\subsection{Filtres usuels}
 On a suppose que $H_{\text{asymp/max}} = 1$
 \scriptsize
 \begin{center}
-\begin{tabular}{ |c|c|c|c|c|c|m{2cm}| } 
+\begin{tabular}{ |c|c|c|c|c|c|m{5cm}| } 
      \hline
       & $ \underline{N} $ & $ \underline{D} $ & $\underline{H}$ usuel & Type & $ \phi $ & Remarques  \\ 
      \hline \hline
@@ -479,7 +506,7 @@ On a suppose que $H_{\text{asymp/max}} = 1$
 
 \noindent Attention à la différence entre $\omega_c$ pour 1er ordre et $\omega_0$ pour 2e ordre
 
-\subsubsection{Comportement intégrateur et dérivateur}
+\subsection{Comportement intégrateur et dérivateur}
 \begin{itemize}
     \item Pente BF à $+20$ dB par decade - comportement dérivateur
     \item Pente HF à $-20$ dB par decade - comportement intégrateur
@@ -488,7 +515,7 @@ On a suppose que $H_{\text{asymp/max}} = 1$
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Variations selon $Q$}
+\subsection{Variations selon $Q$}
 \begin{itemize}
     \item $Q < \frac{1}{\sqrt{2}}$ - Courbe en dessous de l'asymptote
     \item $Q = \frac{1}{\sqrt{2}}$ - Courbe la plus proche de l'asymptote
@@ -497,8 +524,8 @@ On a suppose que $H_{\text{asymp/max}} = 1$
 
 c.f. Annexe surtout pour passe-bande
 
-\subsection{Amplificateur linéaire intégré}
-\subsubsection{Entrées et sortie}
+\section{Amplificateur linéaire intégré}
+\subsection{Entrées et sortie}
 \begin{itemize}
     \item Entrée inverseuse ($V_-$)
     \item Entrée non-inverseuse ($V_+$)
@@ -506,7 +533,7 @@ c.f. Annexe surtout pour passe-bande
     \item Tensions d'alimentation $V_L$ et $V_H$ - et tension de saturation $V_{\text{sat}}$
 \end{itemize}
 
-\subsubsection{Caractéristique}
+\subsection{Caractéristique}
 \begin{itemize}
     \item $ \epsilon = V_+ - V_- $
     \item $ -V_{\text{sat}} < V_s < +V_{\text{sat}} $ - régime linéaire et $V_s = A_V\epsilon$ ($A$ l'amplification en tension / gain différentiel)
@@ -514,7 +541,7 @@ c.f. Annexe surtout pour passe-bande
     \item Régime de saturation - $ V_s = V_L $ ou $ V_s = V_H $
 \end{itemize}
 
-\subsubsection{ALI parfait}
+\subsection{ALI parfait}
 \begin{itemize}
     \item Résistance d'entrée infinie donc courants d'entrée nuls
     \item Résistance de sortie nulle, en série avec un générateur de tension idéal
@@ -523,7 +550,7 @@ c.f. Annexe surtout pour passe-bande
 
 \noindent Remplacer l'ALI par ses composants supposés parfaits peut servir pour une étude asymptotique. 
 
-\subsubsection{Méthode d'étude système bouclé}
+\subsection{Méthode d'étude système bouclé}
 \begin{enumerate}
     \item Suppose que l'ALI est idéal
     \item Détermination du régime de fonctionnement
@@ -536,9 +563,9 @@ c.f. Annexe surtout pour passe-bande
 \end{enumerate}
 
 \clearpage
-\section{Superposition}
+\chapter{Superposition}
 
-\subsection{Ondes planes progressives unidimensionnelle}
+\section{Ondes planes progressives unidimensionnelle}
 
 \[ s(x, t) = A\cos{(\omega t - k x + \phi)} \]
 \[ s(x, t) = s(x-ct, 0) = s(0, t-\frac{x}{c}) \]
@@ -551,9 +578,9 @@ c.f. Annexe surtout pour passe-bande
     \item $ \sigma = \frac{1}{\lambda} $ le nombre d'onde
 \end{itemize}
 
-\subsection{Superposition de 2 ondes}
+\section{Superposition de 2 ondes}
 
-\subsubsection{Interférence}
+\subsection{Interférence}
 Pour 2 ondes synchrones, on aura une onde résultant ayant la même fréquence d'amplitude:
 \[ A = \sqrt{A_1^2 + A_2^2 + 2A_1A_2\cos{(\phi_1 - \phi_2)}} \]
 
@@ -565,7 +592,7 @@ Pour 2 ondes synchrones, on aura une onde résultant ayant la même fréquence d
 \end{itemize} 
 \noindent 
 
-\subsection{Battements}
+\section{Battements}
 Pour 2 ondes de pulsations légèrement différente
 \[ \omega_{\text{moy}} = \frac{\omega_1+\omega_2}{2} \]
 \[ \omega_{\text{mod}} = \frac{\omega_1-\omega_2}{2} \]
@@ -577,7 +604,7 @@ Pour 2 ondes de pulsations légèrement différente
     \item Pour des amplitudes différents, $A(t) = \sqrt{A_1^2 + A_2^2 + 2A_1A_2\cos{(\omega_{\text{batt}})}}$
 \end{itemize}
 
-\subsection{Onde stationnaire}
+\section{Onde stationnaire}
 La somme de deux ondes synchrones et de même amplitude, qui se propagent dans des sens opposées, donne:
 \[ 2A \cos{(\omega t + \phi)} \cos{(kx + \psi)} \]
 
@@ -591,32 +618,33 @@ La somme de deux ondes synchrones et de même amplitude, qui se propagent dans d
     \item Découplage des variables $x$ et $t$ - pas de propagation
 \end{itemize}
 
-\subsubsection{Corde de Melde}
+\subsection{Corde de Melde}
 \begin{itemize}
     \item Onde stationnaire avec noeuds imposés aux bornes
     \item Modes propres en $\lambda_n = \frac{2L}{n}$
 \end{itemize}
 
-\subsection{Diffraction}
+\section{Diffraction}
 Pour un trou circulaire de diamètre $ D \lesssim \lambda $
 \[ \sin{\theta} \approx 1,22 \frac{\lambda}{D} \]
 
 \noindent
 Pour un réseau de diffraction avec un pas de réseau de $a$, le $p$-ième ordre:
-\[ \sin \theta_p - \sin \theta_i = p \frac{\lambda}{na} \]
-\noindent avec $n$ l'indice optique du milieu. Démonstration - avec différence de marche \\
+\[ \sin \theta - \sin \theta_i = p \frac{\lambda}{na} \]
+\noindent avec $n$ l'indice optique du milieu. Démonstration - avec différence de marche
 
-\noindent On peut étudier la déviation $D = \theta - \theta_i$ pour obtenir un minimum lorsque $ \theta = -\theta_i $ alors $ D_{\text{min}} = -2\theta_i = 2\theta $
+\subsection{Goniomètre}
 
-\subsubsection{Goniomètre}
+On peut étudier la déviation $D = \theta - \theta_i$ pour obtenir un minimum lorsque $ \theta = -\theta_i $ alors $ D_{\text{min}} = -2\theta_i = 2\theta $ \\
+
 On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $D_{\text{min}} = \Delta \theta$. On a pour la diffraction du $n$-ième ordre,
 
 \[ \lambda = \frac{2n_{\text{milieu}}a}{n}\sin (\frac{D_{\text{min}}}{2}) \]
 
 \clearpage
-\section{Mécanique}
+\chapter{Mécanique}
 
-\subsection{Définitions}
+\section{Définitions}
 \begin{itemize}
     \item Cinématique du point - domaine où l'on décrit les mouvements sans en chercher les causes
     \item Dynamique - Domaine où l'on cherche à établir le lien entre les mouvements et les causes qui engendrent ces mouvements
@@ -641,8 +669,8 @@ On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $
     \item Masse grave - grandeur associée aux poids d'un objet (supposée équivalente à la masse inerte par principe d'équivalence)
 \end{itemize}
 
-\subsection{Systèmes de coordonnées}
-\subsubsection{Définitions}
+\section{Systèmes de coordonnées}
+\subsection{Définitions}
 \begin{itemize}
     \item Système d'axes - axes de référence liées à un solide
     \item Le vecteur position $ \overrightarrow{OM} $ est unique
@@ -653,7 +681,7 @@ On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $
     \item Repère - association d'une base avec un point d'origine
 \end{itemize}
 
-\subsubsection{Coordonnées cartésiennes $(\vec{e_x}, \vec{e_y}, \vec{e_z})$}
+\subsection{Coordonnées cartésiennes $(\vec{e_x}, \vec{e_y}, \vec{e_z})$}
 \begin{center}
     \includegraphics[height=4cm]{cartesienne.jpg}
 \end{center}
@@ -666,7 +694,7 @@ On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $
 \[ \vec{v}_{\repr} = \dot{x} \vec{e_x} + \dot{y} \vec{e_y} + \dot{z} \vec{e_z} \]
 \[ \vec{a}_{\repr} = \ddot{x} \vec{e_x} + \ddot{y} \vec{e_y} + \ddot{z} \vec{e_z} \]
 
-\subsubsection{Coordonnées cylindriques $(\vec{e_r}, \vec{e_{\theta}}, \vec{e_z}) $}
+\subsection{Coordonnées cylindriques $(\vec{e_r}, \vec{e_{\theta}}, \vec{e_z}) $}
 \begin{center}
     \includegraphics[height=5cm]{cylindrique.jpg}
 \end{center}
@@ -691,7 +719,7 @@ On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $
 \[ \vec{v}_{\repr} = \dot{r} \vec{e_r} + r \dot{\theta} \vec{e_{\theta}} + \dot{z} \vec{e_z} \]
 \[ \vec{a}_{\repr} = (\ddot{r} - r\dot{\theta}^2) \vec{e_r} + (r \ddot{\theta} + 2 \dot{r} \dot{\theta}) \vec{e_{\theta}} + \ddot{z} \vec{e_z} \]
 
-\subsubsection{Mouvement circulaire en coordonnées cylindriques}
+\subsection{Mouvement circulaire en coordonnées cylindriques}
 Pour un mouvement autour de l'axe $ \Delta = \vec{e_z} $, on a $\dot{r} = 0 \et \dot{z} = 0$
 
 \[ \overrightarrow{OM} = r \vec{e_r} \]
@@ -702,7 +730,7 @@ Pour un mouvement autour de l'axe $ \Delta = \vec{e_z} $, on a $\dot{r} = 0 \et 
 \[ \vec{\Omega} = \dot{\theta} \vec{e_z} \]
 Avec $\dot{\theta}$ la vitesse angulaire
 
-\subsubsection{Coordonnées sphériques $ (\vec{e_r}, \vec{e_{\theta}}, \vec{e_{\phi}}) $}
+\subsection{Coordonnées sphériques $ (\vec{e_r}, \vec{e_{\theta}}, \vec{e_{\phi}}) $}
 \begin{center}
     \includegraphics[height=8cm]{spherique.jpg}
 \end{center}
@@ -726,14 +754,14 @@ Avec $\dot{\theta}$ la vitesse angulaire
 \[ \dd \overrightarrow{OM} = \dr \, \vec{e_r} + r \, \dtheta \, \vec{e_{\theta}} + r \sin \theta \, \dphi \, \vec{e_{\phi}}  \]
 \[ \vec{v}_{\repr} = \dot{r} \vec{e_r} + r \dot{\theta} \vec{e_{\theta}} + r \dot{\phi} \sin \theta \vec{e_{\phi}} \]
 
-\subsection{Dynamique}
-\subsubsection{Quantité de mouvement}
+\section{Dynamique}
+\subsection{Quantité de mouvement}
 \[ \vec{p}_{\repr}(M) = m \vec{v}_{\repr}(M) \]
 
 Centre de gravité $G$ du système $S$: $ (\sum_i) \overrightarrow{OG} = \sum_i m_i \overrightarrow{OM_i} \iff \sum_i m_i \overrightarrow{GM_i} = 0 $
 \[ \vec{p}_{\repr}(S) = \sum_i \vec{p}_{\repr}(M_i) = \vec{p}_{\repr}(G) = m_{\text{tot}} \vec{v}_{\repr}(G) \]
 
-\subsubsection{Moment cinétique}
+\subsection{Moment cinétique}
 \[ \overrightarrow{L_{O\repr}}(M) = \overrightarrow{OM} \wedge \vec{p}_{\repr}(M) \]
 \[ L_{\Delta \repr}(M) = \overrightarrow{L_{O\repr}}(M) \cdot \vec{u}_{\Delta} = mr^2\dot{\theta} \]
 
@@ -742,16 +770,16 @@ Centre de gravité $G$ du système $S$: $ (\sum_i) \overrightarrow{OG} = \sum_i 
     \item Pour un solide indéformable, $ L_{\Delta \repr}(S) = J_{\Delta}(S) \dot{\theta} $ avec $ J_{\Delta}(S) = \int r^2 \dd m $
 \end{itemize}
 
-\subsection{Forces}
+\section{Forces}
 Grandeur vectorielle décrivant l'interaction capable de modifier et/ou de produire un mouvement ou une déformation du système
 
-\subsubsection{Forces à distance}
+\subsection{Forces à distance}
 \begin{itemize}
     \item Force gravitationelle - $ \vec{F_G} = -\frac{G m_1 m_2}{\| \overrightarrow{M_1 M_2} \|^2}\vec{u_{12}} = -G m_1 m_2\frac{\overrightarrow{M_1 M_2}}{\| \overrightarrow{M_1 M_2} \|^3} $
     \item Force colombienne - $ \vec{F_q} = \frac{q_1 q_2}{4 \pi \epsilon_0} \frac{1}{\| \overrightarrow{M_1 M_2} \|^2}\vec{u_{12}} =  \frac{q_1 q_2}{4 \pi \epsilon_0} \frac{\overrightarrow{M_1 M_2}}{\| \overrightarrow{M_1 M_2} \|^3} $
 \end{itemize}
 
-\subsubsection{Forces de contact}
+\subsection{Forces de contact}
 \begin{itemize}
     \item Réaction normale d'un support $ \|\vec{R_N}\| $ - perpendiculaire au support, dirigé vers l'extérieur du support, contact avec le support tant que $ \|\vec{R_N}\| > 0 $
     \item Tension d'un fil $ \vec{T} $ - selon le fils, dirigé vers le point fixe, fil tendu tant que $ \|\vec{T}\| > 0 $, $\vec{T} = \vec{0}$ si le fil est distendu
@@ -765,12 +793,12 @@ Grandeur vectorielle décrivant l'interaction capable de modifier et/ou de produ
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Énergie potentielle}
+\subsection{Énergie potentielle}
 Une force est dérivante d'une énergie potentielle si son travail est indépendant du chemin suivi
 \[ \delta W_{\repr} = F \cdot \dd \overrightarrow{OM} = -\dd E_p \]
 \[ \vec{F} = - \grad E_p \]
 
-\subsubsection{Énergie mécanique}
+\subsection{Énergie mécanique}
 \[ E_{m\repr} = E_{c\repr} + \sum_i E_{p, i \repr} \]
 \[ \dd E_{m\repr} = \sum_k \delta W_{\repr}(\vec{F_k}) \]
 
@@ -796,7 +824,7 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
     \item Barrière d'énergie potentielle - limite le mouvement entre 2 états possibles
 \end{itemize}
 
-\subsubsection{Moment d'une force}
+\subsection{Moment d'une force}
 \[ \vec{M}_O = \overrightarrow{OM} \wedge \vec{F} \]
 \[ M_\Delta = \vec{M}_O \cdot \vec{u_\Delta} \]
 
@@ -805,7 +833,7 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
     \item Bras de levier $d$ la distance la plus courte entre l'axe $\Delta$ et la droite d'action de la force - $M_\Delta = \pm d \| \vec{F} \| $
 \end{itemize}
 
-\subsubsection{Couple}
+\subsection{Couple}
 $\sum \vec{F} = \vec{0}$ et $\sum \vec{M}_O \neq \vec{0}$ - alors $\vec{\Gamma} = \vec{M}_O$ est indépendant de $O$
 
 \begin{itemize}
@@ -813,7 +841,7 @@ $\sum \vec{F} = \vec{0}$ et $\sum \vec{M}_O \neq \vec{0}$ - alors $\vec{\Gamma} 
     \item Torsion - $\vec{\Gamma} = -C\theta \vec{u}_\Delta$ avec $C$ la constante de torsion
 \end{itemize}
 
-\subsubsection{1ère loi de Newton - principe d'inertie}
+\subsection{1ère loi de Newton - principe d'inertie}
 Dans les référentiels galiléens, un point matérial isolé est animé d'un mouvement rectilinge uniforme.
 \begin{itemize}
     \item La vitesse et la quantité de mouvement sont constantes.
@@ -821,7 +849,7 @@ Dans les référentiels galiléens, un point matérial isolé est animé d'un mo
     \item Ce principe nous permet de trouver les référentiels galiléens
 \end{itemize}
 
-\subsubsection{2ème loi de Newton - principe fondamental de la dynamique}
+\subsection{2ème loi de Newton - principe fondamental de la dynamique}
 Pour un point matérial dans un référentiel galiléen
 \[ \frac{\dd \vec{p}_{\repr}(M)}{\dt}_{\repr} = m \vec{a}_{\repr}(M) = \sum \vec{F} \]
 
@@ -840,15 +868,15 @@ Pour un point matérial dans un référentiel galiléen
     \item Pour un système indéformable - $ J_{\Delta}(\mathcal{S}) \ddot{\theta} = \sum_{\text{ext}}M_{\Delta}(\vec{F}) $
 \end{itemize}
 
-\subsubsection{3ème loi de Newton - principe de l'action réciproque}
+\subsection{3ème loi de Newton - principe de l'action réciproque}
 \[\vec{F}_{B \rightarrow A} = -\vec{F}_{A \rightarrow B}\]
 \noindent Avec $\vec{F}_{B \rightarrow A} \et \vec{F}_{A \rightarrow B}$ selon la même droite d'action $AB$
 
-\subsubsection{Théorème de Cauchy}
+\subsection{Théorème de Cauchy}
 Le système $\dot{x} = v \et \dot{v} = \frac{1}{m}F(x, v, t)$ muni des conditions initiales admet une unique solution.
 
-\subsection{Énergie}
-\subsubsection{Puissance}
+\section{Énergie}
+\subsection{Puissance}
 \[ \mathcal{P}_{\repr}(\vec{F}(M)) =  \vec{F}(M) \cdot \vec{v}_{\repr}(M) \]
 \begin{itemize}
     \item $ \mathcal{P}_{\repr}(\vec{F}(M)) > 0 $ - force motrice
@@ -864,7 +892,7 @@ Le système $\dot{x} = v \et \dot{v} = \frac{1}{m}F(x, v, t)$ muni des condition
     \item Pour un système indéformable, la puissance des forces intérieures est nulle
 \end{itemize}
 
-\subsubsection{Travail}
+\subsection{Travail}
 Pour un déplacement élémentaire $\dd \overrightarrow{OM}$, on a le travail élémentaire
 \[ \delta W_{\repr}(\vec{F}(M)) = \vec{F}(M) \cdot \dd \overrightarrow{OM} \]
 \begin{itemize}
@@ -874,7 +902,7 @@ Pour un déplacement élémentaire $\dd \overrightarrow{OM}$, on a le travail é
 Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \rightarrow 2}$
 \[ W_{M_1 \rightarrow M_2 \repr}(\vec{F}) = \int_{\Gamma_{1 \rightarrow 2}}  \delta W_{\repr}(\vec{F}) = \int_{\Gamma_{1 \rightarrow 2}}  \vec{F} \cdot \dd \overrightarrow{OM} \]
 
-\subsubsection{Énergie cinétique}
+\subsection{Énergie cinétique}
 \[ E_{c \repr} = \frac{1}{2} m \vec{v}_{\repr}^2 \]
 \[ \dd E_{c \repr} = \sum_i \delta W_{\repr}(\vec{F_i}) \]
 \[ \frac{\dd E_{c \repr}}{\dt} = \sum_i \mathcal{P}_{\repr}(\vec{F_i}) \]
@@ -882,7 +910,7 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
 \noindent Pour un système $\mathcal{S}$ indéformable en rotation autour d'un axe $\Delta$ fixe dans $\mathcal{R}$
 \[ E_{c \repr} = \frac{1}{2} J_{\Delta}(\mathcal{S}) \dot{\theta}^2 \]
 
-\subsection{Potrait de phase}
+\section{Potrait de phase}
 \begin{itemize}
     \item Plan de phase - $(x, v)$ avec l'état du système représenté par $(x(t), v(t))$
     \item Trajectoire de phase - l'ensemble des points $P$ pour des conditions initiales données
@@ -891,7 +919,7 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
     \item En dessous de l'axe $Ox$, $v < 0$, sens de parcours vers la gauche
 \end{itemize}
 
-\subsubsection{Système en évolution libre}
+\subsection{Système en évolution libre}
 \begin{itemize}
     \item $F(x, v)$ ne dépendent pas du temps (pas de force externe du système)
     \item 2 trajectoires de phase ne se coupent pas
@@ -902,7 +930,7 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
     \item Un système évolue réversiblement, par le renversement du temps, le potrait de phase est symmétrique par rapport à l'axe $Ox$
 \end{itemize}
 
-\subsection{Méthode}
+\section{Méthode}
 \begin{enumerate}
     \item Définir le système (point matérial / système de points)
     \item Définir le référentiel (galiléen ou non)
@@ -916,8 +944,8 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
 \end{enumerate}
 
 
-\subsection{Forces particulières}
-\subsubsection{Force de Lorentz}
+\section{Forces particulières}
+\subsection{Force de Lorentz}
 \[ \vec{F_L} = q[\vec{E} + \vec{v}_{\repr} \wedge \vec{B}] \]
 
 \begin{itemize}
@@ -939,7 +967,7 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
     \item Dans un champ magnétique uniforme et stationnaire, le mouvement est hélicoïdale [Démonstration - on choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec{v_0}$ est dans le plan $(yOz)$. On aura un mouvement uniforme selon $\vec{e_z}$, et un mouvement circulaire de rayon $R = \frac{v_0 \sin \alpha}{|q|B}$ apres résultion en posant $ \underline{u} = x + jy $]
 \end{itemize}
 
-\subsubsection{Intéractions newtoniennes}
+\subsection{Intéractions newtoniennes}
 \[ \vec{F} = \frac{K}{r^2}\vec{e_r} \]
 \begin{itemize}
     \item Force gravitationelle et coulombienne
@@ -981,9 +1009,9 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
 \end{itemize}
 
 \clearpage
-\section{Thermodynamique}
+\chapter{Thermodynamique}
 
-\subsection{Définitions}
+\section{Définitions}
 \begin{itemize}
     \item Échelle mésoscopique - un volume avec un grand nombre de molécules/atomes microscopiques, mais infinitésimal à l'échelle macroscopique
     \begin{itemize}
@@ -1003,7 +1031,7 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Fonctions d'états}
+\subsection{Fonctions d'états}
 \begin{itemize}
     \item $P$ pression
     \begin{itemize}
@@ -1027,7 +1055,7 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Diagrammes usuels}
+\subsection{Diagrammes usuels}
 
 \begin{itemize}
     \item Diagramme de Watt - $(P,V)$ avec $V$ la volume de la machine
@@ -1035,7 +1063,7 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
     \item Diagramme entropique - $(T, S)$
 \end{itemize}
 
-\subsubsection{Types de transformations}
+\subsection{Types de transformations}
 \begin{itemize}
     \item Iso- (constant dans le système) ou Mono- (constant à l'extérieur du système)
     \begin{itemize}
@@ -1061,7 +1089,7 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Coefficients thermoélastiques}
+\subsection{Coefficients thermoélastiques}
 \begin{itemize}
     \item $C_V = \frac{\partial U}{\partial T}|_V$ - Capacité thermique / calorifique à volume constant
     \item $C_P = \frac{\partial H}{\partial T}|_P$ - Capacité thermique / calorifique à pression constant
@@ -1070,7 +1098,7 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
     \item $\beta = \frac{1}{P}\frac{\partial P}{\partial T}|_V$ - Coefficient de dilatation isochore
 \end{itemize}
 
-\subsubsection{Types de phases}
+\subsection{Types de phases}
 \begin{itemize}
     \item Fluide - liquide ou gaz
     \item Phase condensée - solide ou liquide
@@ -1095,7 +1123,7 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
     \item Entropie de changement d'état - $s_{\phi_1 \rightarrow \phi_2} = \frac{h_{\phi_1 \rightarrow \phi_2}(T)}{T}$
 \end{itemize}
 
-\subsubsection{Variance}
+\subsection{Variance}
 Pour $K$ espèces nomléculaires sous $\phi$ phases distinctes,
 \[ \nu = K + 2 - \phi \]
 
@@ -1112,28 +1140,28 @@ Pour $K$ espèces nomléculaires sous $\phi$ phases distinctes,
     \end{itemize}
 \end{itemize}
 
-\subsection{Mécanique des fluides}
+\section{Mécanique des fluides}
 
-\subsubsection{Force volumique}
+\subsection{Force volumique}
 \[ \vec{f_p} = \frac{\dd^3 \vec{F_p}}{\dd^3 \tau_M} = - \grad P \]
 \begin{itemize}
     \item C'est une force VOLUMIQUE (force par volume mésoscopique)
     \item Pour une fluide au repos dans un référentiel galiléen, $\rho (M) \vec{g} - \grad P = \vec{0}$
 \end{itemize}
 
-\subsubsection{Fluide incompressible et homogène}
+\subsection{Fluide incompressible et homogène}
 Pour un fluide incompressible et homogène, à l'équilibre thermodynamique local au repos dans le référentiel $R$ galiléen dans un champ de pesanteur $\vec{g}$ uniforme selon $-\vec{e_z}$
 
 \[ P(z) = P_0 - \rho g z \]
 
-\subsubsection{Pression atmosphèrique}
+\subsection{Pression atmosphèrique}
 Dans un atmosphère isotherme assimilable à un gaz parfait à l'équilibre thermodynamique local au repos dans le référentiel $R$ galiléen dans un champ de pesanteur $\vec{g}$ uniforme selon $-\vec{e_z}$
 
 \[ P(z) = P_0 e^{-\frac{M_{\text{mol}}gz}{RT}} = P_0 e^{-\frac{m_{\text{gaz}}gz}{kT}} \]
 
 \noindent [Démonstration - Avec la loi des gaz parfaits, $P = \rho \frac{RT}{M_{\text{mol}}} = \rho \frac{kT}{m_{\text{gaz}}} $]
 
-\subsection{Travail mécanique de la pression}
+\section{Travail mécanique de la pression}
 \[ \delta W = - P_{\text{contact}} \dd V \]
 
 \begin{itemize}
@@ -1145,7 +1173,7 @@ Dans un atmosphère isotherme assimilable à un gaz parfait à l'équilibre ther
     \end{itemize}
 \end{itemize}
 
-\subsection{Premier principe de la thermodynamique}
+\section{Premier principe de la thermodynamique}
 Pour un système fermé
 \[ \dd E_{m\repr} + \dd U = \delta W_{\repr} + \delta Q \]
 
@@ -1158,7 +1186,7 @@ Pour un système fermé
 \noindent Pour une transformation monobare tel que $P_i = P_f = P_{\text{ext}}$
 \[ \Delta H = Q \]
 
-\subsubsection{Premier principe industriel}
+\subsection{Premier principe industriel}
 Pour une machine en écoulement permenant 
 \[ \sum_{\text{sorties}} (e_{m,i} + h_i)D_i - \sum_{\text{entrées}} (e_{m, i} + h_i)D_i = (w_m + q_m)\sum D_i \]
 
@@ -1171,7 +1199,7 @@ Pour une machine en écoulement permenant
     \item Pour une seule entrée et une seule sortie, $\Delta e_m + \Delta h = w_m + q_m$
 \end{itemize}
 
-\subsubsection{Transfert thermique}
+\subsection{Transfert thermique}
 \begin{itemize}
     \item Normalement, $Q$ ne peut pas être calculé ou mesuré directement
     \item 3 types de transferts thermiques
@@ -1183,7 +1211,7 @@ Pour une machine en écoulement permenant
     \item Pour la convection - $ \frac{\delta Q}{\dt} = -hS(T - T_{\text{ext}}) $
 \end{itemize}
 
-\subsection{Second principe de la thermodynamique}
+\section{Second principe de la thermodynamique}
 \[ \dd S = \delta S_{\text{échangée}} + \delta S_{\text{créée}} \]
 
 \begin{itemize}
@@ -1193,18 +1221,18 @@ Pour une machine en écoulement permenant
     \item On peut calculer $\dd S = \frac{1}{T}\dd U + \frac{P}{T} \dd V$ par l'identité thermodynamique
 \end{itemize}
 
-\subsubsection{Conséquences}
+\subsection{Conséquences}
 On considère une enceinte isolée contenant 2 gaz séparés par une paroi. 
 \begin{itemize}
     \item Pour une paroi fixe, $\dd S = \dd U_1 (\frac{T_2 - T_1}{T_1 T_2}) \geq 0$ donc $\dd U_1$ est de même signe que $T_2 - T_1$ - transfert d'énergie du corps plus chaud au corps moin chaud
     \item Pour une paroi mobile mais les deux gaz à la même température, $\dd S = \frac{P_1 - P_2}{T} \dd V_1 \geq 0$ donc $\dd V_1$ est de même signe que $P_1 - P_2$ - mouvement du paroi au sens plus haute pression $\rightarrow$ plus basse pression
 \end{itemize}
 
-\subsubsection{Troisième principe de la thermodynamique}
+\subsection{Troisième principe de la thermodynamique}
 
 L'entropie d'un corps pur parfaitement cristallisé tend vers 0 J K$^{-1}$ lorsque sa température tend vers $0$ K
 
-\subsection{Gaz parfait}
+\section{Gaz parfait}
 \begin{itemize}
     \item Molécules du gaz supposées ponctuelles
     \item Molécules sont sans intéractions entre elles
@@ -1212,7 +1240,7 @@ L'entropie d'un corps pur parfaitement cristallisé tend vers 0 J K$^{-1}$ lorsq
 
 \noindent Un gaz réel à faible pression (quelques bars) peut être assimilé à un gaz parfait. 
 
-\subsubsection{Théorie cinétique du gaz parfait}
+\subsection{Théorie cinétique du gaz parfait}
 \[ P = \frac{1}{3}n_Vm \langle v^2 \rangle \]
 \[ PV = Nk_B T = nRT \]
 
@@ -1226,7 +1254,7 @@ L'entropie d'un corps pur parfaitement cristallisé tend vers 0 J K$^{-1}$ lorsq
     \item $C_V = \frac{3}{2}nR$
 \end{itemize}
 
-\subsubsection{Gaz parfaits diatomiques}
+\subsection{Gaz parfaits diatomiques}
 
 Pour un gaz parfait diatomique, on compte 7 degrés de liberté
 \begin{itemize}
@@ -1242,7 +1270,7 @@ Pour un gaz parfait diatomique, on compte 7 degrés de liberté
     \item À hautes températures, on a les translations, les rotations, et les vibrations, $U = \frac{7}{2} N k_BT$
 \end{itemize}
 
-\subsubsection{Généralisation}
+\subsection{Généralisation}
 On définit la coefficient de Laplace
 \[ \gamma = \frac{C_P}{C_V} > 1 \]
 
@@ -1255,7 +1283,7 @@ On définit la coefficient de Laplace
     \item Une transformation adiabatique réversible est isentropique - $PV^{\gamma} = $ cste 
 \end{itemize}
 
-\subsubsection{Modèle de Van der Waals}
+\subsection{Modèle de Van der Waals}
 \[ (P + a \frac{n^2}{v^2})(V- nb) = nRT \]
 
 \begin{itemize}
@@ -1266,15 +1294,15 @@ On définit la coefficient de Laplace
     \item Correction du volume - $\leq 0$ - volume plus grand qu'attendue
 \end{itemize}
 
-\subsection{Phases condensées incompressibles et indilatables}
+\section{Phases condensées incompressibles et indilatables}
 \begin{itemize}
     \item $V$ constante et indépendant et $T$ et $P$
     \item $C_V = \frac{\dd U}{\dt}$
     \item Expériementalement, $\dd (PV) \ll \dd U$ donc $\dd U \approx \dd H$ donc $C = C_V = C_P$
 \end{itemize}
 
-\subsection{Méthodes}
-\subsubsection{Calcul d'un changement d'état}
+\section{Méthodes}
+\subsection{Calcul d'un changement d'état}
 \begin{enumerate}
     \item On applique le théorème des moments sur un palier de changement d'état (isobare et isotherme) - $\dd h = \dx_v h_{\text{vap}}(T)$ 
     \item Sur la courbe d'ébullition (liquide incompressible indilatable saturant) - $ \dd h = c \dd T $ avec $c$ supposé constante
@@ -1288,7 +1316,7 @@ Même raisonnement pour d'autres fonctions d'états (e.g. $U$ ou $S$)
     \item Sur la courbe d'ébullition pour un fluide incompressible indilatable, l'indentité thermodynamique donne $\dd S = \frac{C}{T} \dd T$
 \end{itemize}
 
-\subsubsection{Détente de Joule-Gay-Lussac}
+\subsection{Détente de Joule-Gay-Lussac}
 2 enceintes reliées, une contenant du vide et l'autre contenant un gaz. 
 
 \begin{itemize}
@@ -1297,7 +1325,7 @@ Même raisonnement pour d'autres fonctions d'états (e.g. $U$ ou $S$)
     \item Pour un gaz réel, $\Delta T < 0$
 \end{itemize}
 
-\subsubsection{Détente de Joule-Thomson}
+\subsection{Détente de Joule-Thomson}
 Fluide en écoulement lent, stationnaire et horizontal traversant un milieu poreux qui sépare le fluide à gauche ($P_1, V_1$) avec le fluide à droite ($P_2, V_2$).
 
 \begin{itemize}
@@ -1305,7 +1333,7 @@ Fluide en écoulement lent, stationnaire et horizontal traversant un milieu pore
     \item $\Delta S = nR \ln(\frac{V_f}{V_i}) = nR \ln(\frac{P_i}{P_f})$ [Démonstration - identité thermodynamique avec $\dd T = 0$ ou avec $\dd H = 0$]
 \end{itemize}
 
-\subsection{Machines thermiques cycliques}
+\section{Machines thermiques cycliques}
 Le système retourne à son état initial. 
 
 \begin{itemize}
@@ -1313,12 +1341,12 @@ Le système retourne à son état initial.
     \item Comme $\Delta U = W + Q = 0$, les diagrammes de Clapeyron et entropique tournent dans le même sens (horaire pour un cycle moteur, trigo pour un cycle récepteur)
 \end{itemize}
 
-\subsubsection{Machine monotherme}
+\subsection{Machine monotherme}
 Une machine monotherme cyclique n'existe pas. (Énoncé de Kelvin-Planck du second principe). Pour qu'un système cyclique fournisse du travail, il doit nécessairement échanger un transfert thermique avec au moins deux sources de températures différentes \\
 
 [Démonstration - Signes de $Q$ puis $W$ fixé par le 2e principe et le 1er principe]
 
-\subsubsection{Généralités}
+\subsection{Généralités}
 \[ \sum_k Q_k = -W \]
 [Démonstration - 1er principe] \\ \\
 Inégalité de Clausius
@@ -1327,7 +1355,7 @@ Inégalité de Clausius
 
 Le cycle est réversible $ \iff \sum_k \frac{Q_k}{T_k} = 0 $ - égalité de Carnot-Clausius
 
-\subsubsection{Diagramme de Raveau}
+\subsection{Diagramme de Raveau}
 \begin{center}
     \includegraphics[height=5cm]{raveau.jpg}
 \end{center}
@@ -1347,7 +1375,7 @@ Le cycle est réversible $ \iff \sum_k \frac{Q_k}{T_k} = 0 $ - égalité de Carn
     \end{itemize}
 \end{enumerate}
 
-\subsubsection{Moteur à explosion}
+\subsection{Moteur à explosion}
 
 \begin{enumerate}
     \item Admission à pression atmosphèrique
@@ -1365,17 +1393,17 @@ Avec $\alpha = \frac{V_{\max}}{V_{\min}}$ \\
 
 \clearpage
 
-\section{Induction}
+\chapter{Induction}
 
-\subsection{Champ magnétique}
-\subsubsection{Propriétés}
+\section{Champ magnétique}
+\subsection{Propriétés}
 \begin{itemize}
     \item Les invariances du champ magnétique sont les invariances de ses sources
     \item Les plans de symétrie du champ magnétique sont des plans d'antisymétrie de ses sources et inversement
     \item Pour un solénoïde infini, $\overrightarrow{B_{\text{int}}} = \mu_0 n I \vec{e_z}$ et $\overrightarrow{B_{\text{ext}}} = \vec{0}$
 \end{itemize}
 
-\subsubsection{Dipôle magnétique}
+\subsection{Dipôle magnétique}
 \[ \vec{\mathcal{M}} = I \vec{S} \]
 
 \begin{itemize}
@@ -1384,7 +1412,7 @@ Avec $\alpha = \frac{V_{\max}}{V_{\min}}$ \\
     \item L'allure des lignes de champ magnétique est $r = \lambda \sin^2 \theta$ [HP]
 \end{itemize}
 
-\subsubsection{Flux}
+\subsection{Flux}
 \[ \dd \phi = \vec{B}\cdot \dd \vec{S} \]
 
 \begin{itemize}
@@ -1400,7 +1428,7 @@ Avec $\alpha = \frac{V_{\max}}{V_{\min}}$ \\
     \end{itemize}
 \end{itemize}
 
-\subsection{Force de Laplace}
+\section{Force de Laplace}
 \[ \overrightarrow{F_{\text{mag}}} = q \vec{v} \wedge \vec{B}  \]
 \[ \dd \overrightarrow{F_{L}} = I \vec{\dd l} \wedge \vec{B} \]
 
@@ -1411,7 +1439,7 @@ Avec $\alpha = \frac{V_{\max}}{V_{\min}}$ \\
     \item Pour une spire en rotation autour de l'axe $\vec{e_z}$ avec un champ magnétique uniforme selon $\vec{e_x}$, $\vec{\Gamma_L} = ISB \cos \theta \vec{e_z} = \vec{\mathcal{M}} \wedge \vec{B}$ [On intègre $\dd M_O(M) = \overrightarrow{OM} \wedge \dd \vec{F_L}$ pour tout point $M$. On pourrait se limiter à intégrer uniquement sur les 2 côtés horizontals]
 \end{itemize}
 
-\subsubsection{Généralisation}
+\subsection{Généralisation}
 Un moment dipolaire magnétique $\vec{\mathcal{M}}$ dans un champ $\vec{B}$ uniforme et stationnaire
 \begin{itemize}
     \item La résultant des forces de Laplace est nulle
@@ -1423,20 +1451,20 @@ Un moment dipolaire magnétique $\vec{\mathcal{M}}$ dans un champ $\vec{B}$ unif
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Moteur synchrone}
+\subsection{Moteur synchrone}
 \begin{itemize}
     \item 2 paires de bobines de Helmholtz réalise un champ magnétique tournant
     \item Pour un angle $\alpha$ entre le champ magnétique tournant et le dipôle magnétique du moteur, $\Gamma_L = \mathcal{M}B \sin \alpha$
 \end{itemize}
 
-\subsection{Induction électromagnétique}
+\section{Induction électromagnétique}
 \begin{enumerate}
     \item Un courant est induit dans un circuit fermé (ou tension ux bornes d'un circuit ouvert), lorsque le circuit est dans un champ magnétique non-stationnaire, ou en mouvement dans un champ magnétique non-uniforme
     \item Loi de Lenz - les phénomènes d'induction s'opposent, par leurs effets, aux causes qui leur ont donné naissance
     \item Loi de Faraday - $e = - \frac{\dd \phi}{\dt}$ la force électromotrice induite
 \end{enumerate}
 
-\subsubsection{Induction de Neumann}
+\subsection{Induction de Neumann}
 Circuits fixes dans des champs magnétiques qui varient dans le temps.
 
 \begin{itemize}
@@ -1446,7 +1474,7 @@ Circuits fixes dans des champs magnétiques qui varient dans le temps.
     \item Coefficient de couplage - $k = \frac{|M|}{\sqrt{L_1L_2}} \leq 1$ (couplage parfait - $M^2 = L_1L_2$)
 \end{itemize}
 
-\subsubsection{Induction de Lorentz}
+\subsection{Induction de Lorentz}
 Circuits mobiles dans des champs magnétiques stationnaires
 
 \begin{enumerate}
@@ -1473,7 +1501,7 @@ Cette relation permet aussi de trouver la force électromotrice induite.
 
 
 
-\subsubsection{Transformateur parfait}
+\subsection{Transformateur parfait}
 \begin{enumerate}
     \item Couplage parfait - ligne de champs magnétiques sont intégralement canalisées d'un enroulement vers l'autre
     \item Les résistances des enroulements sont négligeables
@@ -1489,9 +1517,9 @@ On définit le rapport de transformation
 
 \clearpage
 
-\section{Mécanique quantique}
+\chapter{Mécanique quantique}
 
-\subsection{Dualité onde-particule de la lumière}
+\section{Dualité onde-particule de la lumière}
 \[ E = h\nu \]
 \[ p = \frac{E}{c} = \frac{h}{\lambda} \]
 
@@ -1500,7 +1528,7 @@ On définit le rapport de transformation
     \item Vitesse de la lumière $c = 3,00 \times 10^8 \text{ m s}^{-1}$
 \end{itemize}
 
-\subsubsection{Expériences}
+\subsection{Expériences}
 
 \begin{itemize}
     \item Effet photoélectrique
@@ -1521,7 +1549,7 @@ On définit le rapport de transformation
     \end{itemize}
 \end{itemize}
 
-\subsection{Dualité onde-particule de la matière}
+\section{Dualité onde-particule de la matière}
 
 \[ \lambda_{\text{DB}} = \frac{h}{p} \]
 
@@ -1533,14 +1561,14 @@ On définit le rapport de transformation
     \item Principe de complémentarité - une particule quantique ne peut se comporter en même temps comme une onde et comme un corpuscule
 \end{itemize}
 
-\subsection{Principe d'indetermination de Heisenberg}
+\section{Principe d'indetermination de Heisenberg}
 \[ \Delta x \Delta p \geq \frac{\hbar}{2} \]
 
 \begin{itemize}
     \item $\hbar = \frac{h}{2\pi}$
 \end{itemize}
 
-\subsection{Quantification de l'énergie d'une particule}
+\section{Quantification de l'énergie d'une particule}
 
 \begin{itemize}
     \item Un grandeur est quantifiée s'il ne prend qu'une suite de valeurs discrètes
@@ -1554,14 +1582,14 @@ On définit le rapport de transformation
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Modèle planétaire de Bohr}
+\subsection{Modèle planétaire de Bohr}
 \begin{itemize}
     \item Électrons sont en mouvement circulaire subissant la force coulombienne du noyau (intéraction newtonienne)
     \item On pose $L_O = n \hbar$ - moment cinétique quantifié 
     \item Les rayons d'orbites, et l'énergie des électrons sont quantifiés
 \end{itemize}
 
-\subsubsection{Puits infini à 1 dimension}
+\subsection{Puits infini à 1 dimension}
 
 \[ E_p(x) = \begin{cases}
     +\infty & \si x < 0 \\
@@ -1578,8 +1606,8 @@ On définit le rapport de transformation
 
 \clearpage
 
-\section{Annexe}
-\subsection{Formules mathématiques}
+\chapter{Annexe}
+\section{Formules mathématiques}
 \begin{itemize}
     \item Pythagore généralisé - $ a^2 = b^2 + c^2 - 2bc\cos{\theta} $
     \item Factorisation de cosinus - $ \cos{p} + \cos{q} = 2 \cos{\frac{p+q}{2}}\cos{\frac{p-q}{2}} $ 
@@ -1587,7 +1615,7 @@ On définit le rapport de transformation
     \item Dérivée partielle - $\dd f(x, y) = \frac{\partial f}{\partial x} \dx + \frac{\partial f}{\partial y} \dy$
 \end{itemize}
 
-\subsection{Représentation complexe}
+\section{Représentation complexe}
 Pour un signal $s(t) = A\cos{(\omega t + \phi)}$, on a la grandeur complexe 
 \[\underline{s}(t) = Ae^{j(\omega t + \phi)} = \underline{A}e^{j\omega t}\]
 \begin{enumerate}
@@ -1605,15 +1633,15 @@ Pour un signal $s(t) = A\cos{(\omega t + \phi)}$, on a la grandeur complexe
     \item $\cos(\omega t) = \text{Re}(e^{j \omega t}) \et \sin(\omega t) = \text{Re}(-je^{j \omega t})$
 \end{itemize}
 
-\subsubsection{Propriétés}
+\subsection{Propriétés}
 \begin{enumerate}
     \item Dérivation - $ \underline{\dot{s}}(t) = j\omega\underline{s}(t) = \omega e^{j\frac{\pi}{2}} \underline{s}(t) $ - La dérivée est en quadrature avance
     \item Intégration - $ \int \underline{s}(t) \text{ d}t = \frac{\underline{s}(t)}{j\omega} = \omega e^{-j\frac{\pi}{2}} \underline{s}(t) $ - La dérivée est en quadrature retard
 \end{enumerate}
 
-\subsection{Équations différentielles - solutions générales}
+\section{Équations différentielles - solutions générales}
 
-\subsubsection{1er ordre - Solution exponentielle}
+\subsection{1er ordre - Solution exponentielle}
 \[ \dot{s}(t) + \frac{s(t)}{\tau} = f(t) \] 
 \begin{itemize}
     \item $\tau$ le temps caractéristique - attention au signe!
@@ -1621,7 +1649,7 @@ Pour un signal $s(t) = A\cos{(\omega t + \phi)}$, on a la grandeur complexe
 Solution - 
 \[ s(t) = Ae^{-\frac{t}{\tau}} + s_p(t) \]
         
-\subsubsection{2nd ordre sans terme à $\dot{s}$ - Oscillateur harmonique}
+\subsection{2nd ordre sans terme à $\dot{s}$ - Oscillateur harmonique}
 \[ \ddot{s}(t) + \omega_0^2s = \omega_0^2s_{eq} \] 
 \begin{itemize}
     \item $\omega_0$ la pulsation propre
@@ -1630,7 +1658,7 @@ Solution -
 Solution - 
 \[ s(t) = A\cos(\omega_0t)+B\sin(\omega_0t) + s_{eq} = D\cos(\omega_0t + \phi) + s_{eq} \]
 
-\subsubsection{2nd ordre sans terme à $\dot{s}$ - Croissance exponentielle}
+\subsection{2nd ordre sans terme à $\dot{s}$ - Croissance exponentielle}
 \[ \ddot{s}(t) - \frac{1}{\tau ^ 2} s = \omega_0^2s_{eq} \] 
 \begin{itemize}
     \item $\tau$ le temps caractéristique - attention au signe - le terme à $s$ est négatif!
@@ -1638,7 +1666,7 @@ Solution -
 Solution - 
 \[ s(t) = A e^{\frac{-t}{\tau}} + B e^{\frac{t}{\tau}} \]
         
-\subsubsection{2nd ordre - Oscillateur amorti}
+\subsection{2nd ordre - Oscillateur amorti}
 \[ \ddot{s}(t) + \frac{\omega_0}{Q}\dot{s}(t) + \omega_0^2s(t) = f(t) \]
 \begin{itemize}
     \item $\omega_0$ la pulsion propre
@@ -1660,21 +1688,23 @@ Solution - une forme avec $ e^{rt} $ d'où l'on trouve l'équation caractéristi
             \item $ \omega_p = \omega_0\sqrt{1-\frac{1}{4Q^2}} < \omega_0 $ la pseudo-pulsation
         \end{itemize}
         \[ s(t) = (A\cos{(\omega_pt)} + B\sin{(\omega_pt)})e^{-\frac{t}{\tau}} \]
-        \noindent Le décrément logarithmique - $ \delta = |\ln{\frac{u(t) - u(t \rightarrow + \infty)}{u(t+T) - u(t \rightarrow + \infty)}}| = \frac{T}{\tau} = \frac{2\pi}{\sqrt{4Q^2-1}}$ - le décrément d'amplitude entre 2 pseudo-périodes - cette valeur est utile en TP pour trouver $Q$
+        \begin{itemize}
+            \item Décrément logarithmique - $ \delta = |\ln{\frac{u(t) - u(t \rightarrow + \infty)}{u(t+T) - u(t \rightarrow + \infty)}}| = \frac{T}{\tau} = \frac{2\pi}{\sqrt{4Q^2-1}}$ - le décrément d'amplitude entre 2 pseudo-périodes - cette valeur est utile en TP pour trouver $Q$
+        \end{itemize}
 \end{itemize}
 
-\subsection{Équations différentielles - Solutions particulières}
+\section{Équations différentielles - Solutions particulières}
 
 La solution en régime permanent
 
-\subsubsection{Solution particulière constante}
+\subsection{Solution particulière constante}
 $ s_p(t) $ est la solution particulière qui dépend du second membre ($f(t)$)
 \begin{itemize}
     \item Pour $f(t)=0$, il n'y a pas de second membre, $s_p(t)=0$
     \item Pour $f(t)$ constante, on cherche $s_p(t)$ constante qui satisfait l'équation différentielle quand les dérivées de $s$ valent $0$
 \end{itemize}
 
-\subsubsection{Solution particulière - régime sinusoïdal forcé}
+\subsection{Solution particulière - régime sinusoïdal forcé}
 Pour une équation différentielle de 2nd ordre avec $f(t)$ sinusoïdal de pulsation $\omega$ et $S_0, \dot{S_0}$ les amplitudes maximales qui dépendent des spécificités du système étudié, on a les amplitudes complexes en fonction de $ \omega $ suivantes:
 
 \[ \underline{S}(\omega) = S_0 \frac{1}{1-(\frac{\omega}{\omega_0})^2+j\frac{1}{Q}\frac{\omega}{\omega_0}} \]
@@ -1698,7 +1728,7 @@ Pour une équation différentielle de 2nd ordre avec $f(t)$ sinusoïdal de pulsa
 
 \noindent La relation $Q = \frac{\omega_0}{\Delta \omega}$ est très utile en TP. 
 
-\subsection{Approximations}
+\section{Approximations}
 \begin{itemize}
     \item Approximation nulle
     \[ a \pm b = a\]
@@ -1714,7 +1744,7 @@ Pour une équation différentielle de 2nd ordre avec $f(t)$ sinusoïdal de pulsa
     Si $ \tau_1 \ll \tau_2 $, On peut traiter la partie $Be^{-\frac{t}{\tau_2}}$ constante au début, et la partie $Ae^{-\frac{t}{\tau_1}}$ à la suite
 \end{itemize}
 
-\subsection{Misc}
+\section{Misc}
 \begin{itemize}
     \item Diamètre de la pupille - 2 à 8 mm
     \item Punctum proximum de l'oeil - $ 0,25 \text{ m} $

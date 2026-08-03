@@ -1,9 +1,11 @@
-\documentclass{article}
+\documentclass[oneside]{book}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{stmaryrd}
+\usepackage{titlesec}
+\usepackage[margin=1in]{geometry}
 
 \input{../headers.tex}
 
@@ -11,9 +13,26 @@
 \hbadness=10000
 \vbadness=10000
 
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}
+  {}            % empty label -> no "Chapter 1"
+  {0pt}
+  {\Huge}
+
+\titlespacing*{\chapter}
+  {0pt}    % left margin
+  {0pt}    % space before the title
+  {10pt}   % space after the title
+  
+\makeatletter
+\renewcommand{\chaptermark}[1]{%
+  \markboth{\thechapter.\ #1}{}%
+}
+\makeatother
+
 \title{MATH}
 \author{KATEKKUTER}
-\date{}
+\date{2025-2027 PCSI / PC*}
 
 \begin{document}
 
@@ -22,7 +41,8 @@
 \tableofcontents
 
 \clearpage
-\section{Logique, ensembles et raisonnements}
+\chapter{Essentiels}
+\section{Logique, ensembles et raisonnements [sup 1]}
 \subsection{Méthodes de démonstration}
 \subsubsection{Montrer $P \implies Q$}
 
@@ -82,50 +102,69 @@ Démonstration
 Éléments qui appartiennent à tous les ensembles $ A_i $
 
 \clearpage
-\section{Trigonométrie et complexes}
-\subsection{Formules trigonométrique}
-\subsubsection{Formules de base}
+\section{Réels [sup 7]}
+
+\subsection{Relation d'ordre sur $\mathbb{R}$}
 \begin{itemize}
-    \item $ \cos{(a+b)} = \cos{a}\cos{b}-\sin{a}\sin{b} $
-    \item $ \sin{(a+b)} = \sin{a}\cos{b}+\cos{a}\sin{b} $
-    \item En divisant les 2 au-dessus, $ \tan{(a+b)} = \frac{\tan{a}+\tan{b}}{1-\tan{a}\tan{b}} $
+    \item Réflexivité - $\forall x \in \mathbb{R}, x \leq x$
+    \item Transitivité - $\forall (x,y,z) \in \mathbb{R}^3, (x \leq y \text{ et } y \leq z) \implies x \leq z $
+    \item Antisymétrie - $\forall (x,y) \in \mathbb{R}^2, (x \leq y \text{ et } y \leq x) \implies x = y$
 \end{itemize}
 
-\subsubsection{Formules de duplication}
-Dérivable depuis les formules de base
+L'inégalité stricte n'est pas une relation d'ordre (pas antisymétrique).
+
+\subsection{Définitions}
 \begin{itemize}
-    \item $ \sin{(2a)} = 2\sin{a}\cos{a} $
-    \item $ \cos{(2a)} = \cos^2{a} - \sin^2{a} = 2\cos^2{a} -1 = 1- 2\sin^2{a} $
+    \item Majorant $M$ de $A$ - $ \forall a \in A, a \leq M $
+    \item Minorant $M$ de $A$ - $ \forall a \in A, M \leq a $
+    \item Bornée - $ \exists M \in \mathbb{R} : \forall a \in A, |a| \leq M \iff A \text{ est majorée et minorée} $
 \end{itemize}
 
-\subsubsection{Formules de linéarisation}
-Dérivable depuis les formules de base en cherchant le produit à droite.
+\subsection{Bornes}
+\subsubsection{Borne supérieure}
 \begin{itemize}
-    \item 2 cosinus pour cosinus: $ \cos{a}\cos{b} = \frac{1}{2}(\cos{(a+b)}+\cos{(a-b)})  $
-    \item 2 sinus pour cosinus: $ \sin{a}\sin{b} = \frac{1}{2}(\cos{(a-b)}-\cos{(a+b)}) $
-    \item cosinus et sinus pour sinus: $ \sin{a}\cos{b} = \frac{1}{2}(\cos{(a-b)}-\cos{(a+b)}) $
+    \item En particulier un majorant
+    \item Le plus petit des majorants
+    \item Condition d'existence - toute partie non-vide et majorée de $\mathbb{R}$ possède une borne supérieure
+    \item $\max{A} = \sup{A} \iff \sup{A} \in A $
+    \item Condition d'un max - toute partie non-vide et majorée de $\mathbb{Z}$ possède un maximum
+    \item Si $A$ n'est pas majorée, $\sup{A} = +\infty$
+    \item Caractérisation epsilonesque - $ \begin{cases}
+        \forall a \in A, a \leq M \\
+        \forall \epsilon > 0, \exists a_0 \in A : m - \epsilon < a_0
+    \end{cases} $
+\end{itemize}
+\subsubsection{Borne inférieure} 
+\begin{itemize}
+    \item En particulier un minorant
+    \item Le plus petit des minorants
+    \item Toute partie non-vide et minorée de $\mathbb{R}$ possède une borne supérieure
+    \item $\min{A} = \inf{A} \iff \inf{A} \in A $
+    \item Toute partie non-vide et minorée de $\mathbb{Z}$ possède un minimum
+    \item Si $A$ n'est pas minorée, $\inf{A} = -\infty$
+    \item Pour $ A \subset \mathbb{R}_+, \inf(A^2) = (\inf A)^2 $
+    \item Caractérisation epsilonesque - $ \begin{cases}
+        \forall a \in A, a \leq M \\
+        \forall \epsilon > 0, \exists a_0 \in A : a_0 < m - \epsilon
+    \end{cases} $
 \end{itemize}
 
-On obtient les formules de factorisation en prenant $ p = a+b $ et $ q = a-b $, d'où $ a = \frac{p+q}{2}, b = \frac{p-q}{2} $
+\subsection{Partie entière}
+\[ \lfloor x \rfloor \leq x < \lfloor x \rfloor + 1 \]
 
-\subsubsection{Tangentes}
-Posons $ t=\tan{\frac{x}{2}} $. Avec 
 \begin{itemize}
-    \item $ \cos{x} = \frac{1-t^2}{1+t^2} $
-    \item $ \sin{x} = \frac{2t}{1+t^2} $
+    \item Le plus grand entier plus petit que $x$
+    \item $ \max{\{ k \in \mathbb{Z} : k \leq x \}} $
+        \begin{itemize}
+            \item Démonstration de l'existence - A est une partie non-vide et majorée de $\mathbb{Z}$, et montrer que $\max A$ convient 
+            \item Démonstration de l'unicité - Par antisymétrie avec deux valeurs qui vérifie la propriété
+        \end{itemize}
+    \item Partie fractionnaire ($\{x\} = x- \lfloor x\rfloor$ notation non universelle)
 \end{itemize}
 
-[Démonstration - formules de duplication et relation $\tan^2+1=\sec^2$]
+\clearpage
 
-\subsection{Équations trigonométriques}
-\subsubsection{Valeurs de l'égalité}
-Attention à la deuxième valeur pour sin et cos
-\begin{itemize}
-    \item $ \cos{a} = \cos{b} \iff (a \equiv b \msp [2\pi] \textit{ ou } a \equiv -b \msp [2\pi]) $
-    \item $ \sin{a} = \sin{b} \iff (a \equiv b \msp [2\pi] \textit{ ou } a \equiv \pi-b \msp [2\pi]) $
-    \item $ \tan{a} = \tan{b} \iff a \equiv b \msp [\pi] $
-\end{itemize}
-
+\section{Complexes [sup 2.2]}
 \subsection{Propriétés des complexes}
 \subsubsection{L'écriture algébrique}
 $ z \in \mathbb{C} $ s'écrit $ z = \text{Re}(z) + i\text{Im} (z) $
@@ -208,6 +247,7 @@ Pour $a\in \mathbb{N}^*$, les racines n-ièmes de $ a = |a|e^{i\theta}$ sont les
     \item $j=e^{i\frac{2\pi}{3}} = -\frac{1}{2} + i \frac{\sqrt{3}}{2} \in \mathbb{U}_3$
     \item $x^2 + x + 1 = (x - j)(x - j^2)$
     \item $x^2 - x + 1 = (x + j)(x + j^2)$
+    \item Pour $n\geq2$, la somme des racines $n$-ièmes $=0$
 \end{itemize}
 
 \subsection{Équations du second degré}
@@ -235,7 +275,7 @@ Pour $a\in \mathbb{N}^*$, les racines n-ièmes de $ a = |a|e^{i\theta}$ sont les
 \noindent On remarque que $ z_1 + z_2 = -\frac{b}{a} $ et $ z_1z_2 = \frac{c}{a} $
 
 \clearpage
-\section{Calculs algébriques}
+\section{Calculs algébriques [sup 3]}
 \subsection{Sommes}
 \subsubsection{Propriétés}
 \begin{itemize}
@@ -325,7 +365,7 @@ Ce formule valable pour les objets qui commutent
 \[ \cos{(nx)} + i\sin{(nx)} = e^{nx} = (\cos{x} + i\sin{x})^n \]
 \noindent Appliquer la formule du binôme de Newton et séparer les termes paires et impaires. 
 \clearpage
-\section{Applications}
+\section{Applications [sup 4]}
 \subsection{Définitions}
 
 Soit $f$, $g$ des applications
@@ -397,16 +437,52 @@ Tout élément de $F$ a un unique antécédent dans $E$ (injective et surjective
 \end{align*}
 
 \clearpage
-\section{Fonctions de la variable réelle}
-\subsection{Les réels}
-\subsubsection{Relation d'ordre sur $\mathbb{R}$}
+
+\chapter{Analyse}
+\section{Trigonométrie [sup 2.1]}
+\subsection{Formules trigonométrique}
+\subsubsection{Formules de base}
 \begin{itemize}
-    \item Réflexivité - $\forall x \in \mathbb{R}, x \leq x$
-    \item Transitivité - $\forall (x,y,z) \in \mathbb{R}^3, (x \leq y \text{ et } y \leq z) \implies x \leq z $
-    \item Antisymétrie - $\forall (x,y) \in \mathbb{R}^2, (x \leq y \text{ et } y \leq x) \implies x = y$
+    \item $ \cos{(a+b)} = \cos{a}\cos{b}-\sin{a}\sin{b} $
+    \item $ \sin{(a+b)} = \sin{a}\cos{b}+\cos{a}\sin{b} $
+    \item En divisant les 2 au-dessus, $ \tan{(a+b)} = \frac{\tan{a}+\tan{b}}{1-\tan{a}\tan{b}} $
 \end{itemize}
 
-L'inégalité stricte n'est pas une relation d'ordre (pas antisymétrique).
+\subsubsection{Formules de duplication}
+Dérivable depuis les formules de base
+\begin{itemize}
+    \item $ \sin{(2a)} = 2\sin{a}\cos{a} $
+    \item $ \cos{(2a)} = \cos^2{a} - \sin^2{a} = 2\cos^2{a} -1 = 1- 2\sin^2{a} $
+\end{itemize}
+
+\subsubsection{Formules de linéarisation}
+Dérivable depuis les formules de base en cherchant le produit à droite.
+\begin{itemize}
+    \item 2 cosinus pour cosinus: $ \cos{a}\cos{b} = \frac{1}{2}(\cos{(a+b)}+\cos{(a-b)})  $
+    \item 2 sinus pour cosinus: $ \sin{a}\sin{b} = \frac{1}{2}(\cos{(a-b)}-\cos{(a+b)}) $
+    \item cosinus et sinus pour sinus: $ \sin{a}\cos{b} = \frac{1}{2}(\cos{(a-b)}-\cos{(a+b)}) $
+\end{itemize}
+
+On obtient les formules de factorisation en prenant $ p = a+b $ et $ q = a-b $, d'où $ a = \frac{p+q}{2}, b = \frac{p-q}{2} $
+
+\subsubsection{Tangentes}
+Posons $ t=\tan{\frac{x}{2}} $. Avec 
+\begin{itemize}
+    \item $ \cos{x} = \frac{1-t^2}{1+t^2} $
+    \item $ \sin{x} = \frac{2t}{1+t^2} $
+\end{itemize}
+
+[Démonstration - formules de duplication et relation $\tan^2+1=\sec^2$]
+
+\subsection{Équations trigonométriques}
+\subsubsection{Valeurs de l'égalité}
+Attention à la deuxième valeur pour sin et cos
+\begin{itemize}
+    \item $ \cos{a} = \cos{b} \iff (a \equiv b \msp [2\pi] \textit{ ou } a \equiv -b \msp [2\pi]) $
+    \item $ \sin{a} = \sin{b} \iff (a \equiv b \msp [2\pi] \textit{ ou } a \equiv \pi-b \msp [2\pi]) $
+    \item $ \tan{a} = \tan{b} \iff a \equiv b \msp [\pi] $
+\end{itemize}
+\section{Fonctions de la variable réelle [sup 5]}
 
 \subsection{Intervalles}
 \subsubsection{Forme des intervalles}
@@ -486,7 +562,7 @@ Pour identifier les asymptotes obliques -
 Vérifier toujours la domaine de dérivabilité avant de dériver. Dans l'étude du signe de $f'$, on a parfois besoin d'étudier $f''$
 
 \clearpage
-\section{Fonctions usuelles}
+\section{Fonctions usuelles [sup 6]}
 \subsection{Fonction exponentielle}
 \subsubsection{Relation fondamentale}
 \[ \forall (x, y) \in \mathbb{R}^2, \exp(x+y) = \exp(x)\exp(y) \]
@@ -569,189 +645,7 @@ $e^x$ plus puissant que $x$, $x$ plus puissant que $\ln x$. Les limites restent 
 \noindent On a les formules analogues avec changement de signe lors d'un $\sh^2$
 
 \clearpage
-\section{Réels}
-\subsection{Définitions}
-\begin{itemize}
-    \item Majorant $M$ de $A$ - $ \forall a \in A, a \leq M $
-    \item Minorant $M$ de $A$ - $ \forall a \in A, M \leq a $
-    \item Bornée - $ \exists M \in \mathbb{R} : \forall a \in A, |a| \leq M \iff A \text{ est majorée et minorée} $
-\end{itemize}
-
-\subsection{Bornes}
-\subsubsection{Borne supérieure}
-\begin{itemize}
-    \item En particulier un majorant
-    \item Le plus petit des majorants
-    \item Condition d'existence - toute partie non-vide et majorée de $\mathbb{R}$ possède une borne supérieure
-    \item $\max{A} = \sup{A} \iff \sup{A} \in A $
-    \item Condition d'un max - toute partie non-vide et majorée de $\mathbb{Z}$ possède un maximum
-    \item Si $A$ n'est pas majorée, $\sup{A} = +\infty$
-    \item Caractérisation epsilonesque - $ \begin{cases}
-        \forall a \in A, a \leq M \\
-        \forall \epsilon > 0, \exists a_0 \in A : m - \epsilon < a_0
-    \end{cases} $
-\end{itemize}
-\subsubsection{Borne inférieure} 
-\begin{itemize}
-    \item En particulier un minorant
-    \item Le plus petit des minorants
-    \item Toute partie non-vide et minorée de $\mathbb{R}$ possède une borne supérieure
-    \item $\min{A} = \inf{A} \iff \inf{A} \in A $
-    \item Toute partie non-vide et minorée de $\mathbb{Z}$ possède un minimum
-    \item Si $A$ n'est pas minorée, $\inf{A} = -\infty$
-    \item Pour $ A \subset \mathbb{R}_+, \inf(A^2) = (\inf A)^2 $
-    \item Caractérisation epsilonesque - $ \begin{cases}
-        \forall a \in A, a \leq M \\
-        \forall \epsilon > 0, \exists a_0 \in A : a_0 < m - \epsilon
-    \end{cases} $
-\end{itemize}
-
-\subsection{Partie entière}
-\[ \lfloor x \rfloor \leq x < \lfloor x \rfloor + 1 \]
-
-\begin{itemize}
-    \item Le plus grand entier plus petit que $x$
-    \item $ \max{\{ k \in \mathbb{Z} : k \leq x \}} $
-        \begin{itemize}
-            \item Démonstration de l'existence - A est une partie non-vide et majorée de $\mathbb{Z}$, et montrer que $\max A$ convient 
-            \item Démonstration de l'unicité - Par antisymétrie avec deux valeurs qui vérifie la propriété
-        \end{itemize}
-    \item Partie fractionnaire ($\{x\} = x- \lfloor x\rfloor$ notation non universelle)
-\end{itemize}
-
-\subsubsection{Approximations décimales}
-\[ x_n = \frac{\lfloor 10^n x \rfloor}{10^n} \]
-\begin{itemize}
-    \item $x_n$ est l'approximation décimale par défaut de $x$ à la précision $10^{-n}$
-    \item $y_n = x_n + \frac{1}{10^n}$ est l'approximation décimale par excès de $x$ à la précision $10^{-n}$
-    \item Ces suites convergent vers $x$ [Démonstration - définition  et encadrement]
-    \item $x_n$ est croissante
-    \item $y_n$ est décroissante
-\end{itemize}
-
-\clearpage
-\section{Matrices et systèmes linéaires}
-\subsection{Systèmes linéaires}
-Système d'équations linéaires de $n$ équations à $p$ inconnues, noté $(S)$
-
-\subsubsection{Définitions}
-\begin{itemize}
-    \item Coefficients - Les scalaires ($a_{i, j}$) le coefficient de $x_j$ dans la $i$-ième équation
-    \item Second membre - $n$-uplet des scalaires qui sont les constantes dans les équations
-    \item Homogène - Système sans second membre
-    \item Inconnues - Les $(x_1...x_n)$
-    \item Ensemble des solutions $\mathcal{S}$ - $\{(x_1...x_p)\in\mathbb{K}^p \text{ } | \text{ } \forall i \in \llbracket 1, n \rrbracket, \sum_{j=1}^{p}a_{i, j}x_j = b_i \}$
-    \begin{itemize}
-        \item Incompatible - Pas de solution $\mathcal{S} = \emptyset$
-        \item Compatible - Au moins une solution
-    \end{itemize}
-\end{itemize}
-
-\subsection{Matrices $\mathcal{M}_{n, p}(\mathbb{K})$}
-Matrice à $n$ lignes et $p$ colonnes. 
-
-\subsubsection{Matrices remarquables}
-\begin{itemize}
-    \item Matrice identité $I_n$ = $(\delta_{i, j})_{1\leq i,j \leq n}$ - 1 sur la diagonale
-        \begin{itemize}
-            \item Symbole de Kronecker $\delta_{i, j} = \begin{cases} 1 &\text{si i = j} \\ 0 &\text{sinon} \end{cases} $
-        \end{itemize}
-    \item Matrice nulle $0_{n, p}$ - tous les coefficients sont nuls
-    \item Matrice élémentaire $E_{i, j} = (\delta_{i, k}\delta_{j, l})_{1\leq k\leq n, 1 \leq l \leq p }$ - tous les coefficients sont nuls sauf $1$ en position $(i, j)$
-    \item Matrice nilpotente - $ \exists k \in \mathbb{N} : A^k = 0 $
-    \item Matrice symétrique - $ A^T = A \iff \forall(i,j)\in \llbracket 1, n \rrbracket^2, a_{j, i} = a_{i, j} $
-    \item Matrice antisymétrique - $ A^T = -A \iff \forall(i,j)\in \llbracket 1, n \rrbracket^2, a_{j, i} = -a_{i, j} $
-    \item Matrice diagonale - $ \forall(i,j)\in \llbracket 1, n \rrbracket^2, (i\neq j \implies a_{i, j} = 0) $
-    \item Matrice triangulaire supérieure - $ \forall(i,j)\in \llbracket 1, n \rrbracket^2, (i > j \implies a_{i, j} = 0) $
-        \begin{itemize}
-            \item Stable par combinaison linéaire et produit
-        \end{itemize}
-    \item Matrice triangulaire inférieure - $ \forall(i,j)\in \llbracket 1, n \rrbracket^2, (i > j \implies a_{i, j} = 0) $
-        \begin{itemize}
-            \item La transposée d'une matrice triangulaire inférieure est triangulaire supérieure (et vice-versa)
-            \item Stable par combinaison linéaire et produit
-        \end{itemize}
-    \item Toute matrice carrée s'écrit comme la somme d'une matrice symétrique $ \frac{A + A^T}{2} $ et une matrice antisymétrique $ \frac{A - A^T}{2} $
-\end{itemize}
-
-\subsubsection{Produit matriciel}
-\[ \forall (i, j) \in \llbracket 1, n \rrbracket \times \llbracket 1, p \rrbracket, [AB]_{i, j} = \sum_{k=1}^pa_{i, k}b_{k, j} \]
-
-\begin{itemize}
-    \item $ E_{i, j}^{(n, p)}E_{k, l}^{(p, q)} = \delta_{j, k}E_{i, l}^{(n, q)} $ [Démonstration - séparant le terme où $i=l$]
-\end{itemize}
-
-\subsubsection{Transposée}
-\[ \forall(i, j) \in \llbracket 1, n \rrbracket \times \llbracket 1, p \rrbracket, [A^T]_{i, j} = [A]j_i \]
-
-\begin{itemize}
-    \item $ (\lambda A+B)^T = \lambda A^T + B^T $
-    \item $ (AB)^T = B^TA^T $ - Attention à l'inversement
-    \item $ (A^T)^T = A $
-\end{itemize}
-
-\subsubsection{Opérations élémentaires}
-\begin{itemize}
-    \item Dilatation - multiplication de la $i$-ième ligne par $\lambda$
-        \begin{itemize}
-            \item $D_i(\lambda) = I_n + (\lambda-1)E_{i, i}$
-            \item $D_i(\lambda)A : L_i \leftarrow \lambda L_i$
-            \item $AD_i(\lambda) : C_i \leftarrow \lambda C_i$
-            \item $D_i(\lambda)^{-1} = D_i(\frac{1}{\lambda})$
-        \end{itemize}
-    \item Permutation - échange de la $i$-ième et la $j$-ième ligne
-        \begin{itemize}
-            \item $P_{i, j} = I_n - E_{i, i} - E_{j, j} + E_{i, j} + E_{j, i}$
-            \item $P_{i, j}A : L_i \leftrightarrow L_j$
-            \item $AP_{i, j} : C_i \leftrightarrow C_j$
-            \item $P_{i, j}^{-1} = P_{i, j}$
-        \end{itemize}
-    \item Transvection - $L_i \leftarrow L_i + \lambda L_j$
-        \begin{itemize}
-            \item $T_{i, j}(\lambda) = I_n + \lambda E_{i, j}$
-            \item $T_{i, j}(\lambda)A : L_i \leftarrow L_i + \lambda L_j$
-            \item $AT_{i, j}(\lambda) : C_j \leftarrow C_j + \lambda C_i$ (! $j$-ième colonne modifiée et non $i$-ième)
-            \item $T_{i, j}(\lambda)^{-1} = T_{i, j}(-\lambda)$
-        \end{itemize}
-\end{itemize}
-
-\noindent Ces opérations correspondent aux opérations sur un système d'équations linéaires. 
-
-\subsubsection{Matrices inversibles}
-\[ \text{GL}_n(\mathbb{K}) = \{ A \in \mathcal{M}_n(\mathbb{K}) \text{ } | \text{ } \exists B \in \mathcal{M}_n(\mathbb{K}) : AB = BA = I_n \} \]
-\[ A \in \text{GL}_n(\mathbb{K}) \iff \forall B \in \mathcal{M}_{n, 1}(\mathbb{K}), \exists ! X \in \mathcal{M}_{n, 1}(\mathbb{K}) \text{ } | \text{ } AX = B \]
-
-Démonstration [Sens indirect - Décomposer $I_n$ en colonne, cette $I_n$ décomposée sert de second membre, la concaténation des $X$ résultats donne $A^{-1}$ (et vérifiée pour la multiplication à gauche). On vérifie la multiplication à droite en étudiant la différence avec $I_n$]
-
-\begin{itemize}
-    \item $ (AB)^{-1} = B^{-1}A^{-1} $
-    \item $ (A^{-1})^{-1} = A $
-    \item $ (A^T)^{-1} = (A^{-1})^T $
-    \item $ (A^m)^{-1} = (A^{-1})^m = A^{-m} $
-    \item Les opérations élémentaires préservent l'inversibilité
-\end{itemize}
-
-
-
-\noindent 
-
-\noindent On peut déduire $A^{-1}$ d'une matrice inversible en résolvant le système des équations linéaires représenté par $AX=B$. \\
-
-\noindent Pour les matrices inversible, il faut considérer les puissance négatives
-
-\subsection{Algorithme du pivot de Gauss}
-Soit $A \in \text{GL}_n(\mathbb{K})$
-\begin{enumerate}
-    \item Une dilatation et une permutation pour que $a_{1, 1} = 1$ [La première colonne est non-nulle]
-    \item Des transvections $ L_i \leftarrow L_i - a_{1, 1}L_1 $ pour que la 2e colonne est de la forme $(0 \msp 1 \msp ...) $
-    \item Itération jusqu'à obtenir une matrice triangulaire supérieure
-    \item Remonter l'algorithme de la gauche vers le haut, pour obtenir $I_n$
-\end{enumerate}
-
-\noindent On en déduit que une matrice triangulaire inversible a des coefficients diagonaux non nuls.
-
-\clearpage
-\section{Suites}
+\section{Suites [sup 9]}
 
 \subsection{Définitions}
 Une fonction de $\mathbb{N}$
@@ -850,12 +744,6 @@ Soit $\begin{cases}
     \item On peut chercher 2 suites extraites adjacentes pour déterminer la limite d'une suite. 
 \end{itemize}
 
-\subsection{Relations de comparaison}
-c.f. Chap 19
-
-\subsubsection{Croissances comparées}
-\[ (\ln{n})^a \ll n^b \ll q^n \ll n! \ll n^n \]
-
 \subsection{Suites particulières}
 
 \subsubsection{Suites arithmético-géométrique}
@@ -901,7 +789,17 @@ On cherche l'unique formule explicite de la suite étant donné les conditions i
     \item Si $f$ est contractante et admet un point fixe, $(u_n)$ converge vers lui
 \end{itemize}
 
-\subsection{Théorème de Cesàro}
+\subsubsection{Approximations décimales}
+\[ x_n = \frac{\lfloor 10^n x \rfloor}{10^n} \]
+\begin{itemize}
+    \item $x_n$ est l'approximation décimale par défaut de $x$ à la précision $10^{-n}$
+    \item $y_n = x_n + \frac{1}{10^n}$ est l'approximation décimale par excès de $x$ à la précision $10^{-n}$
+    \item Ces suites convergent vers $x$ [Démonstration - définition  et encadrement]
+    \item $x_n$ est croissante
+    \item $y_n$ est décroissante
+\end{itemize}
+
+\subsection{(Classique) Théorème de Cesàro}
 Pour $ u_n \longrightarrow l \in \mathbb{C} , (\beta_n) \in (\mathbb{R}_+^*)^{\mathbb{N}} , \beta_n \longrightarrow +\infty $
 
 \[ \frac{1}{\sum_{k=0}^{n} \beta_k} \sum_{k=0}^{n} \beta_k u_k \longrightarrow l \]
@@ -909,280 +807,8 @@ Pour $ u_n \longrightarrow l \in \mathbb{C} , (\beta_n) \in (\mathbb{R}_+^*)^{\m
 \noindent La moyenne pondérée d'une suite tend vers sa limite. [Démonstration - $\frac{1}{\sum_{k=0}^{n} \beta_k} \sum_{k=0}^{n} \beta_k u_k - l = \frac{\sum_{k=0}^{n} \beta_k (u_k - l)}{\sum_{k=0}^{n} \beta_k}$, puis appliquer l'inégalité triangulaire et découper la somme au numérateur en $ 0 $ à $ n_0 - 1 $ (à valeur finie, donc la terme $\longrightarrow 0$ donc $\leq \frac{\epsilon}{2}$ APCR) et $ n_0 $ à $ n \longrightarrow +\infty $ avec $n_0$ pour $\frac{\epsilon}{2} > 0$ ]
 
 \clearpage
-\section{Espaces Vectoriels}
 
-\subsection{Définitions}
-\subsubsection{$\mathbb{K}$-espaces vectoriels}
-\[ (E, +, \cdot) \]
-
-\begin{itemize}
-    \item $E$ est l'ensemble des vecteurs
-    \item $+$ loi de composition interne, qui agit sur 2 éléments de $E$
-    \item $\cdot$ loi de composition externe, qui agit sur un scalaire et un élément de $E$
-\end{itemize}
-
-\noindent $ (E, +, \cdot) $ est un $\mathbb{K}$-espace vectoriel si:
-\begin{itemize}
-    \item $(E, +)$ est un groupe commutative
-        \begin{itemize}
-            \item Commutativité
-            \item $+$ une loi de composition interne
-            \item Associativité
-            \item Neutre ($0_E$) tel que $x+0_E = 0_E + x = x$
-            \item Symétrique ($-x$) tel que $x+(-x) = (-x) + x = 0_E$
-        \end{itemize}
-    \item Associativité mixte - $ \forall (\lambda, \mu) \in \mathbb{K}^2, \forall x \in E, \lambda \cdot (\mu \cdot x) = (\lambda \times \mu)\cdot x $
-    \item Distributivité de $+$ sur $\cdot$ - $ \forall (\lambda, \mu) \in \mathbb{K}^2, \forall x \in E, (\lambda + \mu) \cdot x = \lambda \cdot x + \mu \cdot x $
-    \item Distributivité de $\cdot$ sur $+$ - $ \forall \lambda \in \mathbb{K}, \forall (x, y) \in E^2, \lambda \cdot (x+y) = \lambda \cdot x + \lambda \cdot y $
-    \item $ 1_\mathbb{K} \cdot x = x $
-\end{itemize}
-
-\subsubsection{Sous-espaces vectoriels}
-Pour $ (E, +, \cdot) $ un K-ev, $F$ est un sous-espace vectoriel si
-\begin{enumerate}
-    \item $0_E \in F$
-    \item Stabilité par $+$
-    \item Stabilité par $\cdot$
-\end{enumerate}
-
-\begin{itemize}
-    \item Conditions 2 et 3 - stabilité par combinaison linéaire.
-    \item Les ssevs d'un K-ev est un K-ev - on peut donc démontrer un K-ev en montrant qu'il s'agit d'un ssev d'un K-ev connu. 
-    \item L'intersection des ssevs est un ssev
-\end{itemize}
-
-\subsection{Somme de ssevs}
-\[ F + G = \{ x \in E \ligneh \exists(x_F, x_G) \in F \times G, x = x_F + x_G \} \]
-\[ F \oplus G = \{ x \in E \ligneh \exists!(x_F, x_G) \in F \times G, x = x_F + x_G \} \]
-\[ F \oplus G \text{ est un ssev} \iff 0_E \in F \oplus G \iff F + G = F \oplus G \iff F \cap G = \{0_E\} \]
-
-On peut montrer $ F \cap G = {0_E} $ pour montrer que $F+G$ est directe ($x \in F \cap G \implies x = 0_E $). On peut aussi déterminer l'unique décomposition de tout vecteur de $E$ comme somme par analye-synthèse. \\
-
-Si $E = F\oplus G$ alors $F$ et $G$ son supplémentaires de $E$.
-
-\subsection{Familles}
-
-\subsubsection{Vect}
-Sous-espace engendré par une famille finie de vecteurs ou une partie
-
-\[ \text{Vect}(a_1,...,a_n) = \{\sum_{i=1}^n \lambda_i a_i \ligneh (\lambda_1,...,\lambda_n) \in \mathbb{K}^n \} \]
-\[ \text{Vect}(A) = \{\sum_{i=1}^n \lambda_i a_i \ligneh n \in \mathbb{N}, (a_1,...,a_n) \in A^n, (\lambda_1,...,\lambda_n) \in \mathbb{K}^n \} \]
-
-\begin{itemize}
-    \item $\text{Vect}(A)$ est un ssev de E [Démonstration - $\text{Vect}(A) \in E, 0_E \in \text{Vect}(A) $, et stabilité par combinaison linéaire] - on peut montrer que $F$ est un ssev de $E$ en écrivant $F$ sous forme d'un Vect
-    \item $\text{Vect}(A)$ est le plus petit ssev de E qui contient A (Pour tout F un ssev de E, $ \text{Vect}(A) \subset F $) [Démonstration - $x \in \text{Vect}(A)$ est une combinaison linéaire des élements de $A$ donc de $F$ et $F$ est stable par combinaison linéaire]
-    \item $\text{Vect}(A)$ est l'intersection de tous les ssevs de E qui contiennent A [Démonstration - l'intersection est aussi un ssev contenant $A$ puis double inclusion]
-    \item Vect d'un vecteur - $ \text{Vect}(0_E) = {0_E} $ et $ \text{Vect}(x \neq 0_E) = \mathbb{K}x $ droite vectorielle
-    \item Vect de 2 vecteurs - $ \text{Vect}(x, y) = \text{Vect}(x) = \text{Vect}(y) $ si $x$ et $y$ sont colinéaires - sinon on a un plan vectoriel
-\end{itemize}
-
-\subsubsection{Familles libres et liées}
-\begin{itemize}
-    \item Libre (linéairement indépendant) - $ \sum_i \alpha_ix_i = 0 \implies \forall i, \alpha_i = 0 $
-    \item Liée - non-libre  - au moins un des vecteurs est combinaison linéaire des autres dans la famille
-\end{itemize}
-
-\noindent Une famille est libre $\iff \forall x \in \text{Vect}(E), x$ s'écrit de manière unique comme combinaison linéaire des vecteurs de $E$
-
-\subsubsection{Familles génératrices}
-\[ E = \text{Vect}(x_1,...,x_n) \]
-\noindent Il suffit de montrer $ E \subset \text{Vect}(x_1,...x_n) $ car le réciproque est automatique par stabilité par C.L. des ssevs. \\
-
-\noindent En particulier, les bases:
-\begin{itemize}
-    \item Une famille libre et génératrice. 
-    \item Tout vecteur de $E$ s'écrit de manière unique comme C.L. des vecteurs de la base
-    \item Si $\mathcal{B}_F \et \mathcal{B}_G$ sont des bases de $F \et G$ et $E = F \oplus G$, alors $\mathcal{B}_F \cup \mathcal{B}_G$ est une base de $E$ adaptée. 
-    \item Si $x_1,...x_n$ est une base de $E$, on peut 'scinder' la base pour obtenir des supplémentaires $ E = \text{Vect}(x_1,...,x_p) \oplus \text{Vect}(x_{p+1},...,x_n) $
-\end{itemize}
-
-\clearpage
-\section{Applications linéaires}
-Pour $u: E \rightarrow F$, 
-\[ u \in \mathcal{L}(E, F) \iff \forall(x, y) \in E^2, \forall \lambda \in \mathbb{K}, u(\lambda x + y) = \lambda u(x) + u(y) \]
-
-\subsection{Définitions}
-\begin{itemize}
-    \item $\mathcal{L}(E) = \mathcal{L}(E, E)$ un endomorphisme de $E$
-    \item $\mathcal{L}(E, \mathbb{K}) = E^*$ une forme linéaire sur $E$
-    \item $u \in \mathcal{L}(E, F)$ bijective - un isomorphisme de $E$ dans $F$
-    \item $u \in \mathcal{L}(E)$ bijective - un automorphisme de $E$
-    \item $ \text{Ker } u = {x \in E \ligneh u(x) = 0_F} = u^{-1}(\{0_F\}) $
-\end{itemize}
-
-\subsection{Propriétés des A.Ls}
-\begin{itemize}
-    \item $u(0_E) = 0_F$
-    \item $\mathcal{L}(E, F)$ est stable par C.L. - $\mathcal{L}(E, F)$ est un ssev de $F^E$
-    \item $\mathcal{L}(E, F)$ est stable par composition
-    \item Pour $\tilde{E}$ un ssev de $E$, $u(\tilde{E})$ est un ssev de $F$
-    \item Pour $\tilde{F}$ un ssev de $F$, $u^{-1}(\tilde{F})$ est un ssev de $E$
-    \item $\text{Ker } u $ est un ssev de $E$
-    \item $\text{Im } u $ est un ssev de $E$
-    \item $u$ est injective $\iff$ $\text{Ker }u = \{0_E\} \iff (u(x) = 0_F \implies x = 0_E)$
-    \item $u$ est bijective $\iff$ $\text{Ker }u = \{0_E\} \et \text{Im }u = F $
-    \item Pour $B = (e_1,...,e_n)$ une base, et des vecteurs $f_1,...,f_n$, on caractérise une unique application linéaire - $ \forall i \in \llbracket 1, n \rrbracket, u(e_i) = f_i $
-    \item Pour $ E = E_1 \oplus E_2, u_1 \in \mathcal{L}(E_1, F), u_2 \in \mathcal{L}(E_2, F) $, on peut caractériser une unique application linéaire - $ \forall x \in E_1, u(x) = u_1(x) \et \forall x \in E_2, u(x) = u_2(x) $
-\end{itemize}
-
-\subsection{Propriétés des isomorphismes}
-\begin{itemize}
-    \item Stable par composition
-    \item La bijection réciproque d'un isomorphisme est un isomorphisme
-    \item $ \text{Im}(v \circ u) = \text{Im } v $
-    \item $ \text{Ker}(v \circ u) = \text{Ker } u $
-\end{itemize}
-
-\subsection{Des familles et des A.L.s}
-Uniquement dans cette section, $[x_i] = (x_1,...,x_n)$. $u \in \mathcal{L}(E, F)$
-\begin{itemize}
-    \item $u(\text{Vect}([x_i])) = \text{Vect}([u(x_i)])$
-    \item Pour $[x_i]$ une famille génératrice - $ [u(x_i)] $ est génératrice de $\text{Im } u$
-    \begin{itemize}
-        \item En particulier, $u$ surjective $ \iff [u(x_i)] $ est génératrice de $\text{Im } u = F$
-    \end{itemize}
-    \item $u$ injective $ \iff [u(x_i)] $ est libre
-    \item $u$ bijective $ \iff [u(x_i)] $ est une base de $F$
-    \item Si $ [x_i] $ liée, alors $ [u(x_i)] $ liée
-\end{itemize}
-
-\subsection{Endomorphismes remarquables}
-\subsubsection{Homothéties}
-\[ h_\lambda = x \mapsto \lambda x \]
-\begin{itemize}
-    \item $ h_1 = \text{Id} $
-    \item Pour $ \lambda \neq 0 $, $ h_\lambda \in \text{GL}(E) \et h_\lambda^{-1} = h_{\frac{1}{\lambda}} $
-\end{itemize}
-
-\subsubsection{Projections et symétries}
-Pour $x \in E = E_1 \oplus E_2$, 
-\begin{enumerate}
-    \item  La projection sur $E_1$ parallèlement à $E_2$, $ p : x = x_1 + x_2 \mapsto x_1 $
-    \begin{itemize}
-        \item $ p \in \mathcal{L}(E) $
-        \item $ p^2 = p $ - Condition nécessaire et suffisante d'être un projecteur
-        \item $ E_1 = \text{Im }p = \{x \in E \ligneh p(x) = x \} = \text{Ker}(p - \text{Id}_E) $
-        \item $ E_2 = \text{Ker }p$
-        \item On peut caractériser $u$ un projecteur si $ u \in \mathcal{L}(E) \et u^2 = u $ - dans ce cas il est projecteur sur $\text{Im}(p)$ parallèlement à $\text{Ker }p$ [Démonstration - $x = (u(x)) + (x-u(x))$ décomposition unique]
-    \end{itemize}
-    \item La symétrie par rapport à $E_1$ parallèlement à $E_2$, $ s : x = x_1 + x_2 \mapsto x_1 - x_2 $
-    \begin{itemize}
-        \item $ s \in \mathcal{L} $
-        \item $ s^2 = \text{Id} $ - $s \in \text{GL}(E) \et s^{-1}=s$ - - Condition nécessaire et suffisante d'être une symétrie
-        \item $ E_1 = \{ x \in E \ligneh s(x) = x \} = \text{Ker}(s-\text{Id}) $
-        \item $ E_2 = \{ x \in E \ligneh s(x) = -x \} = \text{Ker}(s+\text{Id}) $ 
-        \item On peut caractériser $u$ une symétrie si $ u \in \mathcal{L}(E) \et u^2 = \text{Id}_E $ - dans ce cas il est projecteur sur $\text{Ker}(s-\text{Id})$ parallèlement à $\text{Ker}(s+\text{Id})$ [Démonstration - $x = \frac{1}{2}(x + u(x)) + \frac{1}{2}(x-u(x))$ décomposition unique]
-    \end{itemize}
-    \item $s = 2p - \text{Id}$
-\end{enumerate}
-
-\subsection{Équations linéaires}
-Pour l'équation $u(x) = b$, s'il existe au moins une solution particulière $x_p : (u(x_p) = b)$, alors 
-\[ \mathcal{S} = {x_p} + \text{Ker} u \]
-
-\noindent $\text{Ker }u$ est l'ensemble des solutions à l'équation homogène ($u(x) = 0$)
-
-\subsection{Hyperplan}
-\[ \text{H est un hyperplan} \iff \exists \phi \in E^* \backslash \{0_{E^*}\} \ligneh H = \text{Ker }u \]
-
-\noindent $H$ est le noyau d'une forme linéaire non-nulle. \\
-
-\noindent Propriétés
-\begin{itemize}
-    \item Pour $a \in E \backslash H, E = H \oplus \text{Vect}(a)$
-    \item Pour $D \not \subset H $ une droite vectorielle, $ E = H \oplus D $. Pour tout $S$ tel que $E = H \oplus S$, $S$ est une droite vectorielle. 
-    \item Pour $ \text{Ker }\phi  = \text{Ker }\psi$, $\phi$ et $\psi$ sont proportionnelles
-    \item Pour $ (e_1,...,e_n) $ une base de E et $x = \sum_{i=0}^n x_i e_i$, $ H = \text{Ker }u = {\sum_{i=0}^n x_i e_i \ligneh \sum_{i=0}^n x_i u(e_i)} $
-\end{itemize}
-
-\clearpage
-\section{Calcul intégral}
-
-\subsection{Primitives}
-$F$ est une primitive de $f$ sur $I$ si $F$ est dérivable sur $I$ et $F' = f$. L'ensemble des primitives de $f$ est $ \{ F+c \ligneh c\in \mathbb{C} \} $
-
-\[ F : x \mapsto \int_{a}^{x} f(t) dt \]
-
-\noindent $F$ est l'unique primitive qui s'annule en $a$
-
-\subsubsection{Théorème fondamental du calcul intégral}
-\[ \int_{a}^{b} f(t) \text{ d}t = F(b) - F(a) \]
-
-\subsubsection{Primitives usuelles}
-
-\begin{center}
-    \begin{tabular}{|c|c|c|}
-        \hline
-        $f$ & $F$ & $I$ \\
-        \hline
-        $x^n$ ($n \in \mathbb{N}$) & $\frac{x^{n+1}}{n+1}$ & $\mathbb{R}$ \\
-        \hline
-        $x^k$ ($k \in \mathbb{Z}\backslash\{-1\}$) & $\frac{x^{k+1}}{k+1}$ & $\mathbb{R}^*$ \\
-        \hline
-        $x^a$ ($a \in \mathbb{R}\backslash\{-1\}$) & $\frac{x^{a+1}}{a+1}$ & $\mathbb{R}_+^*$ \\
-        \hline
-        $\frac{1}{x}$ & $\ln{|x|}$ & $\mathbb{R}^*$ \\
-        \hline
-        $e^{kx}$ & $\frac{e^{kx}}{k}$ & $\mathbb{R}$ \\
-        \hline
-        $\cos{x}$ & $\sin{x}$ & $\mathbb{R}$ \\
-        \hline
-        $\sin{x}$ & $-\cos{x}$ & $\mathbb{R}$ \\
-        \hline
-        $1+\tan^2{x} = \frac{1}{cos^2{x}}$ & $\tan{x}$ & $\bigcup_{k\in\mathbb{Z}} ] -\frac{\pi}{2} + k\pi, \frac{\pi}{2} + k\pi [$ \\
-        \hline
-        $\tan{x} = - \frac{- \sin{x}}{\cos{x}}$ & $-\ln{|\cos{x}|}$ & $\bigcup_{k\in\mathbb{Z}} ] -\frac{\pi}{2} + k\pi, \frac{\pi}{2} + k\pi [$ \\
-        \hline
-        $\ch{x}$ & $\sh{x}$ & $\mathbb{R}$ \\
-        \hline
-        $\sh{x}$ & $\ch{x}$ & $\mathbb{R}$ \\
-        \hline
-        $\frac{1}{1+x^2}$ & $\arctan{x}$ & $\mathbb{R}$ \\
-        \hline
-        $\frac{1}{\sqrt{1-x^2}}$ & $\arcsin{x}$ & $]-1, 1 [$ \\
-        \hline
-        $-\frac{1}{\sqrt{1-x^2}}$ & $\arccos{x}$ & $]-1, 1 [$ \\
-        \hline
-    \end{tabular}
-\end{center}
-
-\subsection{Techniques}
-
-\subsubsection{Changement de variable (simple)}
-\[ \int u'(x) (f \circ u)(x) \text{ d}x = \int f(t) \text{ d}t, t = u(x) \]
-
-\subsubsection{Changement de variable (important)}
-\[ \int_{u(a)}^{u(b)} f(x) \text{ d}x = \int_{a}^{b} f(u(t)) u'(t) \text{ d}t \]
-
-\begin{enumerate}
-    \item On pose $x = u(t)$ avec $u \in \mathcal{C}^1$
-    \item On remplace $x$ par $u(t)$ et $\text{d}x$ par $u'(t) \text{ d}t$
-    \item On remplace les bornes de l'intégral par les antécédents de $u$
-\end{enumerate}
-
-\subsubsection{Intégration par parties}
-\[ \int u'v = uv - \int uv' \]
-
-\begin{enumerate}
-    \item On pose $u'$ et on obtient $u$ en intégrant, avec $u \in \mathcal{C}^1$
-    \item On pose $v \in \mathcal{C}^1$ et on obtient $v'$
-\end{enumerate}
-
-\subsection{Primitives particulières}
-
-\subsubsection{Passage aux complexes}
-Pour $e^{ax}\cos{(bx)}$ et $e^{ax}\sin{(bx)}$, on peut passer aux complexes et étudier $e^{(a+ib)x}$ et obtenir le résultat comme la partie réelle ou imaginaire de $ \frac{e^{(a+ib)x}}{a+ib} $
-
-\subsubsection{Inverse d'un polynôme}
-Pour $\frac{1}{f(x)}$
-\begin{itemize}
-    \item Pour $\Delta > 0$, on peut écrire $f(x) = a(x-x_1)(x-x_2)$ donc la fonction $ x \mapsto \frac{A}{x-x_1}+\frac{B}{x-x_2} $. On a une primitive $A \ln{|x -  x_1|} + B \ln{|x - x_2|}$
-    \item Pour $\Delta = 0$, on peut écrire $f(x) = a(x-x_0)^2$ donc la fonction $ x \mapsto \frac{1}{a(x-x_0)^2}$. On a une primitive $-\frac{1}{a(x-x_0)}$
-    \item Pour $\Delta < 0$, on peut écrire $f(x) = a (\frac{\delta}{2a})^2 [1 + (\frac{2ax}{\delta} + \frac{b}{\delta})^2] $ avec $\delta = \sqrt{-\Delta}$. On peut donc écrire la fonction $x \mapsto \frac{2}{\delta} \frac{\frac{2a}{\delta}}{1 + (\frac{2ax}{\delta} + \frac{b}{\delta})^2} $. On a une primitive $ \frac{2}{\delta} \arctan{(\frac{2ax}{\delta} + \frac{b}{\delta})} $
-\end{itemize}
-
-\clearpage
-\section{Limites et continuités}
+\section{Limites et continuités [sup 13]}
 \subsection{Limites}
 \subsubsection{Point de limite}
 Limite en $a \in \overline{I}\cap\mathbb{R}$:
@@ -1284,166 +910,7 @@ Pour $f$ continue sur un intervalle non-trivial et à valeurs réelles
 \end{itemize}
 
 \clearpage
-\section{Arithmétique des entiers}
-\[ b|a \iff \exists q \in \mathbb{Z} : a = bq \]
-
-\begin{itemize}
-    \item Si $b$ est un diviseur, $-b$ est un diviseur
-    \item $\pm 1 \et \pm a $ sont des diviseurs de $a$
-    \item $a$ et $-a$ ont les mêmes diviseurs
-    \item 0 ne divise que lui-même, tous les entiers divise 0
-    \item Si $ a \neq 0 \et b | a $, $|b| \leq |a|$
-    \item $(a|b \et b|a) \implies a = \pm b$
-    \item Divisibilité stable par combinaison linéaire et produit
-\end{itemize}
-
-\subsection{Nombres premiers}
-Tout entier naturel admettant exactement deux diviseurs dans $\mathbb{N}$
-
-\[ \forall (a, b) \in \mathbb{N}, p = ab \implies (a = 1 \ou b = 1) \]
-
-\begin{itemize}
-    \item Tout entier $\geq 2$ possède au moins un diviseur premier
-    \item Pour $p$ premier, $p | ab \implies (p | a \ou p | b) $
-    \item On peut décomposer tout $n \in \mathbb{N}$ en facteurs premiers de manière unique
-\end{itemize}
-
-\subsection{PGCD et PPCM}
-\subsubsection{Algorithme d'Euclide}
-\[ a = bq + r \implies D_{a, b} = D_{b, r} \]
-
-\subsubsection{PGCD}
-\[ a \wedge b = \max (D_{a, b}) = \prod_{i=1}^n p_i^{\min (\nu_i, \mu_i)} \]
-\begin{itemize}
-    \item Le dernier reste non nul dans l'algorithme d'Euclide corresponde au PGCD
-\end{itemize}
-
-\subsubsection{PPCM}
-\[a \vee b = \min (|a|\mathbb{N}^* \cap |b|\mathbb{N}^*) = \prod_{i=1}^n p_i^{\max (\nu_i, \mu_i)}\]
-\[ a \mathbb{Z} \cap b \mathbb{Z} = (a \vee b) \mathbb{Z} \]
-
-\subsubsection{Lien}
-\[ (a \wedge b) \times (a \vee b) = |ab| \]
-
-\clearpage
-\section{Polynômes}
-$ \mathbb{K}[X] $
-\[ P = \sum_{n=0}^{+\infty} a_n X^n \]
-
-\subsection{Lois}
-\begin{itemize}
-    \item $A+B$ - $c_n = a_n + b_n$
-    \item $\lambda \cdot A$ - $c_n = \lambda a_n$
-    \item $A \times B$ - $ c_n = \sum_{i=0}^n a_i b_{n-i} $
-\end{itemize}
-
-\subsubsection{Propriétés}
-\begin{itemize}
-    \item $X = (0, 1, 0, \dots)$, $X^k$ a le $1$ au $k$-ième position
-    \item Les inversibles de $\mathbb{K}[X]$ sont des polynômes constants non nuls
-    \item $\mathbb{K}_n[X]$ est l'ensemble des polynômes de degré au plus $n$
-    \item Toute famille finie de polynômes non nuls et à degrés échelonnés est libre
-    \item $\tilde{P}$ est la fonction polynomiale associée à un polynôme
-\end{itemize}
-
-\subsubsection{Degré}
-Le $n$ du plus grand coefficient non-nul (coefficient dominant).
-\begin{itemize}
-    \item $ \deg(0) = - \infty$
-    \item $ \deg (P + Q) \leq \max(\deg P, \deg Q) , = \si \deg P \neq \deg Q $
-    \item $ \deg (PQ) = \deg P + \deg Q $
-    \item $ \deg (\lambda P) = \deg P \si \lambda \neq 0 $
-    \item $ \deg (P \circ Q) = \deg P \times \deg Q $ si $Q$ n'est pas un polynôme constant
-\end{itemize}
-
-\subsection{Arithmétique dans $\mathbb{K}[X]$}
-\[ B|A \iff \exists Q \in \mathbb{K}[X] : A = BQ \]
-
-\subsubsection{Division euclidienne}
-\[ A = BQ + R \]
-
-\noindent Avec $\deg (R) < \deg(B)$.
-
-\begin{itemize}
-    \item Ce couple $(Q, R)$ est unique
-    \item $B | A \iff R = 0$
-\end{itemize}
-
-\subsubsection{Racines}
-\[ \alpha \text{ est une racine de Q} \iff (X-\alpha)|Q \]
-
-\begin{itemize}
-    \item Théorème d'Alembert-Gauss - tout polynôme non constant possède au moins une racine dans $\mathbb{C}$
-    \item Pour $\mathbb{R}[X]$, $\omega$ est une racine $\iff$ $\overline{\omega}$ est une racine
-    \item Pour $(\alpha_1,\dots,\alpha_n)$ sont des racines, $\prod_{i=1}^n (X-\alpha_i) | Q$
-    \item Critère d'égalité - Deux polynômes de $\mathbb{K}_n [X]$ qui coïncident en $n+1$ points sont égaux [Démonstration - un polynôme de $\mathbb{K}_n [X]$ avec $n+1$ racines est le polynôme nul]
-    \item Polynôme scindé - $P = \lambda (X-\alpha_1)\dots(X-\alpha_n)$ - Tout polynôme non nul de $\mathbb{C}[X]$ est scindé sur $\mathbb{C}$
-\end{itemize}
-
-\noindent On a les caractérisations des multiplicité
-\begin{itemize}
-    \item $(X-\alpha)^m | P \et (X-\alpha)^{m+1} \not | P $
-    \item $ \exists Q \in \mathbb{K}[X], P = (X-\alpha)^m Q \et Q(\alpha) \neq 0 $
-    \item $ P(\alpha) = P'(\alpha) = \dots = P^{(m-1)}(\alpha) = 0 \et P^{m}(\alpha) \neq 0 $ 
-\end{itemize}
-
-\subsection{Dérivation}
-\[ P' = \sum_{k=1}^{+\infty}ka_kX^{k-1} = \sum_{k=0}^{+\infty}(k+1)a_{k+1}X^k \]
-
-\begin{itemize}
-    \item Par récurrence, $P^{(n)} = \sum_{n}^{\infty} \frac{k!}{(k-n)!} a_k X^{k-n} = \sum_{k=0}^{+\infty} \frac{(k+n)!}{k!}a_{k+n} X^k $
-    \item Les lois ressemble à celles pour les dérivés des fonctions polynomiales
-\end{itemize}
-
-\subsubsection{Formule de Taylor}
-\[ P = \sum_{k=0}^{+\infty} \frac{P^{(k)}(\alpha)}{k!}(X-\alpha)^k \]
-
-\begin{itemize}
-    \item On somme jusqu'à $n$ pour des polynômes de degré $n$
-\end{itemize}
-
-\subsection{Polynômes irréductibles}
-\[ P \text{ non constant et } (P = AB \implies A \in \mathbb{K}^* \ou B \in \mathbb{K}^*) \]
-
-\begin{itemize}
-    \item Les irréductibles de $\mathbb{C}[X]$ sont les polynômes de degré 1 [Démonstration - Analyse : théroème d'Alembert Gauss - Synthèse : passage au degré]
-    \item Les irréductibles de $\mathbb{R}[X]$ sont les polynômes de degré 1 et de degré 2 sans racines réelles [Démonstration pour degré $>1$ - Analyse : montrer que les racines sont réelles par l'absurde, puis utiliser la divisibilité avec le conjugué de cette racine - Synthèse : passage au degré et par l'absurde]
-    \item Tout polynôme non constant se factorise en produit de polynômes irréductibles
-\end{itemize}
-
-\subsection{Rélations coefficients racines}
-\begin{itemize}
-    \item Somme des racines $ = -\frac{a_{d-1}}{a_d} $
-    \item Produit des racines $ = (-1)^d \frac{a_0}{a_d} $
-\end{itemize}
-
-\subsubsection{Cas particuliers}
-\begin{itemize}
-    \item Degré 2 - $x_1 + x_2 = -\frac{b}{a} \et x_1x_2 = \frac{c}{a}$
-    \item Degré 3 - $X^3 - \sigma_1 X^2 + \sigma_2 X - \sigma_3$
-    \begin{itemize}
-        \item $\sigma_1 = x_1 + x_2 + x_3$
-        \item $\sigma_2 = x_1x_2 + x_1x_3 + x_2x_3$
-        \item $\sigma_3 = x_1 x_2 x_3$
-    \end{itemize}
-\end{itemize}
-
-\subsection{Décomposition en élements simples}
-\subsubsection{Définitions}
-\begin{itemize}
-    \item Fonction rationelle - $x \mapsto \frac{P(x)}{Q(x)}$
-    \item Pôle - zéros du dénominateur $Q$
-    \item Fonction rationelle à pôles simples - $Q$ est scindé à racines simples
-    \item Partie entière $E$ - $ \frac{P(x)}{Q(x)} = E(x) + \frac{R(x)}{Q(x)} $ avec $\deg R < \deg Q$
-\end{itemize}
-
-\[ \frac{P(x)}{\prod_{i=1}^n (x- \alpha_i) } = E(x) + \sum_{k=1}^{n} \frac{\lambda_k}{x-\alpha_k} \]
-\[ \lambda_k = \frac{P(\alpha_k)}{\prod_{\substack{i=1 \\ i \neq k}}^{n}(\alpha_k - \alpha_i)} = \frac{P(\alpha_k)}{Q'(\alpha_k)} \]
-
-\clearpage
-
-\section{Dérivation}
-
+\section{Dérivation [sup 16]}
 \[ f'(a) = \lim_{\substack{x \rightarrow a \\ x \neq a}} = \frac{f(x) - f(a)}{x-a} = \lim_{\substack{h \rightarrow 0 \\ h \neq 0}} = \frac{f(a+h) - f(a)}{h} \]
 \subsection{Propriétés}
 \begin{itemize}
@@ -1512,112 +979,7 @@ Généralisation (égalité des accroissements finis) sans $f(a) = f(b)$
 \end{itemize}
 
 \clearpage
-\section{Dénombrement}
-
-\subsection{Cardinal}
-\begin{itemize}
-    \item Ensemble fini - il existe $n \in \mathbb{N}*$ tel qu'il existe une bijection entre $E$ et $ \llbracket 1, n \rrbracket $ - $|E| = n$
-    \item $E$ et $F$ en bijection ont le même cardinal
-    \item Pour $E$ fini - $A \subsetneq E \implies |A| < |E|$ [Démonstration - récurrence sur tout ensemble de cardinalité $n$]
-    \item $(|A| = |E| \et A \subset E) \implies A = E$
-    \item Formule de Poincaré - $|E \cup F| = |E| + |F| - |E \cap F|$
-    \item $|E \backslash F| = |E| - |E \cap F|$
-    \item $|E \times F| = |E||F|$
-    \item $|F^E| = |F|^{|E|}$
-    \item $|\mathcal{P}(E)| = 2^{|E|}$ [Démonstration - bijection entre $\mathcal{P}(E)$ et $\{0, 1\}^E$ - $A \mapsto \mathbb{1}_A$]
-\end{itemize}
-
-\subsubsection{Applications}
-Pour $f:E \rightarrow F$
-\begin{itemize}
-    \item $f(E)$ est fini
-    \item $|f(E)| \leq |E| \et |f(E)| = |E| \iff f$ injective
-    \item Pour $f$ bijective, $|E| = |F|$
-    \item Pour $f$ injective, $|E| \leq |F|$ - il y en a $\frac{|F|!}{(|F|-|E|)!}$ possibilités [Démonstration - revient à choisir un $|E|$-arrangement des élements de $F$ à associer aux élements de $E$]
-    \item Pour $f$ surjective $|E| \geq |F|$ - il y en a $|E|!$ possibilités
-    \item Pour $|E|=|F|$, surjectivité $\iff$ injectivité $\iff$ bijectivité
-\end{itemize}
-
-\subsection{Vocabulaire combinatoire}
-\begin{itemize}
-    \item $p$-liste / $p$-uplet - $E^p$ - liste de $p$ éléments de $E$ (répétitions autorisées, ordre compté) - nombre $= n^p$
-    \item $p$-arrangement - $p$-liste deux à deux distincts - nombre $=\frac{n!}{(n-p)!}$
-    \item Permutation - une bijection de $E$ dans $E$ - nombre $=|E|!$
-    \item $p$-combinaison / $p$-partie - partie de $E$ à $p$ éléments distinctes (ordre pas compté) - nombre $=\binom{|E|}{p}$ [Démonstration - chaque $p$-combinaison correspond à $p!$ $p$-arrangements] 
-\end{itemize}
-
-\clearpage
-\section{Dimension finie}
-
-\subsection{Définition}
-\begin{itemize}
-    \item Dimension finie - $E$ possède une famille génératrice de cardinal $n \in \mathbb{N}$
-    \item Toute famille libre d'éléments de $E$ peut être complétée en une base de $E$ à partir des éléments de $G$ ($G$ est une famille génératrice) [Démonstration - considérons une famille libre de cardinalité maximale]
-    \item TBE Théorème de la base extraite - on peut extraire une base de tout famille génératrice finie d'un K-ev 
-    \item TBI Théorème de la base incomplète - Toute famille libre de vecteurs de $E$ peut être complétée en une base
-    \item Toutes les bases de $E$ ont le même cardinal = $\dim E$. 
-    \item $B$ est une base $ \iff B $ est libre maximal $\iff B $ est génératrice minimale
-    \item Toute famille de $n+1$ vecteurs de $E$ est liée
-\end{itemize}
-
-\subsection{Isomorphismes}
-$u$ est une AL de $E$ dans $F$
-\begin{itemize}
-    \item $E$ et $F$ sont isomorphe $\iff \dim E = \dim F$ 
-    \item Pour $\dim E = \dim F$, des conditions suffisantes de bijectivité - 
-    \begin{itemize}
-        \item $u$ injective
-        \item $u$ surjective
-        \item $u$ inversible à droite
-        \item $u$ inversible à gauche
-    \end{itemize}
-    \item $u$ inj $\implies \dim E \leq \dim F$ 
-    \item $u$ surj $\implies \dim E \geq \dim F$
-    \item $u$ inj $\implies \dim E = \dim F$
-\end{itemize}
-
-\subsection{Sous espaces vectoriels}
-\begin{itemize}
-    \item $\dim F = \dim E$ avec $\dim F = \dim E \iff F = E$ pour $F$ un ssev de $E$
-    \item Tout ssev de $E$ fini admet un supplémentaires
-    \item Pour $E = F \oplus G$, $\dim E = \dim F + \dim G$
-    \item Formule de Grassmann - $\dim (F+G) = \dim F + \dim F - \dim (F \cap G)$ [Démonstration - Considérons $H$ un supplémentaire de $F \cap G$ dans $F$ et montrer $F+G = H \oplus G$]
-\end{itemize}
-
-\subsection{Rang}
-Pour $u \in \mathcal{L}(E, F)$
-
-\[ \rg(x_1,\dots,x_n) = \dim(\Vect(x_1, \dots, x_n)) \]
-\[ \rg (u) = \dim(\text{Im}(u)) \]
-
-\begin{itemize}
-    \item $ \rg(x_1,\dots,x_n) = n \iff (x_1,\dots,x_n) $ est libre
-    \item $ \rg(u) \leq \dim(F) $ (égalité $\iff$ surjective)
-    \item $ \rg(u) \leq \dim(E) $ (égalité $\iff$ injective)
-    \item $ \rg(v \circ u) \leq \min(\rg(u), \rg (v)) $
-    \item Pour $v$ un isomorphisme, $ \rg(v \circ u) = \rg(u \circ v) = \rg(u) $
-\end{itemize}
-
-\subsubsection{Théorème du rang}
-
-\[ \dim E = \dim( \ker u ) + \rg(u) \]
-
-\noindent [Démonstration - Pour $S$ un supplémentaire de $\ker (u)$ ($E = S \oplus \ker (u)$), $u$ induit un isomorphisme de $S$ dans $\text{Im}(u)$]
-
-\begin{itemize}
-    \item Une forme linéaire est soit nulle, soit surjective
-    \item Pour $H$ un hyperplan, $\dim H = \dim E - 1$
-\end{itemize}
-
-\subsection{Dimensions misc}
-\begin{itemize}
-    \item $\dim (E \times F) = \dim E + \dim F$ [Démonstration - construire une base de $E\times F$ à partir des bases de $E$ et $F$]
-    \item $\dim \mathcal{L}(E, F) = \dim E \times \dim F$ [Démonstration - considérons $\phi : u \mapsto (u(e_1), \dots , u(e_n))$]
-\end{itemize}
-
-\clearpage
-\section{Analyse asymptotique}
-
+\section{Analyse asymptotique [sup 19]}
 \subsection{Relations de comparaison}
 \begin{itemize}
     \item $(f)$ négligeable devant $(g)$ : ($ f \underset{a}= o(g) $) - $ (\frac{f}{g}) \underset{x \rightarrow a}{\longrightarrow}  0 $
@@ -1662,6 +1024,11 @@ Pour $u \in \mathcal{L}(E, F)$
     \item $\ch{(x)}-1 \sim -\frac{x^2}{2}$
     \item $\ln{(1+x)} \sim x$
 \end{itemize}
+
+\subsubsection{Croissances comparées}
+\[ (\ln{x})^a \ll x^b \ll q^x \ll x^x \]
+
+Pour les suites, $q^n \ll n! \ll n^n$
 
 \subsection{Développement limité}
 DL d'ordre $n$ en $a$ ($\dl{n}{a}$)
@@ -1716,7 +1083,718 @@ Comme $f \circ f^{-1} = \text{Id}$ et $x = x + o(x^n)$, on peut déterminer le D
 Il faut d'abord montrer l'existence d'un DL pour $f^{-1}$ par la stabilité de $\mathcal{C}^n$ si $f'$ ne s'annule pas
 
 \clearpage
-\section{Matrices et Applications Linéaires}
+\section{Équations différentielles linéaires [sup 21]}
+
+\subsection{Premier ordre}
+Pour $(a, b) \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$ dérivable de $I$ dans $\mathbb{K}$
+\[ y' + a(x)y = b(x) \]
+
+\noindent Les solutions sont des la forme
+
+\[ x \mapsto Ce^{-A(x)} + (\int_{}^{x} b(t) e^{A(t)} \dt)e^{-A(x)} \]
+
+\begin{itemize}
+    \item L'ensembles des solutions homogènes $ = \Vect (e^{-A(x)})$
+    \item Méthode de la variation de la constante - On pose $y_p : x \mapsto C(x)e^{-A(x)}$ et on cherche $C(x)$ en résolvant $y_p' - a(x)y = b(x)$
+    \item Problème de Cauchy - si $y(x_0) = y_0$, on a une unique solution pour $y$
+\end{itemize}
+
+\subsubsection{Solutions particulières remarquables}
+$y' + ay = e^{\lambda x}$ pour $a \et \lambda$ des constantes,  on a:
+\begin{itemize}
+    \item Si $\lambda \neq -a$, $y_p : x \mapsto Ce^{\lambda x}$ (Ici, $C = \frac{1}{\lambda + a}$, mais à redémontrer)
+    \item Si $\lambda = -a$, $y_p : x \mapsto xe^{\lambda x}$
+\end{itemize}
+
+\noindent Si on a $P(x)$ une fonction polynomiale, $y' + ay = P(x)e^{\lambda x}$ 
+\begin{itemize}
+    \item Si $\lambda \neq -a$, $y_p : x \mapsto R(x)e^{\lambda x}$
+    \item Si $\lambda = -a$, $y_p : x \mapsto xR(x)e^{\lambda x}$
+\end{itemize}
+\noindent avec $R$ un polynôme du même degré que $P$
+
+\subsection{Second ordre à coefficients constants}
+Pour $(a, b) \in \mathbb{K}^2, f \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$ dérivable de $I$ dans $\mathbb{K}$
+\[ y'' + ay'+ by = f \]
+
+\begin{itemize}
+    \item $ (x \mapsto e^{\lambda x}) $ est solution de l'équation homogène $ \iff \lambda $ est racine de $ P = X^2 + aX + b $ [polynôme caractéristique]
+    \begin{itemize}
+        \item $\lambda_1 \et \lambda_2$ 2 racines distinctes - $\Vect (e^{\lambda_1 x}, e^{\lambda_2 x})$
+        \item $\lambda_0$ racine double - $\Vect (xe^{\lambda_0 x}, e^{\lambda_0 x})$
+        \item Dans $\mathbb{R}$ avec 2 racines complexes conjuguées $\lambda = r \pm i \omega$ - $\Vect (e^{rx} \cos (\omega x), e^{rx} \sin(\omega x))$
+    \end{itemize}
+    \item L'ensemble des solutions homogène est un plan vectoriel
+    \item Il existe toujours une solution particulière
+    \item Problème de Cauchy - si on pose $y(x_0) = y_0 \et y'(x_0) = y_1$, il existe une unique solution (! Meme $x_0$ pour les 2 points)
+\end{itemize}
+
+\subsubsection{Solutions particulières remarquables}
+\begin{itemize}
+    \item Pour un second membre $Ae^{\lambda x}$, il existe une solution particulière de la forme $x \mapsto Cx^m e^{\lambda x}$ où $m$ est la multiplicité de $\lambda$ dans le polynôme caractéristique
+    \item Pour un second membre trigonométrique, on considère la partie réelle / imaginaire de l'équation avec second membre $Ae^{i\omega}$
+    \item Pour un second membre $P(x)e^{\lambda x}$, on cherche une solution particulière de la forme $x \mapsto R(x) x^m e^{\lambda}x$ avec $R$ du même degré que $P$
+\end{itemize}
+
+\clearpage
+\section{Intégration sur un segment [sup 12] [sup 23]}
+\subsection{Fonctions en escalier}
+\begin{itemize}
+    \item Subdivision du segment $[a,b]$ - suite finie $\sigma$ strictement croissante de $n + 1 $ éléments tel que $a = a_0$ et $a_n = b$
+    \item Pas d'une subdivision - l'écart maximal entre deux éléments
+    \item Subdivision $\sigma '$ plus fine que $\sigma$ - tout point de $\sigma \in \sigma '$
+    \item Subdivision régulière - écart constant entre 2 éléments 
+    \item Fonction en escalier - il existe une subdivision adaptée $\sigma = (a_k)_{0\leq k \leq n}$ à la fonction $f$ tel que $\forall k \in \llbracket 1, n \rrbracket, f_{] a_{k-1}, a_k [}$ est constante
+    \item Toute subdivision plus fine qu'une subdivision adaptée à $f$ en escalier est une subdivision adaptée à $f$
+    \item Norme infinie - $ \| f \|_{\infty} = \sup_{[a,b]} |f(x)| $ - toute fonction en escalier sur $[a,b]$ prend un nombre fini de valeurs et est bornée
+    \item Intégrale sur un segment - $\int_{[a, b]} f = I(f, \sigma) = \sum_{k=1}^{n} (a_k - a_{k-1})\lambda_k $ pour $\sigma = (a_k)$ une subdivision adaptée à $f$ et $f_{]a_k, a_{k-1}[} = \lambda_k$
+\end{itemize}
+
+\subsection{Fonctions continues par morceaux}
+\begin{itemize}
+    \item Définition - il existe une subdivision adaptée $\sigma = (a_k)_{0\leq k \leq n}$ à la fonction $f$ tel que $\forall k \in \llbracket 1, n \rrbracket, f_{] a_{k-1}, a_k [}$ est continue et prolongeable par continuité en $a_{k-1} \et a_{k}$
+    \item Pour toute fonction $f$ CPM, il existe une suite $(\phi_n)$ de fonctions en escalier qui converge uniformément vers $f$ ($\| f - \phi_n \|_{\infty} \longrightarrow 0$)
+    \item Cette suite $(\int_{[a, b]} \phi_n)_n$ converge et sa limite ne dépend pas du choix de $(\phi_n)$ - on définit donc $\int_{[a, b]} f = \lim_{n \rightarrow +\infty} \int_{[a, b]} \phi_n$
+\end{itemize}
+
+\subsection{Propriétés de l'intégrale}
+\begin{itemize}
+    \item Inégalité triangulaire intégrale - $ |\int_{a}^{b} f| \leq \int_{a}^{b} |f| $ (! Pour $a < b$)
+    \item Égalité de $f$ et $g$ sauf en un nombre fini de points - $\int_a^b f = \int_a^b g$
+    \item Positivité et croissance
+    \item Stricte positivité - si $f \geq 0$, $f$ continue en $x_0$ et $f(x_0) > 0$, alors $\int_{a}^{b} > 0$
+    \item Critère de nullité - pour $f$ continue et de signe constant, $\int_{a}^{b} f = 0 \iff f = 0$
+    \item Valeur moyenne de $f$ - $\frac{1}{b-a}\int_{a}^{b} f > 0$
+\end{itemize}
+
+\subsubsection{Calcul intégrale}
+\begin{itemize}
+    \item Pour $f$ paire - $\int_{-a}^a f = 2 \int_0^a f$
+    \item Pour $f$ impaire - $\int_{-a}^a f = 0$
+    \item Pour $f$ $T$-périodique - $\int_{a}^{a+T} = \int_{0}^{T}$
+    \item Inégalité de Cauchy-Schwarz - $(\int_{a}^{b} fg)^2 \leq (\int_{a}^{b}f^2)(\int_{a}^{b}g^2)$
+\end{itemize}
+
+\subsection{Primitives}
+$F$ est une primitive de $f$ sur $I$ si $F$ est dérivable sur $I$ et $F' = f$. L'ensemble des primitives de $f$ est $ \{ F+c \ligneh c\in \mathbb{C} \} $
+
+\[ F : x \mapsto \int_{a}^{x} f(t) dt \]
+
+\noindent $F$ est l'unique primitive qui s'annule en $a$
+
+\subsubsection{Théorème fondamental du calcul intégral}
+\[ \int_{a}^{b} f(t) \text{ d}t = F(b) - F(a) \]
+
+\subsubsection{Primitives usuelles}
+
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        $f$ & $F$ & $I$ \\
+        \hline
+        $x^n$ ($n \in \mathbb{N}$) & $\frac{x^{n+1}}{n+1}$ & $\mathbb{R}$ \\
+        \hline
+        $x^k$ ($k \in \mathbb{Z}\backslash\{-1\}$) & $\frac{x^{k+1}}{k+1}$ & $\mathbb{R}^*$ \\
+        \hline
+        $x^a$ ($a \in \mathbb{R}\backslash\{-1\}$) & $\frac{x^{a+1}}{a+1}$ & $\mathbb{R}_+^*$ \\
+        \hline
+        $\frac{1}{x}$ & $\ln{|x|}$ & $\mathbb{R}^*$ \\
+        \hline
+        $e^{kx}$ & $\frac{e^{kx}}{k}$ & $\mathbb{R}$ \\
+        \hline
+        $\cos{x}$ & $\sin{x}$ & $\mathbb{R}$ \\
+        \hline
+        $\sin{x}$ & $-\cos{x}$ & $\mathbb{R}$ \\
+        \hline
+        $1+\tan^2{x} = \frac{1}{cos^2{x}}$ & $\tan{x}$ & $\bigcup_{k\in\mathbb{Z}} ] -\frac{\pi}{2} + k\pi, \frac{\pi}{2} + k\pi [$ \\
+        \hline
+        $\tan{x} = - \frac{- \sin{x}}{\cos{x}}$ & $-\ln{|\cos{x}|}$ & $\bigcup_{k\in\mathbb{Z}} ] -\frac{\pi}{2} + k\pi, \frac{\pi}{2} + k\pi [$ \\
+        \hline
+        $\ch{x}$ & $\sh{x}$ & $\mathbb{R}$ \\
+        \hline
+        $\sh{x}$ & $\ch{x}$ & $\mathbb{R}$ \\
+        \hline
+        $\frac{1}{1+x^2}$ & $\arctan{x}$ & $\mathbb{R}$ \\
+        \hline
+        $\frac{1}{\sqrt{1-x^2}}$ & $\arcsin{x}$ & $]-1, 1 [$ \\
+        \hline
+        $-\frac{1}{\sqrt{1-x^2}}$ & $\arccos{x}$ & $]-1, 1 [$ \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection{Techniques de calcul}
+
+\subsubsection{Changement de variable (simple)}
+\[ \int u'(x) (f \circ u)(x) \text{ d}x = \int f(t) \text{ d}t, t = u(x) \]
+
+\subsubsection{Changement de variable (important)}
+\[ \int_{u(a)}^{u(b)} f(x) \text{ d}x = \int_{a}^{b} f(u(t)) u'(t) \text{ d}t \]
+
+\begin{enumerate}
+    \item On pose $x = u(t)$ avec $u \in \mathcal{C}^1$
+    \item On remplace $x$ par $u(t)$ et $\text{d}x$ par $u'(t) \text{ d}t$
+    \item On remplace les bornes de l'intégral par les antécédents de $u$
+\end{enumerate}
+
+\subsubsection{Intégration par parties}
+\[ \int u'v = uv - \int uv' \]
+
+\begin{enumerate}
+    \item On pose $u'$ et on obtient $u$ en intégrant, avec $u \in \mathcal{C}^1$
+    \item On pose $v \in \mathcal{C}^1$ et on obtient $v'$
+\end{enumerate}
+
+\subsection{Primitives particulières}
+
+\subsubsection{Passage aux complexes}
+Pour $e^{ax}\cos{(bx)}$ et $e^{ax}\sin{(bx)}$, on peut passer aux complexes et étudier $e^{(a+ib)x}$ et obtenir le résultat comme la partie réelle ou imaginaire de $ \frac{e^{(a+ib)x}}{a+ib} $
+
+\subsubsection{Inverse d'un polynôme}
+Pour $\frac{1}{f(x)}$
+\begin{itemize}
+    \item Pour $\Delta > 0$, on peut écrire $f(x) = a(x-x_1)(x-x_2)$ donc la fonction $ x \mapsto \frac{A}{x-x_1}+\frac{B}{x-x_2} $. On a une primitive $A \ln{|x -  x_1|} + B \ln{|x - x_2|}$
+    \item Pour $\Delta = 0$, on peut écrire $f(x) = a(x-x_0)^2$ donc la fonction $ x \mapsto \frac{1}{a(x-x_0)^2}$. On a une primitive $-\frac{1}{a(x-x_0)}$
+    \item Pour $\Delta < 0$, on peut écrire $f(x) = a (\frac{\delta}{2a})^2 [1 + (\frac{2ax}{\delta} + \frac{b}{\delta})^2] $ avec $\delta = \sqrt{-\Delta}$. On peut donc écrire la fonction $x \mapsto \frac{2}{\delta} \frac{\frac{2a}{\delta}}{1 + (\frac{2ax}{\delta} + \frac{b}{\delta})^2} $. On a une primitive $ \frac{2}{\delta} \arctan{(\frac{2ax}{\delta} + \frac{b}{\delta})} $
+\end{itemize}
+
+\subsection{Formule de Taylor}
+Pour $f \in \mathcal{C}^{n+1}$
+\[ f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k + \int_{a}^{x} \frac{(x-t)^n}{n!}f^{(n+1)} (t) \dt \]
+
+\subsubsection{Inégalité de Taylor-Lagrange}
+\[ \left |f(x) - \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k \right | \leq \frac{|x-a|^{n+1}}{(n+1)!} M_{n+1} \]
+
+Avec $M_{n+1}$ un majorant de $|f^{(n+1)}|$ sur le segment $[a \leftrightarrow x]$.
+
+\subsection{Sommes de Riemann}
+\[ \frac{b-a}{n}\sum_{k=0}^{n-1} f(a + k\frac{b-a}{n}) \underset{n\rightarrow +\infty}{\longrightarrow} \int_{a}^{b} f \]
+
+La somme peut aller de $1$ à $n$ \\
+
+En particulier, $\frac{1}{n}\sum_{0}^{n-1} f(\frac{k}{n}) \longrightarrow \int_{0}^{1} f$ \\
+
+Identifier une somme de Riemann permet de démontrer la convergence d'une suite et trouver sa limite. 
+
+\clearpage
+\section{Séries numériques [sup 25]}
+
+\subsection{Définitions}
+\begin{itemize}
+    \item Série de terme général $u_n = \sum u_n = \left( \sum_{k=0}^{n}u_k \right)_{n \in \mathbb{N}}$
+    \item Somme partielle d'ordre $n$ - $\sum_{k=0}^{n}u_k$
+    \item Pour une série convergente, somme de la série $\sum_{k=0}^{+\infty} u_k$
+    \item Pour une série convergente, reste de rang $n$ - $R_n = \sum_{k=0}^{+\infty} u_k - \sum_{k=0}^{n} u_k$
+    \begin{itemize}
+        \item Par téléscopage, $u_n = R_{n-1} - R_n$
+    \end{itemize}
+    \item Série de terme général $u_n$ est absolument convergente $\iff \sum |u_n| \conv \iff (u_n)$ est sommable
+\end{itemize}
+
+\subsubsection{Propriétés}
+\begin{itemize}
+    \item $S_n \text{ converge } \implies u_n \longrightarrow 0$
+    \item $(u_n) \not \longrightarrow 0 \implies S_n$ diverge grossièrement
+    \item $ (u_n) \text{ converge } \iff \sum (u_{n+1} - u_n) \conv $ - $\sum_{n=0}^{+\infty} (u_{n+1} - u_n) = \underset{n \rightarrow + \infty}{\lim} u_n - u_0$
+    \item Si $\sum u_n \et \sum v_n \conv, \sum_{n=0}^{+\infty} (\lambda u_n + v_n) = \lambda \sum_{n=0}^{+\infty} u_n + \sum_{n=0}^{+\infty} v_n $
+\end{itemize}
+
+\subsubsection{Propriétés des séries à termes positifs}
+\begin{itemize}
+    \item Une SATP est croissante
+    \item $\sum u_n \conv \iff (\sum u_n) \text{ est majorée}$
+    \item Si $0 \leq u_n \leq v_n \et (\sum v_n) \conv$, $(\sum u_n) \conv$ et $\sum_{0}^{+\infty} u_n \leq \sum_{0}^{+\infty} v_n$
+    \item Pour des SATPs $u_n \sim v_n$, $\sum u_n \et \sum v_n$ sont de même nature
+\end{itemize}
+
+\subsubsection{Propriétés de la convergence absolue}
+\begin{itemize}
+    \item Convergence absolue $\implies$ convergence et $\left |\sum_{n=0}^{+ \infty} u_n \right | \leq \sum_{n=0}^{+\infty} |u_n|$
+    \item Pour des SATPs, convergence absolue $\iff$ convergence
+    \item $u_n =\mathcal{O}(v_n) \et \sum v_n $ converge absolument $\implies \sum u_n$ converge absolument
+\end{itemize}
+
+\subsubsection{Comparaison série-intégrale}
+Pour $\sum f(n)$ avec $f$ une fonction continue et décroissante sur $[0, +\infty[$
+\[ \int_{0}^{n+1} f \leq  \sum_{k=0}^{n} f(k) \leq f(0) + \int_{0}^{n} f \]
+
+[Démonstration - écrire un encadrement pour $f(k)$ avec des intégrales de $k$ à $k+1$ et de $k-1$ à $k$, puis sommer]
+\begin{itemize}
+    \item L'inégalité change de signe pour des fonctions décroissantes
+    \item L'inégalité s'adapte pour des fonctions définies APCR
+\end{itemize}
+
+\subsection{Séries particulières}
+\subsubsection{Série géométrique}
+\[ \sum q^n \conv \iff |q| < 1 \]
+\[ \sum_{n=0}^{+\infty} q^n = \frac{1}{1-q} \]
+
+\begin{itemize}
+    \item Somme partielle - $\sum_{k=0}^{n} q^k = \frac{1 - q^{n+1}}{1-q}$
+    \item La somme commence à $n = 0$
+\end{itemize}
+
+\subsubsection{Série exponentielle}
+\[ \sum_{n=0}^{+\infty} \frac{z^n}{n!} = e^z \]
+
+[Démonstration - On encadre la série avec l'inégalité de Taylor-Langrange en 0 à l'ordre $n$ évalué en 1 pour la fonction $f : t \mapsto e^{tz}$]
+
+\begin{itemize}
+    \item La somme commence à $n = 0$
+\end{itemize}
+
+\subsubsection{Série de Riemann}
+$\alpha \in \mathbb{R}$
+\[ \sum_{n \geq 1} \frac{1}{n^\alpha} \conv \iff \alpha > 1 \]
+
+[Démonstration - Pour $\alpha < 0$, le terme général diverge. Sinon, $t \mapsto \frac{1}{t^{\alpha}}$ est décroissante - on utilise l'encadrement intégrale avec un disjonction pour $\alpha = 1$]
+
+\clearpage
+\section{Fonctions de deux variables [sup 28]}
+
+\subsection{Continuité}
+Continuité en $a \in U$ un ouvert de $\mathbb{R}^2$ 
+\[ \forall \epsilon > 0, \exists \delta > 0 \ligneh \forall z \in U, \|z-a\| \leq \delta \implies \| f(z) - f(a) \| \leq \epsilon \]
+\[ \lim_{(x, y) \rightarrow (\alpha, \beta)} f(x, y) = f(\alpha, \beta) \]
+
+\begin{itemize}
+    \item Boule ouvert de $\mathbb{R}^2$ - $B(a, r) = \{ z \in \mathbb{R}^2 \ligneh \|z-a\| < r \}$
+    \item Ouvert de $\mathbb{R}^2$ - $\forall a \in U, \exists r > 0 \ligneh B(a, r) \subset U$
+    \item $\underset{x \rightarrow \alpha}{\lim} ( \underset{y \rightarrow \beta}{\lim} f(x, y) ) \neq \underset{(x, y) \rightarrow (\alpha, \beta)}{\lim} f(x, y)$
+    \item Continuité stable par combinaison linéaire, produit, inverse (si la fonction ne s'annule pas), et composé (tout type)
+    \item Toute fonction polynomiale de $\mathbb{R}^2$ sont continues
+    \item Maximum local - $\exists \delta > 0, \forall z, \|z-a\| \leq \delta \implies f(z) \leq f(a)$
+    \begin{itemize}
+        \item On étudie plutôt $f(a+v) - f(a)$ au lieu de $f(z) - f(a)$ directement
+    \end{itemize}
+\end{itemize}
+
+\subsection{Dérivation}
+
+\begin{itemize}
+    \item Dérivabilité selon $v \in \mathbb{R}^2$ en $a$ - $D_v f(a) = \underset{t \rightarrow 0}{\lim} \frac{f(a+tv) - f(a)}{t}$
+    \item Première dérivée partielle en $a = (\alpha, \beta)$ - $\partial_1 f(a) = D_{\epsilon_1} f(a) = f_1'(\alpha)$ avec $f_1 : x \mapsto f(x, \beta)$ la première application partielle de $f$ en $a$
+    \item Deuxième dérivée partielle en $a = (\alpha, \beta)$ - $\partial_2 f(a) = D_{\epsilon_2} f(a) = f_2'(\beta)$ avec $f_2 : x \mapsto f(\alpha, 2)$ la deuxième application partielle de $f$ en $a$
+    \item Gradient de $f$ en $a$ - $\nabla f (a) = (\partial_1 (a), \partial_2 (a))$
+    \item $D_v f(a) = \langle \nabla f(a) \ligneh v \rangle$
+    \item Point critique - $\nabla f (a) = 0$ - condition nécessaire d'extrema pour fonction de classe $\mathcal{C}^1$
+    \item Les expressions des dérivés et du gradient pour une CL, produit, et inverse (si la fonction ne s'annule pas) d'une fonction de deux variables dérivables sont analogues à les expressions pour les fonctions de variable réelle
+    \item Classe $\mathcal{C}^1$ - $f$ admet des dérivées partielles continues 
+    \begin{itemize}
+        \item $\mathcal{C}^1 \subset \mathcal{C}^0$
+        \item $\mathcal{C}^1$ stable par combinaison linéaire, produit, inverse (si la fonction ne s'annule pas), et composé (tout type)
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Dérivé d'un composée}
+
+\begin{itemize}
+    \item Cas $f : U \rightarrow \mathbb{R}, \theta : \text{Im}(f)\rightarrow \mathbb{R}$, alors $\theta \circ f : U \rightarrow \mathbb{R}$
+    \begin{itemize}
+        \item $\partial_{\underset{2}{1}}(\theta \circ f) = (\theta'\circ f) \times \partial_{\underset{2}{1}}f$
+        \item $\nabla (\theta \circ f) = (\theta' \circ f) \times \nabla f$
+    \end{itemize}
+    \item Cas $ \gamma = (\gamma_1 : \mathbb{R} \rightarrow \mathbb{R}, \gamma_2 : \mathbb{R} \rightarrow \mathbb{R}) : \mathbb{R} \rightarrow \mathbb{R}^2, f : \text{Im}(\gamma) \rightarrow \mathbb{R}$, alors $ f \circ \gamma : \mathbb{R} \in \mathbb{R} $ (1ère règle de la chaîne)
+    \begin{itemize}
+        \item $ (f \circ \gamma)'(t) = \partial_1 f (\gamma(t)) \gamma ' (t) + \partial_2 f (\gamma(t)) \gamma ' (t) $
+        \item $ (f \circ \gamma)'(t) = \langle \nabla f (\gamma (t) ) \ligneh \gamma ' (t) \rangle $
+    \end{itemize}
+    \item Cas $\Phi = (\phi_1 : \mathbb{R}^2 \rightarrow \mathbb{R}, \phi_2 : \mathbb{R}^2 \rightarrow \mathbb{R}) : \mathbb{R}^2 \rightarrow \mathbb{R}^2, f : \text{Im}(\Phi) \rightarrow \mathbb{R}$, alors $ f \circ \Phi = \mathbb{R}^2 \rightarrow \mathbb{R} $ (2ème règle de la chaîne)
+    \begin{itemize}
+        \item $ \partial_1 (f \circ \Phi)(a) = \partial_1 f(\Phi(a)) \partial_1 \phi_1(a) + \partial_2 f(\Phi(a)) \partial_1 \phi_2(a) $
+        \item $ \partial_2 (f \circ \Phi)(a) = \partial_1 f(\Phi(a)) \partial_2 \phi_1(a) + \partial_2 f(\Phi(a)) \partial_2 \phi_2(a) $
+    \end{itemize}
+\end{itemize}
+
+\subsection{Développement limité à l'ordre 1}
+\[ f(z) = f(a) + \langle \nabla f(a) \ligneh z-a \rangle + \underset{z \rightarrow a}{o}(\|z-a\|) \]
+
+\begin{itemize}
+    \item Plan tangent au graphe de $f$ en $(a, f(a))$ - $z = f(a) + \langle \nabla f(a) \ligneh z-a \rangle$
+\end{itemize}
+
+
+\chapter{Algèbre}
+
+\section{Matrices et systèmes linéaires [sup 8]}
+\subsection{Systèmes linéaires}
+Système d'équations linéaires de $n$ équations à $p$ inconnues, noté $(S)$
+
+\subsubsection{Définitions}
+\begin{itemize}
+    \item Coefficients - Les scalaires ($a_{i, j}$) le coefficient de $x_j$ dans la $i$-ième équation
+    \item Second membre - $n$-uplet des scalaires qui sont les constantes dans les équations
+    \item Homogène - Système sans second membre
+    \item Inconnues - Les $(x_1...x_n)$
+    \item Ensemble des solutions $\mathcal{S}$ - $\{(x_1...x_p)\in\mathbb{K}^p \text{ } | \text{ } \forall i \in \llbracket 1, n \rrbracket, \sum_{j=1}^{p}a_{i, j}x_j = b_i \}$
+    \begin{itemize}
+        \item Incompatible - Pas de solution $\mathcal{S} = \emptyset$
+        \item Compatible - Au moins une solution
+    \end{itemize}
+\end{itemize}
+
+\subsection{Matrices $\mathcal{M}_{n, p}(\mathbb{K})$}
+Matrice à $n$ lignes et $p$ colonnes. 
+
+\subsubsection{Matrices remarquables}
+\begin{itemize}
+    \item Matrice identité $I_n$ = $(\delta_{i, j})_{1\leq i,j \leq n}$ - 1 sur la diagonale
+        \begin{itemize}
+            \item Symbole de Kronecker $\delta_{i, j} = \begin{cases} 1 &\text{si i = j} \\ 0 &\text{sinon} \end{cases} $
+        \end{itemize}
+    \item Matrice nulle $0_{n, p}$ - tous les coefficients sont nuls
+    \item Matrice élémentaire $E_{i, j} = (\delta_{i, k}\delta_{j, l})_{1\leq k\leq n, 1 \leq l \leq p }$ - tous les coefficients sont nuls sauf $1$ en position $(i, j)$
+    \item Matrice nilpotente - $ \exists k \in \mathbb{N} : A^k = 0 $
+    \item Matrice symétrique - $ A^T = A \iff \forall(i,j)\in \llbracket 1, n \rrbracket^2, a_{j, i} = a_{i, j} $
+    \item Matrice antisymétrique - $ A^T = -A \iff \forall(i,j)\in \llbracket 1, n \rrbracket^2, a_{j, i} = -a_{i, j} $
+    \item Matrice diagonale - $ \forall(i,j)\in \llbracket 1, n \rrbracket^2, (i\neq j \implies a_{i, j} = 0) $
+    \item Matrice triangulaire supérieure - $ \forall(i,j)\in \llbracket 1, n \rrbracket^2, (i > j \implies a_{i, j} = 0) $
+        \begin{itemize}
+            \item Stable par combinaison linéaire et produit
+        \end{itemize}
+    \item Matrice triangulaire inférieure - $ \forall(i,j)\in \llbracket 1, n \rrbracket^2, (i > j \implies a_{i, j} = 0) $
+        \begin{itemize}
+            \item La transposée d'une matrice triangulaire inférieure est triangulaire supérieure (et vice-versa)
+            \item Stable par combinaison linéaire et produit
+        \end{itemize}
+    \item Toute matrice carrée s'écrit comme la somme d'une matrice symétrique $ \frac{A + A^T}{2} $ et une matrice antisymétrique $ \frac{A - A^T}{2} $
+\end{itemize}
+
+\subsubsection{Produit matriciel}
+\[ \forall (i, j) \in \llbracket 1, n \rrbracket \times \llbracket 1, p \rrbracket, [AB]_{i, j} = \sum_{k=1}^pa_{i, k}b_{k, j} \]
+
+\begin{itemize}
+    \item $ E_{i, j}^{(n, p)}E_{k, l}^{(p, q)} = \delta_{j, k}E_{i, l}^{(n, q)} $ [Démonstration - séparant le terme où $i=l$]
+\end{itemize}
+
+\subsubsection{Transposée}
+\[ \forall(i, j) \in \llbracket 1, n \rrbracket \times \llbracket 1, p \rrbracket, [A^T]_{i, j} = [A]j_i \]
+
+\begin{itemize}
+    \item $ (\lambda A+B)^T = \lambda A^T + B^T $
+    \item $ (AB)^T = B^TA^T $ - Attention à l'inversement
+    \item $ (A^T)^T = A $
+\end{itemize}
+
+\subsubsection{Opérations élémentaires}
+\begin{itemize}
+    \item Dilatation - multiplication de la $i$-ième ligne par $\lambda$
+        \begin{itemize}
+            \item $D_i(\lambda) = I_n + (\lambda-1)E_{i, i}$
+            \item $D_i(\lambda)A : L_i \leftarrow \lambda L_i$
+            \item $AD_i(\lambda) : C_i \leftarrow \lambda C_i$
+            \item $D_i(\lambda)^{-1} = D_i(\frac{1}{\lambda})$
+        \end{itemize}
+    \item Permutation - échange de la $i$-ième et la $j$-ième ligne
+        \begin{itemize}
+            \item $P_{i, j} = I_n - E_{i, i} - E_{j, j} + E_{i, j} + E_{j, i}$
+            \item $P_{i, j}A : L_i \leftrightarrow L_j$
+            \item $AP_{i, j} : C_i \leftrightarrow C_j$
+            \item $P_{i, j}^{-1} = P_{i, j}$
+        \end{itemize}
+    \item Transvection - $L_i \leftarrow L_i + \lambda L_j$
+        \begin{itemize}
+            \item $T_{i, j}(\lambda) = I_n + \lambda E_{i, j}$
+            \item $T_{i, j}(\lambda)A : L_i \leftarrow L_i + \lambda L_j$
+            \item $AT_{i, j}(\lambda) : C_j \leftarrow C_j + \lambda C_i$ (! $j$-ième colonne modifiée et non $i$-ième)
+            \item $T_{i, j}(\lambda)^{-1} = T_{i, j}(-\lambda)$
+        \end{itemize}
+\end{itemize}
+
+\noindent Ces opérations correspondent aux opérations sur un système d'équations linéaires. 
+
+\subsubsection{Matrices inversibles}
+\[ \text{GL}_n(\mathbb{K}) = \{ A \in \mathcal{M}_n(\mathbb{K}) \text{ } | \text{ } \exists B \in \mathcal{M}_n(\mathbb{K}) : AB = BA = I_n \} \]
+\[ A \in \text{GL}_n(\mathbb{K}) \iff \forall B \in \mathcal{M}_{n, 1}(\mathbb{K}), \exists ! X \in \mathcal{M}_{n, 1}(\mathbb{K}) \text{ } | \text{ } AX = B \]
+
+Démonstration [Sens indirect - Décomposer $I_n$ en colonne, cette $I_n$ décomposée sert de second membre, la concaténation des $X$ résultats donne $A^{-1}$ (et vérifiée pour la multiplication à gauche). On vérifie la multiplication à droite en étudiant la différence avec $I_n$]
+
+\begin{itemize}
+    \item $ (AB)^{-1} = B^{-1}A^{-1} $
+    \item $ (A^{-1})^{-1} = A $
+    \item $ (A^T)^{-1} = (A^{-1})^T $
+    \item $ (A^m)^{-1} = (A^{-1})^m = A^{-m} $
+    \item Les opérations élémentaires préservent l'inversibilité
+\end{itemize}
+
+\noindent On peut déduire $A^{-1}$ d'une matrice inversible en résolvant le système des équations linéaires représenté par $AX=B$. \\
+
+\noindent Pour les matrices inversible, il faut considérer les puissance négatives 
+
+\begin{itemize}
+    \item (Classique) $I + N$ est inversible d'inverse $\sum_{k=0}^{p-1} (-1)^kN^k$ pour $N$ nilpotente d'indice $p$
+\end{itemize}
+
+\subsection{Algorithme du pivot de Gauss}
+Soit $A \in \text{GL}_n(\mathbb{K})$
+\begin{enumerate}
+    \item Une dilatation et une permutation pour que $a_{1, 1} = 1$ [La première colonne est non-nulle]
+    \item Des transvections $ L_i \leftarrow L_i - a_{1, 1}L_1 $ pour que la 2e colonne est de la forme $(0 \msp 1 \msp ...) $
+    \item Itération jusqu'à obtenir une matrice triangulaire supérieure
+    \item Remonter l'algorithme de la gauche vers le haut, pour obtenir $I_n$
+\end{enumerate}
+
+\noindent On en déduit que une matrice triangulaire inversible a des coefficients diagonaux non nuls.
+
+\clearpage
+
+\section{Espaces Vectoriels [sup 10]}
+\subsection{Définitions}
+\subsubsection{$\mathbb{K}$-espaces vectoriels}
+\[ (E, +, \cdot) \]
+
+\begin{itemize}
+    \item $E$ est l'ensemble des vecteurs
+    \item $+$ loi de composition interne, qui agit sur 2 éléments de $E$
+    \item $\cdot$ loi de composition externe, qui agit sur un scalaire et un élément de $E$
+\end{itemize}
+
+\noindent $ (E, +, \cdot) $ est un $\mathbb{K}$-espace vectoriel si:
+\begin{itemize}
+    \item $(E, +)$ est un groupe commutative
+        \begin{itemize}
+            \item Commutativité
+            \item $+$ une loi de composition interne
+            \item Associativité
+            \item Neutre ($0_E$) tel que $x+0_E = 0_E + x = x$
+            \item Symétrique ($-x$) tel que $x+(-x) = (-x) + x = 0_E$
+        \end{itemize}
+    \item Associativité mixte - $ \forall (\lambda, \mu) \in \mathbb{K}^2, \forall x \in E, \lambda \cdot (\mu \cdot x) = (\lambda \times \mu)\cdot x $
+    \item Distributivité de $+$ sur $\cdot$ - $ \forall (\lambda, \mu) \in \mathbb{K}^2, \forall x \in E, (\lambda + \mu) \cdot x = \lambda \cdot x + \mu \cdot x $
+    \item Distributivité de $\cdot$ sur $+$ - $ \forall \lambda \in \mathbb{K}, \forall (x, y) \in E^2, \lambda \cdot (x+y) = \lambda \cdot x + \lambda \cdot y $
+    \item $ 1_\mathbb{K} \cdot x = x $
+\end{itemize}
+
+\subsubsection{Sous-espaces vectoriels}
+Pour $ (E, +, \cdot) $ un K-ev, $F$ est un sous-espace vectoriel si
+\begin{enumerate}
+    \item $0_E \in F$
+    \item Stabilité par $+$
+    \item Stabilité par $\cdot$
+\end{enumerate}
+
+\begin{itemize}
+    \item Conditions 2 et 3 - stabilité par combinaison linéaire.
+    \item Les ssevs d'un K-ev est un K-ev - on peut donc démontrer un K-ev en montrant qu'il s'agit d'un ssev d'un K-ev connu. 
+    \item L'intersection des ssevs est un ssev
+\end{itemize}
+
+\subsection{Somme de ssevs}
+\[ F + G = \{ x \in E \ligneh \exists(x_F, x_G) \in F \times G, x = x_F + x_G \} \]
+\[ F \oplus G = \{ x \in E \ligneh \exists!(x_F, x_G) \in F \times G, x = x_F + x_G \} \]
+\[ F \oplus G \text{ est un ssev} \iff 0_E \in F \oplus G \iff F + G = F \oplus G \iff F \cap G = \{0_E\} \]
+
+On peut montrer $ F \cap G = {0_E} $ pour montrer que $F+G$ est directe ($x \in F \cap G \implies x = 0_E $). On peut aussi déterminer l'unique décomposition de tout vecteur de $E$ comme somme par analye-synthèse. \\
+
+Si $E = F\oplus G$ alors $F$ et $G$ son supplémentaires de $E$.
+
+\subsection{Familles}
+
+\subsubsection{Vect}
+Sous-espace engendré par une famille finie de vecteurs ou une partie
+
+\[ \text{Vect}(a_1,...,a_n) = \{\sum_{i=1}^n \lambda_i a_i \ligneh (\lambda_1,...,\lambda_n) \in \mathbb{K}^n \} \]
+\[ \text{Vect}(A) = \{\sum_{i=1}^n \lambda_i a_i \ligneh n \in \mathbb{N}, (a_1,...,a_n) \in A^n, (\lambda_1,...,\lambda_n) \in \mathbb{K}^n \} \]
+
+\begin{itemize}
+    \item $\text{Vect}(A)$ est un ssev de E [Démonstration - $\text{Vect}(A) \in E, 0_E \in \text{Vect}(A) $, et stabilité par combinaison linéaire] - on peut montrer que $F$ est un ssev de $E$ en écrivant $F$ sous forme d'un Vect
+    \item $\text{Vect}(A)$ est le plus petit ssev de E qui contient A (Pour tout F un ssev de E, $ \text{Vect}(A) \subset F $) [Démonstration - $x \in \text{Vect}(A)$ est une combinaison linéaire des élements de $A$ donc de $F$ et $F$ est stable par combinaison linéaire]
+    \item $\text{Vect}(A)$ est l'intersection de tous les ssevs de E qui contiennent A [Démonstration - l'intersection est aussi un ssev contenant $A$ puis double inclusion]
+    \item Vect d'un vecteur - $ \text{Vect}(0_E) = {0_E} $ et $ \text{Vect}(x \neq 0_E) = \mathbb{K}x $ droite vectorielle
+    \item Vect de 2 vecteurs - $ \text{Vect}(x, y) = \text{Vect}(x) = \text{Vect}(y) $ si $x$ et $y$ sont colinéaires - sinon on a un plan vectoriel
+\end{itemize}
+
+\subsubsection{Familles libres et liées}
+\begin{itemize}
+    \item Libre (linéairement indépendant) - $ \sum_i \alpha_ix_i = 0 \implies \forall i, \alpha_i = 0 $
+    \item Liée - non-libre  - au moins un des vecteurs est combinaison linéaire des autres dans la famille
+\end{itemize}
+
+\noindent Une famille est libre $\iff \forall x \in \text{Vect}(E), x$ s'écrit de manière unique comme combinaison linéaire des vecteurs de $E$
+
+\subsubsection{Familles génératrices}
+\[ E = \text{Vect}(x_1,...,x_n) \]
+\noindent Il suffit de montrer $ E \subset \text{Vect}(x_1,...x_n) $ car le réciproque est automatique par stabilité par C.L. des ssevs. \\
+
+\noindent En particulier, les bases:
+\begin{itemize}
+    \item Une famille libre et génératrice. 
+    \item Tout vecteur de $E$ s'écrit de manière unique comme C.L. des vecteurs de la base
+    \item Si $\mathcal{B}_F \et \mathcal{B}_G$ sont des bases de $F \et G$ et $E = F \oplus G$, alors $\mathcal{B}_F \cup \mathcal{B}_G$ est une base de $E$ adaptée. 
+    \item Si $x_1,...x_n$ est une base de $E$, on peut 'scinder' la base pour obtenir des supplémentaires $ E = \text{Vect}(x_1,...,x_p) \oplus \text{Vect}(x_{p+1},...,x_n) $
+\end{itemize}
+
+\clearpage
+\section{Applications linéaires [sup 11]}
+Pour $u: E \rightarrow F$, 
+\[ u \in \mathcal{L}(E, F) \iff \forall(x, y) \in E^2, \forall \lambda \in \mathbb{K}, u(\lambda x + y) = \lambda u(x) + u(y) \]
+
+\subsection{Définitions}
+\begin{itemize}
+    \item $\mathcal{L}(E) = \mathcal{L}(E, E)$ un endomorphisme de $E$
+    \item $\mathcal{L}(E, \mathbb{K}) = E^*$ une forme linéaire sur $E$
+    \item $u \in \mathcal{L}(E, F)$ bijective - un isomorphisme de $E$ dans $F$
+    \item $u \in \mathcal{L}(E)$ bijective - un automorphisme de $E$
+    \item $ \text{Ker } u = {x \in E \ligneh u(x) = 0_F} = u^{-1}(\{0_F\}) $
+\end{itemize}
+
+\subsection{Propriétés des A.Ls}
+\begin{itemize}
+    \item $u(0_E) = 0_F$
+    \item $\mathcal{L}(E, F)$ est stable par C.L. - $\mathcal{L}(E, F)$ est un ssev de $F^E$
+    \item $\mathcal{L}(E, F)$ est stable par composition
+    \item Pour $\tilde{E}$ un ssev de $E$, $u(\tilde{E})$ est un ssev de $F$
+    \item Pour $\tilde{F}$ un ssev de $F$, $u^{-1}(\tilde{F})$ est un ssev de $E$
+    \item $\text{Ker } u $ est un ssev de $E$
+    \item $\text{Im } u $ est un ssev de $E$
+    \item $u$ est injective $\iff$ $\text{Ker }u = \{0_E\} \iff (u(x) = 0_F \implies x = 0_E)$
+    \item $u$ est bijective $\iff$ $\text{Ker }u = \{0_E\} \et \text{Im }u = F $
+    \item Pour $B = (e_1,...,e_n)$ une base, et des vecteurs $f_1,...,f_n$, on caractérise une unique application linéaire - $ \forall i \in \llbracket 1, n \rrbracket, u(e_i) = f_i $
+    \item Pour $ E = E_1 \oplus E_2, u_1 \in \mathcal{L}(E_1, F), u_2 \in \mathcal{L}(E_2, F) $, on peut caractériser une unique application linéaire - $ \forall x \in E_1, u(x) = u_1(x) \et \forall x \in E_2, u(x) = u_2(x) $
+\end{itemize}
+
+\subsection{Propriétés des isomorphismes}
+\begin{itemize}
+    \item Stable par composition
+    \item La bijection réciproque d'un isomorphisme est un isomorphisme
+    \item $ \text{Im}(v \circ u) = \text{Im } v $
+    \item $ \text{Ker}(v \circ u) = \text{Ker } u $
+\end{itemize}
+
+\subsection{Des familles et des A.L.s}
+Uniquement dans cette section, $[x_i] = (x_1,...,x_n)$. $u \in \mathcal{L}(E, F)$
+\begin{itemize}
+    \item $u(\text{Vect}([x_i])) = \text{Vect}([u(x_i)])$
+    \item Pour $[x_i]$ une famille génératrice - $ [u(x_i)] $ est génératrice de $\text{Im } u$
+    \begin{itemize}
+        \item En particulier, $u$ surjective $ \iff [u(x_i)] $ est génératrice de $\text{Im } u = F$
+    \end{itemize}
+    \item $u$ injective $ \iff [u(x_i)] $ est libre
+    \item $u$ bijective $ \iff [u(x_i)] $ est une base de $F$
+    \item Si $ [x_i] $ liée, alors $ [u(x_i)] $ liée
+\end{itemize}
+
+\subsection{Endomorphismes remarquables}
+\subsubsection{Homothéties}
+\[ h_\lambda = x \mapsto \lambda x \]
+\begin{itemize}
+    \item $ h_1 = \text{Id} $
+    \item Pour $ \lambda \neq 0 $, $ h_\lambda \in \text{GL}(E) \et h_\lambda^{-1} = h_{\frac{1}{\lambda}} $
+\end{itemize}
+
+\subsubsection{Projections et symétries}
+Pour $x \in E = E_1 \oplus E_2$, 
+\begin{enumerate}
+    \item  La projection sur $E_1$ parallèlement à $E_2$, $ p : x = x_1 + x_2 \mapsto x_1 $
+    \begin{itemize}
+        \item $ p \in \mathcal{L}(E) $
+        \item $ p^2 = p $ - Condition nécessaire et suffisante d'être un projecteur
+        \item $ E_1 = \text{Im }p = \{x \in E \ligneh p(x) = x \} = \text{Ker}(p - \text{Id}_E) $
+        \item $ E_2 = \text{Ker }p$
+        \item On peut caractériser $u$ un projecteur si $ u \in \mathcal{L}(E) \et u^2 = u $ - dans ce cas il est projecteur sur $\text{Im}(p)$ parallèlement à $\text{Ker }p$ [Démonstration - $x = (u(x)) + (x-u(x))$ décomposition unique]
+    \end{itemize}
+    \item La symétrie par rapport à $E_1$ parallèlement à $E_2$, $ s : x = x_1 + x_2 \mapsto x_1 - x_2 $
+    \begin{itemize}
+        \item $ s \in \mathcal{L} $
+        \item $ s^2 = \text{Id} $ - $s \in \text{GL}(E) \et s^{-1}=s$ - - Condition nécessaire et suffisante d'être une symétrie
+        \item $ E_1 = \{ x \in E \ligneh s(x) = x \} = \text{Ker}(s-\text{Id}) $
+        \item $ E_2 = \{ x \in E \ligneh s(x) = -x \} = \text{Ker}(s+\text{Id}) $ 
+        \item On peut caractériser $u$ une symétrie si $ u \in \mathcal{L}(E) \et u^2 = \text{Id}_E $ - dans ce cas il est projecteur sur $\text{Ker}(s-\text{Id})$ parallèlement à $\text{Ker}(s+\text{Id})$ [Démonstration - $x = \frac{1}{2}(x + u(x)) + \frac{1}{2}(x-u(x))$ décomposition unique]
+    \end{itemize}
+    \item $s = 2p - \text{Id}$
+\end{enumerate}
+
+\subsection{Équations linéaires}
+Pour l'équation $u(x) = b$, s'il existe au moins une solution particulière $x_p : (u(x_p) = b)$, alors 
+\[ \mathcal{S} = {x_p} + \text{Ker} u \]
+
+\noindent $\text{Ker }u$ est l'ensemble des solutions à l'équation homogène ($u(x) = 0$)
+
+\subsection{Hyperplan}
+\[ \text{H est un hyperplan} \iff \exists \phi \in E^* \backslash \{0_{E^*}\} \ligneh H = \text{Ker }u \]
+
+\noindent $H$ est le noyau d'une forme linéaire non-nulle. \\
+
+\noindent Propriétés
+\begin{itemize}
+    \item Pour $a \in E \backslash H, E = H \oplus \text{Vect}(a)$
+    \item Pour $D \not \subset H $ une droite vectorielle, $ E = H \oplus D $. Pour tout $S$ tel que $E = H \oplus S$, $S$ est une droite vectorielle. 
+    \item Pour $ \text{Ker }\phi  = \text{Ker }\psi$, $\phi$ et $\psi$ sont proportionnelles
+    \item Pour $ (e_1,...,e_n) $ une base de E et $x = \sum_{i=0}^n x_i e_i$, $ H = \text{Ker }u = {\sum_{i=0}^n x_i e_i \ligneh \sum_{i=0}^n x_i u(e_i)} $
+\end{itemize}
+
+\clearpage
+
+\section{Dimension finie [sup 18]}
+\subsection{Définition}
+\begin{itemize}
+    \item Dimension finie - $E$ possède une famille génératrice de cardinal $n \in \mathbb{N}$
+    \item Toute famille libre d'éléments de $E$ peut être complétée en une base de $E$ à partir des éléments de $G$ ($G$ est une famille génératrice) [Démonstration - considérons une famille libre de cardinalité maximale]
+    \item TBE Théorème de la base extraite - on peut extraire une base de tout famille génératrice finie d'un K-ev 
+    \item TBI Théorème de la base incomplète - Toute famille libre de vecteurs de $E$ peut être complétée en une base
+    \item Toutes les bases de $E$ ont le même cardinal = $\dim E$. 
+    \item $B$ est une base $ \iff B $ est libre maximal $\iff B $ est génératrice minimale
+    \item Toute famille de $n+1$ vecteurs de $E$ est liée
+\end{itemize}
+
+\subsection{Isomorphismes}
+$u$ est une AL de $E$ dans $F$
+\begin{itemize}
+    \item $E$ et $F$ sont isomorphe $\iff \dim E = \dim F$ 
+    \item Pour $\dim E = \dim F$, des conditions suffisantes de bijectivité - 
+    \begin{itemize}
+        \item $u$ injective
+        \item $u$ surjective
+        \item $u$ inversible à droite
+        \item $u$ inversible à gauche
+    \end{itemize}
+    \item $u$ inj $\implies \dim E \leq \dim F$ 
+    \item $u$ surj $\implies \dim E \geq \dim F$
+    \item $u$ bij $\implies \dim E = \dim F$
+\end{itemize}
+
+\subsection{Sous espaces vectoriels}
+\begin{itemize}
+    \item $\dim F = \dim E$ avec $\dim F = \dim E \iff F = E$ pour $F$ un ssev de $E$
+    \item Tout ssev de $E$ fini admet un supplémentaires
+    \item Pour $E = F \oplus G$, $\dim E = \dim F + \dim G$
+    \item Formule de Grassmann - $\dim (F+G) = \dim F + \dim F - \dim (F \cap G)$ [Démonstration - Considérons $H$ un supplémentaire de $F \cap G$ dans $F$ et montrer $F+G = H \oplus G$]
+\end{itemize}
+
+\subsection{Rang}
+Pour $u \in \mathcal{L}(E, F)$
+
+\[ \rg(x_1,\dots,x_n) = \dim(\Vect(x_1, \dots, x_n)) \]
+\[ \rg (u) = \dim(\text{Im}(u)) \]
+
+\begin{itemize}
+    \item $ \rg(x_1,\dots,x_n) = n \iff (x_1,\dots,x_n) $ est libre
+    \item $ \rg(u) \leq \dim(F) $ (égalité $\iff$ surjective)
+    \item $ \rg(u) \leq \dim(E) $ (égalité $\iff$ injective)
+    \item $ \rg(v \circ u) \leq \min(\rg(u), \rg (v)) $
+    \item Pour $v$ un isomorphisme, $ \rg(v \circ u) = \rg(u \circ v) = \rg(u) $
+\end{itemize}
+
+\subsubsection{Théorème du rang}
+
+\[ \dim E = \dim( \ker u ) + \rg(u) \]
+
+\noindent [Démonstration - Pour $S$ un supplémentaire de $\ker (u)$ ($E = S \oplus \ker (u)$), $u$ induit un isomorphisme de $S$ dans $\text{Im}(u)$]
+
+\begin{itemize}
+    \item Une forme linéaire est soit nulle, soit surjective
+    \item Pour $H$ un hyperplan, $\dim H = \dim E - 1$
+\end{itemize}
+
+\subsection{Dimensions misc}
+\begin{itemize}
+    \item $\dim (E \times F) = \dim E + \dim F$ [Démonstration - construire une base de $E\times F$ à partir des bases de $E$ et $F$]
+    \item $\dim \mathcal{L}(E, F) = \dim E \times \dim F$ [Démonstration - considérons $\phi : u \mapsto (u(e_1), \dots , u(e_n))$]
+\end{itemize}
+
+\clearpage
+\section{Matrices et Applications Linéaires [sup 20]}
+
 On note $ \mathcal{B} = (e_1, e_2, \dots) = [(e_i)] $ une base quelconque, et $ \mathcal{C} = [(\epsilon)_i] $ la base canonique, d'un K-ev non nul de dimension finie.
 
 \subsection{Définitions}
@@ -1797,170 +1875,8 @@ Pour $A \in \mathcal{M}_{n, p}(\mathbb{K})$
 \end{itemize}
 
 \clearpage
-\section{Équations différentielles linéaires}
 
-\subsection{Premier ordre}
-Pour $(a, b) \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$ dérivable de $I$ dans $\mathbb{K}$
-\[ y' + a(x)y = b(x) \]
-
-\noindent Les solutions sont des la forme
-
-\[ x \mapsto Ce^{-A(x)} + (\int_{}^{x} b(t) e^{A(t)} \dt)e^{-A(x)} \]
-
-\begin{itemize}
-    \item L'ensembles des solutions homogènes $ = \Vect (e^{-A(x)})$
-    \item Méthode de la variation de la constante - On pose $y_p : x \mapsto C(x)e^{-A(x)}$ et on cherche $C(x)$ en résolvant $y_p' - a(x)y = b(x)$
-    \item Problème de Cauchy - si $y(x_0) = y_0$, on a une unique solution pour $y$
-\end{itemize}
-
-\subsubsection{Solutions particulières remarquables}
-$y' + ay = e^{\lambda x}$ pour $a \et \lambda$ des constantes,  on a:
-\begin{itemize}
-    \item Si $\lambda \neq -a$, $y_p : x \mapsto Ce^{\lambda x}$ (Ici, $C = \frac{1}{\lambda + a}$, mais à redémontrer)
-    \item Si $\lambda = -a$, $y_p : x \mapsto xe^{\lambda x}$
-\end{itemize}
-
-\noindent Si on a $P(x)$ une fonction polynomiale, $y' + ay = P(x)e^{\lambda x}$ 
-\begin{itemize}
-    \item Si $\lambda \neq -a$, $y_p : x \mapsto R(x)e^{\lambda x}$
-    \item Si $\lambda = -a$, $y_p : x \mapsto xR(x)e^{\lambda x}$
-\end{itemize}
-\noindent avec $R$ un polynôme du même degré que $P$
-
-\subsection{Second ordre à coefficients constants}
-Pour $(a, b) \in \mathbb{K}^2, f \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$ dérivable de $I$ dans $\mathbb{K}$
-\[ y'' + ay'+ by = f \]
-
-\begin{itemize}
-    \item $ (x \mapsto e^{\lambda x}) $ est solution de l'équation homogène $ \iff \lambda $ est racine de $ P = X^2 + aX + b $ [polynôme caractéristique]
-    \begin{itemize}
-        \item $\lambda_1 \et \lambda_2$ 2 racines distinctes - $\Vect (e^{\lambda_1 x}, e^{\lambda_2 x})$
-        \item $\lambda_0$ racine double - $\Vect (xe^{\lambda_0 x}, e^{\lambda_0 x})$
-        \item Dans $\mathbb{R}$ avec 2 racines complexes conjuguées $\lambda = r \pm i \omega$ - $\Vect (e^{rx} \cos (\omega x), e^{rx} \sin(\omega x))$
-    \end{itemize}
-    \item L'ensemble des solutions homogène est un plan vectoriel
-    \item Il existe toujours une solution particulière
-    \item Problème de Cauchy - si on pose $y(x_0) = y_0 \et y'(x_0) = y_1$, il existe une unique solution (! Meme $x_0$ pour les 2 points)
-\end{itemize}
-
-\subsubsection{Solutions particulières remarquables}
-\begin{itemize}
-    \item Pour un second membre $Ae^{\lambda x}$, il existe une solution particulière de la forme $x \mapsto Cx^m e^{\lambda x}$ où $m$ est la multiplicité de $\lambda$ dans le polynôme caractéristique
-    \item Pour un second membre trigonométrique, on considère la partie réelle / imaginaire de l'équation avec second membre $Ae^{i\omega}$
-    \item Pour un second membre $P(x)e^{\lambda x}$, on cherche une solution particulière de la forme $x \mapsto R(x) x^m e^{\lambda}x$ avec $R$ du même degré que $P$
-\end{itemize}
-
-\clearpage
-\section{Probabilités sur un univers fini}
-
-\subsection{Définitions}
-\begin{itemize}
-    \item Eventualité $\omega$ - un résultat possible d'une expérience aléatoire
-    \item Univers $\Omega$ - l'ensemble des éventualités d'une expérience aléatoire
-    \item Évènement aléatoire - un ensemble des éventualités $\omega \in \Omega$
-    \item Évènement élémentaire - $\{\omega\}$
-    \item Évènements incompatibles - $ A \cap B = \emptyset $
-    \item Système complet d'évènements $(A_i)$ - $\begin{cases}
-        \forall (i, j) \in \llbracket 1, n \rrbracket^2 \text{ distinctes}, A_i \neq A_j \\
-        \bigcup A_i = \Omega
-    \end{cases}$
-\end{itemize}
-
-\subsection{Probabilité}
-$(\Omega, P)$ un espace probabilisé muni de $P: \mathcal{P}(\Omega) \rightarrow [0, 1]$
-
-\begin{itemize}
-    \item $P(\Omega) = 1$
-    \item $P(A \sqcup B) = P(A) + P(B)$
-\end{itemize}
-
-\subsubsection{Propriétés}
-\begin{itemize}
-    \item Pour un système complet d'évènements $P(B) = \sum P(B\cap A_i)$
-    \item Distribution de probabilités - famille de $\mathbb{R}_+$ indexée sur $E$ de somme 1
-    \item $P$ est entièrement déterminée par une distribution de probabilités
-    \item Probabilité uniforme - $P(A) = \frac{|A|}{|\Omega|}$
-\end{itemize}
-
-\subsubsection{Conditionnement}
-\[ P_B(A) = \frac{P(A \cap B)}{P(B)} \]
-
-\begin{itemize}
-    \item $P_B$ est une probabilité sur $\Omega$
-    \item Formule des probabilités composées - $P(A \cap B) = P(A) \times P_A(B)$
-    \item Formule de Bayes - $P_B(A) \times P(B) = P_A(B) \times P(A)$
-    \item Pour un système complet d'évènements, $P(B) = \sum P_{A_i}(B) \times P(A_i)$
-\end{itemize}
-
-\subsubsection{Indépendance}
-\[ A \ind B \iff P(A \cap B) = P(A) \times P(B) \iff P_B(A) = P(A) \]
-
-\begin{itemize}
-    \item Si $A$ et $B$ sont indépendants, $A$ et $\overline{B}$ aussi
-    \item On distingue indépendance 2 à 2 et indépendance mutuelle
-\end{itemize}
-
-\clearpage
-\section{Intégration sur un segment}
-
-\subsection{Fonctions en escalier}
-\begin{itemize}
-    \item Subdivision du segment $[a,b]$ - suite finie $\sigma$ strictement croissante de $n + 1 $ éléments tel que $a = a_0$ et $a_n = b$
-    \item Pas d'une subdivision - l'écart maximal entre deux éléments
-    \item Subdivision $\sigma '$ plus fine que $\sigma$ - tout point de $\sigma \in \sigma '$
-    \item Subdivision régulière - écart constant entre 2 éléments 
-    \item Fonction en escalier - il existe une subdivision adaptée $\sigma = (a_k)_{0\leq k \leq n}$ à la fonction $f$ tel que $\forall k \in \llbracket 1, n \rrbracket, f_{] a_{k-1}, a_k [}$ est constante
-    \item Toute subdivision plus fine qu'une subdivision adaptée à $f$ en escalier est une subdivision adaptée à $f$
-    \item Norme infinie - $ \| f \|_{\infty} = \sup_{[a,b]} |f(x)| $ - toute fonction en escalier sur $[a,b]$ prend un nombre fini de valeurs et est bornée
-    \item Intégrale sur un segment - $\int_{[a, b]} f = I(f, \sigma) = \sum_{k=1}^{n} (a_k - a_{k-1})\lambda_k $ pour $\sigma = (a_k)$ une subdivision adaptée à $f$ et $f_{]a_k, a_{k-1}[} = \lambda_k$
-\end{itemize}
-
-\subsection{Fonctions continues par morceaux}
-\begin{itemize}
-    \item Définition - il existe une subdivision adaptée $\sigma = (a_k)_{0\leq k \leq n}$ à la fonction $f$ tel que $\forall k \in \llbracket 1, n \rrbracket, f_{] a_{k-1}, a_k [}$ est continue et prolongeable par continuité en $a_{k-1} \et a_{k}$
-    \item Pour toute fonction $f$ CPM, il existe une suite $(\phi_n)$ de fonctions en escalier qui converge uniformément vers $f$ ($\| f - \phi_n \|_{\infty} \longrightarrow 0$)
-    \item Cette suite $(\int_{[a, b]} \phi_n)_n$ converge et sa limite ne dépend pas du choix de $(\phi_n)$ - on définit donc $\int_{[a, b]} f = \lim_{n \rightarrow +\infty} \int_{[a, b]} \phi_n$
-\end{itemize}
-
-\subsection{Propriétés de l'intégrale}
-\begin{itemize}
-    \item Inégalité triangulaire intégrale - $ |\int_{a}^{b} f| \leq \int_{a}^{b} |f| $ (! Pour $a < b$)
-    \item Égalité de $f$ et $g$ sauf en un nombre fini de points - $\int_a^b f = \int_a^b g$
-    \item Positivité et croissance
-    \item Stricte positivité - si $f \geq 0$, $f$ continue en $x_0$ et $f(x_0) > 0$, alors $\int_{a}^{b} > 0$
-    \item Critère de nullité - pour $f$ continue et de signe constant, $\int_{a}^{b} f = 0 \iff f = 0$
-    \item Valeur moyenne de $f$ - $\frac{1}{b-a}\int_{a}^{b} f > 0$
-\end{itemize}
-
-\subsubsection{Calcul intégrale}
-\begin{itemize}
-    \item Pour $f$ paire - $\int_{-a}^a f = 2 \int_0^a f$
-    \item Pour $f$ impaire - $\int_{-a}^a f = 0$
-    \item Pour $f$ $T$-périodique - $\int_{a}^{a+T} = \int_{0}^{T}$
-    \item Inégalité de Cauchy-Schwarz - $(\int_{a}^{b} fg)^2 \leq (\int_{a}^{b}f^2)(\int_{a}^{b}g^2)$
-\end{itemize}
-
-\subsection{Formule de Taylor}
-Pour $f \in \mathcal{C}^{n+1}$
-\[ f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k + \int_{a}^{x} \frac{(x-t)^n}{n!}f^{(n+1)} (t) \dt \]
-
-\subsubsection{Inégalité de Taylor-Lagrange}
-\[ \left |f(x) - \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k \right | \leq \frac{|x-a|^{n+1}}{(n+1)!} M_{n+1} \]
-
-Avec $M_{n+1}$ un majorant de $|f^{(n+1)}|$ sur le segment $[a \leftrightarrow x]$.
-
-\subsection{Sommes de Riemann}
-\[ \frac{b-a}{n}\sum_{k=0}^{n-1} f(a + k\frac{b-a}{n}) \underset{n\rightarrow +\infty}{\longrightarrow} \int_{a}^{b} f \]
-
-La somme peut aller de $1$ à $n$ \\
-
-En particulier, $\frac{1}{n}\sum_{0}^{n-1} f(\frac{k}{n}) \longrightarrow \int_{0}^{1} f$ \\
-
-Identifier une somme de Riemann permet de démontrer la convergence d'une suite et trouver sa limite. 
-
-\clearpage
-
-\section{Espaces préhilbertiens réels}
+\section{Espaces préhilbertiens réels [sup 24]}
 \subsection{Définitions}
 \subsubsection{Produit scalaire}
 Toute forme bilinéaire, symétrique, définie et positive sur $E$. 
@@ -2076,79 +1992,194 @@ Pour $\| \cdot \|$ la norme associée à un produit scalaire
 \end{itemize}
 
 \clearpage
-\section{Séries numériques}
+
+\section{Déterminants [sup 27]}
+Vecteurs dans $E$ de dimension $n$, $[x_i] = (x_1,...,x_n)$, $\mathcal{B} = [e_i]$ une base de $E$
+
+\subsection{Définitions}
+\subsubsection{Déterminant d'une famille}
+
+L'unique forme $n$-linéaire alternée vérifiant $\det_{\mathcal{B}}(\mathcal{B}) = 1$
+
+\begin{itemize}
+    \item Forme $n$-linéaire - $E^n \rightarrow \mathbb{K}$ linéaire par rapport à chacune de ses variables
+    \item Alternée - $ x_i = x_j \et i \neq j \implies \phi([x_i]) = 0 $
+    \item Antisymétrique - $\phi (x_1,\dots,x_i,\dots,x_j,\dots,x_n) = -\phi (x_1,\dots,x_j,\dots,x_i,\dots,x_n)$
+    \item Alternée $\iff$ antisymétrique
+    \item Toute forme $n$-linéaire alternée $\phi$ est de la forme $\phi = \phi(\mathcal{B})\det_{\mathcal{B}}$
+    \begin{itemize}
+        \item Formule de changement des bases - $\det_{\mathcal{B}'} = \det_{\mathcal{B'}}(\mathcal{B}) \det_{\mathcal{B}}$
+        \item $ \det_{\mathcal{B'}}(\mathcal{B}) \det_{\mathcal{B}}(\mathcal{B'}) = 1$
+    \end{itemize}
+    \item $[x_i]$ liée $\implies \det_{\mathcal{B}}([x_i]) = 0$
+    \item $\det_{\mathcal{B}}([x_i])$ inchangé par ajout à un vecteur une CL des autres $([x_i])$
+    \item $[x_i]$ est une base de $E \iff \det_{\mathcal{B}}([x_i]) = 0$
+\end{itemize}
+
+\subsubsection{Déterminant d'un endomorphisme}
+
+\[ \det u = \det_{\mathcal{B}}([u(e_i)]) \]
+
+\begin{itemize}
+    \item $\det u$ est l'unique scalaire tel que $\forall \mathcal{B}, \forall [x_i], \det_{\mathcal{B}}([u(x_i)]) = \det u \det_{\mathcal{B}}([x_i])$ 
+    \item $\det(\lambda \text{Id}_E) = \lambda^{\dim E}$
+    \item $\det(u \circ v) = \det u \det v = \det (v \circ u)$
+    \item $u \in \text{GL}(E) \iff \det u \neq 0$ (Dans le cas d'inversibilité, $\det (u^{-1}) = \frac{1}{\det u}$)
+\end{itemize}
+
+\subsubsection{Déterminant d'une matrice}
+
+\[ \det A = \det_{\mathcal{B}_c}([C_i]) \]
+$[C_i]$ la famille des colonnes de $A$ exprimée dans la base canonique de $\mathbb{K}^n$
+
+\begin{itemize}
+    \item $\det \mat_{\mathcal{B}}([x_i]) = \det_{\mathcal{B}}([x_i])$
+    \item $\det (\mat_{\mathcal{B}} (u))) = \det u$ dans n'importe quelle base
+    \item $\det (\lambda A) = \lambda^nA$
+    \item $\det (AB) = \det A \det B = \det (BA)$
+    \item $\det (P^{-1}AP) = \det A$ - deux matrices semblables ont le même déterminant
+    \item $A \in \text{GL}_n (\mathbb{K}) \iff \det A \neq 0$ (Si inversible, $\det (A{-1}) = \frac{1}{\det A}$)
+    \item $\det A^T = \det A$
+\end{itemize}
+
+\subsection{Calcul de déterminant}
+\subsubsection{Matrices de petite taille}
+
+\[ \begin{vmatrix}
+a & b\\
+c & d
+\end{vmatrix} = ad - bc \]
+
+Règle de Sarrus:
+\[ \begin{vmatrix}
+a & b & c\\
+d & e & f\\
+g & h & i
+\end{vmatrix} = aei + bfg + cdh - ceg - afh - bdi \]
+
+\subsubsection{Matrices particulières}
+\begin{itemize}
+    \item Matrice diagonale - $\det (\text{diag} (\lambda_1,\dots,\lambda_n)) = \prod_{i=1}^{n} \lambda_i$
+    \item Matrice triangulaire - produit des coefficients diagonaux
+    \item Matrice de transvection - $\det T_{i, j}(\lambda) = 1$ [Démonstration - $T_{i, j}(\lambda) = I_n + \lambda E_{i, j}$ ajout d'une CL des autres vecteurs]
+    \item Matrice de permutation - $\det P_{i, j} = -1$ [Démonstration - antisymétrie]
+    \item Matrice de dilatation - $\det D_{i}(\lambda) = \lambda$
+\end{itemize}
+
+\subsubsection{Développement suivant une ligne}
+\[ \det A = \sum_{i=1}^{n} a_{i, j}(-1)^{i+j} \det (A_{i, j}) \]
+
+avec $A_{i, j}$ la matrice extraite en supprimant la $i$-ème ligne et la $j$-ième colonne. \\
+
+\[ 
+A=
+\left(
+\begin{array}{c|c}
+A' &
+\begin{array}{c}
+a_{1,n}\\
+\vdots\\
+a_{n-1,n}
+\end{array}
+\\ \hline
+0 \ \cdots \ 0 & a_{n,n}
+\end{array}
+\right)
+ \]
+On a 
+\[ \det A = a_{n, n} \det A' \]
+
+On peut aussi développer suivant une colonne. \\
+(Classique) On peut étudier $x \mapsto \det (A + xI_n)$ qui est une fonction polynomiale
+
+\clearpage
+
+\chapter{Probabilités}
+\section{Dénombrement [sup 17]}
+
+\subsection{Cardinal}
+\begin{itemize}
+    \item Ensemble fini - il existe $n \in \mathbb{N}*$ tel qu'il existe une bijection entre $E$ et $ \llbracket 1, n \rrbracket $ - $|E| = n$
+    \item $E$ et $F$ en bijection ont le même cardinal
+    \item Pour $E$ fini - $A \subsetneq E \implies |A| < |E|$ [Démonstration - récurrence sur tout ensemble de cardinalité $n$]
+    \item $(|A| = |E| \et A \subset E) \implies A = E$
+    \item Formule de Poincaré - $|E \cup F| = |E| + |F| - |E \cap F|$
+    \item $|E \backslash F| = |E| - |E \cap F|$
+    \item $|E \times F| = |E||F|$
+    \item $|F^E| = |F|^{|E|}$
+    \item $|\mathcal{P}(E)| = 2^{|E|}$ [Démonstration - bijection entre $\mathcal{P}(E)$ et $\{0, 1\}^E$ - $A \mapsto \mathbb{1}_A$]
+\end{itemize}
+
+\subsubsection{Applications}
+Pour $f:E \rightarrow F$
+\begin{itemize}
+    \item $f(E)$ est fini
+    \item $|f(E)| \leq |E| \et |f(E)| = |E| \iff f$ injective
+    \item Pour $f$ bijective, $|E| = |F|$
+    \item Pour $f$ injective, $|E| \leq |F|$ - il y en a $\frac{|F|!}{(|F|-|E|)!}$ possibilités [Démonstration - revient à choisir un $|E|$-arrangement des élements de $F$ à associer aux élements de $E$]
+    \item Pour $f$ surjective $|E| \geq |F|$ - il y en a $|E|!$ possibilités
+    \item Pour $|E|=|F|$, surjectivité $\iff$ injectivité $\iff$ bijectivité
+\end{itemize}
+
+\subsection{Vocabulaire combinatoire}
+\begin{itemize}
+    \item $p$-liste / $p$-uplet - $E^p$ - liste de $p$ éléments de $E$ (répétitions autorisées, ordre compté) - nombre $= n^p$
+    \item $p$-arrangement - $p$-liste deux à deux distincts - nombre $=\frac{n!}{(n-p)!}$
+    \item Permutation - une bijection de $E$ dans $E$ - nombre $=|E|!$
+    \item $p$-combinaison / $p$-partie - partie de $E$ à $p$ éléments distinctes (ordre pas compté) - nombre $=\binom{|E|}{p}$ [Démonstration - chaque $p$-combinaison correspond à $p!$ $p$-arrangements] 
+\end{itemize}
+
+\clearpage
+\section{Probabilités sur un univers fini [sup 22]}
 \subsection{Définitions}
 \begin{itemize}
-    \item Série de terme général $u_n = \sum u_n = \left( \sum_{k=0}^{n}u_k \right)_{n \in \mathbb{N}}$
-    \item Somme partielle d'ordre $n$ - $\sum_{k=0}^{n}u_k$
-    \item Pour une série convergente, somme de la série $\sum_{k=0}^{+\infty} u_k$
-    \item Pour une série convergente, reste de rang $n$ - $R_n = \sum_{k=0}^{+\infty} u_k - \sum_{k=0}^{n} u_k$
-    \begin{itemize}
-        \item Par téléscopage, $u_n = R_{n-1} - R_n$
-    \end{itemize}
-    \item Série de terme général $u_n$ est absolument convergente $\iff \sum |u_n| \conv \iff (u_n)$ est sommable
+    \item Eventualité $\omega$ - un résultat possible d'une expérience aléatoire
+    \item Univers $\Omega$ - l'ensemble des éventualités d'une expérience aléatoire
+    \item Évènement aléatoire - un ensemble des éventualités $\omega \in \Omega$
+    \item Évènement élémentaire - $\{\omega\}$
+    \item Évènements incompatibles - $ A \cap B = \emptyset $
+    \item Système complet d'évènements $(A_i)$ - $\begin{cases}
+        \forall (i, j) \in \llbracket 1, n \rrbracket^2 \text{ distinctes}, A_i \neq A_j \\
+        \bigcup A_i = \Omega
+    \end{cases}$
+\end{itemize}
+
+\subsection{Probabilité}
+$(\Omega, P)$ un espace probabilisé muni de $P: \mathcal{P}(\Omega) \rightarrow [0, 1]$
+
+\begin{itemize}
+    \item $P(\Omega) = 1$
+    \item $P(A \sqcup B) = P(A) + P(B)$
 \end{itemize}
 
 \subsubsection{Propriétés}
 \begin{itemize}
-    \item $S_n \text{ converge } \implies u_n \longrightarrow 0$
-    \item $(u_n) \not \longrightarrow 0 \implies S_n$ diverge grossièrement
-    \item $ (u_n) \text{ converge } \iff \sum (u_{n+1} - u_n) \conv $ - $\sum_{n=0}^{+\infty} (u_{n+1} - u_n) = \underset{n \rightarrow + \infty}{\lim} u_n - u_0$
-    \item Si $\sum u_n \et \sum v_n \conv, \sum_{n=0}^{+\infty} (\lambda u_n + v_n) = \lambda \sum_{n=0}^{+\infty} u_n + \sum_{n=0}^{+\infty} v_n $
+    \item Pour un système complet d'évènements $P(B) = \sum P(B\cap A_i)$
+    \item Distribution de probabilités - famille de $\mathbb{R}_+$ indexée sur $E$ de somme 1
+    \item $P$ est entièrement déterminée par une distribution de probabilités
+    \item Probabilité uniforme - $P(A) = \frac{|A|}{|\Omega|}$
 \end{itemize}
 
-\subsubsection{Propriétés des séries à termes positifs}
-\begin{itemize}
-    \item Une SATP est croissante
-    \item $\sum u_n \conv \iff (\sum u_n) \text{ est majorée}$
-    \item Si $0 \leq u_n \leq v_n \et (\sum v_n) \conv$, $(\sum u_n) \conv$ et $\sum_{0}^{+\infty} u_n \leq \sum_{0}^{+\infty} v_n$
-    \item Pour des SATPs $u_n \sim v_n$, $\sum u_n \et \sum v_n$ sont de même nature
-\end{itemize}
-
-\subsubsection{Propriétés de la convergence absolue}
-\begin{itemize}
-    \item Convergence absolue $\implies$ convergence et $\left |\sum_{n=0}^{+ \infty} u_n \right | \leq \sum_{n=0}^{+\infty} |u_n|$
-    \item Pour des SATPs, convergence absolue $\iff$ convergence
-    \item $u_n =\mathcal{O}(v_n) \et \sum v_n $ converge absolument $\implies \sum u_n$ converge absolument
-\end{itemize}
-
-\subsubsection{Comparaison série-intégrale}
-Pour $\sum f(n)$ avec $f$ une fonction continue et décroissante sur $[0, +\infty[$
-\[ \int_{0}^{n+1} f \leq  \sum_{k=0}^{n} f(k) \leq f(0) + \int_{0}^{n} f \]
-
-[Démonstration - écrire un encadrement pour $f(k)$ avec des intégrales de $k$ à $k+1$ et de $k-1$ à $k$, puis sommer]
-\begin{itemize}
-    \item L'inégalité change de signe pour des fonctions décroissantes
-    \item L'inégalité s'adapte pour des fonctions définies APCR
-\end{itemize}
-
-\subsection{Séries particulières}
-\subsubsection{Série géométrique}
-\[ \sum q^n \conv \iff |q| < 1 \]
-\[ \sum_{n=0}^{+\infty} q^n = \frac{1}{1-q} \]
+\subsubsection{Conditionnement}
+\[ P_B(A) = \frac{P(A \cap B)}{P(B)} \]
 
 \begin{itemize}
-    \item Somme partielle - $\sum_{k=0}^{n} q^k = \frac{1 - q^{n+1}}{1-q}$
-    \item La somme commence à $n = 0$
+    \item $P_B$ est une probabilité sur $\Omega$
+    \item Formule des probabilités composées - $P(A \cap B) = P(A) \times P_A(B)$
+    \item Formule de Bayes - $P_B(A) \times P(B) = P_A(B) \times P(A)$
+    \item Pour un système complet d'évènements, $P(B) = \sum P_{A_i}(B) \times P(A_i)$
 \end{itemize}
 
-\subsubsection{Série exponentielle}
-\[ \sum_{n=0}^{+\infty} \frac{z^n}{n!} = e^z \]
-
-[Démonstration - On encadre la série avec l'inégalité de Taylor-Langrange en 0 à l'ordre $n$ évalué en 1 pour la fonction $f : t \mapsto e^{tz}$]
+\subsubsection{Indépendance}
+\[ A \ind B \iff P(A \cap B) = P(A) \times P(B) \iff P_B(A) = P(A) \]
 
 \begin{itemize}
-    \item La somme commence à $n = 0$
+    \item Si $A$ et $B$ sont indépendants, $A$ et $\overline{B}$ aussi
+    \item On distingue indépendance 2 à 2 et indépendance mutuelle
 \end{itemize}
-
-\subsubsection{Série de Riemann}
-$\alpha \in \mathbb{R}$
-\[ \sum_{n \geq 1} \frac{1}{n^\alpha} \conv \iff \alpha > 1 \]
-
-[Démonstration - Pour $\alpha < 0$, le terme général diverge. Sinon, $t \mapsto \frac{1}{t^{\alpha}}$ est décroissante - on utilise l'encadrement intégrale avec un disjonction pour $\alpha = 1$]
 
 \clearpage
-\section{Variables aléatoires}
+\section{Variables aléatoires [sup 26]}
 \subsection{Définition}
 \begin{itemize}
     \item Application de $\Omega \rightarrow X(\Omega)$
@@ -2281,168 +2312,166 @@ Démonstration - on applique l'inégalité de Markov pour $|X - \mathbb{E}(X)|^2
 \end{itemize}
 
 \clearpage
-\section{Déterminants}
-Vecteurs dans $E$ de dimension $n$, $[x_i] = (x_1,...,x_n)$, $\mathcal{B} = [e_i]$ une base de $E$
 
-\subsection{Définitions}
-\subsubsection{Déterminant d'une famille}
 
-L'unique forme $n$-linéaire alternée vérifiant $\det_{\mathcal{B}}(\mathcal{B}) = 1$
+\chapter{Autres}
+\section{Arithmétique des entiers [sup 14]}
+\[ b|a \iff \exists q \in \mathbb{Z} : a = bq \]
 
 \begin{itemize}
-    \item Forme $n$-linéaire - $E^n \rightarrow \mathbb{K}$ linéaire par rapport à chacune de ses variables
-    \item Alternée - $ x_i = x_j \et i \neq j \implies \phi([x_i]) = 0 $
-    \item Antisymétrique - $\phi (x_1,\dots,x_i,\dots,x_j,\dots,x_n) = -\phi (x_1,\dots,x_j,\dots,x_i,\dots,x_n)$
-    \item Alternée $\iff$ antisymétrique
-    \item Toute forme $n$-linéaire alternée $\phi$ est de la forme $\phi = \phi(\mathcal{B})\det_{\mathcal{B}}$
-    \begin{itemize}
-        \item Formule de changement des bases - $\det_{\mathcal{B}'} = \det_{\mathcal{B'}}(\mathcal{B}) \det_{\mathcal{B}}$
-        \item $ \det_{\mathcal{B'}}(\mathcal{B}) \det_{\mathcal{B}}(\mathcal{B'}) = 1$
-    \end{itemize}
-    \item $[x_i]$ liée $\implies \det_{\mathcal{B}}([x_i]) = 0$
-    \item $\det_{\mathcal{B}}([x_i])$ inchangé par ajout à un vecteur une CL des autres $([x_i])$
-    \item $[x_i]$ est une base de $E \iff \det_{\mathcal{B}}([x_i]) = 0$
+    \item Si $b$ est un diviseur, $-b$ est un diviseur
+    \item $\pm 1 \et \pm a $ sont des diviseurs de $a$
+    \item $a$ et $-a$ ont les mêmes diviseurs
+    \item 0 ne divise que lui-même, tous les entiers divise 0
+    \item Si $ a \neq 0 \et b | a $, $|b| \leq |a|$
+    \item $(a|b \et b|a) \implies a = \pm b$
+    \item Divisibilité stable par combinaison linéaire et produit
 \end{itemize}
 
-\subsubsection{Déterminant d'un endomorphisme}
+\subsection{Nombres premiers}
+Tout entier naturel admettant exactement deux diviseurs dans $\mathbb{N}$
 
-\[ \det u = \det_{\mathcal{B}}([u(e_i)]) \]
+\[ \forall (a, b) \in \mathbb{N}, p = ab \implies (a = 1 \ou b = 1) \]
 
 \begin{itemize}
-    \item $\det u$ est l'unique scalaire tel que $\forall \mathcal{B}, \forall [x_i], \det_{\mathcal{B}}([u(x_i)]) = \det u \det_{\mathcal{B}}([x_i])$ 
-    \item $\det(\lambda \text{Id}_E) = \lambda^{\dim E}$
-    \item $\det(u \circ v) = \det u \det v = \det (v \circ u)$
-    \item $u \in \text{GL}(E) \iff \det u \neq 0$ (Dans le cas d'inversibilité, $\det (u^{-1}) = \frac{1}{\det u}$)
+    \item Tout entier $\geq 2$ possède au moins un diviseur premier
+    \item Pour $p$ premier, $p | ab \implies (p | a \ou p | b) $
+    \item On peut décomposer tout $n \in \mathbb{N}$ en facteurs premiers de manière unique
 \end{itemize}
 
-\subsubsection{Déterminant d'une matrice}
+\subsection{PGCD et PPCM}
+\subsubsection{Algorithme d'Euclide}
+\[ a = bq + r \implies D_{a, b} = D_{b, r} \]
 
-\[ \det A = \det_{\mathcal{B}_c}([C_i]) \]
-$[C_i]$ la famille des colonnes de $A$ exprimée dans la base canonique de $\mathbb{K}^n$
-
+\subsubsection{PGCD}
+\[ a \wedge b = \max (D_{a, b}) = \prod_{i=1}^n p_i^{\min (\nu_i, \mu_i)} \]
 \begin{itemize}
-    \item $\det \mat_{\mathcal{B}}([x_i]) = \det_{\mathcal{B}}([x_i])$
-    \item $\det (\mat_{\mathcal{B}} (u))) = \det u$ dans n'importe quelle base
-    \item $\det (\lambda A) = \lambda^nA$
-    \item $\det (AB) = \det A \det B = \det (BA)$
-    \item $\det (P^{-1}AP) = \det A$ - deux matrices semblables ont le même déterminant
-    \item $A \in \text{GL}_n (\mathbb{K}) \iff \det A \neq 0$ (Si inversible, $\det (A{-1}) = \frac{1}{\det A}$)
-    \item $\det A^T = \det A$
+    \item Le dernier reste non nul dans l'algorithme d'Euclide corresponde au PGCD
 \end{itemize}
 
-\subsection{Calcul de déterminant}
-\subsubsection{Matrices de petite taille}
+\subsubsection{PPCM}
+\[a \vee b = \min (|a|\mathbb{N}^* \cap |b|\mathbb{N}^*) = \prod_{i=1}^n p_i^{\max (\nu_i, \mu_i)}\]
+\[ a \mathbb{Z} \cap b \mathbb{Z} = (a \vee b) \mathbb{Z} \]
 
-\[ \begin{vmatrix}
-a & b\\
-c & d
-\end{vmatrix} = ad - bc \]
-
-Règle de Sarrus:
-\[ \begin{vmatrix}
-a & b & c\\
-d & e & f\\
-g & h & i
-\end{vmatrix} = aei + bfg + cdh - ceg - afh - bdi \]
-
-\subsubsection{Matrices particulières}
-\begin{itemize}
-    \item Matrice diagonale - $\det (\text{diag} (\lambda_1,\dots,\lambda_n)) = \prod_{i=1}^{n} \lambda_i$
-    \item Matrice triangulaire - produit des coefficients diagonaux
-    \item Matrice de transvection - $\det T_{i, j}(\lambda) = 1$ [Démonstration - $T_{i, j}(\lambda) = I_n + \lambda E_{i, j}$ ajout d'une CL des autres vecteurs]
-    \item Matrice de permutation - $\det P_{i, j} = -1$ [Démonstration - antisymétrie]
-    \item Matrice de dilatation - $\det D_{i}(\lambda) = \lambda$
-\end{itemize}
-
-\subsubsection{Développement suivant une ligne}
-\[ \det A = \sum_{i=1}^{n} a_{i, j}(-1)^{i+j} \det (A_{i, j}) \]
-
-avec $A_{i, j}$ la matrice extraite en supprimant la $i$-ème ligne et la $j$-ième colonne. \\
-
-Plus généralement, pour
-
-\[ 
-A=
-\left(
-\begin{array}{c|c}
-A' &
-\begin{array}{c}
-a_{1,n}\\
-\vdots\\
-a_{n-1,n}
-\end{array}
-\\ \hline
-0 \ \cdots \ 0 & a_{n,n}
-\end{array}
-\right)
- \]
-On a 
-\[ \det A = a_{n, n} \det A' \]
-
-On peut aussi développer suivant une ligne
+\subsubsection{Lien}
+\[ (a \wedge b) \times (a \vee b) = |ab| \]
 
 \clearpage
-\section{Fonctions de deux variables}
+\section{Polynômes [sup 15]}
+$ \mathbb{K}[X] $
+\[ P = \sum_{n=0}^{+\infty} a_n X^n \]
 
-\subsection{Continuité}
-Continuité en $a \in U$ un ouvert de $\mathbb{R}^2$ 
-\[ \forall \epsilon > 0, \exists \delta > 0 \ligneh \forall z \in U, \|z-a\| \leq \delta \implies \| f(z) - f(a) \| \leq \epsilon \]
-\[ \lim_{(x, y) \rightarrow (\alpha, \beta)} f(x, y) = f(\alpha, \beta) \]
+\subsection{Lois}
+\begin{itemize}
+    \item $A+B$ - $c_n = a_n + b_n$
+    \item $\lambda \cdot A$ - $c_n = \lambda a_n$
+    \item $A \times B$ - $ c_n = \sum_{i=0}^n a_i b_{n-i} $
+\end{itemize}
+
+\subsubsection{Propriétés}
+\begin{itemize}
+    \item $X = (0, 1, 0, \dots)$, $X^k$ a le $1$ au $k$-ième position
+    \item Les inversibles de $\mathbb{K}[X]$ sont des polynômes constants non nuls
+    \item $\mathbb{K}_n[X]$ est l'ensemble des polynômes de degré au plus $n$
+    \item Toute famille finie de polynômes non nuls et à degrés échelonnés est libre
+    \item $\tilde{P}$ est la fonction polynomiale associée à un polynôme
+\end{itemize}
+
+\subsubsection{Degré}
+Le $n$ du plus grand coefficient non-nul (coefficient dominant).
+\begin{itemize}
+    \item $ \deg(0) = - \infty$
+    \item $ \deg (P + Q) \leq \max(\deg P, \deg Q) , = \si \deg P \neq \deg Q $
+    \item $ \deg (PQ) = \deg P + \deg Q $
+    \item $ \deg (\lambda P) = \deg P \si \lambda \neq 0 $
+    \item $ \deg (P \circ Q) = \deg P \times \deg Q $ si $Q$ n'est pas un polynôme constant
+\end{itemize}
+
+\subsection{Arithmétique dans $\mathbb{K}[X]$}
+\[ B|A \iff \exists Q \in \mathbb{K}[X] : A = BQ \]
+
+\subsubsection{Division euclidienne}
+\[ A = BQ + R \]
+
+\noindent Avec $\deg (R) < \deg(B)$.
 
 \begin{itemize}
-    \item Boule ouvert de $\mathbb{R}^2$ - $B(a, r) = \{ z \in \mathbb{R}^2 \ligneh \|z-a\| < r \}$
-    \item Ouvert de $\mathbb{R}^2$ - $\forall a \in U, \exists r > 0 \ligneh B(a, r) \subset U$
-    \item $\underset{x \rightarrow \alpha}{\lim} ( \underset{y \rightarrow \beta}{\lim} f(x, y) ) \neq \underset{(x, y) \rightarrow (\alpha, \beta)}{\lim} f(x, y)$
-    \item Continuité stable par combinaison linéaire, produit, inverse (si la fonction ne s'annule pas), et composé (tout type)
-    \item Toute fonction polynomiale de $\mathbb{R}^2$ sont continues
-    \item Maximum local - $\exists \delta > 0, \forall z, \|z-a\| \leq \delta \implies f(z) \leq f(a)$
-    \begin{itemize}
-        \item On étudie plutôt $f(a+v) - f(a)$ au lieu de $f(z) - f(a)$ directement
-    \end{itemize}
+    \item Ce couple $(Q, R)$ est unique
+    \item $B | A \iff R = 0$
+\end{itemize}
+
+\subsubsection{Racines}
+\[ \alpha \text{ est une racine de Q} \iff (X-\alpha)|Q \]
+
+\begin{itemize}
+    \item Théorème d'Alembert-Gauss - tout polynôme non constant possède au moins une racine dans $\mathbb{C}$
+    \item Pour $\mathbb{R}[X]$, $\omega$ est une racine $\iff$ $\overline{\omega}$ est une racine
+    \item Pour $(\alpha_1,\dots,\alpha_n)$ sont des racines, $\prod_{i=1}^n (X-\alpha_i) | Q$
+    \item Critère d'égalité - Deux polynômes de $\mathbb{K}_n [X]$ qui coïncident en $n+1$ points sont égaux [Démonstration - un polynôme de $\mathbb{K}_n [X]$ avec $n+1$ racines est le polynôme nul]
+    \item Polynôme scindé - $P = \lambda (X-\alpha_1)\dots(X-\alpha_n)$ - Tout polynôme non nul de $\mathbb{C}[X]$ est scindé sur $\mathbb{C}$
+\end{itemize}
+
+\noindent On a les caractérisations des multiplicité
+\begin{itemize}
+    \item $(X-\alpha)^m | P \et (X-\alpha)^{m+1} \not | P $
+    \item $ \exists Q \in \mathbb{K}[X], P = (X-\alpha)^m Q \et Q(\alpha) \neq 0 $
+    \item $ P(\alpha) = P'(\alpha) = \dots = P^{(m-1)}(\alpha) = 0 \et P^{m}(\alpha) \neq 0 $ 
 \end{itemize}
 
 \subsection{Dérivation}
+\[ P' = \sum_{k=1}^{+\infty}ka_kX^{k-1} = \sum_{k=0}^{+\infty}(k+1)a_{k+1}X^k \]
 
 \begin{itemize}
-    \item Dérivabilité selon $v \in \mathbb{R}^2$ en $a$ - $D_v f(a) = \underset{t \rightarrow 0}{\lim} \frac{f(a+tv) - f(a)}{t}$
-    \item Première dérivée partielle en $a = (\alpha, \beta)$ - $\partial_1 f(a) = D_{\epsilon_1} f(a) = f_1'(\alpha)$ avec $f_1 : x \mapsto f(x, \beta)$ la première application partielle de $f$ en $a$
-    \item Deuxième dérivée partielle en $a = (\alpha, \beta)$ - $\partial_2 f(a) = D_{\epsilon_2} f(a) = f_2'(\beta)$ avec $f_2 : x \mapsto f(\alpha, 2)$ la deuxième application partielle de $f$ en $a$
-    \item Gradient de $f$ en $a$ - $\nabla f (a) = (\partial_1 (a), \partial_2 (a))$
-    \item $D_v f(a) = \langle \nabla f(a) \ligneh v \rangle$
-    \item Point critique - $\nabla f (a) = 0$ - condition nécessaire d'extrema pour fonction de classe $\mathcal{C}^1$
-    \item Les expressions des dérivés et du gradient pour une CL, produit, et inverse (si la fonction ne s'annule pas) d'une fonction de deux variables dérivables sont analogues à les expressions pour les fonctions de variable réelle
-    \item Classe $\mathcal{C}^1$ - $f$ admet des dérivées partielles continues 
+    \item Par récurrence, $P^{(n)} = \sum_{n}^{\infty} \frac{k!}{(k-n)!} a_k X^{k-n} = \sum_{k=0}^{+\infty} \frac{(k+n)!}{k!}a_{k+n} X^k $
+    \item Les lois ressemble à celles pour les dérivés des fonctions polynomiales
+\end{itemize}
+
+\subsubsection{Formule de Taylor}
+\[ P = \sum_{k=0}^{+\infty} \frac{P^{(k)}(\alpha)}{k!}(X-\alpha)^k \]
+
+\begin{itemize}
+    \item On somme jusqu'à $n$ pour des polynômes de degré $n$
+\end{itemize}
+
+\subsection{Polynômes irréductibles}
+\[ P \text{ non constant et } (P = AB \implies A \in \mathbb{K}^* \ou B \in \mathbb{K}^*) \]
+
+\begin{itemize}
+    \item Les irréductibles de $\mathbb{C}[X]$ sont les polynômes de degré 1 [Démonstration - Analyse : théroème d'Alembert Gauss - Synthèse : passage au degré]
+    \item Les irréductibles de $\mathbb{R}[X]$ sont les polynômes de degré 1 et de degré 2 sans racines réelles [Démonstration pour degré $>1$ - Analyse : montrer que les racines sont réelles par l'absurde, puis utiliser la divisibilité avec le conjugué de cette racine - Synthèse : passage au degré et par l'absurde]
+    \item Tout polynôme non constant se factorise en produit de polynômes irréductibles
+\end{itemize}
+
+\subsection{Rélations coefficients racines}
+\begin{itemize}
+    \item Somme des racines $ = -\frac{a_{d-1}}{a_d} $
+    \item Produit des racines $ = (-1)^d \frac{a_0}{a_d} $
+\end{itemize}
+
+\subsubsection{Cas particuliers}
+\begin{itemize}
+    \item Degré 2 - $x_1 + x_2 = -\frac{b}{a} \et x_1x_2 = \frac{c}{a}$
+    \item Degré 3 - $X^3 - \sigma_1 X^2 + \sigma_2 X - \sigma_3$
     \begin{itemize}
-        \item $\mathcal{C}^1 \subset \mathcal{C}^0$
-        \item $\mathcal{C}^1$ stable par combinaison linéaire, produit, inverse (si la fonction ne s'annule pas), et composé (tout type)
+        \item $\sigma_1 = x_1 + x_2 + x_3$
+        \item $\sigma_2 = x_1x_2 + x_1x_3 + x_2x_3$
+        \item $\sigma_3 = x_1 x_2 x_3$
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Dérivé d'un composée}
-
+\subsection{Décomposition en élements simples}
+\subsubsection{Définitions}
 \begin{itemize}
-    \item Cas $f : U \rightarrow \mathbb{R}, \theta : \text{Im}(f)\rightarrow \mathbb{R}$, alors $\theta \circ f : U \rightarrow \mathbb{R}$
-    \begin{itemize}
-        \item $\partial_{\underset{2}{1}}(\theta \circ f) = (\theta'\circ f) \times \partial_{\underset{2}{1}}f$
-        \item $\nabla (\theta \circ f) = (\theta' \circ f) \times \nabla f$
-    \end{itemize}
-    \item Cas $ \gamma = (\gamma_1 : \mathbb{R} \rightarrow \mathbb{R}, \gamma_2 : \mathbb{R} \rightarrow \mathbb{R}) : \mathbb{R} \rightarrow \mathbb{R}^2, f : \text{Im}(\gamma) \rightarrow \mathbb{R}$, alors $ f \circ \gamma : \mathbb{R} \in \mathbb{R} $ (1ère règle de la chaîne)
-    \begin{itemize}
-        \item $ (f \circ \gamma)'(t) = \partial_1 f (\gamma(t)) \gamma ' (t) + \partial_2 f (\gamma(t)) \gamma ' (t) $
-        \item $ (f \circ \gamma)'(t) = \langle \nabla f (\gamma (t) ) \ligneh \gamma ' (t) \rangle $
-    \end{itemize}
-    \item Cas $\Phi = (\phi_1 : \mathbb{R}^2 \rightarrow \mathbb{R}, \phi_2 : \mathbb{R}^2 \rightarrow \mathbb{R}) : \mathbb{R}^2 \rightarrow \mathbb{R}^2, f : \text{Im}(\Phi) \rightarrow \mathbb{R}$, alors $ f \circ \Phi = \mathbb{R}^2 \rightarrow \mathbb{R} $ (2ème règle de la chaîne)
-    \begin{itemize}
-        \item $ \partial_1 (f \circ \Phi)(a) = \partial_1 f(\Phi(a)) \partial_1 \phi_1(a) + \partial_2 f(\Phi(a)) \partial_1 \phi_2(a) $
-        \item $ \partial_2 (f \circ \Phi)(a) = \partial_1 f(\Phi(a)) \partial_2 \phi_1(a) + \partial_2 f(\Phi(a)) \partial_2 \phi_2(a) $
-    \end{itemize}
+    \item Fonction rationelle - $x \mapsto \frac{P(x)}{Q(x)}$
+    \item Pôle - zéros du dénominateur $Q$
+    \item Fonction rationelle à pôles simples - $Q$ est scindé à racines simples
+    \item Partie entière $E$ - $ \frac{P(x)}{Q(x)} = E(x) + \frac{R(x)}{Q(x)} $ avec $\deg R < \deg Q$
 \end{itemize}
 
-\subsection{Développement limité à l'ordre 1}
-\[ f(z) = f(a) + \langle \nabla f(a) \ligneh z-a \rangle + \underset{z \rightarrow a}{o}(\|z-a\|) \]
+\[ \frac{P(x)}{\prod_{i=1}^n (x- \alpha_i) } = E(x) + \sum_{k=1}^{n} \frac{\lambda_k}{x-\alpha_k} \]
+\[ \lambda_k = \frac{P(\alpha_k)}{\prod_{\substack{i=1 \\ i \neq k}}^{n}(\alpha_k - \alpha_i)} = \frac{P(\alpha_k)}{Q'(\alpha_k)} \]
 
-\begin{itemize}
-    \item Plan tangent au graphe de $f$ en $(a, f(a))$ - $z = f(a) + \langle \nabla f(a) \ligneh z-a \rangle$
-\end{itemize}
+\clearpage
+
 
 \end{document}
