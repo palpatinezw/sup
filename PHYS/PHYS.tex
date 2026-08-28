@@ -33,7 +33,7 @@
 \makeatother
 
 \title{PHYSIQUE}
-\author{SALIKEL}
+\author{Huang Ziwen}
 \date{2025-2027 PCSI / PC*}
 
 \begin{document}
@@ -95,10 +95,10 @@
 \subsection{L’œil}
 \begin{itemize}
     \item Pupille - contenue dans l'iris, le diamètre est variable de 2 à 8 mm
-    \item Cristallin - muscle assimilable à une lentille mince convergente dont la distance focale est variable selon sa contraction
+    \item Cristallin - muscle assimilable à une lentille mince convergente dont la distance focale est variable
     \item Rétine - cellules sensibles à la lumière, l'écran de l'œil
-    \item Myopie - Cristallin trop convergeant, le Punctum Promximum est plus proche et le Ponctum Remotum n'est plus à l'infini.
-    \item Hypermétropie - Cristallin pas assez convergente, le Punctum Proximum plus loin et le Ponctum Remotum se trouve derrière l'œil. 
+    \item Myopie - Cristallin trop convergeant, Punctum Promximum plus proche et Ponctum Remotum fini.
+    \item Hypermétropie - Cristallin pas assez convergente, Punctum Proximum plus loin et Ponctum Remotum derrière l'œil. 
 \end{itemize}
 
 Des données sur l'oeil se trouvent dans l'annexe. 
@@ -136,12 +136,23 @@ Plus $ n $ est grand, plus le milieu est réfringent.
     \item Les rayons lumineux sont indépendants entre eux
 \end{itemize}
 
+\subsection{Tracée des rayons pour une lentille}
+\begin{itemize}
+    \item Un rayon passant par le centre optique n'est pas dévié.
+    \item Un rayon incident parallèle à l'axe optique donne un rayon transmis passant par le foyer image. 
+    \item Un rayon incident passant par le foyer objet donne un rayon transmis parallèle à l'axe optique. 
+\end{itemize}
+On utilise ces règles pour tracer des rayons connus.
+\begin{itemize}
+    \item Pour un rayon incident, prendre un rayon connu qui croise le rayon incident par un des plans focales - les deux rayons transmis sont parallèles. 
+\end{itemize}
+
 \section{Conditions de Gauss}
 Pour les systèmes optiques centrés, le stigmatisme et l'aplanétisme approchés sont vérifiés dans ces conditions.
 \begin{itemize}
     \item Les rayons lumineux font un angle petit avec l'axe optique
-    \item Les rayons lumineux rencontrent les dioptres (et miroirs) au voisinage de leur sommet (intersection avec l'axe optique)
-    \item Les rayons rencontrent les dioptres et miroirs avec un angle d'incidence par rapport à leur normale qui est petit
+    \item Les rayons lumineux rencontrent les dioptres au voisinage de leur sommet (intersection avec l'axe optique)
+    \item Les rayons rencontrent les dioptres avec un angle d'incidence (par rapport à la normale) petit
 \end{itemize}
 
 \section{Théorèmes et démonstrations}
@@ -165,17 +176,6 @@ Démonstration - par contraposée, trouver les conditions pour la réfraction
 \subsection{Réfraction limite}
 L'angle maximal réfracté est limité.
 \[r^{\text{lim}} = \arcsin{\frac{n_1}{n_2}} \]
-
-\subsection{Tracée des rayons pour une lentille}
-\begin{itemize}
-    \item Un rayon passant par le centre optique n'est pas dévié.
-    \item Un rayon incident parallèle à l'axe optique donne un rayon transmis passant par le foyer image. 
-    \item Un rayon incident passant par le foyer objet donne un rayon transmis parallèle à l'axe optique. 
-\end{itemize}
-On utilise ces règles pour tracer des rayons connus.
-\begin{itemize}
-    \item Pour un rayon incident, prendre un rayon connu qui croise le rayon incident par un des plans focales - les deux rayons transmis sont parallèles. 
-\end{itemize}
 
 \subsection{Théorème de Newton}
 \[\overline{FA} \cdot \overline{F'A'} = f'f=-f^2\]
@@ -204,10 +204,10 @@ En particulier la méthode de Silbermann, on a les conditions d'avoir une image 
 
 Démonstration - Avec Descartes, étudions un polynôme en $\overline{OA}$
 
-\subsection{Autocollimation}
+\section{Autocollimation}
 Considérons un système optique lentille et miroir plan. On cherche à former une image dans le même plan que son objet. L'objet est dans le plan focal objet pour créer une image intermédiaire à l'infini, qui est reflétée par le miroir et qui forme l'image finale dans le plan focal objet. Ce principe est utile pour le réglage d'un collimateur aux TPs. 
 
-\subsection{Dispositifs à plusieurs lentilles}
+\section{Dispositifs à plusieurs lentilles}
 \begin{enumerate}
     \item Objectif - du côté de l'objet
     \item Réticule - point de réglage sans effet optique
@@ -215,17 +215,17 @@ Considérons un système optique lentille et miroir plan. On cherche à former u
 \end{enumerate}
 
 \begin{itemize}
-    \item On cherche à établir le schéma de principe pour chercher les positions des objets, des objets intermédiaires, et l'image finale.
+    \item Établir le schéma de principe pour chercher les positions des objets (intermédiaires), et l'image finale.
     \item Typiquement, l'image finale se trouve à l'infini pour que l'œil n'ait pas besoin d'accommoder (dans ce cas, l'objet intermédiaire se trouve donc dans le plan focal objet de l'oculaire)
 \end{itemize}
 
-\subsection{L'appareil photographique}
+\section{L'appareil photographique}
 L’appareil est modélisé par un diaphragme à l'entrée, un objectif juste derrière le diaphragme, et un capteur. 
 \begin{itemize}
-    \item Durée d'exposition - le temps d'ouverture d'un obturateur pour régler la quantité de lumière reçu par le capteur. 
-    \item Nombre d'ouverture - indique l'ouverture de diaphragme. $ N = \frac{f'}{D} $. Attention que l'ouverture de diaphragme $ D $ est au dénominateur. 
-    \item Distance hyperfocale - Pour un réglage à l'infini, le capteur est placé dans le plan focal image. La distance hyperfocale est la limite de netteté dans cette configuration. Tout objet plus loin que la distance hyperfocale $h$ jusqu'à l'infini est donc nette. On trace les rayons limites qui passent par les extrémités d'un pixel (de diamètre $\epsilon$) pour obtenir $h = \frac{f'D}{\epsilon} = \frac{f'^2}{N\epsilon} $
-    \item Profondeur de champ - pour la mise au point sur un point $A$ quelconque (non à l'infini), on cherche les limites de netteté (indiqué par les objets $A_1$ et $A_2$ avec les rayons passant par les extrémités d'un pixel). On utilise la relation de Descartes pour $\overline{OA'}$, $\overline{OA_1'}$ et $\overline{OA_2'}$ et on exprime $\frac{\epsilon}{D}$ avec Thalès. On supprime le terme $\epsilon^2$ pour $\epsilon \ll D$ et on prend $ l - f' = l$ si $f' \ll l$ pour obtenir $\overline{A_1A_2}=\frac{2\epsilon l^2}{Df'} = 2\epsilon l^2\frac{N}{f'^2}$
+    \item Durée d'exposition - temps d'ouverture d'un obturateur pour régler la quantité de lumière reçu. 
+    \item Nombre d'ouverture - $ N = \frac{f'}{D} $. Attention que l'ouverture de diaphragme $ D $ est au dénominateur. 
+    \item Distance hyperfocale - Pour un réglage à l'infini où le capteur est dans le plan focal image, la distance hyperfocale est la limite de netteté. Tout objet à une distance $> h$ est nette. On trace les rayons limites qui passent par les extrémités d'un pixel de diamètre $\epsilon$ pour obtenir $h = \frac{f'D}{\epsilon} = \frac{f'^2}{N\epsilon} $
+    \item Profondeur de champ - les limites de netteté pour la mise au point sur un point $A$ fini (indiqué par $A_1$ et $A_2$ avec les rayons passant par les extrémités d'un pixel). Avec Descartes pour $\overline{OA'}$, $\overline{OA_1'}$ et $\overline{OA_2'}$, on exprime $\frac{\epsilon}{D}$. Pour $\epsilon \ll D$ (terme en $\epsilon^2$ négligé) et $f' \ll l$ ($ l - f' = l$), on a $\overline{A_1A_2}=\frac{2\epsilon l^2}{Df'} = 2\epsilon l^2\frac{N}{f'^2}$
 \end{itemize}
 
 \clearpage
@@ -237,7 +237,7 @@ L’appareil est modélisé par un diaphragme à l'entrée, un objectif juste de
 \[i = \frac{dq}{dt}\]  
 Charge totale traversant une surface $S$ par unité de temps. (Unité: Ampère $A$) 
 
-\subsection{Potentiel}
+\subsection{Tension}
 Différence de potentiel entre deux points. (Unité: Volt $V$)
 
 \subsection{Approximation des Régimes Quasi-Stationnaires ARQS}
@@ -252,8 +252,8 @@ Si les grandeurs ne varient pas trop rapidement (par rapport à la vitesse de pr
 
 \subsection{Conventions}
 \begin{itemize}
-    \item Convention générateur - Tension $u$ au même sens que le courant $i$ - la puissance $P = ui$ positive est une puissance fournie. 
-    \item Convention récepteur - Tension $u$ et courant $i$ sont du sens contraire - la puissance $P = ui$ positive est une puissance reçue. 
+    \item Convention générateur - Tension au même sens que le courant, $P = ui$ est la puissance fournie. 
+    \item Convention récepteur - Tension et courant sont du sens contraire, $P = ui$ est la puissance reçue. 
 \end{itemize}
 
 \subsection{Point de fonctionnement}
@@ -461,7 +461,7 @@ La diode est un dipôle non-linéaire avec une tension seuil $u_s$ ($0,4 \text{ 
 \subsection{Fonctions de transfert}
 \begin{itemize}
     \item Rapport entre grandeurs complexes de sortie et d'entrée - $ \underline{H}(\omega) = \frac{\underline{u_s}}{\underline{u_e}} $
-    \item En générale, la fonction de transfert change selon la charge 
+    \item En générale, la fonction de transfert dépend de la charge 
     \begin{itemize}
         \item Conditions idéals pour ne pas modifier la fonction de transfert lors de la mise en cascade des filtres - $\underline{Z}_s = 0, \underline{Z}_e = \infty$ alors $ \underline{H}_{\text{tot}} = \prod_{n} \underline{H}_n $
     \end{itemize}
@@ -556,8 +556,7 @@ c.f. Annexe surtout pour passe-bande
     \item Détermination du régime de fonctionnement
         \begin{itemize}
             \item Rétroaction sur l'entrée inverseuse - système stable - régime linéaire - $\epsilon = 0$ donc $V_-=V_+$. Il faut parfois ensuite verifier que $|V_s| < V_{\text{sat}}$
-            \item Rétroaction sur l'entrée non-inverseuse, ou si le système est en boucle ouverte - système instable - régime de saturation - $ |V_s| = V_{\text{sat}} $
-            \item Multiples rétroactions sur les deux entrées - étude complète  [HP]
+            \item Rétroaction sur l'entrée non-inverseuse (ou en boucle ouverte) - système instable - régime de saturation - $ |V_s| = V_{\text{sat}} $
         \end{itemize}
     \item Résolution mathématique pour obtenir $V_-, V_+, e(t), s(t)$
 \end{enumerate}
@@ -732,7 +731,7 @@ Avec $\dot{\theta}$ la vitesse angulaire
 
 \subsection{Coordonnées sphériques $ (\vec{e_r}, \vec{e_{\theta}}, \vec{e_{\phi}}) $}
 \begin{center}
-    \includegraphics[height=8cm]{spherique.jpg}
+    \includegraphics[height=7cm]{spherique.jpg}
 \end{center}
 
 \[ \overrightarrow{OM} = r \vec{e_r} \]
@@ -817,7 +816,7 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
     \item Expressions générales pour un système au voisinage d'une position d'équilibre [Démonstration - développement limité en $x_{\text{eq}}$ de $F$ ou $E_p$]
     \begin{itemize}
         \item Équilibre stable - tout système conservatif se comporte comme un oscillateur harmonique de $ \omega_0 = \sqrt{\frac{1}{m}\frac{\dd ^2 E_p(x_{\text{eq}})}{\dx^2}} $
-        \item Équilibre instable - le système s'éloigne selon une équation exponentielle de temps caractéristique $\tau$
+        \item Équilibre instable - le système s'éloigne selon une équation exponentielle 
     \end{itemize}
     \item État lié - mouvement possible entre deux points d'arrêts
     \item État de diffusion - un seul point de reboussement. Si le système approche et rebousse le chemin, il ne revient plus
@@ -829,7 +828,7 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
 \[ M_\Delta = \vec{M}_O \cdot \vec{u_\Delta} \]
 
 \begin{itemize}
-    \item Le moment d'une force $\vec{F}$ par rapport à l'axe $ \Delta $ est nulle - $\vec{F}$ coupe l'axe $\Delta$ ou $\vec{F}$ est parallèle à l'axe $\Delta$
+    \item Le moment d'une force $\vec{F}$ par rapport à l'axe $ \Delta $ est nulle si $\vec{F}$ coupe $\Delta$ ou $\vec{F}$ est parallèle à $\Delta$
     \item Bras de levier $d$ la distance la plus courte entre l'axe $\Delta$ et la droite d'action de la force - $M_\Delta = \pm d \| \vec{F} \| $
 \end{itemize}
 

@@ -31,7 +31,7 @@
 \makeatother
 
 \title{MATH}
-\author{KATEKKUTER}
+\author{Huang Ziwen}
 \date{2025-2027 PCSI / PC*}
 
 \begin{document}
@@ -52,11 +52,7 @@
 \end{itemize}
 
 \subsubsection{Montrer l'équivalence $ P \iff Q $}
-Démonstration par double implication
-\begin{itemize}
-    \item Montrer $ P \implies Q $ (directe)
-    \item Montrer $ Q \implies P $ (réciproque)
-\end{itemize}
+Démonstration par double implication - $ P \implies Q $ (directe) et $ Q \implies P $ (réciproque)
 
 \subsubsection{Disjonction}
 \begin{itemize}
@@ -78,13 +74,13 @@ Démonstration - soit $ x $ dans l'ensemble de définition quelconque
 Quand on a une propriété pour tout, on peut prendre en particulier une valeur bien choisie
 
 \subsubsection{$ \exists $ il existe}
-Démonstration - choisir un $ x $ qui convient
+Démonstration - choisir un exemple qui convient
 
 \subsubsection{$ \exists! $ il existe un unique}
 Démonstration
 \begin{itemize}
-    \item Montrer l'unicité d'une solution sous réserve d'existence (montrer l'égalité de 2 solutions, ou par analyse)
-    \item Montrer que l'unique solution existe (synthèse)
+    \item L'unicité (sous réserve d'existence) - montrer l'égalité de 2 solutions, ou par analyse-synthèse
+    \item L'existence de l'unique solution existe (synthèse)
 \end{itemize}
 
 \subsection{Ensembles}
@@ -95,14 +91,34 @@ Démonstration
 \end{itemize}
 
 \subsubsection{Unions}
-\[ \bigcup_{i \in I} A_i = \left\{x \in E | \exists i \in I, x \in A_i\right\} \]
+\[ \bigcup_{i \in I} A_i = \left\{x \in E \ligneh \exists i \in I, x \in A_i\right\} \]
 Éléments qui appartiennent à au moins un des $ A_i $
 \subsubsection{Intersections}
-\[ \bigcap_{i \in I} A_i = \left\{x \in E | \forall i \in I, x \in A_i\right\} \]
+\[ \bigcap_{i \in I} A_i = \left\{x \in E \ligneh \forall i \in I, x \in A_i\right\} \]
 Éléments qui appartiennent à tous les ensembles $ A_i $
 
 \clearpage
 \section{Réels [sup 7]}
+
+\subsection{Intervalles}
+\subsubsection{Forme des intervalles}
+Définition d'un intervalle $I$ - 
+\[ \forall(x, y) \in I^2, x\leq y \implies [x, y] \subset I \]
+
+\noindent L'ensemble vide $ \emptyset $ et les singletons sont des intervalles triviaux. Les intervalles non-triviaux sont de l'une des 9 formes suivantes -
+\begin{itemize}
+    \item Segment - $[a, b]$
+    \item Intervalles semi-ouvert - $]a,b]$ et $[a,b[$
+    \item Intervalle ouvert - $]a,b[$
+    \item Demi-droite fermée - $]-\infty, b]$ et $[a, +\infty[$
+    \item Demi-droite ouverte - $]-\infty, b[$ et $]a, +\infty[$
+    \item Droite - $]-\infty,+\infty[$
+\end{itemize}
+
+\subsubsection{Paramétrisation des segments}
+\[ [a, b] = \{(1-\lambda)a + \lambda b \ | \ \lambda \in [0,1]\} = \{\mu a + (1-\mu) b \ | \ \mu \in [0,1]\} \]
+
+\noindent Démonstration - double inclusion. Sens direct - poser $ \lambda = \frac{x-a}{b-a} $. Sens réciproque - montrer $ a \leq x \leq b $ avec $ \lambda(b-a) $. 
 
 \subsection{Relation d'ordre sur $\mathbb{R}$}
 \begin{itemize}
@@ -156,7 +172,7 @@ L'inégalité stricte n'est pas une relation d'ordre (pas antisymétrique).
     \item Le plus grand entier plus petit que $x$
     \item $ \max{\{ k \in \mathbb{Z} : k \leq x \}} $
         \begin{itemize}
-            \item Démonstration de l'existence - A est une partie non-vide et majorée de $\mathbb{Z}$, et montrer que $\max A$ convient 
+            \item Démonstration de l'existence - A est une partie non-vide et majorée de $\mathbb{Z}$, $\max A$ existe et convient 
             \item Démonstration de l'unicité - Par antisymétrie avec deux valeurs qui vérifie la propriété
         \end{itemize}
     \item Partie fractionnaire ($\{x\} = x- \lfloor x\rfloor$ notation non universelle)
@@ -226,7 +242,7 @@ Ces formules sont utiles notamment pour $ \theta=0 $ donc $ e^{i\theta} = 1 $
 \subsubsection{Inégalité triangulaire}
 \[ ||z|-|z'|| \leq |z \pm z'| \leq |z|+|z'| \]
 
-Démonstration - pour $ |z \pm z'| \leq |z|+|z'| $, on utilise une chaîne d'équivalences en élevant au carré, puis en développant pour obtenir $ \text{Re}(z'\overline{z}) \leq |zz'| $. Pour $ ||z|-|z'|| \leq |z \pm z'| $, on applique $ |z| = |z+z'-z'| \leq |z+z'|+|z'| $ \\
+Démonstration - $ |z \pm z'| \leq |z|+|z'| $ par équivalence - on élève au carré, puis on développe pour obtenir $ \text{Re}(z'\overline{z}) \leq |zz'| $. $ ||z|-|z'|| \leq |z \pm z'| $ - on applique $ |z| = |z+z'-z'| \leq |z+z'|+|z'| $ \\
 
 Cas d'égalité. 
 
@@ -237,13 +253,10 @@ Les vecteurs qui représentent les affixes sont positivement liés. \\
 Démonstration - Sens direct: Supposons $z \neq 0$. Chaîne d'équivalences pour montrer $\text{Re}(\overline{z}z') = |\overline{z}z'|$ donc $\overline{z}z' \in \mathbb{R}$. On a $ z' = \frac{z'\overline{z}z}{\overline{z}z} = \frac{z'\overline{z}}{|z|^2}z$. Sens réciproque: Disjonction de cas.
 
 \subsubsection{Racines n-ième}
-Pour $a\in \mathbb{N}^*$, les racines n-ièmes de $ a = |a|e^{i\theta}$ sont les $ \sqrt[n]{|a|}e^{i\frac{\theta + 2k\pi}{n}} $ avec $ k \in \llbracket 0, n-1\rrbracket $ \\
-
-\noindent On remarque l'importance de l'intervalle pour que les éléments soient uniques. \\
+Pour $a\in \mathbb{N}^*$, les racines n-ièmes de $ a = |a|e^{i\theta}$ sont les $ \sqrt[n]{|a|}e^{i\frac{\theta + 2k\pi}{n}} $ avec $ k \in \llbracket 0, n-1\rrbracket $. (L'intervalle de $k$ choisi assure l'unicité des éléments) \\
 
 \noindent $\mathbb{U}_n$ - racines n-ièmes de l'unité. 
 \begin{itemize}
-    \item 1 est une racine $n$-ième
     \item $j=e^{i\frac{2\pi}{3}} = -\frac{1}{2} + i \frac{\sqrt{3}}{2} \in \mathbb{U}_3$
     \item $x^2 + x + 1 = (x - j)(x - j^2)$
     \item $x^2 - x + 1 = (x + j)(x + j^2)$
@@ -253,20 +266,15 @@ Pour $a\in \mathbb{N}^*$, les racines n-ièmes de $ a = |a|e^{i\theta}$ sont les
 \subsection{Équations du second degré}
 \subsubsection{Racines carrées}
 \begin{itemize}
-    \item 0 admet une unique racine carrée (0)
     \item Tout complexe non nul admet exactement 2 racines carrées opposées
     \item $\sqrt{z}$ n'a de sens que pour $z\in\mathbb{R}_+$
-\end{itemize}
-
-\noindent Pour trouver les racines carrées de $z=x+iy$
-\[
-    z^2=a \iff 
+    \item \noindent Pour trouver les racines carrées de $z=x+iy$, on a $z^2=a \iff 
     \begin{cases} 
         x^2-y^2=\text{Re}(a) \\
         2xy = \text{Im}(a) \\
         x^2+y^2 = |a|
-    \end{cases}
-\]
+    \end{cases}$
+\end{itemize}
 
 \subsubsection{Formule quadratique appliquée aux complexes}
 \[z=\frac{-b\pm\sqrt \delta}{2}\]
@@ -332,25 +340,25 @@ Pour $a\in \mathbb{N}^*$, les racines n-ièmes de $ a = |a|e^{i\theta}$ sont les
 \[a^n - b^n = (a-b)\sum_{k=0}^{n-1}(a^kb^{n-1-k}) \]
 Démonstration - commencer par le terme à gauche. \\
 
-Ce formule valable pour les objets qui commutent
+La formule est valable pour les objets qui commutent
 
 \subsubsection{Sommes trigonométriques}
 \[ \sum_{k=0}^n\cos{(kx)} = \cos{(\frac{nx}{2})}[\frac{\sin(\frac{n+1}{2}x)}{\sin{\frac{x}{2}}}] \]
 \[ \sum_{k=0}^n\sin{(kx)} = \sin{(\frac{nx}{2})}[\frac{\sin(\frac{n+1}{2}x)}{\sin{\frac{x}{2}}}] \]
 
-\noindent Démonstration - suite géométrique $ \sum_{k=0}^{n} (e^{ix})^k = \sum_{k=0}^n\cos{(kx)} + i\sum_{k=0}^n\sin{(kx)} $. Il faut appliquer la factorisation par l'arc moitié. Attention au cas où $ e^{ix} = 1 $. 
+\noindent Démonstration - étudier la suite géométrique $ \sum_{k=0}^{n} (e^{ix})^k = \sum_{k=0}^n\cos{(kx)} + i\sum_{k=0}^n\sin{(kx)} $ avec la factorisation par l'arc moitié. Attention au cas où $ e^{ix} = 1 $. 
 
 \subsubsection{Développement du carré}
 \[ (\sum_{i=1}^n x_i)^2 = \sum_{i=1}^n x_i^2 + 2\sum_{\substack{(i,j)\in\llbracket n , p \rrbracket \\ i<j} }x_ix_j \]
 
-\noindent Concrètement - $ (a+b+c)^2 = a^2 + b^2 + c^2 + 2ab + 2ac + 2bc $
+\noindent En particulier - $ (a+b+c)^2 = a^2 + b^2 + c^2 + 2ab + 2ac + 2bc $
 
 \subsubsection{Formule du binôme de Newton}
 \[ (a+b)^n = \sum_{k=0}^{n}\binom{n}{k} a^kb^{n-k} \]
 
-\noindent Démonstration - par récurrence simple. 
+\noindent Démonstration - récurrence simple. 
 \\ \\
-\noindent Ce formule est valable pour les objets qui commutent
+\noindent La formule est valable pour les objets qui commutent
 
 \subsubsection{Formule de Vandermonde}
 \[ \binom{m+n}{p} = \sum_{k=0}^p \binom{m}{k} \binom{n}{p-k}  \]
@@ -361,27 +369,18 @@ Ce formule valable pour les objets qui commutent
 \[ \cos{(nx)} = \sum_{p=0}^{\lfloor\frac{n}{2}\rfloor} \binom{n}{2p}(\cos{x})^{n-2p}(\cos^2{x} -1)^p \]
 \[ \sin{(nx)} = \sin{x}\sum_{p=0}^{\lfloor\frac{n-1}{2}\rfloor} \binom{n}{2p+1}(\cos{x})^{n-2p-1}(\cos^2{x} -1)^p \]
 
-\noindent Démonstration -
-\[ \cos{(nx)} + i\sin{(nx)} = e^{nx} = (\cos{x} + i\sin{x})^n \]
-\noindent Appliquer la formule du binôme de Newton et séparer les termes paires et impaires. 
+\noindent Démonstration - Avec Moivre, 
+$ \cos{(nx)} + i\sin{(nx)} = e^{nx} = (\cos{x} + i\sin{x})^n $. On applique la formule du binôme de Newton et on sépare les termes paires et impaires. 
 \clearpage
 \section{Applications [sup 4]}
+Soit $ f: E \to F, x\mapsto f(x) $ et $ g: G \to H, x\mapsto g(x)$ 
 \subsection{Définitions}
-
-Soit $f$, $g$ des applications
-\begin{align*}
-    f: & E \to F \\ 
-    & x\mapsto f(x) \\
-    g: & G \to H \\ 
-    & x\mapsto g(x)
-\end{align*}
 
 \subsubsection{Vocabulaire}
 
 \begin{itemize}
-    \item $E$ et $G$ sont les ensembles de départ 
-    \item $F$ et $H$ sont les ensembles d'arrivée
-    \item $f = g \iff E=G \text{ et } F=H \text{ et } \forall x \in E, f(x)=g(x) $ - L'égalité des ensembles d'arrivée et de départ et des antécédents
+    \item $E$ et $G$ sont les ensembles de départ, $F$ et $H$ sont les ensembles d'arrivée
+    \item $f = g \iff E=G \text{ et } F=H \text{ et } \forall x \in E, f(x)=g(x) $ - Égalité des ensembles d'arrivée et de départ, et des antécédents
 \end{itemize}
 
 \subsubsection{Injection}
@@ -391,7 +390,7 @@ Tout élément de $F$ a au plus un antécédent dans $E$
 
 \begin{itemize}
     \item Si $f$ et $g$ sont injectives, $g \circ f $ est injective
-    \item Si $g \circ f$ est injective, $f$ est injective (les images de $f$, si il y a des répétitions, ne peuvent pas être dé-répétés par $g$)
+    \item Si $g \circ f$ est injective, $f$ est injective (si $f$ admet des images répétées, $g$ ne peut pas les dé-répétér)
 \end{itemize}
 
 \subsubsection{Surjection}
@@ -401,7 +400,7 @@ Tout élément de $F$ a au moins un antécédent dans $E$
 
 \begin{itemize}
     \item Si $f$ et $g$ sont surjectives, $g \circ f $ est surjective
-    \item Si $g \circ f$ est surjective, $g$ est surjective (si un antécédent n'existe même par pour $g$, $f$ ne peut pas le créer)
+    \item Si $g \circ f$ est surjective, $g$ est surjective (si une image n'existe pas pour $g$, $f$ ne peut pas la créer)
 \end{itemize}
 
 \subsubsection{Bijection}
@@ -409,32 +408,28 @@ Tout élément de $F$ a un unique antécédent dans $E$ (injective et surjective
 
 \[ \forall y \in F, \exists ! x \in E : y=f(x) \]
 
-\noindent Pour $f$ bijective, la bijection réciproque $f^{-1}$. \\
-
 \noindent Pour montrer la bijectivité:
 \begin{itemize}
-    \item Analyse-Synthèse - Trouver l'unique antécédent de tout $y \in F$ puis vérifier que cet antécédent est dans $E$
+    \item Analyse-Synthèse - Trouver l'unicité d'un antécédent $\forall y \in F$ puis vérifier qu'il est dans $E$
     \item Montrer l'injectivité et la surjectivité
-    \item Deviner la bijection réciproque et montrer que les compositions donnent Id
+    \item Deviner la bijection réciproque $f^{-1}$ et montrer que les compositions donnent Id
 \end{itemize}
 
 \subsection{Applications particulières}
 \subsubsection{Application identité $\text{Id}_E$}
-\begin{align*} 
-    \text{Id}_E : & E \to E \\
-    & x \mapsto x
-\end{align*}
+\[
+    \text{Id}_E : E \to E, x \mapsto x
+\]
 
 \noindent L'application identité est bijective. 
 
 \subsubsection{Application indicatrice $\mathbb{1}_A$}
-\begin{align*} 
-    \mathbb{1}_A : & E \to \{0, 1\} \\
-    & x \mapsto \begin{cases}
+\[
+    \mathbb{1}_A : E \to \{0, 1\}, x \mapsto \begin{cases}
         1 & \text{si } x\in A \\
         0 & \text{sinon}
     \end{cases}
-\end{align*}
+\]
 
 \clearpage
 
@@ -476,71 +471,43 @@ Posons $ t=\tan{\frac{x}{2}} $. Avec
 
 \subsection{Équations trigonométriques}
 \subsubsection{Valeurs de l'égalité}
-Attention à la deuxième valeur pour sin et cos
+Attention à la deuxième possibilité pour sin et cos
 \begin{itemize}
     \item $ \cos{a} = \cos{b} \iff (a \equiv b \msp [2\pi] \textit{ ou } a \equiv -b \msp [2\pi]) $
     \item $ \sin{a} = \sin{b} \iff (a \equiv b \msp [2\pi] \textit{ ou } a \equiv \pi-b \msp [2\pi]) $
     \item $ \tan{a} = \tan{b} \iff a \equiv b \msp [\pi] $
 \end{itemize}
-\section{Fonctions de la variable réelle [sup 5]}
-
-\subsection{Intervalles}
-\subsubsection{Forme des intervalles}
-Définition d'un intervalle $I$ - 
-\[ \forall(x, y) \in I^2, x\leq y \implies [x, y] \subset I \]
-
-\noindent L'ensemble vide $ \emptyset $ et les singletons sont des intervalles triviaux. Les intervalles non-triviaux sont de l'une des 9 formes suivantes -
-\begin{itemize}
-    \item Segment - $[a, b]$
-    \item Intervalles semi-ouvert - $]a,b]$ et $[a,b[$
-    \item Intervalle ouvert - $]a,b[$
-    \item Demi-droite fermée - $]-\infty, b]$ et $[a, +\infty[$
-    \item Demi-droite ouverte - $]-\infty, b[$ et $]a, +\infty[$
-    \item Droite - $]-\infty,+\infty[$
-\end{itemize}
-
-\subsubsection{Paramétrisation des segments}
-\[ [a, b] = \{(1-\lambda)a + \lambda b \ | \ \lambda \in [0,1]\} = \{\mu a + (1-\mu) b \ | \ \mu \in [0,1]\} \]
-
-\noindent Démonstration - double inclusion. Sens direct - poser $ \lambda = \frac{x-a}{b-a} $. Sens réciproque - montrer $ a \leq x \leq b $ avec $ \lambda(b-a) $. 
+\section{Fonctions de la variable réelle [sup 5] [sup 6]}
 
 \subsection{Étude d'une fonction}
 \subsubsection{Parité}
 \begin{itemize}
     \item Paire - symétrie l'axe des ordonnées - $ \begin{cases} \forall x \in D, -x \in D \\ \forall x \in D, f(-x)=f(x) \end{cases} $
     \item Impaire - symétrie l'origine - $ \begin{cases} \forall x \in D, -x \in D \\ \forall x \in D, f(-x)=-f(x) \end{cases} $
-\end{itemize}
-La symétrie par rapport à 0 de l'ensemble de départ doit être respecté !
-
-\begin{itemize}
+    \item La symétrie par rapport à 0 de l'ensemble de départ doit être respecté !
     \item La parité d'une fonction permet de restreindre son étude à $D \cap \mathbb{R}_+$ 
-    \item Toute fonction $f$ s'écrit comme somme d'une fonction paire $ \frac{f(x) + f(-x)}{2} $ et une fonction impaire $ \frac{f(x)-f(-x)}{2} $.
+    \item Toute fonction $f$ s'écrit de manière unique comme somme d'une fonction paire $ \frac{f(x) + f(-x)}{2} $ et d'une fonction impaire $ \frac{f(x)-f(-x)}{2} $.
     \item La dérivée d'une fonction paire est impaire et vice versa. 
 \end{itemize}
 
 \subsubsection{Périodicité}
 \[ f \text{ est T-périodique } \iff \begin{cases} \forall x \in D, x+T \in D \text{ et } x-T \in D \\ \forall x \in D, f(x)=f(x+T) \end{cases} \]
 
-Attention que la T-périodicité du domaine $D$ doit être respecté ($\forall x \in D, x+T \in D \text{ et } x-T \in D$)
+La T-périodicité du domaine $D$ doit être respecté ($\forall x \in D, x+T \in D \text{ et } x-T \in D$)
 
 \subsubsection{Monotonie}
 \begin{itemize}
     \item Croissance - $\forall (x, y) \in D^2 , x \leq y \implies f(x) \leq f(y)$
     \item Stricte croissance - $ \forall (x, y) \in D^2, x < y \implies f(x) < f(y) $
-    \item Décroissance - $\forall (x, y) \in D^2 , x \leq y \implies f(x) \geq f(y)$
-    \item Stricte décroissance - $ \forall (x, y) \in D^2, x < y \implies f(x) > f(y) $
-    \item (stricte) monotonie - (stricte) croissance ou décroissance
     \item La composée de 2 fonctions monotones et de même sens de variations est croissante.
     \item La composée de 2 fonctions monotones et de sens de variations contraires est décroissante.
-    \item La bijection réciproque d'une fonction strictement monotone est strictement monotone et de même sens de variation. 
+    \item Pour $f$ strictement monotone et bijective, $f^{-1}$ est strictement monotone et de même sens de variation. 
 \end{itemize}
 
 \subsubsection{Extrema}
 \begin{itemize}
     \item Majorée - $\exists M \in \mathbb{R} : \forall x \in D, f(x) \leq M$ - $M$ est un majorant de $f$
     \item Maximum - le $f(a)$ qui est un majorant
-    \item Minorée - $\exists m \in \mathbb{R} : \forall x \in D, f(x) \geq m$ - $m$ est un minorant de $f$
-    \item Minimum - le $f(a)$ qui est un minorant
     \item Bornée - $\exists C \in \mathbb{R} : \forall x \in D , |f(x)| \leq C $
 \end{itemize}
 
@@ -561,8 +528,6 @@ Pour identifier les asymptotes obliques -
 \subsubsection{Remarque}
 Vérifier toujours la domaine de dérivabilité avant de dériver. Dans l'étude du signe de $f'$, on a parfois besoin d'étudier $f''$
 
-\clearpage
-\section{Fonctions usuelles [sup 6]}
 \subsection{Fonction exponentielle}
 \subsubsection{Relation fondamentale}
 \[ \forall (x, y) \in \mathbb{R}^2, \exp(x+y) = \exp(x)\exp(y) \]
@@ -664,7 +629,7 @@ Une fonction de $\mathbb{N}$
 \[ u_n \longrightarrow -\infty \iff \forall A \in \mathbb{R}, \exists n_0 \in \mathbb{N} \ligneh \forall n \geq n_0, u_n \leq A \]
 
 \begin{itemize}
-    \item La limite est unique [Démonstration - $ \forall \epsilon > 0,  |l-l'| \leq \epsilon $ avec l'inégalité triangulaire, donc justifier $ l = l'$]
+    \item La limite est unique [Démonstration - $ \forall \epsilon > 0,  |l-l'| \leq \epsilon $ avec l'inégalité triangulaire, donc $ l = l'$]
     \item Condition suffisante de convergence - $ v_n \longrightarrow 0 \text{ et } |u_n - l| \leq v_n \text{ APCR} \implies u_n \longrightarrow l $
     \item Condition nécessaire de convergence - $ u_n \longrightarrow l \implies u_n \text{ est bornée} $ [Démonstration - Par définition de la limite et inégalité triangulaire, montrer $ |u_n| = |(u_n - l) + l | \leq |l| + \epsilon $ APCR, et combiner avec la suite finie (donc bornée) pour les éléments avant ce rang]
     \item $ u_n \longrightarrow u > 0 \implies (u_n) > 0 $ APCR (attention à l'inégalité stricte [Démonstration - $\epsilon = \frac{u}{2}$]
@@ -697,7 +662,7 @@ Soit $\begin{cases}
 
 \subsubsection{Limites des suites extraites}
 \begin{itemize}
-    \item Toutes les suites extraites ont la même limite
+    \item Toutes les suites extraites d'une suite convergente ont la même limite
     \item S'il existe une suite extraite divergente, alors la suite est divergente
     \item S'il existe deux suites extraites avec deux limites distinctes, alors la suite n'a pas de limite
     \item Suites extraites paires et impaires - $ (u_{2p}) \longrightarrow l \text{ et } (u_{2p+1}) \longrightarrow l \implies (u_n) \longrightarrow l $
@@ -738,8 +703,7 @@ Soit $\begin{cases}
     \item $ u_n - v_n \longrightarrow 0 $
 \end{enumerate}
 \begin{itemize}
-    \item $(u_n)$ et $(v_n)$ convergent vers la même limite $ l \in \mathbb{R}$
-    \item $ u_n \leq l \leq v_n $
+    \item $(u_n)$ et $(v_n)$ convergent vers la même limite $ l \in \mathbb{R}$, $ u_n \leq l \leq v_n $
     \item Pour comparer deux suites monotones, on peut fixer $u_0$ qui est plus grand / petit que $u_n$
     \item On peut chercher 2 suites extraites adjacentes pour déterminer la limite d'une suite. 
 \end{itemize}
@@ -751,7 +715,7 @@ Soit $\begin{cases}
 \begin{itemize}
     \item Si $a=1$, $(u_n)$ est une suite arithmétique
     \item Si $b=0$, $(u_n)$ est une suite géométrique
-    \item Si $a\neq1$ - $ u_n = u_0 a^n + b \frac{1-a^n}{1-a} $ [Démonstration - posons $ l = al + b $ et soustraire de la définition pour obtenir une suite géométrique]
+    \item Si $a\neq1$ - $ u_n = u_0 a^n + b \frac{1-a^n}{1-a} $ [Démonstration - soit $ l = al + b $, on étudie $u_n-l$ (suite géométrique)]
 \end{itemize}
 
 \subsubsection{Suites géométriques}
@@ -1140,7 +1104,7 @@ Pour $(a, b) \in \mathbb{K}^2, f \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$
 \section{Intégration sur un segment [sup 12] [sup 23]}
 \subsection{Fonctions en escalier}
 \begin{itemize}
-    \item Subdivision du segment $[a,b]$ - suite finie $\sigma$ strictement croissante de $n + 1 $ éléments tel que $a = a_0$ et $a_n = b$
+    \item Subdivision du segment $[a,b]$ - suite finie $\sigma$ strictement croissante de $n + 1 $ éléments, $a = a_0$ et $a_n = b$
     \item Pas d'une subdivision - l'écart maximal entre deux éléments
     \item Subdivision $\sigma '$ plus fine que $\sigma$ - tout point de $\sigma \in \sigma '$
     \item Subdivision régulière - écart constant entre 2 éléments 
@@ -1154,7 +1118,7 @@ Pour $(a, b) \in \mathbb{K}^2, f \in \mathcal{C}^0(I, \mathbb{K})$ d'inconnu $y$
 \begin{itemize}
     \item Définition - il existe une subdivision adaptée $\sigma = (a_k)_{0\leq k \leq n}$ à la fonction $f$ tel que $\forall k \in \llbracket 1, n \rrbracket, f_{] a_{k-1}, a_k [}$ est continue et prolongeable par continuité en $a_{k-1} \et a_{k}$
     \item Pour toute fonction $f$ CPM, il existe une suite $(\phi_n)$ de fonctions en escalier qui converge uniformément vers $f$ ($\| f - \phi_n \|_{\infty} \longrightarrow 0$)
-    \item Cette suite $(\int_{[a, b]} \phi_n)_n$ converge et sa limite ne dépend pas du choix de $(\phi_n)$ - on définit donc $\int_{[a, b]} f = \lim_{n \rightarrow +\infty} \int_{[a, b]} \phi_n$
+    \item $(\int_{[a, b]} \phi_n)_n$ converge et sa limite ne dépend pas du choix de $(\phi_n)$ - on définit $\int_{[a, b]} f = \lim_{n \rightarrow +\infty} \int_{[a, b]} \phi_n$
 \end{itemize}
 
 \subsection{Propriétés de l'intégrale}
@@ -1337,7 +1301,7 @@ Pour $\sum f(n)$ avec $f$ une fonction continue et décroissante sur $[0, +\inft
 \subsubsection{Série exponentielle}
 \[ \sum_{n=0}^{+\infty} \frac{z^n}{n!} = e^z \]
 
-[Démonstration - On encadre la série avec l'inégalité de Taylor-Langrange en 0 à l'ordre $n$ évalué en 1 pour la fonction $f : t \mapsto e^{tz}$]
+[Démonstration - Encadrer $f : t \mapsto e^{tz}$ par l'inégalité de Taylor-Langrange en 0 à l'ordre $n$ évalué en 1]
 
 \begin{itemize}
     \item La somme commence à $n = 0$
@@ -1373,8 +1337,7 @@ Continuité en $a \in U$ un ouvert de $\mathbb{R}^2$
 
 \begin{itemize}
     \item Dérivabilité selon $v \in \mathbb{R}^2$ en $a$ - $D_v f(a) = \underset{t \rightarrow 0}{\lim} \frac{f(a+tv) - f(a)}{t}$
-    \item Première dérivée partielle en $a = (\alpha, \beta)$ - $\partial_1 f(a) = D_{\epsilon_1} f(a) = f_1'(\alpha)$ avec $f_1 : x \mapsto f(x, \beta)$ la première application partielle de $f$ en $a$
-    \item Deuxième dérivée partielle en $a = (\alpha, \beta)$ - $\partial_2 f(a) = D_{\epsilon_2} f(a) = f_2'(\beta)$ avec $f_2 : x \mapsto f(\alpha, 2)$ la deuxième application partielle de $f$ en $a$
+    \item Première dérivée partielle en $a = (\alpha, \beta)$ - $\partial_1 f(a) = D_{\epsilon_1} f(a) = f_1'(\alpha)$ avec $f_1 : x \mapsto f(x, \beta)$ la première application partielle de $f$ en $a$ (de même pour deuxième dérivée)
     \item Gradient de $f$ en $a$ - $\nabla f (a) = (\partial_1 (a), \partial_2 (a))$
     \item $D_v f(a) = \langle \nabla f(a) \ligneh v \rangle$
     \item Point critique - $\nabla f (a) = 0$ - condition nécessaire d'extrema pour fonction de classe $\mathcal{C}^1$
@@ -1575,7 +1538,7 @@ Pour $ (E, +, \cdot) $ un K-ev, $F$ est un sous-espace vectoriel si
 
 \begin{itemize}
     \item Conditions 2 et 3 - stabilité par combinaison linéaire.
-    \item Les ssevs d'un K-ev est un K-ev - on peut donc démontrer un K-ev en montrant qu'il s'agit d'un ssev d'un K-ev connu. 
+    \item Les ssevs d'un K-ev est un K-ev (utile pour trouver des K-evs)
     \item L'intersection des ssevs est un ssev
 \end{itemize}
 
@@ -1584,7 +1547,7 @@ Pour $ (E, +, \cdot) $ un K-ev, $F$ est un sous-espace vectoriel si
 \[ F \oplus G = \{ x \in E \ligneh \exists!(x_F, x_G) \in F \times G, x = x_F + x_G \} \]
 \[ F \oplus G \text{ est un ssev} \iff 0_E \in F \oplus G \iff F + G = F \oplus G \iff F \cap G = \{0_E\} \]
 
-On peut montrer $ F \cap G = {0_E} $ pour montrer que $F+G$ est directe ($x \in F \cap G \implies x = 0_E $). On peut aussi déterminer l'unique décomposition de tout vecteur de $E$ comme somme par analye-synthèse. \\
+On peut montrer $ F \cap G = \{0_E\} $ pour montrer que $F+G$ est directe ($x \in F \cap G \implies x = 0_E $). On peut aussi déterminer l'unique décomposition de tout vecteur de $E$ comme somme par analye-synthèse. \\
 
 Si $E = F\oplus G$ alors $F$ et $G$ son supplémentaires de $E$.
 
@@ -1601,7 +1564,7 @@ Sous-espace engendré par une famille finie de vecteurs ou une partie
     \item $\text{Vect}(A)$ est le plus petit ssev de E qui contient A (Pour tout F un ssev de E, $ \text{Vect}(A) \subset F $) [Démonstration - $x \in \text{Vect}(A)$ est une combinaison linéaire des élements de $A$ donc de $F$ et $F$ est stable par combinaison linéaire]
     \item $\text{Vect}(A)$ est l'intersection de tous les ssevs de E qui contiennent A [Démonstration - l'intersection est aussi un ssev contenant $A$ puis double inclusion]
     \item Vect d'un vecteur - $ \text{Vect}(0_E) = {0_E} $ et $ \text{Vect}(x \neq 0_E) = \mathbb{K}x $ droite vectorielle
-    \item Vect de 2 vecteurs - $ \text{Vect}(x, y) = \text{Vect}(x) = \text{Vect}(y) $ si $x$ et $y$ sont colinéaires - sinon on a un plan vectoriel
+    \item Vect de 2 vecteurs - $ \text{Vect}(x, y) = \text{Vect}(x) = \text{Vect}(y) $ si $x$ et $y$ sont colinéaires - sinon plan vectoriel
 \end{itemize}
 
 \subsubsection{Familles libres et liées}
@@ -1610,7 +1573,7 @@ Sous-espace engendré par une famille finie de vecteurs ou une partie
     \item Liée - non-libre  - au moins un des vecteurs est combinaison linéaire des autres dans la famille
 \end{itemize}
 
-\noindent Une famille est libre $\iff \forall x \in \text{Vect}(E), x$ s'écrit de manière unique comme combinaison linéaire des vecteurs de $E$
+\noindent $E$ est libre $\iff \forall x \in \text{Vect}(E)$, $x$ s'écrit de manière unique comme combinaison linéaire des vecteurs de $E$
 
 \subsubsection{Familles génératrices}
 \[ E = \text{Vect}(x_1,...,x_n) \]
@@ -1648,8 +1611,7 @@ Pour $u: E \rightarrow F$,
     \item $\text{Ker } u $ est un ssev de $E$
     \item $\text{Im } u $ est un ssev de $E$
     \item $u$ est injective $\iff$ $\text{Ker }u = \{0_E\} \iff (u(x) = 0_F \implies x = 0_E)$
-    \item $u$ est bijective $\iff$ $\text{Ker }u = \{0_E\} \et \text{Im }u = F $
-    \item Pour $B = (e_1,...,e_n)$ une base, et des vecteurs $f_1,...,f_n$, on caractérise une unique application linéaire - $ \forall i \in \llbracket 1, n \rrbracket, u(e_i) = f_i $
+    \item Pour $B = (e_1,...,e_n)$ une base, on caractérise une unique application linéaire - $ \forall i \in \llbracket 1, n \rrbracket, u(e_i) = f_i $
     \item Pour $ E = E_1 \oplus E_2, u_1 \in \mathcal{L}(E_1, F), u_2 \in \mathcal{L}(E_2, F) $, on peut caractériser une unique application linéaire - $ \forall x \in E_1, u(x) = u_1(x) \et \forall x \in E_2, u(x) = u_2(x) $
 \end{itemize}
 
@@ -1662,7 +1624,7 @@ Pour $u: E \rightarrow F$,
 \end{itemize}
 
 \subsection{Des familles et des A.L.s}
-Uniquement dans cette section, $[x_i] = (x_1,...,x_n)$. $u \in \mathcal{L}(E, F)$
+Dans cette section, $[x_i] = (x_1,...,x_n)$. $u \in \mathcal{L}(E, F)$
 \begin{itemize}
     \item $u(\text{Vect}([x_i])) = \text{Vect}([u(x_i)])$
     \item Pour $[x_i]$ une famille génératrice - $ [u(x_i)] $ est génératrice de $\text{Im } u$
@@ -1688,25 +1650,25 @@ Pour $x \in E = E_1 \oplus E_2$,
     \item  La projection sur $E_1$ parallèlement à $E_2$, $ p : x = x_1 + x_2 \mapsto x_1 $
     \begin{itemize}
         \item $ p \in \mathcal{L}(E) $
-        \item $ p^2 = p $ - Condition nécessaire et suffisante d'être un projecteur
+        \item $p$ est un projecteur $\iff p^2 = p $
         \item $ E_1 = \text{Im }p = \{x \in E \ligneh p(x) = x \} = \text{Ker}(p - \text{Id}_E) $
         \item $ E_2 = \text{Ker }p$
-        \item On peut caractériser $u$ un projecteur si $ u \in \mathcal{L}(E) \et u^2 = u $ - dans ce cas il est projecteur sur $\text{Im}(p)$ parallèlement à $\text{Ker }p$ [Démonstration - $x = (u(x)) + (x-u(x))$ décomposition unique]
+        \item $p$ est le projecteur sur $\text{Im}(p)$ parallèlement à $\text{Ker }p$ [Démonstration - $x = (u(x)) + (x-u(x))$ décomposition unique]
     \end{itemize}
     \item La symétrie par rapport à $E_1$ parallèlement à $E_2$, $ s : x = x_1 + x_2 \mapsto x_1 - x_2 $
     \begin{itemize}
         \item $ s \in \mathcal{L} $
-        \item $ s^2 = \text{Id} $ - $s \in \text{GL}(E) \et s^{-1}=s$ - - Condition nécessaire et suffisante d'être une symétrie
+        \item $s$ est une symétrie $\iff s^2 = \text{Id} \iff s \in \text{GL}(E) \et s^{-1}=s$ 
         \item $ E_1 = \{ x \in E \ligneh s(x) = x \} = \text{Ker}(s-\text{Id}) $
         \item $ E_2 = \{ x \in E \ligneh s(x) = -x \} = \text{Ker}(s+\text{Id}) $ 
-        \item On peut caractériser $u$ une symétrie si $ u \in \mathcal{L}(E) \et u^2 = \text{Id}_E $ - dans ce cas il est projecteur sur $\text{Ker}(s-\text{Id})$ parallèlement à $\text{Ker}(s+\text{Id})$ [Démonstration - $x = \frac{1}{2}(x + u(x)) + \frac{1}{2}(x-u(x))$ décomposition unique]
+        \item $s$ est la symétrie sur $\text{Ker}(s-\text{Id})$ parallèlement à $\text{Ker}(s+\text{Id})$ [Démonstration - $x = \frac{1}{2}(x + u(x)) + \frac{1}{2}(x-u(x))$ décomposition unique]
     \end{itemize}
     \item $s = 2p - \text{Id}$
 \end{enumerate}
 
 \subsection{Équations linéaires}
 Pour l'équation $u(x) = b$, s'il existe au moins une solution particulière $x_p : (u(x_p) = b)$, alors 
-\[ \mathcal{S} = {x_p} + \text{Ker} u \]
+\[ \mathcal{S} = \{x_p\} + \text{Ker} u \]
 
 \noindent $\text{Ker }u$ est l'ensemble des solutions à l'équation homogène ($u(x) = 0$)
 
@@ -1730,8 +1692,8 @@ Pour l'équation $u(x) = b$, s'il existe au moins une solution particulière $x_
 \begin{itemize}
     \item Dimension finie - $E$ possède une famille génératrice de cardinal $n \in \mathbb{N}$
     \item Toute famille libre d'éléments de $E$ peut être complétée en une base de $E$ à partir des éléments de $G$ ($G$ est une famille génératrice) [Démonstration - considérons une famille libre de cardinalité maximale]
-    \item TBE Théorème de la base extraite - on peut extraire une base de tout famille génératrice finie d'un K-ev 
-    \item TBI Théorème de la base incomplète - Toute famille libre de vecteurs de $E$ peut être complétée en une base
+    \item TBE Théorème de la base extraite - on peut extraire une base de tout famille génératrice finie 
+    \item TBI Théorème de la base incomplète - Toute famille libre de vecteurs peut être complétée en une base
     \item Toutes les bases de $E$ ont le même cardinal = $\dim E$. 
     \item $B$ est une base $ \iff B $ est libre maximal $\iff B $ est génératrice minimale
     \item Toute famille de $n+1$ vecteurs de $E$ est liée
@@ -1741,13 +1703,7 @@ Pour l'équation $u(x) = b$, s'il existe au moins une solution particulière $x_
 $u$ est une AL de $E$ dans $F$
 \begin{itemize}
     \item $E$ et $F$ sont isomorphe $\iff \dim E = \dim F$ 
-    \item Pour $\dim E = \dim F$, des conditions suffisantes de bijectivité - 
-    \begin{itemize}
-        \item $u$ injective
-        \item $u$ surjective
-        \item $u$ inversible à droite
-        \item $u$ inversible à gauche
-    \end{itemize}
+    \item Si $\dim E = \dim F$, bijective $\iff$ injective $\iff$ surjective $\iff$ inversible à droite $\iff$ inversible à gauche
     \item $u$ inj $\implies \dim E \leq \dim F$ 
     \item $u$ surj $\implies \dim E \geq \dim F$
     \item $u$ bij $\implies \dim E = \dim F$
@@ -1755,7 +1711,7 @@ $u$ est une AL de $E$ dans $F$
 
 \subsection{Sous espaces vectoriels}
 \begin{itemize}
-    \item $\dim F = \dim E$ avec $\dim F = \dim E \iff F = E$ pour $F$ un ssev de $E$
+    \item $\dim F = \dim E$ avec $E \subset F \iff F = E$ pour $F$ un ssev de $E$
     \item Tout ssev de $E$ fini admet un supplémentaires
     \item Pour $E = F \oplus G$, $\dim E = \dim F + \dim G$
     \item Formule de Grassmann - $\dim (F+G) = \dim F + \dim F - \dim (F \cap G)$ [Démonstration - Considérons $H$ un supplémentaire de $F \cap G$ dans $F$ et montrer $F+G = H \oplus G$]
@@ -1795,7 +1751,7 @@ Pour $u \in \mathcal{L}(E, F)$
 \clearpage
 \section{Matrices et Applications Linéaires [sup 20]}
 
-On note $ \mathcal{B} = (e_1, e_2, \dots) = [(e_i)] $ une base quelconque, et $ \mathcal{C} = [(\epsilon)_i] $ la base canonique, d'un K-ev non nul de dimension finie.
+$ \mathcal{B} = (e_1, e_2, \dots) = [(e_i)] $ une base quelconque, $ \mathcal{C} = [(\epsilon)_i] $ la base canonique, de $E$ non nul de dimension finie.
 
 \subsection{Définitions}
 \[ \mat_{\mathcal{B}}(x = \sum_i \alpha_i e_i ) = \begin{pmatrix}
@@ -1935,7 +1891,7 @@ Pour une partie $A$ (pas forcément un ssev)
 \[ \forall (x, y) \in E^2, \langle x, y \rangle ^2 \leq \langle x, x \rangle\langle y, y \rangle \]
 \[ \langle x, y \rangle ^2 = \langle x, x \rangle\langle y, y \rangle \iff (x, y) \text{ est liée} \]
 
-[Démonstration - Considérons le discriminant de $P:\lambda \mapsto \langle \lambda x + y, \lambda x + y \rangle$ qui est une fonction polynomiale à valeurs positifs]
+[Démonstration - Étudier le discriminant de $P:\lambda \mapsto \langle \lambda x + y, \lambda x + y \rangle$ (fonction polynomiale à valeurs positifs)]
 
 \begin{itemize}
     \item Sur $\mathbb{R}^n, \left (\sum_{k=1}^{n} \lambda_i \mu_i \right )^2 \leq \left ( \sum_{k=1}^{n} \lambda_i^2 \right ) \left ( \sum_{k=1}^{n} \mu_i^2 \right )$
@@ -2182,8 +2138,7 @@ $(\Omega, P)$ un espace probabilisé muni de $P: \mathcal{P}(\Omega) \rightarrow
 \section{Variables aléatoires [sup 26]}
 \subsection{Définition}
 \begin{itemize}
-    \item Application de $\Omega \rightarrow X(\Omega)$
-    \item $X(\Omega)$ l'ensemble des variables tirées des résultats
+    \item Application de $\Omega \rightarrow X(\Omega)$, avec $X(\Omega)$ l'ensemble des variables tirées des résultats
     \item Application indicatrice de $A$ - $\Omega \rightarrow \{0, 1\} : \omega \mapsto \begin{cases}
         0 & \si \omega \in A \\
         1 & \text{ sinon}
@@ -2206,7 +2161,7 @@ $(\Omega, P)$ un espace probabilisé muni de $P: \mathcal{P}(\Omega) \rightarrow
     \begin{itemize}
         \item $ \forall (A_1 \dots A_n)\! \in \prod_{i=1}^{n} \mathcal{P}(X_i(\Omega)), P(\bigcap_{i=1}^n X_i \in A_i) = \prod_{i=1}^{n}P(X_i \in A_i) $
         \item $ \forall (x_1 \dots x_n) \in \prod_{i=1}^{n} X_i(\Omega), P(\bigcap_{i=1}^n X_1 =x_i) = \prod_{i=1}^{n}P(X_i = x_i) $
-        \item Toute sous-famille de variables aléatoires mutuellement indépendantes est mutuellement indépendante
+        \item Toute sous-famille des VAs mutuellement indépendantes est mutuellement indépendante
         \item Lemme des coalitions - pour $X_1 \dots X_n$ mutuellement indépendant, $f(X_1\dots X_k) \et g(X_{k+1}\dots X_n)$ sont indépendantes
     \end{itemize}
 \end{itemize}
@@ -2218,7 +2173,7 @@ $(\Omega, P)$ un espace probabilisé muni de $P: \mathcal{P}(\Omega) \rightarrow
         \item $X \sim Y$ - $X$ et $Y$ suivent la même loi - $X(\Omega) = Y(\Omega) \et \forall x \in X(\Omega), P(X=x)=P(Y=x)$
         \item $X \sim Y \implies f(X) \sim f(Y)$
     \end{itemize}
-    \item Loi conjointe du couple de variables aléatoires - $P_{(X, Y)}(A \times B) = P((X \in A) \cap (Y \in B)) = P(X \in A, Y \in B)$
+    \item Loi conjointe du couple de VAs - $P_{(X, Y)}(A \times B) = P((X \in A) \cap (Y \in B)) = P(X \in A, Y \in B)$
     \begin{itemize}
         \item Lois marginales du couple - $P(X = x) = \sum_{y \in Y(\Omega)} P(X = x, Y=y)$
     \end{itemize}
