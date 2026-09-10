@@ -648,22 +648,27 @@ On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $
     \item Cinématique du point - domaine où l'on décrit les mouvements sans en chercher les causes
     \item Dynamique - Domaine où l'on cherche à établir le lien entre les mouvements et les causes qui engendrent ces mouvements
     \item Statique - Étude des équilibres des systèmes (cas particulier de la dynamique)
+    \item Degrés de liberté - les paramètres nécessaires, suffisants et indépendants pour déterminer la position et le moujvement du système sans ambiguïté
     \item Système indéformable
     \begin{itemize}
         \item Solide indéformable - distance entre 2 points du solide est constante
         \item Description du solide dans le système nécessite 6 paramètres (3 axes de position pour le centre d'inertie, 3 angles de rotation)
-        \item Tous les points du solide ont le même mouvement - il suffit donc d'étudier un point (le centre d'inertie)
+        \item Pour un solide en translation, tous les points du solide ont le même mouvement - il suffit donc d'étudier un point (le centre d'inertie)
     \end{itemize}
     \item Point matériel - On ne considère que la translation et néglige la rotation
-    \item Référentiel - repère muni d'une horloge
+    \item Référentiel - repère d'espace muni d'une horloge
+    \begin{itemize}
+        \item Référentiel barycentrique $\mathcal{R}^*$ [HP] - référentiel associé à un système $\Sigma$ par rapport à un autre référentiel $\mathcal{R}$ - en translation par rapport à $\mathcal{R}$ et centre d'inertie de $\Sigma$ fixe dans $\mathcal{R}^*$
+    \end{itemize}
     \item Équation horaire - l'équation donnant $ \overrightarrow{OM}(t) $
-    \item Trajectoire - l'ensemble des points parcourus par $M$ - équation de la trajectoire relie les coordonnées sans faire intervenir le temps
+    \item Trajectoire - l'ensemble des points parcourus par $M$ - équation de la trajectoire relie les coordonnées sans faire intervenir le temps - dépend du réferentiel
     \item Vitesse - $ \vec{v}_{|R}(M) = \frac{\dd \overrightarrow{OM}}{\dt}_{|R} $ - colinéaire à la trajectoire
     \item Accélération - $ \vec{a}_{|R}(M) = \frac{\dd \vec{v}_{|R}(M)}{\dt}_{|R} = \frac{\dd^2 \overrightarrow{OM}}{\dt^2}_{|R} $ - pointe vers la concavité de la trajectoire
     \begin{itemize}
         \item $ \frac{\dd \| \vec{v}_{\repr} \|}{\dt} = \| \vec{a}_{\repr} \| \cos \alpha $ ($\alpha$ angle entre mouvement et accélération)
     \end{itemize}
-    \item Translation - Les directions du repère liée au solide sont fixes par rapport au référentiel d'étude
+    \item Translation - $\forall M \in S, \forall M \in S, \overrightarrow{MN} = \overrightarrow{\cste}$
+    \item Rotation autour d'un axe $\Delta$ fixe dans $\mathcal{R}$ - tous les points du solide ont une trajectoire circulaire autour de l'axe $\Delta$ avec la même vitesse angulaire $\omega$
     \item Masse inerte - grandeur qui caractérise la capacité d'un système de resister à des contraintes pour modifier son mouvement (supposée indépendant du mouvement et du référentiel)
     \item Masse grave - grandeur associée aux poids d'un objet (supposée équivalente à la masse inerte par principe d'équivalence)
 \end{itemize}
@@ -719,7 +724,7 @@ On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $
 \[ \vec{a}_{\repr} = (\ddot{r} - r\dot{\theta}^2) \vec{e_r} + (r \ddot{\theta} + 2 \dot{r} \dot{\theta}) \vec{e_{\theta}} + \ddot{z} \vec{e_z} \]
 
 \subsection{Mouvement circulaire en coordonnées cylindriques}
-Pour un mouvement autour de l'axe $ \Delta = \vec{e_z} $, on a $\dot{r} = 0 \et \dot{z} = 0$
+Pour un mouvement circulaire autour de l'axe $ \Delta = \vec{e_z} $, on a $\dot{r} = 0 \et \dot{z} = 0$
 
 \[ \overrightarrow{OM} = r \vec{e_r} \]
 \[ \vec{v}_{\repr} = r \dot{\theta} \vec{e_{\theta}} \]
@@ -727,7 +732,8 @@ Pour un mouvement autour de l'axe $ \Delta = \vec{e_z} $, on a $\dot{r} = 0 \et 
 
 \noindent On définit le vecteur rotation
 \[ \vec{\Omega} = \dot{\theta} \vec{e_z} \]
-Avec $\dot{\theta}$ la vitesse angulaire
+\[ \vec{v}_{\repr} = \vec{\Omega} \wedge \overrightarrow{AM} \]
+Avec $\dot{\theta}$ la vitesse angulaire, $A$ un point fixe sur l'axe
 
 \subsection{Coordonnées sphériques $ (\vec{e_r}, \vec{e_{\theta}}, \vec{e_{\phi}}) $}
 \begin{center}
@@ -752,6 +758,42 @@ Avec $\dot{\theta}$ la vitesse angulaire
 
 \[ \dd \overrightarrow{OM} = \dr \, \vec{e_r} + r \, \dtheta \, \vec{e_{\theta}} + r \sin \theta \, \dphi \, \vec{e_{\phi}}  \]
 \[ \vec{v}_{\repr} = \dot{r} \vec{e_r} + r \dot{\theta} \vec{e_{\theta}} + r \dot{\phi} \sin \theta \vec{e_{\phi}} \]
+
+\section{Changement de référentiel}
+\subsection{Dérivées des vecteurs de base}
+Pour $\mathcal{R} = (Oxyz) \et \mathcal{R}' = (O'x'y'z')$
+\[ \frac{\dd \vec{x'}}{\dt}_{\repr} = \vec{\Omega}_{\mathcal{R} ' / \mathcal{R}}\wedge \vec{x'} \] 
+
+\begin{itemize}
+    \item $\vec{\Omega}_{\mathcal{R} ' / \mathcal{R}}$ le vecteur de rotation instantané du référentiel $\mathcal{R}'$ par rapport à $\mathcal{R}$
+    \item Si $\mathcal{R}'$ en translation pur par rapport à $\mathcal{R}$, $\vec{\Omega}_{\mathcal{R} ' / \mathcal{R}} = \vec{0}$
+    \item Si $\mathcal{R}'$ en rotation par rapport d'un axe fixe dans $\mathcal{R}$, $\vec{\Omega}_{\mathcal{R} '/ \mathcal{R}}$ est constante en direction (pas en sens ou en norme)
+    \item $\vec{\Omega}_{\mathcal{R} ''/ \mathcal{R}} = \vec{\Omega}_{\mathcal{R} ''/ \mathcal{R}'} + \vec{\Omega}_{\mathcal{R} '/ \mathcal{R}}$
+\end{itemize}
+
+Pour un vecteur quelconque
+\[ \frac{\dd \vec{v}}{\dt}_{\repr} = \frac{\dd \vec{v}}{\dt}_{\repr '} + \vec{\Omega}_{\mathcal{R} / \mathcal{R} '}\wedge \vec{v} \] 
+
+\subsection{Composition des vitesses}
+\[ \vec{v}_{\repr} (M) = \vec{v}_{\repr '} (M) + \vec{v}_{\repr} (O') + \vec{\Omega}_{\mathcal{R}' / \mathcal{R}} \wedge \overline{O'M} \]
+\[ \vec{v}_{\repr} (M) = \vec{v}_{\repr '} (M) + \vec{v_{e}} (M) \]
+
+\begin{itemize}
+    \item Point coïncidant $P$ - point qui coïncide avec $M$ à l'instant $t$ qui est fixe dans $\mathcal{R'}$
+    \item Vitesse d'entraînement $\vec{v_e} (M) = \vec{v}_{\repr}(P)$
+    \item Cas de translation $\vec{v_e} = \vec{v}_{\repr}(O')$
+    \item Cas de rotation $\vec{v_e} = R \vec{\Omega}_{\mathcal{R} / \mathcal{R} '} \vec{e}_{\theta}$
+\end{itemize}
+
+\subsection{Composition des accélérations}
+\[ \vec{a}_{\repr}(M) = \vec{a}_{\repr '}(M) + 2 \vec{\Omega}_{\mathcal{R}' / \mathcal{R}}\wedge \vec{v}_{\repr '} (M) + \vec{a_e}(M) \]
+
+[Démonstration - Dériver l'expression de $\vec{v}_{\repr} (M)$]
+
+\begin{itemize}
+    \item Accélération d'entraînement $\vec{a_e} (M) = \vec{a}_{\repr}(P)$
+    \item Accélération de Coriolis $\vec{a_c}(M) = 2 \vec{\Omega}_{\mathcal{R}' / \mathcal{R}}\wedge \vec{v}_{\repr '} (M)$
+\end{itemize}
 
 \section{Dynamique}
 \subsection{Quantité de mouvement}
@@ -786,7 +828,8 @@ Grandeur vectorielle décrivant l'interaction capable de modifier et/ou de produ
     \item Force de frottement fluide $ f = -\lambda [\vec{v}_{\repr}(M) - \vec{v}_{\repr}(\text{fluide})] = -\lambda \vec{v}_{\repr}(M) $ - valable pour nommbre de Reynolds $R_R < 1$
     \item Frottement solide - lois d'Amontons-Coulomb
     \begin{itemize}
-        \item Non-glissement $\vec{v}_{\repr}(M) = \vec{0}$ - $ \vec{R_T} = -\sum \vec{F} $ tant que $\|\vec{R_T}\| < f_s\|\vec{R_N}\|$
+        \item Vitesse de glissement de $S_1$ par rappor à $S_2$ au contact ponctuel $I$ - $\vec{v_g}_{S_1, S_2} = \vec{v}_{\repr}(I_1) - \vec{v}_{\repr}(I_2)$ - dans le plan tangent en $I$ et indépendant de $\mathcal{R}$ choisi
+        \item Non-glissement $\vec{v}_g = \vec{0}$ - $ \vec{R_T} = -\sum \vec{F} $ tant que $\|\vec{R_T}\| < f_s\|\vec{R_N}\|$
         \item Glissement $ \vec{R_T} = f_d \vec{R_N} $ tant que $ \|\vec{v}_{\repr}(M)\| > 0 $
         \item $f_d < f_s$ (en général, $f_d \approx f_s$)
     \end{itemize}
@@ -813,7 +856,7 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
         \item Équilibre stable - quand on écart le système de sa poition d'équilibre, il revient vers sa position d'équilibre - énergie potentielle est minimale et $ \frac{\dd E_p(x_{\text{eq}})}{\dx} > 0 $
         \item Équilibre instable - quand on écart le système de sa position d'équilibre, il s'en éloigne - énergie potentielle est maximale et $ \frac{\dd E_p(x_{\text{eq}})}{\dx} < 0 $
     \end{itemize}
-    \item Expressions générales pour un système au voisinage d'une position d'équilibre [Démonstration - développement limité en $x_{\text{eq}}$ de $F$ ou $E_p$]
+    \item Avec un développement limité en $x_{\text{eq}}$ de à l'ordre 1 de $F$ (ou à l'ordre 2 de $E_p$), on obtient les expressions générales pour un système au voisinage d'une position d'équilibre
     \begin{itemize}
         \item Équilibre stable - tout système conservatif se comporte comme un oscillateur harmonique de $ \omega_0 = \sqrt{\frac{1}{m}\frac{\dd ^2 E_p(x_{\text{eq}})}{\dx^2}} $
         \item Équilibre instable - le système s'éloigne selon une équation exponentielle 
@@ -830,6 +873,7 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
 \begin{itemize}
     \item Le moment d'une force $\vec{F}$ par rapport à l'axe $ \Delta $ est nulle si $\vec{F}$ coupe $\Delta$ ou $\vec{F}$ est parallèle à $\Delta$
     \item Bras de levier $d$ la distance la plus courte entre l'axe $\Delta$ et la droite d'action de la force - $M_\Delta = \pm d \| \vec{F} \| $
+    \item Pour le poids uniquement, le moment du poids d'un système est le moment du résultant du poids
 \end{itemize}
 
 \subsection{Couple}
@@ -889,7 +933,13 @@ Le système $\dot{x} = v \et \dot{v} = \frac{1}{m}F(x, v, t)$ muni des condition
 \begin{itemize}
     \item Pour un système déformable, le travail des forces intérieures n'est pas forcément non-nulle
     \item Pour un système indéformable, la puissance des forces intérieures est nulle
+    \item La puissance des forces intérieures est indépendante du référentiel
 \end{itemize}
+
+\subsubsection{Puissance des actions de contact}
+\[ \mathcal{P}_{\repr} = \vec{T}_{1\rightarrow2} \cdot \vec{v}_{g S_2, S_1} \]
+
+La puissance des forces de est nulle si il n'y a pas de frottements solides, où s'il n'y a pas de glissement
 
 \subsection{Travail}
 Pour un déplacement élémentaire $\dd \overrightarrow{OM}$, on a le travail élémentaire
@@ -931,7 +981,7 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
 
 \section{Méthode}
 \begin{enumerate}
-    \item Définir le système (point matérial / système de points)
+    \item Définir le système (point matérial / système de points) et les degrés libertés
     \item Définir le référentiel (galiléen ou non)
     \item Bilan des actions (forces, moments de forces) - dans un système de coordonnées choisi
     \item Résolution à l'aide d'une loi 
@@ -963,7 +1013,7 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
     \item $\vec{E} = - \grad V $
     \item La force électrique dérive d'une énergie potentielle $E_p = qV$
     \item La force magnétique ne travaille pas
-    \item Dans un champ magnétique uniforme et stationnaire, le mouvement est hélicoïdale [Démonstration - on choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec{v_0}$ est dans le plan $(yOz)$. On aura un mouvement uniforme selon $\vec{e_z}$, et un mouvement circulaire de rayon $R = \frac{v_0 \sin \alpha}{|q|B}$ apres résultion en posant $ \underline{u} = x + jy $]
+    \item Dans un champ magnétique uniforme et stationnaire, le mouvement est hélicoïdale [Démonstration - on choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec{v_0}$ est dans le plan $(yOz)$. On aura un mouvement uniforme selon $\vec{e_z}$, et un mouvement circulaire de rayon $R = \frac{v_0 \sin \alpha}{|q|B}$ apres résultion en posant $ \underline{u} = x + jy $ ou en considérant la base de frénet $\frac{\dd}{\dt}\vec{v} = \dot{v} \vec{e}_T + \frac{v^2}{R} \vec{e}_N$ avec $\vec{e}_T$ et $\vec{e}_N$ les composants tangentiels et normals du mouvement]
 \end{itemize}
 
 \subsection{Intéractions newtoniennes}
@@ -1612,6 +1662,7 @@ On définit le rapport de transformation
     \item Factorisation de cosinus - $ \cos{p} + \cos{q} = 2 \cos{\frac{p+q}{2}}\cos{\frac{p-q}{2}} $ 
     \item Dérivée partielle et taux d'accroissement - $f(x+\dx) - f(x) = \frac{\partial f}{\partial x} dx$
     \item Dérivée partielle - $\dd f(x, y) = \frac{\partial f}{\partial x} \dx + \frac{\partial f}{\partial y} \dy$
+    \item Calcul de période d'un oscillation quelconque - $T = 2 \int_{-x_0}^{x_0} \frac{1}{\dot{x}} \dx = 4 \int_{0}^{x_0} \frac{1}{\dot{x}} \dx$ [Intégration sur une demi-période / $\frac{1}{4}$-période avec $\dt = \frac{1}{\dot{x}} \dx$]
 \end{itemize}
 
 \section{Représentation complexe}
