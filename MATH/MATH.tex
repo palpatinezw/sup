@@ -195,6 +195,7 @@ $ z \in \mathbb{C} $ s'écrit $ z = \text{Re}(z) + i\text{Im} (z) $
 \begin{itemize}
     \item $\text{Re} (z) = \frac{z+\overline{z}}{2}$
     \item $\text{Im} (z) = \frac{z-\overline{z}}{2i}$
+    \item $\overline{x\cdot z} = \overline{x} \cdot \overline{z} \et \overline{x+z} = \overline{x} + \overline{z}$
     \item $z=\overline{z} \iff z \in \mathbb{R}$
     \item $z=-\overline{z} \iff z \in i\mathbb{R}$
     \item $ z=e^{i\theta} \iff \overline{z}=e^{-i\theta} $
@@ -890,7 +891,7 @@ Pour $f$ continue sur un intervalle non-trivial et à valeurs réelles
     \item $ (g \circ f)' = (g' \circ f) \times f' $
     \item $ (\frac{f}{g})' = \frac{f'g - fg'}{g^2} $
     \item $ (f^{-1})' = \frac{1}{f' \circ f^{-1}} $ si $ f' $ ne s'annule pas
-    \item $ (fg)^{(n)} = \sum_{k=0}^{n} \binom{n}{k} f^{(k)}g^{(n-k)} $
+    \item $ (fg)^{(n)} = \sum_{k=0}^{n} \binom{n}{k} f^{(k)}g^{(n-k)} $ (Formule de Leibniz)
 \end{itemize}
 
 \subsubsection{Classe}
@@ -1433,7 +1434,7 @@ Matrice à $n$ lignes et $p$ colonnes.
 \end{itemize}
 
 \subsubsection{Transposée}
-\[ \forall(i, j) \in \llbracket 1, n \rrbracket \times \llbracket 1, p \rrbracket, [A^T]_{i, j} = [A]j_i \]
+\[ \forall(i, j) \in \llbracket 1, n \rrbracket \times \llbracket 1, p \rrbracket, [A^T]_{i, j} = [A]_{j,i} \]
 
 \begin{itemize}
     \item $ (\lambda A+B)^T = \lambda A^T + B^T $
@@ -1488,6 +1489,7 @@ Démonstration [Sens indirect - Décomposer $I_n$ en colonne, cette $I_n$ décom
 
 \begin{itemize}
     \item (Classique) $I + N$ est inversible d'inverse $\sum_{k=0}^{p-1} (-1)^kN^k$ pour $N$ nilpotente d'indice $p$
+    \item (Classique) Lemme d'Hadamard - Si $\forall i \in \llbracket 1, n \rrbracket, |a_{i, i}| > \sum_{i \neq j} |a_{i, j}|$, alors la matrice $A$ est inversible [Démonstration - Par l'absurde, fixer $B$ tq $AB = 0$ et $B \neq 0$. Pour $b_{i_0}$ le coefficient maximale dans $B$, on évalue $[AB]_{i_0}$ pour obtenir une contradiction]
 \end{itemize}
 
 \subsection{Algorithme du pivot de Gauss}
@@ -1603,7 +1605,7 @@ Pour montrer que $F$ est un ssev
 \end{itemize}
 
 \clearpage
-\section{Applications linéaires [sup 11]}
+\section{Applications linéaires [sup 11] [spé II.1]}
 Pour $u: E \rightarrow F$, 
 \[ u \in \mathcal{L}(E, F) \iff \forall(x, y) \in E^2, \forall \lambda \in \mathbb{K}, u(\lambda x + y) = \lambda u(x) + u(y) \]
 
@@ -1629,6 +1631,7 @@ Pour $u: E \rightarrow F$,
     \item $u$ est injective $\iff$ $\text{Ker }u = \{0_E\} \iff (u(x) = 0_F \implies x = 0_E)$
     \item Pour $B = (e_1,...,e_n)$ une base, on caractérise une unique application linéaire - $ \forall i \in \llbracket 1, n \rrbracket, u(e_i) = f_i $
     \item Pour $ E = E_1 \oplus E_2, u_1 \in \mathcal{L}(E_1, F), u_2 \in \mathcal{L}(E_2, F) $, on peut caractériser une unique application linéaire - $ \forall x \in E_1, u(x) = u_1(x) \et \forall x \in E_2, u(x) = u_2(x) $
+    \item Pour $F$ stable par $u$, l'induit de $u$ sur $F$ - $u_F \in \mathcal{L(F)}$
 \end{itemize}
 
 \subsection{Propriétés des isomorphismes}
@@ -1705,7 +1708,7 @@ Pour l'équation $u(x) = b$, s'il existe au moins une solution particulière $x_
 
 \clearpage
 
-\section{Dimension finie [sup 18]}
+\section{Dimension finie [sup 18] [spé II.1]}
 \subsection{Définition}
 \begin{itemize}
     \item Dimension finie - $E$ possède une famille génératrice de cardinal $n \in \mathbb{N}$
@@ -1795,7 +1798,7 @@ Pour $E_1, \dots , E_n$ des K-evs, $E = E_1 \times \dots \times E_n$ est un K-ev
 
 
 \clearpage
-\section{Matrices et Applications Linéaires [sup 20]}
+\section{Matrices et Applications Linéaires [sup 20] [spé II.1]}
 
 $ \mathcal{B} = (e_1, e_2, \dots) = [(e_i)] $ une base quelconque, $ \mathcal{C} = [(\epsilon)_i] $ la base canonique, de $E$ non nul de dimension finie.
 
@@ -2014,7 +2017,7 @@ Pour $\| \cdot \|$ la norme associée à un produit scalaire
 
 \clearpage
 
-\section{Déterminants [sup 27]}
+\section{Déterminants [sup 27] [spé II.2]}
 Vecteurs dans $E$ de dimension $n$, $[x_i] = (x_1,...,x_n)$, $\mathcal{B} = [e_i]$ une base de $E$
 
 \subsection{Définitions}
@@ -2024,6 +2027,9 @@ L'unique forme $n$-linéaire alternée vérifiant $\det_{\mathcal{B}}(\mathcal{B
 
 \begin{itemize}
     \item Forme $n$-linéaire - $E^n \rightarrow \mathbb{K}$ linéaire par rapport à chacune de ses variables
+    \begin{itemize}
+        \item Le produit de $n$ éléments est une forme $n$-linéaire
+    \end{itemize}
     \item Alternée - $ x_i = x_j \et i \neq j \implies \phi([x_i]) = 0 $
     \item Antisymétrique - $\phi (x_1,\dots,x_i,\dots,x_j,\dots,x_n) = -\phi (x_1,\dots,x_j,\dots,x_i,\dots,x_n)$
     \item Alternée $\iff$ antisymétrique
@@ -2057,10 +2063,18 @@ $[C_i]$ la famille des colonnes de $A$ exprimée dans la base canonique de $\mat
     \item $\det \mat_{\mathcal{B}}([x_i]) = \det_{\mathcal{B}}([x_i])$
     \item $\det (\mat_{\mathcal{B}} (u))) = \det u$ dans n'importe quelle base
     \item $\det (\lambda A) = \lambda^nA$
+    \item Dans $\mathcal{M}_n(\mathbb{C})$, $\det \overline{A} = \overline{\det A}$
     \item $\det (AB) = \det A \det B = \det (BA)$
     \item $\det (P^{-1}AP) = \det A$ - deux matrices semblables ont le même déterminant
-    \item $A \in \text{GL}_n (\mathbb{K}) \iff \det A \neq 0$ (Si inversible, $\det (A{-1}) = \frac{1}{\det A}$)
+    \item $A \in \text{GL}_n (\mathbb{K}) \iff \det A \neq 0$ (Si inversible, $\det (A^{-1}) = \frac{1}{\det A}$)
     \item $\det A^T = \det A$
+    \item Pour $A = \begin{pmatrix}
+        a & b \\
+        c & d
+    \end{pmatrix}$ inversible, $A^{-1} = \frac{1}{\det A}\begin{pmatrix}
+        d & -b \\
+        -c & a
+    \end{pmatrix}$
 \end{itemize}
 
 \subsection{Calcul de déterminant}
@@ -2085,7 +2099,13 @@ g & h & i
     \item Matrice de transvection - $\det T_{i, j}(\lambda) = 1$ [Démonstration - $T_{i, j}(\lambda) = I_n + \lambda E_{i, j}$ ajout d'une CL des autres vecteurs]
     \item Matrice de permutation - $\det P_{i, j} = -1$ [Démonstration - antisymétrie]
     \item Matrice de dilatation - $\det D_{i}(\lambda) = \lambda$
+    \item Matrice triangulaire par bloc - $ \begin{vmatrix}
+        A & B \\
+        (0) & C
+    \end{vmatrix} = \det A \times \det C $
+    \item Déterminant de Vandermonde - $V(a_1,\dots, a_n) = \prod_{1 \leq i < j \leq n} (a_j - a_i)$
 \end{itemize}
+
 
 \subsubsection{Développement suivant une ligne}
 \[ \det A = \sum_{i=1}^{n} a_{i, j}(-1)^{i+j} \det (A_{i, j}) \]
@@ -2112,6 +2132,84 @@ On a
 
 On peut aussi développer suivant une colonne. \\
 (Classique) On peut étudier $x \mapsto \det (A + xI_n)$ qui est une fonction polynomiale
+
+\clearpage
+\section{Réduction [spé III]}
+\subsection{Valeurs propres}
+\subsubsection{Définitions}
+\begin{itemize}
+    \item Valeur propre $\lambda$ - $\exists x \in E \setminus \{0\} \ligneh u(x) = \lambda x$ - $x$ est un vecteur propre associée à $\lambda$
+    \item $E_\lambda (u) = \text{Ker}(u-\lambda \text{Id})$ l'espace propre associé à $\lambda$
+    \item Spectre $\text{Sp}(u)$ - l'ensemble des vecteurs propres
+\end{itemize}
+
+\subsubsection{Propriétés des valeurs propres}
+\begin{itemize}
+    \item $\lambda \in \text{Sp}(u) \iff E_\lambda (u) \neq \{0\}$
+    \item $0 \in \text{Sp}(u) \iff \text{Ker}(u) \neq \{0\}$
+    \begin{itemize}
+        \item En dimension finie, $\iff \rg(u - \lambda \text{Id}) < n \iff \det(u - \lambda \text{Id}) = 0$
+    \end{itemize}
+    \item Pour $\lambda \neq 0$, $E_\lambda(u) \subset \text{Im } u$
+    \item $\text{Sp}(u + \alpha \text{Id}_E) = \text{Sp}(u) + \alpha$
+    \item $E_\lambda (u)$ est stable par $u$. Si $u \et v$ commutent, $E_\lambda (u)$ est stable par $v$
+    \item Pour des $\lambda_i$ distincts, les $E_{\lambda_i}$ sont en somme directe
+    \item En dimension finie, $|\text{Sp}(u)| \leq \dim E$ et $\sum_{\lambda \in \text{Sp}(u)}\dim E_{\lambda}$ 
+    \item $u^n (x) = \lambda^n x$
+    \item Pour $P$ un polynôme, $P(u)(x) = P(\lambda) x$. Alors $\text{Sp}(P(u)) = P(\text{Sp}(u))$
+    \item Pour $P$ un polynôme annulateur de $u$, $\text{Sp}(u)$ est inclus dans les racines de $P$ 
+\end{itemize}
+
+\subsubsection{Propriétés des valeurs propres pour les matrices}
+\begin{itemize}
+    \item Les définitions s'adaptent pour les matrices
+    \item Pour $M = \mat_{\mathcal{B}}(u), \text{Sp}(u) = \text{Sp}(M) \et E_{\lambda}(u) \rightarrow E_\lambda (M), x \mapsto \mat_{\mathcal{B}}(x)$ est un isomorphisme
+    \item $\text{Sp}(M) = \text{Sp}(M^T) \et \dim E_\lambda(M) = \dim E_\lambda (M^T)$
+    \item Pour $A \in \mathcal{M}_n{\mathbb{C}}$ à coefficients réels, $\lambda \in \mathbb{C}$ une valeur propre de $A$
+    \begin{itemize}
+        \item $\overline{\lambda}$ est une valeur propre de $A$
+        \item $E_{\overline{\lambda}} = \{ \overline{X} | X \in E_{\lambda} \}$
+    \end{itemize}
+\end{itemize}
+
+\subsection{Polynôme caractéristique}
+
+\[ \chi_{M}(x): x \mapsto \det(x I_n - M) \]
+\[ \chi_{u}(x): x \mapsto \det(x \text{Id}_E - u) \]
+
+\begin{itemize}
+    \item $\chi_M = \chi_{M^T}$
+    \item Pour $\chi_A = X^n - \tr (A) X^{n-1} + \dots + (-1)^n \det (A)$ - pour $n = 2$, $\chi_A = X^2 - \tr (A) X + \det (A)$ est à utiliser sans démonstration
+    \item Pour $A$ triangulaire, $\chi_A = \prod (X-a_{i,i})$
+    \item{} [Classique] Pour $P = X^n + \sum_{k=0}^{n-1} a_k X^k$, $\chi_{\text{Comp}(P)} = P$ où $\text{Comp}(P) = \begin{pmatrix}
+        0      & \cdots & 0      & -a_0     \\
+        1      & \ddots & \vdots & \vdots   \\
+        \vdots & \ddots & 0      & -a_{n-2} \\
+        0      & \cdots & 1      & -a_{n-1}
+        \end{pmatrix}$
+\end{itemize}
+
+\subsubsection{Propriétés}
+
+\begin{itemize}
+    \item Des matrices semblables ont la même polynôme caractéristique
+    \item $\lambda$ est valeur propre $\iff \lambda$ est racine du polynôme caractéristique
+    \item $\dim E_{\lambda} \leq \omega (\lambda)$
+    \item Pour $\chi_u$ scindé, $\chi_u = \prod_{\lambda \in \text{Sp} (u)} (X-\lambda)^{\omega(\lambda)}$ où $\omega(\lambda)$ est l'ordre de multiplicité de $\lambda$ 
+    \begin{itemize}
+        \item $\tr (u) = \sum_{\lambda \in \text{Sp}(u)} \omega(\lambda) \lambda$
+        \item $\det (u) = \prod_{\lambda \in \text{Sp}(u)} \lambda^{\omega(\lambda)}$
+    \end{itemize}
+\end{itemize}
+
+\subsection{Diagonalisation}
+
+On a les équivalences suivantes
+\begin{itemize}
+    \item $E = \bigoplus_{\lambda \in \text{Sp}(u)}E_\lambda \iff \dim E = \sum_{\lambda \in \text{Sp}(u)} \dim E$
+    \item $\iff \chi_u = \prod_{\lambda \in \text{Sp} (u)} (X-\lambda)^{\omega(\lambda)}$ ($\chi_u$ est scindé) et $\forall \lambda \in \text{Sp}(u), \dim E_\lambda = \omega(\lambda)$ 
+    \item $\iff \mat_{\mathcal{B}}(u)$ est semblable est une matrice diagonale $\iff \exists \mathcal{B}'$ une base de $E$ tel que $\mat_{\mathcal{B}'}(u)$ est diagonale
+\end{itemize}
 
 \clearpage
 
@@ -2490,6 +2588,16 @@ Le $n$ du plus grand coefficient non-nul (coefficient dominant).
 
 \[ \frac{P(x)}{\prod_{i=1}^n (x- \alpha_i) } = E(x) + \sum_{k=1}^{n} \frac{\lambda_k}{x-\alpha_k} \]
 \[ \lambda_k = \frac{P(\alpha_k)}{\prod_{\substack{i=1 \\ i \neq k}}^{n}(\alpha_k - \alpha_i)} = \frac{P(\alpha_k)}{Q'(\alpha_k)} \]
+
+\subsection{Polynôme d'interpolation de Lagrange}
+Pour $a = (a_1, \dots , a_n)$,
+
+\[ L_i = \frac{\prod_{j=1, j\neq i}^{n} (X-a_j)}{\prod_{j=1, j\neq i}^{n} (a_i-a_j)} \]
+
+\begin{itemize}
+    \item C'est l'unique polynôme tel que $L_i(a_j) = \delta_{i, j}$
+    \item $(L_1, \dots, L_n)$ est une base de $\mathbb{K}_{n-1}[X]$ et $P = \sum_{i=1}^{n} P(a_i)L_i$
+\end{itemize}
 
 \subsection{Polynôme d'endomorphismes}
 Pour $P = \sum_{k=0}^{m} a_k X^k $

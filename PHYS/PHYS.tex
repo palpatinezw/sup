@@ -659,6 +659,7 @@ On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $
     \item Référentiel - repère d'espace muni d'une horloge
     \begin{itemize}
         \item Référentiel barycentrique $\mathcal{R}^*$ [HP] - référentiel associé à un système $\Sigma$ par rapport à un autre référentiel $\mathcal{R}$ - en translation par rapport à $\mathcal{R}$ et centre d'inertie de $\Sigma$ fixe dans $\mathcal{R}^*$
+        \item Transformation de Galilée - $\mathcal{R'}$ est en translation rectilinge uniforme par rapport à $\mathcal{R}$ et $O=O'$ à $t=0$
     \end{itemize}
     \item Équation horaire - l'équation donnant $ \overrightarrow{OM}(t) $
     \item Trajectoire - l'ensemble des points parcourus par $M$ - équation de la trajectoire relie les coordonnées sans faire intervenir le temps - dépend du réferentiel
@@ -698,6 +699,9 @@ On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $
 \[ \vec{v}_{\repr} = \dot{x} \vec{e_x} + \dot{y} \vec{e_y} + \dot{z} \vec{e_z} \]
 \[ \vec{a}_{\repr} = \ddot{x} \vec{e_x} + \ddot{y} \vec{e_y} + \ddot{z} \vec{e_z} \]
 
+Le gradient en coordonnées cartésiennes
+\[ \grad f = \frac{\partial f}{\partial x} \vec{e_x} + \frac{\partial f}{\partial y} \vec{e_y} + \frac{\partial f}{\partial z} \vec{e_z} \]
+
 \subsection{Coordonnées cylindriques $(\vec{e_r}, \vec{e_{\theta}}, \vec{e_z}) $}
 \begin{center}
     \includegraphics[height=5cm]{cylindrique.jpg}
@@ -722,6 +726,9 @@ On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $
 \[ \dd \overrightarrow{OM} = \dr \, \vec{e_r} + r \, \dtheta \, \vec{e_{\theta}} + \dz \, \vec{e_z} \]
 \[ \vec{v}_{\repr} = \dot{r} \vec{e_r} + r \dot{\theta} \vec{e_{\theta}} + \dot{z} \vec{e_z} \]
 \[ \vec{a}_{\repr} = (\ddot{r} - r\dot{\theta}^2) \vec{e_r} + (r \ddot{\theta} + 2 \dot{r} \dot{\theta}) \vec{e_{\theta}} + \ddot{z} \vec{e_z} \]
+
+Le gradient en coordonnées cylindriques
+\[ \grad f = \frac{\partial f}{\partial r} \vec{e_r} + \frac{1}{r} \frac{\partial f}{\partial \theta} \vec{e_\theta} + \frac{\partial f}{\partial z} \vec{e_z} \]
 
 \subsection{Mouvement circulaire en coordonnées cylindriques}
 Pour un mouvement circulaire autour de l'axe $ \Delta = \vec{e_z} $, on a $\dot{r} = 0 \et \dot{z} = 0$
@@ -781,8 +788,8 @@ Pour un vecteur quelconque
 \begin{itemize}
     \item Point coïncidant $P$ - point qui coïncide avec $M$ à l'instant $t$ qui est fixe dans $\mathcal{R'}$
     \item Vitesse d'entraînement $\vec{v_e} (M) = \vec{v}_{\repr}(P)$
-    \item Cas de translation $\vec{v_e} = \vec{v}_{\repr}(O')$
-    \item Cas de rotation $\vec{v_e} = R \vec{\Omega}_{\mathcal{R} / \mathcal{R} '} \vec{e}_{\theta}$
+    \item Cas de translation - $\vec{v_e} = \vec{v}_{\repr}(O')$
+    \item Cas de rotation - $\vec{v_e} = R \vec{\Omega}_{\mathcal{R} / \mathcal{R} '} \vec{e}_{\theta}$
 \end{itemize}
 
 \subsection{Composition des accélérations}
@@ -793,6 +800,8 @@ Pour un vecteur quelconque
 \begin{itemize}
     \item Accélération d'entraînement $\vec{a_e} (M) = \vec{a}_{\repr}(P)$
     \item Accélération de Coriolis $\vec{a_c}(M) = 2 \vec{\Omega}_{\mathcal{R}' / \mathcal{R}}\wedge \vec{v}_{\repr '} (M)$
+    \item Cas de translation - $\vec{a_e}(M) = \vec{a_e}(O')$ et $\vec{a_c}(M) = \vec{0}$
+    \item Cas de rotation - $\vec{a_e}(M) = -R \omega^2 \vec{e_r} + R \dot{\omega} \vec{e_{\theta}}$
 \end{itemize}
 
 \section{Dynamique}
@@ -835,36 +844,37 @@ Grandeur vectorielle décrivant l'interaction capable de modifier et/ou de produ
     \end{itemize}
 \end{itemize}
 
-\subsection{Énergie potentielle}
-Une force est dérivante d'une énergie potentielle si son travail est indépendant du chemin suivi
-\[ \delta W_{\repr} = F \cdot \dd \overrightarrow{OM} = -\dd E_p \]
-\[ \vec{F} = - \grad E_p \]
-
-\subsection{Énergie mécanique}
-\[ E_{m\repr} = E_{c\repr} + \sum_i E_{p, i \repr} \]
-\[ \dd E_{m\repr} = \sum_k \delta W_{\repr}(\vec{F_k}) \]
-
-\noindent $\vec{F_k}$ sont des forces non-conservatives \\
-
-\noindent En dérivant, on obtient l'équation du mouvement, donc le théorème de l'énergie mécanique est l'intégrale première du mouvement
-
-\noindent Un mouvement est possible uniquement si $E_{m\repr} \geq E_{p \text{ tot}}$ car $E_{c\repr} \geq 0$.
+\subsection{1ère loi de Newton - principe d'inertie}
+Il existe des référentiels galiléens, dans lequel tout point matérial isolé est animé d'un mouvement rectilinge uniforme.
 \begin{itemize}
-    \item Position d'équilibre - les extrema d'énergie potentielle
-    \item Système à l'équilibre - la vitesse et l'accélération sont nulles 
-    \begin{itemize}
-        \item Équilibre stable - quand on écart le système de sa poition d'équilibre, il revient vers sa position d'équilibre - énergie potentielle est minimale et $ \frac{\dd E_p(x_{\text{eq}})}{\dx} > 0 $
-        \item Équilibre instable - quand on écart le système de sa position d'équilibre, il s'en éloigne - énergie potentielle est maximale et $ \frac{\dd E_p(x_{\text{eq}})}{\dx} < 0 $
-    \end{itemize}
-    \item Avec un développement limité en $x_{\text{eq}}$ de à l'ordre 1 de $F$ (ou à l'ordre 2 de $E_p$), on obtient les expressions générales pour un système au voisinage d'une position d'équilibre
-    \begin{itemize}
-        \item Équilibre stable - tout système conservatif se comporte comme un oscillateur harmonique de $ \omega_0 = \sqrt{\frac{1}{m}\frac{\dd ^2 E_p(x_{\text{eq}})}{\dx^2}} $
-        \item Équilibre instable - le système s'éloigne selon une équation exponentielle 
-    \end{itemize}
-    \item État lié - mouvement possible entre deux points d'arrêts
-    \item État de diffusion - un seul point de reboussement. Si le système approche et rebousse le chemin, il ne revient plus
-    \item Barrière d'énergie potentielle - limite le mouvement entre 2 états possibles
+    \item La vitesse et la quantité de mouvement sont constantes.
+    \item Tous les référentiels galiléens sont en translation rectilinge uniforme les uns par rapport aux autres
+    \item Ce principe nous permet de trouver les référentiels galiléens
 \end{itemize}
+
+\subsection{2ème loi de Newton - principe fondamental de la dynamique}
+Pour un point matérial dans un référentiel galiléen
+\[ \frac{\dd \vec{p}_{\repr}(M)}{\dt}_{\repr} = m \vec{a}_{\repr}(M) = \sum \vec{F} \]
+
+\begin{itemize}
+    \item Pour un système, uniquement les forces extérieures interviennent (somme des forces intérieures s'annule par principe des actions réciproques)
+    \item Pour un solide indéformable de centre d'inertie $G$ on a le théorème de la quantité de mouvement (TQM) - $ m \vec{a}_{\repr}(G) = \sum_{\text{ext}} \vec{F} $
+\end{itemize}
+
+\subsubsection{Théorème du moment cinétique}
+En passant aux moments, on a le théorème du moment cinétique autour du point / de l'axe fixe dans un référentiel galiléen
+
+\[ \frac{\dd \overrightarrow{L_{O\repr}}(M)}{\dt} = \sum_{i} \overrightarrow{M_O}(\vec{F_i}(M)) \]
+\[ J_{\Delta}(M)\ddot{\theta} = \sum_{i} \overrightarrow{M_{\Delta}}(\vec{F_i}(M)) \]
+
+\begin{itemize}
+    \item Pour un système, uniquement les forces extérieures interviennent (Moments des forces intérieures s'annule par principe des actions réciproques)
+    \item Pour un système indéformable - $ J_{\Delta}(\mathcal{S}) \ddot{\theta} = \sum_{\text{ext}}M_{\Delta}(\vec{F}) $
+\end{itemize}
+
+\subsection{3ème loi de Newton - principe de l'action réciproque}
+\[\vec{F}_{B \rightarrow A} = -\vec{F}_{A \rightarrow B}\]
+\noindent Avec $\vec{F}_{B \rightarrow A} \et \vec{F}_{A \rightarrow B}$ selon la même droite d'action $AB$
 
 \subsection{Moment d'une force}
 \[ \vec{M}_O = \overrightarrow{OM} \wedge \vec{F} \]
@@ -884,39 +894,60 @@ $\sum \vec{F} = \vec{0}$ et $\sum \vec{M}_O \neq \vec{0}$ - alors $\vec{\Gamma} 
     \item Torsion - $\vec{\Gamma} = -C\theta \vec{u}_\Delta$ avec $C$ la constante de torsion
 \end{itemize}
 
-\subsection{1ère loi de Newton - principe d'inertie}
-Dans les référentiels galiléens, un point matérial isolé est animé d'un mouvement rectilinge uniforme.
-\begin{itemize}
-    \item La vitesse et la quantité de mouvement sont constantes.
-    \item Tous les référentiels galiléens sont en translation rectilinge uniforme les uns par rapport aux autres
-    \item Ce principe nous permet de trouver les référentiels galiléens
-\end{itemize}
-
-\subsection{2ème loi de Newton - principe fondamental de la dynamique}
-Pour un point matérial dans un référentiel galiléen
-\[ \frac{\dd \vec{p}_{\repr}(M)}{\dt}_{\repr} = m \vec{a}_{\repr}(M) = \sum \vec{F} \]
-
-\begin{itemize}
-    \item Pour un système, uniquement les forces extérieures interviennent (somme des forces intérieures s'annule par principe des actions réciproques)
-    \item Pour un solide indéformable de centre d'inertie $G$ on a le théorème de la quantité de mouvement (TQM) - $ m \vec{a}_{\repr}(G) = \sum_{\text{ext}} \vec{F} $
-\end{itemize}
-
-\noindent En passant aux moments, on a le théorème du moment cinétique autour du point / de l'axe fixe dans un référentiel galiléen
-
-\[ \frac{\dd \overrightarrow{L_{O\repr}}(M)}{\dt} = \sum_{i} \overrightarrow{M_O}(\vec{F_i}(M)) \]
-\[ J_{\Delta}(M)\ddot{\theta} = \sum_{i} \overrightarrow{M_{\Delta}}(\vec{F_i}(M)) \]
-
-\begin{itemize}
-    \item Pour un système, uniquement les forces extérieures interviennent (Moments des forces intérieures s'annule par principe des actions réciproques)
-    \item Pour un système indéformable - $ J_{\Delta}(\mathcal{S}) \ddot{\theta} = \sum_{\text{ext}}M_{\Delta}(\vec{F}) $
-\end{itemize}
-
-\subsection{3ème loi de Newton - principe de l'action réciproque}
-\[\vec{F}_{B \rightarrow A} = -\vec{F}_{A \rightarrow B}\]
-\noindent Avec $\vec{F}_{B \rightarrow A} \et \vec{F}_{A \rightarrow B}$ selon la même droite d'action $AB$
 
 \subsection{Théorème de Cauchy}
 Le système $\dot{x} = v \et \dot{v} = \frac{1}{m}F(x, v, t)$ muni des conditions initiales admet une unique solution.
+
+\subsection{Forces d'inertie}
+Dans un réferentiel $\mathcal{R}'$ non-galiléen
+
+\[ \vec{F_{ie}} = -m \vec{a_e} (M) \]
+\[ \vec{F_{ic}} = -m \vec{a_c} (M) = -2m \vec{\Omega}_{\mathcal{R'}/\mathcal{R}}\wedge \vec{v_{\repr}}(M) \]
+
+\begin{itemize}
+    \item Pas de vraies forces et dépendent du référentiel
+    \item Traduisent les effets d'inertie dans les référentiels galiléen
+    \item Pour $\mathcal{R}'$ en translation uniforme par rapport à $\mathcal{R}$ autour d'un axe fixe contenant $O$, $\vec{F_{ie}} = m \omega^2 \overrightarrow{HM}$ ($H$ est la projeté orthogonale de $\overrightarrow{OM}$ sur $M$)
+    \item Force d'inertie de Coriolis est toujours perpendiculaire au mouvement 
+    \begin{itemize}
+        \item Elle dévie les trajectoires
+        \item $W(\vec{F_{ic}}) = 0$
+        \item Pas de force d'inertie de Coriolis dans le cas de translation de $\mathcal{R}'$ par rapport à $\mathcal{R}$
+        \item Pas de force de Coriolis si $\vec{v_{\repr '}} = \vec{0}$
+    \end{itemize}
+    \item TQM reste valable à condition d'ajouter le résultant des forces d'inertie d'entraînement et des forces de Coriolis
+    \item TMC reste valable à condition d'ajouter le résultant des moments des forces d'inertie d'entraînement et de Coriolis
+    \begin{itemize}
+        \item En général, le résultant des moments des forces d'inertie n'est pas le moment de la force résultante
+        \item Cas particulier de $\mathcal{R}'$ en translation par rapport à $\mathcal{R}$ - $\forall i, \vec{a_e}(P_i) = \vec{a_{\repr}(G)}$ donc $\vec{M}_{O', ie} = \overrightarrow{O'G}\wedge \vec{F_{ie}}$
+        \item Dans un référentiel barycentrique, $O' = G$ donc $\vec{M}_{O', ie} = \vec{0}$
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Référentiel terrestre}
+
+\begin{itemize}
+    \item On considère $\mathcal{R}_T$ la référentiel liée à la Terre, en rotation supposée uniforme autour d'un axe supposé fixe dans $\mathcal{R}_{\text{géo}}$ (supposé galiléen)
+    \item Sinon, on considère $\mathcal{R}_{\text{géo}}$ en translation circulaire autour d'un axe fixe dans $\mathcal{R}_H$ héliocentrique (supposé galiléen) 
+    \item Jour sidéral - $\frac{1}{T_{\text{sid}}} = \frac{1}{T_{\text{an}}} + \frac{1}{T_{\text{sol}}}$ [Démonstration - $\frac{2 \pi}{T_{\text{sid}}} \vec{e_z} = \vec{\Omega}_{\mathcal{R}_T / \mathcal{R}_{\text{géo}}} = \vec{\Omega}_{\mathcal{R}_T / \mathcal{R}'} + \vec{\Omega}_{\mathcal{R}' / \mathcal{R}_H} + \vec{\Omega}_{\mathcal{R}_H / \mathcal{R}_{\text{géo}}} = (\frac{2 \pi}{T_{\text{sol}}} + \frac{2 \pi}{T_{\text{an}}})\vec{e_z} + \vec{0}$]
+    \item Champ de pesanteur terrestre - $\vec{g} = \vec{g_T} + \omega^2 \overrightarrow{HM}$ (tient compte de l'effet de $\vec{F_{ie}}$)
+    \begin{itemize}
+        \item Le terme centrifuge represente au plus $\approx 0,3 \%$ du terme de champ de gravitation
+        \item Le sens de $\vec{g}$ est dévié par $\approx 2 \times 10^{-3} \text{ rad}$ à $\lambda = 45 \degree$
+    \end{itemize}
+    \item $\vec{F_{ic}}$ dévie les trajectoires
+    \begin{itemize}
+        \item Pour des mouvement horizontaux, $\vec{F_{ic}}$ dévie les trajectoires vers le droit au hémisphère nord, et vers la gauche au hémisphère sud
+        \item Pour une chute verticale, $\vec{F_{ic}}$ dévie la trajectoire vers l'est
+    \end{itemize}
+    \item $\vec{F_{ic}}$ négligeable sauf dans les cas des vitesse très élevées où des expériences très longues
+    \item Méthode pour $\vec{F_{ic}}$ - méthode par pertubation
+    \begin{enumerate}
+        \item Calculer la trajectoire en négligeant $\vec{F_{ic}}$
+        \item Caluler $\vec{F_{ic}}$ à partir de la trajectoire non-perturbée
+        \item Recalculer la trajectoire avec l'expression de $\vec{F_{ic}}$ trouvée
+    \end{enumerate}
+\end{itemize}
 
 \section{Énergie}
 \subsection{Puissance}
@@ -959,6 +990,46 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
 \noindent Pour un système $\mathcal{S}$ indéformable en rotation autour d'un axe $\Delta$ fixe dans $\mathcal{R}$
 \[ E_{c \repr} = \frac{1}{2} J_{\Delta}(\mathcal{S}) \dot{\theta}^2 \]
 
+\subsection{Énergie potentielle}
+Une force est dérivante d'une énergie potentielle si son travail est indépendant du chemin suivi
+\[ \delta W_{\repr} = F \cdot \dd \overrightarrow{OM} = -\dd E_p \]
+\[ \vec{F} = - \grad E_p \]
+
+\subsection{Énergie mécanique}
+\[ E_{m\repr} = E_{c\repr} + \sum_i E_{p, i \repr} \]
+\[ \dd E_{m\repr} = \sum_k \delta W_{\repr}(\vec{F_k}) \]
+
+\noindent $\vec{F_k}$ sont des forces non-conservatives \\
+
+\noindent En dérivant, on obtient l'équation du mouvement, donc le théorème de l'énergie mécanique est l'intégrale première du mouvement
+
+\noindent Un mouvement est possible uniquement si $E_{m\repr} \geq E_{p \text{ tot}}$ car $E_{c\repr} \geq 0$.
+\begin{itemize}
+    \item Position d'équilibre - les extrema d'énergie potentielle
+    \item Système à l'équilibre - la vitesse et l'accélération sont nulles 
+    \begin{itemize}
+        \item Équilibre stable - quand on écart le système de sa poition d'équilibre, il revient vers sa position d'équilibre - énergie potentielle est minimale et $ \frac{\dd E_p(x_{\text{eq}})}{\dx} > 0 $
+        \item Équilibre instable - quand on écart le système de sa position d'équilibre, il s'en éloigne - énergie potentielle est maximale et $ \frac{\dd E_p(x_{\text{eq}})}{\dx} < 0 $
+    \end{itemize}
+    \item Avec un développement limité en $x_{\text{eq}}$ de à l'ordre 1 de $F$ (ou à l'ordre 2 de $E_p$), on obtient les expressions générales pour un système au voisinage d'une position d'équilibre
+    \begin{itemize}
+        \item Équilibre stable - tout système conservatif se comporte comme un oscillateur harmonique de $ \omega_0 = \sqrt{\frac{1}{m}\frac{\dd ^2 E_p(x_{\text{eq}})}{\dx^2}} $
+        \item Équilibre instable - le système s'éloigne selon une équation exponentielle 
+    \end{itemize}
+    \item État lié - mouvement possible entre deux points d'arrêts
+    \item État de diffusion - un seul point de reboussement. Si le système approche et rebousse le chemin, il ne revient plus
+    \item Barrière d'énergie potentielle - limite le mouvement entre 2 états possibles
+\end{itemize}
+
+\subsection{Puissances des forces d'inertie}
+
+\begin{itemize}
+    \item Les théorèmes énergétiques s'écrit de la même manière à condition de considérer les puissances des forces d'inertie
+    \item $\mathcal{P}_{\repr '}(\vec{F_{ic}}) = 0$
+    \item Cas de $\mathcal{R}'$ en translation rectilinge uniformément accélérée - $\vec{F_{ie}}$ dérive d'un potentiel $E_{p,ie} = max$ ($x$ selon la direction de l'accélération, signe à vérifier)
+    \item Cas de $\mathcal{R}'$ en rotation uniforme autour d'un axe fixe $\Delta$ - $\vec{F_{ie}}$ dérive d'un potentiel $E_{p,ie} = -\frac{1}{2}m\Omega_{\mathcal{R}'/\mathcal{R}}r^2$
+\end{itemize}
+
 \section{Potrait de phase}
 \begin{itemize}
     \item Plan de phase - $(x, v)$ avec l'état du système représenté par $(x(t), v(t))$
@@ -983,7 +1054,8 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
 \begin{enumerate}
     \item Définir le système (point matérial / système de points) et les degrés libertés
     \item Définir le référentiel (galiléen ou non)
-    \item Bilan des actions (forces, moments de forces) - dans un système de coordonnées choisi
+    \item Analyse cinématique (degrés de liberté et système de coordonnées choisi)
+    \item Bilan des actions (forces, moments de forces) - dans le système de coordonnées choisi
     \item Résolution à l'aide d'une loi 
     \begin{itemize}
         \item Principe fondamental de la dynamique / Théorème du quantité de mouvement
@@ -991,7 +1063,6 @@ Pour un déplacement fini de $M_1$ à $M_2$ suivant un chemin $\Gamma_{1 \righta
         \item Théorème du moment cinétique
     \end{itemize}
 \end{enumerate}
-
 
 \section{Forces particulières}
 \subsection{Force de Lorentz}
