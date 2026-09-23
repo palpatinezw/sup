@@ -1,0 +1,59 @@
+\documentclass[]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{titlesec}
+\usepackage[margin=1in]{geometry}
+
+\input{../../headers.tex}
+
+\setlength{\emergencystretch}{3em}
+\hbadness=10000
+
+\title{Demonstration de cours semaine 1}
+\author{Huang Ziwen}
+\date{2026-2027 PC*}
+
+\begin{document}
+
+\section{Caractérisation de diagonalisabilité}
+
+Soit $E$ un K-ev de dimension finie, $u \in \mathcal{L}(E)$. \\
+
+\underline{$ u \text{ est diagonalisable} \iff \exists P \in \mathbb{K}[x] \text{ scindés à racines simples tq } P(u) = 0 $} \\
+
+\begin{itemize}
+    \item $\boxed{\implies}$
+    
+    Soit $\mathcal{B}$ une base de diagonalisation de $u$, ($\lambda_1, \dots, \lambda_p$) les valeurs propres distincts de $u$. $\mat_{\mathcal{B}}(u) = \text{diag}(\lambda_1, \dots, \lambda_1, \lambda_2, \dots, \lambda_p, \dots, \lambda_p)$. \\
+
+    Pour $P \in \mathbb{K}[X]$, $\mat_{\mathcal{B}}(P(u)) = P(\mat_{\mathcal{B}}(u)) = \text{diag}(P(\lambda_1), \dots, P(\lambda_p))$\\
+
+    Donc $P = \prod_{i=1}^{p} (X-\lambda_i)$ convient - $\mat_{\mathcal{B}}(P(u)) = P(\mat_{\mathcal{B}}(u)) = \text{diag}(0, \dots, 0)$ alors $P(u) = 0$
+
+    \item $\boxed{\impliedby}$
+    
+    Soit $P = \prod_{i=1}^p(X-\alpha_i) \in \mathbb{K}[X]$ un polynôme annulateur de $u$, avec les $(\alpha_i)_{i \in \nint{1}{p}}$ deux à deux distincts. \\
+    
+    Alors $\prod_{i=1}^p(u-\alpha_i \text{Id}_E) = 0$. \\
+
+    Soit $(L_1, \dots, L_p)$ la famille des polynôme interpolateurs de Lagrange associée à $(\alpha_i, \dots, \alpha_p)$. 
+
+    \begin{align*}
+        L_i &= \frac{\prod_{k=1, k \neq i}(X - \alpha_k)}{\prod_{k=1, k \neq i}(\alpha_i - \alpha_k)} \\
+        (X-\alpha_i)L_i &= \frac{\prod_{k=1}(X - \alpha_k)}{\prod_{k=1, k \neq i}(\alpha_i - \alpha_k)} = \frac{P}{\prod_{k=1, k \neq i}(\alpha_i - \alpha_k)}
+    \end{align*}
+
+    En $u$,
+    \[(u - \alpha_i \text{Id}_E) \circ L_i (u) = \frac{P(u)}{\prod_{k=1, k \neq i}(\alpha_i - \alpha_k)} = 0\]
+
+    Donc $\text{Im } L_i(u) \subset \ker (u-\alpha_i \text{Id}_E) = E_{\alpha_i}(u)$. \\
+
+    Or, par définition, $1 = \sum_{i=1}^{p} L_i$ d'où $\text{Id}_E = \sum_{i=1}^{p} L_i(u)$. En particulier, $\forall x \in E, x = \sum_{i=1}^{p} L_i(u)(x)$ avec les $L_i(u)(x) \in E_{\alpha_i}(u)$. \\
+
+    Donc $E \subset \sum_{i=1}^p E_{\alpha_i}(u)$. Avec certains $E_{\alpha_i}$ qui sont éventuellement réduit à 0 ($\alpha_i \not \in \text{Sp}(u)$), $E \subset \bigoplus_{i=1, \alpha_i \in \text{Sp}(u)}^p E_{\alpha_i}(u)$, donc $E = \bigoplus_{i=1, \alpha_i \in \text{Sp}(u)}^p E_{\alpha_i}(u)$
+\end{itemize}
+
+\end{document}

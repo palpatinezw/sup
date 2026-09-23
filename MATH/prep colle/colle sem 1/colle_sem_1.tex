@@ -1,0 +1,286 @@
+\documentclass[]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{titlesec}
+\usepackage[margin=1in]{geometry}
+
+\input{../../../headers.tex}
+
+\setlength{\emergencystretch}{3em}
+\hbadness=10000
+
+\title{Demonstration de cours semaine 1}
+\author{Huang Ziwen}
+\date{2026-2027 PC*}
+
+\begin{document}
+
+\section{Théorème du rang (forme géométrique)}
+
+Soit $E \et F$ des K-evs, $u \in \mathcal{L}(E, F)$ et $E = \ker u \oplus E'$, alors \underline{$u$ induit un isomorphisme de $E'$ sur $\text{Im } u$} \\
+
+Soit $\tilde{u} : E' \rightarrow \text{Im } u, x \mapsto u(x)$. \\
+
+$\tilde{u}$ est bien défini et linéaire. 
+
+\begin{itemize}
+    \item $\ker \tilde{u} = \ker u \cap E' = \{0\}$ donc $\tilde{u}$ est injective
+    \item Soit $y \in \text{Im}(u)$. Alors $\exists x \in E$ tq $u(x) = y$. \\
+    
+    Comme $E = \ker u \oplus E'$, fixons $x_0 \in \ker u, x' \in E'$ tq $x = x_0 + x'$. 
+
+    \[ y = u(x) = u(x_0 + x') = u(x_0) + u(x') = 0 + u(x') = \tilde{u}(x') \]
+
+    Donc $\tilde{u}$ est surjective
+\end{itemize}
+
+Donc $u$ induit un isomorphisme de $E'$ sur $\text{Im } u$. 
+
+\section{Définition d'un projecteur}
+
+Soit $p \in \mathcal{L}(E)$. $p$ est un projecteur si \underline{$p^2 = p$}. \\
+
+\underline{$E = \ker p \oplus \text{Im }p$.}
+
+\begin{itemize}
+    \item Montrons $E = \ker p + \text{Im }p$ \\
+    
+    On a $x = p(x) + (x - p(x))$. $p(x) \in \text{Im }p$. \\
+
+    $p( x - p(x) ) = p(x) - p^2(x) = p(x) - p(x) = 0$, donc $(x-p(x)) \in \ker p$. \\
+
+    Donc $E = \ker p + \text{Im }p$
+    \item Montrons que la somme est directe. \\
+    
+    Soit $y \in \ker p \cap \text{Im }p$. Alors $\exists x \in E$ tq $y = p(x)$.
+
+    \[ 0 = p(y) = p^2(x) = p(x) = y \]
+
+    Donc $y = 0$ d'où $\ker p \cap \text{Im }p \subset \{0\}$. La somme est directe
+\end{itemize}
+
+\underline{$s = 2p - \text{Id}$ est une symétrie.} 
+
+\[ s^2 = (2p - \text{Id})\circ(2p - \text{Id}) = 4p^2 - 2p - 2p + \text{Id} = 4p - 4p + \text{Id} = \text{Id} \]
+
+\section{Définition d'une somme directe}
+
+Soit $(E_i)_{i \in I}$ une famille finie de sous-espaces vectoriels de $E$. Les $E_i$ sont en somme directe si \underline{$\forall x \in \sum_{i \in I} E_i$, la décomposition $x = \sum_{i \in I} x_i$ avec $(x_i)_{i \in I} \in \prod_{i \in I} E_i$ est unique}. \\
+
+\underline{Les $E_i$ sont en somme directe $\iff \forall (x_i)_{i \in I} \in \prod_{i \in I} E_i, (\sum_{i \in I} x_i = 0) \implies (\forall i \in I, x_i = 0)$}. \\
+
+Posons 
+
+\begin{align*}
+    \Phi: \prod_{i \in I} E_i \rightarrow & \sum_{i \in I} E_i \\
+    (x_i)_{i \in I} \mapsto & \sum_{i \in I} x_i
+\end{align*}
+
+$\Phi$ est linéaire et surjective.
+
+\[ \Phi \text{ est un isomorphisme} \iff \Phi \text{ est injective} \iff \forall x \in \sum_{i \in I} E_i, \exists ! (x_i)_{i \in I} \in \prod_{i \in I} E_i \ligneh x = \sum_{i \in I} x_i\]
+
+Donc les $E_i$ sont en somme directe $\iff \Phi $ est un isomorphisme. Or, $\Phi $ est un isomorphisme $\iff \Phi$ est injective $\iff \ker \Phi = \{0\}$. D'où
+
+\[ \text{Les } E_i \text{ sont en somme directe} \iff \forall (x_i)_{i \in I} \in \prod_{i \in I} E_i, (\sum_{i \in I} x_i = 0) \implies (\forall i \in I, x_i = 0) \]
+
+\underline{$\dim(\sum_{i \in I}E_i) \leq \sum_{i \in I} \dim E_i$} \\
+
+Comme $\Phi$ est surjective, $\dim(\sum_{i \in I}E_i) = \rg \Phi$. \\
+
+Par théorème du rang, $\rg \Phi \leq \dim (\prod_{i \in I} E_i) = \sum_{i \in I} \dim E_i$. D'où $\dim(\sum_{i \in I}E_i) \leq \sum_{i \in I} \dim E_i$ \\
+
+\underline{$\dim(\sum_{i \in I}E_i) = \sum_{i \in I} \dim E_i \iff $ les $E_i$ sont en somme directe} \\
+
+\[ \dim(\sum_{i \in I}E_i) = \sum_{i \in I} \dim E_i \iff \Phi \text{ est un isomorphisme} \iff \text{les } E_i \text{ sont en somme directe} \]
+
+\section{$\ker u \et \text{Im } u$ stables par $v$}
+
+Soit $(u, v) \in \mathcal{L}(E)^2$ tq $u \et v$ commutent. \\
+
+\underline{$\ker u$ est stable par $v$.} \\
+
+Soit $x \in \ker u$. $u(x) = 0$
+
+\[ 0 = v(u(x)) = u(v(x)) \]
+
+Donc $v(x) \in \ker u$ \\
+
+\underline{$\text{Im } u$ est stable par $v$.} \\
+
+Soit $y \in \text{Im } u$. Fixons $x \in E$ tq $y = u(x)$.
+
+\[ v(y) = v(u(x)) = u(v(x)) \in \text{Im } u \]
+
+Donc $v(y) \in \text{Im } u$ \\
+
+En particulier, $u$ commute avec $P(u)$ donc \underline{$\ker P(u) \et \text{Im } P(u)$ sont stables par $u$}
+
+\section{$F$ un ssev stable par $u$}
+
+Soit $E$ un K-ev de dimension $n$, $u \in \mathcal{L}(E)$, $F$ un ssev de $E$ de dimension $p$ stable par $u$. Soit $\mathcal{B} = (e_i)_{i \in \llbracket 1, n \rrbracket}$ une base adaptée à $F$. 
+
+\[ \mat_{\mathcal{B}}(u) = \begin{pmatrix}
+    A & B \\
+    (0) & C
+\end{pmatrix} \]
+
+En particulier, $A = \mat_{\mathcal{B}'}(u_F)$ avec $\mathcal{B}' = (e_i)_{i \in \llbracket 1, p \rrbracket}$ \\
+
+\underline{$ \begin{vmatrix}
+    A & B \\
+    (0) & C
+\end{vmatrix} = \det A \times \det C$}
+
+\[ \begin{pmatrix}
+    A & B \\
+    (0) & C
+\end{pmatrix} = \begin{pmatrix}
+    I_p & (0) \\
+    (0) & C
+\end{pmatrix} \times \begin{pmatrix}
+    A & B \\
+    (0) & I_q
+\end{pmatrix} \]
+
+$\begin{vmatrix}
+    I_p & (0) \\
+    (0) & C
+\end{vmatrix} = \det C$ en développant par rapport aux $p$ premières colonnes. \\
+
+$\begin{vmatrix}
+    A & B \\
+    (0) & I_q
+\end{vmatrix} = \det A$ en développant par rapport aux $q$ dernières lignes. \\
+
+D'où $ \begin{vmatrix}
+    A & B \\
+    (0) & C
+\end{vmatrix} = \det A \times \det C$
+
+\section{Trace : définitions et propriétés}
+
+\begin{align*} 
+    \tr : \mathcal{M}_n(\mathbb{K}) \rightarrow & \mathbb{K} \\
+    A \mapsto & \sum_{i=1}^n [A]_{i, i} 
+\end{align*}
+
+La trace est une \underline{forme linéaire}. \\
+
+Soit $A = (a_{i, j})_{(i, j) \in \llbracket 1, n \rrbracket \times \llbracket 1, p \rrbracket} \in \mathcal{M}_{n, p}(\mathbb{K}), B = (b_{i, j})_{(i, j) \in \llbracket 1, p \rrbracket \times \llbracket 1, n \rrbracket} \in \mathcal{M}_{p, n}(\mathbb{K})$. \\
+
+\underline{$\tr (AB) = \tr (BA)$} \\
+
+\[ \tr (AB) = \sum_{i = 1}^{n} (\sum_{j = 1}^{p} a_{i, j} b_{j, i}) = \sum_{j = 1}^{p} \sum_{i = 1}^{n} b_{j, i} a_{i, j} = \tr(BA) \]
+
+Soit $A \in \mathcal{M}_n(\mathbb{K}), P \in \text{GL}_n(\mathbb{K})$. \underline{$\tr(P^{-1}AP) = \tr A$}
+
+\[ \tr(P^{-1}AP) = \tr((P^{-1}A)P) = \tr(PP^{-1}A) = \tr A \]
+
+\section{Polynômes de Lagrange}
+
+Soit $n \in \mathbb{N}^*, a = (a_i)_{i \in \llbracket 1, n \rrbracket} \in \mathbb{K}^n$. \underline{$\forall i \in \llbracket 1, n \rrbracket, L_i$ est l'unique polynôme tel que $L_i(a_j) = \delta_{i, j}$}.
+
+\[ L_i = \frac{\prod_{j=1, j\neq i}^{n} (X-a_j)}{\prod_{j=1, j\neq i}^{n} (a_i-a_j)} \]
+
+\underline{$(L_i)_{i \in \llbracket 1, n \rrbracket}$ est une base de $\mathbb{K}_{n-1}[X]$}.\\
+
+Soit $(\lambda_1, \dots , \lambda_n) \in \mathbb{K}^n$ tq $\sum_{i=1}^n \lambda_i L_i = 0$. En particulier, $\forall k \in \nint{1}{n}$, 
+
+\[ \sum_{i=1}^{n}\lambda_i L_i(a_k) = \sum_{i=1}^{n}\lambda_i \delta_{i, k} = \lambda_k \]
+
+Donc $\forall k \in \nint{1}{n}, \lambda_k = 0$. \\
+
+$(L_i)_{i \in \llbracket 1, n \rrbracket}$ est libre maximale dans $\mathbb{K}_{n-1}[X]$, donc elle est une base. \\
+
+\underline{$\forall P \in \mathbb{K}_{n-1}[X], P = \sum_{i = 1}^{n} P(a_i)L_i$}. \\
+
+Soit $P \in \mathbb{K}_{n-1}[X]$. Notons $(\lambda_i)_{i \in \nint{1}{n}}$ ses coordonnées dans la base $(L_i)_{i \in \llbracket 1, n \rrbracket}$. \\
+
+$\forall k \in \nint{1}{n}$,
+
+\[ P(a_k) = \sum_{i=1}^{n} \lambda_i L_i(a_k) = \sum_{i=1}^{n} \lambda_i \delta_{i, k} = \lambda_k \]
+
+Donc $\forall k \in \nint{1}{n}$, $\lambda_k = P(a_k)$. Alors $P = \sum_{i = 1}^{n} P(a_i)L_i$
+
+\section{Déterminant de Vandermonde}
+
+Soit $n \in \mathbb{N}^*, (a_1, \dots, a_n) \in \mathbb{K}^n$. 
+
+\[ V(a_1, \dots, a_n) = \begin{vmatrix}
+    1 & a_1 & \dots & a_1^{n-1} \\
+    1 & a_2 & \dots & a_2^{n-1} \\
+    \vdots & \vdots &  & \vdots \\
+    1 & a_n & \dots & a_n^{n-1} \\
+\end{vmatrix} \]
+
+\underline{$V(a_1, \dots, a_n) = \prod_{1 \leq i < j \leq n} (a_j - a_i)$} \\
+
+Procédons par récurrence sur $n$. $\forall n \in \mathbb{N}^*$, $H_n$:``$\forall (a_1, \dots, a_n) \in \mathbb{K}^n, V(a_1, \dots, a_n) = \prod_{1 \leq i < j \leq n} (a_j - a_i)$''.
+
+\begin{itemize}
+    \item Initialisation : pour $n = 1$, $\begin{vmatrix}
+        1
+    \end{vmatrix} = 1$
+    \item Hérédité : soit $n \in \mathbb{N}^*$ tq $H_n$. Montrons $H_{n+1}$ \\
+    
+    Soit $(a_1, \dots, a_{n+1}) \in \mathbb{K}^{n+1}$
+    \begin{itemize}
+        \item Si $\exists (p, q) \in \nint{1}{n+1}^2$ tq $p \neq q \et a_p = a_q$, la matrice possède 2 lignes identiques. \\
+        
+        Alors $V(a_1, \dots, a_{n+1}) = 0 = \prod_{1 \leq i < j \leq n} (a_j - a_i)$ \\
+
+        \item Sinon, les $(a_1, \dots, a_{n+1})$ sont 2 à 2 distincts. \\
+        
+        Considérons $f:x \mapsto V(a_1, \dots, a_n, x) = \begin{vmatrix}
+            1 & a_1 & \dots & a_1^n \\
+            1 & a_2 & \dots & a_2^n \\
+            \vdots & \vdots &  & \vdots \\
+            1 & a_n & \dots & a_n^n \\
+            1 & x & \dots & x^n \\
+        \end{vmatrix}$ \\
+
+        En développant suivant la dernière ligne, $f$ est une fonction polynomiale de degré $\leq n$. Son coefficient dominant $\alpha = \begin{vmatrix}
+            1 & a_1 & \dots & a_1^{n-1} \\
+            1 & a_2 & \dots & a_2^{n-1} \\
+            \vdots & \vdots &  & \vdots \\
+            1 & a_n & \dots & a_n^{n-1} \\
+        \end{vmatrix} = V(a_1, \dots, a_n)$. \\
+
+        Or, $\forall k \in \nint{1}{n}, f(a_k) = 0$ car la matrice aurait 2 lignes identiques. On a donc toutes les $n$ racines de $f$. \\
+
+        Donc $\forall x \in \mathbb{K}, f(x) = \alpha \prod_{i=1}^{n}(x-a_i)$. En particulier, 
+
+        \begin{align*}
+            V(a_1, \dots, a_{n+1}) &= f(a_{n+1}) \\
+            &= V(a_1, \dots, a_n) \prod_{k=1}^{n}(a_{n+1}-a_k) \\
+            &= \prod_{1 \leq i < j \leq n} \prod_{k=1}^{n} (a_j - a_i) (a_{n+1}-a_k) \\ 
+            &= \prod_{1 \leq i < j \leq n+1} (a_j - a_i)
+        \end{align*} 
+    \end{itemize}
+\end{itemize}
+
+\section{Polynômes d'endomorphismes et de matrices}
+
+Soit $E$ un K-ev, $u \in \mathcal{L}(E), P = \sum_{k} a_k X^k \in \mathbb{K}[X]$. \\
+
+\underline{$P(u) = \sum_{k} a_k u^k$} \\
+
+$P \mapsto P(u)$ est \underline{linéaire} et compatible avec la composition \underline{$\forall (P, Q) \in \mathbb{K}[X]^2, (PQ)(u) = P(u) \circ Q(u)$} (morphisme d'algèbre). \\
+
+Soit $Q = \sum_{i} b_i X^i \in \mathbb{K}[X], k \in \mathbb{N}$.
+
+\begin{align*}
+    X^kQ(u) &= (\sum_{i} b_i X^{i+k}(u)) \\
+    &= \sum_{i} b_i u^{i+k} \\
+    &= u^k \circ (\sum_{i} b_i u^i)
+\end{align*}
+
+Soit $P = \sum_{k} a_k X^k \in \mathbb{K}[X]$. Alors $PQ = \sum_{k} a_k X^kQ$
+
+\[ PQ(u) = \sum_{k}a_k u^k \circ Q(u) = P(u) \circ Q(u) \]
+
+\end{document}

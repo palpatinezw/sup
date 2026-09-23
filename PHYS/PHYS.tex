@@ -949,6 +949,17 @@ Dans un réferentiel $\mathcal{R}'$ non-galiléen
     \end{enumerate}
 \end{itemize}
 
+\subsubsection{Théorie statique des marées}
+On considère une particule d'eau océanique à l'équilibre dans $\mathcal{R}_T$. La référentiel d'étude est $\mathcal{R}_{\text{geo}}$ en translation circulaire uniforme par rapport à $\mathcal{R}_H$ supposé galiléen. En appliquant le TQM dans $\mathcal{R_H}$ au particule puis dans $\mathcal{R}_{\text{geo}}$ à la Terre (pour déterminer $\vec{F}_{ie}$ dans $\mathcal{R_H}$), on obtient
+
+\[ \vec{0} = \vec{F_{\text{div}}} + m\vec{g} + m \left [ \sum_{a} (\vec{g_a}(M) - \vec{g_a}(T))  \right ] \]
+
+\begin{itemize}
+    \item $m \left [ \sum_{a} (\vec{g_a}(M) - \vec{g_a}(T))  \right ]$ est le terme des marées
+    \item En considérant les 2 points de la Terre où le terme des marées est le plus important, l'effet maximal d'un astre $a$ - $g_{d_\text{max}} = \frac{2GM_a R_T}{D_a^3}$
+    \item On a la formation des bourrelets océaniques
+\end{itemize}
+
 \section{Énergie}
 \subsection{Puissance}
 \[ \mathcal{P}_{\repr}(\vec{F}(M)) =  \vec{F}(M) \cdot \vec{v}_{\repr}(M) \]
@@ -1260,27 +1271,6 @@ Pour $K$ espèces nomléculaires sous $\phi$ phases distinctes,
     \end{itemize}
 \end{itemize}
 
-\section{Mécanique des fluides}
-
-\subsection{Force volumique}
-\[ \vec{f_p} = \frac{\dd^3 \vec{F_p}}{\dd^3 \tau_M} = - \grad P \]
-\begin{itemize}
-    \item C'est une force VOLUMIQUE (force par volume mésoscopique)
-    \item Pour une fluide au repos dans un référentiel galiléen, $\rho (M) \vec{g} - \grad P = \vec{0}$
-\end{itemize}
-
-\subsection{Fluide incompressible et homogène}
-Pour un fluide incompressible et homogène, à l'équilibre thermodynamique local au repos dans le référentiel $R$ galiléen dans un champ de pesanteur $\vec{g}$ uniforme selon $-\vec{e_z}$
-
-\[ P(z) = P_0 - \rho g z \]
-
-\subsection{Pression atmosphèrique}
-Dans un atmosphère isotherme assimilable à un gaz parfait à l'équilibre thermodynamique local au repos dans le référentiel $R$ galiléen dans un champ de pesanteur $\vec{g}$ uniforme selon $-\vec{e_z}$
-
-\[ P(z) = P_0 e^{-\frac{M_{\text{mol}}gz}{RT}} = P_0 e^{-\frac{m_{\text{gaz}}gz}{kT}} \]
-
-\noindent [Démonstration - Avec la loi des gaz parfaits, $P = \rho \frac{RT}{M_{\text{mol}}} = \rho \frac{kT}{m_{\text{gaz}}} $]
-
 \section{Travail mécanique de la pression}
 \[ \delta W = - P_{\text{contact}} \dd V \]
 
@@ -1510,6 +1500,41 @@ Le cycle est réversible $ \iff \sum_k \frac{Q_k}{T_k} = 0 $ - égalité de Carn
 Avec $\alpha = \frac{V_{\max}}{V_{\min}}$ \\
 
 [Démonstration - Avec conservation de $TV^{\gamma - 1}$ pour les transformations adiabatiques et l'expression de rendement pour un moteur]
+
+\clearpage
+
+\chapter{Mécanique des fluides}
+
+\section{Définition}
+\begin{itemize}
+    \item Fluide - milieu qui peut s'écouler, ou un corp qui prend la forme du récipient qui le contient
+    \item Échelle microscopiques - milieu discontinu où on voir le déplacement des molécules et les quantités microscopiques
+    \begin{itemize}
+        \item La distance caractéristique - taille d'une molécule, distance intermoléculaire, ou libre parcours moyen
+        \item Libre parcours moyen - distance que parcours une molécule entre 2 chocs successifs ($\approx$ distance intermoléculaire pour un liquide, $0,3$ nm pour l'eau, $70$ nm pour l'air)
+    \end{itemize}
+\end{itemize}
+
+\section{Pression dans un fluide}
+
+\subsection{Force volumique}
+\[ \vec{f_p} = \frac{\dd^3 \vec{F_p}}{\dd^3 \tau_M} = - \grad P \]
+\begin{itemize}
+    \item C'est une force VOLUMIQUE (force par volume mésoscopique)
+    \item Pour une fluide au repos dans un référentiel galiléen, $\rho (M) \vec{g} - \grad P = \vec{0}$
+\end{itemize}
+
+\subsection{Fluide incompressible et homogène}
+Pour un fluide incompressible et homogène, à l'équilibre thermodynamique local au repos dans le référentiel $R$ galiléen dans un champ de pesanteur $\vec{g}$ uniforme selon $-\vec{e_z}$
+
+\[ P(z) = P_0 - \rho g z \]
+
+\subsection{Pression atmosphèrique}
+Dans un atmosphère isotherme assimilable à un gaz parfait à l'équilibre thermodynamique local au repos dans le référentiel $R$ galiléen dans un champ de pesanteur $\vec{g}$ uniforme selon $-\vec{e_z}$
+
+\[ P(z) = P_0 e^{-\frac{M_{\text{mol}}gz}{RT}} = P_0 e^{-\frac{m_{\text{gaz}}gz}{kT}} \]
+
+\noindent [Démonstration - Avec la loi des gaz parfaits, $P = \rho \frac{RT}{M_{\text{mol}}} = \rho \frac{kT}{m_{\text{gaz}}} $]
 
 \clearpage
 

@@ -2200,6 +2200,7 @@ On peut aussi développer suivant une colonne. \\
         \item $\tr (u) = \sum_{\lambda \in \text{Sp}(u)} \omega(\lambda) \lambda$
         \item $\det (u) = \prod_{\lambda \in \text{Sp}(u)} \lambda^{\omega(\lambda)}$
     \end{itemize}
+    \item Si $\chi_u$ admet $n$ racines distinctes, $u$ est diagnoalisable et $\forall \lambda \in \text{Sp}(u), \dim E_\lambda = 1$
 \end{itemize}
 
 \subsection{Diagonalisation}
@@ -2209,6 +2210,21 @@ On a les équivalences suivantes
     \item $E = \bigoplus_{\lambda \in \text{Sp}(u)}E_\lambda \iff \dim E = \sum_{\lambda \in \text{Sp}(u)} \dim E$
     \item $\iff \chi_u = \prod_{\lambda \in \text{Sp} (u)} (X-\lambda)^{\omega(\lambda)}$ ($\chi_u$ est scindé) et $\forall \lambda \in \text{Sp}(u), \dim E_\lambda = \omega(\lambda)$ 
     \item $\iff \mat_{\mathcal{B}}(u)$ est semblable est une matrice diagonale $\iff \exists \mathcal{B}'$ une base de $E$ tel que $\mat_{\mathcal{B}'}(u)$ est diagonale
+\end{itemize}
+
+\subsubsection{Propriétés}
+
+\begin{itemize}
+    \item $u$ est diagnoalisable $\iff$ $u$ admet un polynôme annulateur scindé à racines simples
+    \begin{itemize}
+        \item $u$ est diagnoalisable $\iff P = \prod_{\lambda \in \text{Sp}(u)}(X-\lambda)$ est annulateur
+    \end{itemize}
+    \item $u$ est diagonalisable $\iff \alpha u + \beta \text{Id}_E$ est diagonalisable
+    \item Les projecteurs sont diagonalisables avec $\text{Sp}(p) = \{0, 1\}$
+    \item Les symétries sont diagonalisables avec $\text{Sp}(s) = \{-1, 1\}$
+    \item Si $\dim E = \sum_{\lambda \in A} \dim E_\lambda$, alors $u$ est diagonalisable et $\text{Sp}(u) \subset A$
+    \item Si $u$ est diagonalisable, $F$ est stable par $u$, alors $u_F$ est diagonalisable
+    \item Pour $A$ est diagnoalisable, $A = PDP^{-1}$ avec $P=P_{\mathcal{B}_c \rightarrow \mathcal{B}_{\text{diag}}}$
 \end{itemize}
 
 \clearpage
