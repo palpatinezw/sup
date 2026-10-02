@@ -1,6 +1,7 @@
 \documentclass[oneside]{book}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
+\usepackage{esint}
 \usepackage{amssymb}
 \usepackage{textcomp}
 \usepackage{gensymb}
@@ -1144,9 +1145,15 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
 
 \section{Définitions}
 \begin{itemize}
+    \item Échelle microscopique - milieu discontinu où on voir le déplacement des molécules et les quantités microscopiques
+    \begin{itemize}
+        \item La distance caractéristique - taille d'une molécule, distance intermoléculaire, ou libre parcours moyen
+        \item Libre parcours moyen - distance que parcours une molécule entre 2 chocs successifs ($\approx$ distance intermoléculaire pour un liquide, $0,3$ nm pour l'eau, $70$ nm pour l'air)
+    \end{itemize}
+    \item Échelle macroscopique - échelle de expérience
     \item Échelle mésoscopique - un volume avec un grand nombre de molécules/atomes microscopiques, mais infinitésimal à l'échelle macroscopique
     \begin{itemize}
-        \item Particule de fluide - un volume infinitésimal à l'échelle mésoscopique
+        \item En notant $l$ la distance caractéristique microscopique, et $L$ la distance caractéristique macroscopique, $D$ la distance caractéristique mésoscopique vérifie $l \ll D \ll L$
     \end{itemize}
     \item Système
     \begin{itemize}
@@ -1505,23 +1512,44 @@ Avec $\alpha = \frac{V_{\max}}{V_{\min}}$ \\
 
 \chapter{Mécanique des fluides}
 
-\section{Définition}
+\section{Définitions}
 \begin{itemize}
     \item Fluide - milieu qui peut s'écouler, ou un corp qui prend la forme du récipient qui le contient
-    \item Échelle microscopiques - milieu discontinu où on voir le déplacement des molécules et les quantités microscopiques
+    \item Particule de fluide - un volume à l'échelde fluide à l'échelle mésoscopique
+    \item Approximation des milieux continus - possibilité de définir une échelle mésoscopique où on peut en un point M faire des calculs des valeurs moyennes sur une quantité très grandes d'entités microscopiques - ces grandeurs varient continuement à l'échelle macroscopique
+    \item Champ des vitesses euleriennes - la vitesse des particules élémentaires en des points $M$ à l'instant $t$ (variables d'espaces et de temps sont indépendantes)
+    \item Ligne de courant - une ligne de champ du champ des vitesses - en générale, les lignes de courants ne correspondent pas à la trajectoire
+    \item Tube de courant - l'ensemble des lignes de courant qui passe par un contour
+    \item Filet de courant - tube de courant qui s'appuie sur un contour élémentaire
+    \item Écoulement parfait - un écoulement pour lequel tous les phénomènes diffusives sont négligés
     \begin{itemize}
-        \item La distance caractéristique - taille d'une molécule, distance intermoléculaire, ou libre parcours moyen
-        \item Libre parcours moyen - distance que parcours une molécule entre 2 chocs successifs ($\approx$ distance intermoléculaire pour un liquide, $0,3$ nm pour l'eau, $70$ nm pour l'air)
+        \item la diffusion de la quantité de matière, donc la viscosité est négligée
+        \item On néglige les phénomènes irréversibles et les échanges de chaleur - toutes les particules subissent des transformations isentropiques
     \end{itemize}
+\end{itemize}
+
+\subsection{Conditions aux limites d'un écoulement}
+
+Pour solide-fluide, ou 2 fluides immiscibles
+\begin{itemize}
+    \item Condition d'impénétrabilité - $\vec{v_{\perp}}_1 = \vec{v_{\perp}}_2$
+    \item Condition de non-glissement - $\vec{v_{T}}_1 = \vec{v_{T}}_2$ - conséquence de la viscosité
+    \item Condition globale - $\vec{v}_1 = \vec{v}_2$
+\end{itemize}
+
+Pour 2 fluides immiscibles, on a les conditions limites dynamiques
+\begin{itemize}
+    \item Continuité de la pression - $P_1(M) = P_2(M)$
+    \item Continuité de la viscosité - $\dd^2 \vec{F}_{\text{vis}, 1\rightarrow\text{frontière}} = \dd^2 \vec{F}_{\text{vis}, \text{frontière}\rightarrow 2} $
 \end{itemize}
 
 \section{Pression dans un fluide}
 
-\subsection{Force volumique}
-\[ \vec{f_p} = \frac{\dd^3 \vec{F_p}}{\dd^3 \tau_M} = - \grad P \]
+\subsection{Force volumique de la pression}
+\[ \vec{f_p} = \frac{\dd^3 \vec{F_p}}{\dd^3 \tau} = - \grad P \]
 \begin{itemize}
     \item C'est une force VOLUMIQUE (force par volume mésoscopique)
-    \item Pour une fluide au repos dans un référentiel galiléen, $\rho (M) \vec{g} - \grad P = \vec{0}$
+    \item Pour une fluide au repos dans un référentiel galiléen, $\rho (M) \vec{g} - \grad P = \vec{0}$ (En référentiel non galiléen, il suffit d'ajouter $\vec{f_{ie}} = - \rho(M) \vec{a_e}(M)$)
 \end{itemize}
 
 \subsection{Fluide incompressible et homogène}
@@ -1529,12 +1557,116 @@ Pour un fluide incompressible et homogène, à l'équilibre thermodynamique loca
 
 \[ P(z) = P_0 - \rho g z \]
 
+En référentiel non-galiléen, 
+\begin{itemize}
+    \item $\mathcal{R'}$ en translation rectilinge uniformément accélérée par rapport à $\mathcal{R}_g$ - $ P(x,z) = P_0 - \rho a x - \rho g z $
+    \item $\mathcal{R'}$ en rotation uniforme par rapport à $\mathcal{R}_g$ - $P(r, z) = P_0 - \rho g z + \frac{1}{2}\rho \omega^2 r^2$
+\end{itemize}
+
 \subsection{Pression atmosphèrique}
 Dans un atmosphère isotherme assimilable à un gaz parfait à l'équilibre thermodynamique local au repos dans le référentiel $R$ galiléen dans un champ de pesanteur $\vec{g}$ uniforme selon $-\vec{e_z}$
 
 \[ P(z) = P_0 e^{-\frac{M_{\text{mol}}gz}{RT}} = P_0 e^{-\frac{m_{\text{gaz}}gz}{kT}} \]
 
 \noindent [Démonstration - Avec la loi des gaz parfaits, $P = \rho \frac{RT}{M_{\text{mol}}} = \rho \frac{kT}{m_{\text{gaz}}} $]
+
+\subsection{Poussée d'Archimède}
+Pour un objet dans un fluide, le résultant des forces de pression ($\vec{\Pi_a}$) reste inchangé en remplaçant l'objet par le fluide. Le nouveau système avec le fluide est à l'équilibre. 
+
+\section{Viscosité}
+
+\subsection{Force volumique de la force de viscosité}
+
+\[ \dd^3 \vec{f_{\text{vis}}} = \eta \Delta \vec{v} \]
+
+\begin{itemize}
+    \item $\Delta \vec{v}$ - opérateur laplacien
+    \item Pour un écoulement selon $x$, $\dd^2\vec{F}_{\text{dessus}\rightarrow\text{dessous}} = \eta \dd^2 S \frac{\partial v_x}{\partial y} \vec{e_x}$
+    \item Pour un cisaillement dans une dimension, $\dd^3 \vec{f}_{\text{vis}} =  \eta \frac{\partial^2 v_x}{\partial y^2} \vec{e_x}$
+\end{itemize}
+
+\subsection{Nombre de Reynolds}
+
+\[ R_e = \frac{\rho v L}{\eta} \]
+
+\begin{itemize}
+    \item Un nombre sans dimension caractérisant le mouvement du fluide autour d'un obstacle ou dans un conduit de dimension $L$
+    \item $R_e = \frac{\text{Qté de mvt transportée par convection}}{\text{Qté de mvt transportée par diffusion}}$
+    \item À $R_e$ faible, écoulement laminaire - différentes couches moléculaires glissent les unes sur les autres sans se mélanger
+    \item À $R_e$ important, écoulement turbulent - structure instable et chaotique
+    \item Si $R_e \gg 1$, l'écoulement est assimilable à un écoulement partfait.
+    \begin{itemize}
+        \item Couche limite - un écoulement réel n'est pas assimilable à un écoulement parfait dans une couche de faible épaisseur autour des parois solides dans laquelle les phénomènes de viscosité sont prédominantes.
+        \item $\delta = \frac{L}{\sqrt{R_e}}$
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Trainée d'un solide}
+\[ C_x = \frac{f_{\text{trainée}}}{\frac{1}{2}\rho S v^2} \]
+
+\begin{itemize}
+    \item $C_x$ coefficient de trainée qui dépend $R_e$
+    \item Pour $R_e < 1$, $C_x = \frac{24}{R_e}$ alors pour un solide sphérique, $\vec{f} = -6\pi \eta r \vec{v}$ (Cas général - $\vec{f} = - \alpha \eta L \vec{v}$)
+    \item Pour $2\times10^3 < R_e < 2\times10^5$, $C_x = C$ constant, alors pour un solide sphérique, $\vec{f} = - \frac{C}{2}\rho \pi r^2 v \vec{v}$ (Cas général - $\vec{f} = - \beta \rho S_{\text{app}} v\vec{v}$)
+\end{itemize}
+
+\subsection{Cinématique du fluide}
+
+\subsubsection{Caractérisation d'un écoulement}
+
+\[ \vec{v}(\overrightarrow{OM} + \dd \overrightarrow{OM}, t) = \vec{v}(\overrightarrow{OM}, t) + \vec{\Omega}\wedge \dd \overrightarrow{OM} + \vec{d} \]
+
+\begin{itemize}
+    \item Vecteur tourbillon - $\vec{\Omega} = \frac{1}{2} \rot \vec{v}$ - caractèrisation de la rotation locale
+    \item $\vec{d}$ caractérisation de la déformation locale
+    \item Dans un écoulement irrotationnel, on peut définir un potentiel des vitesses - $\vec{v} = \grad\phi$
+\end{itemize}
+
+\subsubsection{Dérivée partciulaire}
+
+\[ \frac{\Dd g}{\Dd t} = \lim_{\dt \rightarrow 0} \frac{g(\overrightarrow{OM} + \dd \overrightarrow{OM}, t + \dt) - g(\overrightarrow{OM}, t)}{\dt} = \frac{\partial g}{\partial t} + \bgrad{v} g \]
+
+\begin{itemize}
+    \item La limite quand $\dt \longrightarrow 0$ du taux d'accroissement de $g$ mésuré en suivant la particule de fluide qui passe en $M$ à $t$ et qui se déplace de $\dd \overrightarrow{OM} = \vec{v} \dt$
+    \item La dérivée particulaire du champ des vitesses - $\frac{\Dd \vec{v}}{\Dd t} = \lim_{\dt \rightarrow 0} \frac{\vec{v}(\overrightarrow{OM} + \dd \overrightarrow{OM}, t + \dt) - \vec{v}(\overrightarrow{OM}, t)}{\dt} = \frac{\partial \vec{v}}{\partial t} + \bgrad{v} \vec{v}$ - c'est le champ d'accélération eulerienne
+    \item $\text{div } \vec{v} = - \frac{1}{\mu} \frac{\Dd \mu}{\Dd t}$
+    \item $\text{div } \vec{v} = \frac{1}{\dd^3 \tau} \frac{\Dd (\dd^3 \tau)}{\Dd t}$
+\end{itemize}
+
+\subsubsection{Conservation de la masse}
+
+\[ \iiint_V \frac{\partial \mu}{\partial t} \dd^3 \tau + \oiint_S \vec{j} \cdot \dd^2 \vec{S} = 0 \]
+\[ \frac{\partial \mu}{\partial t} + \text{div}(\vec{j}) = 0 \]
+
+\begin{itemize}
+    \item Vecteur densite de courant de masse - $\vec{j} = \mu \vec{v}$
+    \item Débit massique - $D_m = \iint_S \vec{j} \cdot \dd^2\vec{S}$
+\end{itemize}
+
+\subsubsection{Écoulement stationnarie}
+
+Les champs de vitesses euleriennes, et des grandeurs macroscopiques sont indépendantes du temps
+
+\begin{itemize}
+    \item Les lignes de courant sont figé
+    \item Les lignes de courant et les trajectoires sont superposées
+    \item Le caractère stationnaire dépend du référentiel d'étude
+    \item $\frac{\partial g}{\partial t} = 0$ donc $\frac{\Dd g}{\Dd t} = \bgrad{v} g$
+    \item $\text{div } \vec{j} = 0$ - $\vec{j}$ est un flux conservatif
+    \item $\oiint_S = \vec{j} \cdot \dd^2 \vec{S} = 0$ - en particulier à travers tout tube de champ des vitesse, le débit massique est conservée. 
+\end{itemize}
+
+\subsubsection{Écoulement incompressible}
+
+\[ \frac{\Dd \mu}{\Dd t} = 0 \]
+
+\begin{itemize}
+    \item Un écoulement d'un fluide incompressible est incompressible
+    \item L'écoulement d'un gaz est supposé incompressible si la vitesse moyenne de l'écoulement est très petit devant la vitesse du son. 
+    \item $\text{div}(\vec{v}) = -\frac{1}{\mu} \frac{\Dd}{\Dd t} = 0$ - le champ des vitesse est un flux conservatif
+    \item Si les lignes de champ des vitesses se rapproche, $\|\vec{v}\|$ augmente. 
+    \item Si l'écoulement est irrotationnel, $\Delta \phi = 0$ (Équation de Laplace)
+\end{itemize}
 
 \clearpage
 
@@ -1759,6 +1891,13 @@ On définit le rapport de transformation
     \item Dérivée partielle et taux d'accroissement - $f(x+\dx) - f(x) = \frac{\partial f}{\partial x} dx$
     \item Dérivée partielle - $\dd f(x, y) = \frac{\partial f}{\partial x} \dx + \frac{\partial f}{\partial y} \dy$
     \item Calcul de période d'un oscillation quelconque - $T = 2 \int_{-x_0}^{x_0} \frac{1}{\dot{x}} \dx = 4 \int_{0}^{x_0} \frac{1}{\dot{x}} \dx$ [Intégration sur une demi-période / $\frac{1}{4}$-période avec $\dt = \frac{1}{\dot{x}} \dx$]
+\end{itemize}
+
+\section{Calculs astucieux}
+
+\begin{itemize}
+    \item Pour résoudre une equation différentielle en $x$, on peut penser à multiplier par $\dot{x}$
+    \item $\dt = \frac{\dx}{\dot{x}}$
 \end{itemize}
 
 \section{Représentation complexe}

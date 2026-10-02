@@ -7,18 +7,18 @@
 \usepackage{titlesec}
 \usepackage[margin=1in]{geometry}
 
-\input{../../headers.tex}
+\input{../../../headers.tex}
 
 \setlength{\emergencystretch}{3em}
 \hbadness=10000
 
-\title{Demonstration de cours semaine 1}
+\title{Demonstration de cours semaine 3}
 \author{Huang Ziwen}
 \date{2026-2027 PC*}
 
 \begin{document}
 
-\section{Caractérisation de diagonalisabilité}
+\section{Caractérisation des endomorphismes diagonalisables}
 
 Soit $E$ un K-ev de dimension finie, $u \in \mathcal{L}(E)$. \\
 
@@ -56,7 +56,13 @@ Soit $E$ un K-ev de dimension finie, $u \in \mathcal{L}(E)$. \\
 
     Donc $E \subset \sum_{i=1}^p E_{\alpha_i}(u)$. Avec certains $E_{\alpha_i}$ qui sont éventuellement réduit à 0 ($\alpha_i \not \in \text{Sp}(u)$), $E \subset \bigoplus_{i=1, \alpha_i \in \text{Sp}(u)}^p E_{\alpha_i}(u)$. \\
     
-    Finalement, $E = \bigoplus_{i=1, \alpha_i \in \text{Sp}(u)}^p E_{\alpha_i}(u)$. $u$ est diagnoalisable. 
+    Finalement, $E = \bigoplus_{i=1, \alpha_i \in \text{Sp}(u)}^p E_{\alpha_i}(u)$. $u$ est diagonalisable. 
 \end{itemize}
+
+Pour $F$ un ssev de $E$ stable par $u$ diagonalisable. Alors \underline{l'induit $u_F$ est diagonalisable.} \\
+
+$u$ est diagonalisable, alors fixons $P$ un polynôme annulateur de $u$ scindé à racines simples. \\
+
+$P(u) = 0$ et a fortiori, $P(u_F) = 0$. Alors $u_F$ est diagonalisable.  
 
 \end{document}

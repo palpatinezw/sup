@@ -145,25 +145,15 @@ L'inégalité stricte n'est pas une relation d'ordre (pas antisymétrique).
     \item $\max{A} = \sup{A} \iff \sup{A} \in A $
     \item Condition d'un max - toute partie non-vide et majorée de $\mathbb{Z}$ possède un maximum
     \item Si $A$ n'est pas majorée, $\sup{A} = +\infty$
+    \item Pour $t>0$, $\sup (tA) = t \sup A$
     \item Caractérisation epsilonesque - $ \begin{cases}
         \forall a \in A, a \leq M \\
         \forall \epsilon > 0, \exists a_0 \in A : m - \epsilon < a_0
     \end{cases} $
 \end{itemize}
 \subsubsection{Borne inférieure} 
-\begin{itemize}
-    \item En particulier un minorant
-    \item Le plus petit des minorants
-    \item Toute partie non-vide et minorée de $\mathbb{R}$ possède une borne supérieure
-    \item $\min{A} = \inf{A} \iff \inf{A} \in A $
-    \item Toute partie non-vide et minorée de $\mathbb{Z}$ possède un minimum
-    \item Si $A$ n'est pas minorée, $\inf{A} = -\infty$
-    \item Pour $ A \subset \mathbb{R}_+, \inf(A^2) = (\inf A)^2 $
-    \item Caractérisation epsilonesque - $ \begin{cases}
-        \forall a \in A, a \leq M \\
-        \forall \epsilon > 0, \exists a_0 \in A : a_0 < m - \epsilon
-    \end{cases} $
-\end{itemize}
+
+Le plus petit des minorants - propriétés symétriques à celles de la borne supérieure.
 
 \subsection{Partie entière}
 \[ \lfloor x \rfloor \leq x < \lfloor x \rfloor + 1 \]
@@ -1868,12 +1858,12 @@ Pour $A \in \mathcal{M}_{n, p}(\mathbb{K})$
     \item La nouvelle base exprimée dans l'ancienne base
     \item $ P_{\mathcal{B} \rightarrow \mathcal{B}'}^{-1} = P_{\mathcal{B}' \rightarrow \mathcal{B}} $
     \item Pour $X$ représentant $x \in E$, $ X' = P^{-1}X $ - Attention au $-1$
-    \item Pour $A$ représentant $u\in \mathcal{L}(E [\mathcal{B}, \mathcal{B'}], F [\mathcal{C}, \mathcal{C'}])$, $A'_{(\mathcal{B}', \mathcal{C}')} = P_{\mathcal{C}\rightarrow\mathcal{C}'}^{-1}A_{(\mathcal{B}, \mathcal{C})}P_{\mathcal{B}\rightarrow\mathcal{B}'}$
+    \item Pour $A$ représentant $u\in \mathcal{L}(E [\mathcal{B}, \mathcal{B'}], F [\mathcal{C}, \mathcal{C'}])$, $A'_{(\mathcal{B}', \mathcal{C}')} = P_{\mathcal{C}'\rightarrow\mathcal{C}}A_{(\mathcal{B}, \mathcal{C})}P_{\mathcal{B}\rightarrow\mathcal{B}'}$
 \end{itemize}
 
 \subsection{Relations entre matrices}
 \begin{itemize}
-    \item Matrices équivalentes (HP) - il existe des matrices inversibles $P$ et $Q$ tel que $B = QAP$
+    \item{} [HP] Matrices équivalentes - il existe des matrices inversibles $P$ et $Q$ tel que $B = QAP$
     \begin{itemize}
         \item $A \et B$ sont équivalentes $\iff A \et B$ représentent la même application linéaire
         \item Toute matrice de rang $r$ est équivalente à $J_r = \begin{pmatrix}
@@ -1900,7 +1890,7 @@ Pour $A \in \mathcal{M}_{n, p}(\mathbb{K})$
 
 \clearpage
 
-\section{Espaces préhilbertiens réels [sup 24]}
+\section{Espaces préhilbertiens réels [sup 24, spé IV]}
 \subsection{Définitions}
 \subsubsection{Produit scalaire}
 Toute forme bilinéaire, symétrique, définie et positive sur $E$. 
@@ -1923,12 +1913,25 @@ Toute application $N: E \rightarrow R_+$ qui vérifie
     \item Séparation - $N(x) = 0 \implies x = 0_E$
     \item Homogénéité - $N(\lambda x) = |\lambda| N(x)$
     \item Sous-additivité - $N(x+y) \leq N(x) + N(y)$
+    \item À valeurs dans $\mathbb{R}_+$
+\end{enumerate}
+
+\begin{itemize}
+    \item Norme associée au produit scalaire - $\|\cdot\| : x \mapsto \sqrt{\langle x, x \rangle}$ 
+    \item Vecteur unitaire - $\|x\| = 1$ - pour $x \neq 0$, $ \frac{x}{\|x\|} $ est unitaire
+\end{itemize}
+
+\subsubsection{Distance}
+Toute application $d : E^2 \rightarrow \mathbb{R}$ qui vérifie
+\begin{enumerate}
+    \item Séparation - $d(x, y) = 0 \iff x = y$
+    \item Symétrie - $d(x,y) = d(y, x)$
+    \item Inégalité triangulaire - $d(x, y) \leq d(x, z) + d(z, y)$
 \end{enumerate}
 
 \begin{itemize}
     \item Distance associée à une norme - $d: (x, y) \mapsto N(x-y)$
-    \item Norme associée au produit scalaire - $\|\cdot\| : x \mapsto \sqrt{\langle x, x \rangle}$ 
-    \item Vecteur unitaire - $\|x\| = 1$ - pour $x \neq 0$, $ \frac{x}{\|x\|} $ est unitaire
+    \item Il existe des distances pas associées à des normes
 \end{itemize}
 
 \subsubsection{Orthogonalité}
@@ -1996,8 +1999,7 @@ Pour $\| \cdot \|$ la norme associée à un produit scalaire
     \end{itemize}
     \item Tout espace euclidien admet une base orthonormée
     \item $\langle x, e_k \rangle$ sont les coordonnées de $x$ dans la base orthonormée $(e_1, \dots, e_n)$ - $ x = \sum_{k=1}^{n} \langle x, e_k \rangle e_k $
-    \item Produit scalaire - $ \langle x, y \rangle = \sum_{k=1}^{n} x_k y_k $
-    \item Norme - $ \|x\| = \sqrt{\sum_{k=1}^{n} x_k^2} $
+    \item On considère le produit scalaire canonique et sa norme associée
     \item Le théorème de la base adaptée et de la base incomplète s'applique pour des bases orthonormées en particulier
 \end{itemize}
 
@@ -2170,6 +2172,8 @@ On peut aussi développer suivant une colonne. \\
         \item $\overline{\lambda}$ est une valeur propre de $A$
         \item $E_{\overline{\lambda}} = \{ \overline{X} | X \in E_{\lambda} \}$
     \end{itemize}
+    \item Si la somme des chaque les lignes $ = s$, alors $s$ est une valeur propre avec $(1 \dots 1)$ un vecteur propre associé
+    \item Si la somme de toutes les colonnes $ = s$, alors $s$ est une valeur propre
 \end{itemize}
 
 \subsection{Polynôme caractéristique}
@@ -2218,6 +2222,7 @@ On a les équivalences suivantes
     \item $u$ est diagnoalisable $\iff$ $u$ admet un polynôme annulateur scindé à racines simples
     \begin{itemize}
         \item $u$ est diagnoalisable $\iff P = \prod_{\lambda \in \text{Sp}(u)}(X-\lambda)$ est annulateur
+        \item Il est souvent utile de considérer un polynôme annulateur de degré minimale
     \end{itemize}
     \item $u$ est diagonalisable $\iff \alpha u + \beta \text{Id}_E$ est diagonalisable
     \item Les projecteurs sont diagonalisables avec $\text{Sp}(p) = \{0, 1\}$
@@ -2225,6 +2230,116 @@ On a les équivalences suivantes
     \item Si $\dim E = \sum_{\lambda \in A} \dim E_\lambda$, alors $u$ est diagonalisable et $\text{Sp}(u) \subset A$
     \item Si $u$ est diagonalisable, $F$ est stable par $u$, alors $u_F$ est diagonalisable
     \item Pour $A$ est diagnoalisable, $A = PDP^{-1}$ avec $P=P_{\mathcal{B}_c \rightarrow \mathcal{B}_{\text{diag}}}$
+\end{itemize}
+
+\subsection{Trigonalisation}
+
+\[ \chi_u \text{ est scindé} \iff \exists \mathcal{B} \text{ une base telle que } \mat_{\mathcal{B}}(u) \text{ est triangulaire supérieure} \]
+
+\begin{itemize}
+    \item Toute endomorphisme d'un $\mathbb{C}$-ev de dimension finie est trigonalisable.
+    \item Toute matrice dans $\mathcal{M}_n(\mathbb{C})$ est semblable à une matrice triangulaire supérieure
+\end{itemize}
+
+\subsubsection{Théorème de Cayley-Hamilton}
+
+\[ \chi_u(u) = 0 \]
+
+[Démonstration - par reccurence pour $A \in \mathcal{M}_n(\mathbb{C})$, puis généraliser pour $\mathcal{M}_n(\mathbb{K})$ puis pour les endomorphismes]
+
+\subsubsection{Matrice de petite rang}
+
+Matrice de dimension 2
+\begin{itemize}
+    \item Nilpotente - semblable à $\begin{pmatrix}
+        0 & 1 \\ 0 & 0
+    \end{pmatrix}$
+    \item Non-diagonalisable - semblable à $\begin{pmatrix}
+        \lambda & 1 \\ 0 & \lambda
+    \end{pmatrix}$
+\end{itemize}
+
+Matrice de dimension 3
+\begin{itemize}
+    \item Nilpotente de rang 1 - semblable à $\begin{pmatrix}
+        0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0
+    \end{pmatrix}$
+    \item Nilpotente de rang 2 - semblable à $\begin{pmatrix}
+        0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0
+    \end{pmatrix}$
+    \item Non-diagonalisable (1 seule valeur propre) - semblable à $\begin{pmatrix}
+        \lambda & 1 & 0 \\ 0 & \lambda & 1 \\ 0 & 0 & \lambda
+    \end{pmatrix}$ ou $\begin{pmatrix}
+        \lambda & 1 & 0 \\ 0 & \lambda & 0 \\ 0 & 0 & \lambda
+    \end{pmatrix}$
+    \item Non-diagonalisable (2 valeurs propres distinctes) - semblable à $\begin{pmatrix}
+        \lambda & 1 & 0 \\ 0 & \lambda & 0 \\ 0 & 0 & \mu
+    \end{pmatrix}$
+\end{itemize}
+
+\subsubsection{[Classique] Ssevs stables}
+\begin{itemize}
+    \item Les ssevs stables par $u$ de dimension 1 sont des espaces propres 
+    \item $\chi_{u_F}$ divise $\chi_u$, il y a donc un nombre fini de possibilités pour $\chi_{u_F}$. $\chi_{u_F}(u_F) = 0$, alors $ F \subset \ker( \chi_{u_F}(u) )$. En cherchant $\ker( \chi_{u_F}(u) )$, on peut conclure par égalité des dimensions. 
+\end{itemize}
+
+\subsubsection{[HP] Caractérisation des endomorphismes nilpotentes}
+
+On a les équivalences
+\begin{enumerate}
+    \item $u$ est nilpotente
+    \item $\chi_u = X^n$
+    \item $\exists \mathcal{B}$ une base telle que $\mat_{\mathcal{B}}(u)$ est triangulaire supérieure stricte
+    \item $\forall k \in \nint{1}{n}, \tr (u^k) = 0$
+\end{enumerate}
+
+[Démonstration - $(1) \implies (2) \et (3)$ : on $\mathbb{C}$-trigonalise $u$ puis étudie les puissances. $(4) \implies (3)$ : on $\mathbb{C}$-trigonalise $u$ puis montre que la diagonale est nulle en traduisant les relations en équation matricielle avec une matrice de Vandermonde]
+
+\clearpage
+
+\section{Espaces vectoriels normés [Spé III]}
+
+\subsection{Définitions}
+
+\begin{itemize}
+    \item $f : X \rightarrow E$ est bornée si $\exists M \geq 0$ tq $\forall x \in X, \|f(x)\| \leq M$
+\end{itemize}
+
+\subsubsection{Boules}
+Dans $E$ un K-ev, avec $d$ une distance
+\begin{itemize}
+    \item Boule fermée de centre $x$ et de rayon $r$ - $\{ y \in E \ligneh d(x, y) \leq r \}$
+    \item Boule ouverte de centre $x$ et de rayon $r$ - $\{ y \in E \ligneh d(x, y) < r \}$
+    \item Sphère de centre $x$ et de rayon $r$ - $\{ y \in E \ligneh d(x, y) = r \}$
+\end{itemize}
+
+\subsubsection{Parties convexe}
+\[ [x, y] = \{ (1-t)x + ty \ligneh t \in [0, 1] \} \]
+
+Une partie $A$ de $E$ est convexe si
+\[ \forall (x, y) \in A^2, [x, y] \in A \]
+
+\begin{itemize}
+    \item Pour $u \in \mathcal{L}(E, F)$, $u(A)$ est convexe de $F$
+    \item Les boules ouvertes et fermées sont convexes
+    \item Une intersection des parties convexes est convexe
+    \item Une fonction $f$ est convexe $ \iff \text{epi}(f) = \{ (x, y) \in \mathbb{R}^2 \ligneh x \in A, y \geq f(x) \}$ (les points au dessus de $f$) est une partie convexe
+\end{itemize}
+
+\subsection{Exemples des normes}
+\subsubsection{Normes usuelles sur $\mathbb{K}^n$}
+\begin{itemize}
+    \item Norme 1 - $\|x\|_1 = \sum_{i=1}^{n} |x_i|$
+    \item Norme 2 (norme canonique) - $\|x\|_2 = \sqrt{\sum_{i=1}^{n} |x_i|^2}$
+    \item Norme infinie - $\|x\|_{\infty} = \underset{1 \leq i \leq n}{\max} |x_i|$
+\end{itemize}
+
+\subsubsection{Normes définies à partir d'autre normes}
+
+\begin{itemize}
+    \item Pour $x \in E$ muni d'une base $\mathcal{B}$ de $E$, on a les normes 1, 2 et $\infty$ associées à $\mathcal{B}$ définies avec normes 1, 2 et $\infty$ sur $\mathbb{K}^n$ appliqué à les coordonnées de $x$ dans $\mathcal{B}$
+    \item{} [HP] $x \mapsto \|u(x)\|$ avec $u$ linéaire et injective est une norme
+    \item Norme de la convergence uniforme - $\mathcal{N}_{\infty} : f \mapsto \sup \|f(x)\| $ pour les $f$ bornée
 \end{itemize}
 
 \clearpage
