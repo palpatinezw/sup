@@ -210,7 +210,6 @@ Elle est définie comme la limite, quand $\dd t\to0$, du taux d'accroissement de
 \Dt{g}=\lim_{\dd t\to0}\frac{g\bigl(\OM+\vv(M,t)\dd t,t+\dd t\bigr)-g(\OM,t)}{\dd t}.
 \]
 \end{cadre}
-\newpage
 % Source : pages 3-5.
 \begin{align*}
 &g\bigl(\OM+\vv(M,t)\dd t,t+\dd t\bigr)-g(\OM,t)\\
@@ -247,7 +246,6 @@ Elle est définie comme la limite, quand $\dd t\to0$, du taux d'accroissement du
 \Dt{\vv}=\lim_{\dd t\to0}\frac{\vv\bigl(\OM+\vv(M,t)\dd t,t+\dd t\bigr)-\vv(\OM,t)}{\dd t}.
 \]
 \end{cadre}
-\newpage
 % Source : pages 5-7.
 En coordonnées cartésiennes, le champ des vitesses s’écrit :
 \[
@@ -273,7 +271,6 @@ Pour un écoulement stationnaire,
 Le champ d'accélération (eulérienne) est la dérivée particulaire du champ des vitesses.
 
 Il correspond à l'accélération d'une particule en $M$ à l'instant $t$.
-\newpage
 % Source : pages 7-9.
 \section{Conservation de la masse}
 \subsection{Vecteur densité de courant de masse}
@@ -316,7 +313,6 @@ Unité : $\mathrm{kg\,s^{-1}}$
 \[D_m=\iint_\Sigma\JJ(M,t)\cdot\dd^2\vec S.\]
 $D_m$ est le flux de $\JJ$ à travers $\Sigma$ orientée.
 \end{cadre}
-\newpage
 % Source : pages 10-12.
 \subsection{Équation globale de conservation de la masse}
 \underline{Rappel :}
@@ -365,7 +361,7 @@ Comme la relation est vraie $\forall\Sigma$, donc $\forall V$,
 \[\pd{\mu}{t}+\ddiv\JJ=0,\qquad\text{rappel : }\JJ=\mu(M,t)\vv(M,t).\]
 \textbf{L’équation locale de conservation de la masse est appelée équation de continuité.}
 \begin{cadre}[etoiles={*****}]\[\pd{\mu}{t}+\ddiv\bigl(\mu(M,t)\vv(M,t)\bigr)=0.\]\end{cadre}
-\newpage
+
 % Source : pages 13-15.
 \section{Écoulement stationnaire}
 \underline{Rappel : définition}
@@ -401,7 +397,6 @@ Dans un écoulement stationnaire, le débit massique est conservé à travers to
 \end{tikzpicture}
 \end{center}
 \[D_m=\mu(z)S(z)v(z)=\mathrm{cste}.\]
-\newpage
 % Source : pages 15-17.
 \section{Écoulement incompressible}
 \subsection{Débit volumique}
@@ -456,7 +451,6 @@ Pour un écoulement incompressible, il y a conservation du débit volumique à t
 Pour un écoulement incompressible, quand les lignes de champ des vitesses se rapprochent, la norme $\|\vv\|$ augmente.
 
 Si les lignes de champ des vitesses s'éloignent, la norme $\|\vv\|$ diminue.
-\newpage
 % Source : pages 20-22.
 \section{Vecteur tourbillon - Dilatation d'une particule}
 \subsection{Problématique mathématique}
@@ -466,6 +460,7 @@ Quelle relation peut-on établir pour un fluide ?
 
 Étant donné $\vv(\OM,t)$, on cherche à exprimer $\vv(\OM+\dd\OM,t)$.
 \begin{itemize}\item On utilise un développement de Taylor pour une fonction à \underline{quatre variables}.\end{itemize}
+\newpage
 On admet la décomposition suivante :
 \begin{cadre}
 \[\vv(\OM+\dd\OM,t)=\vv(\OM,t)+\OO\wedge\dd\OM+\vec d,\]
@@ -495,7 +490,7 @@ Le vecteur $\vec d$ correspond à la déformation.
 \begin{cadre}\[\ddiv\vv=-\frac1\mu\Dt{\mu}.\]\end{cadre}
 \begin{cadre}\[\ddiv\vv=\frac1{\dd^3\tau}\Dt{(\dd^3\tau)},\qquad\text{avec}\quad\mu=\frac{\dd^3m}{\dd^3\tau}.\]\end{cadre}
 \textit{Il n’y a pas de signe moins dans cette expression, car la différentiation produit un second signe moins.}
-\newpage
+
 % Source : pages 22-24.
 \subsection{Quelques exemples}
 \textbf{a)}\quad $\displaystyle\vv(M,t)=\begin{pmatrix}a_1x\\b_1y\end{pmatrix},\qquad a_1>0,\quad b_1<0,\quad a_1+b_1\ne0.$
@@ -518,7 +513,6 @@ V(t+\dd t)&=L(L+a_1L\dd t)(L+b_1L\dd t)\\
 \[\frac{V(t+\dd t)-V(t)}{V(t)}=(a_1+b_1)\dd t=\ddiv\vv.\]
 
 \textbf{La particule se déforme sans rotation locale, avec dilatation.}
-\newpage
 % Source : pages 24-25.
 \textbf{b)}\quad $\displaystyle\vv(M,t)=\begin{pmatrix}a_2y\\a_2x\end{pmatrix},\qquad a_2>0.$
 
@@ -532,6 +526,7 @@ Cet écoulement est plan et stationnaire.
 \[\ddiv\vv=\frac1{\dd^3V}\Dt{(\dd^3V)}.\]
 \textbf{La particule se déforme sans rotation locale et sans dilatation.}
 \par\vspace{9mm}\par
+\newpage
 \textbf{c)}\quad $\displaystyle\vv(M,t)=\begin{pmatrix}-a_3y\\a_3x\\0\end{pmatrix},\qquad a_3>0.$
 
 Cet écoulement est plan et stationnaire.
@@ -541,7 +536,6 @@ Cet écoulement est plan et stationnaire.
 \wedge\begin{pmatrix}-a_3y\\a_3x\\0\end{pmatrix}=\begin{pmatrix}0\\0\\2a_3\end{pmatrix}.
 \]
 \[\rot\vv=2a_3\vec u_z\quad\longrightarrow\quad\text{il y a une rotation locale}.\]
-\newpage
 % Source : pages 25-28.
 \begin{center}\deformation{3}\end{center}
 \[

@@ -18,6 +18,78 @@
 
 \begin{document}
 
+\section{Un nombre fini d'espaces propres sont en somme directe}
+
+Soit $u \in \mathcal{L}(E)$, $(\lambda_i)_{i \in \nint{1}{p}}$ des valeurs propres deux à deux distinctes. \\
+
+Alors \underline{les $(E_{\lambda_i}(u))_{i \in \nint{1}{p}}$ sont en somme directe}. \\
+
+Par récurrence sur $p$. $\forall p \in \mathbb{N}^*, H_p$ : ``$\forall (\lambda_i)_{i \in \nint{1}{p}}$ des valeurs propres deux à deux distinctes, les $(E_{\lambda_i}(u))_{i \in \nint{1}{p}}$ sont en somme directe.''
+
+\begin{itemize}
+    \item Initialisation : pour $p = 1$, $E_{\lambda_1}$ est en somme directe, donc $H_1$. 
+    \item Hérédité : Supposons $H_p$. \\
+    
+    Soit $(\lambda_i)_{i \in \nint{1}{p+1}}$ des valeurs propres deux à deux distinctes. \\
+    Soit $(x_i)_{i \in \nint{1}{p+1}} \in \prod_{i}^{p+1}E_{\lambda_i}(u)$ tel que $\sum_{i=1}^{p+1} x_i = 0$. \\
+    
+    Montrons que $\forall i \in \nint{1}{p+1}, x_i = 0$. \\
+
+    \[ u(\sum_{i=1}^{p+1} x_i) = \sum_{i=1}^{p+1} u(x_i) = \sum_{i=1}^{p+1} \lambda_i x_i = 0 \]
+
+    D'où \begin{align}
+        \sum_{i=1}^{p+1} \lambda_i x_i &= 0 \\
+        \sum_{i=1}^{p+1} x_i &= 0
+    \end{align}
+
+    En faisant (1) - $\lambda_{p+1}$(2), on a:
+    \[ \sum_{i=1}^{p} (\lambda_i - \lambda_{p+1})x_i = 0 \]
+
+    Par hypothèse de récurrence, les $(E_{\lambda_i})_{i \in \nint{1}{p}}$ sont en somme directe. \\
+    
+    Alors $\forall i \in \nint{1}{p}$, $(\lambda_i - \lambda_{p+1})x_i = 0$. Or les valeurs propres sont deux à deux distinctes, donc $\forall i \in \nint{1}{p}$, $x_i = 0$. On en déduit que $x_{p+1} = 0$. \\
+
+    Alors $\forall i \in \nint{1}{p+1}, x_i = 0$. On a donc $H_{p+1}$. 
+\end{itemize}
+
+\section{Polynôme caractéristique d'un induit et $\dim E_\lambda \leq \omega(\lambda)$}
+
+Soit $u \in \mathcal{L}(E), F$ un ssev stable par $u$ de dimension $p$. \\
+
+Alors \underline{$\chi_{u_F}$ divise $\chi_u$}. \\
+
+Soit $\mathcal{B} = (e_i)_{i \in \nint{1}{n}}$ une base adapté à $F$ ($\mathcal{B}' = (e_i)_{i \in \nint{1}{p}}$ est une base de $F$). \\
+
+\[ \mat_{\mathcal{B}}(u) = \begin{pmatrix}
+    A & (*) \\
+    (0) & C
+\end{pmatrix} \]
+avec $A = \mat_{\mathcal{B}'}(u_F)$
+
+Soit $x \in \mathbb{K}$
+\begin{align}
+    \chi_u(x) &= \det(x \text{Id}_E - u) \\
+    &= \begin{vmatrix}
+        xI_{p} - A & (*) \\
+        (0) & xI_{n - p} - C
+    \end{vmatrix} \\
+    &= \det (x I_p - A) \det(xI_{n-p} - C) \\
+    &= \chi_A(x) \chi_A(c) \\
+\end{align} 
+
+D'où
+\[ \chi_u = \chi_A \chi_C = \chi_{u_F} \chi_C  \]
+
+\underline{$\dim E_\lambda \leq \omega(\lambda)$}.  \\
+
+Soit $\lambda \in \text{Sp}(u)$. En notant $\omega(\lambda)$ la multiplicité de $\lambda$ dans $\chi_u$, $\chi_u = (X - \lambda)^{\omega(\lambda)}Q$ avec $Q$ un polynôme tel que $Q(\lambda) \neq 0$. \\
+
+$E_{\lambda}(u)$ est $u$-stable, considerons $u_{\lambda}$ l'induit.
+
+\[ \chi_{u_{\lambda}} = (X - \lambda)^{\dim(E_{\lambda}(u))} \]
+
+Par ce qui precède, $ (X - \lambda)^{\dim(E_{\lambda}(u))} $ divise $(X - \lambda)^{\omega(\lambda)}Q$. Par définition de l'ordre, $\dim E_{\lambda}(u) \leq \omega(\lambda)$
+
 \section{Caractérisation des endomorphismes diagonalisables}
 
 Soit $E$ un K-ev de dimension finie, $u \in \mathcal{L}(E)$. \\
@@ -59,10 +131,64 @@ Soit $E$ un K-ev de dimension finie, $u \in \mathcal{L}(E)$. \\
     Finalement, $E = \bigoplus_{i=1, \alpha_i \in \text{Sp}(u)}^p E_{\alpha_i}(u)$. $u$ est diagonalisable. 
 \end{itemize}
 
-Pour $F$ un ssev de $E$ stable par $u$ diagonalisable. Alors \underline{l'induit $u_F$ est diagonalisable.} \\
+Soit $F$ un ssev de $E$ stable par $u$ diagonalisable. Alors \underline{l'induit $u_F$ est diagonalisable.} \\
 
 $u$ est diagonalisable, alors fixons $P$ un polynôme annulateur de $u$ scindé à racines simples. \\
 
 $P(u) = 0$ et a fortiori, $P(u_F) = 0$. Alors $u_F$ est diagonalisable.  
+
+\section{Théorème de trigonalisation}
+
+Soit $u \in \mathcal{L}(E)$. \\
+
+\underline{$\chi_u$ est scindé $\iff$ il existe une base $\mathcal{B}$ de $E$ telle que $\mat_{\mathcal{B}}(u)$ est triangulaire supérieure}. 
+
+\begin{itemize}
+    \item $\boxed{\impliedby}$
+    \[ M = \mat_{\mathcal{B}}(u) = \begin{pmatrix}
+        \alpha_1 & & (*) \\
+        & \ddots & \\
+        (0) & & \alpha_n
+    \end{pmatrix} \]
+
+    Alors $\chi_u = \chi_M = \prod_{k=1}^{n}(X - \alpha_k)$. $\chi_u$ est scindé. 
+    
+    \item $\boxed{\implies}$
+    Par récurrence forte. $\forall n \in \mathbb{N}^*, H_n$ : ``Pour $E$ de dimension $n$, $u \in \mathcal{L}(E)$, si $\chi_u$ est scindé, alors il existe une base $\mathcal{B}$ telle que $\mat_{\mathcal{B}}(u)$ est triangulaire supérieure''. 
+
+    \begin{itemize}
+        \item Initialisation : $H_1$ est vraie. 
+        \item Hérédité : Soit $n \in \mathbb{N}^*$. Supposons que $\forall k \in \nint{1}{n}, H_k$ est vraie. \\
+        
+        Soit $E$ de dimension $n+1$.\\
+        Soit $u \in \mathcal{L}(E)$ tel que $\chi_u = \prod_{i=1}^p (X - \alpha_p)$ est scindé. \\
+        
+        $\text{Sp}(u) \neq \emptyset$, alors fixons $\lambda \in \text{Sp}(u)$.
+
+        \begin{itemize}
+            \item Si $u = \lambda \text{Id}_E$, la matrice de $u$ dans toute base de $E$ est $\lambda I_{n+1}$ donc a fortiori triangulaire supérieure. 
+            \item Sinon, posons $v = u - \lambda \text{Id}_E \neq 0$. \\
+            
+            En particulier, $\chi_v = \prod_{i=1}^p (X - \alpha_p + \lambda)$ est scindé. \\
+
+            $\text{Im}(v)$ est un ssev stable par $v$ non réduit à $\{0\}$. Notons $w = v_{\text{Im}(v)}$. \\
+            
+            $\chi_w$ divise $\chi_v$ et $\chi_v$ est scindé, donc $\chi_w$ est scindé. \\
+
+            Or, $v \neq 0$ donc $\text{Im}(v) \neq \{0\}$. De plus, $v$ n'est pas injective car $\lambda$ est une valeur propre, et $v$ est un endomorphisme en dimension finie, alors $v$ n'est pas surjective, $\text{Im} (v) \subsetneq E$. On a alors $1 \leq \dim(\text{Im}(v)) \leq n$. \\
+
+            Par hypothèse de récurrence, fixon $\mathcal{B}' = (e_1, \dots, e_r)$ une base de $\text{Im}(u)$ telle que $\mat_{\mathcal{B}'}(u) $ est triangulaire supérieure. \\
+
+            Complétons cette base en base $\mathcal{B} = (e_1, \dots, e_r, e_{r+1}, \dots , e_{n+1})$ de $E$. \\
+
+            $ \mat_{\mathcal{B}}(v) = \begin{pmatrix}
+                \mat_{\mathcal{B}'}(u) & (*) \\
+                (0) & (0)
+            \end{pmatrix} $ est triangulaire supérieure. 
+        \end{itemize}
+
+        Donc $H_{n+1}$, 
+    \end{itemize}
+\end{itemize}
 
 \end{document}
