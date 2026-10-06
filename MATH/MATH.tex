@@ -2367,12 +2367,44 @@ Une partie $A$ de $E$ est convexe si
     \item $\mathring{B}(x, r) = B(x, r)$
     \item $\mathring{B}_F(x, r) = B_O(x, r)$
     \item Ouvert - $A = \mathring{A}$
+    \begin{itemize}
+        \item Une union des ouverts est un ouvert
+        \item Une intersection finie des ouverts est un ouvert
+    \end{itemize}
 \end{itemize}
 
 \subsubsection{Adhérence}
 
 \[x \in \overline{A} \iff \forall r > 0, A \cap B(x, r) \neq \emptyset \]
+\[ b \in \overline{A} \iff \exists (x_n) \in A^{\mathbb{N}} \ligneh x_n \longrightarrow b \]
 
+\begin{itemize}
+    \item $\overline{B_O(x, r)} = B_F(x, r)$
+\end{itemize}
+
+\subsubsection{Fermé}
+
+\[ A \text{ fermé} \iff \forall (x_n) \in A^{\mathbb{N}} \text{ convergente}, x_n \longrightarrow l \in A \]
+
+\begin{itemize}
+    \item $A$ est fermé si $A^c$ est un ouvert
+    \begin{itemize}
+        \item Une intersection de fermés est un fermé
+        \item Une union finie de fermés est un fermé
+    \end{itemize}
+    \item $\overline{A}$ est fermé, $A$ fermé $\iff A = \overline{A}$
+\end{itemize}
+
+\subsubsection{Densité}
+
+\[ A \text{ est dense dans } B \iff A \subset B \et B \subset \overline{A} \iff A \subset B \et \forall b \in B, \exists (a_n)\in A^{\mathbb{N}} \ligneh a_n \longrightarrow b \]
+
+\subsection{Fonctions}
+$f : X \mapsto F$
+
+\subsubsection{Définition de la limite}
+\[ f(x) \underset{x \rightarrow a}{\longrightarrow} b \iff \forall \epsilon > 0, \exists \eta > 0 \ligneh \forall x \in X, (\|x-a\| \leq \eta \implies \|f(x) - b\| \leq \epsilon) \]
+\[ f(x) \underset{x \rightarrow a}{\longrightarrow} b \iff \forall (x_n) \in X^{\mathbb{N}}, (x_n \longrightarrow a \implies f(x_n) \longrightarrow b) \]
 
 \clearpage
 

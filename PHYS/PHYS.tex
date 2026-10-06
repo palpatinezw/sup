@@ -1587,7 +1587,7 @@ Pour un objet dans un fluide, le résultant des forces de pression ($\vec{\Pi_a}
 
 \subsection{Nombre de Reynolds}
 
-\[ R_e = \frac{\rho v L}{\eta} \]
+\[ R_e = \frac{\mu v L}{\eta} \]
 
 \begin{itemize}
     \item Un nombre sans dimension caractérisant le mouvement du fluide autour d'un obstacle ou dans un conduit de dimension $L$
@@ -1666,6 +1666,43 @@ Les champs de vitesses euleriennes, et des grandeurs macroscopiques sont indépe
     \item $\text{div}(\vec{v}) = -\frac{1}{\mu} \frac{\Dd}{\Dd t} = 0$ - le champ des vitesse est un flux conservatif
     \item Si les lignes de champ des vitesses se rapproche, $\|\vec{v}\|$ augmente. 
     \item Si l'écoulement est irrotationnel, $\Delta \phi = 0$ (Équation de Laplace)
+\end{itemize}
+
+\subsection{Équation de Navier-Stokes}
+
+\[ \mu \frac{\Dd \vec{v}}{\Dd t} = \vec{f_V} - \grad P + \eta \Delta \vec{v} \]
+
+\begin{itemize}
+    \item $ \frac{\partial \vec{v}}{\partial t} = \frac{1}{\mu}\vec{f_V} - \frac{1}{\mu} \grad P -\bgrad{v} \vec{v} + \frac{\eta}{\mu} \Delta \vec{v} $
+    \item $\bgrad{v} \vec{v}$ - transport de quantité de mouvement par convection
+    \item $\frac{\eta}{\mu} \Delta \vec{v}$ - transport de quantité de mouvement par diffusion
+    \item Avec $\bgrad{v}\vec{v} \simeq v \frac{v}{L}$ et $\Delta \vec{v} \simeq \frac{v}{L^2}$, on obtient le nombre de Reynolds
+    \item Équation de la diffusion - $\frac{\partial \vec{v}}{\partial t} = \nu \Delta \vec{v}$ avec $\nu = \frac{\eta}{\mu}$ (si la diffusion est prépondérante)
+\end{itemize}
+
+\subsubsection{Méthode}
+\begin{itemize}
+    \item Étudier les symétries et les invariances
+    \begin{itemize}
+        \item $P(M, t) \et \vec{v}(M, t)$ dépendent a priori de 4 variables
+        \item Si l'écoulement est stationnaire, il n'y a de dépendance de $t$
+        \item Si on peut supposer l'écoulement laminaire, $\vec{v} = v_x \vec{e_x}$
+        \item Si l'écoulement est incompressible, $\text{div}(\vec{v}) = 0$ enlève souvent une variance
+    \end{itemize}
+    \item Application de l'équation de Navier-Stokes
+    \item Application des conditions limites cinématiques pour $\vec{v}$ et les conditions limites dynamiques pour $P$
+    \item A posteriori, on peut vérifier l'hypothèse d'un écoulement laminaire
+\end{itemize}
+
+\subsubsection{Analogie avec la loi d'Ohm}
+
+\[ D_V = \frac{\Delta P}{R_{\text{hyd}}} \]
+
+\begin{itemize}
+    \item $U \longleftrightarrow \Delta P$
+    \item $I \longleftrightarrow D_V$
+    \item $R \longleftrightarrow R_{\text{hyd}}$
+    \item Analogie purement formelle
 \end{itemize}
 
 \clearpage
