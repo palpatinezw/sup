@@ -1232,6 +1232,137 @@ En particulier, $\frac{1}{n}\sum_{0}^{n-1} f(\frac{k}{n}) \longrightarrow \int_{
 Identifier une somme de Riemann permet de démontrer la convergence d'une suite et trouver sa limite. 
 
 \clearpage
+\section{Espaces préhilbertiens réels [sup 24, spé V]}
+\subsection{Définitions}
+\subsubsection{Produit scalaire}
+Toute forme bilinéaire, symétrique, définie et positive sur $E$. 
+\begin{itemize}
+    \item Forme bilinéaire - application de $E \times E \rightarrow R$ linéaire à gauche et à droite
+    \item Symétrique - $\phi (x, y) = \phi (y, x)$
+    \item Positive - $\phi (x, x) \geq 0$
+    \item Définie - $\phi(x, x) = 0 \implies x = 0_E$
+    \item Espace préhilbertien réel - un $\mathbb{R}$-espace vectoriel muni d'un produit scalaire
+    \item Espace euclidien - espace préhilbertien réel de dimension fini 
+    \item Produit scalaire canonique sur $\mathbb{R}^n$ - $\langle X, Y \rangle = \sum x_k y_k$
+    \item Produit scalaire canonique sur $\mathcal{M}_{n, p}(\mathbb{R})$ - $\langle A, B \rangle = \text{Tr}(A^T B)$
+    \item Sur $\mathcal{C}^0([a, b], \mathbb{R})$ - $\langle f, g \rangle = \int_{a}^{b} fg$
+    \item Sur $\mathbb{R}[X]$ - $\langle P, Q \rangle = \int_{a}^{b} P(x)Q(x) \dx$
+\end{itemize}
+
+\subsubsection{Norme}
+Toute application $N: E \rightarrow R_+$ qui vérifie
+\begin{enumerate}
+    \item Séparation - $N(x) = 0 \implies x = 0_E$
+    \item Homogénéité - $N(\lambda x) = |\lambda| N(x)$
+    \item Sous-additivité - $N(x+y) \leq N(x) + N(y)$
+    \item À valeurs dans $\mathbb{R}_+$
+\end{enumerate}
+
+\begin{itemize}
+    \item Norme associée au produit scalaire - $\|\cdot\| : x \mapsto \sqrt{\langle x, x \rangle}$ 
+    \item Vecteur unitaire - $\|x\| = 1$ - pour $x \neq 0$, $ \frac{x}{\|x\|} $ est unitaire
+\end{itemize}
+
+\subsubsection{Distance}
+Toute application $d : E^2 \rightarrow \mathbb{R}$ qui vérifie
+\begin{enumerate}
+    \item Séparation - $d(x, y) = 0 \iff x = y$
+    \item Symétrie - $d(x,y) = d(y, x)$
+    \item Inégalité triangulaire - $d(x, y) \leq d(x, z) + d(z, y)$
+\end{enumerate}
+
+\begin{itemize}
+    \item Distance associée à une norme - $d: (x, y) \mapsto N(x-y)$
+    \item Il existe des distances pas associées à des normes
+\end{itemize}
+
+\subsubsection{Orthogonalité}
+\[ x \perp y \iff \langle x, y \rangle = 0 \]
+\[ A \perp B \iff \forall a \in A, \forall b \in B, \langle a, b \rangle = 0 \iff A \subset B^{\perp} \iff B \subset A^{\perp} \]
+
+Pour une partie $A$ (pas forcément un ssev)
+\begin{itemize}
+    \item $A^{\perp}$ est un ssev
+    \item $A \subset B \implies B^{\perp} \subset A^{\perp}$
+    \item $A^{\perp} = (\Vect (A))^{\perp}$
+    \item $A \subset (A^{\perp})^{\perp}$
+    \item Pour un espace euclidien, $A = (A^{\perp})^{\perp}$
+    \item Si $A$ est un ssev, $A \cap A^{\perp} = \{0_E\}$
+    \item Famille orthogonale - éléments deux à deux orthogonaux
+    \item Famille orthonormée - famille orthogonale de vecteurs unitaires
+    \item Toute famille orthogonale de vecteurs non nuls est libre
+\end{itemize}
+
+\subsubsection{Distance}
+\[ d(x, F) = \underset{y \in F}{\inf} \| x-y \| \]
+\begin{itemize}
+    \item Pour $F$ de dimension finie, la distance est atteinte uniquement en $p_F(x)$ - $d(x, F) = \|x-p_F(x)\|$
+\end{itemize}
+
+\subsection{Théorèmes}
+\subsubsection{Inégalité de Cauchy-Schwarz}
+\[ \forall (x, y) \in E^2, \langle x, y \rangle ^2 \leq \langle x, x \rangle\langle y, y \rangle \]
+\[ \langle x, y \rangle ^2 = \langle x, x \rangle\langle y, y \rangle \iff (x, y) \text{ est liée} \]
+
+[Démonstration - Étudier le discriminant de $P:\lambda \mapsto \langle \lambda x + y, \lambda x + y \rangle$ (fonction polynomiale à valeurs positifs)]
+
+\begin{itemize}
+    \item Sur $\mathbb{R}^n, \left (\sum_{k=1}^{n} \lambda_i \mu_i \right )^2 \leq \left ( \sum_{k=1}^{n} \lambda_i^2 \right ) \left ( \sum_{k=1}^{n} \mu_i^2 \right )$
+    \item Sur $\mathcal{C}^0([a, b], \mathbb{R})$, $(\int_{a}^{b} fg )^2 \leq (\int_{a}^{b} f^2)(\int_{a}^{b} g^2)$
+\end{itemize}
+
+\subsubsection{Égalité de Minkowski}
+Pour $\| \cdot \|$ la norme associée à un produit scalaire
+\[ \|x+y\| = \|x\| + \|y\| \iff (x, y) \text{ est positivement liée} \]
+
+\subsubsection{Identités remarquables}
+\begin{itemize}
+    \item $ \|x+y\|^2 = \|x\|^2 + 2\langle x, y \rangle + \|y\|^2 $
+    \item $ \|x-y\|^2 = \|x\|^2 - 2\langle x, y \rangle + \|y\|^2 $
+    \item $ \|x\|^2 - \|y\|^2 = \langle x+y, x-y \rangle $
+    \item $ \langle x, y \rangle = \frac{1}{4}(\|x+y\|^2 - \|x-y\|^2) $
+\end{itemize}
+
+\subsubsection{Théorème de Pythagore}
+\[ \langle x, y \rangle = 0 \iff \|x+y\|^2 = \|x\|^2 + \|y\|^2 \]
+
+\begin{itemize}
+    \item Pour une famille orthogonale de vecteurs, $ \left\| \sum x_k \right\|^2 = \sum \|x_k\|^2 $
+\end{itemize}
+
+\subsubsection{Base orthonormée}
+
+\begin{itemize}
+    \item Algorithme de Gram-Schmidt - toute famille libre $(e_1,\dots,e_n)$ peut être orthonormalisée en une famille orthonormée $(f_1,\dots,f_n)$
+    \begin{itemize}
+        \item De plus, $\forall k \in \llbracket 1, n \rrbracket, \Vect (e_1, \dots, e_k) = \Vect (f_1, \dots, f_k)$
+        \item $f_1 = \frac{e_1}{\|e_1\|}$
+        \item On construit les vecteurs $(f_2, \dots, f_n)$ tel que \[ f_k = \frac{g_k}{\|g_k\|} \text{ où } g_k = e_k - \sum_{i=1}^{k-1} \langle e_k, f_i \rangle f_i = e_k - \sum_{i=1}^{k-1} \frac{1}{\|g_i\|^2} \langle e_k, g_i \rangle g_i  \]
+    \end{itemize}
+    \item Tout espace euclidien admet une base orthonormée
+    \item $\langle x, e_k \rangle$ sont les coordonnées de $x$ dans la base orthonormée $(e_1, \dots, e_n)$ - $ x = \sum_{k=1}^{n} \langle x, e_k \rangle e_k $
+    \item On considère le produit scalaire canonique et sa norme associée
+    \item Le théorème de la base adaptée et de la base incomplète s'applique pour des bases orthonormées en particulier
+\end{itemize}
+
+\subsubsection{Supplémentaire orthogonal}
+\begin{itemize}
+    \item Pour $E$ un espace préhilbertien et $F$ un ssev, l'unique supplémentaire orthogonal de $F$ dans $E$ (sous réserve d'existence) est $F^{\perp}$
+    \item Pour $E$ un espace préhilbertien et $F$ un ssev de dimension finie, $E = F \overset{\perp}{\oplus} F^{\perp}$ [Démonstration - Décompoer en $F$ et $F^{\perp}$ par analyse-synthèse.]
+\end{itemize}
+
+\subsubsection{Projection orthogonale}
+\begin{itemize}
+    \item $p_F$ la projection orthogonale sur F (parallèlement à $F^{\perp}$)
+    \item $p_F(x)$ est le projété orthogonale de $x$ sur $F$
+    \item Inégalité de Bessel - $ \| p_F(x) \| \leq \|x\| $
+    \item Avec une base orthonormée de $F$ - $ p_F(x) = \sum_{k=1}^{n} \langle x, e_k \rangle e_k $
+\end{itemize}
+
+\clearpage
+
+
+\clearpage
 \section{Séries numériques [sup 25]}
 
 \subsection{Définitions}
@@ -1305,6 +1436,7 @@ $\alpha \in \mathbb{R}$
 [Démonstration - Pour $\alpha < 0$, le terme général diverge. Sinon, $t \mapsto \frac{1}{t^{\alpha}}$ est décroissante - on utilise l'encadrement intégrale avec un disjonction pour $\alpha = 1$]
 
 \clearpage
+
 \section{Fonctions de deux variables [sup 28]}
 
 \subsection{Continuité}
@@ -1366,6 +1498,133 @@ Continuité en $a \in U$ un ouvert de $\mathbb{R}^2$
 \begin{itemize}
     \item Plan tangent au graphe de $f$ en $(a, f(a))$ - $z = f(a) + \langle \nabla f(a) \ligneh z-a \rangle$
 \end{itemize}
+
+\clearpage
+
+\section{Espaces vectoriels normés [Spé V]}
+
+\subsection{Définitions}
+
+\begin{itemize}
+    \item $f : X \rightarrow E$ est bornée si $\exists M \geq 0$ tq $\forall x \in X, \|f(x)\| \leq M$
+\end{itemize}
+
+\subsubsection{Boules}
+Dans $E$ un K-ev, avec $d$ une distance
+\begin{itemize}
+    \item Boule fermée de centre $x$ et de rayon $r$ - $\{ y \in E \ligneh d(x, y) \leq r \}$
+    \item Boule ouverte de centre $x$ et de rayon $r$ - $\{ y \in E \ligneh d(x, y) < r \}$
+    \item Sphère de centre $x$ et de rayon $r$ - $\{ y \in E \ligneh d(x, y) = r \}$
+\end{itemize}
+
+\subsubsection{Parties convexe}
+\[ [x, y] = \{ (1-t)x + ty \ligneh t \in [0, 1] \} \]
+
+Une partie $A$ de $E$ est convexe si
+\[ \forall (x, y) \in A^2, [x, y] \in A \]
+
+\begin{itemize}
+    \item Pour $u \in \mathcal{L}(E, F)$, $u(A)$ est convexe de $F$
+    \item Les boules ouvertes et fermées sont convexes
+    \item Une intersection des parties convexes est convexe
+    \item Une fonction $f$ est convexe $ \iff \text{epi}(f) = \{ (x, y) \in \mathbb{R}^2 \ligneh x \in A, y \geq f(x) \}$ (les points au dessus de $f$) est une partie convexe
+\end{itemize}
+
+\subsection{Normes}
+\subsubsection{Normes usuelles sur $\mathbb{K}^n$}
+\begin{itemize}
+    \item Norme 1 - $\|x\|_1 = \sum_{i=1}^{n} |x_i|$
+    \item Norme 2 (norme canonique) - $\|x\|_2 = \sqrt{\sum_{i=1}^{n} |x_i|^2}$
+    \item Norme infinie - $\|x\|_{\infty} = \underset{1 \leq i \leq n}{\max} |x_i|$
+\end{itemize}
+
+\subsubsection{Normes définies à partir d'autre normes}
+
+\begin{itemize}
+    \item Pour $x \in E$ muni d'une base $\mathcal{B}$ de $E$, on a les normes 1, 2 et $\infty$ associées à $\mathcal{B}$ définies avec normes 1, 2 et $\infty$ sur $\mathbb{K}^n$ appliqué à les coordonnées de $x$ dans $\mathcal{B}$
+    \item{} [HP] $x \mapsto \|u(x)\|$ avec $u$ linéaire et injective est une norme
+    \item Norme de la convergence uniforme - $\mathcal{N}_{\infty} : f \mapsto \sup \|f(x)\| $ pour les $f$ bornée
+\end{itemize}
+
+\subsubsection{Suites}
+
+\begin{itemize}
+    \item $(u_n)_{n \in \mathbb{N}} \in E^\mathbb{N}$ - $u_n \longrightarrow l \iff \|u_n - l\| \longrightarrow 0$
+    \item Les propriétés sont héritées des suites réelles
+\end{itemize}
+
+\subsubsection{Comparaison des normes}
+
+\begin{itemize}
+    \item $N_2$ domine $N_1$ - $ \exists \alpha > 0$ tq $N_1 \leq \alpha N_2$
+    \item $N_1$ et $N_2$ sont équivalentes si $\alpha N_1 \leq N_2 \leq \beta N_1$
+    \item Pour $N_1$ dominée par $N_2$, $A$ bornée pour $N_2 \implies A$ bornée pour $N_1$
+    \item Pour $N_1$ dominée par $N_2$, $(u_n)$ convergente pour $N_2 \implies (u_n)$ convergent pour $N_1$ avec le même limite
+\end{itemize}
+
+\subsection{Topologie}
+
+\subsubsection{Intérieur}
+\[ x \in \mathring{A} \iff \exists r \ligneh B(x, r) \subset A \]
+
+\begin{itemize}
+    \item $\mathring{B}(x, r) = B(x, r)$
+    \item $\mathring{B}_F(x, r) = B_O(x, r)$
+    \item Ouvert - $A = \mathring{A}$
+    \begin{itemize}
+        \item Une union des ouverts est un ouvert
+        \item Une intersection finie des ouverts est un ouvert
+        \item Pour $f$ continue et $U$ un ouvert, $f^{-1}(U)$ est un ouvert.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Adhérence}
+
+\[x \in \overline{A} \iff \forall r > 0, A \cap B(x, r) \neq \emptyset \]
+\[ b \in \overline{A} \iff \exists (x_n) \in A^{\mathbb{N}} \ligneh x_n \longrightarrow b \]
+
+\begin{itemize}
+    \item $\overline{B_O(x, r)} = B_F(x, r)$
+\end{itemize}
+
+\subsubsection{Fermé}
+
+\[ A \text{ fermé} \iff \forall (x_n) \in A^{\mathbb{N}} \text{ convergente}, x_n \longrightarrow l \in A \]
+
+\begin{itemize}
+    \item $A$ est fermé si $A^c$ est un ouvert
+    \begin{itemize}
+        \item Une intersection de fermés est un fermé
+        \item Une union finie de fermés est un fermé
+    \end{itemize}
+    \item $\overline{A}$ est fermé, $A$ fermé $\iff A = \overline{A}$
+    \item Pour $f$ continue et $G$ fermé, $f^{-1}(G)$ est un fermé.
+\end{itemize}
+
+\subsubsection{Densité}
+
+\[ A \text{ est dense dans } B \iff A \subset B \et B \subset \overline{A} \iff A \subset B \et \forall b \in B, \exists (a_n)\in A^{\mathbb{N}} \ligneh a_n \longrightarrow b \]
+
+\subsection{Fonctions}
+$f : X \mapsto F$
+
+\subsubsection{Limite}
+\[ f(x) \underset{x \rightarrow a}{\longrightarrow} b \iff \forall \epsilon > 0, \exists \eta > 0 \ligneh \forall x \in X, (\|x-a\| \leq \eta \implies \|f(x) - b\| \leq \epsilon) \]
+\[ f(x) \underset{x \rightarrow a}{\longrightarrow} b \iff \forall (x_n) \in X^{\mathbb{N}}, (x_n \longrightarrow a \implies f(x_n) \longrightarrow b) \]
+
+\begin{itemize}
+    \item $f$ est continue en $a$ si $\underset{a}{\lim} f = f(a)$
+\end{itemize}
+
+\subsubsection{Fonctions lipschitziennes}
+
+\[ \forall (x, y) \in X^2, \|f(y) - f(x)\|_{F} \leq k \|y-x\|_{X} \]
+
+\begin{itemize}
+    \item $f$ lipschitzienne est continue
+\end{itemize}
+
+\clearpage
 
 
 \chapter{Algèbre}
@@ -1890,135 +2149,6 @@ Pour $A \in \mathcal{M}_{n, p}(\mathbb{K})$
 
 \clearpage
 
-\section{Espaces préhilbertiens réels [sup 24, spé IV]}
-\subsection{Définitions}
-\subsubsection{Produit scalaire}
-Toute forme bilinéaire, symétrique, définie et positive sur $E$. 
-\begin{itemize}
-    \item Forme bilinéaire - application de $E \times E \rightarrow R$ linéaire à gauche et à droite
-    \item Symétrique - $\phi (x, y) = \phi (y, x)$
-    \item Positive - $\phi (x, x) \geq 0$
-    \item Définie - $\phi(x, x) = 0 \implies x = 0_E$
-    \item Espace préhilbertien réel - un $\mathbb{R}$-espace vectoriel muni d'un produit scalaire
-    \item Espace euclidien - espace préhilbertien réel de dimension fini 
-    \item Produit scalaire canonique sur $\mathbb{R}^n$ - $\langle X, Y \rangle = \sum x_k y_k$
-    \item Produit scalaire canonique sur $\mathcal{M}_{n, p}(\mathbb{R})$ - $\langle A, B \rangle = \text{Tr}(A^T B)$
-    \item Sur $\mathcal{C}^0([a, b], \mathbb{R})$ - $\langle f, g \rangle = \int_{a}^{b} fg$
-    \item Sur $\mathbb{R}[X]$ - $\langle P, Q \rangle = \int_{a}^{b} P(x)Q(x) \dx$
-\end{itemize}
-
-\subsubsection{Norme}
-Toute application $N: E \rightarrow R_+$ qui vérifie
-\begin{enumerate}
-    \item Séparation - $N(x) = 0 \implies x = 0_E$
-    \item Homogénéité - $N(\lambda x) = |\lambda| N(x)$
-    \item Sous-additivité - $N(x+y) \leq N(x) + N(y)$
-    \item À valeurs dans $\mathbb{R}_+$
-\end{enumerate}
-
-\begin{itemize}
-    \item Norme associée au produit scalaire - $\|\cdot\| : x \mapsto \sqrt{\langle x, x \rangle}$ 
-    \item Vecteur unitaire - $\|x\| = 1$ - pour $x \neq 0$, $ \frac{x}{\|x\|} $ est unitaire
-\end{itemize}
-
-\subsubsection{Distance}
-Toute application $d : E^2 \rightarrow \mathbb{R}$ qui vérifie
-\begin{enumerate}
-    \item Séparation - $d(x, y) = 0 \iff x = y$
-    \item Symétrie - $d(x,y) = d(y, x)$
-    \item Inégalité triangulaire - $d(x, y) \leq d(x, z) + d(z, y)$
-\end{enumerate}
-
-\begin{itemize}
-    \item Distance associée à une norme - $d: (x, y) \mapsto N(x-y)$
-    \item Il existe des distances pas associées à des normes
-\end{itemize}
-
-\subsubsection{Orthogonalité}
-\[ x \perp y \iff \langle x, y \rangle = 0 \]
-\[ A \perp B \iff \forall a \in A, \forall b \in B, \langle a, b \rangle = 0 \iff A \subset B^{\perp} \iff B \subset A^{\perp} \]
-
-Pour une partie $A$ (pas forcément un ssev)
-\begin{itemize}
-    \item $A^{\perp}$ est un ssev
-    \item $A \subset B \implies B^{\perp} \subset A^{\perp}$
-    \item $A^{\perp} = (\Vect (A))^{\perp}$
-    \item $A \subset (A^{\perp})^{\perp}$
-    \item Pour un espace euclidien, $A = (A^{\perp})^{\perp}$
-    \item Si $A$ est un ssev, $A \cap A^{\perp} = \{0_E\}$
-    \item Famille orthogonale - éléments deux à deux orthogonaux
-    \item Famille orthonormée - famille orthogonale de vecteurs unitaires
-    \item Toute famille orthogonale de vecteurs non nuls est libre
-\end{itemize}
-
-\subsubsection{Distance}
-\[ d(x, F) = \underset{y \in F}{\inf} \| x-y \| \]
-\begin{itemize}
-    \item Pour $F$ de dimension finie, la distance est atteinte uniquement en $p_F(x)$ - $d(x, F) = \|x-p_F(x)\|$
-\end{itemize}
-
-\subsection{Théorèmes}
-\subsubsection{Inégalité de Cauchy-Schwarz}
-\[ \forall (x, y) \in E^2, \langle x, y \rangle ^2 \leq \langle x, x \rangle\langle y, y \rangle \]
-\[ \langle x, y \rangle ^2 = \langle x, x \rangle\langle y, y \rangle \iff (x, y) \text{ est liée} \]
-
-[Démonstration - Étudier le discriminant de $P:\lambda \mapsto \langle \lambda x + y, \lambda x + y \rangle$ (fonction polynomiale à valeurs positifs)]
-
-\begin{itemize}
-    \item Sur $\mathbb{R}^n, \left (\sum_{k=1}^{n} \lambda_i \mu_i \right )^2 \leq \left ( \sum_{k=1}^{n} \lambda_i^2 \right ) \left ( \sum_{k=1}^{n} \mu_i^2 \right )$
-    \item Sur $\mathcal{C}^0([a, b], \mathbb{R})$, $(\int_{a}^{b} fg )^2 \leq (\int_{a}^{b} f^2)(\int_{a}^{b} g^2)$
-\end{itemize}
-
-\subsubsection{Égalité de Minkowski}
-Pour $\| \cdot \|$ la norme associée à un produit scalaire
-\[ \|x+y\| = \|x\| + \|y\| \iff (x, y) \text{ est positivement liée} \]
-
-\subsubsection{Identités remarquables}
-\begin{itemize}
-    \item $ \|x+y\|^2 = \|x\|^2 + 2\langle x, y \rangle + \|y\|^2 $
-    \item $ \|x-y\|^2 = \|x\|^2 - 2\langle x, y \rangle + \|y\|^2 $
-    \item $ \|x\|^2 - \|y\|^2 = \langle x+y, x-y \rangle $
-    \item $ \langle x, y \rangle = \frac{1}{4}(\|x+y\|^2 - \|x-y\|^2) $
-\end{itemize}
-
-\subsubsection{Théorème de Pythagore}
-\[ \langle x, y \rangle = 0 \iff \|x+y\|^2 = \|x\|^2 + \|y\|^2 \]
-
-\begin{itemize}
-    \item Pour une famille orthogonale de vecteurs, $ \left\| \sum x_k \right\|^2 = \sum \|x_k\|^2 $
-\end{itemize}
-
-\subsubsection{Base orthonormée}
-
-\begin{itemize}
-    \item Algorithme de Gram-Schmidt - toute famille libre $(e_1,\dots,e_n)$ peut être orthonormalisée en une famille orthonormée $(f_1,\dots,f_n)$
-    \begin{itemize}
-        \item De plus, $\forall k \in \llbracket 1, n \rrbracket, \Vect (e_1, \dots, e_k) = \Vect (f_1, \dots, f_k)$
-        \item $f_1 = \frac{e_1}{\|e_1\|}$
-        \item On construit les vecteurs $(f_2, \dots, f_n)$ tel que \[ f_k = \frac{g_k}{\|g_k\|} \text{ où } g_k = e_k - \sum_{i=1}^{k-1} \langle e_k, f_i \rangle f_i = e_k - \sum_{i=1}^{k-1} \frac{1}{\|g_i\|^2} \langle e_k, g_i \rangle g_i  \]
-    \end{itemize}
-    \item Tout espace euclidien admet une base orthonormée
-    \item $\langle x, e_k \rangle$ sont les coordonnées de $x$ dans la base orthonormée $(e_1, \dots, e_n)$ - $ x = \sum_{k=1}^{n} \langle x, e_k \rangle e_k $
-    \item On considère le produit scalaire canonique et sa norme associée
-    \item Le théorème de la base adaptée et de la base incomplète s'applique pour des bases orthonormées en particulier
-\end{itemize}
-
-\subsubsection{Supplémentaire orthogonal}
-\begin{itemize}
-    \item Pour $E$ un espace préhilbertien et $F$ un ssev, l'unique supplémentaire orthogonal de $F$ dans $E$ (sous réserve d'existence) est $F^{\perp}$
-    \item Pour $E$ un espace préhilbertien et $F$ un ssev de dimension finie, $E = F \overset{\perp}{\oplus} F^{\perp}$ [Démonstration - Décompoer en $F$ et $F^{\perp}$ par analyse-synthèse.]
-\end{itemize}
-
-\subsubsection{Projection orthogonale}
-\begin{itemize}
-    \item $p_F$ la projection orthogonale sur F (parallèlement à $F^{\perp}$)
-    \item $p_F(x)$ est le projété orthogonale de $x$ sur $F$
-    \item Inégalité de Bessel - $ \| p_F(x) \| \leq \|x\| $
-    \item Avec une base orthonormée de $F$ - $ p_F(x) = \sum_{k=1}^{n} \langle x, e_k \rangle e_k $
-\end{itemize}
-
-\clearpage
-
 \section{Déterminants [sup 27] [spé II.2]}
 Vecteurs dans $E$ de dimension $n$, $[x_i] = (x_1,...,x_n)$, $\mathcal{B} = [e_i]$ une base de $E$
 
@@ -2294,117 +2424,6 @@ On a les équivalences
 \end{enumerate}
 
 [Démonstration - $(1) \implies (2) \et (3)$ : on $\mathbb{C}$-trigonalise $u$ puis étudie les puissances. $(4) \implies (3)$ : on $\mathbb{C}$-trigonalise $u$ puis montre que la diagonale est nulle en traduisant les relations en équation matricielle avec une matrice de Vandermonde]
-
-\clearpage
-
-\section{Espaces vectoriels normés [Spé III]}
-
-\subsection{Définitions}
-
-\begin{itemize}
-    \item $f : X \rightarrow E$ est bornée si $\exists M \geq 0$ tq $\forall x \in X, \|f(x)\| \leq M$
-\end{itemize}
-
-\subsubsection{Boules}
-Dans $E$ un K-ev, avec $d$ une distance
-\begin{itemize}
-    \item Boule fermée de centre $x$ et de rayon $r$ - $\{ y \in E \ligneh d(x, y) \leq r \}$
-    \item Boule ouverte de centre $x$ et de rayon $r$ - $\{ y \in E \ligneh d(x, y) < r \}$
-    \item Sphère de centre $x$ et de rayon $r$ - $\{ y \in E \ligneh d(x, y) = r \}$
-\end{itemize}
-
-\subsubsection{Parties convexe}
-\[ [x, y] = \{ (1-t)x + ty \ligneh t \in [0, 1] \} \]
-
-Une partie $A$ de $E$ est convexe si
-\[ \forall (x, y) \in A^2, [x, y] \in A \]
-
-\begin{itemize}
-    \item Pour $u \in \mathcal{L}(E, F)$, $u(A)$ est convexe de $F$
-    \item Les boules ouvertes et fermées sont convexes
-    \item Une intersection des parties convexes est convexe
-    \item Une fonction $f$ est convexe $ \iff \text{epi}(f) = \{ (x, y) \in \mathbb{R}^2 \ligneh x \in A, y \geq f(x) \}$ (les points au dessus de $f$) est une partie convexe
-\end{itemize}
-
-\subsection{Normes}
-\subsubsection{Normes usuelles sur $\mathbb{K}^n$}
-\begin{itemize}
-    \item Norme 1 - $\|x\|_1 = \sum_{i=1}^{n} |x_i|$
-    \item Norme 2 (norme canonique) - $\|x\|_2 = \sqrt{\sum_{i=1}^{n} |x_i|^2}$
-    \item Norme infinie - $\|x\|_{\infty} = \underset{1 \leq i \leq n}{\max} |x_i|$
-\end{itemize}
-
-\subsubsection{Normes définies à partir d'autre normes}
-
-\begin{itemize}
-    \item Pour $x \in E$ muni d'une base $\mathcal{B}$ de $E$, on a les normes 1, 2 et $\infty$ associées à $\mathcal{B}$ définies avec normes 1, 2 et $\infty$ sur $\mathbb{K}^n$ appliqué à les coordonnées de $x$ dans $\mathcal{B}$
-    \item{} [HP] $x \mapsto \|u(x)\|$ avec $u$ linéaire et injective est une norme
-    \item Norme de la convergence uniforme - $\mathcal{N}_{\infty} : f \mapsto \sup \|f(x)\| $ pour les $f$ bornée
-\end{itemize}
-
-\subsubsection{Suites}
-
-\begin{itemize}
-    \item $(u_n)_{n \in \mathbb{N}} \in E^\mathbb{N}$ - $u_n \longrightarrow l \iff \|u_n - l\| \longrightarrow 0$
-    \item Les propriétés sont héritées des suites réelles
-\end{itemize}
-
-\subsubsection{Comparaison des normes}
-
-\begin{itemize}
-    \item $N_2$ domine $N_1$ - $ \exists \alpha > 0$ tq $N_1 \leq \alpha N_2$
-    \item $N_1$ et $N_2$ sont équivalentes si $\alpha N_1 \leq N_2 \leq \beta N_1$
-    \item Pour $N_1$ dominée par $N_2$, $A$ bornée pour $N_2 \implies A$ bornée pour $N_1$
-    \item Pour $N_1$ dominée par $N_2$, $(u_n)$ convergente pour $N_2 \implies (u_n)$ convergent pour $N_1$ avec le même limite
-\end{itemize}
-
-\subsection{Topologie}
-
-\subsubsection{Intérieur}
-\[ x \in \mathring{A} \iff \exists r \ligneh B(x, r) \subset A \]
-
-\begin{itemize}
-    \item $\mathring{B}(x, r) = B(x, r)$
-    \item $\mathring{B}_F(x, r) = B_O(x, r)$
-    \item Ouvert - $A = \mathring{A}$
-    \begin{itemize}
-        \item Une union des ouverts est un ouvert
-        \item Une intersection finie des ouverts est un ouvert
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{Adhérence}
-
-\[x \in \overline{A} \iff \forall r > 0, A \cap B(x, r) \neq \emptyset \]
-\[ b \in \overline{A} \iff \exists (x_n) \in A^{\mathbb{N}} \ligneh x_n \longrightarrow b \]
-
-\begin{itemize}
-    \item $\overline{B_O(x, r)} = B_F(x, r)$
-\end{itemize}
-
-\subsubsection{Fermé}
-
-\[ A \text{ fermé} \iff \forall (x_n) \in A^{\mathbb{N}} \text{ convergente}, x_n \longrightarrow l \in A \]
-
-\begin{itemize}
-    \item $A$ est fermé si $A^c$ est un ouvert
-    \begin{itemize}
-        \item Une intersection de fermés est un fermé
-        \item Une union finie de fermés est un fermé
-    \end{itemize}
-    \item $\overline{A}$ est fermé, $A$ fermé $\iff A = \overline{A}$
-\end{itemize}
-
-\subsubsection{Densité}
-
-\[ A \text{ est dense dans } B \iff A \subset B \et B \subset \overline{A} \iff A \subset B \et \forall b \in B, \exists (a_n)\in A^{\mathbb{N}} \ligneh a_n \longrightarrow b \]
-
-\subsection{Fonctions}
-$f : X \mapsto F$
-
-\subsubsection{Définition de la limite}
-\[ f(x) \underset{x \rightarrow a}{\longrightarrow} b \iff \forall \epsilon > 0, \exists \eta > 0 \ligneh \forall x \in X, (\|x-a\| \leq \eta \implies \|f(x) - b\| \leq \epsilon) \]
-\[ f(x) \underset{x \rightarrow a}{\longrightarrow} b \iff \forall (x_n) \in X^{\mathbb{N}}, (x_n \longrightarrow a \implies f(x_n) \longrightarrow b) \]
 
 \clearpage
 
