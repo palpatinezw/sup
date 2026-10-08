@@ -376,26 +376,49 @@ Lorsque $r\to0^+$, $\ln r\to-\infty$, ce qui est une absurdité physique : la vi
 % Sources 23-24
 \titr{Remarque : expression du laplacien}
 On projette l'équation de Navier--Stokes en utilisant le formulaire pour $\Delta\vec v$. On peut retrouver son expression par un bilan local, dans un écoulement de cisaillement.
-\begin{center}\begin{tikzpicture}[scale=.95]
-\draw[->] (-.6,0)--(5.4,0) node[right]{$z$};\node[below] at (1.6,0){$O$};
-\coordinate (A) at (1.6,1.4);\coordinate (B) at (2.3,1.4);\coordinate (C) at (2.3,2.1);\coordinate (D) at (1.6,2.1);
-\coordinate (E) at (2.05,1.8);\coordinate (F) at (2.75,1.8);\coordinate (G) at (2.975,2.7);\coordinate (H) at (2.275,2.7);
-\fill[blue!10] (A)--(B)--(C)--(D)--cycle;
-\fill[blue!5] (D)--(C)--(G)--(H)--cycle;
-\draw (A)--(B)--(C)--(D)--cycle;
-\draw (A)--(E) (B)--(F) (C)--(G) (D)--(H);
-\draw (E)--(F)--(G)--(H)--cycle;
-\draw[dashed] (1.6,0)--(A) (1.6,0)--(E);
-\draw[thin] (1.05,0)--(1.6,0) (1.05,1.4)--(1.6,1.4);
-\draw[<->] (1.15,0)--(1.15,1.4) node[midway,left]{$r$};
-\draw (1.6,.7) arc(90:76:.7);\node[right] at (1.85,.7){$\dd\theta$};
-\draw[thin] (2.275,2.78)--(2.275,3.1) (2.975,2.78)--(2.975,3.1);
-\draw[<->] (2.275,3.02)--(2.975,3.02) node[midway,above]{$\dd z$};
-\draw[thin] (1.05,2.1)--(1.6,2.1);
-\draw[<->] (1.15,1.4)--(1.15,2.1) node[midway,left]{$\dd r$};
-\draw[<->] (1.38,2.3)--(2.055,2.9) node[midway,above left]{$r\,\dd\theta$};
+\begin{center}
+\makebox[214.81621pt][c]{\raisebox{0pt}[109.6769pt][0pt]{%
+\begin{tikzpicture}[scale=.95]
+% Petit secteur annulaire extrude suivant Oz.
+% Projection du plan transverse : (r,theta) -> (-.8 r sin(theta),r cos(theta)).
+\draw[->] (-.6,0)--(5.4,0) node[right]{$z$};
+\node[below] at (1.3,0){$O$};
+% Face arriere, egalement annulaire.
+\filldraw[fill=blue!8] plot[domain=10:42,samples=25] ({2.05-.8*2.2*sin(\x)},{2.2*cos(\x)})
+ --plot[domain=42:10,samples=25] ({2.05-.8*1.55*sin(\x)},{1.55*cos(\x)})--cycle;
+% Surface cylindrique exterieure.
+\filldraw[fill=blue!16] plot[domain=10:42,samples=25] ({1.3-.8*2.2*sin(\x)},{2.2*cos(\x)})
+ --plot[domain=42:10,samples=25] ({2.05-.8*2.2*sin(\x)},{2.2*cos(\x)})--cycle;
+% Face radiale laterale et surface cylindrique interieure.
+\filldraw[fill=blue!7] ({1.3-.8*2.2*sin(42)},{2.2*cos(42)})
+ --({2.05-.8*2.2*sin(42)},{2.2*cos(42)})
+ --({2.05-.8*1.55*sin(42)},{1.55*cos(42)})
+ --({1.3-.8*1.55*sin(42)},{1.55*cos(42)})--cycle;
+\filldraw[fill=blue!5] plot[domain=10:42,samples=25] ({1.3-.8*1.55*sin(\x)},{1.55*cos(\x)})
+ --plot[domain=42:10,samples=25] ({2.05-.8*1.55*sin(\x)},{1.55*cos(\x)})--cycle;
+% Face avant : secteur d'anneau, avec deux arcs concentriques.
+\filldraw[fill=blue!28,thick] plot[domain=10:42,samples=25] ({1.3-.8*2.2*sin(\x)},{2.2*cos(\x)})
+ --plot[domain=42:10,samples=25] ({1.3-.8*1.55*sin(\x)},{1.55*cos(\x)})--cycle;
+\draw[dashed] (1.3,0)--({1.3-.8*1.55*sin(10)},{1.55*cos(10)})
+ (1.3,0)--({1.3-.8*1.55*sin(42)},{1.55*cos(42)});
+% Rayon et epaisseur radiale, paralleles a la premiere face radiale.
+\draw[<->] (1.52,0)--({1.52-.8*1.55*sin(10)},{1.55*cos(10)}) node[midway,right]{$r$};
+\draw[thin] ({1.52-.8*1.55*sin(10)},{1.55*cos(10)})--({1.3-.8*1.55*sin(10)},{1.55*cos(10)})
+ ({1.52-.8*2.2*sin(10)},{2.2*cos(10)})--({1.3-.8*2.2*sin(10)},{2.2*cos(10)});
+\draw[thin] ({1.3-.8*1.55*sin(42)},{1.55*cos(42)})--({1.08-.8*1.55*sin(42)},{1.55*cos(42)})
+ ({1.3-.8*2.2*sin(42)},{2.2*cos(42)})--({1.08-.8*2.2*sin(42)},{2.2*cos(42)});
+\draw[<->] ({1.08-.8*1.55*sin(42)},{1.55*cos(42)})--({1.08-.8*2.2*sin(42)},{2.2*cos(42)}) node[midway,left]{$\dd r$};
+% Angle elementaire et longueur de l'arc interieur.
+\draw plot[domain=10:42,samples=20] ({1.3-.8*.65*sin(\x)},{.65*cos(\x)});
+\node[right] at (1.45,.45){$\dd\theta$};
+\draw[<->] plot[domain=10:42,samples=20] ({1.3-.8*1.27*sin(\x)},{1.27*cos(\x)});
+\node[left] at (.53,.85){$r\,\dd\theta$};
+% Epaisseur axiale.
+\draw[thin] (0.994,2.23)--(0.994,2.7) (1.744,2.23)--(1.744,2.7);
+\draw[<->] (0.994,2.6)--(1.744,2.6) node[midway,above]{$\dd z$};
 \node[right,align=left] at (4.4,1.35){Écoulement local\\de cisaillement};
-\end{tikzpicture}\end{center}
+\end{tikzpicture}}}
+\end{center}
 \begin{align*}
 \dd^3\vec f
 &=\eta\left.\pd{v_z}r\right|_{r+\dd r}\dd z\,(r+\dd r)\dd\theta\,\uz-\eta\left.\pd{v_z}r\right|_r\dd z\,r\,\dd\theta\,\uz\\[5pt]
