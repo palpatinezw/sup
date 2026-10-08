@@ -16,7 +16,7 @@
 \usepackage{enumitem,titlesec,needspace,hyperref}
 \hypersetup{hidelinks,pdftitle={Dynamique des fluides visqueux},pdfsubject={Cours de physique}}
 \pagestyle{fancy}\fancyhf{}
-\fancyhead[L]{\small Physique - Dynamique des fluides visqueux}
+\fancyhead[L]{\small Physique F3 - Dynamique des fluides visqueux - inspiré par les cours de Mme Mesnil}
 \fancyhead[R]{\small\thepage/\pageref{LastPage}}
 \fancyfoot[R]{\small PC-PC*}
 \renewcommand{\headrulewidth}{0pt}
@@ -65,7 +65,7 @@
 \ifnum#1<2
 \draw[->] (0,0)--(5.5,0) node[right]{$x$};\draw[->] (0,0)--(0,3) node[above]{$z$};\draw[thick] (0,2.4)--(5.1,2.4);\node[left] at (0,2.4){$e$};
 \ifnum#1=0
-\draw[thick] (0,0)--(3.8,2.4);\foreach \z in {.3,.6,.9,1.2,1.5,1.8,2.1,2.4}{\draw[->] (0,\z)--({3.8*\z/2.4},\z);}\node[above right] at (3.8,2.4){$\vec v_0$};
+\draw[thick] (0,0)--(3.8,2.4);\foreach \z in {.3,.6,.9,1.2,1.5,1.8,2.1}{\draw[->] (0,\z)--({3.8*\z/2.4},\z);}\node[above right] at (3.8,2.4){$\vec v_0$};
 \else
 \draw[thick,domain=0:2.4,samples=50,variable=\z] plot({1.7*\z*(2.4-\z)},\z);
 \foreach \z in {.2,.5,.8,1.1,1.4,1.7,2,2.2}{\draw[->] (0,\z)--({1.7*\z*(2.4-\z)},\z);}
