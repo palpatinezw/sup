@@ -1583,6 +1583,7 @@ Pour un objet dans un fluide, le résultant des forces de pression ($\vec{\Pi_a}
     \item $\Delta \vec{v}$ - opérateur laplacien
     \item Pour un écoulement selon $x$, $\dd^2\vec{F}_{\text{dessus}\rightarrow\text{dessous}} = \eta \dd^2 S \frac{\partial v_x}{\partial y} \vec{e_x}$
     \item Pour un cisaillement dans une dimension, $\dd^3 \vec{f}_{\text{vis}} =  \eta \frac{\partial^2 v_x}{\partial y^2} \vec{e_x}$
+    \item $\nu = \frac{\eta}{\mu}$ - viscosité cinématique
 \end{itemize}
 
 \subsection{Nombre de Reynolds}
@@ -1677,7 +1678,7 @@ Les champs de vitesses euleriennes, et des grandeurs macroscopiques sont indépe
     \item $\bgrad{v} \vec{v}$ - transport de quantité de mouvement par convection
     \item $\frac{\eta}{\mu} \Delta \vec{v}$ - transport de quantité de mouvement par diffusion
     \item Avec $\bgrad{v}\vec{v} \simeq v \frac{v}{L}$ et $\Delta \vec{v} \simeq \frac{v}{L^2}$, on obtient le nombre de Reynolds
-    \item Équation de la diffusion - $\frac{\partial \vec{v}}{\partial t} = \nu \Delta \vec{v}$ avec $\nu = \frac{\eta}{\mu}$ (si la diffusion est prépondérante)
+    \item Équation de la diffusion - $\frac{\partial \vec{v}}{\partial t} = \nu \Delta \vec{v}$ (si la diffusion est prépondérante)
 \end{itemize}
 
 \subsubsection{Méthode}
@@ -1690,6 +1691,10 @@ Les champs de vitesses euleriennes, et des grandeurs macroscopiques sont indépe
         \item Si l'écoulement est incompressible, $\text{div}(\vec{v}) = 0$ enlève souvent une variance
     \end{itemize}
     \item Application de l'équation de Navier-Stokes
+    \begin{itemize}
+        \item Sur une particule mésoscopique
+        \item Sur une volume élémentaire (anneau, disque, etc.)
+    \end{itemize}
     \item Application des conditions limites cinématiques pour $\vec{v}$ et les conditions limites dynamiques pour $P$
     \item A posteriori, on peut vérifier l'hypothèse d'un écoulement laminaire
 \end{itemize}
@@ -1703,6 +1708,29 @@ Les champs de vitesses euleriennes, et des grandeurs macroscopiques sont indépe
     \item $I \longleftrightarrow D_V$
     \item $R \longleftrightarrow R_{\text{hyd}}$
     \item Analogie purement formelle
+\end{itemize}
+
+\subsection{Équation d'Euler}
+Pour un écoulement parfait ($R_e$ très grand)
+
+\[ \mu \frac{\Dd \vec{v}}{\Dd t} = \vec{f}_{V} - \grad P \]
+\[ \mu \left( \frac{\partial \vec{v}}{\partial t} + \frac{1}{2} \grad v^2 + (\rot \vec{v}) \wedge \vec{v} \right) = \vec{f}_V - \grad P \]
+
+\begin{itemize}
+    \item Le terme $\bgrad{v}\vec{v}$ dans $\frac{\Dd \vec{v}}{\Dd t}$ est non-linéaire et non-négligeable pour un écoulement parfait
+    \item Effet Coanda - pour les lignes de champ courbées, la pression augmente quand on s'éloigne du centre de courbure
+    \item Écoulement avec lignes de courant parallèles - la répartition de pression dans une direction perpendiculaire à des lignes de courant est hydrostatique 
+\end{itemize}
+
+\subsection{Théorème de Bernoulli}
+
+\[ P + E_{p,V} + \frac{1}{2}\mu v^2 = \cste \]
+
+\begin{itemize}
+    \item Pour un écoulement parfait stationnaire, irrotationnel et incompressible, la quantité est constante partout dans l'écoulement
+    \item Pour un écoulement parfait stationnaire, incompressible et homogène, la quantité est constante sur une ligne de courant
+    \item Pour un écoulement parfait irrotationnel non-stationnaire, $\mu \frac{\partial phi}{\partial t} + \frac{1}{2}\mu v^2 + P + E_{p, V} = f(t)$
+    \item Effet Venturi - s'il y a un resserrement des lignes de courant, la vitesse augmente et la pression diminue
 \end{itemize}
 
 \clearpage

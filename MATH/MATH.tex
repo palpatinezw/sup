@@ -1521,7 +1521,7 @@ Dans $E$ un K-ev, avec $d$ une distance
 \[ [x, y] = \{ (1-t)x + ty \ligneh t \in [0, 1] \} \]
 
 Une partie $A$ de $E$ est convexe si
-\[ \forall (x, y) \in A^2, [x, y] \in A \]
+\[ \forall (x, y) \in A^2, [x, y] \subset A \]
 
 \begin{itemize}
     \item Pour $u \in \mathcal{L}(E, F)$, $u(A)$ est convexe de $F$
@@ -1558,6 +1558,7 @@ Une partie $A$ de $E$ est convexe si
 \begin{itemize}
     \item $N_2$ domine $N_1$ - $ \exists \alpha > 0$ tq $N_1 \leq \alpha N_2$
     \item $N_1$ et $N_2$ sont équivalentes si $\alpha N_1 \leq N_2 \leq \beta N_1$
+    \item En dimension finie, toutes les normes sont équivalentes
     \item Pour $N_1$ dominée par $N_2$, $A$ bornée pour $N_2 \implies A$ bornée pour $N_1$
     \item Pour $N_1$ dominée par $N_2$, $(u_n)$ convergente pour $N_2 \implies (u_n)$ convergent pour $N_1$ avec le même limite
 \end{itemize}
@@ -1616,12 +1617,37 @@ $f : X \mapsto F$
     \item $f$ est continue en $a$ si $\underset{a}{\lim} f = f(a)$
 \end{itemize}
 
-\subsubsection{Fonctions lipschitziennes}
-
-\[ \forall (x, y) \in X^2, \|f(y) - f(x)\|_{F} \leq k \|y-x\|_{X} \]
+\subsubsection{Continuité}
 
 \begin{itemize}
-    \item $f$ lipschitzienne est continue
+    \item $f$ lipschitzienne est continue - $\forall (x, y) \in X^2, \|f(y) - f(x)\|_{F} \leq k \|y-x\|_{X}$
+    \item Toute application linéaire en dimension finie est lipschitzienne donc continue
+    \item Toute fonction polynomiale est continue
+    \item Toue application multilinéaire en dimension finie est continue 
+    \item $M \mapsto \det M$ est continue
+    \item Théorème des bornes atteintes - $f : A \rightarrow \mathbb{R}$ avec $A$ une partie fermée et bornée en dimension finie est bornée et atteint ses bornes. 
+\end{itemize}
+
+\clearpage
+
+\section{Intégration [Spé VII]}
+\subsection{Fonction continue par morceaux}
+
+\begin{itemize}
+    \item Sur un intervalle quelconque, $\forall [a, b] \subset I, f_{|[a, b]} $ est continue par morceaux 
+    \item Stable par combinaison linéaire et produit
+    \item Pas stable par l'inverse
+    \item Pas stable par composition
+\end{itemize}
+
+\subsubsection{Intégrale généralisées}
+
+$f : [a, b[ \, \rightarrow \mathbb{K} \in \mathcal{C}_{m}$
+
+\begin{itemize}
+    \item $\int_{a}^{b}f = \underset{x \rightarrow b}{\lim} \int_{a}^{x} f$ si la limite existe et est finie
+    \item Si $f$ admet un prolongement continue en $b$, $\int_{a}^{b}f$ converge(intégrale faussement généralisée)
+    \item Si $f$ est continue et $\int_{a}^{b}f$ converge, $ \int_{x}^{b}f \underset{x \rightarrow b^{-}}{\longrightarrow} 0$ (faux si $f$ est CPM mais discontinue) 
 \end{itemize}
 
 \clearpage
@@ -2145,6 +2171,8 @@ Pour $A \in \mathcal{M}_{n, p}(\mathbb{K})$
     \item Trace invariante pour des matrices semblables
     \item La trace d'un endomorphisme est indépendante du choix de $\mathcal{B}$
     \item Pour $p$ un projecteur, $\rg (p) = \tr (p)$
+    \item{} [Classique] Pour $u$ linéaire tq $u(AB) = u(BA)$, $u$ est proportionnel à $\tr$ [Démonstration - considérons les produits des $E_{i, j}$]
+    \item{} [Classique] Toute forme linéaire sur $\mathcal{M}_n(\mathbb{K})$ s'écrit comme $M \mapsto \tr(BM)$ [Démonstration - Analyse-synthèse pour trouver $B$ avec les $E_{i, j}$]
 \end{itemize}
 
 \clearpage
