@@ -1611,9 +1611,9 @@ Pour un objet dans un fluide, le résultant des forces de pression ($\vec{\Pi_a}
     \item Pour $2\times10^3 < R_e < 2\times10^5$, $C_x = C$ constant, alors pour un solide sphérique, $\vec{f} = - \frac{C}{2}\rho \pi r^2 v \vec{v}$ (Cas général - $\vec{f} = - \beta \rho S_{\text{app}} v\vec{v}$)
 \end{itemize}
 
-\subsection{Cinématique du fluide}
+\section{Cinématique du fluide}
 
-\subsubsection{Caractérisation d'un écoulement}
+\subsection{Caractérisation d'un écoulement}
 
 \[ \vec{v}(\overrightarrow{OM} + \dd \overrightarrow{OM}, t) = \vec{v}(\overrightarrow{OM}, t) + \vec{\Omega}\wedge \dd \overrightarrow{OM} + \vec{d} \]
 
@@ -1623,7 +1623,7 @@ Pour un objet dans un fluide, le résultant des forces de pression ($\vec{\Pi_a}
     \item Dans un écoulement irrotationnel, on peut définir un potentiel des vitesses - $\vec{v} = \grad\phi$
 \end{itemize}
 
-\subsubsection{Dérivée partciulaire}
+\subsection{Dérivée partciulaire}
 
 \[ \frac{\Dd g}{\Dd t} = \lim_{\dt \rightarrow 0} \frac{g(\overrightarrow{OM} + \dd \overrightarrow{OM}, t + \dt) - g(\overrightarrow{OM}, t)}{\dt} = \frac{\partial g}{\partial t} + \bgrad{v} g \]
 
@@ -1634,7 +1634,7 @@ Pour un objet dans un fluide, le résultant des forces de pression ($\vec{\Pi_a}
     \item $\text{div } \vec{v} = \frac{1}{\dd^3 \tau} \frac{\Dd (\dd^3 \tau)}{\Dd t}$
 \end{itemize}
 
-\subsubsection{Conservation de la masse}
+\subsection{Conservation de la masse}
 
 \[ \iiint_V \frac{\partial \mu}{\partial t} \dd^3 \tau + \oiint_S \vec{j} \cdot \dd^2 \vec{S} = 0 \]
 \[ \frac{\partial \mu}{\partial t} + \text{div}(\vec{j}) = 0 \]
@@ -1644,7 +1644,7 @@ Pour un objet dans un fluide, le résultant des forces de pression ($\vec{\Pi_a}
     \item Débit massique - $D_m = \iint_S \vec{j} \cdot \dd^2\vec{S}$
 \end{itemize}
 
-\subsubsection{Écoulement stationnarie}
+\subsection{Écoulement stationnarie}
 
 Les champs de vitesses euleriennes, et des grandeurs macroscopiques sont indépendantes du temps
 
@@ -1657,7 +1657,7 @@ Les champs de vitesses euleriennes, et des grandeurs macroscopiques sont indépe
     \item $\oiint_S = \vec{j} \cdot \dd^2 \vec{S} = 0$ - en particulier à travers tout tube de champ des vitesse, le débit massique est conservée. 
 \end{itemize}
 
-\subsubsection{Écoulement incompressible}
+\subsection{Écoulement incompressible}
 
 \[ \frac{\Dd \mu}{\Dd t} = 0 \]
 
@@ -1667,9 +1667,10 @@ Les champs de vitesses euleriennes, et des grandeurs macroscopiques sont indépe
     \item $\text{div}(\vec{v}) = -\frac{1}{\mu} \frac{\Dd}{\Dd t} = 0$ - le champ des vitesse est un flux conservatif
     \item Si les lignes de champ des vitesses se rapproche, $\|\vec{v}\|$ augmente. 
     \item Si l'écoulement est irrotationnel, $\Delta \phi = 0$ (Équation de Laplace)
+    \item La puissance des forces intérieures de pression est nulle
 \end{itemize}
 
-\subsection{Équation de Navier-Stokes}
+\section{Équation de Navier-Stokes}
 
 \[ \mu \frac{\Dd \vec{v}}{\Dd t} = \vec{f_V} - \grad P + \eta \Delta \vec{v} \]
 
@@ -1681,7 +1682,7 @@ Les champs de vitesses euleriennes, et des grandeurs macroscopiques sont indépe
     \item Équation de la diffusion - $\frac{\partial \vec{v}}{\partial t} = \nu \Delta \vec{v}$ (si la diffusion est prépondérante)
 \end{itemize}
 
-\subsubsection{Méthode}
+\subsection{Méthode}
 \begin{itemize}
     \item Étudier les symétries et les invariances
     \begin{itemize}
@@ -1699,7 +1700,7 @@ Les champs de vitesses euleriennes, et des grandeurs macroscopiques sont indépe
     \item A posteriori, on peut vérifier l'hypothèse d'un écoulement laminaire
 \end{itemize}
 
-\subsubsection{Analogie avec la loi d'Ohm}
+\subsection{Analogie avec la loi d'Ohm}
 
 \[ D_V = \frac{\Delta P}{R_{\text{hyd}}} \]
 
@@ -1710,7 +1711,7 @@ Les champs de vitesses euleriennes, et des grandeurs macroscopiques sont indépe
     \item Analogie purement formelle
 \end{itemize}
 
-\subsection{Équation d'Euler}
+\section{Équation d'Euler}
 Pour un écoulement parfait ($R_e$ très grand)
 
 \[ \mu \frac{\Dd \vec{v}}{\Dd t} = \vec{f}_{V} - \grad P \]
@@ -1722,7 +1723,7 @@ Pour un écoulement parfait ($R_e$ très grand)
     \item Écoulement avec lignes de courant parallèles - la répartition de pression dans une direction perpendiculaire à des lignes de courant est hydrostatique 
 \end{itemize}
 
-\subsection{Théorème de Bernoulli}
+\section{Théorème de Bernoulli}
 
 \[ P + E_{p,V} + \frac{1}{2}\mu v^2 = \cste \]
 
@@ -1731,7 +1732,16 @@ Pour un écoulement parfait ($R_e$ très grand)
     \item Pour un écoulement parfait stationnaire, incompressible et homogène, la quantité est constante sur une ligne de courant
     \item Pour un écoulement parfait irrotationnel non-stationnaire, $\mu \frac{\partial phi}{\partial t} + \frac{1}{2}\mu v^2 + P + E_{p, V} = f(t)$
     \item Effet Venturi - s'il y a un resserrement des lignes de courant, la vitesse augmente et la pression diminue
+    \item Le théorème de Bernoulli traduit la conservation d'énergie
 \end{itemize}
+
+\section{Méthode par bilan}
+
+\begin{enumerate}
+    \item Choisr le système (fermé) - souvent on passe par un systèm ouvert fixe et indéformable auxiliaire
+    \item Bilan des forces extérieur (et intérieur pour des bilans énergétiques)
+    \item Application de TQM / TEC / TEM sur le système
+\end{enumerate}
 
 \clearpage
 
