@@ -1658,21 +1658,35 @@ $f : [a, b[ \, \rightarrow \mathbb{K} \in \mathcal{C}_{m}$
     \item Si $f$ est continue et $\int_{a}^{b}f$ converge, $ \int_{x}^{b}f \underset{x \rightarrow b^{-}}{\longrightarrow} 0$ (faux si $f$ est CPM mais discontinue)
     \item Pour $f : ]a, b[ \rightarrow \mathbb{K}$, $\int_{a}^{b} f$ converge $\iff$ pour $c \in ]a, b[$, $\int_{a}^{c}f \et \int_{c}^{b}f$ converge  
     \item Pour $f : I \mapsto \mathbb{C}$, $\int_{a}^{b}f$ converge $\iff \int_{a}^{b} \text{Re }f \et \int_{a}^{b} \text{Im }f$ converge
+    \item $f$ absolument convergent si $\int_{a}^{b} |f|$ converge, absoluement convergente $\implies$ convergence
+    \item $f$ CPM est intégrable sur $I$ si $I$ est un segment ou $\int_{a}^{b}f$ est ACV
+    \begin{itemize}
+        \item $L^1(I, \mathbb{K})$ est l'ensemble des fonctions intégrables
+        \item $L^1$ est un ssev des fonctions CPM
+        \item $f \mapsto \int_{I}$ est une forme linéaire
+    \end{itemize}
 \end{itemize}
 
 \subsubsection{Propriétés}
 
 \begin{itemize}
-    \item Linéarité, positivité, croissance et relation de Chasles si les intégrales généralisées sont convergentes
+    \item Linéarité, positivité, croissance et relation de Chasles si les intégrales généralisées sont (absoluement) convergentes
+    \item Inégalité triangulaire intégrale si intégrable
     \item Pour une fonction continue positive dont l'intégrale généralisée est convergente, $\int_{a}^{v}f = 0 \implies f = 0$
     \item Changement de variable - $\int_{u(a)}^{u(b)} f(x) \text{ d}x = \int_{a}^{b} f(u(t)) u'(t) \text{ d}t$ avec $u$ telle que $x = u(t)$ doit être une bijection strictement monotone pour que la convergence soit preservée
 \end{itemize}
 
-\subsubsection{Cas des fonctions positives}
+\subsubsection{Théorèmes de comparaison}
 
 \begin{itemize}
-    \item $\int_{a}^{b}f$ converge si $x \mapsto \int_{a}^{x}f$ est majorée
+    \item Pour $f \geq 0$, $\int_{a}^{b}f$ converge si $x \mapsto \int_{a}^{x}f$ est majorée
     \item Si $0 \leq f \leq g$ et $\int_{a}^{b}g$ converge, alors $\int_{a}^{b}f$ converge
+    \item Si $f =\! \underset{b}{\mathcal{O}} (g)$ et $\int_{a}^{b}g$ intégrable en $b$, alors $\int_{a}^{b}f$ intégrable en  $b$
+    \begin{itemize}
+        \item En particulier, pour $b$ fini et $f$ bornée au voisinage de $b$, $f$ est intégrable
+    \end{itemize}
+    \item Si $f \underset{b}{\sim} (g)$, $\int_{a}^{b}g$ intégrable en $b \iff \int_{a}^{b}f$ intégrable en  $b$
+    \item Pour étudier la convergence, on peut faire un développement limité au premier terme de signe fixe ou intégrable
 \end{itemize}
 
 \clearpage
