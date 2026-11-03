@@ -1,0 +1,323 @@
+\documentclass[]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{titlesec}
+\usepackage[margin=1in]{geometry}
+
+\input{../../../headers.tex}
+
+\setlength{\emergencystretch}{3em}
+\hbadness=10000
+
+\title{Demonstrations de cours semaine 5}
+\author{Huang Ziwen}
+\date{2026-2027 PC*}
+
+\begin{document}
+
+\section{Propriétés intersection/union des ouverts}
+
+Soit $E$ un EVN. 
+
+\begin{itemize}
+    \item Soit $(O_i)_{i \in I}$ une famille d'ouverts de E, \underline{$\bigcup_{i\in I} O_i$ est un ouvert}.
+    
+    Soit $x \in \bigcup_{i\in I} O_i$. 
+    \begin{itemize}
+        \item Si $I = \emptyset, \bigcup_{i\in I} O_i = \emptyset$ est un ouvert
+        \item Sinon, il existe $i_0 \in I$ tel que $x \in O_{i_0}$. 
+        
+        Alors il existe $r>0$ tel que $B(x,r) \subset U_{i_0} \subset \bigcup_{i\in I} O_i$.
+
+        Alors $\bigcup_{i\in I} O_i$ est un ouvert 
+    \end{itemize}
+
+    \item Soit $(O_i)_{i \in I}$ une famille \underline{finie} d'ouverts de E, \underline{$\bigcap_{i\in I} O_i$ est un ouvert}.
+    
+    Soit $x \in \bigcap_{i\in I} O_i$.
+    \begin{itemize}
+        \item Si $I = \emptyset, \bigcap_{i\in I} O_i = E$ est un ouvert
+        \item Sinon, $\forall i \in I, x \in O_i$, donc $ \forall i \in I, \exists r_i > 0$ tel que $B(x, r) \subset U_i$. \\
+        
+        Posons $r = \min{r_i \ligneh i \in I}$ (existe car c'est une partie finie de $R_+$).\\
+
+        $\forall i \in I, B(x, r) \subset B(x, r_i)$. Alors $B(x, r) \subset \bigcap_{i\in I} O_i$. 
+
+        Alors $\bigcap_{i\in I} O_i$ est un ouvert.
+    \end{itemize}
+\end{itemize}
+
+\section{Propriétés intersection/union des fermés}
+
+Soit $E$ un EVN. 
+
+\begin{itemize}
+    \item Soit $(F_i)_{i \in I}$ une famille \underline{finie} de fermées de E, \underline{$\bigcup_{i\in I} F_i$ est un fermé}. \\
+    
+    On a:
+    \[ (\bigcup_{i\in I} F_i)^c = \bigcap_{i \in I} F_i^c \]
+
+    Or, $\forall i \in I, F_i^c$ est un ouvert. Donc $\left (\bigcup_{i\in I} F_i \right )^c$ est un ouvert en tant qu'intersection d'une famille finie d'ouverts. 
+    
+    Donc $\bigcup_{i\in I} F_i$ est un fermé. 
+
+    \item Soit $(F_i)_{i \in I}$ une famille de fermées de E, \underline{$\bigcap_{i\in I} F_i$ est un fermé}.
+    
+    On a:
+    \[ (\bigcap_{i\in I} F_i)^c = \bigcup_{i \in I} F_i^c \]
+
+    Or, $\forall i \in I, F_i^c$ est un ouvert. Donc $\left (\bigcap_{i\in I} F_i \right )^c$ est un ouvert en tant qu'union d'une famille d'ouverts. 
+    
+    Donc $\bigcap_{i\in I} F_i$ est un fermé. 
+
+\end{itemize}
+
+\section{Caractérisation séquentielle des fermée}
+
+\underline{$A$ est fermé $\iff \forall (a_n) \in A^{\mathbb{N}}$ convergente, $\lim a_n \in A$}
+
+\begin{itemize}
+    \item $\boxed{\implies}$
+    Par contraposée, supposons qu'il existe $(a_n) \in A^{\mathbb{N}}$ tel que $a_n \longrightarrow l \not \in A$. \\
+
+    Par définition de la limite, $\forall r > 0, \exists n_0 \in \mathbb{N}$ tel que $\forall n \geq n_0, \|a_n - l\| < r$. 
+
+    En particulier, $\forall r > 0, B(l, r) \cap A \neq \emptyset$ car $a_{n_0} \in B(l, r) \cap A \neq \emptyset$. \\
+    
+    Donc $\forall r > 0, B(l, r) \not \subset A^c$. $A^c$ n'est pas un ouvert donc $A$ n'est pas un fermé. \\
+
+    \item $\boxed{\impliedby}$
+    Par contraposée, supposons que $A$ n'est pas un fermé, c'est-à-dire $A^c$ n'est pas un ouvert. \\
+
+    Alors il existe $x \in A^c$ tel que $\forall r > 0, B(x, r) \not \subset A^c$. \\
+
+    En particulier, $\forall n \in \mathbb{N}, B(x, \frac{1}{n+1}) \not \subset A^c$. 
+    
+    $\forall n \in \mathbb{N}, \exists x_n \in A \cap B(x, \frac{1}{n+1})$. \\
+
+    On a alors $(x_n) \in A^{\mathbb{N}}$, $x_n \longrightarrow x \neq A$.
+
+\end{itemize}
+
+\section{Caractérisation séquentielle de la limite}
+
+Soit $f:X \rightarrow F$, $a \in \overline{X}$. \\
+
+\underline{$f(x) \underset{x \rightarrow a}{\longrightarrow} l \iff \forall (x_n) \in X^{\mathbb{N}}$ tel que $x_n \longrightarrow a, f(x_n) \longrightarrow l$}
+
+\begin{itemize}
+    \item $\boxed{\implies}$
+    Soit $(x_n) \in X^{\mathbb{N}}$ tel que $x_n \longrightarrow a$. \\
+
+    Soit $\epsilon > 0$. Fixons $\eta > 0$ tel que $\forall x \in X, \|x-a\|_X \leq \eta \implies \|f(x) - l\|_F \leq \epsilon$. \\
+
+    Comme $x_n \longrightarrow x$, $\exists n_0 \in \mathbb{N}$ tel que $\forall n \geq n_0, \| x_n - a \|_X \leq \epsilon$. Alors $\forall n > n_0, \|f(x+n) - l\|_F \leq \epsilon$. \\
+
+    Alors $\forall \epsilon > 0, \exists n_0 \in \mathbb{N}$ tel que $\forall n \geq n_0, \|f(x_n) - l\|_F \leq \epsilon$. $f(x_n) \longrightarrow l. $
+
+    \item $\boxed{\impliedby}$
+    Par contraposée, supposons que $f(x_n) \not \longrightarrow l$. \\
+
+    Alors il existe $\epsilon > 0$ tel que $\forall \eta > 0, \exists x \in X$ tel que $\|x-a\|_X \leq \eta \et \|f(x)-l\|_F > \epsilon$.\\
+
+    $\forall n \in \mathbb{N}$, considérons $\eta = \frac{1}{n+1} > 0$. $\exists x_n \in X$ tel que $\|x_n - a\|_X \leq \frac{1}{n+1} \et \|f(x_n) - l\| > \epsilon$. \\
+    
+    On a alors $x_n \longrightarrow a$ mais $f(x_n) \not \longrightarrow l$
+\end{itemize}
+\clearpage
+\section{Propriétés des images réciproques par les applications continues}
+
+Soit $f:E\rightarrow F$ continue sur $E$. 
+
+\begin{itemize}
+    \item Soit $U$ un ouvert de $F$. \underline{$f^{-1}(U)$ est un ouvert de $E$}. \\
+    
+    Soit $x \in f^{-1}(U)$. Notons $y = f(x) \in U$. \\
+    
+    $U$ est un ouvert, alors $\exists r > 0$ tel que $B(y, r) \subset U$. \\
+
+    Par continuité de $f$ en $x$, il existe $\eta > 0$ tel que $\forall z \in B(x, \eta), f(z) \in B(y, r) \subset U$. 
+    
+    Alors $\forall z \in B(x, \eta), z \in f^{-1}(U)$. $B(x, \eta) \subset f^{-1}(U)$. Alors $f^{-1}(U)$ est un ouvert. 
+
+    \item Soit $G$ un fermé de $F$. \underline{$f^{-1}(G)$ est un fermé de $E$}. \\
+    
+    $(f^{-1}(G))^c = f^{-1}(G^c)$ est un ouvert car $G^c$ est un ouvert. Donc $f^{-1}(G)$ est fermé. 
+\end{itemize}
+
+\section{Continuité des applications linéaires en dimension finie}
+
+Soit $u \in \mathcal{L}(E, F)$ avec $E$ de dimension finie. 
+
+\begin{itemize}
+    \item Montrons que $\exists \alpha \geq 0 \ligneh \forall x \in E, \|f(x)\|_F \leq \alpha \|x\|_E$\\
+    
+    Soit $\mathcal{B} = (e_1,\dots, e_n)$ une base de $E$. Soit $x = \sum_{i=1}^{n} x_i e_i \in E$. 
+
+    \begin{align*}
+        \|u(x)\|_F &= \left \|u(\sum_{i=1}^{n} x_i e_i ) \right \|_F \\
+        &= \left \| \sum_{i=1}^{n} x_i u(e_i) \right \|_F \\
+        &\leq \sum_{i=1}^{n} |x_i| \| u(e_i) \|_F \\
+    \end{align*}
+
+    Considérons $\|\cdot\|_{\infty, E} : x = \sum_{i=1}^{n} x_i e_i \mapsto \underset{i \in \nint{1}{n}}{|x_i|}$ la norme infinie sur $E$. 
+    
+    $\forall i \in \nint{1}{n}, |x_i| \leq \|x\|_{\infty, E}$
+
+    \begin{align*}
+        \|u(x)\|_F 
+        &\leq \sum_{i=1}^{n} |x_i| \| u(e_i) \|_F \\
+        &\leq \sum_{i=1}^{n} \|x\|_{\infty, E} \| u(e_i) \|_F \\
+        &= \|x\|_{\infty, E} \left(\sum_{i=1}^{n} \| u(e_i) \|_F \right)
+    \end{align*}
+
+    Par équivalence des normes en dimension finie, il existe $k > 0$ tel que $\|x\|_{\infty, E} \leq k \|x\|_E$
+
+    \begin{align*}
+        \|u(x)\|_F 
+        &\leq \|x\|_{\infty, E} \left(\sum_{i=1}^{n} \| u(e_i) \|_F \right) \\
+        &\leq k \left(\sum_{i=1}^{n} \| u(e_i) \|_F \right) \|x\|_E \\
+    \end{align*}
+
+    On a donc $\alpha = k \left(\sum_{i=1}^{n} \| u(e_i) \|_E \right) \geq 0$
+\end{itemize}
+
+$\forall (x, y) \in E^2, \|u(y)-u(x)\|_F = \|u(y - x)\|_F \leq \alpha\|y-x\|_E $.
+
+$u$ est lipschitzienne donc continue. 
+
+\section{Théorème de comparaison des intégrales}
+Soit $(f, g) \in \mathcal{C}_m([a, b[, \mathbb{R})^2$
+
+\begin{itemize}
+    \item Cas des fonctions positifs - supposons que $0 \leq f \leq g$. \underline{$\int_{a}^{b} g$ converge $\implies \int_{a}^{b} f$ converge}. \\
+    
+    $\forall x \in [a, b[, \int_{a}^{x}f(t) \dt \leq \int_{a}^{x} g(t) \dt \leq \underset{x \rightarrow b}{\lim} \int_{a}^{x} g(t) \dt = \int_{a}^{b} g$. \\
+
+    $x \mapsto \int_{a}^{x} f(t) \dt$ est croissante et bornée, donc converge par TLM. 
+    \item Cas d'intégrabilité - supposons que $f = \underset{b}{\mathcal{O}} (g)$. \underline{$g$ intégrable en $b$ $\implies f$ intégrable en b}. \\
+    
+    $f = \underset{b}{\mathcal{O}} (g)$ alors $|f| = \underset{b}{\mathcal{O}} (|g|)$. Au voisinage de $b$, il existe $\lambda \in \mathbb{R}$ tel que $|f| \leq \lambda |g|$. \\
+
+    $\int_{a}^{b} |g|$ converge donc $\int_{a}^{b} \lambda |g|$ converge. 
+    
+    Par théorème de comparaison sur les fonctions positifs, $\int_{a}^{b}|f|$ converge donc $f$ est intégrable en $b$. 
+
+    \item Cas d'équivalence - supposons que $f \underset{b}{\sim} (g)$. \underline{$g$ intégrable en $b$ $\iff f$ intégrable en b}. \\
+    
+    Supposons que $g$ intégrable. \\
+
+    $f \underset{b}{\sim} (g)$ donc $f - g = \underset{b}{o} (g)$ donc $f - g = \underset{b}{\mathcal{O}} (g)$. 
+
+    $|f - g| = \underset{b}{\mathcal{O}} (|g|)$. Par théorème de comparaison, $f-g$ intégrable donc $f$ intégrable.\\
+
+    Par symétrie, on a l'équivalence. 
+\end{itemize}
+
+\section{Théorème d'intégration par parties}
+
+Soit $(f,g) \in \mathcal{C}([a, b[, \mathbb{R})^2$ tel que $fg(x) \underset{x \rightarrow b}{\longrightarrow} l \in \mathbb{R}$. 
+
+\underline{$\int_{a}^{b}f'(t) g(t) \dt$ et $\int_{a}^{b} f(t) g'(t) \dt$ sont de même nature.} \\
+
+Soit $x \in [a, b[$. Par intégration par parties sur $[a, x]$, 
+
+\[ \int_{a}^{x} f'(t)g(t) \dt = fg(x) - fg(a) - \int_{a}^{x} f(t) g'(t) \dt \].
+
+Comme $fg$ admet une limite finie, $\int_{a}^{x} f'(t)g(t) \dt$ converge $\iff \int_{a}^{x} f(t) g'(t) \dt$ converge. En cas de convergence,
+
+\[ \int_{a}^{b} f'(t)g(t) \dt = [f(t)g(t)]_a^b - \int_{a}^{b} f(t)g'(t) \dt \]
+
+\section{Théorème de changement de variable}
+
+Soit $f \in \mathcal{C}^0([a, b[, \mathbb{R})$, $\phi \in \mathcal{C}^1([\alpha, \beta[, [a, b[)$ une bijection strictement croissante. \\
+
+\underline{$\int_{a}^{b} f(x) \dx$ converge $\iff \int_{\alpha}^{\beta} f(\phi(t)) \phi'(t) \dt$ converge.} \\
+
+\begin{itemize}
+    \item $\boxed{\implies}$
+    Soit $z \in [a, b[$. Par changement de variable sur $[a, z]$, 
+    \[ \int_{a = \phi(\alpha)}^{z} f(x) \dx = \int_{\alpha}^{\phi^{-1}(z)} f(\phi(t)) \phi'(t) \dt \]
+
+    Car $\phi$ est une bijection strictement croissante, $\phi^{-1}$ est aussi une bijection strictement croissante. Ainsi, $\phi^{-1}(z) \underset{z \rightarrow b}{\longrightarrow} \beta$. $\int_{\alpha}^{\beta} f(\phi(t)) \phi'(t) \dt$ converge donc $\int_{\alpha}^{\phi^{-1}(z)} f(\phi(t)) \phi'(t) \dt$ admet une limite en $b$. 
+
+    \[ \int_{\alpha}^{\beta} f(\phi(t)) \phi'(t) \dt = \lim_{z \rightarrow b} \int_{\alpha}^{\phi^{-1}(z)} f(\phi(t)) \phi'(t) \dt = \lim_{z \rightarrow b} \int_{a}^{z} f(x) \dx = \int_{a}^{b} f(x) \dx \]
+
+    \item $\boxed{\impliedby}$
+    Soit $y \in [\alpha, \beta[$. Par changement de variable sur $[\alpha, y]$,
+    \[ \int_{\alpha}^{y} f(\phi(t)) \phi'(t) \dt = \int_{a = \phi(\alpha)}^{\phi(y)} f(x) \dx \]
+
+    $\phi(y) \underset{y \rightarrow \beta}{\longrightarrow} b$ car $\phi$ est une bijection strictement croissante. $\int_{a}^{b} f(x) \dx$ converge donc $\int_{a}^{\phi(y)} f(x) \dx$ admet une limite en $\beta$.
+
+    \[ \int_{a}^{b} f(x) \dx = \lim_{y \rightarrow \beta} \int_{a}^{\phi(y)} f(x) \dx = \lim_{y \rightarrow \beta} \int_{\alpha}^{y} f(\phi(t)) \phi'(t) \dt = \int_{\alpha}^{\beta} f(\phi(t)) \phi'(t) \dt \]
+\end{itemize}
+
+\section{Convergence absolue implique convergence}
+
+Soit $f \in \mathcal{C}_m([a, b[, \mathbb{K})$. \underline{$\int_{a}^{b} f$ est absolument convergente $\implies \int_{a}^{b} f$ est convergente.} \\
+
+\begin{itemize}
+    \item Cas réel - $f \in \mathcal{C}_m([a, b[, \mathbb{R})$ \\
+    Notons $f_+ = \max(f, 0)$ et $f_- = \max(-f, 0)$. $f_+ = \frac{f + |f|}{2}$ et $f_- = \frac{|f|-f}{2}$ \\
+
+    On a $0 \leq f_+ \leq |f|$, $f_+ \in \mathcal{C}_m([a, b[, \mathbb{R})$ et $|f| \in \mathcal{C}_m([a, b[, \mathbb{R})$.
+
+    Par théorème de comparaison, $\int_{a}^{b} |f|$ converge donc $\int_{a}^{b} f_+$ converge. De même, $\int_{a}^{b} f_-$ converge. \\
+
+    Alors $\int_{a}^{b} f = \int_{a}^{b} f_+ - \int_{a}^{b} f_-$ converge.
+
+    \item Cas complexe - $f \in \mathcal{C}_m([a, b[, \mathbb{C})$ \\
+    On a $|\text{Re}(f)| \leq |f|$ et $|\text{Im}(f)| \leq |f|$. $\text{Re}(f), \text{Im}(f) \in \mathcal{C}_m([a, b[, \mathbb{R})$ et $|f| \in \mathcal{C}_m([a, b[, \mathbb{R})$. \\
+
+    Par théorème de comparaison, $\int_{a}^{b} |f|$ converge donc $\int_{a}^{b} |\text{Re}(f)|$ et $\int_{a}^{b} |\text{Im}(f)|$ convergent. Par le cas réel, $\int_{a}^{b} \text{Re}(f)$ et $\int_{a}^{b} \text{Im}(f)$ convergent. \\
+
+    Alors $\int_{a}^{b} f = \int_{a}^{b} \text{Re}(f) + i \int_{a}^{b} \text{Im}(f)$ converge.
+\end{itemize}
+
+\section{Exemples de Riemann}
+
+Soit $\alpha \in \mathbb{R}$. 
+
+\begin{itemize}
+    \item \underline{$\int_{0}^{1} \frac{1}{x^{\alpha}} \dx$ converge $\iff \alpha < 1$}.
+    
+    Soit $x \in ]0, 1]$. 
+
+    \[ \int_{x}^{1} \frac{1}{x^{\alpha}} \dx = \begin{cases}
+        \left[ \ln(x) \right]_{x}^{1} = -\ln(x) & \text{si } \alpha = 1 \\[0.5em]
+        \left[ \frac{x^{1-\alpha}}{1-\alpha} \right]_{x}^{1} = \frac{1}{1-\alpha} - \frac{x^{1-\alpha}}{1-\alpha} & \text{si } \alpha \neq 1
+    \end{cases} \]
+
+    Pour $\alpha \neq 1$, $\left[ \frac{x^{1-\alpha}}{1-\alpha} \right]_{x}^{1} \longrightarrow \begin{cases}
+        +\infty & \text{si } \alpha > 1 \\[0.5em]
+        \frac{1}{1-\alpha} & \text{si } \alpha < 1
+    \end{cases}$ \\
+
+    Pour $\alpha = 1$, $\left[ \ln(x) \right]_{x}^{1} = -\ln(x) \longrightarrow +\infty$. \\
+
+    Donc $\int_{0}^{1} \frac{1}{x^{\alpha}} \dx$ converge $\iff \alpha < 1$.
+
+    \item \underline{$\int_{1}^{+\infty} \frac{1}{x^{\alpha}} \dx$ converge $\iff \alpha > 1$}. \\
+    
+    Soit $x \in [1, +\infty[$.
+
+    \[ \int_{1}^{x} \frac{1}{x^{\alpha}} \dx = \begin{cases}
+        \left[ \ln(x) \right]_{1}^{x} = \ln(x) & \text{si } \alpha = 1 \\[0.5em]
+        \left[ \frac{x^{1-\alpha}}{1-\alpha} \right]_{1}^{x} = \frac{x^{1-\alpha}}{1-\alpha} - \frac{1}{1-\alpha} & \text{si } \alpha \neq 1
+    \end{cases} \]
+
+    Pour $\alpha \neq 1$, $\left[ \frac{x^{1-\alpha}}{1-\alpha} \right]_{1}^{x} \longrightarrow \begin{cases}
+        +\infty & \text{si } \alpha < 1 \\[0.5em]
+        \frac{1}{1-\alpha} & \text{si } \alpha > 1
+    \end{cases}$ \\
+
+    Pour $\alpha = 1$, $\left[ \ln(x) \right]_{1}^{x} = \ln(x) \longrightarrow +\infty$. \\
+
+    Donc $\int_{1}^{+\infty} \frac{1}{x^{\alpha}} \dx$ converge $\iff \alpha > 1$.
+
+\end{itemize}
+
+\end{document}

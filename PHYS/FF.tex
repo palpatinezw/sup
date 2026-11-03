@@ -1,0 +1,208 @@
+\documentclass[]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage[margin=1in]{geometry}
+
+\input{../headers.tex}
+
+\setlength{\emergencystretch}{3em}
+\hbadness=10000
+
+\title{Formules}
+\author{Huang Ziwen}
+\date{2026-2027 PC*}
+
+\makeatletter
+\def\ps@myheader{
+    \def\@evenhead{\hfil Formules de physique - Huang Ziwen - 2026-2027 PC* \hfil}%
+    \def\@oddhead{\hfil Formules de physique - Huang Ziwen - 2026-2027 PC* \hfil}%
+}
+\makeatother
+
+\pagestyle{myheader}
+
+\begin{document}
+
+\section{Incertitudes}
+
+\begin{align*}
+    s_{\text{exp}} &= \sigma_{N-1} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(m_i-\overline{m})^2} \\
+    s_A &= \sqrt{\frac{1}{N}}s_{\text{exp}} \\
+    s_B &= \frac{a}{\sqrt{3}}
+\end{align*}
+
+\subsection*{Propagation des incertitudes}
+
+\[ s_B = \sqrt{\sum_{k=1}^{n}(\frac{\partial f}{\partial x_k}s(x_k))^2} \]
+
+\section{Optique}
+
+\subsection*{Formule de Cauchy}
+
+\[ n = a + \frac{b}{\lambda^2} \]
+
+\subsection*{Théorèmes de conjugaison}
+
+\[\overline{FA} \cdot \overline{F'A'} = f'f=-f^2\]
+\[ \frac{1}{\overline{OA}}-\frac{1}{\overline{OA'}} = -\frac{1}{f'} \]
+
+\section{Électrocinétique}
+
+\subsection*{Filtres}
+
+\scriptsize
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c|c|m{5cm}| } 
+     \hline
+      & $ \underline{N} $ & $ \underline{D} $ & $\underline{H}$ usuel & Type & $ \phi $ & Remarques  \\ 
+     \hline \hline
+     $R[\underline{C}]$ & $ 1 $ & $ 1 + j(\frac{\omega}{\omega_c}) $ & $ \frac{1}{1 + jx} $ & Passe-bas & $ 0 \rightarrow -\frac{\pi}{2} $ & Pente HF: $-20$ dB par décade [Intégrateur] \\
+     \hline
+     $[\underline{R}]C$ & $ j(\frac{\omega}{\omega_c}) $ & $ 1 + j(\frac{\omega}{\omega_c}) $ & $ \frac{jx}{1 + jx} $ & Passe-haut & $ \frac{\pi}{2} \rightarrow 0 $ & Pente BF: $+20$ dB par décade [Dérivateur] \\
+     \hline
+     $RL[\underline{C}]$ & $ 1 $ & $ 1 - (\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ \frac{1}{1 - x^2 +  j\frac{x}{Q}} $ & Passe-bas & $ 0 \rightarrow -\pi $ & Pente HF: $-40$ dB par décade [Double intégrateur]. \\
+     \hline
+     $R[\underline{L}]C$ & $ -(\frac{\omega}{\omega_0}) ^2$ & $ 1 - (\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ \frac{-x^2}{1 - x^2 +  j\frac{x}{Q}} $ & Passe-haut & $ \pi \rightarrow 0 $ & Pente BF: $+40$ dB par décade [Double dérivateur]. \\
+     \hline
+     $[\underline{R}]LC$ & $ j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ 1 - (\frac{\omega}{\omega_0})^2 + j\frac{1}{Q}\frac{\omega}{\omega_0} $ & $ \frac{1}{1+jQ(x-\frac{1}{x})} $ & Passe-bande & $ \frac{\pi}{2} \rightarrow -\frac{\pi}{2} $ & Pente BF: $+20$ dB par décade [Dérivateur], Pente HF: $-20$ dB par décade [Intégrateur], Croisements des asymptotes varie selon $Q$  \\
+     \hline
+\end{tabular}
+\end{center}
+\normalsize
+
+\clearpage
+
+\section{Mécanique}
+
+\subsection*{Coordonnées cylindriques}
+
+\[ \frac{\dd \vec{e_r}}{dt}_{\repr} = \dot{\theta} \vec{e_{\theta}} \]
+\[ \frac{\dd \vec{e_{\theta}}}{dt}_{\repr} = -\dot{\theta} \vec{e_{r}} \]
+\[ \vec{v}_{\repr} = \dot{r} \vec{e_r} + r \dot{\theta} \vec{e_{\theta}} + \dot{z} \vec{e_z} \]
+\[ \vec{a}_{\repr} = (\ddot{r} - r\dot{\theta}^2) \vec{e_r} + (r \ddot{\theta} + 2 \dot{r} \dot{\theta}) \vec{e_{\theta}} + \ddot{z} \vec{e_z} \]
+\[ \grad f = \frac{\partial f}{\partial r} \vec{e_r} + \frac{1}{r} \frac{\partial f}{\partial \theta} \vec{e_\theta} + \frac{\partial f}{\partial z} \vec{e_z} \]
+
+\subsection*{Coordonnées sphériques}
+
+\[ \frac{\dd \vec{e_r}}{dt}_{\repr} = \dot{\theta} \vec{e_{\theta}} + \dot{\phi}\sin \theta \vec{e_{\phi}} \]
+\[ \vec{v}_{\repr} = \dot{r} \vec{e_r} + r \dot{\theta} \vec{e_{\theta}} + r \dot{\phi} \sin \theta \vec{e_{\phi}} \]
+
+\subsection*{Changements de base}
+\[ \vec{v}_{\repr} (M) = \vec{v}_{\repr '} (M) + \vec{v}_{\repr} (O') + \vec{\Omega}_{\mathcal{R}' / \mathcal{R}} \wedge \overline{O'M} \]
+\[ \vec{v}_{\repr} (M) = \vec{v}_{\repr '} (M) + \vec{v_{e}} (M) \]
+\[ \vec{a}_{\repr}(M) = \vec{a}_{\repr '}(M) + 2 \vec{\Omega}_{\mathcal{R}' / \mathcal{R}}\wedge \vec{v}_{\repr '} (M) + \vec{a_e}(M) \]
+
+\subsection*{Moment cinétique}
+\[ \overrightarrow{L_{O\repr}}(M) = \overrightarrow{OM} \wedge \vec{p}_{\repr}(M) \]
+\[ \vec{M}_O = \overrightarrow{OM} \wedge \vec{F} \]
+
+\subsection*{Intéractions newtonniennes}
+
+\[ \vec{e} = -\frac{mC}{K}\vec{v_{\repr}} - \vec{e_{\theta}} \]
+\[ r = \frac{p}{-\text{sgn}(K) + e\cos{\theta}} \]
+\[ E_{m\repr} = \frac{K^2}{2mC^2}(e^2-1) \]
+
+\section{Thermodynamique}
+
+\subsection*{Identités}
+\[ \dd U = T \dd S - P \dd V \]
+\[ \dd H = T \dd S + V \dd P \]
+\[ \dd S = \frac{1}{T}\dd U + \frac{P}{T} \dd V \]
+
+\subsection*{Gaz parfait}
+
+\[ P = \frac{1}{3}n_Vm \langle v^2 \rangle \]
+
+\subsection*{Cycles de Carnot}
+
+\begin{align*}
+    \eta &\leq 1 - \frac{T_f}{T_c} \\
+    e_{\text{frigo}} &\leq \frac{T_f}{T_c - T_f} \\
+    e_{\text{pac}} &\leq \frac{T_c}{T_c - T_f}
+\end{align*}
+
+\section{Mécanique des fluides}
+
+\subsection*{Pression atmosphèrique}
+\[ P(z) = P_0 e^{-\frac{M_{\text{mol}}gz}{RT}} = P_0 e^{-\frac{m_{\text{gaz}}gz}{kT}} \]
+
+\subsection*{Nombre de Reynolds}
+
+\[ R_e = \frac{\mu v L}{\eta} \]
+
+\subsection*{Trainée d'un solide}
+
+\[ C_x = \frac{f_{\text{trainée}}}{\frac{1}{2}\rho S v^2} \]
+
+\begin{itemize}
+    \item Pour $R_e < 1$, $C_x = \frac{24}{R_e}$, \[\vec{f} = -6\pi \eta r \vec{v}\]
+    \item Pour $2\times10^3 < R_e < 2\times10^5$, $C_x = C$ constant, \[\vec{f} = - \frac{C}{2}\rho \pi r^2 v \vec{v}\]
+\end{itemize}
+
+\subsection*{Conservation de la masse}
+\[ \iiint_V \frac{\partial \mu}{\partial t} \dd^3 \tau + \oiint_S \vec{j} \cdot \dd^2 \vec{S} = 0 \]
+\[ \frac{\partial \mu}{\partial t} + \text{div}(\vec{j}) = 0 \]
+
+\subsection*{Équation de Navier-Stokes}
+\[ \mu \frac{\Dd \vec{v}}{\Dd t} = \vec{f_V} - \grad P + \eta \Delta \vec{v} \]
+
+\subsection*{Équation d'Euler}
+\[ \mu \left( \frac{\partial \vec{v}}{\partial t} + \frac{1}{2} \grad v^2 + (\rot \vec{v}) \wedge \vec{v} \right) = \vec{f}_V - \grad P \]
+
+\section{Induction}
+
+\subsection*{Solénoïde infini}
+\[ \overrightarrow{B_{\text{int}}} = \mu_0 n I \vec{e_z} \]
+\[ L = \mu_0 \frac{N^2}{L}S \]
+\[ M = \mu_0 \frac{N_1 N_2}{l} S_2 \]
+
+\section{Mécanique quantique}
+
+\[ E = h\nu \]
+\[ p = \frac{E}{c} = \frac{h}{\lambda} \]
+\[ \lambda_{\text{DB}} = \frac{h}{p} \]
+
+\subsection*{Principe d'indetermination}
+\[ \Delta x \Delta p \geq \frac{\hbar}{2} \]
+
+\section{Mathématiques}
+
+\begin{itemize}
+    \item Pythagore généralisé - $ a^2 = b^2 + c^2 - 2bc\cos{\theta} $
+    \item Factorisation de cosinus - $ \cos{p} + \cos{q} = 2 \cos{\frac{p+q}{2}}\cos{\frac{p-q}{2}} $ 
+    \item Dérivée partielle et taux d'accroissement - $f(x+\dx) - f(x) = \frac{\partial f}{\partial x} dx$
+    \item Dérivée partielle - $\dd f(x, y) = \frac{\partial f}{\partial x} \dx + \frac{\partial f}{\partial y} \dy$
+    \item Calcul de période d'un oscillation quelconque - $T = 2 \int_{-x_0}^{x_0} \frac{1}{\dot{x}} \dx = 4 \int_{0}^{x_0} \frac{1}{\dot{x}} \dx$ [Intégration sur une demi-période / $\frac{1}{4}$-période avec $\dt = \frac{1}{\dot{x}} \dx$]
+\end{itemize}
+
+\subsection*{Équations différentielles}
+\[ \dot{s}(t) + \frac{s(t)}{\tau} = f(t) \implies s(t) = Ae^{-\frac{t}{\tau}} + s_p(t) \] 
+\[ \ddot{s}(t) + \omega_0^2s = \omega_0^2s_{eq} \implies s(t) = A\cos(\omega_0t)+B\sin(\omega_0t) + s_{eq} = D\cos(\omega_0t + \phi) + s_{eq} \]
+\[ \ddot{s}(t) - \frac{1}{\tau ^ 2} s = \omega_0^2s_{eq} \implies s(t) = A e^{\frac{-t}{\tau}} + B e^{\frac{t}{\tau}} \]
+
+\subsection*{Équation différentielle du 2nd ordre}
+\[ \ddot{s}(t) + \frac{\omega_0}{Q}\dot{s}(t) + \omega_0^2s(t) = f(t) \]
+\begin{itemize}
+    \item $Q<\frac{1}{2}$ -
+        \[ r = -\frac{\omega_0}{2Q} \pm \frac{\omega_0}{2Q}\sqrt{1-4Q^2} \]
+        \[ s(t) = Ae^{r_1t} + Be^{r_2t} \]
+    \item $Q=\frac{1}{2}$ -
+        \[ r = -\frac{\omega_0}{2Q} = -\omega_0 \]
+        \[ s(t) = (A + Bt)e^{\omega_0t} \]
+    \item $Q>\frac{1}{2}$ -
+        \[ r = -\frac{\omega_0}{2Q} \pm i\frac{\omega_0}{2Q}\sqrt{4Q^2-1} \]
+        \[ \tau = \frac{2Q}{\omega_0}, \omega_p = \omega_0\sqrt{1-\frac{1}{4Q^2}} < \omega_0 \]
+        \[ s(t) = (A\cos{(\omega_pt)} + B\sin{(\omega_pt)})e^{-\frac{t}{\tau}} \]
+\end{itemize}
+
+\subsection*{Relations particulières}
+\[ \delta = |\ln{\frac{u(t) - u(t \rightarrow + \infty)}{u(t+T) - u(t \rightarrow + \infty)}}| = \frac{T}{\tau} = \frac{2\pi}{\sqrt{4Q^2-1}} \]
+\[ Q = \frac{\omega_0}{\Delta \omega} \]
+
+\end{document}

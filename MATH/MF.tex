@@ -1,0 +1,222 @@
+\documentclass[]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{titlesec}
+\usepackage[margin=1in]{geometry}
+
+\input{../headers.tex}
+
+\setlength{\emergencystretch}{3em}
+\hbadness=10000
+
+\title{Formules}
+\author{Huang Ziwen}
+\date{2026-2027 PC*}
+
+\makeatletter
+\def\ps@myheader{
+    \def\@evenhead{\hfil Formules de mathématiques - Huang Ziwen - 2026-2027 PC* \hfil}%
+    \def\@oddhead{\hfil Formules de mathématiques - Huang Ziwen - 2026-2027 PC* \hfil}%
+}
+\makeatother
+
+\pagestyle{myheader}
+
+\begin{document}
+
+\section{Complexes et trigonométrie}
+\subsection*{Inégalité triangulaire}
+\[ ||z|-|z'|| \leq |z \pm z'| \leq |z|+|z'| \]
+
+\subsection*{Racines troisième de l'unité}
+\[j=e^{i\frac{2\pi}{3}} = -\frac{1}{2} + i \frac{\sqrt{3}}{2}\]
+\[x^2 + x + 1 = (x - j)(x - j^2)\]
+\[x^2 - x + 1 = (x + j)(x + j^2)\]
+
+\subsection*{Formules trigonométriques}
+\begin{align*}
+    \cos{(a+b)} &= \cos{a}\cos{b}-\sin{a}\sin{b} \\
+    \cos{(2a)} &= \cos^2{a} - \sin^2{a} \\
+    &= 2\cos^2{a} -1 \\
+    &= 1- 2\sin^2{a} \\
+    \sin{(a+b)} &= \sin{a}\cos{b}+\cos{a}\sin{b} \\
+    \sin{(2a)} &= 2\sin{a}\cos{a} \\
+    \tan{(a+b)} &= \frac{\tan{a}+\tan{b}}{1-\tan{a}\tan{b}}
+\end{align*}
+
+\subsubsection*{Formules de linéarisation}
+\begin{align*}
+    \cos{a}\cos{b} &= \frac{1}{2}(\cos{(a+b)}+\cos{(a-b)}) \\
+    \sin{a}\sin{b} &= \frac{1}{2}(\cos{(a-b)}-\cos{(a+b)}) \\
+    \sin{a}\cos{b} &= \frac{1}{2}(\sin{(a+b)}+\sin{(a-b)})
+\end{align*}
+
+\subsubsection*{Formules de factorisation}
+\begin{align*}
+    \cos{p}+\cos{q} &= 2\cos{\frac{p+q}{2}}\cos{\frac{p-q}{2}} \\
+    \cos{p}-\cos{q} &= -2\sin{\frac{p+q}{2}}\sin{\frac{p-q}{2}} \\
+    \sin{p}+\sin{q} &= 2\sin{\frac{p+q}{2}}\cos{\frac{p-q}{2}} \\
+    \sin{p}-\sin{q} &= 2\cos{\frac{p+q}{2}}\sin{\frac{p-q}{2}}
+\end{align*}
+
+\section{Sommes, produits et probabilités}
+\subsection*{Sommes classiques}
+
+\begin{align*}
+    \sum_{k=0}^{n}k &= \frac{(n)(n+1)}{2} \\
+    \sum_{k=0}^{n}k^2 &= \frac{(n)(n+1)(2n+1)}{6} \\
+    \sum_{k=0}^{n}k^3 &= \frac{(n)^2(n+1)^2}{4} \\
+    \sum_{k=n}^{p}u_k &= \frac{1}{2}(u_p+u_n)(p-n+1) \\
+    \sum_{k=0}^n q^k &= 
+        \begin{cases}
+            \frac{1-q^{n+1}}{1-q} & \text{si } q \neq 1 \\
+            n+1 & \text{sinon}
+        \end{cases}
+\end{align*}
+
+\subsection*{Formule de Bernoulli}
+\[a^n - b^n = (a-b)\sum_{k=0}^{n-1}(a^kb^{n-1-k}) \]
+
+\subsection*{Formule du binôme de Newton}
+\[ (a+b)^n = \sum_{k=0}^{n}\binom{n}{k} a^kb^{n-k} \]
+
+\subsection*{Espérance}
+\[ \mathbb{E}(X) = \sum_{\omega \in \Omega} X(\omega)P({\omega}) = \sum_{x \in X(\Omega)} xP(X=x) \]
+
+\subsection*{Variance}
+\[ \mathbb{V}(X) = \mathbb{E}((X-\mathbb{E}(X))^2) = \mathbb{E}(X^2) - \mathbb{E}(X)^2 \]
+
+\subsection*{Covariance}
+\[ \text{Cov}(X,Y) = \mathbb{E}((X-\mathbb{E}(X))(Y-\mathbb{E}(Y))) = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y) \]
+
+\subsection*{Inégalité de Markov}
+Pour $a > 0$,
+\[ P(|X| \geq a) \leq \frac{\mathbb{E}(|X|)}{a} \]
+
+\subsection*{Inégalité de Bienaymé-Tchebychev}
+Pour $\epsilon > 0$
+\[ P( | X - \mathbb{E}(X) | \geq \epsilon ) \leq \frac{\mathbb{V}(X)}{\epsilon^2} \]
+
+\section{Développement limité}
+
+\subsection*{Formule de Taylor-Young}
+Pour $f \in \mathcal{C}^{n}$
+\[ f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!} (x-a)^k + \underset{a}{o} ((x-a)^n) \]
+
+\subsection*{Formule de Taylor}
+Pour $f \in \mathcal{C}^{n+1}$
+\[ f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k + \int_{a}^{x} \frac{(x-t)^n}{n!}f^{(n+1)} (t) \dt \]
+
+\subsection*{Inégalité de Taylor-Lagrange}
+\[ \left |f(x) - \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k \right | \leq \frac{|x-a|^{n+1}}{(n+1)!} M_{n+1} \]
+
+\subsection*{Équivalences usuels en 0}
+\begin{itemize}
+    \item $\sin{(x)} \sim x$
+    \item $\tan{(x)} \sim x$
+    \item $\sh{(x)} \sim x$
+    \item $\arcsin{(x)} \sim x$
+    \item $\arctan{(x)} \sim x$
+    \item $(1+x)^\alpha - 1 \sim \alpha x$
+    \item $e^{x} - 1 \sim x$
+    \item $\cos{(x)}-1 \sim -\frac{x^2}{2}$
+    \item $\ch{(x)}-1 \sim -\frac{x^2}{2}$
+    \item $\ln{(1+x)} \sim x$
+\end{itemize}
+
+\subsection*{DL usuels en $0$}
+\begin{itemize}
+    \item $e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \dots = \sum_{k=0}^{n}\frac{x^k}{k!} + o(x^n)$
+    \item $\ch (x) = 1 + \frac{x^2}{2} + \dots = \sum_{k=0}^{n}\frac{x^{2k}}{(2k)!} + o(x^{2n})$
+    \item $\sh (x) = x + \frac{x^3}{6} + \dots = \sum_{k=0}^{n}\frac{x^{2k+1}}{(2k+1)!} + o(x^{2n+1})$
+    \item $\cos (x) = 1 - \frac{x^2}{2} + \dots = \sum_{k=0}^{n} (-1)^k \frac{x^{2k}}{(2k)!} + o(x^{2n})$
+    \item $\sin (x) = x - \frac{x^3}{6} + \dots = \sum_{k=0}^{n} (-1)^k \frac{x^{2k+1}}{(2k+1)!} + o(x^{2n+1})$
+    \item $\ln (1 - x) = - x - \frac{x^2}{2} - \frac{x^3}{3} + \dots = \sum_{k=0}^{n} (-\frac{x^k}{k}) + o(x^n)$
+    \item $(1+x)^\alpha = 1 + \alpha x + \frac{(\alpha)(\alpha - 1)}{2}x^2 + \dots = \sum_{k=0}^{n}\binom{\alpha}{k} x^k + o(x^n)$
+    \item $\frac{1}{1-x} = 1 + x + x^2 + \dots = \sum_{k=0}^{n} x^k + o(x^n)$
+\end{itemize}
+
+\section{Intégration}
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        $f$ & $F$ & $I$ \\
+        \hline
+        $x^n$ ($n \in \mathbb{N}$) & $\frac{x^{n+1}}{n+1}$ & $\mathbb{R}$ \\
+        \hline
+        $x^k$ ($k \in \mathbb{Z}\backslash\{-1\}$) & $\frac{x^{k+1}}{k+1}$ & $\mathbb{R}^*$ \\
+        \hline
+        $x^a$ ($a \in \mathbb{R}\backslash\{-1\}$) & $\frac{x^{a+1}}{a+1}$ & $\mathbb{R}_+^*$ \\
+        \hline
+        $\frac{1}{x}$ & $\ln{|x|}$ & $\mathbb{R}^*$ \\
+        \hline
+        $e^{kx}$ & $\frac{e^{kx}}{k}$ & $\mathbb{R}$ \\
+        \hline
+        $\ln x$ & $x \ln x + x$ & $\mathbb{R}^*_+$ \\
+        \hline
+        $\cos{x}$ & $\sin{x}$ & $\mathbb{R}$ \\
+        \hline
+        $\sin{x}$ & $-\cos{x}$ & $\mathbb{R}$ \\
+        \hline
+        $1+\tan^2{x} = \frac{1}{cos^2{x}}$ & $\tan{x}$ & $\bigcup_{k\in\mathbb{Z}} ] -\frac{\pi}{2} + k\pi, \frac{\pi}{2} + k\pi [$ \\
+        \hline
+        $\tan{x} = - \frac{- \sin{x}}{\cos{x}}$ & $-\ln{|\cos{x}|}$ & $\bigcup_{k\in\mathbb{Z}} ] -\frac{\pi}{2} + k\pi, \frac{\pi}{2} + k\pi [$ \\
+        \hline
+        $\ch{x}$ & $\sh{x}$ & $\mathbb{R}$ \\
+        \hline
+        $\sh{x}$ & $\ch{x}$ & $\mathbb{R}$ \\
+        \hline
+        $\frac{1}{1+x^2}$ & $\arctan{x}$ & $\mathbb{R}$ \\
+        \hline
+        $\frac{1}{\sqrt{1-x^2}}$ & $\arcsin{x}$ & $]-1, 1 [$ \\
+        \hline
+        $-\frac{1}{\sqrt{1-x^2}}$ & $\arccos{x}$ & $]-1, 1 [$ \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\section{Algèbre et géométrie}
+
+\subsection*{Polynôme caractéristique}
+\[\chi_A = X^n - \tr (A) X^{n-1} + \dots + (-1)^n \det (A)\]
+
+\subsection*{Inégalité de Cauchy-Schwarz}
+\[ \langle x, y \rangle ^2 \leq \langle x, x \rangle\langle y, y \rangle \]
+
+\subsection*{Algorithme de Gram-Schmidt}
+\begin{align*}
+    f_1 &= \frac{e_1}{\|e_1\|} \\
+    f_k &= \frac{g_k}{\|g_k\|} \\
+    \text{ où } g_k &= e_k - \sum_{i=1}^{k-1} \langle e_k, f_i \rangle f_i = e_k - \sum_{i=1}^{k-1} \frac{1}{\|g_i\|^2} \langle e_k, g_i \rangle g_i
+\end{align*}
+
+\section{Polynômes}
+\subsection*{Relations coefficients racines}
+Pour $P = a_n X^n + a_{n-1} X^{n-1} + \dots + a_1 X + a_0$ avec les racines $r_1, r_2, \dots, r_n$ (avec multiplicité), 
+\[ \sum_{i=1}^{n} r_i = -\frac{a_{n-1}}{a_n} \]
+\[ \prod_{i=1}^{n} r_i = (-1)^n \frac{a_0}{a_n} \]
+
+\subsubsection*{Cas particuliers}
+\begin{itemize}
+    \item Degré 2 - $x_1 + x_2 = -\frac{b}{a} \et x_1x_2 = \frac{c}{a}$
+    \item Degré 3 - $X^3 - \sigma_1 X^2 + \sigma_2 X - \sigma_3$
+    \begin{itemize}
+        \item $\sigma_1 = x_1 + x_2 + x_3$
+        \item $\sigma_2 = x_1x_2 + x_1x_3 + x_2x_3$
+        \item $\sigma_3 = x_1 x_2 x_3$
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Décomposition en élements simples}
+\[ \frac{P(x)}{\prod_{i=1}^n (x- \alpha_i) } = E(x) + \sum_{k=1}^{n} \frac{\lambda_k}{x-\alpha_k} \]
+avec
+\[ \lambda_k = \frac{P(\alpha_k)}{\prod_{\substack{i=1 \\ i \neq k}}^{n}(\alpha_k - \alpha_i)} = \frac{P(\alpha_k)}{Q'(\alpha_k)} \]
+
+\subsection*{Polynôme d'interpolation de Lagrange}
+
+\[ L_i = \frac{\prod_{j=1, j\neq i}^{n} (X-a_j)}{\prod_{j=1, j\neq i}^{n} (a_i-a_j)} \]
+
+\end{document}

@@ -351,7 +351,7 @@ La formule est valable pour les objets qui commutent
 \\ \\
 \noindent La formule est valable pour les objets qui commutent
 
-\subsubsection{Formule de Vandermonde}
+\subsubsection{[Classique] Formule de Vandermonde}
 \[ \binom{m+n}{p} = \sum_{k=0}^p \binom{m}{k} \binom{n}{p-k}  \]
 
 \noindent Démonstration - En développant $(1 + x)^{m+n}$ de deux manières différentes
@@ -1436,10 +1436,25 @@ $f : [a, b[ \, \rightarrow \mathbb{K} \in \mathcal{C}_{m}$
     \item $\frac{1}{t^\alpha}$ intégravle en $+\infty$ si $\alpha > 1$
     \item $\ln t$ intégrable en $0$
     \item $e^{-\alpha t}$ intégrable en $+\infty$
+    \item{} [HP] $\frac{1}{t^\alpha (\ln t)^\beta}$ intégrable en $+\infty$ $\iff \alpha > 0 \ou (\alpha = 1 \et \beta > 1)$
 \end{itemize}
 
-\clearpage
+\subsection{Convergence dominée}
 
+\subsubsection{Convergence simple}
+\[ f_n \overset{\text{CVS}}{\longrightarrow} f \iff \forall x \in I, f_n(x) \underset{n \rightarrow +\infty}{\longrightarrow} f(x) \]
+
+\subsubsection{Théorème de convergence dominée}
+Pour une suite de fonctions $f_n$, si:
+\begin{itemize}
+    \item $\forall n, f_n$ CPM
+    \item $f_n \overset{\text{CVS}}{\longrightarrow} f$ et $f$ CPM 
+    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall n, |f_n| \leq \phi$
+\end{itemize}
+
+Alors $f_n$ et $f$ sont intégrables et $\int f_n \longrightarrow \int f$
+
+\clearpage
 
 \chapter{Algèbre}
 
@@ -2171,6 +2186,7 @@ On a les équivalences suivantes
         \item Il est souvent utile de considérer un polynôme annulateur de degré minimale
     \end{itemize}
     \item $u$ est diagonalisable $\iff \alpha u + \beta \text{Id}_E$ est diagonalisable
+    \item Si $u$ est diagonalisable, $\text{Ker}(u^2) = \text{Ker}(u)$ 
     \item Les projecteurs sont diagonalisables avec $\text{Sp}(p) = \{0, 1\}$
     \item Les symétries sont diagonalisables avec $\text{Sp}(s) = \{-1, 1\}$
     \item Si $\dim E = \sum_{\lambda \in A} \dim E_\lambda$, alors $u$ est diagonalisable et $\text{Sp}(u) \subset A$

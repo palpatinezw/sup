@@ -845,6 +845,24 @@ Grandeur vectorielle décrivant l'interaction capable de modifier et/ou de produ
     \end{itemize}
 \end{itemize}
 
+\subsection{Moment d'une force}
+\[ \vec{M}_O = \overrightarrow{OM} \wedge \vec{F} \]
+\[ M_\Delta = \vec{M}_O \cdot \vec{u_\Delta} \]
+
+\begin{itemize}
+    \item Le moment d'une force $\vec{F}$ par rapport à l'axe $ \Delta $ est nulle si $\vec{F}$ coupe $\Delta$ ou $\vec{F}$ est parallèle à $\Delta$
+    \item Bras de levier $d$ la distance la plus courte entre l'axe $\Delta$ et la droite d'action de la force - $M_\Delta = \pm d \| \vec{F} \| $
+    \item Pour le poids uniquement, le moment du poids d'un système est le moment du résultant du poids
+\end{itemize}
+
+\subsection{Couple}
+$\sum \vec{F} = \vec{0}$ et $\sum \vec{M}_O \neq \vec{0}$ - alors $\vec{\Gamma} = \vec{M}_O$ est indépendant de $O$
+
+\begin{itemize}
+    \item Pour un couple de 2 forces $\vec{F}$ et $-\vec{F}$ agissant sur $M_1$ et $M_2$, $\vec{\Gamma} = \overrightarrow{M_1M_2} \wedge \vec{F}$
+    \item Torsion - $\vec{\Gamma} = -C\theta \vec{u}_\Delta$ avec $C$ la constante de torsion
+\end{itemize}
+
 \subsection{1ère loi de Newton - principe d'inertie}
 Il existe des référentiels galiléens, dans lequel tout point matérial isolé est animé d'un mouvement rectilinge uniforme.
 \begin{itemize}
@@ -876,25 +894,6 @@ En passant aux moments, on a le théorème du moment cinétique autour du point 
 \subsection{3ème loi de Newton - principe de l'action réciproque}
 \[\vec{F}_{B \rightarrow A} = -\vec{F}_{A \rightarrow B}\]
 \noindent Avec $\vec{F}_{B \rightarrow A} \et \vec{F}_{A \rightarrow B}$ selon la même droite d'action $AB$
-
-\subsection{Moment d'une force}
-\[ \vec{M}_O = \overrightarrow{OM} \wedge \vec{F} \]
-\[ M_\Delta = \vec{M}_O \cdot \vec{u_\Delta} \]
-
-\begin{itemize}
-    \item Le moment d'une force $\vec{F}$ par rapport à l'axe $ \Delta $ est nulle si $\vec{F}$ coupe $\Delta$ ou $\vec{F}$ est parallèle à $\Delta$
-    \item Bras de levier $d$ la distance la plus courte entre l'axe $\Delta$ et la droite d'action de la force - $M_\Delta = \pm d \| \vec{F} \| $
-    \item Pour le poids uniquement, le moment du poids d'un système est le moment du résultant du poids
-\end{itemize}
-
-\subsection{Couple}
-$\sum \vec{F} = \vec{0}$ et $\sum \vec{M}_O \neq \vec{0}$ - alors $\vec{\Gamma} = \vec{M}_O$ est indépendant de $O$
-
-\begin{itemize}
-    \item Pour un couple de 2 forces $\vec{F}$ et $-\vec{F}$ agissant sur $M_1$ et $M_2$, $\vec{\Gamma} = \overrightarrow{M_1M_2} \wedge \vec{F}$
-    \item Torsion - $\vec{\Gamma} = -C\theta \vec{u}_\Delta$ avec $C$ la constante de torsion
-\end{itemize}
-
 
 \subsection{Théorème de Cauchy}
 Le système $\dot{x} = v \et \dot{v} = \frac{1}{m}F(x, v, t)$ muni des conditions initiales admet une unique solution.
@@ -1488,7 +1487,7 @@ Le cycle est réversible $ \iff \sum_k \frac{Q_k}{T_k} = 0 $ - égalité de Carn
     \item $W > 0, Q_c > 0, Q_f < 0$ - transfert de la source froide vers la source chaude - domaine pompe à chaleur / machines frigorifiques
     \begin{itemize}
         \item Machine frigorifiques - $e = \frac{|Q_f|}{W} = -\frac{Q_f}{Q_c + Q_f} \leq \frac{T_f}{T_c - T_f}$
-        \item Pompe à chaleur - $e = = \frac{Q_c}{W} = \frac{Q_c}{Q_c + Q_f} \leq \frac{T_c}{T_c - T_f}$
+        \item Pompe à chaleur - $e = \frac{Q_c}{W} = \frac{Q_c}{Q_c + Q_f} \leq \frac{T_c}{T_c - T_f}$
     \end{itemize}
 \end{enumerate}
 
@@ -1730,7 +1729,8 @@ Pour un écoulement parfait ($R_e$ très grand)
 \begin{itemize}
     \item Pour un écoulement parfait stationnaire, irrotationnel et incompressible, la quantité est constante partout dans l'écoulement
     \item Pour un écoulement parfait stationnaire, incompressible et homogène, la quantité est constante sur une ligne de courant
-    \item Pour un écoulement parfait irrotationnel non-stationnaire, $\mu \frac{\partial phi}{\partial t} + \frac{1}{2}\mu v^2 + P + E_{p, V} = f(t)$
+    \item Pour un écoulement parfait irrotationnel non-stationnaire, $\mu \frac{\partial \phi}{\partial t} + \frac{1}{2}\mu v^2 + P + E_{p, V} = f(t)$
+    \item Dans les référentiels non-galiléens, il faut redémontrer le théorème à partir de l'équation d'Euler
     \item Effet Venturi - s'il y a un resserrement des lignes de courant, la vitesse augmente et la pression diminue
     \item Le théorème de Bernoulli traduit la conservation d'énergie
 \end{itemize}
@@ -1740,7 +1740,7 @@ Pour un écoulement parfait ($R_e$ très grand)
 \begin{enumerate}
     \item Choisr le système (fermé) - souvent on passe par un systèm ouvert fixe et indéformable auxiliaire
     \item Bilan des forces extérieur (et intérieur pour des bilans énergétiques)
-    \item Application de TQM / TEC / TEM sur le système
+    \item Appliquer le TQM / TEC / TEM sur le système
 \end{enumerate}
 
 \clearpage

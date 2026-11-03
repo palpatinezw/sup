@@ -112,7 +112,8 @@
 \planpart{I}{Bilan de masse}\plansub{1}{Système ouvert}\plansub{2}{Système fermé}
 \planpart{II}{Bilan de quantité de mouvement}\plansub{1}{Mouvement d'une fusée}\plansub{2}{Coude de canalisation}\plansub{3}{Jet cylindrique sur une plaque}
 \planpart{III}{Bilan d'énergie}\plansub{1}{Interprétation énergétique du théorème de Bernoulli}\plansub{2}{Écoulement à travers une machine thermique}\plansub{3}{Puissance d'une pompe}
-\planpart{IV}{Onde de choc}\endgroup
+\planpart{IV}{Onde de choc}
+\planpart{V}{Second principe industriel}\endgroup
 % Sources 1-3
 On effectue des bilans de quantité de mouvement ou d'énergie sur les écoulements.
 \begin{itemize}\item En première année, le premier principe industriel sur un système fermé est un bilan d'énergie interne.
@@ -735,4 +736,58 @@ L'onde de choc a la même vitesse que le son dans l'eau.
 La variation de $\mu$ est très faible. Or l'onde de choc a pour origine la compressibilité de l'eau : il est donc impossible de considérer un écoulement incompressible.
 \par\textbf{Améliorations possibles du modèle :} considérer une vitesse continue et tenir compte de la viscosité.
 \par\textbf{Remarque :} $P_2=15\,\mathrm{bar}$ ; dans les robinets réels, il y a une vanne pour alléger la pression.
+\clearpage
+\section{Second principe industriel}
+\begin{center}
+\begin{tikzpicture}[scale=.85]
+\draw[thick](0,.5)--(3,.5)..controls(3.5,1.6)and(4.5,1.6)..(5,.5)--(8,.5);
+\draw[thick](0,-.5)--(3,-.5)..controls(3.5,-1.6)and(4.5,-1.6)..(5,-.5)--(8,-.5);
+\node[above]at(4,1.35){$M$};
+\foreach\x in{.3,.7,1.1,1.5,1.9,2.3,2.7,5.3,5.7,6.1,6.5,6.9,7.3,7.7}{\draw(\x,.5)--++(.2,.3)(\x,-.5)--++(-.2,-.3);}
+\foreach\x/\lab in{.4/\Sigma_1,1.2/\Sigma'_1,6.8/\Sigma_2,7.6/\Sigma'_2}{\draw[violet](\x,-1)--(\x,1)node[above]{$\lab$};}
+\node at(.8,0){\zone{1}};\node at(7.2,0){\zone{2}};
+\draw[flow,blue!65!black](-1.1,0)--(-.2,0);
+\end{tikzpicture}
+\end{center}
+\textbf{Hypothèses :}
+\begin{itemize}
+\item L'écoulement est stationnaire à travers une machine thermique.
+\item Les parois sont calorifugées.
+\end{itemize}
+Le système fermé $\Sigma$ est constitué du fluide :
+\begin{itemize}
+\item à $t$, compris entre $\Sigma_1$ et $\Sigma_2$ ;
+\item à $t'$, compris entre $\Sigma'_1$ et $\Sigma'_2$.
+\end{itemize}
+Le système $\Sigma'$ est constitué du fluide :
+\begin{itemize}
+\item à $t$, compris entre $\Sigma_1$ et $\Sigma'_1$ ;
+\item à $t''$, compris entre $\Sigma_2$ et $\Sigma'_2$.
+\end{itemize}
+On applique le deuxième principe à $\Sigma$ entre $t$ et $t'$ :
+\[
+\underset{t\to t'}{\Delta}S_\Sigma=S_{\text{créée}}+S_{\text{éch}}.
+\]
+\[
+\underset{t\to t'}{\Delta}S_\Sigma
+=\underset{t\to t''}{\Delta}S_{\Sigma'}=S_2-S_1.
+\]
+\begin{cadre}
+\[
+\underset{t\to t''}{\Delta}S_{\Sigma'}=S_{\text{créée}}+S_{\text{éch}}=S_2-S_1.
+\]
+\end{cadre}
+On pose $t'=t+\dd t$ :
+\[
+D_m\dd t\,\underbrace{(s_2-s_1)}_{\substack{\text{entropies}\\\text{massiques}}}
+=\underbrace{\delta S_{\text{créée}}+\delta S_{\text{éch}}}_{\text{pendant }\dd t}.
+\]
+\begin{cadre}[etoiles={\etoiles{3}}]
+\[
+\underbrace{s_2-s_1}_{\Sigma'\,:\ t\to t''}
+=\underbrace{s_{\text{créée}}+s_{\text{éch}}}_{\Sigma\,:\ t\to t+\dd t}.
+\]
+Il s'agit de grandeurs massiques.
+\end{cadre}
+
 \end{document}
