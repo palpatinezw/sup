@@ -42,7 +42,7 @@ Soit $E$ un EVN.
         \item Si $I = \emptyset, \bigcap_{i\in I} O_i = E$ est un ouvert
         \item Sinon, $\forall i \in I, x \in O_i$, donc $ \forall i \in I, \exists r_i > 0$ tel que $B(x, r) \subset U_i$. \\
         
-        Posons $r = \min{r_i \ligneh i \in I}$ (existe car c'est une partie finie de $R_+$).\\
+        Posons $r = \min\{r_i \ligneh i \in I\}$ (existe car c'est une partie finie de $\mathbb{R}_+^*$).\\
 
         $\forall i \in I, B(x, r) \subset B(x, r_i)$. Alors $B(x, r) \subset \bigcap_{i\in I} O_i$. 
 
@@ -75,7 +75,7 @@ Soit $E$ un EVN.
 
 \end{itemize}
 
-\section{Caractérisation séquentielle des fermée}
+\section{Caractérisation séquentielle des fermés}
 
 \underline{$A$ est fermé $\iff \forall (a_n) \in A^{\mathbb{N}}$ convergente, $\lim a_n \in A$}
 
@@ -119,7 +119,7 @@ Soit $f:X \rightarrow F$, $a \in \overline{X}$. \\
     Alors $\forall \epsilon > 0, \exists n_0 \in \mathbb{N}$ tel que $\forall n \geq n_0, \|f(x_n) - l\|_F \leq \epsilon$. $f(x_n) \longrightarrow l. $
 
     \item $\boxed{\impliedby}$
-    Par contraposée, supposons que $f(x_n) \not \longrightarrow l$. \\
+    Par contraposée, supposons que $f(x) \not \longrightarrow l$. \\
 
     Alors il existe $\epsilon > 0$ tel que $\forall \eta > 0, \exists x \in X$ tel que $\|x-a\|_X \leq \eta \et \|f(x)-l\|_F > \epsilon$.\\
 
@@ -210,7 +210,7 @@ Soit $(f, g) \in \mathcal{C}_m([a, b[, \mathbb{R})^2$
     
     Supposons que $g$ intégrable. \\
 
-    $f \underset{b}{\sim} (g)$ donc $f - g = \underset{b}{o} (g)$ donc $f - g = \underset{b}{\mathcal{O}} (g)$. 
+    $f \underset{b}{\sim} g$ donc $f - g = \underset{b}{o} (g)$ donc $f - g = \underset{b}{\mathcal{O}} (g)$. 
 
     $|f - g| = \underset{b}{\mathcal{O}} (|g|)$. Par théorème de comparaison, $f-g$ intégrable donc $f$ intégrable.\\
 

@@ -1,4 +1,4 @@
-\documentclass[oneside]{book}
+\documentclass[openany]{book}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
 \usepackage{esint}
@@ -8,6 +8,9 @@
 \usepackage{array}
 \usepackage{titlesec}
 \usepackage[margin=1in]{geometry}
+\usepackage{etoolbox}
+
+\patchcmd{\chapter}{\thispagestyle{plain}}{}{}{}
 
 \graphicspath{ {./img/} }
 \input{../headers.tex}
@@ -38,6 +41,8 @@
 \date{2025-2027 PCSI / PC*}
 
 \begin{document}
+
+\pagestyle{headings}
 
 \maketitle
 
@@ -1075,30 +1080,7 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
     \end{itemize}
 \end{enumerate}
 
-\section{Forces particulières}
-\subsection{Force de Lorentz}
-\[ \vec{F_L} = q[\vec{E} + \vec{v}_{\repr} \wedge \vec{B}] \]
-
-\begin{itemize}
-    \item La partie $q\vec{E}$ est la force électrique
-    \item La partie $q\vec{v}_{\repr} \wedge \vec{B}$ est la force magnétique
-    \item $\vec{E}$, $\vec{B}$ et $\vec{v}_{\repr}$ dépendent du référentiel, mais $\vec{F_L}$ n'en dépende pas
-    \item La force magnétique est plus importante que la force électrique
-    \item La force de gravité est négligeable devant la force de Lorentz
-\end{itemize}
-
-\[ \vec{E} = \frac{Q}{4\pi\epsilon_0} \frac{\overrightarrow{OM}}{\|\overrightarrow{OM}\|^3} \]
-\[ V = \frac{Q}{4\pi\epsilon_0} \frac{1}{\|\overrightarrow{OM}\|} \]
-
-\begin{itemize}
-    \item $\vec{E}$ dérive d'un potentiel $V$
-    \item $\vec{E} = - \grad V $
-    \item La force électrique dérive d'une énergie potentielle $E_p = qV$
-    \item La force magnétique ne travaille pas
-    \item Dans un champ magnétique uniforme et stationnaire, le mouvement est hélicoïdale [Démonstration - on choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec{v_0}$ est dans le plan $(yOz)$. On aura un mouvement uniforme selon $\vec{e_z}$, et un mouvement circulaire de rayon $R = \frac{v_0 \sin \alpha}{|q|B}$ apres résultion en posant $ \underline{u} = x + jy $ ou en considérant la base de frénet $\frac{\dd}{\dt}\vec{v} = \dot{v} \vec{e}_T + \frac{v^2}{R} \vec{e}_N$ avec $\vec{e}_T$ et $\vec{e}_N$ les composants tangentiels et normals du mouvement]
-\end{itemize}
-
-\subsection{Intéractions newtoniennes}
+\section{Intéractions newtoniennes}
 \[ \vec{F} = \frac{K}{r^2}\vec{e_r} \]
 \begin{itemize}
     \item Force gravitationelle et coulombienne
@@ -1878,7 +1860,90 @@ On définit le rapport de transformation
     \item Vecteur densité de courant $\vec{j} = \rho \vec{v}$ 
     \begin{itemize}
         \item $I = \iint \vec{j} \cdot \dd^2 \vec{S}$
+        \item Équation de la conservation de la charge - $\frac{\partial \rho}{\partial t} + \text{div }\vec{j} = 0$
     \end{itemize}
+    \item Distribution de charge $\mathcal{D} = \left\{ \rho(M, t), \vec{j}(M, t) \right\}$
+    \item Champ électromagnétique $\left( \vec{E}(M, t), \vec{B}(M, t) \right)$
+\end{itemize}
+
+\subsection{Force de Lorentz}
+\[ \vec{F_L} = q\left[\vec{E} + \vec{v}_{\repr} \wedge \vec{B}\right] \]
+
+\begin{itemize}
+    \item La partie $q\vec{E}$ est la force électrique
+    \item La partie $q\vec{v}_{\repr} \wedge \vec{B}$ est la force magnétique
+    \item $\vec{E}$, $\vec{B}$ et $\vec{v}_{\repr}$ dépendent du référentiel, mais $\vec{F_L}$ n'en dépende pas
+    \item La force magnétique est plus importante que la force électrique
+    \item La force de gravité est négligeable devant la force de Lorentz
+\end{itemize}
+
+\[ \vec{E} = \frac{Q}{4\pi\epsilon_0} \frac{\overrightarrow{OM}}{\|\overrightarrow{OM}\|^3} \]
+\[ V = \frac{Q}{4\pi\epsilon_0} \frac{1}{\|\overrightarrow{OM}\|} \]
+
+\begin{itemize}
+    \item $\vec{E}$ dérive d'un potentiel $V$
+    \item $\vec{E} = - \grad V $
+    \item La force électrique dérive d'une énergie potentielle $E_p = qV$
+    \item La force magnétique ne travaille pas
+    \item Puissance volumique fournies aux porteurs de charges $\frac{\dd^3 P}{\dd^3 \tau} = \vec{j} \cdot \vec{E}$
+    \item Dans un champ magnétique uniforme et stationnaire, le mouvement est hélicoïdale [Démonstration - on choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec{v_0}$ est dans le plan $(yOz)$. On aura un mouvement uniforme selon $\vec{e_z}$, et un mouvement circulaire de rayon $R = \frac{v_0 \sin \alpha}{|q|B}$ apres résultion en posant $ \underline{u} = x + jy $ ou en considérant la base de frénet $\frac{\dd}{\dt}\vec{v} = \dot{v} \vec{e}_T + \frac{v^2}{R} \vec{e}_N$ avec $\vec{e}_T$ et $\vec{e}_N$ les composants tangentiels et normals du mouvement]
+\end{itemize}
+
+\subsection{Équations de Maxwell}
+
+\begin{align*}
+    \text{div } \vec{E} &= \frac{\rho}{\epsilon_0} \\
+    \text{div } \vec{B} &= 0 \\
+    \rot \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
+    \rot \vec{B} &= \mu_0 \vec{j} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t}
+\end{align*}
+
+\begin{itemize}
+    \item $\mu_0 \epsilon_0 = \frac{1}{c^2}$
+    \item Un plan de symétrie de $\mathcal{D}$ est un plan de symétrie pour $\vec{E}$ et un plan d'antisymétrie pour $\vec{B}$
+    \item Un plan d'antisymétrie de $\mathcal{D}$ est un plan d'antisymétrie pour $\vec{E}$ et un plan de symétrie pour $\vec{B}$
+\end{itemize}
+
+\subsubsection{Équation locale de Poynting}
+
+\[ \frac{\partial}{\partial t} \left( \frac{1}{2}\epsilon_0 E^2 + \frac{B^2}{2\mu_0} \right) + \text{div}\left( \frac{\vec{E} \wedge \vec{B}}{\mu_0} \right) = - \vec{j} \cdot \vec{E} \]
+
+\begin{itemize}
+    \item $\frac{1}{2}\epsilon_0 E^2 + \frac{B^2}{2\mu_0} $ est une énergie volumique contenu dans le champ électromagnétique
+    \item Vecteur de Poynting - $\vec{\Pi} = \frac{\vec{E} \wedge \vec{B}}{\mu_0}$ - vecteur densité de courant d'énergie électromagnétique
+\end{itemize}
+
+\[ \frac{\dd}{\dt} \iiint_V \left(\frac{1}{2}\epsilon_0E^2 + \frac{B^2}{2\mu_0}\right) \dd^3 \tau = - \oiint_{\Sigma} \vec{\Pi} \cdot \dd^2 \vec{S} - \iiint_V \vec{j} \cdot \vec{E} \dd^3 \tau \]
+
+\subsubsection{Régime stationnaire}
+\begin{itemize}
+    \item $\text{div } \vec{j} = 0$
+    \item Les champs $\vec{E}$ et $\vec{B}$ sont découplés, les distributions $\vec{j}$ et $\rho$ sont découplées
+\end{itemize}
+
+\subsection{Électrostatique}
+
+\begin{align*}
+    \text{div } \vec{E} &= \frac{\rho}{\epsilon_0} \\
+    \rot \vec{E} &= \vec{0}
+\end{align*}
+
+\begin{itemize}
+    \item $\vec{E}$ est irrotationnel, donc il existe un potentiel scalaire $V$ tel que $\vec{E} = -\grad V$
+    \item Équation de Poisson - $\Delta V + \frac{\rho}{\epsilon_0} = 0$
+    \item Dans une région vide de charges ($\rho = 0$)
+    \begin{itemize}
+        \item Équation de Laplace - $\Delta V = 0$
+        \item $\text{div } \vec{E} = 0$ - $\vec{E}$ est un flux conservatif
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Théorème de Gauss}
+\[ \oiint_\Sigma \vec{E} \cdot \dd^2 \vec{S} = \frac{Q}{\epsilon_0} \]
+
+\begin{itemize}
+    \item Un maximum local en $M$ implique une charge positive
+    \item Un minimum local en $M$ implique une charge négative
 \end{itemize}
 
 \clearpage
@@ -2102,6 +2167,25 @@ Pour une équation différentielle de 2nd ordre avec $f(t)$ sinusoïdal de pulsa
 
 \noindent La relation $Q = \frac{\omega_0}{\Delta \omega}$ est très utile en TP. 
 
+\section{Analyse vectorielle}
+
+\subsection{Nabla en coordonnées cartésiennes}
+Ici, notations anglo-saxonnes
+
+\[ \nabla = \begin{pmatrix}
+    \frac{\partial}{\partial x} \vec{e_x} \\
+    \frac{\partial}{\partial y} \vec{e_y} \\
+    \frac{\partial}{\partial z} \vec{e_z} \\
+\end{pmatrix} \]
+
+\begin{itemize}
+    \item $\grad(u) = \nabla u$
+    \item $\text{div}(\vec{v}) = \nabla \cdot \vec{v}$
+    \item $\rot(\vec{v}) = \nabla \wedge \vec{v}$
+    \item $\Delta u = \nabla^2 u$
+    \item $\bgrad{b}v = (\vec{b}\cdot\nabla)\vec{v}$
+\end{itemize}
+
 \section{Approximations}
 \begin{itemize}
     \item Approximation nulle
@@ -2124,12 +2208,14 @@ Pour une équation différentielle de 2nd ordre avec $f(t)$ sinusoïdal de pulsa
     \item Punctum proximum de l'oeil - $ 0,25 \text{ m} $
     \item Punctum remotum de l'oeil - à l'infini
     \item Champ angulaire - l'angle du cône de vision - $ 40 \degree $  à $ 50 \degree $ (mais la zone de perception des détails est plus réduite à $ 1 \degree $).
-    \item Pouvoir séparateur de l'oeil - $ \epsilon = 1' = \frac{1}{60} \degree = 3*10^{-4} \text{ rad} $
+    \item Pouvoir séparateur de l'oeil - $ \epsilon = 1' = \frac{1}{60} \degree = 3 \times 10^{-4} \text{ rad} $
     \item Vitesse de son dans l'air $340 \text{ m s}^{-1}$
     \item Vitesse de son dans l'eau $1500 \text{ m s}^{-1}$
     \item Rotation de la Terre sur son axe Nord-Sud $ \Omega_T = 23 \text{ h } 56 \text{ min } 4 \text{ s} = 7,2921 \times 10^{-5} \text{ rad s}^{-1} $
     \item Coefficient de compressibilité isotherme de l'eau $5 \times 10^{-10} \text{ Pa}^{-1}$
     \item Champ magnétique terrestre $2 \times 10^{-5} \text{ T}$
+    \item Permittivité diélectrique du vide $\epsilon_0 = \frac{1}{36 \pi} \times 10^{-9} \text{ F m}^{-1}$
+    \item Perméabilité magnétique du vide $\mu_0 = 4 \pi \times 10^{-7} \text{ H m}^{-1}$
 \end{itemize}
 
 \end{document}

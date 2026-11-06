@@ -146,7 +146,6 @@
 \end{itemize}
 
 \subsection*{Conservation de la masse}
-\[ \iiint_V \frac{\partial \mu}{\partial t} \dd^3 \tau + \oiint_S \vec{j} \cdot \dd^2 \vec{S} = 0 \]
 \[ \frac{\partial \mu}{\partial t} + \text{div}(\vec{j}) = 0 \]
 
 \subsection*{Équation de Navier-Stokes}
@@ -161,6 +160,26 @@
 \[ \overrightarrow{B_{\text{int}}} = \mu_0 n I \vec{e_z} \]
 \[ L = \mu_0 \frac{N^2}{L}S \]
 \[ M = \mu_0 \frac{N_1 N_2}{l} S_2 \]
+
+\section{Électromagnétisme}
+
+\subsection*{Équations de Maxwell}
+\begin{align*}
+    \text{div } \vec{E} &= \frac{\rho}{\epsilon_0} \\
+    \text{div } \vec{B} &= 0 \\
+    \rot \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
+    \rot \vec{B} &= \mu_0 \vec{j} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t}
+\end{align*}
+
+\subsection*{Conservation de la charge}
+\[\frac{\partial \rho}{\partial t} + \text{div }\vec{j} = 0\]
+
+\subsection*{Force de Lorentz}
+\[ \vec{F_L} = q\left[\vec{E} + \vec{v}_{\repr} \wedge \vec{B}\right] \]
+
+\subsection*{Équation locale de Poynting}
+
+\[ \frac{\partial}{\partial t} \left( \frac{1}{2}\epsilon_0 E^2 + \frac{B^2}{2\mu_0} \right) + \text{div}\left( \frac{\vec{E} \wedge \vec{B}}{\mu_0} \right) = - \vec{j} \cdot \vec{E} \]
 
 \section{Mécanique quantique}
 

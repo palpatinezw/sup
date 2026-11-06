@@ -1,4 +1,4 @@
-\documentclass[oneside]{book}
+\documentclass[openany]{book}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -6,6 +6,9 @@
 \usepackage{stmaryrd}
 \usepackage{titlesec}
 \usepackage[margin=1in]{geometry}
+\usepackage{etoolbox}
+
+\patchcmd{\chapter}{\thispagestyle{plain}}{}{}{}
 
 \input{../headers.tex}
 
@@ -35,6 +38,8 @@
 \date{2025-2027 PCSI / PC*}
 
 \begin{document}
+
+\pagestyle{headings}
 
 \maketitle
 
@@ -1239,6 +1244,16 @@ En particulier, $\frac{1}{n}\sum_{0}^{n-1} f(\frac{k}{n}) \longrightarrow \int_{
 
 Identifier une somme de Riemann permet de démontrer la convergence d'une suite et trouver sa limite. 
 
+\section{[Classique] Intégrale de Wallis}
+\[ I_n = \int_{0}^{\frac{\pi}{2}} \cos^n t \dt \]
+
+\begin{itemize}
+    \item $I_{n+2} = \frac{n+1}{n+2} I_n$ [Démonstration - IPP]
+    \item La suite $W_n = nI_nI_{n+1} = \frac{\pi}{2}$ est constante
+    \item $I_n \sim I_{1}$ [Démonstration - encadrer $\frac{n+1}{n+2} \leq \frac{I_{n+1}}{I_n} \leq 1$]
+    \item $I_n \sim \sqrt{\frac{\pi}{2n}}$ [Démonstration - $I_n \sim \sqrt{\frac{W_n}{n}}$]
+\end{itemize}
+
 \clearpage
 \section{Séries numériques [sup 25]}
 
@@ -1445,7 +1460,7 @@ $f : [a, b[ \, \rightarrow \mathbb{K} \in \mathcal{C}_{m}$
 \[ f_n \overset{\text{CVS}}{\longrightarrow} f \iff \forall x \in I, f_n(x) \underset{n \rightarrow +\infty}{\longrightarrow} f(x) \]
 
 \subsubsection{Théorème de convergence dominée}
-Pour une suite de fonctions $f_n$, si:
+Pour une suite de fonctions $f_n$, si :
 \begin{itemize}
     \item $\forall n, f_n$ CPM
     \item $f_n \overset{\text{CVS}}{\longrightarrow} f$ et $f$ CPM 
@@ -1453,6 +1468,32 @@ Pour une suite de fonctions $f_n$, si:
 \end{itemize}
 
 Alors $f_n$ et $f$ sont intégrables et $\int f_n \longrightarrow \int f$
+
+\subsubsection{TCD à paramètre continue}
+Pour $f(x, t)$ paramétrée par $x$ sur $J$ avec une variable d'intégration $t$ sur $I$, si :
+\begin{itemize}
+    \item $t \mapsto f(x, t)$ est CPM
+    \item $\forall t, f(x, t) \underset{x\rightarrow c}{\longrightarrow} l(t)$ avec $l$ CPM
+    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t), |f(x, t)| \leq \phi(t)$
+\end{itemize}
+
+Alors $\forall x \in J, t \mapsto f(x, t)$ est intégrable et $\int_{I} f(x, t) \dt \underset{x \rightarrow c}{\longrightarrow} \int_I l(t) \dt$
+
+\begin{itemize}
+    \item Si $x \mapsto f(x, t)$ est en plus continue sur $J$, $x \mapsto \int_{I} f(x, t) \dt $ est continue sur $J$
+    \item Le résultat est aussi valable si pour tout segment $[a, b] \subset J, \exists \phi_{a, b} : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t) \in [a, b] \times I, |f(x, t)| \leq \phi_{a, b}(t)$
+\end{itemize}
+
+\subsection{[Classique] Fonction $\Gamma$}
+\[ \Gamma : x \mapsto \int_{0}^{+\infty} t^{x-1}e^{-t} \dt \]
+
+\begin{itemize}
+    \item Définie sur $\mathbb{R_+^*}$
+    \item $\Gamma(x) = (x-1) \Gamma(x-1)$ [Démonstration - IPP]
+    \item $\forall n \in \mathbb{N}^*, \Gamma(n) = (n-1)!$
+    \item $\Gamma$ est continue [Démonstration - TCD avec domination sur tout segment $[a, b]$ par $(t^{a-1} + t^{b-1})e^{-t}$]
+    \item $\Gamma(\frac{1}{2}) = \int_{0}^{+\infty} \frac{e^{-t}}{\sqrt{t}} \dt = \sqrt{\pi}$ [Démonstration - $J_n = \int_{0}^{\sqrt{n}} \left( 1 - \frac{t^2}{n} \right)^n \dt = \sqrt{n} W_{2n+1} \longrightarrow \frac{\sqrt{\pi}}{2} $ (Changement de variable $x = \sqrt(n) \sin t$ puis Wallis). Par ailleurs, $J_n \longrightarrow \int_{0}^{+\infty} e^{-x^2} \dx$ (TCD) et $\Gamma(\frac{1}{2}) = 2 \int_{0}^{+\infty}e^{-x^2} \dx$ (Changement de variable $t = x^2$).]
+\end{itemize}
 
 \clearpage
 
@@ -1962,6 +2003,7 @@ Pour $A \in \mathcal{M}_{n, p}(\mathbb{K})$
     \item Matrices semblables - il existe une matrice inversible $P$ tel que $B = P^{-1}AP$
     \begin{itemize}
         \item $A \et B$ sont semblables $\iff A \et B$ représentent le même endomorphisme
+        \item{} [HP] $A \et A^T$ sont semblables - utile pour les propriétés mais ne pas utiliser pour les démos
     \end{itemize} 
 \end{itemize}
 
