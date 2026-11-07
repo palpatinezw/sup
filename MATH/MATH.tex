@@ -5,10 +5,8 @@
 \usepackage{amsfonts}
 \usepackage{stmaryrd}
 \usepackage{titlesec}
-\usepackage[margin=1in]{geometry}
-\usepackage{etoolbox}
-
-\patchcmd{\chapter}{\thispagestyle{plain}}{}{}{}
+\usepackage[margin=1in, headheight=14pt]{geometry}
+\usepackage{fancyhdr}
 
 \input{../headers.tex}
 
@@ -27,11 +25,25 @@
   {0pt}    % space before the title
   {10pt}   % space after the title
   
-\makeatletter
-\renewcommand{\chaptermark}[1]{%
-  \markboth{\thechapter.\ #1}{}%
+% Chapter name only, without number or "Chapter" prefix
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+% Configure page style
+\fancypagestyle{plain}{
+    \fancyhf{}
+
+    % Headers
+    \fancyhead[LE,RO]{\thepage}
+    \fancyhead[LO]{\MakeUppercase{\rightmark}}
+    \fancyhead[RE]{\MakeUppercase{\rightmark}}
+
+    % Footers
+    \fancyfoot[RO]{PCSI-PC* 2025-2027}
+
+    % Horizontal lines
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
 }
-\makeatother
 
 \title{MATH}
 \author{Huang Ziwen}
@@ -39,7 +51,7 @@
 
 \begin{document}
 
-\pagestyle{headings}
+\pagestyle{plain}
 
 \maketitle
 
