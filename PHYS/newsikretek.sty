@@ -1,0 +1,405 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{newsikretek}[2026/11/10 pdfLaTeX font with explicit contextual shaping]
+\RequirePackage{expl3}
+\RequirePackage{xparse}
+\ifdefined\pdfmapline
+  \pdfmapline{+sikretek New_Sikretek <sikretek.enc <NewSikretek.ttf}
+\else
+  \PackageError{newsikretek}{This package requires pdfLaTeX}{Use pdfLaTeX, or load NewSikretek.ttf via fontspec under LuaLaTeX/XeLaTeX.}
+\fi
+\pdfgentounicode=1
+\pdfglyphtounicode{A}{0041}
+\pdfglyphtounicode{AI}{0041 0069}
+\pdfglyphtounicode{AU}{0041 0075}
+\pdfglyphtounicode{B}{0042}
+\pdfglyphtounicode{C}{0043}
+\pdfglyphtounicode{D}{0044}
+\pdfglyphtounicode{E}{0045}
+\pdfglyphtounicode{EI}{0045 0069}
+\pdfglyphtounicode{F}{0046}
+\pdfglyphtounicode{G}{0047}
+\pdfglyphtounicode{H}{0048}
+\pdfglyphtounicode{I}{0049}
+\pdfglyphtounicode{IU}{0049 0075}
+\pdfglyphtounicode{J}{004A}
+\pdfglyphtounicode{K}{004B}
+\pdfglyphtounicode{L}{004C}
+\pdfglyphtounicode{M}{004D}
+\pdfglyphtounicode{N}{004E}
+\pdfglyphtounicode{O}{004F}
+\pdfglyphtounicode{OI}{004F 0069}
+\pdfglyphtounicode{P}{0050}
+\pdfglyphtounicode{R}{0052}
+\pdfglyphtounicode{S}{0053}
+\pdfglyphtounicode{T}{0054}
+\pdfglyphtounicode{U}{0055}
+\pdfglyphtounicode{UI}{0055 0069}
+\pdfglyphtounicode{V}{0056}
+\pdfglyphtounicode{W}{0057}
+\pdfglyphtounicode{Y}{0059}
+\pdfglyphtounicode{a}{0061}
+\pdfglyphtounicode{a.f}{0061}
+\pdfglyphtounicode{a.isol}{0041}
+\pdfglyphtounicode{ai}{0061 0069}
+\pdfglyphtounicode{ai.f}{0061 0069}
+\pdfglyphtounicode{ai.isol}{0041 0069}
+\pdfglyphtounicode{au}{0061 0075}
+\pdfglyphtounicode{au.f}{0061 0075}
+\pdfglyphtounicode{au.isol}{0041 0075}
+\pdfglyphtounicode{b}{0062}
+\pdfglyphtounicode{b.f}{0062}
+\pdfglyphtounicode{b.isol}{0042}
+\pdfglyphtounicode{c}{0063}
+\pdfglyphtounicode{c.f}{0063}
+\pdfglyphtounicode{c.isol}{0043}
+\pdfglyphtounicode{comma}{002C}
+\pdfglyphtounicode{d}{0064}
+\pdfglyphtounicode{d.f}{0064}
+\pdfglyphtounicode{d.isol}{0044}
+\pdfglyphtounicode{e}{0065}
+\pdfglyphtounicode{e.f}{0065}
+\pdfglyphtounicode{e.isol}{0045}
+\pdfglyphtounicode{ei}{0065 0069}
+\pdfglyphtounicode{ei.f}{0065 0069}
+\pdfglyphtounicode{ei.isol}{0045 0069}
+\pdfglyphtounicode{f}{0066}
+\pdfglyphtounicode{f.f}{0066}
+\pdfglyphtounicode{f.isol}{0046}
+\pdfglyphtounicode{g}{0067}
+\pdfglyphtounicode{g.f}{0067}
+\pdfglyphtounicode{g.isol}{0047}
+\pdfglyphtounicode{h}{0068}
+\pdfglyphtounicode{h.f}{0068}
+\pdfglyphtounicode{h.isol}{0048}
+\pdfglyphtounicode{hyphen}{002D}
+\pdfglyphtounicode{i}{0069}
+\pdfglyphtounicode{i.f}{0069}
+\pdfglyphtounicode{i.isol}{0049}
+\pdfglyphtounicode{iu}{0069 0075}
+\pdfglyphtounicode{iu.f}{0069 0075}
+\pdfglyphtounicode{iu.isol}{0049 0075}
+\pdfglyphtounicode{j}{006A}
+\pdfglyphtounicode{j.f}{006A}
+\pdfglyphtounicode{j.isol}{004A}
+\pdfglyphtounicode{k}{006B}
+\pdfglyphtounicode{k.f}{006B}
+\pdfglyphtounicode{k.isol}{004B}
+\pdfglyphtounicode{l}{006C}
+\pdfglyphtounicode{l.f}{006C}
+\pdfglyphtounicode{l.isol}{004C}
+\pdfglyphtounicode{m}{006D}
+\pdfglyphtounicode{m.f}{006D}
+\pdfglyphtounicode{m.isol}{004D}
+\pdfglyphtounicode{n}{006E}
+\pdfglyphtounicode{n.f}{006E}
+\pdfglyphtounicode{n.isol}{004E}
+\pdfglyphtounicode{o}{006F}
+\pdfglyphtounicode{o.f}{006F}
+\pdfglyphtounicode{o.isol}{004F}
+\pdfglyphtounicode{oi}{006F 0069}
+\pdfglyphtounicode{oi.f}{006F 0069}
+\pdfglyphtounicode{oi.isol}{004F 0069}
+\pdfglyphtounicode{p}{0070}
+\pdfglyphtounicode{p.f}{0070}
+\pdfglyphtounicode{p.isol}{0050}
+\pdfglyphtounicode{period}{002E}
+\pdfglyphtounicode{quotesingle}{0027}
+\pdfglyphtounicode{r}{0072}
+\pdfglyphtounicode{r.f}{0072}
+\pdfglyphtounicode{r.isol}{0052}
+\pdfglyphtounicode{s}{0073}
+\pdfglyphtounicode{s.f}{0073}
+\pdfglyphtounicode{s.isol}{0053}
+\pdfglyphtounicode{space}{0020}
+\pdfglyphtounicode{t}{0074}
+\pdfglyphtounicode{t.f}{0074}
+\pdfglyphtounicode{t.isol}{0054}
+\pdfglyphtounicode{u}{0075}
+\pdfglyphtounicode{u.f}{0075}
+\pdfglyphtounicode{u.isol}{0055}
+\pdfglyphtounicode{ui}{0075 0069}
+\pdfglyphtounicode{ui.f}{0075 0069}
+\pdfglyphtounicode{ui.isol}{0055 0069}
+\pdfglyphtounicode{v}{0076}
+\pdfglyphtounicode{v.f}{0076}
+\pdfglyphtounicode{v.isol}{0056}
+\pdfglyphtounicode{w}{0077}
+\pdfglyphtounicode{w.f}{0077}
+\pdfglyphtounicode{w.isol}{0057}
+\pdfglyphtounicode{y}{0079}
+\pdfglyphtounicode{y.f}{0079}
+\pdfglyphtounicode{y.isol}{0059}
+\DeclareFontFamily{U}{newsikretek}{}
+\DeclareFontShape{U}{newsikretek}{m}{n}{<-> sikretek}{}
+\ExplSyntaxOn
+\prop_new:N \g__ns_slots_prop
+\prop_new:N \g__ns_lig_prop
+\prop_new:N \g__ns_final_pair_prop
+\prop_new:N \g__ns_final_single_prop
+\str_new:N  \l__ns_text_str
+\tl_new:N   \l__ns_current_tl
+\tl_new:N   \l__ns_next_tl
+\tl_new:N   \l__ns_following_tl
+\tl_new:N   \l__ns_pair_tl
+\tl_new:N   \l__ns_glyph_tl
+\tl_new:N   \l__ns_slot_tl
+\int_new:N  \l__ns_position_int
+\int_new:N  \l__ns_length_int
+\cs_generate_variant:Nn \prop_get:NnNTF { NV }
+\cs_generate_variant:Nn \prop_get:NnNT { NV }
+\cs_new_protected:Npn \__ns_emit_glyph:n #1
+  {
+    \prop_get:NnNTF \g__ns_slots_prop {#1} \l__ns_slot_tl
+      { \tex_char:D \l__ns_slot_tl \scan_stop: }
+          {
+        \PackageWarning{newsikretek}{Unsupported~glyph~'#1';~using~fallback}
+        \group_begin: \normalfont #1 \group_end:
+      }
+  }
+\cs_generate_variant:Nn \__ns_emit_glyph:n { V }
+\cs_new_protected:Npn \__ns_shape:n #1
+  {
+    \str_set:Nx \l__ns_text_str { \tl_to_str:n {#1} }
+    \int_set:Nn \l__ns_length_int { \str_count:N \l__ns_text_str }
+    \int_set:Nn \l__ns_position_int { 1 }
+    \int_while_do:nn { \l__ns_position_int <= \l__ns_length_int }
+      {
+        \tl_set:Nx \l__ns_current_tl
+          { \str_item:Nn \l__ns_text_str { \l__ns_position_int } }
+        \tl_set:Nx \l__ns_next_tl
+          { \str_item:Nn \l__ns_text_str { \int_eval:n { \l__ns_position_int + 1 } } }
+        \tl_set:Nx \l__ns_following_tl
+          { \str_item:Nn \l__ns_text_str { \int_eval:n { \l__ns_position_int + 2 } } }
+        \str_if_eq:VnTF \l__ns_current_tl { ~ }
+          { \tex_space:D \int_incr:N \l__ns_position_int }
+          {
+            \tl_set:Nx \l__ns_pair_tl { \l__ns_current_tl \l__ns_next_tl }
+            \prop_get:NVNTF \g__ns_lig_prop \l__ns_pair_tl \l__ns_glyph_tl
+              {
+                \str_if_eq:VnT \l__ns_following_tl { ~ }
+                  {
+                    \prop_get:NVNT \g__ns_final_pair_prop
+                      \l__ns_pair_tl \l__ns_glyph_tl { }
+                  }
+                \__ns_emit_glyph:V \l__ns_glyph_tl
+                \int_add:Nn \l__ns_position_int {2}
+              }
+              {
+                \tl_set_eq:NN \l__ns_glyph_tl \l__ns_current_tl
+                \str_if_eq:VnT \l__ns_next_tl { ~ }
+                  {
+                    \prop_get:NVNT \g__ns_final_single_prop
+                      \l__ns_current_tl \l__ns_glyph_tl { }
+                  }
+                \__ns_emit_glyph:V \l__ns_glyph_tl
+                \int_incr:N \l__ns_position_int
+              }
+          }
+      }
+  }
+% Use this command for fully shaped text. The argument should contain literal text.
+\NewDocumentCommand{\sikretek}{s m}
+  {
+    \group_begin:
+      \leavevmode
+      \fontencoding{U}\fontfamily{newsikretek}\fontseries{m}\fontshape{n}\selectfont
+      \IfBooleanTF{#1}
+        { \__ns_shape:n {#2 ~} \tex_unskip:D }
+        { \__ns_shape:n {#2} }
+    \group_end:
+  }
+% Raw glyph mode for isolated font changes: OpenType substitutions are NOT applied.
+\NewDocumentCommand{\sikretekraw}{}
+  {\fontencoding{U}\fontfamily{newsikretek}\fontseries{m}\fontshape{n}\selectfont}
+\prop_gput:Nnn \g__ns_slots_prop {quotesingle} {39}
+\prop_gput:Nnn \g__ns_slots_prop {comma} {44}
+\prop_gput:Nnn \g__ns_slots_prop {hyphen} {45}
+\prop_gput:Nnn \g__ns_slots_prop {period} {46}
+\prop_gput:Nnn \g__ns_slots_prop {A} {65}
+\prop_gput:Nnn \g__ns_slots_prop {B} {66}
+\prop_gput:Nnn \g__ns_slots_prop {C} {67}
+\prop_gput:Nnn \g__ns_slots_prop {D} {68}
+\prop_gput:Nnn \g__ns_slots_prop {E} {69}
+\prop_gput:Nnn \g__ns_slots_prop {F} {70}
+\prop_gput:Nnn \g__ns_slots_prop {G} {71}
+\prop_gput:Nnn \g__ns_slots_prop {H} {72}
+\prop_gput:Nnn \g__ns_slots_prop {I} {73}
+\prop_gput:Nnn \g__ns_slots_prop {J} {74}
+\prop_gput:Nnn \g__ns_slots_prop {K} {75}
+\prop_gput:Nnn \g__ns_slots_prop {L} {76}
+\prop_gput:Nnn \g__ns_slots_prop {M} {77}
+\prop_gput:Nnn \g__ns_slots_prop {N} {78}
+\prop_gput:Nnn \g__ns_slots_prop {O} {79}
+\prop_gput:Nnn \g__ns_slots_prop {P} {80}
+\prop_gput:Nnn \g__ns_slots_prop {R} {82}
+\prop_gput:Nnn \g__ns_slots_prop {S} {83}
+\prop_gput:Nnn \g__ns_slots_prop {T} {84}
+\prop_gput:Nnn \g__ns_slots_prop {U} {85}
+\prop_gput:Nnn \g__ns_slots_prop {V} {86}
+\prop_gput:Nnn \g__ns_slots_prop {W} {87}
+\prop_gput:Nnn \g__ns_slots_prop {Y} {89}
+\prop_gput:Nnn \g__ns_slots_prop {a} {97}
+\prop_gput:Nnn \g__ns_slots_prop {b} {98}
+\prop_gput:Nnn \g__ns_slots_prop {c} {99}
+\prop_gput:Nnn \g__ns_slots_prop {d} {100}
+\prop_gput:Nnn \g__ns_slots_prop {e} {101}
+\prop_gput:Nnn \g__ns_slots_prop {f} {102}
+\prop_gput:Nnn \g__ns_slots_prop {g} {103}
+\prop_gput:Nnn \g__ns_slots_prop {h} {104}
+\prop_gput:Nnn \g__ns_slots_prop {i} {105}
+\prop_gput:Nnn \g__ns_slots_prop {j} {106}
+\prop_gput:Nnn \g__ns_slots_prop {k} {107}
+\prop_gput:Nnn \g__ns_slots_prop {l} {108}
+\prop_gput:Nnn \g__ns_slots_prop {m} {109}
+\prop_gput:Nnn \g__ns_slots_prop {n} {110}
+\prop_gput:Nnn \g__ns_slots_prop {o} {111}
+\prop_gput:Nnn \g__ns_slots_prop {p} {112}
+\prop_gput:Nnn \g__ns_slots_prop {r} {114}
+\prop_gput:Nnn \g__ns_slots_prop {s} {115}
+\prop_gput:Nnn \g__ns_slots_prop {t} {116}
+\prop_gput:Nnn \g__ns_slots_prop {u} {117}
+\prop_gput:Nnn \g__ns_slots_prop {v} {118}
+\prop_gput:Nnn \g__ns_slots_prop {w} {119}
+\prop_gput:Nnn \g__ns_slots_prop {y} {121}
+\prop_gput:Nnn \g__ns_slots_prop {AI} {128}
+\prop_gput:Nnn \g__ns_slots_prop {AU} {129}
+\prop_gput:Nnn \g__ns_slots_prop {EI} {130}
+\prop_gput:Nnn \g__ns_slots_prop {IU} {131}
+\prop_gput:Nnn \g__ns_slots_prop {OI} {132}
+\prop_gput:Nnn \g__ns_slots_prop {UI} {133}
+\prop_gput:Nnn \g__ns_slots_prop {a.f} {134}
+\prop_gput:Nnn \g__ns_slots_prop {a.isol} {135}
+\prop_gput:Nnn \g__ns_slots_prop {ai} {136}
+\prop_gput:Nnn \g__ns_slots_prop {ai.f} {137}
+\prop_gput:Nnn \g__ns_slots_prop {ai.isol} {138}
+\prop_gput:Nnn \g__ns_slots_prop {au} {139}
+\prop_gput:Nnn \g__ns_slots_prop {au.f} {140}
+\prop_gput:Nnn \g__ns_slots_prop {au.isol} {141}
+\prop_gput:Nnn \g__ns_slots_prop {b.f} {142}
+\prop_gput:Nnn \g__ns_slots_prop {b.isol} {143}
+\prop_gput:Nnn \g__ns_slots_prop {c.f} {144}
+\prop_gput:Nnn \g__ns_slots_prop {c.isol} {145}
+\prop_gput:Nnn \g__ns_slots_prop {d.f} {146}
+\prop_gput:Nnn \g__ns_slots_prop {d.isol} {147}
+\prop_gput:Nnn \g__ns_slots_prop {e.f} {148}
+\prop_gput:Nnn \g__ns_slots_prop {e.isol} {149}
+\prop_gput:Nnn \g__ns_slots_prop {ei} {150}
+\prop_gput:Nnn \g__ns_slots_prop {ei.f} {151}
+\prop_gput:Nnn \g__ns_slots_prop {ei.isol} {152}
+\prop_gput:Nnn \g__ns_slots_prop {f.f} {153}
+\prop_gput:Nnn \g__ns_slots_prop {f.isol} {154}
+\prop_gput:Nnn \g__ns_slots_prop {g.f} {155}
+\prop_gput:Nnn \g__ns_slots_prop {g.isol} {156}
+\prop_gput:Nnn \g__ns_slots_prop {h.f} {157}
+\prop_gput:Nnn \g__ns_slots_prop {h.isol} {158}
+\prop_gput:Nnn \g__ns_slots_prop {i.f} {159}
+\prop_gput:Nnn \g__ns_slots_prop {i.isol} {160}
+\prop_gput:Nnn \g__ns_slots_prop {iu} {161}
+\prop_gput:Nnn \g__ns_slots_prop {iu.f} {162}
+\prop_gput:Nnn \g__ns_slots_prop {iu.isol} {163}
+\prop_gput:Nnn \g__ns_slots_prop {j.f} {164}
+\prop_gput:Nnn \g__ns_slots_prop {j.isol} {165}
+\prop_gput:Nnn \g__ns_slots_prop {k.f} {166}
+\prop_gput:Nnn \g__ns_slots_prop {k.isol} {167}
+\prop_gput:Nnn \g__ns_slots_prop {l.f} {168}
+\prop_gput:Nnn \g__ns_slots_prop {l.isol} {169}
+\prop_gput:Nnn \g__ns_slots_prop {m.f} {170}
+\prop_gput:Nnn \g__ns_slots_prop {m.isol} {171}
+\prop_gput:Nnn \g__ns_slots_prop {n.f} {172}
+\prop_gput:Nnn \g__ns_slots_prop {n.isol} {173}
+\prop_gput:Nnn \g__ns_slots_prop {o.f} {174}
+\prop_gput:Nnn \g__ns_slots_prop {o.isol} {175}
+\prop_gput:Nnn \g__ns_slots_prop {oi} {176}
+\prop_gput:Nnn \g__ns_slots_prop {oi.f} {177}
+\prop_gput:Nnn \g__ns_slots_prop {oi.isol} {178}
+\prop_gput:Nnn \g__ns_slots_prop {p.f} {179}
+\prop_gput:Nnn \g__ns_slots_prop {p.isol} {180}
+\prop_gput:Nnn \g__ns_slots_prop {r.f} {181}
+\prop_gput:Nnn \g__ns_slots_prop {r.isol} {182}
+\prop_gput:Nnn \g__ns_slots_prop {s.f} {183}
+\prop_gput:Nnn \g__ns_slots_prop {s.isol} {184}
+\prop_gput:Nnn \g__ns_slots_prop {t.f} {185}
+\prop_gput:Nnn \g__ns_slots_prop {t.isol} {186}
+\prop_gput:Nnn \g__ns_slots_prop {u.f} {187}
+\prop_gput:Nnn \g__ns_slots_prop {u.isol} {188}
+\prop_gput:Nnn \g__ns_slots_prop {ui} {189}
+\prop_gput:Nnn \g__ns_slots_prop {ui.f} {190}
+\prop_gput:Nnn \g__ns_slots_prop {ui.isol} {191}
+\prop_gput:Nnn \g__ns_slots_prop {v.f} {192}
+\prop_gput:Nnn \g__ns_slots_prop {v.isol} {193}
+\prop_gput:Nnn \g__ns_slots_prop {w.f} {194}
+\prop_gput:Nnn \g__ns_slots_prop {w.isol} {195}
+\prop_gput:Nnn \g__ns_slots_prop {y.f} {196}
+\prop_gput:Nnn \g__ns_slots_prop {y.isol} {197}
+\prop_gput:Nnn \g__ns_lig_prop {Ai} {AI}
+\prop_gput:Nnn \g__ns_lig_prop {Au} {AU}
+\prop_gput:Nnn \g__ns_lig_prop {Ei} {EI}
+\prop_gput:Nnn \g__ns_lig_prop {Iu} {IU}
+\prop_gput:Nnn \g__ns_lig_prop {Oi} {OI}
+\prop_gput:Nnn \g__ns_lig_prop {Ui} {UI}
+\prop_gput:Nnn \g__ns_lig_prop {ai} {ai}
+\prop_gput:Nnn \g__ns_lig_prop {au} {au}
+\prop_gput:Nnn \g__ns_lig_prop {ei} {ei}
+\prop_gput:Nnn \g__ns_lig_prop {iu} {iu}
+\prop_gput:Nnn \g__ns_lig_prop {oi} {oi}
+\prop_gput:Nnn \g__ns_lig_prop {ui} {ui}
+\prop_gput:Nnn \g__ns_final_pair_prop {Ai} {ai.isol}
+\prop_gput:Nnn \g__ns_final_pair_prop {Au} {au.isol}
+\prop_gput:Nnn \g__ns_final_pair_prop {Ei} {ei.isol}
+\prop_gput:Nnn \g__ns_final_pair_prop {Iu} {iu.isol}
+\prop_gput:Nnn \g__ns_final_pair_prop {Oi} {oi.isol}
+\prop_gput:Nnn \g__ns_final_pair_prop {Ui} {ui.isol}
+\prop_gput:Nnn \g__ns_final_pair_prop {ai} {ai.f}
+\prop_gput:Nnn \g__ns_final_pair_prop {au} {au.f}
+\prop_gput:Nnn \g__ns_final_pair_prop {ei} {ei.f}
+\prop_gput:Nnn \g__ns_final_pair_prop {iu} {iu.f}
+\prop_gput:Nnn \g__ns_final_pair_prop {oi} {oi.f}
+\prop_gput:Nnn \g__ns_final_pair_prop {ui} {ui.f}
+\prop_gput:Nnn \g__ns_final_single_prop {A} {a.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {B} {b.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {C} {c.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {D} {d.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {E} {e.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {F} {f.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {G} {g.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {H} {h.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {I} {i.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {J} {j.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {K} {k.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {L} {l.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {M} {m.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {N} {n.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {O} {o.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {P} {p.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {R} {r.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {S} {s.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {T} {t.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {U} {u.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {V} {v.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {W} {w.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {Y} {y.isol}
+\prop_gput:Nnn \g__ns_final_single_prop {a} {a.f}
+\prop_gput:Nnn \g__ns_final_single_prop {b} {b.f}
+\prop_gput:Nnn \g__ns_final_single_prop {c} {c.f}
+\prop_gput:Nnn \g__ns_final_single_prop {d} {d.f}
+\prop_gput:Nnn \g__ns_final_single_prop {e} {e.f}
+\prop_gput:Nnn \g__ns_final_single_prop {f} {f.f}
+\prop_gput:Nnn \g__ns_final_single_prop {g} {g.f}
+\prop_gput:Nnn \g__ns_final_single_prop {h} {h.f}
+\prop_gput:Nnn \g__ns_final_single_prop {i} {i.f}
+\prop_gput:Nnn \g__ns_final_single_prop {j} {j.f}
+\prop_gput:Nnn \g__ns_final_single_prop {k} {k.f}
+\prop_gput:Nnn \g__ns_final_single_prop {l} {l.f}
+\prop_gput:Nnn \g__ns_final_single_prop {m} {m.f}
+\prop_gput:Nnn \g__ns_final_single_prop {n} {n.f}
+\prop_gput:Nnn \g__ns_final_single_prop {o} {o.f}
+\prop_gput:Nnn \g__ns_final_single_prop {p} {p.f}
+\prop_gput:Nnn \g__ns_final_single_prop {r} {r.f}
+\prop_gput:Nnn \g__ns_final_single_prop {s} {s.f}
+\prop_gput:Nnn \g__ns_final_single_prop {t} {t.f}
+\prop_gput:Nnn \g__ns_final_single_prop {u} {u.f}
+\prop_gput:Nnn \g__ns_final_single_prop {v} {v.f}
+\prop_gput:Nnn \g__ns_final_single_prop {w} {w.f}
+\prop_gput:Nnn \g__ns_final_single_prop {y} {y.f}
+\ExplSyntaxOff
+\endinput

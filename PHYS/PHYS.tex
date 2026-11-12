@@ -9,6 +9,8 @@
 \usepackage{titlesec}
 \usepackage[margin=1in, headheight=14pt]{geometry}
 \usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{newsikretek}
 
 \graphicspath{ {./img/} }
 \input{../headers.tex}
@@ -30,6 +32,28 @@
   
 % Chapter name only, without number or "Chapter" prefix
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+\AddToHook{shipout/foreground}{%
+    \begin{tikzpicture}[remember picture, overlay]
+        \ifodd\value{page}
+            % Odd pages: right margin
+            \node[
+                rotate=270,
+                anchor=west,
+                font=\huge\sffamily
+            ] at ([xshift=-15mm, yshift=-13mm]current page.north east)
+            {\sikretek{Salikl }-\sikretek{ Ritriuy Solnero }};
+        \else
+            % Even pages: left margin
+            \node[
+                rotate=270,
+                anchor=east,
+                font=\huge\sffamily
+            ] at ([xshift=15mm, yshift=-68mm]current page.north west)
+            {\sikretek{Salikl }-\sikretek{ Ritriuy Solnero }};
+        \fi
+    \end{tikzpicture}%
+}
 
 % Configure page style
 \fancypagestyle{plain}{
@@ -503,6 +527,7 @@ La diode est un dipôle non-linéaire avec une tension seuil $u_s$ ($0,4 \text{ 
 On a suppose que $H_{\text{asymp/max}} = 1$
 \scriptsize
 \begin{center}
+    \renewcommand{\arraystretch}{2}
 \begin{tabular}{ |c|c|c|c|c|c|m{5cm}| } 
      \hline
       & $ \underline{N} $ & $ \underline{D} $ & $\underline{H}$ usuel & Type & $ \phi $ & Remarques  \\ 
@@ -1656,7 +1681,7 @@ Les champs de vitesses euleriennes, et des grandeurs macroscopiques sont indépe
 \begin{itemize}
     \item Un écoulement d'un fluide incompressible est incompressible
     \item L'écoulement d'un gaz est supposé incompressible si la vitesse moyenne de l'écoulement est très petit devant la vitesse du son. 
-    \item $\text{div}(\vec{v}) = -\frac{1}{\mu} \frac{\Dd}{\Dd t} = 0$ - le champ des vitesse est un flux conservatif
+    \item $\text{div}(\vec{v}) = -\frac{1}{\mu} \frac{\Dd \mu}{\Dd t} = 0$ - le champ des vitesse est un flux conservatif
     \item Si les lignes de champ des vitesses se rapproche, $\|\vec{v}\|$ augmente. 
     \item Si l'écoulement est irrotationnel, $\Delta \phi = 0$ (Équation de Laplace)
     \item La puissance des forces intérieures de pression est nulle
@@ -1947,6 +1972,13 @@ On définit le rapport de transformation
         \item Équation de Laplace - $\Delta V = 0$
         \item $\text{div } \vec{E} = 0$ - $\vec{E}$ est un flux conservatif
     \end{itemize}
+    \item Pour une charge dans un champ électrique de potentiel $V_{\text{ext}}$, $E_p = qV_{\text{ext}}$
+    \item Énergie de constitution - le travail qu'un opérateur doit fournir à l'ensemble des charges pour les ramener d'une vitesse nulle à l'infini vers leur position finale dans la distribution 
+    \begin{itemize}
+        \item $E_{\text{const}} = E_{p,\text{int}}$
+        \item{} [HP] $E_{p,\text{int}} = \iiint_{\mathcal{D}} \frac{1}{2} \rho V \, \dd^3 \tau$
+        \item L'énergie de constitution d'un noyau atomique $E = \frac{3}{5} \frac{Q^2}{4 \pi \epsilon_0 R}$ [Démonstration - en intégrant $\delta W$ pour ramener une couche de charge $dq = \rho 4 \pi r^2 \dr$ en $r$]
+    \end{itemize}
 \end{itemize}
 
 \subsubsection{Théorème de Gauss}
@@ -1955,6 +1987,12 @@ On définit le rapport de transformation
 \begin{itemize}
     \item Un maximum local en $M$ implique une charge positive
     \item Un minimum local en $M$ implique une charge négative
+    \item Pour une charge ponctuelle, $\vec{E} = \frac{q}{4\pi\epsilon_0 r^2} \vec{e_r} \et V = \frac{q}{4\pi\epsilon_0}$
+    \item Pour une charge sphérique de rayon $R$,
+    \begin{itemize}
+        \item En $r > R$, $\vec{E} = \frac{Q}{4 \pi \epsilon_0 r^2} \vec{e_r}$ - même que le champ créé par une charge ponctuelle égal à la distribution
+        \item En $r < R$, si $\rho$ uniforme, $\vec{E} = \frac{Q r}{4 \pi \epsilon_0 R^3}$
+    \end{itemize}
 \end{itemize}
 
 \clearpage

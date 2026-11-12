@@ -7,6 +7,8 @@
 \usepackage{titlesec}
 \usepackage[margin=1in, headheight=14pt]{geometry}
 \usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{newsikretek}
 
 \input{../headers.tex}
 
@@ -27,6 +29,28 @@
   
 % Chapter name only, without number or "Chapter" prefix
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+\AddToHook{shipout/foreground}{%
+    \begin{tikzpicture}[remember picture, overlay]
+        \ifodd\value{page}
+            % Odd pages: right margin
+            \node[
+                rotate=270,
+                anchor=west,
+                font=\huge\sffamily
+            ] at ([xshift=-15mm, yshift=-13mm]current page.north east)
+            {\sikretek{Katkkutr }-\sikretek{ Ritriuy Solnero }};
+        \else
+            % Even pages: left margin
+            \node[
+                rotate=270,
+                anchor=east,
+                font=\huge\sffamily
+            ] at ([xshift=15mm, yshift=-80mm]current page.north west)
+            {\sikretek{Katkkutr }-\sikretek{ Ritriuy Solnero }};
+        \fi
+    \end{tikzpicture}%
+}
 
 % Configure page style
 \fancypagestyle{plain}{
@@ -79,7 +103,8 @@ Démonstration par double implication - $ P \implies Q $ (directe) et $ Q \impli
 \subsection{Outils de raisonnement}
 \begin{itemize}
     \item Disjonction de cas
-    \item L'absurde
+    \item Par l'absurde
+    \item Par contraposée
     \item Récurrence (simple, double, forte)
     \item Analyse-synthèse
 \end{itemize}
@@ -927,8 +952,14 @@ Généralisation (égalité des accroissements finis) sans $f(a) = f(b)$
 
 \begin{itemize}
     \item $f$ contractante - $M \in [0, 1[$
-    \item $|f'| \leq M \implies f$ est $M$-lipschitzienne (inégalité des accroissements finis)
 \end{itemize}
+
+\subsubsection{Inégalité des accroissements finies}
+
+$|f'| \leq M \implies f$ est $M$-lipschitzienne \\
+
+En particulier,
+\[ \left( \forall x \in [a, b], |f'(x)| \leq M \right) \implies |f(b) - f(a)| \leq |b-a| \]
 
 \subsection{Convexité}
 \[ \forall (a, b) \in I^2, \forall \lambda \in [0, 1], f(\lambda a + (1-\lambda) b) \leq \lambda f(a) + (1-\lambda)f(b) \]
@@ -946,7 +977,7 @@ Généralisation (égalité des accroissements finis) sans $f(a) = f(b)$
 \subsubsection{Inégalités de convexités usuelles}
 \begin{itemize}
     \item $\ln(1+x) \leq x$ 
-    \item $e^x \geq 1-x$ 
+    \item $e^x \geq 1+x$ 
     \item $\sin x \leq x$ sur $[0, \pi]$ et $\sin x \geq \frac{2}{\pi}x$ sur $[x, \frac{\pi}{2}]$
 \end{itemize}
 
@@ -1166,6 +1197,7 @@ $F$ est une primitive de $f$ sur $I$ si $F$ est dérivable sur $I$ et $F' = f$. 
 \subsubsection{Primitives usuelles}
 
 \begin{center}
+    \renewcommand{\arraystretch}{1.5}
     \begin{tabular}{|c|c|c|}
         \hline
         $f$ & $F$ & $I$ \\
@@ -1179,8 +1211,6 @@ $F$ est une primitive de $f$ sur $I$ si $F$ est dérivable sur $I$ et $F' = f$. 
         $\frac{1}{x}$ & $\ln{|x|}$ & $\mathbb{R}^*$ \\
         \hline
         $e^{kx}$ & $\frac{e^{kx}}{k}$ & $\mathbb{R}$ \\
-        \hline
-        $\ln x$ & $x \ln x + x$ & $\mathbb{R}^*_+$ \\
         \hline
         $\cos{x}$ & $\sin{x}$ & $\mathbb{R}$ \\
         \hline
@@ -1199,6 +1229,24 @@ $F$ est une primitive de $f$ sur $I$ si $F$ est dérivable sur $I$ et $F' = f$. 
         $\frac{1}{\sqrt{1-x^2}}$ & $\arcsin{x}$ & $]-1, 1 [$ \\
         \hline
         $-\frac{1}{\sqrt{1-x^2}}$ & $\arccos{x}$ & $]-1, 1 [$ \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsubsection{[HP] Diverses primitives}
+\begin{center}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        $f$ & $F$ & $I$ \\
+        \hline
+        $\ln x$ & $x \ln x + x$ & $\mathbb{R}^*_+$ \\
+        \hline
+        $\frac{1}{\sqrt{x^2+1}}$ & $\ln(x+\sqrt{x^2+1}) = \text{argsh}(x)$ & $\mathbb{R}$ \\
+        \hline
+        $\frac{1}{\sqrt{x^2-1}}$ & $\ln(x+\sqrt{x^2-1}) = \text{argch}(x)$ & $]1, +\infty[$ \\
+        \hline
+        $\frac{1}{1-x^2}$ & $\frac{1}{2}\ln|\frac{1+x}{1-x}| = \text{arth}(x)$ & $]-\infty, -1] \cup [+\infty, 1[$ \\
         \hline
     \end{tabular}
 \end{center}
@@ -1256,7 +1304,7 @@ En particulier, $\frac{1}{n}\sum_{0}^{n-1} f(\frac{k}{n}) \longrightarrow \int_{
 
 Identifier une somme de Riemann permet de démontrer la convergence d'une suite et trouver sa limite. 
 
-\section{[Classique] Intégrale de Wallis}
+\subsection{[Classique] Intégrale de Wallis}
 \[ I_n = \int_{0}^{\frac{\pi}{2}} \cos^n t \dt \]
 
 \begin{itemize}
@@ -1267,7 +1315,152 @@ Identifier une somme de Riemann permet de démontrer la convergence d'une suite 
 \end{itemize}
 
 \clearpage
-\section{Séries numériques [sup 25]}
+
+\section{Intégration [Spé VII]}
+\subsection{Fonctions continues par morceaux sur un intervalle}
+
+\begin{itemize}
+    \item Sur un intervalle quelconque, $\forall [a, b] \subset I, f_{|[a, b]} $ est continue par morceaux 
+    \item Stable par combinaison linéaire et produit
+    \item Pas stable par l'inverse
+    \item Pas stable par composition
+\end{itemize}
+
+\subsection{Intégrale généralisée}
+
+$f : [a, b[ \, \rightarrow \mathbb{K} \in \mathcal{C}_{m}$
+
+\begin{itemize}
+    \item $\int_{a}^{b}f = \underset{x \rightarrow b}{\lim} \int_{a}^{x} f$ si la limite existe et est finie
+    \item Si $f$ admet un prolongement continue en $b$, $\int_{a}^{b}f$ converge(intégrale faussement généralisée)
+    \item Si $f$ est continue et $\int_{a}^{b}f$ converge, $ \int_{x}^{b}f \underset{x \rightarrow b^{-}}{\longrightarrow} 0$ (faux si $f$ est CPM mais discontinue)
+    \item Pour $f : ]a, b[ \rightarrow \mathbb{K}$, $\int_{a}^{b} f$ converge $\iff$ pour $c \in ]a, b[$, $\int_{a}^{c}f \et \int_{c}^{b}f$ converge  
+    \item Pour $f : I \mapsto \mathbb{C}$, $\int_{a}^{b}f$ converge $\iff \int_{a}^{b} \text{Re }f \et \int_{a}^{b} \text{Im }f$ converge
+    \item $f$ absolument convergent si $\int_{a}^{b} |f|$ converge, absoluement convergente $\implies$ convergence
+    \item $f$ CPM est intégrable sur $I$ si $I$ est un segment ou $\int_{a}^{b}f$ est ACV
+    \begin{itemize}
+        \item $L^1(I, \mathbb{K})$ est l'ensemble des fonctions intégrables
+        \item $L^1$ est un ssev des fonctions CPM
+        \item $f \mapsto \int_{I}$ est une forme linéaire
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Propriétés}
+
+\begin{itemize}
+    \item Linéarité, positivité, croissance et relation de Chasles si les intégrales généralisées sont (absoluement) convergentes
+    \item Inégalité triangulaire intégrale si intégrable
+    \item Pour une fonction continue positive dont l'intégrale généralisée est convergente, $\int_{a}^{v}f = 0 \implies f = 0$
+    \item Changement de variable - $\int_{u(a)}^{u(b)} f(x) \text{ d}x = \int_{a}^{b} f(u(t)) u'(t) \text{ d}t$ avec $u$ telle que $x = u(t)$ doit être une bijection strictement monotone pour que la convergence soit preservée
+\end{itemize}
+
+\subsection{Théorèmes de comparaison}
+
+\begin{itemize}
+    \item Pour $f \geq 0$, $\int_{a}^{b}f$ converge si $x \mapsto \int_{a}^{x}f$ est majorée
+    \item Si $0 \leq f \leq g$ et $\int_{a}^{b}g$ converge, alors $\int_{a}^{b}f$ converge
+    \item Si $f =\! \underset{b}{\mathcal{O}} (g)$ et $\int_{a}^{b}g$ intégrable en $b$, alors $\int_{a}^{b}f$ intégrable en  $b$
+    \begin{itemize}
+        \item En particulier, pour $b$ fini et $f$ bornée au voisinage de $b$, $f$ est intégrable
+    \end{itemize}
+    \item Si $f \underset{b}{\sim} (g)$, $\int_{a}^{b}g$ intégrable en $b \iff \int_{a}^{b}f$ intégrable en  $b$
+    \begin{itemize}
+        \item{} [HP] Sur $[a, b[$, si $f \underset{b}{\sim} g$ et $g$ positive et intégrable, $\int_{x}^{b} f \underset{x \rightarrow b}{\sim} \int_{x}^{b} g$ [Démonstration - par définition epsilon de $f-g =\underset{b}{o} (g)$]
+        \item{} [HP] Sur $[a, b[$, si $f \underset{b}{\sim} g$ et $g$ positive et non-intégrable, $\int_{a}^{x} f \underset{x \rightarrow b}{\sim} \int_{a}^{x} g$ [Démonstration - par définition epsilon de $f-g =\underset{b}{o} (g)$, en découpant l'intégrable en 2 intervalles $[a, c]$ et $[c, b[$]
+    \end{itemize}
+    \item Pour étudier la convergence, on peut faire un développement limité, mais il faut aller jusqu'au premier terme \textbf{de signe fixe} ou intégrable
+\end{itemize}
+
+\subsection{Exemples de références}
+
+\begin{itemize}
+    \item $\frac{1}{t^\alpha}$ intégrable en $0$ si $\alpha < 1$, en $+\infty$ si $\alpha > 1$
+    \item $\ln t$ intégrable en $0$
+    \item $e^{-\alpha t}$ intégrable en $+\infty$
+    \item{} [HP] $\frac{1}{t^\alpha (\ln t)^\beta}$ intégrable en $+\infty$ $\iff \alpha > 0 \ou (\alpha = 1 \et \beta > 1)$ [Démonstration - distinguer les cas $\alpha = 1$ (raisonner sur $\frac{1}{(\ln t)^\beta}$) et $\alpha \neq 1$ (raisonner sur une relation de comparaison avec $\frac{1}{t^{\frac{\alpha + 1}{2}}}$, pour DV et CV))]
+\end{itemize}
+
+\subsection{Convergence dominée}
+
+\subsubsection{Convergence simple}
+\[ f_n \overset{\text{CVS}}{\longrightarrow} f \iff \forall x \in I, f_n(x) \underset{n \rightarrow +\infty}{\longrightarrow} f(x) \]
+
+\subsubsection{Théorème de convergence dominée}
+Pour une suite de fonctions $f_n$, si :
+\begin{itemize}
+    \item $\forall n, f_n$ CPM
+    \item $f_n \overset{\text{CVS}}{\longrightarrow} f$ et $f$ CPM 
+    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall n, |f_n| \leq \phi$
+\end{itemize}
+
+Alors $f_n$ et $f$ sont intégrables et $\int f_n \longrightarrow \int f$
+
+\subsubsection{TCD à paramètre continue}
+Pour $f(x, t)$ paramétrée par $x$ sur $J$ avec une variable d'intégration $t$ sur $I$, si :
+\begin{itemize}
+    \item $t \mapsto f(x, t)$ est CPM
+    \item $\forall t, f(x, t) \underset{x\rightarrow c}{\longrightarrow} l(t)$ avec $l$ CPM
+    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t), |f(x, t)| \leq \phi(t)$
+\end{itemize}
+
+Alors $\forall x \in J, t \mapsto f(x, t)$ est intégrable et $\int_{I} f(x, t) \dt \underset{x \rightarrow c}{\longrightarrow} \int_I l(t) \dt$
+
+\begin{itemize}
+    \item Si $x \mapsto f(x, t)$ est en plus continue sur $J$, $x \mapsto \int_{I} f(x, t) \dt $ est continue sur $J$
+    \item Le résultat est aussi valable si pour tout segment $[a, b] \subset J, \exists \phi_{a, b} : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t) \in [a, b] \times I, |f(x, t)| \leq \phi_{a, b}(t)$
+\end{itemize}
+
+\subsubsection{Théorème de Leibniz}
+Pour $F : x \mapsto \int_{I} f(x, t) \, \dt$, si
+\begin{samepage}
+
+\begin{itemize}
+    \item $x \mapsto f(x, t)$ est de classe $\mathcal{C}^1$ sur $J$
+    \item $t \mapsto f(x, t)$ est intégrable sur $I$
+    \item $t \mapsto \frac{\partial f}{\partial x}(x, t)$ est continue par morceaux sur $I$
+    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t), |\frac{\partial f}{\partial x}(x, t)| \leq \phi(t)$
+\end{itemize}
+
+Alors 
+\[ F'(x) = \int_I \frac{\partial f}{\partial x}(x, t) \dt \]
+
+\end{samepage} 
+
+$ $ \\
+
+Le résultat est aussi valable si pour tout segment $[a, b] \subset J, \exists \phi_{a, b} : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t) \in [a, b] \times I, |\frac{\partial f}{\partial x}(x, t)| \leq \phi_{a, b}(t)$ \\
+
+Par récurrence, on a si:
+\begin{itemize}
+    \item $x \mapsto f(x, t)$ est de classe $\mathcal{C}^n$ sur $J$
+    \item $t \mapsto f^{(k)}(x, t)$ est intégrable sur $I$ (pour $k \in \nint{0}{n-1}$)
+    \begin{itemize}
+        \item On peux aussi montrer une domination de $|\frac{\partial^k f}{\partial x^k}(x, t)|$ pour tout $k \nint{1}{n}$
+    \end{itemize}
+    \item $t \mapsto \frac{\partial^n f}{\partial x^n}(x, t)$ est continue par morceaux sur $I$
+    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t), |\frac{\partial^n f}{\partial x^n}(x, t)| \leq \phi(t)$
+\end{itemize}
+
+Alors $\forall k \in \nint{1}{n}$
+\[ F^{(k)}(x) = \int_I \frac{\partial^k f}{\partial x^k}(x, t) \dt \]
+
+\subsection{[Classique] Fonction $\Gamma$}
+\[ \Gamma : x \mapsto \int_{0}^{+\infty} t^{x-1}e^{-t} \dt \]
+
+\begin{itemize}
+    \item Définie sur $\mathbb{R_+^*}$
+    \item $\Gamma(x) = (x-1) \Gamma(x-1)$ [Démonstration - IPP]
+    \item $\forall n \in \mathbb{N}^*, \Gamma(n) = (n-1)!$
+    \item $\Gamma \in \mathcal{C}^\infty$ [Démonstration - Continuité - TCD avec domination sur tout segment $[a, b]$ par $(t^{a-1} + t^{b-1})e^{-t}$. $\mathcal{C}^\infty$ - Leibniz avec la même style de domination]
+    \begin{itemize}
+        \item $\Gamma^{(k)}(t) = \int_{0}^{+\infty} (\ln t)^k t^{x-1} e^{-t} \dt$
+    \end{itemize}
+    \item $\Gamma$ est convexe [Démonstration - $\Gamma'$ est (strictement) croissante]
+    \item $\Gamma(\frac{1}{2}) = \int_{0}^{+\infty} \frac{e^{-t}}{\sqrt{t}} \dt = \sqrt{\pi}$ [Démonstration - $J_n = \int_{0}^{\sqrt{n}} \left( 1 - \frac{t^2}{n} \right)^n \dt = \sqrt{n} W_{2n+1} \longrightarrow \frac{\sqrt{\pi}}{2} $ (Changement de variable $x = \sqrt(n) \sin t$ puis Wallis). Par ailleurs, $J_n \longrightarrow \int_{0}^{+\infty} e^{-x^2} \dx$ (TCD) et $\Gamma(\frac{1}{2}) = 2 \int_{0}^{+\infty}e^{-x^2} \dx$ (Changement de variable $t = x^2$).]
+\end{itemize}
+
+\clearpage
+\section{Séries numériques [sup 25] [Spé X]}
 
 \subsection{Définitions}
 \begin{itemize}
@@ -1287,6 +1480,7 @@ Identifier une somme de Riemann permet de démontrer la convergence d'une suite 
     \item $(u_n) \not \longrightarrow 0 \implies S_n$ diverge grossièrement
     \item $ (u_n) \text{ converge } \iff \sum (u_{n+1} - u_n) \conv $ - $\sum_{n=0}^{+\infty} (u_{n+1} - u_n) = \underset{n \rightarrow + \infty}{\lim} u_n - u_0$
     \item Si $\sum u_n \et \sum v_n \conv, \sum_{n=0}^{+\infty} (\lambda u_n + v_n) = \lambda \sum_{n=0}^{+\infty} u_n + \sum_{n=0}^{+\infty} v_n $
+    \item Théorème des séries alternées - pour une suite $(a_n)$ réelle de signe alterné, si $(|a_n|)$ est décroissante et $a_n \longrightarrow 0$, alors la séries converge, $S$ de même signe que $a_0$ et $|S| \leq |a_0|$
 \end{itemize}
 
 \subsubsection{Propriétés des séries à termes positifs}
@@ -1304,7 +1498,7 @@ Identifier une somme de Riemann permet de démontrer la convergence d'une suite 
     \item $u_n =\mathcal{O}(v_n) \et \sum v_n $ converge absolument $\implies \sum u_n$ converge absolument
 \end{itemize}
 
-\subsubsection{Comparaison série-intégrale}
+\subsection{Comparaison série-intégrale}
 Pour $\sum f(n)$ avec $f$ une fonction continue et décroissante sur $[0, +\infty[$
 \[ \int_{0}^{n+1} f \leq  \sum_{k=0}^{n} f(k) \leq f(0) + \int_{0}^{n} f \]
 
@@ -1322,6 +1516,7 @@ Pour $\sum f(n)$ avec $f$ une fonction continue et décroissante sur $[0, +\inft
 \begin{itemize}
     \item Somme partielle - $\sum_{k=0}^{n} q^k = \frac{1 - q^{n+1}}{1-q}$
     \item La somme commence à $n = 0$
+    \item{} [Classique] `Dérivation' de la serie géométrique - pour $|q| < 1$, $\sum_{0}^{+\infty} kq^{k-1} = \frac{1}{(1-q)^2}$ [Démonstration - Calculer $(1-q)\sum_{0}^{n} kq^k$ avec un pseudo-téléscopage]
 \end{itemize}
 
 \subsubsection{Série exponentielle}
@@ -1401,110 +1596,6 @@ Continuité en $a \in U$ un ouvert de $\mathbb{R}^2$
 
 \begin{itemize}
     \item Plan tangent au graphe de $f$ en $(a, f(a))$ - $z = f(a) + \langle \nabla f(a) \ligneh z-a \rangle$
-\end{itemize}
-
-\clearpage
-
-\section{Intégration [Spé VII]}
-\subsection{Fonctions continues par morceaux}
-
-\begin{itemize}
-    \item Sur un intervalle quelconque, $\forall [a, b] \subset I, f_{|[a, b]} $ est continue par morceaux 
-    \item Stable par combinaison linéaire et produit
-    \item Pas stable par l'inverse
-    \item Pas stable par composition
-\end{itemize}
-
-\subsection{Intégrale généralisées}
-
-$f : [a, b[ \, \rightarrow \mathbb{K} \in \mathcal{C}_{m}$
-
-\begin{itemize}
-    \item $\int_{a}^{b}f = \underset{x \rightarrow b}{\lim} \int_{a}^{x} f$ si la limite existe et est finie
-    \item Si $f$ admet un prolongement continue en $b$, $\int_{a}^{b}f$ converge(intégrale faussement généralisée)
-    \item Si $f$ est continue et $\int_{a}^{b}f$ converge, $ \int_{x}^{b}f \underset{x \rightarrow b^{-}}{\longrightarrow} 0$ (faux si $f$ est CPM mais discontinue)
-    \item Pour $f : ]a, b[ \rightarrow \mathbb{K}$, $\int_{a}^{b} f$ converge $\iff$ pour $c \in ]a, b[$, $\int_{a}^{c}f \et \int_{c}^{b}f$ converge  
-    \item Pour $f : I \mapsto \mathbb{C}$, $\int_{a}^{b}f$ converge $\iff \int_{a}^{b} \text{Re }f \et \int_{a}^{b} \text{Im }f$ converge
-    \item $f$ absolument convergent si $\int_{a}^{b} |f|$ converge, absoluement convergente $\implies$ convergence
-    \item $f$ CPM est intégrable sur $I$ si $I$ est un segment ou $\int_{a}^{b}f$ est ACV
-    \begin{itemize}
-        \item $L^1(I, \mathbb{K})$ est l'ensemble des fonctions intégrables
-        \item $L^1$ est un ssev des fonctions CPM
-        \item $f \mapsto \int_{I}$ est une forme linéaire
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{Propriétés}
-
-\begin{itemize}
-    \item Linéarité, positivité, croissance et relation de Chasles si les intégrales généralisées sont (absoluement) convergentes
-    \item Inégalité triangulaire intégrale si intégrable
-    \item Pour une fonction continue positive dont l'intégrale généralisée est convergente, $\int_{a}^{v}f = 0 \implies f = 0$
-    \item Changement de variable - $\int_{u(a)}^{u(b)} f(x) \text{ d}x = \int_{a}^{b} f(u(t)) u'(t) \text{ d}t$ avec $u$ telle que $x = u(t)$ doit être une bijection strictement monotone pour que la convergence soit preservée
-\end{itemize}
-
-\subsection{Théorèmes de comparaison}
-
-\begin{itemize}
-    \item Pour $f \geq 0$, $\int_{a}^{b}f$ converge si $x \mapsto \int_{a}^{x}f$ est majorée
-    \item Si $0 \leq f \leq g$ et $\int_{a}^{b}g$ converge, alors $\int_{a}^{b}f$ converge
-    \item Si $f =\! \underset{b}{\mathcal{O}} (g)$ et $\int_{a}^{b}g$ intégrable en $b$, alors $\int_{a}^{b}f$ intégrable en  $b$
-    \begin{itemize}
-        \item En particulier, pour $b$ fini et $f$ bornée au voisinage de $b$, $f$ est intégrable
-    \end{itemize}
-    \item Si $f \underset{b}{\sim} (g)$, $\int_{a}^{b}g$ intégrable en $b \iff \int_{a}^{b}f$ intégrable en  $b$
-    \item Pour étudier la convergence, on peut faire un développement limité au premier terme de signe fixe ou intégrable
-\end{itemize}
-
-\subsection{Exemples de références}
-
-\begin{itemize}
-    \item $\frac{1}{t^\alpha}$ intégrable en $0$ si $\alpha < 1$
-    \item $\frac{1}{t^\alpha}$ intégravle en $+\infty$ si $\alpha > 1$
-    \item $\ln t$ intégrable en $0$
-    \item $e^{-\alpha t}$ intégrable en $+\infty$
-    \item{} [HP] $\frac{1}{t^\alpha (\ln t)^\beta}$ intégrable en $+\infty$ $\iff \alpha > 0 \ou (\alpha = 1 \et \beta > 1)$ [Démonstration - distinguer les cas $\alpha = 1$ (raisonner sur $\frac{1}{(\ln t)^\beta}$ et $\alpha \neq 1$ (raisonner sur une relation de comparaison avec $\frac{1}{t^{\frac{\alpha + 1}{2}}}$))]
-\end{itemize}
-
-\subsection{Convergence dominée}
-
-\subsubsection{Convergence simple}
-\[ f_n \overset{\text{CVS}}{\longrightarrow} f \iff \forall x \in I, f_n(x) \underset{n \rightarrow +\infty}{\longrightarrow} f(x) \]
-
-\subsubsection{Théorème de convergence dominée}
-Pour une suite de fonctions $f_n$, si :
-\begin{itemize}
-    \item $\forall n, f_n$ CPM
-    \item $f_n \overset{\text{CVS}}{\longrightarrow} f$ et $f$ CPM 
-    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall n, |f_n| \leq \phi$
-\end{itemize}
-
-Alors $f_n$ et $f$ sont intégrables et $\int f_n \longrightarrow \int f$
-
-\subsubsection{TCD à paramètre continue}
-Pour $f(x, t)$ paramétrée par $x$ sur $J$ avec une variable d'intégration $t$ sur $I$, si :
-\begin{itemize}
-    \item $t \mapsto f(x, t)$ est CPM
-    \item $\forall t, f(x, t) \underset{x\rightarrow c}{\longrightarrow} l(t)$ avec $l$ CPM
-    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t), |f(x, t)| \leq \phi(t)$
-\end{itemize}
-
-Alors $\forall x \in J, t \mapsto f(x, t)$ est intégrable et $\int_{I} f(x, t) \dt \underset{x \rightarrow c}{\longrightarrow} \int_I l(t) \dt$
-
-\begin{itemize}
-    \item Si $x \mapsto f(x, t)$ est en plus continue sur $J$, $x \mapsto \int_{I} f(x, t) \dt $ est continue sur $J$
-    \item Le résultat est aussi valable si pour tout segment $[a, b] \subset J, \exists \phi_{a, b} : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t) \in [a, b] \times I, |f(x, t)| \leq \phi_{a, b}(t)$
-\end{itemize}
-
-\subsection{[Classique] Fonction $\Gamma$}
-\[ \Gamma : x \mapsto \int_{0}^{+\infty} t^{x-1}e^{-t} \dt \]
-
-\begin{itemize}
-    \item Définie sur $\mathbb{R_+^*}$
-    \item $\Gamma(x) = (x-1) \Gamma(x-1)$ [Démonstration - IPP]
-    \item $\forall n \in \mathbb{N}^*, \Gamma(n) = (n-1)!$
-    \item $\Gamma$ est continue [Démonstration - TCD avec domination sur tout segment $[a, b]$ par $(t^{a-1} + t^{b-1})e^{-t}$]
-    \item $\Gamma(\frac{1}{2}) = \int_{0}^{+\infty} \frac{e^{-t}}{\sqrt{t}} \dt = \sqrt{\pi}$ [Démonstration - $J_n = \int_{0}^{\sqrt{n}} \left( 1 - \frac{t^2}{n} \right)^n \dt = \sqrt{n} W_{2n+1} \longrightarrow \frac{\sqrt{\pi}}{2} $ (Changement de variable $x = \sqrt(n) \sin t$ puis Wallis). Par ailleurs, $J_n \longrightarrow \int_{0}^{+\infty} e^{-x^2} \dx$ (TCD) et $\Gamma(\frac{1}{2}) = 2 \int_{0}^{+\infty}e^{-x^2} \dx$ (Changement de variable $t = x^2$).]
 \end{itemize}
 
 \clearpage
