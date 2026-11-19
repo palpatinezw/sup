@@ -83,36 +83,6 @@
 
 \tableofcontents
 
-\chapter{Incertitudes}
-\section{Incertitude de type A}
-Évaluation par méthodes statistiques (moyenne de plusieurs mesures)
-\begin{itemize}
-    \item L'écart-type expérimental $ s_{\text{exp}} = \sigma_{N-1} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(m_i-\overline{m})^2} $
-    \item L'incertitude-type (type A) $ s = \sqrt{\frac{1}{N}}s_{\text{exp}} $
-\end{itemize}
-
-\section{Incertitude de type B}
-Évaluation par des incertitudes données
-\subsection{Incertitude-type}
-Étant donné une incertitude de $ \pm a $
-
-\[ s_B = \frac{a}{\sqrt{3}} \]
-
-\subsection{Propagation}
-\[ s_B = \sqrt{\sum_{k=1}^{n}(\frac{\partial f}{\partial x_k}s(x_k))^2} \]
-
-\begin{itemize}
-    \item Pour $y = \sum \lambda_ix_1$, $s_y^2 = \sum \lambda_i^2 s_{x_i}^2 $
-    \item Pour $y = \prod x_1^{\lambda_i}$, $\frac{s_y^2}{y^2} = \sum \lambda_i^2 \frac{s_{x_i}^2}{x_i} $
-\end{itemize}
-
-\section{Z-score}
-\[ z = \frac{|M_{\text{mesure}} - M_{\text{réf}}|}{s(M)} \]
-\begin{itemize}
-    \item $ z \leq 2 $ indique la compatibilité avec le valeur de référence. 
-\end{itemize}
-
-\clearpage
 \chapter{Optique}
 \section{Définitions}
 \subsection{Milieux}
@@ -1900,9 +1870,15 @@ On définit le rapport de transformation
     \end{itemize}
     \item Distribution de charge $\mathcal{D} = \left\{ \rho(M, t), \vec{j}(M, t) \right\}$
     \item Champ électromagnétique $\left( \vec{E}(M, t), \vec{B}(M, t) \right)$
+    \item Conducteur - un materiau qui contient des charges libres de se déplacer
+    \item Milieu diélectrique - milieu électriquement isolant
+    \begin{itemize}
+        \item Conducteur en équilibre électrostatique - un conducteur où il n'y a pas de courant
+        \item $\vec{E} = \vec{0} \et V = \cste$
+    \end{itemize}
 \end{itemize}
 
-\subsection{Force de Lorentz}
+\section{Force de Lorentz}
 \[ \vec{F_L} = q\left[\vec{E} + \vec{v}_{\repr} \wedge \vec{B}\right] \]
 
 \begin{itemize}
@@ -1925,7 +1901,7 @@ On définit le rapport de transformation
     \item Dans un champ magnétique uniforme et stationnaire, le mouvement est hélicoïdale [Démonstration - on choisit l'axe $(Oz)$ selon $\vec{B}$ et $Oy$ tel que la vitesse initial $\vec{v_0}$ est dans le plan $(yOz)$. On aura un mouvement uniforme selon $\vec{e_z}$, et un mouvement circulaire de rayon $R = \frac{v_0 \sin \alpha}{|q|B}$ apres résultion en posant $ \underline{u} = x + jy $ ou en considérant la base de frénet $\frac{\dd}{\dt}\vec{v} = \dot{v} \vec{e}_T + \frac{v^2}{R} \vec{e}_N$ avec $\vec{e}_T$ et $\vec{e}_N$ les composants tangentiels et normals du mouvement]
 \end{itemize}
 
-\subsection{Équations de Maxwell}
+\section{Équations de Maxwell}
 
 \begin{align*}
     \text{div } \vec{E} &= \frac{\rho}{\epsilon_0} \\
@@ -1940,7 +1916,7 @@ On définit le rapport de transformation
     \item Un plan d'antisymétrie de $\mathcal{D}$ est un plan d'antisymétrie pour $\vec{E}$ et un plan de symétrie pour $\vec{B}$
 \end{itemize}
 
-\subsubsection{Équation locale de Poynting}
+\subsection{Équation locale de Poynting}
 
 \[ \frac{\partial}{\partial t} \left( \frac{1}{2}\epsilon_0 E^2 + \frac{B^2}{2\mu_0} \right) + \text{div}\left( \frac{\vec{E} \wedge \vec{B}}{\mu_0} \right) = - \vec{j} \cdot \vec{E} \]
 
@@ -1951,13 +1927,14 @@ On définit le rapport de transformation
 
 \[ \frac{\dd}{\dt} \iiint_V \left(\frac{1}{2}\epsilon_0E^2 + \frac{B^2}{2\mu_0}\right) \dd^3 \tau = - \oiint_{\Sigma} \vec{\Pi} \cdot \dd^2 \vec{S} - \iiint_V \vec{j} \cdot \vec{E} \dd^3 \tau \]
 
-\subsubsection{Régime stationnaire}
+\subsection{Régime stationnaire}
 \begin{itemize}
     \item $\text{div } \vec{j} = 0$
     \item Les champs $\vec{E}$ et $\vec{B}$ sont découplés, les distributions $\vec{j}$ et $\rho$ sont découplées
+    \item Si $\rho$ ou $\vec{j}$ dépend de $t$ mais pas les deux, on peut séparé la distribution en 2 distributions par le théorème de superposition
 \end{itemize}
 
-\subsection{Électrostatique}
+\section{Électrostatique}
 
 \begin{align*}
     \text{div } \vec{E} &= \frac{\rho}{\epsilon_0} \\
@@ -1981,7 +1958,7 @@ On définit le rapport de transformation
     \end{itemize}
 \end{itemize}
 
-\subsubsection{Théorème de Gauss}
+\subsection{Théorème de Gauss}
 \[ \oiint_\Sigma \vec{E} \cdot \dd^2 \vec{S} = \frac{Q}{\epsilon_0} \]
 
 \begin{itemize}
@@ -1991,8 +1968,30 @@ On définit le rapport de transformation
     \item Pour une charge sphérique de rayon $R$,
     \begin{itemize}
         \item En $r > R$, $\vec{E} = \frac{Q}{4 \pi \epsilon_0 r^2} \vec{e_r}$ - même que le champ créé par une charge ponctuelle égal à la distribution
-        \item En $r < R$, si $\rho$ uniforme, $\vec{E} = \frac{Q r}{4 \pi \epsilon_0 R^3}$
+        \item En $r < R$, si $\rho$ uniforme, $\vec{E} = \frac{Q r}{4 \pi \epsilon_0 R^3}v\vec{e_r}$
     \end{itemize}
+    \item Pour un plan infini uniformément chargé, $\vec{E} = \frac{\sigma}{2\epsilon_0} \vec{e_z}$
+    \item Théorème de Gauss gravitationel - $\oiint \vec{g} \dd^2 \vec{S} = -4\pi G M$
+\end{itemize}
+
+\subsection{Condensateur plan}
+
+\begin{itemize}
+    \item Condensateur - ensemble de 2 conducteurs en influence totale (toutes les lignes de champ partent d'un conducteur vers l'autre conducteur)
+    \item Condensateur plan - 2 armatures planes parallèles de même forme, même surface, même nature, espacé d'une distance $e \ll $ les dimensions des plaques (les plaques sont considérées infinies, et les effets de bord sont négligés)
+    \item $Q_1  = - Q_2$
+    \item Capacité $C = \frac{Q}{\Delta V}$
+\end{itemize}
+
+\[ \vec{E} = \frac{\sigma}{\epsilon_0}\vec{e_z} = \frac{\Delta V}{e} \vec{e_z}  \]
+\[ C = \frac{\epsilon_0 S}{e} \]
+
+\subsection{Dipôle électrique}
+
+\begin{itemize}
+    \item Un dipôle est un ensemble de 2 charges ponctuelles opposées $+q \et -q$ ($q > 0$) situé en 2 points distincts respectivement en $P$ et en $N$
+    \item Moment dipolaire $p = q \overrightarrow{NP}$  
+    \item Un dipôle est globalement neutre
 \end{itemize}
 
 \clearpage
@@ -2095,6 +2094,36 @@ On définit le rapport de transformation
     \item Dérivée partielle - $\dd f(x, y) = \frac{\partial f}{\partial x} \dx + \frac{\partial f}{\partial y} \dy$
     \item Calcul de période d'un oscillation quelconque - $T = 2 \int_{-x_0}^{x_0} \frac{1}{\dot{x}} \dx = 4 \int_{0}^{x_0} \frac{1}{\dot{x}} \dx$ [Intégration sur une demi-période / $\frac{1}{4}$-période avec $\dt = \frac{1}{\dot{x}} \dx$]
 \end{itemize}
+
+\section{Incertitudes}
+\subsection{Incertitude de type A}
+Évaluation par méthodes statistiques (moyenne de plusieurs mesures)
+\begin{itemize}
+    \item L'écart-type expérimental $ s_{\text{exp}} = \sigma_{N-1} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(m_i-\overline{m})^2} $
+    \item L'incertitude-type (type A) $ s = \sqrt{\frac{1}{N}}s_{\text{exp}} $
+\end{itemize}
+
+\subsection{Incertitude de type B}
+Évaluation par des incertitudes données
+\subsubsection{Incertitude-type}
+Étant donné une incertitude de $ \pm a $
+
+\[ s_B = \frac{a}{\sqrt{3}} \]
+
+\subsubsection{Propagation}
+\[ s_B = \sqrt{\sum_{k=1}^{n}(\frac{\partial f}{\partial x_k}s(x_k))^2} \]
+
+\begin{itemize}
+    \item Pour $y = \sum \lambda_ix_1$, $s_y^2 = \sum \lambda_i^2 s_{x_i}^2 $
+    \item Pour $y = \prod x_1^{\lambda_i}$, $\frac{s_y^2}{y^2} = \sum \lambda_i^2 \frac{s_{x_i}^2}{x_i} $
+\end{itemize}
+
+\subsection{Z-score}
+\[ z = \frac{|M_{\text{mesure}} - M_{\text{réf}}|}{s(M)} \]
+\begin{itemize}
+    \item $ z \leq 2 $ indique la compatibilité avec le valeur de référence. 
+\end{itemize}
+
 
 \section{Calculs astucieux}
 

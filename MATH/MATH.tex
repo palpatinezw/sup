@@ -160,8 +160,6 @@ Définition d'un intervalle $I$ -
 \subsubsection{Paramétrisation des segments}
 \[ [a, b] = \{(1-\lambda)a + \lambda b \ | \ \lambda \in [0,1]\} = \{\mu a + (1-\mu) b \ | \ \mu \in [0,1]\} \]
 
-\noindent Démonstration - double inclusion. Sens direct - poser $ \lambda = \frac{x-a}{b-a} $. Sens réciproque - montrer $ a \leq x \leq b $ avec $ \lambda(b-a) $. 
-
 \subsection{Relation d'ordre sur $\mathbb{R}$}
 \begin{itemize}
     \item Réflexivité - $\forall x \in \mathbb{R}, x \leq x$
@@ -233,6 +231,10 @@ $ z \in \mathbb{C} $ s'écrit $ z = \text{Re}(z) + i\text{Im} (z) $
     \item $ z=e^{i\theta} \iff \overline{z}=e^{-i\theta} $
     \item $ \overline{e^z} = e^{\overline{z}} $
     \item $ (x-z)(x-\overline{z}) = x^2 - 2 \text{Re}(z) + |z|^2 $
+    \item Un argment de $z = \begin{cases}
+        2\arctan \left( \frac{\text{Im}(z)}{\text{Re}(z) + |z|} \right) & \si z \not \in \mathbb{R}_-^* \\
+        \pi & \si z \in \mathbb{R}_-^*
+    \end{cases}$
 \end{itemize}
 
 \subsubsection{Module}
@@ -275,15 +277,11 @@ Ces formules sont utiles notamment pour $ \theta=0 $ donc $ e^{i\theta} = 1 $
 \subsubsection{Inégalité triangulaire}
 \[ ||z|-|z'|| \leq |z \pm z'| \leq |z|+|z'| \]
 
-Démonstration - $ |z \pm z'| \leq |z|+|z'| $ par équivalence - on élève au carré, puis on développe pour obtenir $ \text{Re}(z'\overline{z}) \leq |zz'| $. $ ||z|-|z'|| \leq |z \pm z'| $ - on applique $ |z| = |z+z'-z'| \leq |z+z'|+|z'| $ \\
-
 Cas d'égalité. 
 
 \[ |z+z'|=|z|+|z'| \iff (z=0 \text{ ou } \exists \alpha \in \mathbb{R}_+ : z'=\alpha z) \]
 
 Les vecteurs qui représentent les affixes sont positivement liés. \\
-
-Démonstration - Sens direct: Supposons $z \neq 0$. Chaîne d'équivalences pour montrer $\text{Re}(\overline{z}z') = |\overline{z}z'|$ donc $\overline{z}z' \in \mathbb{R}$. On a $ z' = \frac{z'\overline{z}z}{\overline{z}z} = \frac{z'\overline{z}}{|z|^2}z$. Sens réciproque: Disjonction de cas.
 
 \subsubsection{Racines n-ième}
 Pour $a\in \mathbb{N}^*$, les racines n-ièmes de $ a = |a|e^{i\theta}$ sont les $ \sqrt[n]{|a|}e^{i\frac{\theta + 2k\pi}{n}} $ avec $ k \in \llbracket 0, n-1\rrbracket $. (L'intervalle de $k$ choisi assure l'unicité des éléments) \\
@@ -371,7 +369,6 @@ Pour $a\in \mathbb{N}^*$, les racines n-ièmes de $ a = |a|e^{i\theta}$ sont les
 \subsection{Formules}
 \subsubsection{Formule de Bernoulli}
 \[a^n - b^n = (a-b)\sum_{k=0}^{n-1}(a^kb^{n-1-k}) \]
-Démonstration - commencer par le terme à gauche. \\
 
 La formule est valable pour les objets qui commutent
 
@@ -379,7 +376,7 @@ La formule est valable pour les objets qui commutent
 \[ \sum_{k=0}^n\cos{(kx)} = \cos{(\frac{nx}{2})}[\frac{\sin(\frac{n+1}{2}x)}{\sin{\frac{x}{2}}}] \]
 \[ \sum_{k=0}^n\sin{(kx)} = \sin{(\frac{nx}{2})}[\frac{\sin(\frac{n+1}{2}x)}{\sin{\frac{x}{2}}}] \]
 
-\noindent Démonstration - étudier la suite géométrique $ \sum_{k=0}^{n} (e^{ix})^k = \sum_{k=0}^n\cos{(kx)} + i\sum_{k=0}^n\sin{(kx)} $ avec la factorisation par l'arc moitié. Attention au cas où $ e^{ix} = 1 $. 
+[Démonstration - étudier la suite géométrique $ \sum_{k=0}^{n} (e^{ix})^k = \sum_{k=0}^n\cos{(kx)} + i\sum_{k=0}^n\sin{(kx)} $ avec la factorisation par l'arc moitié. Attention au cas où $ e^{ix} = 1 $. ]
 
 \subsubsection{Développement du carré}
 \[ (\sum_{i=1}^n x_i)^2 = \sum_{i=1}^n x_i^2 + 2\sum_{\substack{(i,j)\in\llbracket n , p \rrbracket \\ i<j} }x_ix_j \]
@@ -389,21 +386,19 @@ La formule est valable pour les objets qui commutent
 \subsubsection{Formule du binôme de Newton}
 \[ (a+b)^n = \sum_{k=0}^{n}\binom{n}{k} a^kb^{n-k} \]
 
-\noindent Démonstration - récurrence simple. 
-\\ \\
 \noindent La formule est valable pour les objets qui commutent
 
 \subsubsection{[Classique] Formule de Vandermonde}
 \[ \binom{m+n}{p} = \sum_{k=0}^p \binom{m}{k} \binom{n}{p-k}  \]
 
-\noindent Démonstration - En développant $(1 + x)^{m+n}$ de deux manières différentes
+\noindent [Démonstration - En développant $(1 + x)^{m+n}$ de deux manières différentes]
 
-\subsubsection{Expression polynomiale de $\cos{(nx)}$ et $\sin{(nx)}$}
+\subsubsection{[Classique] Expression polynomiale de $\cos{(nx)}$ et $\sin{(nx)}$}
 \[ \cos{(nx)} = \sum_{p=0}^{\lfloor\frac{n}{2}\rfloor} \binom{n}{2p}(\cos{x})^{n-2p}(\cos^2{x} -1)^p \]
 \[ \sin{(nx)} = \sin{x}\sum_{p=0}^{\lfloor\frac{n-1}{2}\rfloor} \binom{n}{2p+1}(\cos{x})^{n-2p-1}(\cos^2{x} -1)^p \]
 
-\noindent Démonstration - Avec Moivre, 
-$ \cos{(nx)} + i\sin{(nx)} = e^{nx} = (\cos{x} + i\sin{x})^n $. On applique la formule du binôme de Newton et on sépare les termes paires et impaires. 
+[Démonstration - Avec Moivre, 
+$ \cos{(nx)} + i\sin{(nx)} = e^{nx} = (\cos{x} + i\sin{x})^n $. On applique la formule du binôme de Newton et on sépare les termes paires et impaires. ]
 \clearpage
 \section{Applications [sup 4]}
 Soit $ f: E \to F, x\mapsto f(x) $ et $ g: G \to H, x\mapsto g(x)$ 
@@ -584,7 +579,7 @@ $ \ln $ - la bijection réciproque de $ \exp $.
 
 \subsection{Croissances comparées}
 \begin{itemize}
-    \item $ \lim_{x\to +\infty} \frac{e^x}{x} = + \infty $ (Démonstration par l'inégalité de convexité avec $ e^\frac{x}{2} $)
+    \item $ \lim_{x\to +\infty} \frac{e^x}{x} = + \infty $
     \item $ \lim_{x\to -\infty} xe^x = 0 $
     \item $ \lim_{x\to +\infty} \frac{\ln{x}}{x} = + \infty $
     \item $ \lim_{x\to 0^+} x\ln{x} = 0 $
@@ -621,8 +616,6 @@ $e^x$ plus puissant que $x$, $x$ plus puissant que $\ln x$. Les limites restent 
 \end{align*}
 
 \noindent Attention aux valeurs exclus dans la domaine de dérivabilité. \\
-
-\noindent Démonstration - avec la formule de la dérivée des bijections réciproques. On utilise $ \sin^2 + \cos^2 = 1 $. Possibilité de s'inspirer de la longueur des côtés du rectangle. 
 
 \subsection{Fonctions hyperboliques}
 \begin{align*}
@@ -662,11 +655,11 @@ Une fonction de $\mathbb{N}$
 \[ u_n \longrightarrow -\infty \iff \forall A \in \mathbb{R}, \exists n_0 \in \mathbb{N} \ligneh \forall n \geq n_0, u_n \leq A \]
 
 \begin{itemize}
-    \item La limite est unique [Démonstration - $ \forall \epsilon > 0,  |l-l'| \leq \epsilon $ avec l'inégalité triangulaire, donc $ l = l'$]
+    \item La limite est unique 
     \item Condition suffisante de convergence - $ v_n \longrightarrow 0 \text{ et } |u_n - l| \leq v_n \text{ APCR} \implies u_n \longrightarrow l $
-    \item Condition nécessaire de convergence - $ u_n \longrightarrow l \implies u_n \text{ est bornée} $ [Démonstration - Par définition de la limite et inégalité triangulaire, montrer $ |u_n| = |(u_n - l) + l | \leq |l| + \epsilon $ APCR, et combiner avec la suite finie (donc bornée) pour les éléments avant ce rang]
-    \item $ u_n \longrightarrow u > 0 \implies (u_n) > 0 $ APCR (attention à l'inégalité stricte [Démonstration - $\epsilon = \frac{u}{2}$]
-    \item $ (u_n) \geq 0 \text{ APCR et } u_n \longrightarrow u \implies u \geq 0 $ (attention à l'inégalité large) [Démonstration - par l'absurde et le résultat au-dessus]
+    \item Condition nécessaire de convergence - $ u_n \longrightarrow l \implies u_n \text{ est bornée} $ 
+    \item $ u_n \longrightarrow u > 0 \implies (u_n) > 0 $ APCR (attention à l'inégalité stricte
+    \item $ (u_n) \geq 0 \text{ APCR et } u_n \longrightarrow u \implies u \geq 0 $ (attention à l'inégalité large) 
     \item Le produit d'une suite bornée par une suite qui converge vers 0, converge vers 0
     \item Pour une suite complexe, $ z_n \longrightarrow l \iff \begin{cases}
         \text{Re}(z_n) \longrightarrow \text{Re}(l) \\
@@ -722,10 +715,10 @@ Soit $\begin{cases}
     \end{cases} \implies u_n \longrightarrow 0 $
     \item Théorème de la limite monotone
     \begin{itemize}
-        \item Croissante et majorée - $ u_n \longrightarrow \sup{u_n} $ [Démonstration - Posons $ l = \sup u_n $ $l - \epsilon$ n'est pas un majorant et $ l + \epsilon $ est un majorant ]
-        \item Décroissante et minorée - $ u_n \longrightarrow \inf{u_n} $ [Démonstration - $(-u_n) $ croissante et majorée]
-        \item Croissante et non-majorée - $ u_n \longrightarrow +\infty $ [Démonstration - Tout $A\in \mathbb{R}$ n'est pas un majorant]
-        \item Décroissante et non-minorée - $ u_n \longrightarrow -\infty $ [Démonstration - Tout $A\in \mathbb{R}$ n'est pas un minorant]
+        \item Croissante et majorée - $ u_n \longrightarrow \sup{u_n} $ 
+        \item Décroissante et minorée - $ u_n \longrightarrow \inf{u_n} $ 
+        \item Croissante et non-majorée - $ u_n \longrightarrow +\infty $ 
+        \item Décroissante et non-minorée - $ u_n \longrightarrow -\infty $ 
     \end{itemize}
 \end{itemize}
 
@@ -942,10 +935,7 @@ Généralisation (égalité des accroissements finis) sans $f(a) = f(b)$
 
 \[\exists c \in ]a, b[ \ligneh f(b) - f(a) = (b-a)f'(c)\]
 
-\begin{itemize}
-    \item Démonstration - théorème des bornes atteintes
-    \item Application - il est souvent utile de poser une fonction auxiliaire pour appliquer le théorème de Rolle / EAF, éventuellement plusieurs fois
-\end{itemize}
+Il est souvent utile de poser une fonction auxiliaire pour appliquer le théorème de Rolle / EAF, éventuellement plusieurs fois
 
 \subsection{Fonctions lipschitziennes}
 \[ \forall (x, y) \in I^2, |f(x) - f(y)| \leq M |x-y| \]
@@ -1316,226 +1306,6 @@ Identifier une somme de Riemann permet de démontrer la convergence d'une suite 
 
 \clearpage
 
-\section{Intégration [Spé VII]}
-\subsection{Fonctions continues par morceaux sur un intervalle}
-
-\begin{itemize}
-    \item Sur un intervalle quelconque, $\forall [a, b] \subset I, f_{|[a, b]} $ est continue par morceaux 
-    \item Stable par combinaison linéaire et produit
-    \item Pas stable par l'inverse
-    \item Pas stable par composition
-\end{itemize}
-
-\subsection{Intégrale généralisée}
-
-$f : [a, b[ \, \rightarrow \mathbb{K} \in \mathcal{C}_{m}$
-
-\begin{itemize}
-    \item $\int_{a}^{b}f = \underset{x \rightarrow b}{\lim} \int_{a}^{x} f$ si la limite existe et est finie
-    \item Si $f$ admet un prolongement continue en $b$, $\int_{a}^{b}f$ converge(intégrale faussement généralisée)
-    \item Si $f$ est continue et $\int_{a}^{b}f$ converge, $ \int_{x}^{b}f \underset{x \rightarrow b^{-}}{\longrightarrow} 0$ (faux si $f$ est CPM mais discontinue)
-    \item Pour $f : ]a, b[ \rightarrow \mathbb{K}$, $\int_{a}^{b} f$ converge $\iff$ pour $c \in ]a, b[$, $\int_{a}^{c}f \et \int_{c}^{b}f$ converge  
-    \item Pour $f : I \mapsto \mathbb{C}$, $\int_{a}^{b}f$ converge $\iff \int_{a}^{b} \text{Re }f \et \int_{a}^{b} \text{Im }f$ converge
-    \item $f$ absolument convergent si $\int_{a}^{b} |f|$ converge, absoluement convergente $\implies$ convergence
-    \item $f$ CPM est intégrable sur $I$ si $I$ est un segment ou $\int_{a}^{b}f$ est ACV
-    \begin{itemize}
-        \item $L^1(I, \mathbb{K})$ est l'ensemble des fonctions intégrables
-        \item $L^1$ est un ssev des fonctions CPM
-        \item $f \mapsto \int_{I}$ est une forme linéaire
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{Propriétés}
-
-\begin{itemize}
-    \item Linéarité, positivité, croissance et relation de Chasles si les intégrales généralisées sont (absoluement) convergentes
-    \item Inégalité triangulaire intégrale si intégrable
-    \item Pour une fonction continue positive dont l'intégrale généralisée est convergente, $\int_{a}^{v}f = 0 \implies f = 0$
-    \item Changement de variable - $\int_{u(a)}^{u(b)} f(x) \text{ d}x = \int_{a}^{b} f(u(t)) u'(t) \text{ d}t$ avec $u$ telle que $x = u(t)$ doit être une bijection strictement monotone pour que la convergence soit preservée
-\end{itemize}
-
-\subsection{Théorèmes de comparaison}
-
-\begin{itemize}
-    \item Pour $f \geq 0$, $\int_{a}^{b}f$ converge si $x \mapsto \int_{a}^{x}f$ est majorée
-    \item Si $0 \leq f \leq g$ et $\int_{a}^{b}g$ converge, alors $\int_{a}^{b}f$ converge
-    \item Si $f =\! \underset{b}{\mathcal{O}} (g)$ et $\int_{a}^{b}g$ intégrable en $b$, alors $\int_{a}^{b}f$ intégrable en  $b$
-    \begin{itemize}
-        \item En particulier, pour $b$ fini et $f$ bornée au voisinage de $b$, $f$ est intégrable
-    \end{itemize}
-    \item Si $f \underset{b}{\sim} (g)$, $\int_{a}^{b}g$ intégrable en $b \iff \int_{a}^{b}f$ intégrable en  $b$
-    \begin{itemize}
-        \item{} [HP] Sur $[a, b[$, si $f \underset{b}{\sim} g$ et $g$ positive et intégrable, $\int_{x}^{b} f \underset{x \rightarrow b}{\sim} \int_{x}^{b} g$ [Démonstration - par définition epsilon de $f-g =\underset{b}{o} (g)$]
-        \item{} [HP] Sur $[a, b[$, si $f \underset{b}{\sim} g$ et $g$ positive et non-intégrable, $\int_{a}^{x} f \underset{x \rightarrow b}{\sim} \int_{a}^{x} g$ [Démonstration - par définition epsilon de $f-g =\underset{b}{o} (g)$, en découpant l'intégrable en 2 intervalles $[a, c]$ et $[c, b[$]
-    \end{itemize}
-    \item Pour étudier la convergence, on peut faire un développement limité, mais il faut aller jusqu'au premier terme \textbf{de signe fixe} ou intégrable
-\end{itemize}
-
-\subsection{Exemples de références}
-
-\begin{itemize}
-    \item $\frac{1}{t^\alpha}$ intégrable en $0$ si $\alpha < 1$, en $+\infty$ si $\alpha > 1$
-    \item $\ln t$ intégrable en $0$
-    \item $e^{-\alpha t}$ intégrable en $+\infty$
-    \item{} [HP] $\frac{1}{t^\alpha (\ln t)^\beta}$ intégrable en $+\infty$ $\iff \alpha > 0 \ou (\alpha = 1 \et \beta > 1)$ [Démonstration - distinguer les cas $\alpha = 1$ (raisonner sur $\frac{1}{(\ln t)^\beta}$) et $\alpha \neq 1$ (raisonner sur une relation de comparaison avec $\frac{1}{t^{\frac{\alpha + 1}{2}}}$, pour DV et CV))]
-\end{itemize}
-
-\subsection{Convergence dominée}
-
-\subsubsection{Convergence simple}
-\[ f_n \overset{\text{CVS}}{\longrightarrow} f \iff \forall x \in I, f_n(x) \underset{n \rightarrow +\infty}{\longrightarrow} f(x) \]
-
-\subsubsection{Théorème de convergence dominée}
-Pour une suite de fonctions $f_n$, si :
-\begin{itemize}
-    \item $\forall n, f_n$ CPM
-    \item $f_n \overset{\text{CVS}}{\longrightarrow} f$ et $f$ CPM 
-    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall n, |f_n| \leq \phi$
-\end{itemize}
-
-Alors $f_n$ et $f$ sont intégrables et $\int f_n \longrightarrow \int f$
-
-\subsubsection{TCD à paramètre continue}
-Pour $f(x, t)$ paramétrée par $x$ sur $J$ avec une variable d'intégration $t$ sur $I$, si :
-\begin{itemize}
-    \item $t \mapsto f(x, t)$ est CPM
-    \item $\forall t, f(x, t) \underset{x\rightarrow c}{\longrightarrow} l(t)$ avec $l$ CPM
-    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t), |f(x, t)| \leq \phi(t)$
-\end{itemize}
-
-Alors $\forall x \in J, t \mapsto f(x, t)$ est intégrable et $\int_{I} f(x, t) \dt \underset{x \rightarrow c}{\longrightarrow} \int_I l(t) \dt$
-
-\begin{itemize}
-    \item Si $x \mapsto f(x, t)$ est en plus continue sur $J$, $x \mapsto \int_{I} f(x, t) \dt $ est continue sur $J$
-    \item Le résultat est aussi valable si pour tout segment $[a, b] \subset J, \exists \phi_{a, b} : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t) \in [a, b] \times I, |f(x, t)| \leq \phi_{a, b}(t)$
-\end{itemize}
-
-\subsubsection{Théorème de Leibniz}
-Pour $F : x \mapsto \int_{I} f(x, t) \, \dt$, si
-\begin{samepage}
-
-\begin{itemize}
-    \item $x \mapsto f(x, t)$ est de classe $\mathcal{C}^1$ sur $J$
-    \item $t \mapsto f(x, t)$ est intégrable sur $I$
-    \item $t \mapsto \frac{\partial f}{\partial x}(x, t)$ est continue par morceaux sur $I$
-    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t), |\frac{\partial f}{\partial x}(x, t)| \leq \phi(t)$
-\end{itemize}
-
-Alors 
-\[ F'(x) = \int_I \frac{\partial f}{\partial x}(x, t) \dt \]
-
-\end{samepage} 
-
-$ $ \\
-
-Le résultat est aussi valable si pour tout segment $[a, b] \subset J, \exists \phi_{a, b} : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t) \in [a, b] \times I, |\frac{\partial f}{\partial x}(x, t)| \leq \phi_{a, b}(t)$ \\
-
-Par récurrence, on a si:
-\begin{itemize}
-    \item $x \mapsto f(x, t)$ est de classe $\mathcal{C}^n$ sur $J$
-    \item $t \mapsto f^{(k)}(x, t)$ est intégrable sur $I$ (pour $k \in \nint{0}{n-1}$)
-    \begin{itemize}
-        \item On peux aussi montrer une domination de $|\frac{\partial^k f}{\partial x^k}(x, t)|$ pour tout $k \nint{1}{n}$
-    \end{itemize}
-    \item $t \mapsto \frac{\partial^n f}{\partial x^n}(x, t)$ est continue par morceaux sur $I$
-    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t), |\frac{\partial^n f}{\partial x^n}(x, t)| \leq \phi(t)$
-\end{itemize}
-
-Alors $\forall k \in \nint{1}{n}$
-\[ F^{(k)}(x) = \int_I \frac{\partial^k f}{\partial x^k}(x, t) \dt \]
-
-\subsection{[Classique] Fonction $\Gamma$}
-\[ \Gamma : x \mapsto \int_{0}^{+\infty} t^{x-1}e^{-t} \dt \]
-
-\begin{itemize}
-    \item Définie sur $\mathbb{R_+^*}$
-    \item $\Gamma(x) = (x-1) \Gamma(x-1)$ [Démonstration - IPP]
-    \item $\forall n \in \mathbb{N}^*, \Gamma(n) = (n-1)!$
-    \item $\Gamma \in \mathcal{C}^\infty$ [Démonstration - Continuité - TCD avec domination sur tout segment $[a, b]$ par $(t^{a-1} + t^{b-1})e^{-t}$. $\mathcal{C}^\infty$ - Leibniz avec la même style de domination]
-    \begin{itemize}
-        \item $\Gamma^{(k)}(t) = \int_{0}^{+\infty} (\ln t)^k t^{x-1} e^{-t} \dt$
-    \end{itemize}
-    \item $\Gamma$ est convexe [Démonstration - $\Gamma'$ est (strictement) croissante]
-    \item $\Gamma(\frac{1}{2}) = \int_{0}^{+\infty} \frac{e^{-t}}{\sqrt{t}} \dt = \sqrt{\pi}$ [Démonstration - $J_n = \int_{0}^{\sqrt{n}} \left( 1 - \frac{t^2}{n} \right)^n \dt = \sqrt{n} W_{2n+1} \longrightarrow \frac{\sqrt{\pi}}{2} $ (Changement de variable $x = \sqrt(n) \sin t$ puis Wallis). Par ailleurs, $J_n \longrightarrow \int_{0}^{+\infty} e^{-x^2} \dx$ (TCD) et $\Gamma(\frac{1}{2}) = 2 \int_{0}^{+\infty}e^{-x^2} \dx$ (Changement de variable $t = x^2$).]
-\end{itemize}
-
-\clearpage
-\section{Séries numériques [sup 25] [Spé X]}
-
-\subsection{Définitions}
-\begin{itemize}
-    \item Série de terme général $u_n = \sum u_n = \left( \sum_{k=0}^{n}u_k \right)_{n \in \mathbb{N}}$
-    \item Somme partielle d'ordre $n$ - $\sum_{k=0}^{n}u_k$
-    \item Pour une série convergente, somme de la série $\sum_{k=0}^{+\infty} u_k$
-    \item Pour une série convergente, reste de rang $n$ - $R_n = \sum_{k=0}^{+\infty} u_k - \sum_{k=0}^{n} u_k$
-    \begin{itemize}
-        \item Par téléscopage, $u_n = R_{n-1} - R_n$
-    \end{itemize}
-    \item Série de terme général $u_n$ est absolument convergente $\iff \sum |u_n| \conv \iff (u_n)$ est sommable
-\end{itemize}
-
-\subsubsection{Propriétés}
-\begin{itemize}
-    \item $S_n \text{ converge } \implies u_n \longrightarrow 0$
-    \item $(u_n) \not \longrightarrow 0 \implies S_n$ diverge grossièrement
-    \item $ (u_n) \text{ converge } \iff \sum (u_{n+1} - u_n) \conv $ - $\sum_{n=0}^{+\infty} (u_{n+1} - u_n) = \underset{n \rightarrow + \infty}{\lim} u_n - u_0$
-    \item Si $\sum u_n \et \sum v_n \conv, \sum_{n=0}^{+\infty} (\lambda u_n + v_n) = \lambda \sum_{n=0}^{+\infty} u_n + \sum_{n=0}^{+\infty} v_n $
-    \item Théorème des séries alternées - pour une suite $(a_n)$ réelle de signe alterné, si $(|a_n|)$ est décroissante et $a_n \longrightarrow 0$, alors la séries converge, $S$ de même signe que $a_0$ et $|S| \leq |a_0|$
-\end{itemize}
-
-\subsubsection{Propriétés des séries à termes positifs}
-\begin{itemize}
-    \item Une SATP est croissante
-    \item $\sum u_n \conv \iff (\sum u_n) \text{ est majorée}$
-    \item Si $0 \leq u_n \leq v_n \et (\sum v_n) \conv$, $(\sum u_n) \conv$ et $\sum_{0}^{+\infty} u_n \leq \sum_{0}^{+\infty} v_n$
-    \item Pour des SATPs $u_n \sim v_n$, $\sum u_n \et \sum v_n$ sont de même nature
-\end{itemize}
-
-\subsubsection{Propriétés de la convergence absolue}
-\begin{itemize}
-    \item Convergence absolue $\implies$ convergence et $\left |\sum_{n=0}^{+ \infty} u_n \right | \leq \sum_{n=0}^{+\infty} |u_n|$
-    \item Pour des SATPs, convergence absolue $\iff$ convergence
-    \item $u_n =\mathcal{O}(v_n) \et \sum v_n $ converge absolument $\implies \sum u_n$ converge absolument
-\end{itemize}
-
-\subsection{Comparaison série-intégrale}
-Pour $\sum f(n)$ avec $f$ une fonction continue et décroissante sur $[0, +\infty[$
-\[ \int_{0}^{n+1} f \leq  \sum_{k=0}^{n} f(k) \leq f(0) + \int_{0}^{n} f \]
-
-[Démonstration - écrire un encadrement pour $f(k)$ avec des intégrales de $k$ à $k+1$ et de $k-1$ à $k$, puis sommer]
-\begin{itemize}
-    \item L'inégalité change de signe pour des fonctions décroissantes
-    \item L'inégalité s'adapte pour des fonctions définies APCR
-\end{itemize}
-
-\subsection{Séries particulières}
-\subsubsection{Série géométrique}
-\[ \sum q^n \conv \iff |q| < 1 \]
-\[ \sum_{n=0}^{+\infty} q^n = \frac{1}{1-q} \]
-
-\begin{itemize}
-    \item Somme partielle - $\sum_{k=0}^{n} q^k = \frac{1 - q^{n+1}}{1-q}$
-    \item La somme commence à $n = 0$
-    \item{} [Classique] `Dérivation' de la serie géométrique - pour $|q| < 1$, $\sum_{0}^{+\infty} kq^{k-1} = \frac{1}{(1-q)^2}$ [Démonstration - Calculer $(1-q)\sum_{0}^{n} kq^k$ avec un pseudo-téléscopage]
-\end{itemize}
-
-\subsubsection{Série exponentielle}
-\[ \sum_{n=0}^{+\infty} \frac{z^n}{n!} = e^z \]
-
-[Démonstration - Encadrer $f : t \mapsto e^{tz}$ par l'inégalité de Taylor-Langrange en 0 à l'ordre $n$ évalué en 1]
-
-\begin{itemize}
-    \item La somme commence à $n = 0$
-\end{itemize}
-
-\subsubsection{Série de Riemann}
-$\alpha \in \mathbb{R}$
-\[ \sum_{n \geq 1} \frac{1}{n^\alpha} \conv \iff \alpha > 1 \]
-
-[Démonstration - Pour $\alpha < 0$, le terme général diverge. Sinon, $t \mapsto \frac{1}{t^{\alpha}}$ est décroissante - on utilise l'encadrement intégrale avec un disjonction pour $\alpha = 1$]
-
-\clearpage
-
 \section{Fonctions de deux variables [sup 28]}
 
 \subsection{Continuité}
@@ -1600,6 +1370,243 @@ Continuité en $a \in U$ un ouvert de $\mathbb{R}^2$
 
 \clearpage
 
+\section{Intégration [spé VII]}
+\subsection{Fonctions continues par morceaux sur un intervalle}
+
+\begin{itemize}
+    \item Sur un intervalle quelconque, $\forall [a, b] \subset I, f_{|[a, b]} $ est continue par morceaux 
+    \item Stable par combinaison linéaire et produit
+    \item Pas stable par l'inverse
+    \item Pas stable par composition
+\end{itemize}
+
+\subsection{Intégrale généralisée}
+
+$f : [a, b[ \, \rightarrow \mathbb{K} \in \mathcal{C}_{m}$
+
+\begin{itemize}
+    \item $\int_{a}^{b}f = \underset{x \rightarrow b}{\lim} \int_{a}^{x} f$ si la limite existe et est finie
+    \item Si $f$ admet un prolongement continue en $b$, $\int_{a}^{b}f$ converge(intégrale faussement généralisée)
+    \item Si $f$ est continue et $\int_{a}^{b}f$ converge, $ \int_{x}^{b}f \underset{x \rightarrow b^{-}}{\longrightarrow} 0$ (faux si $f$ est CPM mais discontinue)
+    \item Pour $f : ]a, b[ \rightarrow \mathbb{K}$, $\int_{a}^{b} f$ converge $\iff$ pour $c \in ]a, b[$, $\int_{a}^{c}f \et \int_{c}^{b}f$ converge  
+    \item Pour $f : I \mapsto \mathbb{C}$, $\int_{a}^{b}f$ converge $\iff \int_{a}^{b} \text{Re }f \et \int_{a}^{b} \text{Im }f$ converge
+    \item $f$ absolument convergent si $\int_{a}^{b} |f|$ converge, absoluement convergente $\implies$ convergence
+    \item $f$ CPM est intégrable sur $I$ si $I$ est un segment ou $\int_{a}^{b}f$ est ACV
+    \begin{itemize}
+        \item $L^1(I, \mathbb{K})$ est l'ensemble des fonctions intégrables
+        \item $L^1$ est un ssev des fonctions CPM
+        \item $f \mapsto \int_{I}$ est une forme linéaire
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Propriétés}
+
+\begin{itemize}
+    \item Linéarité, positivité, croissance et relation de Chasles si les intégrales généralisées sont (absoluement) convergentes
+    \item Inégalité triangulaire intégrale si intégrable
+    \item Pour une fonction continue positive dont l'intégrale généralisée est convergente, $\int_{a}^{v}f = 0 \implies f = 0$
+    \item Changement de variable - $\int_{u(a)}^{u(b)} f(x) \text{ d}x = \int_{a}^{b} f(u(t)) u'(t) \text{ d}t$ avec $u$ telle que $x = u(t)$ doit être une bijection strictement monotone pour que la convergence soit preservée
+\end{itemize}
+
+\subsection{Théorèmes de comparaison}
+
+\begin{itemize}
+    \item Pour $f \geq 0$, $\int_{a}^{b}f$ converge si $x \mapsto \int_{a}^{x}f$ est majorée
+    \item Si $0 \leq f \leq g$ et $\int_{a}^{b}g$ converge, alors $\int_{a}^{b}f$ converge
+    \item Si $f =\! \underset{b}{\mathcal{O}} (g)$ et $\int_{a}^{b}g$ intégrable en $b$, alors $\int_{a}^{b}f$ intégrable en  $b$
+    \begin{itemize}
+        \item En particulier, pour $b$ fini et $f$ bornée au voisinage de $b$, $f$ est intégrable
+    \end{itemize}
+    \item Si $f \underset{b}{\sim} (g)$, $\int_{a}^{b}g$ intégrable en $b \iff \int_{a}^{b}f$ intégrable en  $b$
+    \begin{itemize}
+        \item{} [HP] Sur $[a, b[$, si $f \underset{b}{\sim} g$ et $g$ positive et intégrable, $\int_{x}^{b} f \underset{x \rightarrow b}{\sim} \int_{x}^{b} g$ [Démonstration - par définition epsilon de $f-g =\underset{b}{o} (g)$]
+        \item{} [HP] Sur $[a, b[$, si $f \underset{b}{\sim} g$ et $g$ positive et non-intégrable, $\int_{a}^{x} f \underset{x \rightarrow b}{\sim} \int_{a}^{x} g$ [Démonstration - par définition epsilon de $f-g =\underset{b}{o} (g)$, en découpant l'intégrable en 2 intervalles $[a, c]$ et $[c, b[$]
+    \end{itemize}
+    \item Pour étudier la convergence, on peut faire un développement limité, mais il faut aller jusqu'au premier terme \textbf{de signe fixe} ou intégrable
+\end{itemize}
+
+\subsection{Exemples de références}
+
+\begin{itemize}
+    \item $\frac{1}{t^\alpha}$ intégrable en $0$ si $\alpha < 1$, en $+\infty$ si $\alpha > 1$
+    \item $\ln t$ intégrable en $0$
+    \item $e^{-\alpha t}$ intégrable en $+\infty$
+    \item{} [HP] $\frac{1}{t^\alpha (\ln t)^\beta}$ intégrable en $+\infty$ $\iff \alpha > 0 \ou (\alpha = 1 \et \beta > 1)$ [Démonstration - distinguer les cas $\alpha = 1$ (raisonner sur $\frac{1}{(\ln t)^\beta}$) et $\alpha \neq 1$ (raisonner sur une relation de comparaison avec $\frac{1}{t^{\frac{\alpha + 1}{2}}}$, pour DV et CV))]
+    \item{} [Classique] $\frac{\sin t}{t}$ converge mais non-intégrable [Démonstration - IPP]
+\end{itemize}
+
+\subsection{Convergence dominée}
+
+\subsubsection{Convergence simple}
+\[ f_n \overset{\text{CVS}}{\longrightarrow} f \iff \forall x \in I, f_n(x) \underset{n \rightarrow +\infty}{\longrightarrow} f(x) \]
+
+\subsubsection{Théorème de convergence dominée}
+Pour une suite de fonctions $f_n$, si :
+\begin{itemize}
+    \item $\forall n, f_n$ CPM
+    \item $f_n \overset{\text{CVS}}{\longrightarrow} f$ et $f$ CPM 
+    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall n, |f_n| \leq \phi$
+\end{itemize}
+
+Alors $f_n$ et $f$ sont intégrables et $\int f_n \longrightarrow \int f$
+
+\subsubsection{TCD à paramètre continue}
+Pour $f(x, t)$ paramétrée par $x$ sur $J$ avec une variable d'intégration $t$ sur $I$, si :
+\begin{itemize}
+    \item $t \mapsto f(x, t)$ est CPM
+    \item $\forall t, f(x, t) \underset{x\rightarrow c}{\longrightarrow} l(t)$ avec $l$ CPM
+    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t), |f(x, t)| \leq \phi(t)$
+\end{itemize}
+
+Alors $\forall x \in J, t \mapsto f(x, t)$ est intégrable et $\int_{I} f(x, t) \, \dt \underset{x \rightarrow c}{\longrightarrow} \int_I l(t) \, \dt$
+
+\begin{itemize}
+    \item Si $x \mapsto f(x, t)$ est en plus continue sur $J$, $x \mapsto \int_{I} f(x, t) \, \dt $ est continue sur $J$
+    \item Le résultat est aussi valable si pour tout segment $[a, b] \subset J, \exists \phi_{a, b} : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t) \in [a, b] \times I, |f(x, t)| \leq \phi_{a, b}(t)$
+\end{itemize}
+
+\subsubsection{Théorème de Leibniz}
+Pour $F : x \mapsto \int_{I} f(x, t) \, \dt$, si
+\begin{samepage}
+
+\begin{itemize}
+    \item $x \mapsto f(x, t)$ est de classe $\mathcal{C}^1$ sur $J$
+    \item $t \mapsto f(x, t)$ est intégrable sur $I$
+    \item $t \mapsto \frac{\partial f}{\partial x}(x, t)$ est continue par morceaux sur $I$
+    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t), |\frac{\partial f}{\partial x}(x, t)| \leq \phi(t)$
+\end{itemize}
+
+Alors 
+\[ F'(x) = \frac{\dd}{\dx}\int_I f(x, t) \, \dt = \int_I \frac{\partial f}{\partial x}(x, t) \, \dt \]
+
+\end{samepage} 
+
+$ $ \\
+
+Le résultat est aussi valable si pour tout segment $[a, b] \subset J, \exists \phi_{a, b} : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t) \in [a, b] \times I, |\frac{\partial f}{\partial x}(x, t)| \leq \phi_{a, b}(t)$ \\
+
+Par récurrence, on a si:
+\begin{itemize}
+    \item $x \mapsto f(x, t)$ est de classe $\mathcal{C}^n$ sur $J$
+    \item $t \mapsto \frac{\partial^k f}{\partial x^k}(x, t)$ est intégrable sur $I$ (pour $k \in \nint{0}{n-1}$)
+    \begin{itemize}
+        \item On peux aussi montrer une domination de $|\frac{\partial^k f}{\partial x^k}(x, t)|$ pour tout $k \nint{1}{n}$
+    \end{itemize}
+    \item $t \mapsto \frac{\partial^n f}{\partial x^n}(x, t)$ est continue par morceaux sur $I$
+    \item $\exists \phi : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t), |\frac{\partial^n f}{\partial x^n}(x, t)| \leq \phi(t)$
+\end{itemize}
+
+Alors $\forall k \in \nint{1}{n}$
+\[ F^{(k)}(x) = \int_I \frac{\partial^k f}{\partial x^k}(x, t) \dt \]
+
+\subsection{[Classique] Fonction $\Gamma$}
+\[ \Gamma : x \mapsto \int_{0}^{+\infty} t^{x-1}e^{-t} \dt \]
+
+\begin{itemize}
+    \item Définie sur $\mathbb{R_+^*}$
+    \item $\Gamma(x) = (x-1) \Gamma(x-1)$ [Démonstration - IPP]
+    \item $\forall n \in \mathbb{N}^*, \Gamma(n) = (n-1)!$
+    \item $\Gamma \in \mathcal{C}^\infty$ [Démonstration - Continuité - TCD avec domination sur tout segment $[a, b]$ par $(t^{a-1} + t^{b-1})e^{-t}$. $\mathcal{C}^\infty$ - Leibniz avec la même style de domination]
+    \begin{itemize}
+        \item $\Gamma^{(k)}(t) = \int_{0}^{+\infty} (\ln t)^k t^{x-1} e^{-t} \dt$
+    \end{itemize}
+    \item $\Gamma$ est convexe [Démonstration - $\Gamma'$ est (strictement) croissante]
+    \item $\Gamma(\frac{1}{2}) = \int_{0}^{+\infty} \frac{e^{-t}}{\sqrt{t}} \dt = \sqrt{\pi}$ [Démonstration - $J_n = \int_{0}^{\sqrt{n}} \left( 1 - \frac{t^2}{n} \right)^n \dt = \sqrt{n} W_{2n+1} \longrightarrow \frac{\sqrt{\pi}}{2} $ (Changement de variable $x = \sqrt(n) \sin t$ puis Wallis). Par ailleurs, $J_n \longrightarrow \int_{0}^{+\infty} e^{-x^2} \dx$ (TCD) et $\Gamma(\frac{1}{2}) = 2 \int_{0}^{+\infty}e^{-x^2} \dx$ (Changement de variable $t = x^2$).]
+\end{itemize}
+
+\clearpage
+\section{Séries numériques [sup 25] [spé X]}
+
+\subsection{Définitions}
+\begin{itemize}
+    \item Série de terme général $u_n = \sum u_n = \left( \sum_{k=0}^{n}u_k \right)_{n \in \mathbb{N}}$
+    \item Somme partielle d'ordre $n$ - $\sum_{k=0}^{n}u_k$
+    \item Pour une série convergente, somme de la série $\sum_{k=0}^{+\infty} u_k$
+    \item Pour une série convergente, reste de rang $n$ - $R_n = \sum_{k=0}^{+\infty} u_k - \sum_{k=0}^{n} u_k$
+    \begin{itemize}
+        \item Par téléscopage, $u_n = R_{n-1} - R_n$
+    \end{itemize}
+    \item Série de terme général $u_n$ est absolument convergente $\iff \sum |u_n| \conv \iff (u_n)$ est sommable
+\end{itemize}
+
+\subsubsection{Propriétés}
+\begin{itemize}
+    \item $S_n \text{ converge } \implies u_n \longrightarrow 0$
+    \item $(u_n) \not \longrightarrow 0 \implies S_n$ diverge grossièrement
+    \item $ (u_n) \text{ converge } \iff \sum (u_{n+1} - u_n) \conv $ - $\sum_{n=0}^{+\infty} (u_{n+1} - u_n) = \underset{n \rightarrow + \infty}{\lim} u_n - u_0$
+    \item Si $\sum u_n \et \sum v_n \conv, \sum_{n=0}^{+\infty} (\lambda u_n + v_n) = \lambda \sum_{n=0}^{+\infty} u_n + \sum_{n=0}^{+\infty} v_n $
+    \item Théorème des séries alternées - pour une suite $(a_n)$ réelle de signe alterné, si $(|a_n|)$ est décroissante et $a_n \longrightarrow 0$, alors la séries converge, $S$ de même signe que $a_0$ et $|S| \leq |a_0|$
+    \item Règle de d'Alembert - pour $u_n > 0$, $\frac{u_n}{u_{n+1}} \longrightarrow l$, $\sum u_n$ diverge grossièrement si $l > 1$ et $\sum u_n$ converge si $l < 1$
+    \item{} [HP] Transformation d'Abel - $\sum_{k=0}^{n} a_k b_k = b_n S_n + \sum_{k=0}^{n-1} S_k(b_k - b_{k+1})$ - la série $\sum a_k b_k$ CV si $(b_k)$ décroissante de limite nulle et $S_n = \sum a_k$ est bornée
+\end{itemize}
+
+\subsubsection{Propriétés des séries à termes positifs}
+\begin{itemize}
+    \item Une SATP est croissante
+    \item $\sum u_n \conv \iff (\sum u_n) \text{ est majorée}$
+    \item Si $0 \leq u_n \leq v_n \et (\sum v_n) \conv$, $(\sum u_n) \conv$ et $\sum_{0}^{+\infty} u_n \leq \sum_{0}^{+\infty} v_n$
+    \item Pour des SATPs $u_n \sim v_n$, $\sum u_n \et \sum v_n$ sont de même nature
+\end{itemize}
+
+\subsubsection{Propriétés de la convergence absolue}
+\begin{itemize}
+    \item Convergence absolue $\implies$ convergence et $\left |\sum_{n=0}^{+ \infty} u_n \right | \leq \sum_{n=0}^{+\infty} |u_n|$
+    \item Pour des SATPs, convergence absolue $\iff$ convergence
+    \item $u_n =\mathcal{O}(v_n) \et \sum v_n $ converge absolument $\implies \sum u_n$ converge absolument
+\end{itemize}
+
+\subsection{Comparaison série-intégrale}
+Pour $\sum f(n)$ avec $f$ une fonction continue et décroissante sur $[0, +\infty[$
+
+\[ 0 \leq \int_{n-1}^{n} f(t) \, \dt - f(n) \leq f(n-1) - f(n) \]
+
+\[ \int_{0}^{n+1} f \leq  \sum_{k=0}^{n} f(k) \leq f(0) + \int_{0}^{n} f \]
+
+[Démonstration - écrire un encadrement pour $f(k)$ avec des intégrales de $k$ à $k+1$ et de $k-1$ à $k$, puis sommer]
+\begin{itemize}
+    \item L'inégalité change de signe pour des fonctions croissantes
+    \item L'inégalité s'adapte pour des fonctions définies APCR
+\end{itemize}
+
+\subsection{Séries particulières}
+\subsubsection{Série géométrique}
+\[ \sum q^n \conv \iff |q| < 1 \]
+\[ \sum_{n=0}^{+\infty} q^n = \frac{1}{1-q} \]
+
+\begin{itemize}
+    \item Somme partielle - $\sum_{k=0}^{n} q^k = \frac{1 - q^{n+1}}{1-q}$
+    \item La somme commence à $n = 0$
+    \item{} [Classique] `Dérivation' de la serie géométrique - pour $|q| < 1$, $\sum_{0}^{+\infty} kq^{k-1} = \frac{1}{(1-q)^2}$ [Démonstration - Calculer $(1-q)\sum_{0}^{n} kq^k$ avec un pseudo-téléscopage]
+\end{itemize}
+
+\subsubsection{Série exponentielle}
+\[ \sum_{n=0}^{+\infty} \frac{z^n}{n!} = e^z \]
+
+\begin{itemize}
+    \item La somme commence à $n = 0$
+\end{itemize}
+
+\subsubsection{Série de Riemann}
+$\alpha \in \mathbb{R}$
+\[ \sum_{n \geq 1} \frac{1}{n^\alpha} \conv \iff \alpha > 1 \]
+
+\subsection{Équivalent de Stirling}
+
+\[ n! \sim \sqrt{2 \pi} n^{n+\frac{1}{2}}e^{-n} \]
+
+\clearpage
+
+\section{Suites et séries de fonctions [spé XI]}
+
+\begin{itemize}
+    \item Convergence simple - $\forall x \in X, f_n(x) \longrightarrow f(x)$
+    \item Convergence uniforme - $\forall \epsilon > 0, \exists n_0 \in \mathbb{N} \ligneh \forall x \in X, \forall n \geq n_0, |f_n(x) - f(x)| \leq \epsilon$
+
+\end{itemize}
+
+
+\clearpage
+
 \chapter{Algèbre}
 
 \section{Matrices et systèmes linéaires [sup 8]}
@@ -1650,7 +1657,7 @@ Matrice à $n$ lignes et $p$ colonnes.
 \[ \forall (i, j) \in \llbracket 1, n \rrbracket \times \llbracket 1, p \rrbracket, [AB]_{i, j} = \sum_{k=1}^pa_{i, k}b_{k, j} \]
 
 \begin{itemize}
-    \item $ E_{i, j}^{(n, p)}E_{k, l}^{(p, q)} = \delta_{j, k}E_{i, l}^{(n, q)} $ [Démonstration - séparant le terme où $i=l$]
+    \item $ E_{i, j}^{(n, p)}E_{k, l}^{(p, q)} = \delta_{j, k}E_{i, l}^{(n, q)} $ 
     \item $ E_{i, j}A $ - extraction de la $j$-ième ligne de $A$ et mise dans la $i$-ème ligne
     \item $ AE_{i, j} $ - extraction de la $i$-ième colonne de $A$ et mise dans la $j$-ième colonne
 \end{itemize}
@@ -1695,8 +1702,6 @@ Matrice à $n$ lignes et $p$ colonnes.
 \[ \text{GL}_n(\mathbb{K}) = \{ A \in \mathcal{M}_n(\mathbb{K}) \text{ } | \text{ } \exists B \in \mathcal{M}_n(\mathbb{K}) : AB = BA = I_n \} \]
 \[ A \in \text{GL}_n(\mathbb{K}) \iff \forall B \in \mathcal{M}_{n, 1}(\mathbb{K}), \exists ! X \in \mathcal{M}_{n, 1}(\mathbb{K}) \text{ } | \text{ } AX = B \]
 
-Démonstration [Sens indirect - Décomposer $I_n$ en colonne, cette $I_n$ décomposée sert de second membre, la concaténation des $X$ résultats donne $A^{-1}$ (et vérifiée pour la multiplication à gauche). On vérifie la multiplication à droite en étudiant la différence avec $I_n$]
-
 \begin{itemize}
     \item $ (AB)^{-1} = B^{-1}A^{-1} $
     \item $ (A^{-1})^{-1} = A $
@@ -1710,8 +1715,8 @@ Démonstration [Sens indirect - Décomposer $I_n$ en colonne, cette $I_n$ décom
 \noindent Pour les matrices inversible, il faut considérer les puissance négatives 
 
 \begin{itemize}
-    \item (Classique) $I + N$ est inversible d'inverse $\sum_{k=0}^{p-1} (-1)^kN^k$ pour $N$ nilpotente d'indice $p$
-    \item (Classique) Lemme d'Hadamard - Si $\forall i \in \llbracket 1, n \rrbracket, |a_{i, i}| > \sum_{i \neq j} |a_{i, j}|$, alors la matrice $A$ est inversible [Démonstration - Par l'absurde, fixer $B$ tq $AB = 0$ et $B \neq 0$. Pour $b_{i_0}$ le coefficient maximale dans $B$, on évalue $[AB]_{i_0}$ pour obtenir une contradiction]
+    \item{} [Classique] $I + N$ est inversible d'inverse $\sum_{k=0}^{p-1} (-1)^kN^k$ pour $N$ nilpotente d'indice $p$
+    \item{} [Classique] Lemme d'Hadamard - Si $\forall i \in \llbracket 1, n \rrbracket, |a_{i, i}| > \sum_{i \neq j} |a_{i, j}|$, alors la matrice $A$ est inversible [Démonstration - Par l'absurde, fixer $B$ tq $AB = 0$ et $B \neq 0$. Pour $b_{i_0}$ le coefficient maximale dans $B$, on évalue $[AB]_{i_0}$ pour obtenir une contradiction]
 \end{itemize}
 
 \subsection{Algorithme du pivot de Gauss}
@@ -1791,9 +1796,9 @@ Sous-espace engendré par une famille finie de vecteurs ou une partie
 \[ \text{Vect}(A) = \{\sum_{i=1}^n \lambda_i a_i \ligneh n \in \mathbb{N}, (a_1,...,a_n) \in A^n, (\lambda_1,...,\lambda_n) \in \mathbb{K}^n \} \]
 
 \begin{itemize}
-    \item $\text{Vect}(A)$ est un ssev de E [Démonstration - $\text{Vect}(A) \in E, 0_E \in \text{Vect}(A) $, et stabilité par combinaison linéaire] - on peut montrer que $F$ est un ssev de $E$ en écrivant $F$ sous forme d'un Vect
-    \item $\text{Vect}(A)$ est le plus petit ssev de E qui contient A (Pour tout F un ssev de E, $ \text{Vect}(A) \subset F $) [Démonstration - $x \in \text{Vect}(A)$ est une combinaison linéaire des élements de $A$ donc de $F$ et $F$ est stable par combinaison linéaire]
-    \item $\text{Vect}(A)$ est l'intersection de tous les ssevs de E qui contiennent A [Démonstration - l'intersection est aussi un ssev contenant $A$ puis double inclusion]
+    \item $\text{Vect}(A)$ est un ssev de E - on peut montrer que $F$ est un ssev de $E$ en écrivant $F$ sous forme d'un Vect
+    \item $\text{Vect}(A)$ est le plus petit ssev de E qui contient A (Pour tout F un ssev de E, $ \text{Vect}(A) \subset F $) 
+    \item $\text{Vect}(A)$ est l'intersection de tous les ssevs de E qui contiennent A 
     \item Vect d'un vecteur - $ \text{Vect}(0_E) = {0_E} $ et $ \text{Vect}(x \neq 0_E) = \mathbb{K}x $ droite vectorielle
     \item Vect de 2 vecteurs - $ \text{Vect}(x, y) = \text{Vect}(x) = \text{Vect}(y) $ si $x$ et $y$ sont colinéaires - sinon plan vectoriel
 \end{itemize}
@@ -1895,7 +1900,7 @@ Pour $x \in E = E_1 \oplus E_2$,
         \item $p$ est un projecteur $\iff p^2 = p $
         \item $ E_1 = \text{Im }p = \{x \in E \ligneh p(x) = x \} = \text{Ker}(p - \text{Id}_E) $
         \item $ E_2 = \text{Ker }p$
-        \item $p$ est le projecteur sur $\text{Im}(p)$ parallèlement à $\text{Ker }p$ [Démonstration - $x = (u(x)) + (x-u(x))$ décomposition unique]
+        \item $p$ est le projecteur sur $\text{Im}(p)$ parallèlement à $\text{Ker }p$ 
         \item $\text{Id}_E - p$ est le projecteur sur $E_2$ parallèlement à $E_1$
     \end{itemize}
     \item La symétrie par rapport à $E_1$ parallèlement à $E_2$, $ s : x = x_1 + x_2 \mapsto x_1 - x_2 $
@@ -1904,7 +1909,7 @@ Pour $x \in E = E_1 \oplus E_2$,
         \item $s$ est une symétrie $\iff s^2 = \text{Id} \iff s \in \text{GL}(E) \et s^{-1}=s$ 
         \item $ E_1 = \{ x \in E \ligneh s(x) = x \} = \text{Ker}(s-\text{Id}) $
         \item $ E_2 = \{ x \in E \ligneh s(x) = -x \} = \text{Ker}(s+\text{Id}) $ 
-        \item $s$ est la symétrie sur $\text{Ker}(s-\text{Id})$ parallèlement à $\text{Ker}(s+\text{Id})$ [Démonstration - $x = \frac{1}{2}(x + u(x)) + \frac{1}{2}(x-u(x))$ décomposition unique]
+        \item $s$ est la symétrie sur $\text{Ker}(s-\text{Id})$ parallèlement à $\text{Ker}(s+\text{Id})$
     \end{itemize}
     \item $s = 2p - \text{Id}$
 \end{enumerate}
@@ -1934,7 +1939,7 @@ Pour l'équation $u(x) = b$, s'il existe au moins une solution particulière $x_
 \subsection{Définition}
 \begin{itemize}
     \item Dimension finie - $E$ possède une famille génératrice de cardinal $n \in \mathbb{N}$
-    \item Toute famille libre d'éléments de $E$ peut être complétée en une base de $E$ à partir des éléments de $G$ ($G$ est une famille génératrice) [Démonstration - considérons une famille libre de cardinalité maximale]
+    \item Toute famille libre d'éléments de $E$ peut être complétée en une base de $E$ à partir des éléments de $G$ ($G$ est une famille génératrice) 
     \item TBE Théorème de la base extraite - on peut extraire une base de tout famille génératrice finie 
     \item TBI Théorème de la base incomplète - Toute famille libre de vecteurs peut être complétée en une base
     \item Toutes les bases de $E$ ont le même cardinal = $\dim E$. 
@@ -1957,7 +1962,7 @@ $u$ est une AL de $E$ dans $F$
     \item $\dim F = \dim E$ avec $E \subset F \iff F = E$ pour $F$ un ssev de $E$
     \item Tout ssev de $E$ fini admet un supplémentaires
     \item Pour $E = F \oplus G$, $\dim E = \dim F + \dim G$
-    \item Formule de Grassmann - $\dim (F+G) = \dim F + \dim F - \dim (F \cap G)$ [Démonstration - Considérons $H$ un supplémentaire de $F \cap G$ dans $F$ et montrer $F+G = H \oplus G$]
+    \item Formule de Grassmann - $\dim (F+G) = \dim F + \dim F - \dim (F \cap G)$ 
 \end{itemize}
 
 \subsection{Rang}
@@ -1978,7 +1983,7 @@ Pour $u \in \mathcal{L}(E, F)$
 
 \[ \dim E = \dim( \ker u ) + \rg(u) \]
 
-\noindent [Démonstration - Pour $S$ un supplémentaire de $\ker (u)$ ($E = S \oplus \ker (u)$), $u$ induit un isomorphisme de $S$ dans $\text{Im}(u)$]
+Version géométrique - pour $S$ un supplémentaire de $\ker (u)$ ($E = S \oplus \ker (u)$), $u$ induit un isomorphisme de $S$ dans $\text{Im}(u)$
 
 \begin{itemize}
     \item Une forme linéaire est soit nulle, soit surjective
@@ -2137,6 +2142,9 @@ L'unique forme $n$-linéaire alternée vérifiant $\det_{\mathcal{B}}(\mathcal{B
     \item Forme $n$-linéaire - $E^n \rightarrow \mathbb{K}$ linéaire par rapport à chacune de ses variables
     \begin{itemize}
         \item Le produit de $n$ éléments est une forme $n$-linéaire
+        \item Développement à outrance d'une application $n$-linéaire
+
+        \[ f \left( \sum_{j_1}^{p_1} \lambda_{1, j_1} x_{1, j_1}, \dots, \sum_{j_n}^{p_n} \lambda_{1, j_n} x_{1, j_n} \right) = \sum_{\substack{j_1 \in \nint{1}{p_1} \\ \dots \\[2pt] j_n \in \nint{1}{p_n}}} \left( \prod_{i=1}^n \lambda_{i,j_i} \right) f(x_{1, j_1}, \dots, x_{n, j_n}) \]
     \end{itemize}
     \item Alternée - $ x_i = x_j \et i \neq j \implies \phi([x_i]) = 0 $
     \item Antisymétrique - $\phi (x_1,\dots,x_i,\dots,x_j,\dots,x_n) = -\phi (x_1,\dots,x_j,\dots,x_i,\dots,x_n)$
@@ -2289,7 +2297,8 @@ On peut aussi développer suivant une colonne. \\
 
 \begin{itemize}
     \item $\chi_M = \chi_{M^T}$
-    \item Pour $\chi_A = X^n - \tr (A) X^{n-1} + \dots + (-1)^n \det (A)$ - pour $n = 2$, $\chi_A = X^2 - \tr (A) X + \det (A)$ est à utiliser sans démonstration
+    \item Pour $\chi_A = X^n - \tr (A) X^{n-1} + \dots + (-1)^n \det (A)$
+    \item Pour $n = 2$, $\chi_A = X^2 - \tr (A) X + \det (A)$ est à utiliser sans démonstration
     \item Pour $A$ triangulaire, $\chi_A = \prod (X-a_{i,i})$
     \item{} [Classique] Pour $P = X^n + \sum_{k=0}^{n-1} a_k X^k$, $\chi_{\text{Comp}(P)} = P$ où $\text{Comp}(P) = \begin{pmatrix}
         0      & \cdots & 0      & -a_0     \\
@@ -2351,8 +2360,6 @@ On a les équivalences suivantes
 \subsubsection{Théorème de Cayley-Hamilton}
 
 \[ \chi_u(u) = 0 \]
-
-[Démonstration - par reccurence pour $A \in \mathcal{M}_n(\mathbb{C})$, puis généraliser pour $\mathcal{M}_n(\mathbb{K})$ puis pour les endomorphismes]
 
 \subsubsection{Matrice de petite rang}
 
@@ -2478,8 +2485,6 @@ Pour une partie $A$ (pas forcément un ssev)
 \[ \forall (x, y) \in E^2, \langle x, y \rangle ^2 \leq \langle x, x \rangle\langle y, y \rangle \]
 \[ \langle x, y \rangle ^2 = \langle x, x \rangle\langle y, y \rangle \iff (x, y) \text{ est liée} \]
 
-[Démonstration - Étudier le discriminant de $P:\lambda \mapsto \langle \lambda x + y, \lambda x + y \rangle$ (fonction polynomiale à valeurs positifs)]
-
 \begin{itemize}
     \item Sur $\mathbb{R}^n, \left (\sum_{k=1}^{n} \lambda_i \mu_i \right )^2 \leq \left ( \sum_{k=1}^{n} \lambda_i^2 \right ) \left ( \sum_{k=1}^{n} \mu_i^2 \right )$
     \item Sur $\mathcal{C}^0([a, b], \mathbb{R})$, $(\int_{a}^{b} fg )^2 \leq (\int_{a}^{b} f^2)(\int_{a}^{b} g^2)$
@@ -2522,7 +2527,7 @@ Pour $\| \cdot \|$ la norme associée à un produit scalaire
 \subsubsection{Supplémentaire orthogonal}
 \begin{itemize}
     \item Pour $E$ un espace préhilbertien et $F$ un ssev, l'unique supplémentaire orthogonal de $F$ dans $E$ (sous réserve d'existence) est $F^{\perp}$
-    \item Pour $E$ un espace préhilbertien et $F$ un ssev de dimension finie, $E = F \overset{\perp}{\oplus} F^{\perp}$ [Démonstration - Décompoer en $F$ et $F^{\perp}$ par analyse-synthèse.]
+    \item Pour $E$ un espace préhilbertien et $F$ un ssev de dimension finie, $E = F \overset{\perp}{\oplus} F^{\perp}$ 
 \end{itemize}
 
 \subsubsection{Projection orthogonale}
@@ -2671,13 +2676,13 @@ $f : X \mapsto F$
 \begin{itemize}
     \item Ensemble fini - il existe $n \in \mathbb{N}*$ tel qu'il existe une bijection entre $E$ et $ \llbracket 1, n \rrbracket $ - $|E| = n$
     \item $E$ et $F$ en bijection ont le même cardinal
-    \item Pour $E$ fini - $A \subsetneq E \implies |A| < |E|$ [Démonstration - récurrence sur tout ensemble de cardinalité $n$]
+    \item Pour $E$ fini - $A \subsetneq E \implies |A| < |E|$ 
     \item $(|A| = |E| \et A \subset E) \implies A = E$
     \item Formule de Poincaré - $|E \cup F| = |E| + |F| - |E \cap F|$
     \item $|E \backslash F| = |E| - |E \cap F|$
     \item $|E \times F| = |E||F|$
     \item $|F^E| = |F|^{|E|}$
-    \item $|\mathcal{P}(E)| = 2^{|E|}$ [Démonstration - bijection entre $\mathcal{P}(E)$ et $\{0, 1\}^E$ - $A \mapsto \mathbb{1}_A$]
+    \item $|\mathcal{P}(E)| = 2^{|E|}$ 
 \end{itemize}
 
 \subsubsection{Applications}
@@ -2686,7 +2691,7 @@ Pour $f:E \rightarrow F$
     \item $f(E)$ est fini
     \item $|f(E)| \leq |E| \et |f(E)| = |E| \iff f$ injective
     \item Pour $f$ bijective, $|E| = |F|$
-    \item Pour $f$ injective, $|E| \leq |F|$ - il y en a $\frac{|F|!}{(|F|-|E|)!}$ possibilités [Démonstration - revient à choisir un $|E|$-arrangement des élements de $F$ à associer aux élements de $E$]
+    \item Pour $f$ injective, $|E| \leq |F|$ - il y en a $\frac{|F|!}{(|F|-|E|)!}$ possibilités 
     \item Pour $f$ surjective $|E| \geq |F|$ - il y en a $|E|!$ possibilités
     \item Pour $|E|=|F|$, surjectivité $\iff$ injectivité $\iff$ bijectivité
 \end{itemize}
@@ -2696,7 +2701,7 @@ Pour $f:E \rightarrow F$
     \item $p$-liste / $p$-uplet - $E^p$ - liste de $p$ éléments de $E$ (répétitions autorisées, ordre compté) - nombre $= n^p$
     \item $p$-arrangement - $p$-liste deux à deux distincts - nombre $=\frac{n!}{(n-p)!}$
     \item Permutation - une bijection de $E$ dans $E$ - nombre $=|E|!$
-    \item $p$-combinaison / $p$-partie - partie de $E$ à $p$ éléments distinctes (ordre pas compté) - nombre $=\binom{|E|}{p}$ [Démonstration - chaque $p$-combinaison correspond à $p!$ $p$-arrangements] 
+    \item $p$-combinaison / $p$-partie - partie de $E$ à $p$ éléments distinctes (ordre pas compté) - nombre $=\binom{|E|}{p}$ 
 \end{itemize}
 
 \clearpage
@@ -2838,13 +2843,11 @@ Formule de Koenig-Huygens
 Pour $a > 0$,
 \[ P(|X| \geq a) \leq \frac{\mathbb{E}(|X|)}{a} \]
 
-Démonstration - $|X| \geq a \, \mathbb{1}_{ \{|X| \geq a\} }$
-
 \subsubsection{Inégalité de Bienaymé-Tchebychev}
 Pour $\epsilon > 0$
 \[ P( | X - \mathbb{E}(X) | \geq \epsilon ) \leq \frac{\mathbb{V}(X)}{\epsilon^2} \]
 
-Démonstration - on applique l'inégalité de Markov pour $|X - \mathbb{E}(X)|^2 \geq \epsilon^2$
+L'inégalité de Markov pour $|X - \mathbb{E}(X)|^2 \geq \epsilon^2$
 
 \begin{itemize}
     \item En prenant $\epsilon = \sigma(X)$, on a des inégalités de concentration
@@ -3006,8 +3009,8 @@ Le $n$ du plus grand coefficient non-nul (coefficient dominant).
 \[ P \text{ non constant et } (P = AB \implies A \in \mathbb{K}^* \ou B \in \mathbb{K}^*) \]
 
 \begin{itemize}
-    \item Les irréductibles de $\mathbb{C}[X]$ sont les polynômes de degré 1 [Démonstration - Analyse : théroème d'Alembert Gauss - Synthèse : passage au degré]
-    \item Les irréductibles de $\mathbb{R}[X]$ sont les polynômes de degré 1 et de degré 2 sans racines réelles [Démonstration pour degré $>1$ - Analyse : montrer que les racines sont réelles par l'absurde, puis utiliser la divisibilité avec le conjugué de cette racine - Synthèse : passage au degré et par l'absurde]
+    \item Les irréductibles de $\mathbb{C}[X]$ sont les polynômes de degré 1 
+    \item Les irréductibles de $\mathbb{R}[X]$ sont les polynômes de degré 1 et de degré 2 sans racines réelles 
     \item Tout polynôme non constant se factorise en produit de polynômes irréductibles
 \end{itemize}
 
