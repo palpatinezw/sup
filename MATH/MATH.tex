@@ -1285,15 +1285,6 @@ Pour $f \in \mathcal{C}^{n+1}$
 
 Avec $M_{n+1}$ un majorant de $|f^{(n+1)}|$ sur le segment $[a \leftrightarrow x]$.
 
-\subsection{Sommes de Riemann}
-\[ \frac{b-a}{n}\sum_{k=0}^{n-1} f(a + k\frac{b-a}{n}) \underset{n\rightarrow +\infty}{\longrightarrow} \int_{a}^{b} f \]
-
-La somme peut aller de $1$ à $n$ \\
-
-En particulier, $\frac{1}{n}\sum_{0}^{n-1} f(\frac{k}{n}) \longrightarrow \int_{0}^{1} f$ \\
-
-Identifier une somme de Riemann permet de démontrer la convergence d'une suite et trouver sa limite. 
-
 \subsection{[Classique] Intégrale de Wallis}
 \[ I_n = \int_{0}^{\frac{\pi}{2}} \cos^n t \dt \]
 
@@ -1568,6 +1559,15 @@ Pour $\sum f(n)$ avec $f$ une fonction continue et décroissante sur $[0, +\inft
     \item L'inégalité s'adapte pour des fonctions définies APCR
 \end{itemize}
 
+\subsection{Sommes de Riemann}
+\[ \frac{b-a}{n}\sum_{k=0}^{n-1} f(a + k\frac{b-a}{n}) \underset{n\rightarrow +\infty}{\longrightarrow} \int_{a}^{b} f \]
+
+La somme peut aller de $1$ à $n$ \\
+
+En particulier, $\frac{1}{n}\sum_{0}^{n-1} f(\frac{k}{n}) \longrightarrow \int_{0}^{1} f$ \\
+
+Identifier une somme de Riemann permet de démontrer la convergence d'une suite et trouver sa limite. 
+
 \subsection{Séries particulières}
 \subsubsection{Série géométrique}
 \[ \sum q^n \conv \iff |q| < 1 \]
@@ -1589,6 +1589,10 @@ Pour $\sum f(n)$ avec $f$ une fonction continue et décroissante sur $[0, +\inft
 \subsubsection{Série de Riemann}
 $\alpha \in \mathbb{R}$
 \[ \sum_{n \geq 1} \frac{1}{n^\alpha} \conv \iff \alpha > 1 \]
+
+\subsubsection{Série harmonique}
+
+\[ \sum_{1}^n = \ln n + \gamma +o(1) \]
 
 \subsection{Équivalent de Stirling}
 

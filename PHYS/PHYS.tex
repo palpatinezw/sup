@@ -1774,6 +1774,7 @@ Pour un écoulement parfait ($R_e$ très grand)
 
 \begin{itemize}
     \item La force élémentaire de Laplace est dû à l'effet du Hall, et n'est pas directement à cause de la force magnétique
+    \item La force élémentaire de Laplace est une force électrique, donc elle peut travailler
     \item Pour les rails de Laplce, pour un courant de $M$ vers $N$, $\vec{F_L} = I \overrightarrow{MN} \wedge \vec{B}$
     \item Pour tout circuit fermé dans un champ magnétique uniforme et stationnaire, la résultante des forces de Laplace est nulle
     \item Pour une spire en rotation autour de l'axe $\vec{e_z}$ avec un champ magnétique uniforme selon $\vec{e_x}$, $\vec{\Gamma_L} = ISB \cos \theta \vec{e_z} = \vec{\mathcal{M}} \wedge \vec{B}$ [On intègre $\dd M_O(M) = \overrightarrow{OM} \wedge \dd \vec{F_L}$ pour tout point $M$. On pourrait se limiter à intégrer uniquement sur les 2 côtés horizontals]
@@ -2040,9 +2041,33 @@ On définit le rapport de transformation
         \item Conductivité $\sigma_0 = \frac{nq^2\tau}{m}$
         \item Densité de courant $\vec{j} = \sigma_0\vec{E}$
         \item Il y a une régime transitoire exponentielle très court - $\tau = 2 \times 10^{-14} \text{ s}$
-        \item Conducteur parfait - $\sigma_0 = \infty$
+        \item Conducteur parfait - $\sigma_0 = \infty$ donc $\vec{E} = \vec{0}$
+        \item Après le régime transitoire, $\rho(M) = 0$
+        \item $\text{div} \, \vec{j} = 0$
     \end{itemize}
     \item Si les variations de $\vec{E}$ sont très inférieures à $\frac{1}{\tau} = 10^{14} \text{ Hz}$, on a les mêmes résultats
+    \item En régime sinusoïdal forcé, $\underline{\vec{j}} = \underline{\sigma}\underline{\vec{E}}$ avec $\underline{\sigma} = \frac{\sigma_0}{1+i\omega\tau}$
+    \item Pour un conducteur ohmique, $R = \frac{L}{\sigma S} = \rho \frac{L}{S}$
+    \item Effet joule - $\frac{\dd^3 P}{\dd^3 \tau} = \sigma_0 E^2$
+\end{itemize}
+
+\section{Magnétostatique}
+
+\[ \text{div} \, \vec{B} = 0 \]
+\[ \rot \vec{B} = \mu_0 \vec{j} \]
+
+\subsection{Propriétés}
+\begin{itemize}
+    \item $\vec{B}$ est à flux conservatif
+    \item Pour un contour $\mathcal{C}$, le même champ $\vec{B}$ traverse toute surface reposant sur $\mathcal{C}$ orientée par $\mathcal{C}$
+\end{itemize}
+
+\subsection{Théorème d'Ampère}
+
+\[ \oint_{\mathcal{C}} \vec{B}\cdot \dd \vec{M} = \mu_0 I_{\text{enlacé}} \]
+
+\begin{itemize}
+    \item Les champs magnétiques enlaçent les courants
 \end{itemize}
 
 \clearpage
@@ -2206,6 +2231,11 @@ Pour un signal $s(t) = A\cos{(\omega t + \phi)}$, on a la grandeur complexe
     \item Dérivation - $ \underline{\dot{s}}(t) = j\omega\underline{s}(t) = \omega e^{j\frac{\pi}{2}} \underline{s}(t) $ - La dérivée est en quadrature avance
     \item Intégration - $ \int \underline{s}(t) \text{ d}t = \frac{\underline{s}(t)}{j\omega} = \omega e^{-j\frac{\pi}{2}} \underline{s}(t) $ - La dérivée est en quadrature retard
 \end{enumerate}
+
+\subsection{Puissance complexe}
+
+\[ \underline{P} = \frac{1}{2}\underline{u}\underline{i}^* = \frac{1}{2}\underline{u}^*\underline{i} \]
+\[ \langle P \rangle = \text{Re}(\underline{P}) \]
 
 \section{Équations différentielles - solutions générales}
 
