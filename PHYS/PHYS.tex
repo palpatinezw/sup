@@ -1871,11 +1871,12 @@ On définit le rapport de transformation
     \item Distribution de charge $\mathcal{D} = \left\{ \rho(M, t), \vec{j}(M, t) \right\}$
     \item Champ électromagnétique $\left( \vec{E}(M, t), \vec{B}(M, t) \right)$
     \item Conducteur - un materiau qui contient des charges libres de se déplacer
-    \item Milieu diélectrique - milieu électriquement isolant
     \begin{itemize}
-        \item Conducteur en équilibre électrostatique - un conducteur où il n'y a pas de courant
-        \item $\vec{E} = \vec{0} \et V = \cste$
+        \item Conducteur en équilibre électrostatique - un conducteur où il n'y a pas de courant - $\vec{E} = \vec{0} \et V = \cste$
+        \item Modèle de Drude - écoulement d'un gaz d'électrons libres qui interagissent avec un réseau cristallin d'ions (intéractions électrons-électrons négligés)
     \end{itemize}
+    
+    \item Milieu diélectrique - milieu électriquement isolant
 \end{itemize}
 
 \section{Force de Lorentz}
@@ -1992,6 +1993,56 @@ On définit le rapport de transformation
     \item Un dipôle est un ensemble de 2 charges ponctuelles opposées $+q \et -q$ ($q > 0$) situé en 2 points distincts respectivement en $P$ et en $N$
     \item Moment dipolaire $p = q \overrightarrow{NP}$  
     \item Un dipôle est globalement neutre
+    \item Approximation dipolaire - loin de la distribution, $r \gg a$, on peut faire un développement limité en $\frac{a}{r}$
+\end{itemize}
+
+\[ V = \frac{p \cos \theta}{4 \pi \epsilon_0 r^2} = \frac{\vec{p}\cdot\vec{e_r}}{4\pi\epsilon_0 r^2} \]
+\[ \vec{E} = \frac{p}{4 \pi\epsilon_0r^3}(2 \cos \theta \vec{e_r} + \sin \theta \vec{e_{\theta}}) = \frac{3(\vec{p} \cdot \vec{r})\vec{r} - r^2\vec{p}}{4\pi\epsilon_0r^5} \]
+
+\subsubsection{Actions subies par un dipôle}
+
+\begin{itemize}
+    \item Dans un champ $\vec{E}$ uniforme, $\vec{F} = \vec{0}$ et $\vec{M}_O \neq \vec{0}$ - le dipôle subit un couple
+    \item Dans $\vec{E}$ non-uniforme, si la taille du dipôle est très petite devant la distance caractéristique de variation de $\vec{E}$, on peut faire un DL vectoriel - $\vec{E} = \vec{E}(O) + (\overrightarrow{OM} \cdot \overrightarrow{\text{grad}})_O \vec{E}$ 
+\end{itemize}
+
+\[ \vec{F} = \bgrad{p}_O \vec{E} \]
+\[ \vec{M}_O = \vec{p} \wedge \vec{E}(O) \]
+\[ E_p = - \vec{p} \cdot \vec{E}(O) \]
+
+\begin{itemize}
+    \item Le dipôle a tendance de s'aligner au champ électrique dans le même sens, puis se déplacer vers la zone du champ plus fort
+\end{itemize}
+
+\subsubsection{Développement multipolaires}
+
+\[ V(M) = \frac{\sum_{i} q_i}{4\pi\epsilon_0r} + \frac{\sum_{i} q_i \vec{a_i}\cdot \overrightarrow{OM}}{4\pi\epsilon_0r^3} + \dots \]
+
+\begin{itemize}
+    \item Si la distribution est neutre, $V(M) = \frac{Q}{4\pi\epsilon_0r}$
+    \item Si les barycentres des charges positives et négatives ne sont pas superposées, $V(M) = \frac{\vec{p}\cdot\overrightarrow{OM}}{4\pi\epsilon_0r^3}$
+\end{itemize}
+
+\subsubsection{Dipôles induits}
+
+\begin{itemize}
+    \item Polarisabilité - $\vec{p} = \alpha \epsilon_0 \vec{E}$
+    \item $E_{p,\text{induit}} = -\frac{1}{2}\vec{p}\cdot\vec{E}$
+\end{itemize}
+
+\subsection{Loi d'Ohm locale}
+
+\[ \frac{\partial \vec{v}}{\partial t} + \frac{\vec{v}}{\tau} = \frac{q \vec{E}}{m} \]
+
+\begin{itemize}
+    \item Dans $\vec{E}$ uniforme, $\vec{v} = \frac{q \tau}{m} \vec{E}$ 
+    \begin{itemize}
+        \item Conductivité $\sigma_0 = \frac{nq^2\tau}{m}$
+        \item Densité de courant $\vec{j} = \sigma_0\vec{E}$
+        \item Il y a une régime transitoire exponentielle très court - $\tau = 2 \times 10^{-14} \text{ s}$
+        \item Conducteur parfait - $\sigma_0 = \infty$
+    \end{itemize}
+    \item Si les variations de $\vec{E}$ sont très inférieures à $\frac{1}{\tau} = 10^{14} \text{ Hz}$, on a les mêmes résultats
 \end{itemize}
 
 \clearpage

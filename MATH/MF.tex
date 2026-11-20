@@ -29,7 +29,7 @@
 
 \section{Complexes et trigonométrie}
 \subsection*{Inégalité triangulaire}
-\[ ||z|-|z'|| \leq |z \pm z'| \leq |z|+|z'| \]
+\[ \left||z|-|z'|\right| \leq |z \pm z'| \leq |z|+|z'| \]
 
 \subsection*{Racines troisième de l'unité}
 \[j=e^{i\frac{2\pi}{3}} = -\frac{1}{2} + i \frac{\sqrt{3}}{2}\]
@@ -100,6 +100,14 @@ Pour $a > 0$,
 Pour $\epsilon > 0$
 \[ P( | X - \mathbb{E}(X) | \geq \epsilon ) \leq \frac{\mathbb{V}(X)}{\epsilon^2} \]
 
+\section{Suites}
+
+\subsection*{Série exponentielle}
+\[ \sum_{n=0}^{+\infty} \frac{z^n}{n!} = e^z \]
+
+\subsection*{Équivalent de Stirling}
+\[ n! \sim \sqrt{2 \pi} n^{n+\frac{1}{2}}e^{-n} \]
+
 \section{Développement limité}
 
 \subsection*{Formule de Taylor-Young}
@@ -113,29 +121,18 @@ Pour $f \in \mathcal{C}^{n+1}$
 \subsection*{Inégalité de Taylor-Lagrange}
 \[ \left |f(x) - \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k \right | \leq \frac{|x-a|^{n+1}}{(n+1)!} M_{n+1} \]
 
-\subsection*{Équivalences usuels en 0}
+\subsection*{Équivalences et DLs usuels en 0}
 \begin{itemize}
-    \item $\sin{(x)} \sim x$
+    \item $\sin{(x)} \sim x \ligneh \sin (x) = x - \frac{x^3}{6} + \dots = \sum_{k=0}^{n} (-1)^k \frac{x^{2k+1}}{(2k+1)!} + o(x^{2n+1}) $
+    \item $\cos{(x)}-1 \sim -\frac{x^2}{2} \ligneh \cos (x) = 1 - \frac{x^2}{2} + \dots = \sum_{k=0}^{n} (-1)^k \frac{x^{2k}}{(2k)!} + o(x^{2n})$
     \item $\tan{(x)} \sim x$
-    \item $\sh{(x)} \sim x$
+    \item $\sh{(x)} \sim x \ligneh \sh (x) = x + \frac{x^3}{6} + \dots = \sum_{k=0}^{n}\frac{x^{2k+1}}{(2k+1)!} + o(x^{2n+1})$
+    \item $\ch{(x)}-1 \sim -\frac{x^2}{2} \ligneh \ch (x) = 1 + \frac{x^2}{2} + \dots = \sum_{k=0}^{n}\frac{x^{2k}}{(2k)!} + o(x^{2n})$
     \item $\arcsin{(x)} \sim x$
     \item $\arctan{(x)} \sim x$
-    \item $(1+x)^\alpha - 1 \sim \alpha x$
-    \item $e^{x} - 1 \sim x$
-    \item $\cos{(x)}-1 \sim -\frac{x^2}{2}$
-    \item $\ch{(x)}-1 \sim -\frac{x^2}{2}$
-    \item $\ln{(1+x)} \sim x$
-\end{itemize}
-
-\subsection*{DL usuels en $0$}
-\begin{itemize}
-    \item $e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \dots = \sum_{k=0}^{n}\frac{x^k}{k!} + o(x^n)$
-    \item $\ch (x) = 1 + \frac{x^2}{2} + \dots = \sum_{k=0}^{n}\frac{x^{2k}}{(2k)!} + o(x^{2n})$
-    \item $\sh (x) = x + \frac{x^3}{6} + \dots = \sum_{k=0}^{n}\frac{x^{2k+1}}{(2k+1)!} + o(x^{2n+1})$
-    \item $\cos (x) = 1 - \frac{x^2}{2} + \dots = \sum_{k=0}^{n} (-1)^k \frac{x^{2k}}{(2k)!} + o(x^{2n})$
-    \item $\sin (x) = x - \frac{x^3}{6} + \dots = \sum_{k=0}^{n} (-1)^k \frac{x^{2k+1}}{(2k+1)!} + o(x^{2n+1})$
-    \item $\ln (1 - x) = - x - \frac{x^2}{2} - \frac{x^3}{3} + \dots = \sum_{k=0}^{n} (-\frac{x^k}{k}) + o(x^n)$
-    \item $(1+x)^\alpha = 1 + \alpha x + \frac{(\alpha)(\alpha - 1)}{2}x^2 + \dots = \sum_{k=0}^{n}\binom{\alpha}{k} x^k + o(x^n)$
+    \item $(1+x)^\alpha - 1 \sim \alpha x \ligneh (1+x)^\alpha = 1 + \alpha x + \frac{(\alpha)(\alpha - 1)}{2}x^2 + \dots = \sum_{k=0}^{n}\binom{\alpha}{k} x^k + o(x^n)$
+    \item $e^{x} - 1 \sim x \ligneh e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \dots = \sum_{k=0}^{n}\frac{x^k}{k!} + o(x^n)$
+    \item $\ln{(1+x)} \sim x \ligneh \ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} + \dots = \sum_{k=0}^{n} (\frac{(-x)^k}{k}) + o(x^n)$
     \item $\frac{1}{1-x} = 1 + x + x^2 + \dots = \sum_{k=0}^{n} x^k + o(x^n)$
 \end{itemize}
 

@@ -146,9 +146,6 @@
     \item Pour $2\times10^3 < R_e < 2\times10^5$, $C_x = C$ constant, \[\vec{f} = - \frac{C}{2}\rho \pi r^2 v \vec{v}\]
 \end{itemize}
 
-\subsection*{Conservation de la masse}
-\[ \frac{\partial \mu}{\partial t} + \text{div}(\vec{j}) = 0 \]
-
 \subsection*{Équation de Navier-Stokes}
 \[ \mu \frac{\Dd \vec{v}}{\Dd t} = \vec{f_V} - \grad P + \eta \Delta \vec{v} \]
 
@@ -172,15 +169,16 @@
     \rot \vec{B} &= \mu_0 \vec{j} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t}
 \end{align*}
 
-\subsection*{Conservation de la charge}
-\[\frac{\partial \rho}{\partial t} + \text{div }\vec{j} = 0\]
-
-\subsection*{Force de Lorentz}
-\[ \vec{F_L} = q\left[\vec{E} + \vec{v}_{\repr} \wedge \vec{B}\right] \]
-
 \subsection*{Équation locale de Poynting}
 
 \[ \frac{\partial}{\partial t} \left( \frac{1}{2}\epsilon_0 E^2 + \frac{B^2}{2\mu_0} \right) + \text{div}\left( \frac{\vec{E} \wedge \vec{B}}{\mu_0} \right) = - \vec{j} \cdot \vec{E} \]
+
+\subsection*{Dipôles électriques}
+\[ V = \frac{p \cos \theta}{4 \pi \epsilon_0 r^2} = \frac{\vec{p}\cdot\vec{e_r}}{4\pi\epsilon_0 r^2} \]
+\[ \vec{E} = \frac{p}{4 \pi\epsilon_0r^3}(2 \cos \theta \vec{e_r} + \sin \theta \vec{e_{\theta}}) = \frac{3(\vec{p} \cdot \vec{r})\vec{r} - r^2\vec{p}}{4\pi\epsilon_0r^5} \]
+\[ \vec{F} = \bgrad{p}_O \vec{E} \]
+\[ \vec{M}_O = \vec{p} \wedge \vec{E}(O) \]
+\[ E_p = - \vec{p} \cdot \vec{E}(O) \]
 
 \section{Mécanique quantique}
 
@@ -198,7 +196,7 @@
     \item Factorisation de cosinus - $ \cos{p} + \cos{q} = 2 \cos{\frac{p+q}{2}}\cos{\frac{p-q}{2}} $ 
     \item Dérivée partielle et taux d'accroissement - $f(x+\dx) - f(x) = \frac{\partial f}{\partial x} dx$
     \item Dérivée partielle - $\dd f(x, y) = \frac{\partial f}{\partial x} \dx + \frac{\partial f}{\partial y} \dy$
-    \item Calcul de période d'un oscillation quelconque - $T = 2 \int_{-x_0}^{x_0} \frac{1}{\dot{x}} \dx = 4 \int_{0}^{x_0} \frac{1}{\dot{x}} \dx$ [Intégration sur une demi-période / $\frac{1}{4}$-période avec $\dt = \frac{1}{\dot{x}} \dx$]
+    \item Calcul de période d'un oscillation quelconque - $T = 2 \int_{-x_0}^{x_0} \frac{1}{\dot{x}} \dx = 4 \int_{0}^{x_0} \frac{1}{\dot{x}} \dx$
 \end{itemize}
 
 \subsection*{Équations différentielles}
