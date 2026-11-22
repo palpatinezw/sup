@@ -1600,12 +1600,29 @@ $\alpha \in \mathbb{R}$
 
 \clearpage
 
-\section{Suites et séries de fonctions [spé XI]}
+\section{Suites et séries de fonctions [spé XIII]}
+
+\subsection{Convergence uniforme}
+
+\[ \forall \epsilon > 0, \exists n_0 \in \mathbb{N} \ligneh \forall x \in X, \forall n \geq n_0, |f_n(x) - f(x)| \leq \epsilon \]
 
 \begin{itemize}
     \item Convergence simple - $\forall x \in X, f_n(x) \longrightarrow f(x)$
-    \item Convergence uniforme - $\forall \epsilon > 0, \exists n_0 \in \mathbb{N} \ligneh \forall x \in X, \forall n \geq n_0, |f_n(x) - f(x)| \leq \epsilon$
+    \item CVU locale - CVU sur tout segment
+    \item Convergence uniforme $\implies$ convergence simple - pour chercher une CVU, on cherche d'abord une CVS puis montrer la CVU
+    \item Unicité de la limite uniforme
+    \item $|f_n(x) - f(x)| < \alpha_n \longrightarrow 0 \implies f_n \overset{\text{CVU}}{\longrightarrow} f$
+    \item Condition nécessaire de CVU - $f_n \overset{\text{CVU}}{\longrightarrow} f \implies \forall (x_n), |f_n(x_n) - f(x)| \longrightarrow 0$ 
+    \item Passage par combinaison linéaire
+    \item Passage par produit pour des fonctions bornées
+    \item CVU $\iff$ convergence par la norme $\|\cdot\|_\infty$ pour des fonctions bornées
+\end{itemize}
 
+\subsubsection{Théorèmes de convergence uniforme}
+Pour $f_n \overset{\text{CVU}}{\longrightarrow} f$
+\begin{itemize}
+    \item Si les $f_n$ sont continues, $f$ est continue
+    \item Si les $f_n$ sont continues sur $[a, b]$, $\int_{a}^{b} f_n \longrightarrow \int_{a}^{b} f$
 \end{itemize}
 
 
