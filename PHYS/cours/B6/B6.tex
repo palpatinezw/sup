@@ -1,0 +1,1379 @@
+% Compilation : pdflatex B6.tex, deux fois.
+% Document autonome : texte, formules et figures TikZ modifiables.
+% Le corps du cours commence à la ligne contenant la commande de début du document.
+% Les macros TikZ de la première partie du fichier regroupent tous les dessins.
+% Les repères « Manuscrit » renvoient aux pages du manuscrit.
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[provide=*,french]{babel}
+\usepackage[scaled=.95]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath,amssymb,esint,array,tabularx}
+\usepackage{geometry}
+\geometry{left=15mm,right=15mm,top=18mm,bottom=18mm,headheight=14pt,headsep=6mm}
+\usepackage{fancyhdr,lastpage,tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.pathreplacing,decorations.pathmorphing,decorations.markings,patterns,babel}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem,titlesec,needspace,hyperref}
+\hypersetup{hidelinks,pdftitle={Magnétostatique},pdfsubject={Cours de physique}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\footnotesize Physique B6 - Magnétostatique - Cours de Mme Mesnil}
+\fancyhead[R]{\small\thepage/\pageref{LastPage}}
+\fancyfoot[R]{\small PC-PC*}
+\renewcommand{\headrulewidth}{0pt}
+\clubpenalty=10000\widowpenalty=10000\displaywidowpenalty=10000
+\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}
+\setlength{\abovedisplayskip}{6pt}\setlength{\belowdisplayskip}{6pt}
+\AtBeginEnvironment{center}{\setlength{\topsep}{4pt}\setlength{\partopsep}{0pt}}
+\setlist[itemize]{leftmargin=5mm,itemsep=3pt,topsep=3pt,label=\(\rightarrow\)}
+\setlist[enumerate]{leftmargin=6mm,itemsep=3pt,topsep=3pt}
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\titleformat{\section}{\Large\bfseries}{\thesection.}{.4em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{.4em}{}[\titlerule]
+\titleformat{\subsubsection}{\normalsize\bfseries}{\alph{subsubsection})}{.5em}{}
+\titlespacing*{\section}{0pt}{11pt}{6pt}
+\titlespacing*{\subsection}{0pt}{9pt}{5pt}
+\titlespacing*{\subsubsection}{0pt}{8pt}{4pt}
+\newtcolorbox{cadre}[1][]{enhanced,sharp corners,colback=white,colframe=black,boxrule=1.1pt,left=7pt,right=7pt,top=5pt,bottom=5pt,before skip=7pt,after skip=7pt,#1}
+\newif\ifinexample
+\newtcolorbox{exemple}[1][]{enhanced,breakable,before upper={\inexampletrue},lines before break=3,sharp corners,colback=white,colframe=black,boxrule=.7pt,left=8pt,right=8pt,top=6pt,bottom=6pt,before skip=8pt,after skip=8pt,#1}
+\tcbset{etoiles/.style={width=\dimexpr\linewidth-22mm\relax,overlay={\node[anchor=west,inner sep=0pt,font=\small] at ([xshift=2mm]frame.east) {\(#1\)};}}}
+\newcommand{\zone}[1]{\tikz[baseline=(z.base)]\node[draw,circle,inner sep=1pt,font=\scriptsize,minimum size=3.5mm](z){#1};}
+\newcommand{\dd}{\mathrm d}
+\newcommand{\vv}{\vec v}
+\newcommand{\grad}{\overrightarrow{\mathrm{grad}}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\ux}{\vec u_x}\newcommand{\uy}{\vec u_y}\newcommand{\uz}{\vec u_z}
+\newcommand{\cste}{\mathrm{cste}}
+\newcommand{\titr}[1]{\par\ifinexample\else\Needspace{4\baselineskip}\fi\textbf{\underline{#1}}\par\nopagebreak[3]}
+\newcommand{\planpart}[2]{\par\vspace{5pt}{\bfseries #1. #2}\par}
+\newcommand{\plansub}[2]{\hspace*{7mm}{\itshape #1) #2}\par}
+\newcommand{\plansubsub}[1]{\hspace*{15mm}{\itshape #1}\par}
+\tikzset{>=Stealth,every node/.style={font=\small},flow/.style={thick,->},edge/.style={thick}}
+\newcommand{\stars}[1]{\mathord{\star}\ifnum#1>1\mkern5mu\mathord{\star}\fi\ifnum#1>2\mkern5mu\mathord{\star}\fi\ifnum#1>3\mkern5mu\mathord{\star}\fi\ifnum#1>4\mkern5mu\mathord{\star}\fi\ifnum#1>5\mkern5mu\mathord{\star}\fi}
+\newenvironment{result}[1][4]{\begin{cadre}[etoiles={\stars{#1}}]}{\end{cadre}}
+\newcommand{\vj}{\vec j}\newcommand{\vE}{\vec E}\newcommand{\vB}{\vec B}
+\newcommand{\vPi}{\vec\Pi}\newcommand{\rot}{\overrightarrow{\mathrm{rot}}}
+\newcommand{\divg}{\operatorname{div}}\newcommand{\sy}{\operatorname{sym}}
+\newcommand{\D}{\mathcal D}\newcommand{\R}{\mathcal R}
+\newcommand{\fig}[1]{\begin{center}#1\end{center}}
+\definecolor{charge}{RGB}{155,50,165}
+\definecolor{current}{RGB}{195,40,45}
+\tikzset{arr/.style={thick,->},cur/.style={current,thick,->},el/.style={charge,thick,->},mag/.style={green!50!black,thick,->},pt/.style={circle,fill,inner sep=1.2pt},plane/.style={blue!55!black,thin}}
+\tikzset{arr/.style={thick,->},cur/.style={red!75!black,thick,->},el/.style={purple,thick,->},pt/.style={circle,fill,inner sep=1.1pt},plane/.style={blue!60!black,thin},field/.style={red!75!black,thick,postaction={decorate},decoration={markings,mark=at position .6 with {\arrow{Stealth}}}}}
+\newcommand{\ur}{\vec u_r}\newcommand{\ut}{\vec u_\theta}\newcommand{\uphi}{\vec u_\varphi}
+\newcommand{\eps}{\varepsilon_0}\newcommand{\E}{\vec E}\newcommand{\dS}{\dd\vec S}\newcommand{\dM}{\dd\vec M}
+\newcommand{\examtitle}[1]{\textbf{#1}\par\nobreak}
+
+\newcommand{\vzero}{\vec 0}
+\newcommand{\fle}[1]{\overrightarrow{#1}}
+\newcommand{\remaq}{\par\textbf{Remarque :} }
+\newcommand{\bmath}[1]{\begin{cadre}\[#1\]\end{cadre}}
+\newcommand{\betoile}[2]{\begin{result}[#1]\[#2\]\end{result}}
+\newcommand{\planP}[2]{\planpart{#1}{\nameref{#2}}}
+\newcommand{\planS}[2]{\plansub{#1}{\nameref{#2}}}
+\newcommand{\planSS}[2]{\plansubsub{#1) \nameref{#2}}}
+\newcommand{\deuxcol}[3]{\par\noindent
+  \begin{minipage}[c]{#1\linewidth}\centering #2\end{minipage}\hfill
+  \begin{minipage}[c]{\dimexpr\linewidth-#1\linewidth-6mm\relax}#3\end{minipage}\par}
+\newcommand{\unite}[1]{\,\mathrm{#1}}
+\definecolor{rougechamp}{RGB}{169,41,48}
+\definecolor{violetel}{RGB}{126,50,148}
+\definecolor{bleurep}{RGB}{42,76,144}
+\definecolor{vertcour}{RGB}{29,112,72}
+\tikzset{fleche/.style={semithick,-{Stealth[length=2.15mm,width=1.65mm]}},
+ courant/.style={fleche,vertcour}, champ/.style={fleche,rougechamp},
+ electron/.style={fleche,violetel},
+ cote/.style={thin,{Stealth[length=1.7mm]}-{Stealth[length=1.7mm]}},
+ pet/.style={font=\small,inner sep=1.6pt}}
+% Figures TikZ. Les coordonnées, légendes et couleurs peuvent être modifiées ici.
+\raggedbottom
+\newcommand{\B}{\vec B}\newcommand{\A}{\vec A}
+\newcommand{\vm}{\vec m}\newcommand{\mM}{\vec{\mathcal M}}
+\newcommand{\Be}{\vec B_{\mathrm{ext}}}\newcommand{\Fr}{\vec F_{\text{rés}}}
+\newcommand{\Mo}{\vec M_O^{\,\text{rés}}}
+\newcommand{\Cc}{\mathcal C}\newcommand{\dds}{\dd^2\vec S}
+\newcommand{\dtau}{\dd^3\!\tau}\newcommand{\Ien}{I_{\text{enlacé}}}
+\newcommand{\Uem}{U_{\mathrm{EM}}}\newcommand{\uem}{u_{\mathrm{EM}}}
+\newcommand{\bfintro}[1]{\par\noindent\textbf{#1}\enspace\ignorespaces}
+\newcommand{\petittitre}[1]{\par\nopagebreak[2]\textbf{#1}\par\nopagebreak[4]}
+\newcommand{\paires}[2]{\par\noindent\begin{minipage}[t]{.486\linewidth}\centering\vspace{0pt}#1\end{minipage}\hfill\begin{minipage}[t]{.486\linewidth}\centering\vspace{0pt}#2\end{minipage}\par}
+\newcommand{\flignes}{\begin{enumerate}[label=\arabic*.]
+\item Le flux de \(\B\) se conserve à travers toute section d'un tube de champ.
+\item Quand les lignes de champ s'écartent, la norme de \(\B\) diminue. Quand elles se rapprochent, la norme de \(\B\) augmente.
+\end{enumerate}}
+\definecolor{bB}{RGB}{126,50,145}
+\definecolor{bI}{RGB}{170,45,47}
+\definecolor{bG}{RGB}{32,111,71}
+\definecolor{bS}{RGB}{52,78,142}
+\tikzset{axe/.style={semithick,-{Stealth[length=2mm]}},
+ vec/.style={thick,-{Stealth[length=2.15mm]}},
+ sens/.style args={#1}{postaction={decorate},decoration={markings,mark=at position #1 with {\arrow{Stealth[length=1.85mm,width=1.25mm]}}}},
+ surface/.style={thin,bS},tpage/.style={font=\small,inner sep=1.4pt},
+ carte/.style={line width=.48pt,line cap=round,line join=round},
+ cadrecarte/.style={black!55,line width=.42pt}}
+\newcommand{\croixpt}[3]{\draw[semithick,#3] (#1,#2)++(-.055,-.055)--++(.11,.11) (#1,#2)++(-.055,.055)--++(.11,-.11);}
+\newcommand{\filpoint}[3]{\draw[#3,fill=white,semithick] (#1,#2) circle(.085);\fill[#3] (#1,#2) circle(.027);}
+\newcommand{\filcroix}[3]{\draw[#3,fill=white,semithick] (#1,#2) circle(.085);\draw[#3,thin] (#1,#2)++(-.048,-.048)--++(.096,.096) (#1,#2)++(-.048,.048)--++(.096,-.096);}
+\newcommand{\maconduc}{\begin{tikzpicture}[scale=.83]
+\draw[semithick] (-1.5,-.45)--(.95,.88) (-1.19,-.93)--(1.27,.4);
+\draw[vec,bI] (-.09,.11)--(.92,.66);
+\node[bI,above,inner sep=1.3pt] at(.89,1.04){$I$};
+\node[rotate=28] at(-.47,-.25){$\rho=0$};
+\end{tikzpicture}}
+\newcommand{\boussoles}{\begin{tikzpicture}[scale=.83]
+% Vue suivant le fil : le courant sort du plan. Les aiguilles sont tangentes
+% au même cercle, avec un écart angulaire de 120 degrés entre deux centres.
+\draw[bS!58,thin,densely dashed] (0,0) circle[radius=1.02];
+\draw[semithick,fill=white] (0,0) circle[radius=.105];\fill (0,0) circle[radius=.035];
+\node[right,inner sep=1.5pt] at(.16,.03){$i$};
+\foreach \anglea in {90,210,330}{
+  \begin{scope}[shift={(\anglea:1.02)},rotate={\anglea+90}]
+  \draw[bS,semithick,fill=white] (-.33,0)--(0,.09)--(.33,0)--(0,-.09)--cycle;
+  \fill[bS] (0,.09)--(.33,0)--(0,-.09)--cycle;
+  \end{scope}}
+\end{tikzpicture}}
+\newcommand{\distribution}{\begin{tikzpicture}[scale=.81]
+\draw[semithick] plot[smooth cycle,tension=.75] coordinates {(-1.5,-.5)(-1.23,.28)(-.93,.9)(-.31,.72)(.5,.85)(1.02,.54)(.91,-.21)(.3,-.55)(-.2,-.48)(-.81,-.97)(-1.35,-.95)};
+\croixpt{-.19}{.13}{black}\node[right] at(-.12,.14){$P$};
+\croixpt{1.7}{.75}{black}\node[right] at(1.76,.75){$M$};\end{tikzpicture}}
+\newcommand{\tubechamp}{\begin{tikzpicture}[scale=.83]
+\draw[semithick,pattern=north east lines,pattern color=bS!60] (0,0) ellipse(.14 and .34);
+\draw[semithick,sens=.54] (0,.34)..controls(1.1,.44) and (1.65,.76)..(2.7,1.01);
+\draw[semithick,sens=.60] (0,-.34)..controls(.87,-.3) and (1.65,-.49)..(2.7,-.63);
+\draw[semithick,pattern=north east lines,pattern color=bS!60] (2.7,.19) ellipse(.23 and .82);
+\node[right] at(3.1,.2){Tube de champ de $\B$};\end{tikzpicture}}
+% Contour commun et trois surfaces : les normales partent de chaque surface.
+\newcommand{\contourbase}{\draw[semithick,sens=.25] (-1.15,0)
+ ..controls(-1.01,-.31) and (-.44,-.13)..(-.2,-.31)
+ ..controls(.35,-.53) and (1.05,-.3)..(1.15,0)
+ ..controls(1.09,.4) and (.65,.43)..(.21,.24)
+ ..controls(-.3,.08) and (-.8,.49)..(-1.15,0);}
+\newcommand{\calotteH}[3]{% hauteur, couleur, étiquette
+ \draw[#2,semithick] (-1.15,0)..controls(-1.08,#1) and (1.08,#1)..(1.15,0)
+ coordinate[pos=.3333333](normg) coordinate[pos=.6666667](normd);
+ \draw[vec,#2] (normg)--++({-.45*(#1)/2.996667},.45);
+ \draw[vec,#2] (normd)--++({ .45*(#1)/2.996667},.45);
+ \node[#2,right] at(1.08,{.63*#1}){#3};}
+\newcommand{\calotteB}[2]{\draw[#1,semithick] (-1.15,0)..controls(-1.06,-1.5) and (1.06,-1.5)..(1.15,0)
+ coordinate[pos=.3333333](normg) coordinate[pos=.6666667](normd);
+ \draw[vec,#1] (normg)--++(.20179,.40);\draw[vec,#1] (normd)--++(-.20179,.40);
+ \node[#1,right] at(.94,-.9){#2};}
+\newcommand{\surfFlux}{\begin{tikzpicture}[scale=.94]
+ \calotteH{1.9}{bI}{$\Sigma'$}\calotteH{.93}{bG}{$\Sigma$}\calotteB{bB}{$\Sigma''$}\contourbase
+ \node[right] at(1.21,-.11){$\Cc$};\end{tikzpicture}}
+\newcommand{\surfPreuve}{\begin{tikzpicture}[scale=.82]\calotteH{1.28}{bI}{$\Sigma$}\calotteB{bB}{$\Sigma'$}\contourbase\end{tikzpicture}}
+\newcommand{\surfAmpere}{\begin{tikzpicture}[scale=.90]\calotteH{1.42}{bB}{$\Sigma$}\contourbase\node[right] at(1.14,-.22){$\Cc$};\end{tikzpicture}}
+\newcommand{\surfDeux}{\begin{tikzpicture}[scale=.78]\calotteH{2.05}{bI}{$\Sigma'$}\calotteH{1.02}{bB}{$\Sigma$}\contourbase\end{tikzpicture}}
+\newcommand{\sensfil}{\begin{tikzpicture}[scale=.75]
+ \draw[semithick,sens=.63] (-.18,-.85)--(.01,1.05);
+ \draw[semithick,sens=.63] (.08,-.85)--(.27,1.05);
+ \draw[bB,vec] (-.75,.12)..controls(-.89,-.74) and (.65,-.78)..(.86,.17)node[right]{$\B$};\end{tikzpicture}}
+\newcommand{\algebre}{\begin{tikzpicture}[scale=.84]
+ \filldraw[fill=bB!13] (0,0) ellipse(1.70 and .49);
+ \draw[semithick,sens=.48] (-1.7,0) arc[start angle=180,end angle=360,x radius=1.7,y radius=.49];
+ \draw[semithick,sens=.45] (1.7,0) arc[start angle=0,end angle=180,x radius=1.7,y radius=.49];
+ \node[right] at(1.74,-.05){$\Cc$};
+ \foreach \a/\b/\t/\k in {-1.64/-.85/1/0,-.12/-.15/2/1,.80/.27/3/1,1.62/.70/4/0}{
+ \draw[bI,densely dashed] (\b,0)..controls(\b-.05,-.36)..(\b-.08,-.98);
+ \ifnum\k=1 \draw[bI,semithick,sens=.62] (\b,.01)..controls(\b+.15,.66) and (\a-.1,1.0)..(\a,1.34);
+ \else \draw[bI,semithick,sens=.57] (\a,1.34)..controls(\a+.05,1) and (\b-.12,.68)..(\b,.01);\fi
+ \node[bI,above] at(\a,1.35){$I_{\t}$};}
+ \end{tikzpicture}}
+\newcommand{\enlacefil}{\begin{tikzpicture}[scale=.79]
+ \draw[bI,semithick,sens=.77] (-1.35,-.62)..controls(-.39,.24) and (.6,.5)..(1.32,.72);
+ \node[bI,right] at(1.32,.72){$I$};
+ \begin{scope}[shift={(0,.21)},rotate=22]
+ \draw[bB,dashed] (0,.5) arc[start angle=90,end angle=-90,x radius=.24,y radius=.5];
+ \draw[bB,semithick,sens=.52] (0,.5) arc[start angle=90,end angle=270,x radius=.24,y radius=.5];
+ \end{scope}\node[bB] at(.32,-.56){$\B$};\end{tikzpicture}}
+\newcommand{\axesCompar}[1]{\begin{tikzpicture}[scale=.82]
+ \draw[dashed] (0,-.53)--(0,0);\draw[thin] (0,0)--(0,2.23);
+ \draw[bB,semithick] (0,0) ellipse(.86 and .25);
+ \ifnum#1=0 \node[bB,right] at(.90,0){$\lambda$};\else
+ \draw[bB,sens=.47] (-.86,0) arc[start angle=180,end angle=360,x radius=.86,y radius=.25];
+ \draw[bB,sens=.57] (.86,0) arc[start angle=0,end angle=180,x radius=.86,y radius=.25];
+ \node[bB,right] at(.90,0){$I$};\fi
+ \draw[bG] (0,1.28) ellipse(.45 and .13) (0,1.96) ellipse(.45 and .13) (-.45,1.28)--(-.45,1.96) (.45,1.28)--(.45,1.96);
+ \node[anchor=east,inner sep=1pt] (etiquetteM) at(-.83,1.36){$M$};
+ \draw[black!60,line width=.32pt,shorten <=1pt] (etiquetteM.east)--(-.105,1.59);
+ \croixpt{0}{1.62}{black}\croixpt{.45}{1.62}{black}\node[right] at(.49,1.58){$M'$};\node[left] at(-.35,2.10){$\Delta$};
+ \draw[bI,vec] (0,1.62)--(0,2.6) node[above]{\ifnum#1=0 $\E$\else $\B$\fi};
+ \ifnum#1=0\draw[bI,vec] (.45,1.62)--(.92,2.36)node[right]{$\E$};\fi
+ \end{tikzpicture}}
+% Câble, filament et solénoïdes.
+\newcommand{\cylfond}{
+ \draw[bS,densely dashed] (-.71,-1.37)--(-.71,-.91) (.71,-1.37)--(.71,-.91)
+ (-.71,1.0)--(-.71,1.52) (.71,1.0)--(.71,1.52);
+ \draw[bS,semithick] (0,-.9) ellipse(.71 and .21) (0,1.0) ellipse(.71 and .21)
+ (-.71,-.9)--(-.71,1) (.71,-.9)--(.71,1);
+ \draw[axe] (0,-1.31)--(0,1.86) node[above]{$Oz$};
+ \draw[cote] (.02,1.45)--(.70,1.45) node[midway,above]{$a$};
+ \draw[vec,bI] (1.18,-.88)--(1.18,-.38) node[right]{$I$};}
+\newcommand{\cylAmp}{\begin{tikzpicture}[scale=1.04]
+ \cylfond
+ \draw[bB,dashed,sens=.30] (1.56,.39) arc[start angle=0,end angle=180,x radius=1.56,y radius=.48];
+ \draw[bB,semithick,sens=.25] (-1.56,.39) arc[start angle=180,end angle=360,x radius=1.56,y radius=.48];
+ \node[bB,left] at(-1.6,.37){$M$};\croixpt{-1.56}{.39}{bB}
+ \node[bB,right] at(1.56,.46){$\Cc$};
+ \draw[vec,bB] (-1.02,.41)--(-1.02,.81)node[left]{$\vec n$};
+ \draw[vec,bB] (1.00,.43)--(1,.84)node[right]{$\vec n$};
+ \draw[vec,bI] (.32,-.65)--(.32,-.2)node[right]{$\vj$};
+ \end{tikzpicture}}
+\newcommand{\grapheCable}{\begin{tikzpicture}[x=1cm,y=1cm]
+ \draw[axe] (-.15,0)--(4.45,0)node[right]{$r$};
+ \draw[axe] (0,-.15)--(0,1.82)node[above right]{$B_\theta(r)$};
+ \draw[densely dashed] (1.55,0)--(1.55,1.35);
+ \draw[bI,thick] (0,0)--(1.55,1.35) plot[domain=1.55:4.17,samples=55](\x,{2.0925/\x});
+ \node[below] at(1.55,0){$a$};\end{tikzpicture}}
+\newcommand{\formintr}{\begin{tikzpicture}[scale=.83]
+ \draw[axe] (0,-.18)--(0,1.96);\draw[vec,bI] (.36,1.28)--(.36,1.8)node[right]{$\vj$};
+ \croixpt{0}{.16}{black}\node[left] at(0,.16){$O$};
+ \croixpt{0}{1.02}{black}\node[left] at(0,1.02){$H$};
+ \draw[dashed] (.07,1.02)--(.9,1.02);\croixpt{.92}{1.02}{black}\node[right] at(.99,1.02){$M$};\end{tikzpicture}}
+\newcommand{\filAmp}{\begin{tikzpicture}[scale=.9]
+ \draw[semithick] (0,-1.12)--(0,1.23);\draw[vec] (0,-.69)--(0,-.22)node[left]{$I$};
+ \draw[bB,dashed] (.91,.31) arc[start angle=0,end angle=180,x radius=.91,y radius=.28];
+ \draw[bB,semithick,sens=.35] (-.91,.31) arc[start angle=180,end angle=360,x radius=.91,y radius=.28];
+ \croixpt{.91}{.31}{bB}\node[bB,right] at(1,.39){$M$};\node[bB,right] at(.71,-.11){$\Cc$};\end{tikzpicture}}
+\newcommand{\cerclesfil}[1]{\begin{tikzpicture}[scale=.76]
+ \ifnum#1=1 \def\tour{360}\else\def\tour{-360}\fi
+ \foreach \r in {.49,.84,1.22}{
+ \draw[bI,semithick,postaction={decorate},decoration={markings,
+  mark=at position .125 with {\arrow{Stealth[length=1.45mm,width=1.1mm]}},
+  mark=at position .375 with {\arrow{Stealth[length=1.45mm,width=1.1mm]}},
+  mark=at position .625 with {\arrow{Stealth[length=1.45mm,width=1.1mm]}},
+  mark=at position .875 with {\arrow{Stealth[length=1.45mm,width=1.1mm]}}}]
+  (\r,0) arc[start angle=0,end angle=\tour,radius=\r];}
+ \ifnum#1=1 \filpoint{0}{0}{black}\else\filcroix{0}{0}{black}\fi
+ \node[right,font=\scriptsize,inner sep=.3pt] at(.13,0){$I$};\end{tikzpicture}}
+\newcommand{\cylBilan}{\begin{tikzpicture}[scale=.99]
+ \cylfond\draw[bI,semithick] (0,.48) ellipse(.29 and .1) (0,-.42) ellipse(.29 and .10)
+ (-.29,-.42)--(-.29,.48) (.29,-.42)--(.29,.48);
+ \draw[bI!75,thin,densely dashed] (-1.10,-.42)--(-.29,-.42) (-1.10,.48)--(-.29,.48);
+ \draw[cote,bI] (-1.03,-.42)--(-1.03,.48)node[midway,left=2pt,inner sep=1pt]{$h$};
+ \draw[bI,thin,-{Stealth[length=1.2mm,width=1.0mm]}] (0,.48)--(.29,.48);
+ \draw[bI,thin] (.20,.49)--(.47,.76)--(.99,.76);
+ \node[bI,right,inner sep=1.5pt] at(.99,.76){$r$};\end{tikzpicture}}
+% Une coupe horizontale : extrémités en tirets pour le modèle long.
+\newcommand{\solebase}[1]{%
+ \draw[thin] (-.53,0)--(4.55,0);
+ \draw[bS,semithick] (0,.68)--(4,.68) (0,-.68)--(4,-.68);
+ \draw[bS,semithick] (0,.68)..controls(-.32,.49) and (-.32,-.49)..(0,-.68)
+ (4,.68)..controls(3.70,.49) and (3.70,-.49)..(4,-.68);
+ \ifnum#1=1\draw[bS,densely dashed] (-.55,.68)--(0,.68) (-.55,-.68)--(0,-.68)
+  (4,.68)--(4.55,.68) (4,-.68)--(4.55,-.68);\fi}
+\newcommand{\solemodel}[1]{\begin{tikzpicture}[scale=.98]
+ \solebase{1}
+ \ifnum#1=0
+ \foreach \x in {1.06,2.7}{\filpoint{\x}{.68}{bI}\filcroix{\x}{-.68}{bI}}
+ \node[bI,above] at(1.85,.85){$\vec j_s$};\node[bI,below] at(2.0,-.82){$\vec j_s$};
+ \draw[cote,bS] (4.28,.02)--(4.28,.66)node[midway,right]{$R$};
+ \else\foreach \x in {.28,.76,1.24,1.72,2.20,2.68,3.16,3.64}{\filpoint{\x}{.68}{bI}\filcroix{\x}{-.68}{bI}}
+ \croixpt{3.40}{1.18}{bB}\node[bB,right] at(3.47,1.18){$M$};\fi\end{tikzpicture}}
+\newcommand{\crect}[4]{% orientation du contour : bas vers la droite
+ \draw[bB,semithick,sens=.56] (#1,#2)--(#3,#2);
+ \draw[bB,semithick,sens=.53] (#3,#2)--(#3,#4);
+ \draw[bB,semithick,sens=.5] (#3,#4)--(#1,#4);
+ \draw[bB,semithick,sens=.49] (#1,#4)--(#1,#2);}
+\newcommand{\solecontours}{\begin{tikzpicture}[x=1.52cm,y=1.5cm]
+ \solebase{1}\foreach \x in {.40,.86,1.32,1.78,2.24,2.70,3.16,3.62}{\filpoint{\x}{.68}{bI}\filcroix{\x}{-.68}{bI}}
+ \crect{.23}{.13}{.86}{.49}\node[bB,right,font=\scriptsize] at(.87,.36){$\Cc_1$};
+ \draw[bB,thin] (.23,.07)--(.86,.07)node[midway,below,font=\scriptsize]{$\ell$};
+ \draw[bB,thin,->] (1.10,.01)--(1.10,.15)node[right,font=\scriptsize]{$r_1$};
+ \draw[bB,thin,->] (1.53,.01)--(1.53,.49)node[right,font=\scriptsize]{$r_2$};
+ \crect{.17}{1.02}{.83}{1.35}\node[bB,right] at(.85,1.14){$\Cc_2$};
+ \crect{2.11}{.28}{3.42}{1.42}\node[bB,right] at(3.45,1.36){$\Cc$};
+ \node[bB,above] at(2.77,.30){$\ell$};
+ \croixpt{2.54}{.28}{bB}\node[bB,below] at(2.54,.27){$M$};
+ \draw[bB,thin,->] (3.68,.02)--(3.68,.28)node[right,font=\scriptsize]{$r$};
+ \end{tikzpicture}}
+\newcommand{\solechamp}{\begin{tikzpicture}[scale=.96]\solebase{1}
+ \foreach \y in {-.49,-.30,-.11,.11,.30,.49}{\draw[bI,thin,sens=.56] (.14,\y)--(3.59,\y);}
+ \end{tikzpicture}}
+\newcommand{\solesaut}{\begin{tikzpicture}[scale=.92]
+ \draw[axe] (-.23,0)--(3.72,0)node[right]{$r$};\draw[axe] (0,-.30)--(0,1.72)node[above right]{$B_z(r)$};
+ \draw[bI,thick] (0,1.05)--(1.55,1.05)--(1.55,0)--(3.52,0);
+ \node[bI,left,align=right,font=\scriptsize] at(-.03,1.05){$\mu_0j_s$\\$=\mu_0nI$};
+ \node[below] at(1.55,0){$R$};\end{tikzpicture}}
+\newcommand{\soleenergie}{\begin{tikzpicture}[scale=.88]\solebase{0}
+ \foreach \x in {1.40,2,2.60}{\draw[bI,semithick,sens=.64] (\x,.68)..controls(\x-.23,.4) and (\x-.23,-.38)..(\x-.08,-.68);}
+ \draw[cote,bS] (0,-1.00)--(4,-1.00)node[midway,below]{$\ell$};\end{tikzpicture}}
+% Cartes de champ : polylignes, flèches, axes et légendes vectoriels.
+
+\newcommand{\lignesUne}{\begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize,inner sep=1.2pt}]
+\draw[cadrecarte] (-3.27,-1.72) rectangle (3.27,1.72);
+\begin{scope}\clip (-3.27,-1.72) rectangle (3.27,1.72);
+\draw[carte,bS] (3.27,-0.552)--(2.367,-0.379)--(1.51,-0.253)--(0.732,-0.179)--(0,-0.154)--(-0.732,-0.179)--(-1.51,-0.253)--(-2.367,-0.379)--(-3.27,-0.552);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.019,-0.154)--(0.149,-0.155);
+\draw[carte,bS] (-3.27,0.552)--(-2.367,0.379)--(-1.51,0.253)--(-0.732,0.179)--(0,0.154)--(0.732,0.179)--(1.51,0.253)--(2.367,0.379)--(3.27,0.552);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.019,0.154)--(0.149,0.155);
+\draw[carte,bS] (3.27,-1.303)--(2.868,-1.086)--(2.44,-0.884)--(2.011,-0.711)--(1.588,-0.569)--(1.168,-0.458)--(0.779,-0.382)--(0.389,-0.336)--(0,-0.32)--(-0.389,-0.336)--(-0.779,-0.382)--(-1.168,-0.458)--(-1.588,-0.569)--(-2.011,-0.711)--(-2.44,-0.884)--(-2.868,-1.086)--(-3.27,-1.303);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.019,-0.319)--(0.149,-0.322);
+\draw[carte,bS] (-3.27,1.303)--(-2.868,1.086)--(-2.44,0.884)--(-2.011,0.711)--(-1.588,0.569)--(-1.168,0.458)--(-0.779,0.382)--(-0.389,0.336)--(0,0.32)--(0.389,0.336)--(0.779,0.382)--(1.168,0.458)--(1.588,0.569)--(2.011,0.711)--(2.44,0.884)--(2.868,1.086)--(3.27,1.303);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.019,0.319)--(0.149,0.322);
+\draw[carte,bS] (2.475,-1.72)--(2.252,-1.461)--(1.981,-1.211)--(1.679,-0.99)--(1.36,-0.807)--(1.029,-0.663)--(0.685,-0.558)--(0.343,-0.495)--(0,-0.474)--(-0.343,-0.495)--(-0.685,-0.558)--(-1.029,-0.663)--(-1.36,-0.807)--(-1.679,-0.99)--(-1.981,-1.211)--(-2.252,-1.461)--(-2.475,-1.72);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.019,-0.474)--(0.149,-0.477);
+\draw[carte,bS] (-2.475,1.72)--(-2.252,1.461)--(-1.981,1.211)--(-1.679,0.99)--(-1.36,0.807)--(-1.029,0.663)--(-0.685,0.558)--(-0.343,0.495)--(0,0.474)--(0.343,0.495)--(0.685,0.558)--(1.029,0.663)--(1.36,0.807)--(1.679,0.99)--(1.981,1.211)--(2.252,1.461)--(2.475,1.72);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.019,0.474)--(0.149,0.477);
+\draw[carte,bS] (1.496,-1.72)--(1.436,-1.509)--(1.325,-1.297)--(1.17,-1.105)--(0.982,-0.942)--(0.761,-0.807)--(0.514,-0.707)--(0.265,-0.649)--(0,-0.628)--(-0.265,-0.649)--(-0.514,-0.707)--(-0.761,-0.807)--(-0.982,-0.942)--(-1.17,-1.105)--(-1.325,-1.297)--(-1.436,-1.509)--(-1.496,-1.72);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.019,-0.628)--(0.149,-0.633);
+\draw[carte,bS] (-1.496,1.72)--(-1.436,1.509)--(-1.325,1.297)--(-1.17,1.105)--(-0.982,0.942)--(-0.761,0.807)--(-0.514,0.707)--(-0.265,0.649)--(0,0.628)--(0.265,0.649)--(0.514,0.707)--(0.761,0.807)--(0.982,0.942)--(1.17,1.105)--(1.325,1.297)--(1.436,1.509)--(1.496,1.72);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.019,0.628)--(0.149,0.633);
+\draw[carte,bS] (0.686,-1.72)--(0.771,-1.576)--(0.805,-1.413)--(0.782,-1.249)--(0.704,-1.095)--(0.575,-0.961)--(0.405,-0.857)--(0.202,-0.792)--(0,-0.772)--(-0.202,-0.792)--(-0.405,-0.857)--(-0.575,-0.961)--(-0.704,-1.095)--(-0.782,-1.249)--(-0.805,-1.413)--(-0.771,-1.576)--(-0.686,-1.72);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.02,-0.77)--(0.149,-0.78);
+\draw[carte,bS] (-0.686,1.72)--(-0.771,1.576)--(-0.805,1.413)--(-0.782,1.249)--(-0.704,1.095)--(-0.575,0.961)--(-0.405,0.857)--(-0.202,0.792)--(0,0.772)--(0.202,0.792)--(0.405,0.857)--(0.575,0.961)--(0.704,1.095)--(0.782,1.249)--(0.805,1.413)--(0.771,1.576)--(0.686,1.72);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.02,0.77)--(0.149,0.78);
+\draw[carte,bS] (-0.044,-1.48)--(0.078,-1.476)--(0.202,-1.441)--(0.296,-1.384)--(0.368,-1.297)--(0.393,-1.211)--(0.379,-1.115)--(0.324,-1.028)--(0.234,-0.96)--(0.156,-0.928)--(0.062,-0.908)--(-0.109,-0.915)--(-0.194,-0.942)--(-0.266,-0.98)--(-0.324,-1.028)--(-0.366,-1.086)--(-0.39,-1.153)--(-0.392,-1.22)--(-0.372,-1.288)--(-0.335,-1.345)--(-0.218,-1.433)--(-0.14,-1.463)--(-0.044,-1.48);
+\draw[carte,bS] (-0.096,0.913)--(0.031,0.905)--(0.14,0.923)--(0.251,0.971)--(0.332,1.038)--(0.383,1.124)--(0.393,1.211)--(0.362,1.307)--(0.296,1.384)--(0.156,1.458)--(0.062,1.478)--(-0.031,1.481)--(-0.202,1.441)--(-0.28,1.396)--(-0.335,1.345)--(-0.372,1.288)--(-0.392,1.22)--(-0.39,1.153)--(-0.366,1.086)--(-0.324,1.028)--(-0.265,0.979)--(-0.187,0.939)--(-0.096,0.913);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.02,0.901)--(0.149,0.92);
+\draw[carte,bS] (-0.044,-1.22)--(0.047,-1.22)--(0.12,-1.182)--(0.142,-1.153)--(0.149,-1.115)--(0.12,-1.057)--(0.062,-1.024)--(0,-1.014)--(-0.062,-1.024)--(-0.12,-1.057)--(-0.148,-1.105)--(-0.142,-1.153)--(-0.109,-1.192)--(-0.044,-1.22);
+\draw[carte,bS] (-0.041,1.019)--(0.047,1.02)--(0.12,1.057)--(0.149,1.115)--(0.142,1.153)--(0.12,1.182)--(0.062,1.216)--(0,1.225)--(-0.062,1.216)--(-0.12,1.182)--(-0.148,1.134)--(-0.141,1.086)--(-0.108,1.047)--(-0.041,1.019);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.024,1.007)--(0.144,1.058);
+\draw[black!65,-{Stealth[length=1.4mm]}] (-3.27,0)--(3.2,0) node[below left]{$z$};
+\draw[black!35,densely dotted] (0,-1.103)--(0,1.103);
+\draw[black,thin,fill=white] (0,1.103) circle(0.058);
+\fill (0,1.103) circle(0.0174);
+\draw[black,thin,fill=white] (0,-1.103) circle(0.058);
+\draw[black,thin] (-0.035,-1.138)--(0.035,-1.067) (-0.035,-1.067)--(0.035,-1.138);
+\end{scope}
+\end{tikzpicture}}
+
+\newcommand{\profilUne}{\begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize,inner sep=1.2pt}]
+\draw[cadrecarte] (-3.27,-1.72) rectangle (3.27,1.72);
+\draw[black!66,-{Stealth[length=1.55mm]}] (-3.27,-1.19)--(3.2,-1.19) node[below left]{$z$};
+\draw[black!66,-{Stealth[length=1.55mm]}] (0,-1.61)--(0,1.61) node[below right,fill=white]{$B_{\rm axe}(z)$};
+\node[below left] at (0,-1.19){$O$};
+\draw[semithick,bS] (-3.27,-0.995)--(-2.812,-0.912)--(-2.42,-0.804)--(-2.071,-0.663)--(-1.766,-0.491)--(-1.504,-0.295)--(-1.243,-0.048)--(-1.003,0.224)--(-0.567,0.765)--(-0.392,0.951)--(-0.283,1.042)--(-0.196,1.097)--(-0.087,1.139)--(0,1.15)--(0.087,1.139)--(0.196,1.097)--(0.283,1.042)--(0.392,0.951)--(0.567,0.765)--(1.003,0.224)--(1.243,-0.048)--(1.504,-0.295)--(1.766,-0.491)--(2.071,-0.663)--(2.42,-0.804)--(2.812,-0.912)--(3.27,-0.995);
+\draw[black!75,thin,-{Stealth[length=1.3mm]}] (2.02,0.001)--(1.605,-0.309);
+\node[above right,fill=white,inner sep=.8pt] at (1.95,-0.029){$B$};
+\end{tikzpicture}}
+
+\newcommand{\lignesCinq}{\begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize,inner sep=1.2pt}]
+\draw[cadrecarte] (-3.27,-1.72) rectangle (3.27,1.72);
+\begin{scope}\clip (-3.27,-1.72) rectangle (3.27,1.72);
+\draw[carte,bS] (3.27,-0.575)--(2.367,-0.38)--(1.526,-0.245)--(0.794,-0.175)--(0,-0.152)--(-0.794,-0.175)--(-1.526,-0.245)--(-2.367,-0.38)--(-3.27,-0.575);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.004,-0.152)--(0.134,-0.153);
+\draw[carte,bS] (-3.27,0.575)--(-2.367,0.38)--(-1.526,0.245)--(-0.794,0.175)--(0,0.152)--(0.794,0.175)--(1.526,0.245)--(2.367,0.38)--(3.27,0.575);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.004,0.152)--(0.134,0.153);
+\draw[carte,bS] (3.27,-1.349)--(2.847,-1.095)--(2.422,-0.874)--(2.009,-0.692)--(1.604,-0.546)--(1.215,-0.44)--(0.841,-0.371)--(0.436,-0.329)--(0,-0.316)--(-0.436,-0.329)--(-0.841,-0.371)--(-1.215,-0.44)--(-1.604,-0.546)--(-2.009,-0.692)--(-2.422,-0.874)--(-2.847,-1.095)--(-3.27,-1.349);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.004,-0.315)--(0.134,-0.317);
+\draw[carte,bS] (-3.27,1.349)--(-2.847,1.095)--(-2.422,0.874)--(-2.009,0.692)--(-1.604,0.546)--(-1.215,0.44)--(-0.841,0.371)--(-0.436,0.329)--(0,0.316)--(0.436,0.329)--(0.841,0.371)--(1.215,0.44)--(1.604,0.546)--(2.009,0.692)--(2.422,0.874)--(2.847,1.095)--(3.27,1.349);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.004,0.315)--(0.134,0.317);
+\draw[carte,bS] (2.518,-1.72)--(2.27,-1.422)--(1.99,-1.153)--(1.7,-0.932)--(1.386,-0.749)--(1.087,-0.625)--(0.763,-0.537)--(0.405,-0.486)--(0,-0.468)--(-0.405,-0.486)--(-0.763,-0.537)--(-1.087,-0.625)--(-1.386,-0.749)--(-1.7,-0.932)--(-1.99,-1.153)--(-2.27,-1.422)--(-2.518,-1.72);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.004,-0.468)--(0.134,-0.469);
+\draw[carte,bS] (-2.518,1.72)--(-2.27,1.422)--(-1.99,1.153)--(-1.7,0.932)--(-1.386,0.749)--(-1.087,0.625)--(-0.763,0.537)--(-0.405,0.486)--(0,0.468)--(0.405,0.486)--(0.763,0.537)--(1.087,0.625)--(1.386,0.749)--(1.7,0.932)--(1.99,1.153)--(2.27,1.422)--(2.518,1.72);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.004,0.468)--(0.134,0.469);
+\draw[carte,bS] (1.679,-1.72)--(1.594,-1.47)--(1.46,-1.23)--(1.301,-1.038)--(1.102,-0.874)--(0.888,-0.762)--(0.638,-0.684)--(0.343,-0.637)--(0,-0.62)--(-0.343,-0.637)--(-0.638,-0.684)--(-0.888,-0.762)--(-1.102,-0.874)--(-1.301,-1.038)--(-1.46,-1.23)--(-1.594,-1.47)--(-1.679,-1.72);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.004,-0.62)--(0.134,-0.622);
+\draw[carte,bS] (-1.679,1.72)--(-1.594,1.47)--(-1.46,1.23)--(-1.301,1.038)--(-1.102,0.874)--(-0.888,0.762)--(-0.638,0.684)--(-0.343,0.637)--(0,0.62)--(0.343,0.637)--(0.638,0.684)--(0.888,0.762)--(1.102,0.874)--(1.301,1.038)--(1.46,1.23)--(1.594,1.47)--(1.679,1.72);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.004,0.62)--(0.134,0.622);
+\draw[carte,bS] (1.038,-1.72)--(1.086,-1.509)--(1.079,-1.307)--(1.017,-1.124)--(0.968,-1.047)--(0.906,-0.98)--(0.763,-0.887)--(0.561,-0.82)--(0.296,-0.777)--(0,-0.762)--(-0.296,-0.777)--(-0.561,-0.82)--(-0.763,-0.887)--(-0.906,-0.98)--(-0.968,-1.047)--(-1.017,-1.124)--(-1.079,-1.307)--(-1.086,-1.509)--(-1.038,-1.72);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.004,-0.761)--(0.134,-0.764);
+\draw[carte,bS] (-1.038,1.72)--(-1.086,1.509)--(-1.079,1.307)--(-1.017,1.124)--(-0.968,1.047)--(-0.906,0.98)--(-0.763,0.887)--(-0.561,0.82)--(-0.296,0.777)--(0,0.762)--(0.296,0.777)--(0.561,0.82)--(0.763,0.887)--(0.906,0.98)--(0.968,1.047)--(1.017,1.124)--(1.079,1.307)--(1.086,1.509)--(1.038,1.72);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.004,0.761)--(0.134,0.764);
+\draw[carte,bS] (0.061,-1.72)--(0.218,-1.696)--(0.374,-1.642)--(0.514,-1.563)--(0.623,-1.47)--(0.723,-1.345)--(0.782,-1.22)--(0.789,-1.115)--(0.749,-1.038)--(0.654,-0.98)--(0.42,-0.927)--(0.265,-0.905)--(0,-0.893)--(-0.265,-0.905)--(-0.42,-0.927)--(-0.654,-0.98)--(-0.749,-1.038)--(-0.789,-1.115)--(-0.782,-1.22)--(-0.723,-1.345)--(-0.623,-1.47)--(-0.514,-1.563)--(-0.374,-1.642)--(-0.218,-1.696)--(-0.061,-1.72);
+\draw[carte,bS] (-0.061,1.72)--(-0.218,1.696)--(-0.374,1.642)--(-0.514,1.563)--(-0.623,1.47)--(-0.723,1.345)--(-0.782,1.22)--(-0.789,1.115)--(-0.749,1.038)--(-0.654,0.98)--(-0.42,0.927)--(-0.265,0.905)--(0,0.893)--(0.265,0.905)--(0.42,0.927)--(0.654,0.98)--(0.749,1.038)--(0.789,1.115)--(0.782,1.22)--(0.723,1.345)--(0.623,1.47)--(0.514,1.563)--(0.374,1.642)--(0.218,1.696)--(0.061,1.72);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.004,0.892)--(0.134,0.896);
+\draw[carte,bS] (-0.094,-1.316)--(0.093,-1.317)--(0.296,-1.274)--(0.429,-1.211)--(0.481,-1.163)--(0.498,-1.124)--(0.428,-1.057)--(0.358,-1.023)--(0.296,-1.015)--(0.171,-1.024)--(0,-1.001)--(-0.171,-1.024)--(-0.343,-1.019)--(-0.413,-1.047)--(-0.495,-1.115)--(-0.494,-1.143)--(-0.473,-1.172)--(-0.374,-1.244)--(-0.249,-1.287)--(-0.094,-1.316);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.016,-0.998)--(0.144,-1.022);
+\draw[carte,bS] (-0.643,-1.134)--(-0.576,-1.134)--(-0.556,-1.124)--(-0.551,-1.105)--(-0.59,-1.067)--(-0.654,-1.06)--(-0.68,-1.095)--(-0.643,-1.134);
+\draw[carte,bS] (0.576,-1.134)--(0.654,-1.13)--(0.678,-1.105)--(0.675,-1.076)--(0.638,-1.057)--(0.59,-1.067)--(0.551,-1.105)--(0.556,-1.124)--(0.576,-1.134);
+\draw[carte,bS] (-0.073,1.009)--(0.016,1.002)--(0.171,1.024)--(0.343,1.019)--(0.441,1.067)--(0.495,1.115)--(0.498,1.134)--(0.436,1.206)--(0.327,1.263)--(0.156,1.307)--(0,1.322)--(-0.156,1.307)--(-0.327,1.263)--(-0.436,1.206)--(-0.498,1.134)--(-0.495,1.115)--(-0.441,1.067)--(-0.358,1.023)--(-0.296,1.015)--(-0.171,1.024)--(-0.073,1.009);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.016,0.998)--(0.144,1.022);
+\draw[carte,bS] (-0.639,1.057)--(-0.575,1.076)--(-0.551,1.105)--(-0.556,1.124)--(-0.607,1.139)--(-0.661,1.124)--(-0.679,1.086)--(-0.639,1.057);
+\draw[carte,bS] (0.621,1.057)--(0.675,1.076)--(0.67,1.118)--(0.623,1.139)--(0.556,1.124)--(0.551,1.105)--(0.564,1.086)--(0.621,1.057);
+\draw[carte,bS] (-0.025,-1.115)--(0.016,-1.12)--(0.034,-1.105)--(0.036,-1.086)--(0.016,-1.067)--(-0.016,-1.067)--(-0.036,-1.086)--(-0.025,-1.115);
+\draw[carte,bS] (-0.338,-1.105)--(-0.311,-1.112)--(-0.292,-1.086)--(-0.327,-1.071)--(-0.345,-1.086)--(-0.338,-1.105);
+\draw[carte,bS] (0.299,-1.105)--(0.327,-1.111)--(0.345,-1.086)--(0.311,-1.071)--(0.292,-1.086)--(0.299,-1.105);
+\draw[carte,bS] (-0.012,1.067)--(0.03,1.076)--(0.038,1.095)--(0.025,1.115)--(0,1.123)--(-0.034,1.105)--(-0.036,1.086)--(-0.012,1.067);
+\draw[carte,bS] (-0.337,1.076)--(-0.311,1.071)--(-0.292,1.095)--(-0.327,1.111)--(-0.345,1.095)--(-0.337,1.076);
+\draw[carte,bS] (0.3,1.076)--(0.327,1.071)--(0.345,1.095)--(0.311,1.112)--(0.292,1.095)--(0.3,1.076);
+\draw[black!65,-{Stealth[length=1.4mm]}] (-3.27,0)--(3.2,0) node[below left]{$z$};
+\draw[black!35,densely dotted] (-0.64,-1.089)--(-0.64,1.089);
+\draw[black,thin,fill=white] (-0.64,1.089) circle(0.058);
+\fill (-0.64,1.089) circle(0.0174);
+\draw[black,thin,fill=white] (-0.64,-1.089) circle(0.058);
+\draw[black,thin] (-0.675,-1.124)--(-0.605,-1.053) (-0.675,-1.053)--(-0.605,-1.124);
+\draw[black!35,densely dotted] (-0.32,-1.089)--(-0.32,1.089);
+\draw[black,thin,fill=white] (-0.32,1.089) circle(0.058);
+\fill (-0.32,1.089) circle(0.0174);
+\draw[black,thin,fill=white] (-0.32,-1.089) circle(0.058);
+\draw[black,thin] (-0.355,-1.124)--(-0.285,-1.053) (-0.355,-1.053)--(-0.285,-1.124);
+\draw[black!35,densely dotted] (0,-1.089)--(0,1.089);
+\draw[black,thin,fill=white] (0,1.089) circle(0.058);
+\fill (0,1.089) circle(0.0174);
+\draw[black,thin,fill=white] (0,-1.089) circle(0.058);
+\draw[black,thin] (-0.035,-1.124)--(0.035,-1.053) (-0.035,-1.053)--(0.035,-1.124);
+\draw[black!35,densely dotted] (0.32,-1.089)--(0.32,1.089);
+\draw[black,thin,fill=white] (0.32,1.089) circle(0.058);
+\fill (0.32,1.089) circle(0.0174);
+\draw[black,thin,fill=white] (0.32,-1.089) circle(0.058);
+\draw[black,thin] (0.285,-1.124)--(0.355,-1.053) (0.285,-1.053)--(0.355,-1.124);
+\draw[black!35,densely dotted] (0.64,-1.089)--(0.64,1.089);
+\draw[black,thin,fill=white] (0.64,1.089) circle(0.058);
+\fill (0.64,1.089) circle(0.0174);
+\draw[black,thin,fill=white] (0.64,-1.089) circle(0.058);
+\draw[black,thin] (0.605,-1.124)--(0.675,-1.053) (0.605,-1.053)--(0.675,-1.124);
+\end{scope}
+\end{tikzpicture}}
+
+\newcommand{\profilCinq}{\begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize,inner sep=1.2pt}]
+\draw[cadrecarte] (-3.27,-1.72) rectangle (3.27,1.72);
+\draw[black!66,-{Stealth[length=1.55mm]}] (-3.27,-1.19)--(3.2,-1.19) node[below left]{$z$};
+\draw[black!66,-{Stealth[length=1.55mm]}] (0,-1.61)--(0,1.61) node[below right,fill=white]{$B(z)$};
+\node[below left] at (0,-1.19){$O$};
+\draw[black!34,densely dotted] (-0.64,-1.64)--(-0.64,0.853);
+\draw[thin,bS!55] (-3.27,-1.135)--(-2.638,-1.09)--(-2.136,-1.02)--(-1.7,-0.919)--(-0.981,-0.697)--(-0.807,-0.664)--(-0.632,-0.652)--(-0.48,-0.663)--(-0.327,-0.691)--(0.523,-0.947)--(0.807,-1.011)--(1.134,-1.064)--(1.526,-1.105)--(1.984,-1.135)--(3.27,-1.17);
+\draw[black!34,densely dotted] (-0.32,-1.64)--(-0.32,1.137);
+\draw[thin,bS!55] (-3.27,-1.148)--(-2.485,-1.105)--(-1.897,-1.034)--(-1.417,-0.93)--(-0.654,-0.696)--(-0.48,-0.663)--(-0.327,-0.652)--(-0.174,-0.661)--(-0,-0.692)--(0.828,-0.943)--(1.112,-1.008)--(1.395,-1.056)--(2.158,-1.127)--(3.27,-1.165);
+\draw[black!34,densely dotted] (0,-1.64)--(0,1.22);
+\draw[thin,bS!55] (-3.27,-1.158)--(-2.311,-1.116)--(-1.635,-1.044)--(-1.112,-0.934)--(-0.327,-0.694)--(-0.153,-0.662)--(-0,-0.652)--(0.153,-0.662)--(0.327,-0.694)--(1.112,-0.934)--(1.635,-1.044)--(2.311,-1.116)--(3.27,-1.158);
+\draw[black!34,densely dotted] (0.32,-1.64)--(0.32,1.137);
+\draw[thin,bS!55] (-3.27,-1.165)--(-2.158,-1.127)--(-1.395,-1.056)--(-1.112,-1.008)--(-0.828,-0.943)--(-0,-0.692)--(0.174,-0.661)--(0.327,-0.652)--(0.48,-0.663)--(0.654,-0.696)--(1.417,-0.93)--(1.897,-1.034)--(2.485,-1.105)--(3.27,-1.148);
+\draw[black!34,densely dotted] (0.64,-1.64)--(0.64,0.853);
+\draw[thin,bS!55] (-3.27,-1.17)--(-1.984,-1.135)--(-1.526,-1.105)--(-1.134,-1.064)--(-0.807,-1.011)--(-0.523,-0.947)--(0.327,-0.691)--(0.48,-0.663)--(0.632,-0.652)--(0.807,-0.664)--(0.981,-0.697)--(1.7,-0.919)--(2.136,-1.02)--(2.638,-1.09)--(3.27,-1.135);
+\draw[semithick,bS] (-3.27,-1.015)--(-2.856,-0.942)--(-2.485,-0.842)--(-2.158,-0.71)--(-1.875,-0.548)--(-1.635,-0.366)--(-1.395,-0.138)--(-1.177,0.108)--(-0.719,0.673)--(-0.48,0.924)--(-0.349,1.028)--(-0.24,1.091)--(-0.109,1.138)--(-0,1.15)--(0.109,1.138)--(0.24,1.091)--(0.349,1.028)--(0.48,0.924)--(0.719,0.673)--(1.177,0.108)--(1.395,-0.138)--(1.635,-0.366)--(1.875,-0.548)--(2.158,-0.71)--(2.485,-0.842)--(2.856,-0.942)--(3.27,-1.015);
+\draw[black!75,thin,-{Stealth[length=1.3mm]}] (1.905,0.534)--(1.67,-0.326);
+\node[above right,fill=white,inner sep=.8pt] at (1.835,0.504){$B_{\rm total}$};
+\node[font=\tiny,align=left,fill=white] (ind) at (2.28,-.52){$B$ des diverses\\spires};
+\draw[thin,->] (ind.south west)--(1.54,-.95);
+\end{tikzpicture}}
+
+\newcommand{\lignesLong}{\begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize,inner sep=1.2pt}]
+\draw[cadrecarte] (-3.27,-1.72) rectangle (3.27,1.72);
+\begin{scope}\clip (-3.27,-1.72) rectangle (3.27,1.72);
+\draw[carte,bS] (3.27,-0.782)--(2.812,-0.548)--(2.432,-0.375)--(2.126,-0.259)--(1.869,-0.191)--(1.635,-0.158)--(1.324,-0.14)--(0,-0.13)--(-1.324,-0.14)--(-1.635,-0.158)--(-1.869,-0.191)--(-2.126,-0.259)--(-2.432,-0.375)--(-2.812,-0.548)--(-3.27,-0.782);
+\draw[carte,bS] (-3.27,0.782)--(-2.812,0.548)--(-2.432,0.375)--(-2.126,0.259)--(-1.869,0.191)--(-1.635,0.158)--(-1.324,0.14)--(0,0.13)--(1.324,0.14)--(1.635,0.158)--(1.869,0.191)--(2.126,0.259)--(2.432,0.375)--(2.812,0.548)--(3.27,0.782);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-0.027,0.13)--(0.103,0.13);
+\draw[carte,bS] (2.722,-1.72)--(2.504,-1.259)--(2.26,-0.846)--(2.048,-0.567)--(1.948,-0.471)--(1.847,-0.404)--(1.651,-0.336)--(1.355,-0.299)--(0.872,-0.282)--(0,-0.276)--(-0.872,-0.282)--(-1.355,-0.299)--(-1.651,-0.336)--(-1.847,-0.404)--(-1.948,-0.471)--(-2.048,-0.567)--(-2.26,-0.846)--(-2.504,-1.259)--(-2.722,-1.72);
+\draw[carte,bS] (-2.722,1.72)--(-2.504,1.259)--(-2.26,0.846)--(-2.048,0.567)--(-1.948,0.471)--(-1.847,0.404)--(-1.651,0.336)--(-1.355,0.299)--(-0.872,0.282)--(0,0.276)--(0.872,0.282)--(1.355,0.299)--(1.651,0.336)--(1.847,0.404)--(1.948,0.471)--(2.048,0.567)--(2.26,0.846)--(2.504,1.259)--(2.722,1.72);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-0.027,0.276)--(0.103,0.276);
+\draw[carte,bS] (1.592,-1.72)--(1.687,-1.393)--(1.753,-1.038)--(1.793,-0.634)--(1.785,-0.567)--(1.76,-0.528)--(1.713,-0.504)--(1.557,-0.467)--(1.23,-0.432)--(0,-0.412)--(-1.23,-0.432)--(-1.557,-0.467)--(-1.713,-0.504)--(-1.76,-0.528)--(-1.785,-0.567)--(-1.793,-0.634)--(-1.753,-1.038)--(-1.687,-1.393)--(-1.592,-1.72);
+\draw[carte,bS] (-1.592,1.72)--(-1.687,1.393)--(-1.753,1.038)--(-1.793,0.634)--(-1.785,0.567)--(-1.76,0.528)--(-1.713,0.504)--(-1.557,0.467)--(-1.23,0.432)--(0,0.412)--(1.23,0.432)--(1.557,0.467)--(1.713,0.504)--(1.76,0.528)--(1.785,0.567)--(1.793,0.634)--(1.753,1.038)--(1.687,1.393)--(1.592,1.72);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-0.027,0.411)--(0.103,0.412);
+\draw[carte,bS] (-0.145,-1.605)--(0.078,-1.611)--(0.296,-1.578)--(0.514,-1.508)--(0.732,-1.396)--(0.934,-1.253)--(1.121,-1.085)--(1.495,-0.664)--(1.572,-0.605)--(1.577,-0.557)--(1.542,-0.54)--(1.479,-0.571)--(1.386,-0.526)--(1.292,-0.536)--(1.215,-0.516)--(1.121,-0.522)--(1.028,-0.508)--(0,-0.496)--(-1.028,-0.508)--(-1.121,-0.522)--(-1.215,-0.516)--(-1.292,-0.536)--(-1.386,-0.526)--(-1.479,-0.571)--(-1.542,-0.54)--(-1.577,-0.557)--(-1.573,-0.605)--(-1.495,-0.664)--(-1.183,-1.022)--(-1.012,-1.187)--(-0.856,-1.313)--(-0.685,-1.424)--(-0.514,-1.508)--(-0.327,-1.571)--(-0.145,-1.605);
+\draw[carte,bS] (-1.73,-0.567)--(-1.71,-0.567)--(-1.73,-0.567);
+\draw[carte,bS] (1.71,-0.567)--(1.73,-0.567)--(1.71,-0.567);
+\draw[carte,bS] (-0.539,0.5)--(1.028,0.508)--(1.121,0.522)--(1.215,0.516)--(1.292,0.536)--(1.386,0.526)--(1.479,0.571)--(1.526,0.544)--(1.557,0.541)--(1.582,0.577)--(1.572,0.605)--(1.495,0.664)--(1.106,1.1)--(0.934,1.253)--(0.763,1.377)--(0.561,1.488)--(0.358,1.562)--(0.156,1.603)--(-0.047,1.612)--(-0.234,1.592)--(-0.42,1.543)--(-0.607,1.465)--(-0.794,1.356)--(-0.965,1.227)--(-1.121,1.085)--(-1.495,0.664)--(-1.572,0.605)--(-1.582,0.577)--(-1.557,0.541)--(-1.526,0.544)--(-1.479,0.571)--(-1.37,0.525)--(-1.292,0.536)--(-1.199,0.515)--(-1.121,0.522)--(-1.028,0.508)--(-0.539,0.5);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-0.027,0.493)--(0.102,0.504);
+\draw[carte,bS] (-1.73,0.567)--(-1.71,0.567)--(-1.73,0.567);
+\draw[carte,bS] (1.71,0.567)--(1.73,0.567)--(1.71,0.567);
+\draw[carte,bS] (-0.344,-0.586)--(-0.327,-0.567)--(-0.343,-0.551)--(-0.362,-0.567)--(-0.344,-0.586);
+\draw[carte,bS] (-0.176,-0.586)--(-0.154,-0.567)--(-0.171,-0.55)--(-0.191,-0.567)--(-0.176,-0.586);
+\draw[carte,bS] (-0.005,-0.586)--(0.018,-0.567)--(0,-0.55)--(-0.018,-0.567)--(-0.005,-0.586);
+\draw[carte,bS] (0.167,-0.586)--(0.191,-0.567)--(0.171,-0.55)--(0.154,-0.567)--(0.167,-0.586);
+\draw[carte,bS] (0.341,-0.586)--(0.362,-0.567)--(0.343,-0.551)--(0.327,-0.567)--(0.341,-0.586);
+\draw[carte,bS] (-0.864,-0.577)--(-0.845,-0.567)--(-0.856,-0.554)--(-0.874,-0.567)--(-0.864,-0.577);
+\draw[carte,bS] (-0.699,-0.577)--(-0.677,-0.577)--(-0.677,-0.557)--(-0.698,-0.557)--(-0.699,-0.577);
+\draw[carte,bS] (-0.53,-0.577)--(-0.514,-0.585)--(-0.504,-0.557)--(-0.528,-0.557)--(-0.53,-0.577);
+\draw[carte,bS] (0.503,-0.577)--(0.514,-0.585)--(0.533,-0.567)--(0.514,-0.551)--(0.503,-0.577);
+\draw[carte,bS] (0.677,-0.577)--(0.685,-0.583)--(0.704,-0.567)--(0.685,-0.552)--(0.677,-0.577);
+\draw[carte,bS] (0.853,-0.577)--(0.872,-0.571)--(0.866,-0.557)--(0.851,-0.557)--(0.853,-0.577);
+\draw[carte,bS] (-1.042,-0.567)--(-1.028,-0.575)--(-1.02,-0.567)--(-1.028,-0.556)--(-1.042,-0.567);
+\draw[carte,bS] (1.02,-0.567)--(1.028,-0.575)--(1.042,-0.567)--(1.028,-0.556)--(1.02,-0.567);
+\draw[carte,bS] (-1.031,0.557)--(-1.02,0.567)--(-1.028,0.575)--(-1.042,0.567)--(-1.031,0.557);
+\draw[carte,bS] (-0.866,0.557)--(-0.845,0.567)--(-0.856,0.58)--(-0.872,0.571)--(-0.866,0.557);
+\draw[carte,bS] (-0.698,0.557)--(-0.677,0.557)--(-0.685,0.583)--(-0.701,0.575)--(-0.698,0.557);
+\draw[carte,bS] (-0.528,0.557)--(-0.504,0.557)--(-0.503,0.577)--(-0.514,0.585)--(-0.529,0.578)--(-0.528,0.557);
+\draw[carte,bS] (-0.357,0.557)--(-0.331,0.557)--(-0.329,0.577)--(-0.343,0.587)--(-0.358,0.579)--(-0.357,0.557);
+\draw[carte,bS] (-0.185,0.557)--(-0.159,0.557)--(-0.156,0.577)--(-0.171,0.588)--(-0.187,0.58)--(-0.185,0.557);
+\draw[carte,bS] (-0.014,0.557)--(0.014,0.557)--(0.016,0.579)--(0,0.589)--(-0.016,0.579)--(-0.014,0.557);
+\draw[carte,bS] (0.159,0.557)--(0.185,0.557)--(0.187,0.58)--(0.167,0.586)--(0.156,0.577)--(0.159,0.557);
+\draw[carte,bS] (0.331,0.557)--(0.357,0.557)--(0.358,0.579)--(0.343,0.587)--(0.329,0.577)--(0.331,0.557);
+\draw[carte,bS] (0.504,0.557)--(0.528,0.557)--(0.529,0.578)--(0.514,0.585)--(0.503,0.577)--(0.504,0.557);
+\draw[carte,bS] (0.677,0.557)--(0.698,0.557)--(0.701,0.575)--(0.685,0.583)--(0.677,0.557);
+\draw[carte,bS] (0.851,0.557)--(0.866,0.557)--(0.872,0.571)--(0.856,0.58)--(0.851,0.557);
+\draw[carte,bS] (1.026,0.557)--(1.042,0.567)--(1.028,0.575)--(1.026,0.557);
+\draw[black!65,-{Stealth[length=1.4mm]}] (-3.27,0)--(3.2,0) node[below left]{$z$};
+\draw[black!35,densely dotted] (-1.721,-0.564)--(-1.721,0.564);
+\draw[black,thin,fill=white] (-1.721,0.564) circle(0.042);
+\fill (-1.721,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (-1.721,-0.564) circle(0.042);
+\draw[black,thin] (-1.747,-0.59)--(-1.695,-0.538) (-1.747,-0.538)--(-1.695,-0.59);
+\draw[black!35,densely dotted] (-1.549,-0.564)--(-1.549,0.564);
+\draw[black,thin,fill=white] (-1.549,0.564) circle(0.042);
+\fill (-1.549,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (-1.549,-0.564) circle(0.042);
+\draw[black,thin] (-1.575,-0.59)--(-1.523,-0.538) (-1.575,-0.538)--(-1.523,-0.59);
+\draw[black!35,densely dotted] (-1.377,-0.564)--(-1.377,0.564);
+\draw[black,thin,fill=white] (-1.377,0.564) circle(0.042);
+\fill (-1.377,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (-1.377,-0.564) circle(0.042);
+\draw[black,thin] (-1.402,-0.59)--(-1.351,-0.538) (-1.402,-0.538)--(-1.351,-0.59);
+\draw[black!35,densely dotted] (-1.205,-0.564)--(-1.205,0.564);
+\draw[black,thin,fill=white] (-1.205,0.564) circle(0.042);
+\fill (-1.205,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (-1.205,-0.564) circle(0.042);
+\draw[black,thin] (-1.23,-0.59)--(-1.179,-0.538) (-1.23,-0.538)--(-1.179,-0.59);
+\draw[black!35,densely dotted] (-1.033,-0.564)--(-1.033,0.564);
+\draw[black,thin,fill=white] (-1.033,0.564) circle(0.042);
+\fill (-1.033,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (-1.033,-0.564) circle(0.042);
+\draw[black,thin] (-1.058,-0.59)--(-1.007,-0.538) (-1.058,-0.538)--(-1.007,-0.59);
+\draw[black!35,densely dotted] (-0.861,-0.564)--(-0.861,0.564);
+\draw[black,thin,fill=white] (-0.861,0.564) circle(0.042);
+\fill (-0.861,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (-0.861,-0.564) circle(0.042);
+\draw[black,thin] (-0.886,-0.59)--(-0.835,-0.538) (-0.886,-0.538)--(-0.835,-0.59);
+\draw[black!35,densely dotted] (-0.688,-0.564)--(-0.688,0.564);
+\draw[black,thin,fill=white] (-0.688,0.564) circle(0.042);
+\fill (-0.688,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (-0.688,-0.564) circle(0.042);
+\draw[black,thin] (-0.714,-0.59)--(-0.663,-0.538) (-0.714,-0.538)--(-0.663,-0.59);
+\draw[black!35,densely dotted] (-0.516,-0.564)--(-0.516,0.564);
+\draw[black,thin,fill=white] (-0.516,0.564) circle(0.042);
+\fill (-0.516,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (-0.516,-0.564) circle(0.042);
+\draw[black,thin] (-0.542,-0.59)--(-0.491,-0.538) (-0.542,-0.538)--(-0.491,-0.59);
+\draw[black!35,densely dotted] (-0.344,-0.564)--(-0.344,0.564);
+\draw[black,thin,fill=white] (-0.344,0.564) circle(0.042);
+\fill (-0.344,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (-0.344,-0.564) circle(0.042);
+\draw[black,thin] (-0.37,-0.59)--(-0.319,-0.538) (-0.37,-0.538)--(-0.319,-0.59);
+\draw[black!35,densely dotted] (-0.172,-0.564)--(-0.172,0.564);
+\draw[black,thin,fill=white] (-0.172,0.564) circle(0.042);
+\fill (-0.172,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (-0.172,-0.564) circle(0.042);
+\draw[black,thin] (-0.198,-0.59)--(-0.146,-0.538) (-0.198,-0.538)--(-0.146,-0.59);
+\draw[black!35,densely dotted] (0,-0.564)--(0,0.564);
+\draw[black,thin,fill=white] (0,0.564) circle(0.042);
+\fill (0,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (0,-0.564) circle(0.042);
+\draw[black,thin] (-0.026,-0.59)--(0.026,-0.538) (-0.026,-0.538)--(0.026,-0.59);
+\draw[black!35,densely dotted] (0.172,-0.564)--(0.172,0.564);
+\draw[black,thin,fill=white] (0.172,0.564) circle(0.042);
+\fill (0.172,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (0.172,-0.564) circle(0.042);
+\draw[black,thin] (0.146,-0.59)--(0.198,-0.538) (0.146,-0.538)--(0.198,-0.59);
+\draw[black!35,densely dotted] (0.344,-0.564)--(0.344,0.564);
+\draw[black,thin,fill=white] (0.344,0.564) circle(0.042);
+\fill (0.344,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (0.344,-0.564) circle(0.042);
+\draw[black,thin] (0.319,-0.59)--(0.37,-0.538) (0.319,-0.538)--(0.37,-0.59);
+\draw[black!35,densely dotted] (0.516,-0.564)--(0.516,0.564);
+\draw[black,thin,fill=white] (0.516,0.564) circle(0.042);
+\fill (0.516,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (0.516,-0.564) circle(0.042);
+\draw[black,thin] (0.491,-0.59)--(0.542,-0.538) (0.491,-0.538)--(0.542,-0.59);
+\draw[black!35,densely dotted] (0.688,-0.564)--(0.688,0.564);
+\draw[black,thin,fill=white] (0.688,0.564) circle(0.042);
+\fill (0.688,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (0.688,-0.564) circle(0.042);
+\draw[black,thin] (0.663,-0.59)--(0.714,-0.538) (0.663,-0.538)--(0.714,-0.59);
+\draw[black!35,densely dotted] (0.861,-0.564)--(0.861,0.564);
+\draw[black,thin,fill=white] (0.861,0.564) circle(0.042);
+\fill (0.861,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (0.861,-0.564) circle(0.042);
+\draw[black,thin] (0.835,-0.59)--(0.886,-0.538) (0.835,-0.538)--(0.886,-0.59);
+\draw[black!35,densely dotted] (1.033,-0.564)--(1.033,0.564);
+\draw[black,thin,fill=white] (1.033,0.564) circle(0.042);
+\fill (1.033,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (1.033,-0.564) circle(0.042);
+\draw[black,thin] (1.007,-0.59)--(1.058,-0.538) (1.007,-0.538)--(1.058,-0.59);
+\draw[black!35,densely dotted] (1.205,-0.564)--(1.205,0.564);
+\draw[black,thin,fill=white] (1.205,0.564) circle(0.042);
+\fill (1.205,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (1.205,-0.564) circle(0.042);
+\draw[black,thin] (1.179,-0.59)--(1.23,-0.538) (1.179,-0.538)--(1.23,-0.59);
+\draw[black!35,densely dotted] (1.377,-0.564)--(1.377,0.564);
+\draw[black,thin,fill=white] (1.377,0.564) circle(0.042);
+\fill (1.377,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (1.377,-0.564) circle(0.042);
+\draw[black,thin] (1.351,-0.59)--(1.402,-0.538) (1.351,-0.538)--(1.402,-0.59);
+\draw[black!35,densely dotted] (1.549,-0.564)--(1.549,0.564);
+\draw[black,thin,fill=white] (1.549,0.564) circle(0.042);
+\fill (1.549,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (1.549,-0.564) circle(0.042);
+\draw[black,thin] (1.523,-0.59)--(1.575,-0.538) (1.523,-0.538)--(1.575,-0.59);
+\draw[black!35,densely dotted] (1.721,-0.564)--(1.721,0.564);
+\draw[black,thin,fill=white] (1.721,0.564) circle(0.042);
+\fill (1.721,0.564) circle(0.0126);
+\draw[black,thin,fill=white] (1.721,-0.564) circle(0.042);
+\draw[black,thin] (1.695,-0.59)--(1.747,-0.538) (1.695,-0.538)--(1.747,-0.59);
+\end{scope}
+\end{tikzpicture}}
+
+\newcommand{\profilLong}{\begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize,inner sep=1.2pt}]
+\draw[cadrecarte] (-3.27,-1.72) rectangle (3.27,1.72);
+\draw[black!66,-{Stealth[length=1.55mm]}] (-3.27,-1.19)--(3.2,-1.19) node[below left]{$z$};
+\draw[black!66,-{Stealth[length=1.55mm]}] (0,-1.61)--(0,1.61) node[below right,fill=white]{$B(z)$};
+\node[below left] at (0,-1.19){$O$};
+\draw[black!34,densely dotted] (-1.721,-1.64)--(-1.721,0.296);
+\draw[black!34,densely dotted] (-1.549,-1.64)--(-1.549,0.618);
+\draw[black!34,densely dotted] (-1.377,-1.64)--(-1.377,0.848);
+\draw[black!34,densely dotted] (-1.205,-1.64)--(-1.205,0.997);
+\draw[black!34,densely dotted] (-1.033,-1.64)--(-1.033,1.091);
+\draw[black!34,densely dotted] (-0.861,-1.64)--(-0.861,1.151);
+\draw[black!34,densely dotted] (-0.688,-1.64)--(-0.688,1.189);
+\draw[black!34,densely dotted] (-0.516,-1.64)--(-0.516,1.214);
+\draw[black!34,densely dotted] (-0.344,-1.64)--(-0.344,1.22);
+\draw[black!34,densely dotted] (-0.172,-1.64)--(-0.172,1.22);
+\draw[black!34,densely dotted] (0,-1.64)--(0,1.22);
+\draw[black!34,densely dotted] (0.172,-1.64)--(0.172,1.22);
+\draw[black!34,densely dotted] (0.344,-1.64)--(0.344,1.22);
+\draw[black!34,densely dotted] (0.516,-1.64)--(0.516,1.214);
+\draw[black!34,densely dotted] (0.688,-1.64)--(0.688,1.189);
+\draw[black!34,densely dotted] (0.861,-1.64)--(0.861,1.151);
+\draw[black!34,densely dotted] (1.033,-1.64)--(1.033,1.091);
+\draw[black!34,densely dotted] (1.205,-1.64)--(1.205,0.997);
+\draw[black!34,densely dotted] (1.377,-1.64)--(1.377,0.848);
+\draw[black!34,densely dotted] (1.549,-1.64)--(1.549,0.618);
+\draw[black!34,densely dotted] (1.721,-1.64)--(1.721,0.296);
+\draw[semithick,bS] (-3.27,-1.113)--(-2.921,-1.063)--(-2.66,-0.992)--(-2.442,-0.886)--(-2.267,-0.746)--(-2.136,-0.59)--(-2.027,-0.42)--(-1.657,0.335)--(-1.526,0.564)--(-1.373,0.762)--(-1.221,0.896)--(-1.003,1.013)--(-0.741,1.089)--(-0.414,1.134)--(0,1.15)--(0.414,1.134)--(0.741,1.089)--(1.003,1.013)--(1.221,0.896)--(1.373,0.762)--(1.526,0.564)--(1.657,0.335)--(2.027,-0.42)--(2.136,-0.59)--(2.267,-0.746)--(2.442,-0.886)--(2.66,-0.992)--(2.921,-1.063)--(3.27,-1.113);
+\draw[black!75,thin,-{Stealth[length=1.3mm]}] (2.804,-0.474)--(2.389,-0.784);
+\node[above right,fill=white,inner sep=.8pt] at (2.734,-0.504){$B_{\rm total}$};
+\node[below right,fill=white,font=\tiny] (sp) at (.92,-1.23){Place des spires};\draw[thin,->] (sp.west)--(.76,-1.14);
+\end{tikzpicture}}
+
+\newcommand{\deuxFils}{\begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize,inner sep=1.2pt}]
+\draw[cadrecarte] (-3.22,-2.17) rectangle (3.22,2.17);
+\begin{scope}\clip (-3.22,-2.17) rectangle (3.22,2.17);
+\draw[carte,bS] (-0.92,-0.149)--(-0.984,-0.128)--(-1.029,-0.088)--(-1.055,-0.039)--(-1.059,0.02)--(-1.037,0.079)--(-0.997,0.119)--(-0.933,0.147)--(-0.869,0.147)--(-0.815,0.128)--(-0.768,0.088)--(-0.743,0.039)--(-0.739,-0.02)--(-0.761,-0.079)--(-0.799,-0.118)--(-0.856,-0.144)--(-0.92,-0.149);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-0.727,-0.024)--(-0.758,0.102);
+\draw[carte,bS] (0.882,-0.149)--(0.818,-0.129)--(0.768,-0.088)--(0.743,-0.039)--(0.739,0.02)--(0.761,0.079)--(0.799,0.118)--(0.856,0.144)--(0.92,0.149)--(0.984,0.128)--(1.029,0.088)--(1.055,0.039)--(1.059,-0.02)--(1.037,-0.079)--(0.997,-0.119)--(0.946,-0.143)--(0.882,-0.149);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.755,0.09)--(0.724,-0.037);
+\draw[carte,bS] (-0.92,-0.286)--(-1.048,-0.237)--(-1.137,-0.15)--(-1.18,-0.039)--(-1.171,0.079)--(-1.112,0.183)--(-1.009,0.258)--(-0.882,0.29)--(-0.754,0.276)--(-0.639,0.219)--(-0.561,0.137)--(-0.522,0.039)--(-0.529,-0.069)--(-0.583,-0.167)--(-0.677,-0.244)--(-0.792,-0.285)--(-0.92,-0.286);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-1.175,0.088)--(-1.189,-0.042);
+\draw[carte,bS] (0.792,-0.285)--(0.664,-0.237)--(0.575,-0.157)--(0.524,-0.049)--(0.529,0.069)--(0.591,0.177)--(0.703,0.257)--(0.831,0.29)--(0.971,0.274)--(1.073,0.219)--(1.15,0.129)--(1.181,0.029)--(1.171,-0.079)--(1.124,-0.168)--(1.034,-0.245)--(0.92,-0.286)--(0.792,-0.285);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.528,0.087)--(0.511,-0.041);
+\draw[carte,bS] (-0.882,-0.423)--(-1.044,-0.373)--(-1.169,-0.285)--(-1.253,-0.167)--(-1.291,-0.02)--(-1.273,0.118)--(-1.201,0.25)--(-1.086,0.35)--(-0.933,0.413)--(-0.831,0.428)--(-0.716,0.425)--(-0.601,0.403)--(-0.49,0.363)--(-0.272,0.236)--(0,0.001)--(0.259,0.226)--(0.46,0.35)--(0.677,0.42)--(0.779,0.429)--(0.882,0.423)--(1.022,0.383)--(1.137,0.314)--(1.227,0.215)--(1.281,0.088)--(1.291,0.01)--(1.283,-0.079)--(1.258,-0.157)--(1.219,-0.226)--(1.099,-0.342)--(0.933,-0.413)--(0.831,-0.428)--(0.716,-0.425)--(0.601,-0.403)--(0.49,-0.363)--(0.272,-0.236)--(0,-0.001)--(-0.259,-0.226)--(-0.46,-0.35)--(-0.677,-0.42)--(-0.779,-0.429)--(-0.882,-0.423);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.004,-0.004)--(-0.09,0.085);
+\draw[carte,bS] (-0.754,-0.599)--(-0.987,-0.55)--(-1.097,-0.501)--(-1.188,-0.442)--(-1.265,-0.372)--(-1.329,-0.29)--(-1.378,-0.196)--(-1.406,-0.104)--(-1.416,0)--(-1.407,0.098)--(-1.378,0.196)--(-1.329,0.29)--(-1.265,0.372)--(-1.188,0.442)--(-1.097,0.501)--(-0.987,0.55)--(-0.843,0.587)--(-0.677,0.603)--(-0.013,0.546)--(0.575,0.601)--(0.831,0.59)--(1.013,0.54)--(1.176,0.451)--(1.303,0.326)--(1.385,0.177)--(1.412,0.069)--(1.415,-0.039)--(1.393,-0.154)--(1.35,-0.255)--(1.29,-0.344)--(1.201,-0.431)--(1.099,-0.5)--(0.987,-0.55)--(0.843,-0.587)--(0.69,-0.603)--(0.524,-0.598)--(0,-0.546)--(-0.537,-0.599)--(-0.754,-0.599);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-1.412,0.088)--(-1.419,-0.042);
+\draw[carte,bS] (-0.307,-1.041)--(-0.728,-0.988)--(-0.907,-0.942)--(-1.073,-0.878)--(-1.227,-0.797)--(-1.354,-0.706)--(-1.469,-0.596)--(-1.565,-0.471)--(-1.638,-0.334)--(-1.686,-0.187)--(-1.706,-0.039)--(-1.699,0.118)--(-1.661,0.274)--(-1.6,0.412)--(-1.517,0.54)--(-1.406,0.661)--(-1.278,0.764)--(-1.137,0.848)--(-0.984,0.915)--(-0.805,0.971)--(-0.613,1.01)--(-0.409,1.034)--(0.102,1.049)--(0.562,1.017)--(0.754,0.983)--(0.92,0.937)--(1.073,0.878)--(1.214,0.805)--(1.342,0.716)--(1.457,0.61)--(1.572,0.461)--(1.648,0.309)--(1.695,0.137)--(1.706,-0.029)--(1.684,-0.196)--(1.623,-0.368)--(1.531,-0.52)--(1.406,-0.661)--(1.278,-0.764)--(1.124,-0.854)--(0.946,-0.929)--(0.754,-0.983)--(0.537,-1.02)--(0.294,-1.042)--(-0.013,-1.05)--(-0.307,-1.041);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-1.704,0.088)--(-1.709,-0.042);
+\draw[carte,bS] (-0.179,-1.473)--(-0.422,-1.451)--(-0.664,-1.409)--(-0.882,-1.351)--(-1.086,-1.275)--(-1.278,-1.181)--(-1.444,-1.075)--(-1.597,-0.951)--(-1.727,-0.815)--(-1.84,-0.66)--(-1.929,-0.491)--(-1.992,-0.314)--(-2.026,-0.137)--(-2.033,0.049)--(-2.012,0.226)--(-1.964,0.403)--(-1.891,0.571)--(-1.802,0.717)--(-1.684,0.864)--(-1.546,0.996)--(-1.393,1.111)--(-1.227,1.209)--(-1.036,1.296)--(-0.836,1.365)--(-0.626,1.417)--(-0.396,1.454)--(-0.141,1.475)--(0.115,1.476)--(0.371,1.457)--(0.601,1.422)--(0.831,1.366)--(1.035,1.297)--(1.227,1.209)--(1.469,1.057)--(1.674,0.874)--(1.84,0.66)--(1.955,0.428)--(2.021,0.177)--(2.031,-0.079)--(1.986,-0.334)--(1.891,-0.571)--(1.751,-0.786)--(1.572,-0.974)--(1.354,-1.136)--(1.099,-1.27)--(0.805,-1.374)--(0.498,-1.44)--(0.166,-1.474)--(-0.179,-1.473);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.032,0.088)--(-2.035,-0.042);
+\draw[carte,bS] (-0.077,-1.856)--(-0.332,-1.84)--(-0.575,-1.805)--(-0.818,-1.749)--(-1.035,-1.68)--(-1.248,-1.591)--(-1.444,-1.486)--(-1.623,-1.368)--(-1.789,-1.232)--(-1.942,-1.075)--(-2.068,-0.913)--(-2.172,-0.741)--(-2.255,-0.56)--(-2.313,-0.373)--(-2.349,-0.177)--(-2.359,0.02)--(-2.344,0.216)--(-2.303,0.412)--(-2.239,0.599)--(-2.153,0.776)--(-2.044,0.946)--(-1.917,1.104)--(-1.763,1.255)--(-1.597,1.386)--(-1.418,1.501)--(-1.227,1.601)--(-1.009,1.689)--(-0.786,1.758)--(-0.549,1.809)--(-0.307,1.842)--(-0.051,1.856)--(0.204,1.85)--(0.447,1.825)--(0.664,1.787)--(0.882,1.731)--(1.086,1.66)--(1.268,1.581)--(1.444,1.486)--(1.613,1.375)--(1.763,1.255)--(1.904,1.118)--(2.026,0.972)--(2.131,0.815)--(2.213,0.658)--(2.279,0.491)--(2.326,0.314)--(2.353,0.137)--(2.358,-0.039)--(2.344,-0.216)--(2.311,-0.383)--(2.258,-0.55)--(2.185,-0.717)--(2.094,-0.874)--(1.981,-1.03)--(1.855,-1.168)--(1.712,-1.298)--(1.558,-1.414)--(1.382,-1.522)--(1.201,-1.612)--(1.009,-1.689)--(0.805,-1.753)--(0.588,-1.802)--(0.371,-1.835)--(-0.077,-1.856);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.357,0.088)--(-2.36,-0.042);
+\draw[carte,bS] (-0.523,-2.17)--(-0.754,-2.125)--(-0.971,-2.066)--(-1.178,-1.993)--(-1.38,-1.905)--(-1.572,-1.802)--(-1.751,-1.687)--(-1.917,-1.56)--(-2.076,-1.414)--(-2.211,-1.266)--(-2.336,-1.1)--(-2.441,-0.928)--(-2.525,-0.756)--(-2.594,-0.57)--(-2.642,-0.383)--(-2.671,-0.196)--(-2.682,0)--(-2.671,0.196)--(-2.642,0.383)--(-2.594,0.57)--(-2.525,0.756)--(-2.441,0.928)--(-2.336,1.1)--(-2.211,1.266)--(-2.076,1.414)--(-1.917,1.56)--(-1.751,1.687)--(-1.572,1.802)--(-1.38,1.905)--(-1.178,1.993)--(-0.971,2.066)--(-0.754,2.125)--(-0.523,2.17);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.681,0.088)--(-2.683,-0.042);
+\draw[carte,bS] (0.523,2.17)--(0.754,2.125)--(0.971,2.066)--(1.178,1.993)--(1.38,1.905)--(1.572,1.802)--(1.751,1.687)--(1.917,1.56)--(2.076,1.414)--(2.211,1.266)--(2.336,1.1)--(2.441,0.928)--(2.525,0.756)--(2.594,0.57)--(2.642,0.383)--(2.671,0.196)--(2.682,0)--(2.671,-0.196)--(2.642,-0.383)--(2.594,-0.57)--(2.525,-0.756)--(2.441,-0.928)--(2.336,-1.1)--(2.211,-1.266)--(2.076,-1.414)--(1.917,-1.56)--(1.751,-1.687)--(1.572,-1.802)--(1.38,-1.905)--(1.178,-1.993)--(0.971,-2.066)--(0.754,-2.125)--(0.523,-2.17);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (2.682,-0.029)--(2.68,0.101);
+\draw[carte,bS] (-1.541,-2.17)--(-1.853,-1.989)--(-2.134,-1.775)--(-2.389,-1.522)--(-2.594,-1.255)--(-2.761,-0.962)--(-2.883,-0.648)--(-2.957,-0.324)--(-2.981,0)--(-2.957,0.324)--(-2.883,0.648)--(-2.761,0.962)--(-2.594,1.255)--(-2.389,1.522)--(-2.134,1.775)--(-1.853,1.989)--(-1.541,2.17);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.98,0.088)--(-2.982,-0.042);
+\draw[carte,bS] (1.541,2.17)--(1.853,1.989)--(2.134,1.775)--(2.389,1.522)--(2.594,1.255)--(2.761,0.962)--(2.883,0.648)--(2.957,0.324)--(2.981,0)--(2.957,-0.324)--(2.883,-0.648)--(2.761,-0.962)--(2.594,-1.255)--(2.389,-1.522)--(2.134,-1.775)--(1.853,-1.989)--(1.541,-2.17);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (2.982,-0.029)--(2.98,0.101);
+\draw[carte,bS] (-2.119,-2.17)--(-2.326,-2.005)--(-2.515,-1.826)--(-2.683,-1.636)--(-2.833,-1.434)--(-2.964,-1.218)--(-3.07,-1.002)--(-3.156,-0.772)--(-3.22,-0.537);
+\draw[carte,bS] (3.22,-0.537)--(3.156,-0.772)--(3.07,-1.002)--(2.964,-1.218)--(2.833,-1.434)--(2.683,-1.636)--(2.515,-1.826)--(2.326,-2.005)--(2.119,-2.17);
+\draw[carte,bS] (-3.22,0.537)--(-3.156,0.772)--(-3.07,1.002)--(-2.964,1.218)--(-2.833,1.434)--(-2.683,1.636)--(-2.515,1.826)--(-2.326,2.005)--(-2.119,2.17);
+\draw[carte,bS] (2.119,2.17)--(2.326,2.005)--(2.515,1.826)--(2.683,1.636)--(2.833,1.434)--(2.964,1.218)--(3.07,1.002)--(3.156,0.772)--(3.22,0.537);
+\draw[carte,bS] (-2.636,-2.17)--(-2.802,-2.003)--(-2.954,-1.826)--(-3.092,-1.639)--(-3.22,-1.436);
+\draw[carte,bS] (3.22,-1.436)--(3.092,-1.639)--(2.954,-1.826)--(2.802,-2.003)--(2.636,-2.17);
+\draw[carte,bS] (-3.22,1.436)--(-3.092,1.639)--(-2.954,1.826)--(-2.802,2.003)--(-2.636,2.17);
+\draw[carte,bS] (2.636,2.17)--(2.802,2.003)--(2.954,1.826)--(3.092,1.639)--(3.22,1.436);
+\end{scope}
+\draw[black!45,thin](-3.16,0)--(3.16,0) (0,-2.12)--(0,2.13);
+\node[above left,fill=white]at(0,1.96){$(\Pi_1)$};\node[above left,fill=white]at(3.15,0){$(\Pi_2)$};
+\draw[thin,fill=white] (-0.913,0) circle(.073);\fill (-0.913,0) circle(.023);
+\draw[thin,fill=white] (0.913,0) circle(.073);\fill (0.913,0) circle(.023);
+\draw[densely dashed,black!45] (-1.92,-1.557) rectangle (1.92,1.557);
+\fill (1.92,1.557) circle(.026);
+\node[fill=white,inner sep=.6pt] at (2.08,1.697){$P_1$};
+\draw[black,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (1.857,1.61)--(1.581,1.842);
+\node[fill=white,inner sep=.6pt] at (1.32,1.887){$\B(P_1)$};
+\fill (-1.92,1.557) circle(.026);
+\node[fill=white,inner sep=.6pt] at (-2.08,1.697){$P_2$};
+\draw[black,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-1.984,1.504)--(-2.259,1.272);
+\node[fill=white,inner sep=.6pt] at (-2.52,1.887){$\B(P_2)$};
+\fill (-1.92,-1.557) circle(.026);
+\node[fill=white,inner sep=.6pt] at (-2.08,-1.697){$P_3$};
+\draw[black,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-1.857,-1.61)--(-1.581,-1.842);
+\node[fill=white,inner sep=.6pt] at (-1.33,-1.887){$\B(P_3)$};
+\fill (1.92,-1.557) circle(.026);
+\node[fill=white,inner sep=.6pt] at (2.08,-1.697){$P_4$};
+\draw[black,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (1.984,-1.504)--(2.259,-1.272);
+\node[fill=white,inner sep=.6pt] at (2.51,-1.887){$\B(P_4)$};
+\end{tikzpicture}}
+
+\newcommand{\filUniforme}{\begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize,inner sep=1.2pt}]
+\draw[cadrecarte] (-3.22,-2.17) rectangle (3.22,2.17);
+\begin{scope}\clip (-3.22,-2.17) rectangle (3.22,2.17);
+\draw[carte,bS] (-3.22,1.113)--(-2.786,0.998)--(-2.402,0.879)--(-2.057,0.752)--(-1.763,0.622)--(-1.495,0.476)--(-1.265,0.323)--(-1.073,0.169)--(-0.699,-0.167)--(-0.51,-0.304)--(-0.383,-0.372)--(-0.256,-0.42)--(-0.128,-0.448)--(0,-0.458)--(0.128,-0.448)--(0.256,-0.42)--(0.383,-0.372)--(0.51,-0.304)--(0.699,-0.167)--(1.073,0.169)--(1.265,0.323)--(1.495,0.476)--(1.763,0.622)--(2.057,0.752)--(2.402,0.879)--(2.786,0.998)--(3.22,1.113);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.362,0.865)--(-2.253,0.827);
+\draw[carte,bS] (-3.22,-1.634)--(-1.981,-1.847)--(-1.265,-1.952)--(-0.613,-2.016)--(0,-2.038)--(0.613,-2.016)--(1.265,-1.952)--(1.981,-1.847)--(3.22,-1.634);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.364,-1.783)--(-2.25,-1.802);
+\draw[carte,bS] (-3.22,-1.303)--(-1.84,-1.574)--(-1.188,-1.685)--(-0.575,-1.756)--(0,-1.78)--(0.575,-1.756)--(1.188,-1.685)--(1.84,-1.574)--(3.22,-1.303);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.364,-1.472)--(-2.251,-1.494);
+\draw[carte,bS] (-3.22,-0.997)--(-1.674,-1.341)--(-1.124,-1.449)--(-0.537,-1.529)--(0,-1.555)--(0.537,-1.529)--(1.124,-1.449)--(1.674,-1.341)--(3.22,-0.997);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.363,-1.186)--(-2.251,-1.211);
+\draw[carte,bS] (-3.22,-0.677)--(-1.457,-1.124)--(-1.022,-1.223)--(-0.486,-1.309)--(0,-1.335)--(0.486,-1.309)--(1.022,-1.223)--(1.457,-1.124)--(3.22,-0.677);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.363,-0.887)--(-2.252,-0.916);
+\draw[carte,bS] (-3.22,-0.373)--(-2.504,-0.561)--(-1.338,-0.913)--(-0.933,-1.023)--(-0.447,-1.114)--(0,-1.143)--(0.447,-1.114)--(0.933,-1.023)--(1.338,-0.913)--(2.504,-0.561)--(3.22,-0.373);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.362,-0.601)--(-2.252,-0.634);
+\draw[carte,bS] (-3.22,-0.052)--(-2.326,-0.309)--(-1.16,-0.727)--(-0.818,-0.836)--(-0.396,-0.929)--(0,-0.959)--(0.396,-0.929)--(0.818,-0.836)--(1.16,-0.727)--(2.326,-0.309)--(3.22,-0.052);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.362,-0.297)--(-2.253,-0.333);
+\draw[carte,bS] (-3.22,0.28)--(-2.671,0.124)--(-2.159,-0.051)--(-1.738,-0.221)--(-0.981,-0.56)--(-0.69,-0.67)--(-0.332,-0.762)--(0,-0.79)--(0.332,-0.762)--(0.69,-0.67)--(0.981,-0.56)--(1.738,-0.221)--(2.159,-0.051)--(2.671,0.124)--(3.22,0.28);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.362,0.022)--(-2.253,-0.016);
+\draw[carte,bS] (-3.22,0.622)--(-2.556,0.428)--(-1.981,0.211)--(-1.584,0.023)--(-0.867,-0.383)--(-0.562,-0.527)--(-0.281,-0.61)--(0,-0.638)--(0.281,-0.61)--(0.562,-0.527)--(0.867,-0.383)--(1.584,0.023)--(1.981,0.211)--(2.556,0.428)--(3.22,0.622);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.361,0.361)--(-2.253,0.322);
+\draw[carte,bS] (-3.22,0.966)--(-2.492,0.757)--(-2.172,0.642)--(-1.891,0.524)--(-1.623,0.39)--(-1.38,0.244)--(-0.751,-0.226)--(-0.537,-0.362)--(-0.396,-0.429)--(-0.268,-0.471)--(-0.141,-0.497)--(0,-0.507)--(0.141,-0.497)--(0.268,-0.471)--(0.396,-0.429)--(0.537,-0.362)--(0.751,-0.226)--(1.38,0.244)--(1.623,0.39)--(1.891,0.524)--(2.172,0.642)--(2.492,0.757)--(3.22,0.966);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.361,0.712)--(-2.253,0.673);
+\draw[carte,bS] (-3.22,1.365)--(-2.696,1.231)--(-2.249,1.093)--(-1.866,0.949)--(-1.533,0.791)--(-1.278,0.634)--(-1.061,0.458)--(-0.907,0.296)--(-0.613,-0.069)--(-0.457,-0.216)--(-0.355,-0.285)--(-0.243,-0.337)--(-0.128,-0.369)--(0,-0.381)--(0.128,-0.369)--(0.243,-0.337)--(0.355,-0.285)--(0.457,-0.216)--(0.613,-0.069)--(0.907,0.296)--(1.061,0.458)--(1.278,0.634)--(1.533,0.791)--(1.866,0.949)--(2.249,1.093)--(2.696,1.231)--(3.22,1.365);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.362,1.131)--(-2.253,1.095);
+\draw[carte,bS] (-3.22,1.764)--(-2.504,1.595)--(-1.904,1.417)--(-1.407,1.227)--(-1.032,1.031)--(-0.805,0.857)--(-0.661,0.678)--(-0.587,0.511)--(-0.481,0.098)--(-0.437,0)--(-0.38,-0.088)--(-0.305,-0.167)--(-0.204,-0.233)--(-0.102,-0.269)--(0,-0.28)--(0.102,-0.269)--(0.204,-0.233)--(0.305,-0.167)--(0.38,-0.088)--(0.437,0)--(0.481,0.098)--(0.587,0.511)--(0.661,0.678)--(0.805,0.857)--(1.032,1.031)--(1.407,1.227)--(1.904,1.417)--(2.504,1.595)--(3.22,1.764);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.363,1.557)--(-2.252,1.525);
+\draw[carte,bB,thick] (-3.22,2.017)--(-2.223,1.793)--(-1.789,1.674)--(-1.404,1.551)--(-1.057,1.424)--(-0.739,1.286)--(-0.454,1.139)--(-0.219,0.992)--(-0.001,0.815)--(-0.166,0.645)--(-0.294,0.448)--(-0.357,0.255)--(-0.357,0.079)--(-0.31,-0.049)--(-0.23,-0.144)--(-0.128,-0.204)--(0,-0.228)--(0.128,-0.204)--(0.23,-0.144)--(0.31,-0.049)--(0.357,0.079)--(0.357,0.255)--(0.294,0.448)--(0.166,0.645)--(0.001,0.815)--(0.219,0.992)--(0.454,1.139)--(0.739,1.286)--(1.057,1.424)--(1.404,1.551)--(1.789,1.674)--(2.223,1.793)--(3.22,2.017);
+\draw[bS,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.363,1.829)--(-2.251,1.801);
+\draw[bB,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (1.129,1.453)--(1.317,1.522);
+\draw[bB,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-1.298,1.515)--(-1.111,1.446);
+\draw[bB,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (0.343,0.338)--(0.262,0.521);
+\draw[bB,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-0.27,0.503)--(-0.351,0.32);
+\draw[carte,bS] (-0.067,-0.157)--(0.026,-0.165)--(0.115,-0.138)--(0.186,-0.079)--(0.226,0)--(0.232,0.088)--(0.204,0.17)--(0.141,0.244)--(0.064,0.282)--(-0.026,0.29)--(-0.115,0.26)--(-0.18,0.206)--(-0.223,0.128)--(-0.233,0.039)--(-0.206,-0.049)--(-0.146,-0.118)--(-0.067,-0.157);
+\draw[carte,bS] (-2.109,2.17)--(-0.626,1.837)--(-0.294,1.786)--(0,1.769)--(0.294,1.786)--(0.626,1.837)--(2.109,2.17);
+\draw[carte,bS] (-0.031,-0.108)--(0.026,-0.109)--(0.077,-0.091)--(0.114,-0.059)--(0.139,-0.01)--(0.142,0.039)--(0.123,0.088)--(0.089,0.125)--(0.038,0.149)--(-0.026,0.152)--(-0.077,0.133)--(-0.116,0.098)--(-0.14,0.049)--(-0.141,0)--(-0.121,-0.049)--(-0.08,-0.088)--(-0.031,-0.108);
+\draw[carte,bS] (-0.027,-0.079)--(0.051,-0.069)--(0.096,-0.02)--(0.092,0.049)--(0.038,0.096)--(-0.038,0.096)--(-0.077,0.071)--(-0.096,0.039)--(-0.091,-0.029)--(-0.064,-0.061)--(-0.027,-0.079);
+\end{scope}
+\draw[black!52,thin,->](0,-2.12)--(0,2.10)node[below right]{$y$};\draw[black!45,thin](-3.17,0)--(3.17,0);
+\node[above right,fill=white] at(0,0){$O$};
+\draw[black!45,densely dashed] (-2.231,0.819)--(2.231,0.819);
+\fill (-2.231,0.819) circle(.028);
+\node[above,fill=white] at (-2.231,0.859){$P_1$};
+\draw[black,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (-2.314,0.849)--(-1.854,0.68);
+\node[fill=white,inner sep=.5pt] at (-1.921,0.489){$\B(P_1)$};
+\fill (2.231,0.819) circle(.028);
+\node[above,fill=white] at (2.231,0.859){$P_2$};
+\draw[black,line width=.5pt,-{Stealth[length=1.3mm,width=.95mm]}] (2.149,0.789)--(2.609,0.957);
+\node[fill=white,inner sep=.5pt] at (2.541,1.189){$\B(P_2)$};
+\fill (0,0.8188679245283019)circle(.038);\node[above right,fill=white]at(.02,0.8338679245283019){$P$};
+\draw[vec,bI] (2.10,1.86)--(2.72,1.86)node[midway,below,fill=white]{$\Be$};
+\end{tikzpicture}}
+% Figures du dipôle et de l'expérience aimant–bobine.
+\newcommand{\boucleplane}{\begin{tikzpicture}[scale=.93]
+ \draw[thin] (-1.95,.83)--(-2.44,-.96)--(1.76,-.96);
+ \draw[semithick,sens=.57] plot[smooth cycle,tension=.70] coordinates {(-1.63,-.36)(-1.28,.01)(-.97,.10)(-.87,.41)(-.64,.60)(-.37,.41)(-.12,.54)(.08,.33)(.13,.06)(.61,-.07)(1.03,-.32)(.99,-.48)(.57,-.56)(.23,-.52)(-.3,-.26)(-.69,-.33)(-1.15,-.56)(-1.50,-.58)};
+ \draw[vec] (-.44,.02)--(-.44,1.18)node[above]{$\vec n$};\node[right] at(1.03,-.42){$I$};\end{tikzpicture}}
+\newcommand{\bohrorbite}{\begin{tikzpicture}[scale=.94]
+ \draw[axe] (0,.08)--(0,1.44)node[above]{$Oz$};
+ \draw[bB,semithick] (0,0) ellipse(1.51 and .45);
+ \draw[bB,semithick,sens=.61] (1.42,-.15) arc[start angle=-20,end angle=30,x radius=1.51,y radius=.45];
+ \node[bB,right] at(1.57,.29){$e^-$};\node[bB,right] at(1.55,-.04){$q=-e$};
+ \draw[bI,semithick,sens=.57] (1.48,-.095) arc[start angle=-12,end angle=-51,x radius=1.51,y radius=.45];
+ \node[bI,below right] at(1.13,-.33){$I$};
+ \fill (0,0) circle(.04);\node[above right] at(.04,.05){noyau};\node[left] at(-.05,-.1){$+q$};
+ \draw[bI,dashed] (0,-.08)--(0,-.45);\draw[bI,vec] (0,-.45)--(0,-1.17)node[right]{$\vm$};\end{tikzpicture}}
+\newcommand{\barreau}[1]{\begin{tikzpicture}[scale=.95]
+ \draw[semithick] (-.64,1.37)--(.64,1.37);\foreach \x in {-.53,-.27,-.01,.25,.51}{\draw[thin] (\x,1.38)--++(.12,.18);}
+ \draw (0,1.36)--(0,.88);\draw[semithick] (-.36,.87) rectangle(.36,-.77);
+ \ifnum#1=0
+ \foreach \x/\y/\ang in {-.19/.53/52,.13/.47/-43,-.15/.16/154,.13/.08/-76,-.19/-.16/-130,.12/-.31/55,-.19/-.55/34}{\draw[bI,-{Stealth[length=1.2mm]}] (\x,\y)--++(\ang:.22);}
+ \else
+ \foreach \x/\y in {-.17/.48,.13/.31,-.17/-.03,.13/-.24,-.17/-.51}{\draw[bI,-{Stealth[length=1.3mm]}] (\x,\y)--++(0,.26);}
+ \foreach \y in {-.55,-.10,.36,.81}{\filpoint{-.65}{\y}{bB}\filcroix{.65}{\y}{bB}}\fi
+ \end{tikzpicture}}
+\newcommand{\paramNoyau}{\begin{tikzpicture}[scale=.81]\draw[semithick] (0,0) ellipse(1.39 and .50);\croixpt{-.28}{0}{black}\node[right] at(-.20,0){noyau};\end{tikzpicture}}
+\newcommand{\basespher}{\begin{tikzpicture}[scale=.97]
+ \draw[axe] (0,-.63)--(0,2.75)node[above]{$Oz$};
+ \draw[bB,semithick] (0,.02) ellipse(.52 and .16);
+ \draw[bB,semithick,sens=.52] (-.52,.02) arc[start angle=180,end angle=360,x radius=.52,y radius=.16];
+ \node[bB,below left]at(-.44,-.1){$I$};
+ \draw[vec,bI] (0,-.18)--(0,.75)node[right]{$\mM$};
+ \coordinate (M) at (1.52,1.68);\draw[bB,fill=white] (M) circle(.088);
+ \draw[bB,thin] (M)++(-.05,-.05)--++(.10,.10) (M)++(-.05,.05)--++(.10,-.10);
+ \node[bB,above left] at(M){$M$};\node[bB,below left] at(M){$\uphi$};
+ \draw[vec,bB] (M)--++(.55,.60)node[right]{$\ur$};\draw[vec,bB] (M)--++(.60,-.55)node[right]{$\ut$};
+ \end{tikzpicture}}
+\newcommand{\dipoleExterne}{\begin{tikzpicture}[scale=.90]
+ \draw[vec,bB] (-1.92,-.25)--(-1.04,.69)node[above]{$\Be$};
+ \begin{scope}[rotate=-13]\draw[semithick] (.33,-.24) ellipse(.40 and .14);
+ \draw[semithick,sens=.65] (-.07,-.24) arc[start angle=180,end angle=360,x radius=.4,y radius=.14];
+ \draw[vec,bI] (.33,-.91)--(.33,.55)node[above right]{$\mM$};\croixpt{.33}{-.24}{bS};
+ \node[above left,bS] at(.24,-.22){$O$};\node[below right] at(.73,-.19){$I$};\end{scope}\end{tikzpicture}}
+\newcommand{\gradchamp}{\begin{tikzpicture}[scale=.92]
+ \foreach \p/\y/\xx/\yy in {-1.30/.25/1.92/1.33,-1.09/-.34/1.90/1.20,-.82/-.97/1.89/1.07}{
+ \draw[semithick,sens=.64] (\p,\y)..controls(\p+.49,\y+.85) and (1.14,\yy-.30)..(\xx,\yy);}
+ \node[right] at(1.90,1.35){$\Be$};
+ \draw[vec,bI] (-.63,-.56)--(-.77,.59)node[left]{$\mM$};
+ \draw[vec,bB] (-.35,.52)--(.03,.85);
+ \draw[bB,-{Stealth[length=1.3mm]}] (-.77,.39)..controls(-.57,.53)..(-.52,.43);
+ \draw[bB,-{Stealth[length=1.3mm]}] (-.60,-.45)..controls(-.81,-.61)..(-.84,-.49);\end{tikzpicture}}
+\newcommand{\champBobine}{\begin{tikzpicture}[x=.88cm,y=.85cm]
+ \draw[axe] (-.20,0)--(4.22,0)node[right]{$z$};\draw[axe] (0,-.1)--(0,1.91)node[above]{$B_z$};
+ \draw[bI,thick,domain=0:4.00,samples=80] plot(\x,{1.61/(1+((\x-2.04)/.83)^2)^1.5});
+ \draw[bI,densely dashed] (2.04,0)--(2.04,1.61);\node[bI,below] at(2.04,-.02){$A$};\end{tikzpicture}}
+\newcommand{\dessinBobine}{\begin{tikzpicture}[scale=.89]
+ \draw[axe] (-2.32,0)--(2.40,0);
+ \foreach \s in {-1,1}{
+ \draw[bG,semithick,sens=.19] (-2.14,{\s*.92})..controls(-1.74,{\s*.48}) and (-1.31,{\s*.29})..(-.63,{\s*.28});
+ \draw[bG,semithick,sens=.77] (.62,{\s*.28})..controls(1.3,{\s*.29}) and (1.75,{\s*.59})..(2.1,{\s*.96});}
+ \draw[bG,semithick,sens=.82] (-2.11,0)--(2.11,0);
+ \draw[bB,semithick] (-.65,-.48)rectangle(.65,.48);\node[bB,below]at(.0,-.48){bobine};
+ \draw[bI,semithick] (0,-.10)--(0,.10);\node[bI,below] at(.03,-.10){$A$};\end{tikzpicture}}
+\newcommand{\epSimple}[1]{\begin{tikzpicture}[scale=.86]
+ \draw[axe] (-.20,0)--(4.23,0)node[right]{$z$};
+ \ifnum#1=1 \draw[axe] (0,-.17)--(0,1.82)node[above]{$E_p$};
+ \else \draw[axe] (0,-1.69)--(0,.40)node[above]{$E_p$};\fi
+ \draw[bI,thick,domain=.05:4.00,samples=78] plot(\x,{#1*1.44/(1+((\x-2.08)/.78)^2)^1.5});
+ \end{tikzpicture}}
+\newcommand{\bobineVerticale}{\begin{tikzpicture}[scale=.86]
+ \draw[axe] (-1.42,-.67)--(-1.42,1.48)node[above]{$z$};
+ \draw[semithick] (-.22,-.85)--(-.22,1.71) (.22,-.85)--(.22,1.71);
+ \draw[bB,semithick] (-.59,-.59)rectangle(.59,.25);\node[bB,right]at(.61,-.27){bobine};
+ \fill[bI] (.01,.76)circle(.080);\node[right]at(.32,.79){aimant};\end{tikzpicture}}
+\newcommand{\epPesanteur}[1]{\begin{tikzpicture}[x=.93cm,y=.83cm]
+ \draw[axe] (-.25,0)--(4.34,0)node[right]{$z$};
+ \ifnum#1=1 \draw[axe] (0,-.22)--(0,2.84)node[above]{$E_p$};\else
+ \draw[axe](0,-1.60)--(0,2.10)node[above]{$E_p$};\fi
+ \draw[bB,semithick](-.18,-.072)--(4.02,1.608);
+ \draw[bI,semithick,samples=100,domain=0:4.03] plot(\x,{#1*1.53/(1+((\x-1.98)/.75)^2)^1.5});
+ \draw[bS,thick,samples=100,domain=0:4.03] plot(\x,{.40*\x+#1*1.53/(1+((\x-1.98)/.75)^2)^1.5});
+ \ifnum#1=1
+ \draw[bI,<->,thin] (1.77,2.49)--(2.30,2.49);
+ \draw[bI,<->,thin] (2.86,1.33)--(3.47,1.33);
+ \fill[bI] (3.17,{.4*3.17+1.53/(1+((3.17-1.98)/.75)^2)^1.5})circle(.045);
+ \else
+ \draw[bI,<->,thin] (1.59,-.89)--(2.21,-.89);
+ \fill[bI] (1.93,{.4*1.93-1.53/(1+((1.93-1.98)/.75)^2)^1.5})circle(.045);
+ \fi\end{tikzpicture}}
+\begin{document}
+{\raggedright\fontsize{27}{31}\selectfont\bfseries Magnétostatique\par}
+{\setlength{\parskip}{1.65pt}
+\planP{I}{p:proprietes}
+\planS{1}{s:sym}\planS{2}{s:flux}\planS{3}{s:amp}\planS{4}{s:topo}
+\planSS{a}{s:ldc}\planSS{b}{s:tube}\planSS{c}{s:compar}
+\planP{II}{p:ex}\planS{1}{s:cable}
+\planSS{a}{s:champcable}\planSS{b}{s:bilanen}
+\planS{2}{s:sole}\planSS{a}{s:calcul}\planSS{b}{s:energie}
+\planS{3}{s:cartes}\planS{4}{s:bilan}
+\planP{III}{p:dip}\planS{1}{s:moment}
+\planSS{a}{s:boucle}\planSS{b}{s:atome}\planSS{c}{s:aimant}
+\planS{2}{s:champdip}\planS{3}{s:actions}
+\planSS{a}{s:force}\planSS{b}{s:ep}\planS{4}{s:stern}}
+\vspace{2mm}
+
+% Manuscrit, pages 1 et 2.
+La magnétostatique étudie les champs magnétiques créés par des distributions de courants \textbf{indépendantes du temps} :
+\[
+ \D\bigl\{\vj(P)\bigr\}\longrightarrow \B(M).
+\]
+\deuxcol{.23}{\maconduc}{On considère des courants dans des conducteurs pour lesquels \(\rho=0\). On se place à l'échelle mésoscopique.}
+Toute la magnétostatique est contenue dans deux équations de Maxwell :
+\begin{result}[4]\[
+ \divg\B=0,\qquad \rot\B=\mu_0\vj.
+\]\end{result}
+\deuxcol{.25}{\boussoles}{\textbf{Historique :} en 1819, Œrsted observe que des boussoles s'alignent suivant des cercles autour d'un fil parcouru par un courant.}
+En magnétostatique, il n'y a pas de potentiel \(V\). Il n'y a pas d'énergie potentielle \(E_p\), car la force magnétique ne travaille pas.
+
+\section{Propriétés du champ magnétique}\label{p:proprietes}
+\subsection{Propriétés de symétrie}\label{s:sym}
+\textbf{Rappel :} \(\rot\B=\mu_0\vj\).
+\begin{result}[4]
+Un plan de symétrie (respectivement d'antisymétrie) d'une distribution de courant \(\vj\) est un plan d'antisymétrie (respectivement de symétrie) du champ magnétique \(\B\).
+\end{result}
+\begin{result}[4]
+En un point d'un plan de symétrie d'une distribution de courant, le champ magnétique est perpendiculaire à ce plan.
+
+En un point d'un plan d'antisymétrie d'une distribution de courant, le champ magnétique est contenu dans ce plan.
+\end{result}
+
+% Manuscrit, pages 3 à 7.
+\subsection{Champ à flux conservatif}\label{s:flux}
+L'équation \(\divg\B=0\) se traduit ainsi :
+\begin{result}[3]\(\B\) est à \textbf{flux conservatif}. Le flux de \(\B\) à travers toute surface fermée est nul.\end{result}
+Il existe un potentiel vecteur \(\A(M)\) tel que
+\[
+ \B=\rot\A.
+\]
+\petittitre{Remarques :}
+\begin{itemize}
+\item Le potentiel vecteur \(\A(M)\) n'est plus au programme.
+\[
+ \rot\bigl(\rot\A\bigr)=\mu_0\vj=\grad\bigl(\divg\A\bigr)-\Delta\A.
+\]
+On peut montrer qu'il est possible de choisir \(\A\) tel que \(\divg\A=0\) (jauge de Coulomb). On en déduit l'équation de Poisson pour \(\A\) :
+\bmath{\Delta\A+\mu_0\vj=\vzero.}
+\deuxcol{.30}{\distribution}{Pour la distribution \(\D=\{\vj(P)\}\), on peut montrer qu'en imposant la condition aux limites \(\A(\infty)=\vzero\), on obtient
+\[
+ \A(M)=\frac{\mu_0}{4\pi}\iiint_{\D}\frac{\vj(P)}{PM}\,\dtau.
+\]}
+En prenant le rotationnel de \(\A\), on retrouve la loi de Biot et Savart. L'expression de \(\A\) est analogue à celle du potentiel électrostatique :
+\[
+ V(M)=\iiint_{\D}\frac{\rho(P)\,\dtau}{4\pi\varepsilon_0\,PM}.
+\]
+\item \textbf{Conséquences :}\par
+\fig{\tubechamp}
+\begin{result}[4]\flignes\end{result}
+Ces propriétés sont \textbf{toujours} vraies.
+\item Si l'on cherche à calculer le champ \(\B\) traversant un contour \(\Cc\), on peut choisir n'importe quelle surface s'appuyant sur \(\Cc\) et orientée par \(\Cc\).
+\deuxcol{.27}{\surfFlux}{\[
+ \iint_{\Sigma}\B\cdot\dds
+ =\iint_{\Sigma'}\B\cdot\dds
+ =\iint_{\Sigma''}\B\cdot\dds.
+\]
+Cette intégrale est indépendante du choix de \(\Sigma\) : elle ne dépend que de \(\Cc\).}
+\petittitre{Démonstration :}
+\deuxcol{.26}{\surfPreuve}{Considérons \(\Sigma\cup\Sigma'\). Pour la surface fermée orientée vers l'extérieur,
+\[
+ \oiint_{\Sigma\cup\Sigma'}\B\cdot\dds=0,\qquad
+ \iint_{\Sigma'}\B\cdot\dds-\iint_{\Sigma}\B\cdot\dds=0.
+\]}
+\end{itemize}
+
+% Manuscrit, pages 8 à 10.
+\subsection{Théorème d'Ampère}\label{s:amp}
+On part de \(\rot\B=\mu_0\vj\).
+\deuxcol{.25}{\surfAmpere}{Le contour \(\Cc\) est \textbf{fermé et orienté}. La surface \(\Sigma\) s'appuie sur \(\Cc\) et est orientée par \(\Cc\).}
+D'après le théorème de Stokes,
+\[
+ \oint_{\Cc}\B\cdot\dM
+  =\iint_\Sigma\rot\B\cdot\dds
+  =\mu_0\iint_\Sigma\vj\cdot\dds.
+\]
+\begin{result}[5]\textbf{Théorème d'Ampère}\par
+Pour un contour \(\Cc\) \textbf{fermé et orienté},
+\[
+ \oint_{\Cc}\B\cdot\dM=\mu_0\Ien.
+\]\end{result}
+C'est l'analogue du théorème de Gauss.
+\petittitre{Remarques :}
+\begin{itemize}
+\item Ce théorème est très important pour calculer \(\B\) dans les situations de haute symétrie.
+\item Le courant enlacé ne dépend pas du choix de \(\Sigma\).
+\deuxcol{.27}{\surfDeux}{\(\Ien(\Sigma)=\Ien(\Sigma')\), car \(\divg\vj=0\) : \(\vj\) est à \textbf{flux conservatif}.}
+\item Les champs magnétiques enlacent les courants. On déduit le sens du champ magnétique à l'aide de la règle de la main droite.\par
+\fig{\sensfil}
+\item \leavevmode\begin{minipage}{.99\linewidth}
+\deuxcol{.36}{\algebre}{Tout est algébrique :
+\[\oint_{\Cc}\B\cdot\dM=\mu_0(-I_1+I_2+I_3-I_4).\]}
+\end{minipage}
+\end{itemize}
+
+% Manuscrit, pages 10 à 15.
+\subsection{Propriétés topographiques}\label{s:topo}
+\subsubsection{Forme des lignes de champ}\label{s:ldc}
+\begin{itemize}
+\item Le champ \(\B\) est à flux conservatif (\(\divg\B=0\)). Les lignes de champ ne peuvent pas diverger ou converger à partir des sources.
+\item Pour \(\E\), on a \(\rot\E=\vzero\). Le champ \(\E\) est à circulation conservative : il n'y a pas de ligne de champ fermée. Pour \(\B\), on a \(\rot\B=\mu_0\vj\) : les lignes de champ peuvent être fermées.
+\item D'après le théorème d'Ampère, les lignes de champ de \(\B\) enlacent les courants, et le sens du champ est donné par le sens du courant.
+\deuxcol{.31}{\enlacefil}{On applique la règle de la main droite.}
+\item Si deux lignes de champ se croisent, \(\B=\vzero\) au point de croisement. Cette propriété est vraie pour tout champ vectoriel.
+\end{itemize}
+\subsubsection{\texorpdfstring{Évolution de \(\lVert\B\rVert\) dans un tube de courant}{Évolution de la norme de B dans un tube de courant}}\label{s:tube}
+Comme \(\divg\B=0\), \(\B\) est à flux conservatif.
+\begin{cadre}\flignes\end{cadre}
+
+\subsubsection{\texorpdfstring{Comparaison de \(\E\) et de \(\B\)}{Comparaison de E et de B}}\label{s:compar}
+\begin{center}
+\renewcommand{\arraystretch}{1.65}\begin{tabularx}{.96\linewidth}{@{}X|X@{}}
+\textbf{Électrostatique} & \textbf{Magnétostatique}\\\hline
+\(\E\) est un vrai vecteur. & \(\B\) est un pseudovecteur.\\\hline
+\(\E\) est à circulation conservative. & \(\B\) est à flux conservatif.\\\hline
+Les lignes de champ ne peuvent pas être fermées. & Les lignes de champ peuvent être fermées.\\\hline
+Les lignes de champ de \(\E\) divergent des sources ou convergent vers elles. & Les lignes de champ de \(\B\) enlacent les sources.\\\hline
+Le signe des charges détermine l'orientation de \(\E\). & Le sens des courants détermine l'orientation de \(\B\).
+\end{tabularx}\end{center}
+Loin des sources, \(\rho=0\) et \(\vj=\vzero\) :
+\[
+ \begin{array}{cc@{\qquad\qquad}cc}
+ \divg\E&=0,&\divg\B&=0,\\
+ \rot\E&=\vzero,&\rot\B&=\vzero.
+ \end{array}
+\]
+Les deux champs ont alors les mêmes propriétés en \textbf{statique}.
+\petittitre{Conséquences :}
+\begin{enumerate}[label=\arabic*.]
+\item Loin des sources, les champs créés par un dipôle électrique \(\vec p\) et par un dipôle magnétique \(\vm\) ont des formes identiques.
+\Needspace{18\baselineskip}\item Considérons une distribution \(\D\) présentant une symétrie de révolution autour de \(\Delta\).
+\end{enumerate}
+\begin{center}\renewcommand{\arraystretch}{1.33}
+\begin{tabularx}{\linewidth}{@{}>{\centering\arraybackslash}X|>{\centering\arraybackslash}X@{}}
+\axesCompar{0}&\axesCompar{1}\\
+\(M\in\Delta:\quad \E(M)=E_z(z)\uz\).&\(M\in\Delta:\quad \B(M)=B_z(z)\uz\).\\
+\(M'\) est proche de l'axe.&\(M'\) est proche de l'axe.\\
+\((M,\ur,\uz)\) est un plan de symétrie de \(\D\).&\((M,\ur,\uz)\) est un plan d'antisymétrie de \(\D\).\\
+\(\E(M')=E_r(r,z)\ur+E_z(r,z)\uz\).&\(\B(M')=B_r(r,z)\ur+B_z(r,z)\uz\).\\
+Le flux de \(\E\) à travers le petit cylindre est nul.&Le flux de \(\B\) à travers le petit cylindre est nul.\\
+\(E_z(r,z)\simeq E_z(z)\),&\(B_z(r,z)\simeq B_z(z)\),\\
+\(\displaystyle E_r(r,z)\simeq-\frac r2\frac{\dd E_z}{\dd z}\).&
+\(\displaystyle B_r(r,z)=-\frac r2\frac{\dd B_z}{\dd z}\).
+\end{tabularx}\end{center}
+% Manuscrit, pages 15 à 23.
+\section{Exemples de quelques champs magnétostatiques}\label{p:ex}
+\subsection{Câble rectiligne}\label{s:cable}
+\begin{exemple}
+\subsubsection{Calcul du champ magnétique}\label{s:champcable}
+\deuxcol{.38}{\cylAmp}{La densité de courant \(\vj=j\uz\) est uniforme pour \(r<a\). L'intensité est \(I=j\pi a^2\). Le champ s'écrit a priori
+\[
+ \B(M)\ \left|\begin{array}{l}B_r(r,\theta,z)\\B_\theta(r,\theta,z)\\B_z(r,\theta,z)\end{array}\right. .
+\]}
+\petittitre{Invariances et symétries}
+\begin{itemize}
+\item La distribution est invariante par rotation autour de \(Oz\).
+\item Elle est invariante par translation parallèle à \(Oz\).
+\item \((M,\ur,\ut)\) est un plan d'antisymétrie de \(\D\), donc un plan de symétrie de \(\B\). Ainsi, \(B_z=0\).
+\item \((M,\ur,\uz)\) est un plan de symétrie de \(\D\), donc un plan d'antisymétrie de \(\B\). Ainsi, \(\B\) est parallèle à \(\ut\).
+\end{itemize}
+\textbf{Conclusion :}
+\bmath{\B(M)=B_\theta(r)\ut.}
+\petittitre{Théorème d'Ampère}
+Le contour d'Ampère est le cercle d'axe \(Oz\) et de rayon \(r\) passant par \(M\).
+\[
+\begin{aligned}
+ \oint_{\Cc}\B(M)\cdot\dM
+ &=\oint_{\Cc} B_\theta(r)\ut\cdot r\,\dd\theta\,\ut
+ =\int_0^{2\pi}B_\theta(r)\,r\,\dd\theta\\
+ &=B_\theta(r)\,r\int_0^{2\pi}\dd\theta
+ =2\pi rB_\theta(r).
+\end{aligned}
+\]
+Le courant enlacé vaut
+\[
+ \Ien=\begin{cases}j\pi a^2=I,&r>a,\\j\pi r^2,&r<a.\end{cases}
+\]
+On en déduit :
+\deuxcol{.48}{\(\begin{aligned}
+ r>a:\quad&B_\theta(r)=\frac{\mu_0 I}{2\pi r},\\[4pt]
+ r<a:\quad&B_\theta(r)=\frac{\mu_0j\pi r^2}{2\pi r}=\frac{\mu_0jr}{2}.
+ \end{aligned}\)}{\centering\grapheCable}
+\petittitre{Remarques :}
+\begin{enumerate}[label=\arabic*)]
+\item Pour une distribution volumique de courant, \(\B\) est continu.
+\item Pour \(r<a\), on obtient la \textbf{formulation intrinsèque}
+\deuxcol{.24}{\formintr}{\[
+ \B=\frac{\mu_0\,\vj\wedge\fle{OM}}2,\qquad O\in\Delta.
+\]
+\(\vj\wedge\fle{OM}=\vj\wedge\fle{HM}=jr\ut\).}
+\item Pour un fil rectiligne, \(a\to 0\). Les symétries sont les mêmes.
+\deuxcol{.24}{\filAmp}{Pour tout \(r>0\), \(\displaystyle\oint_{\Cc}\B\cdot\dM=\mu_0 I\).}
+\betoile{5}{\B(M)=\frac{\mu_0I}{2\pi r}\ut.}
+\fig{\cerclesfil{1}\hspace{14mm}\cerclesfil{0}}
+Les lignes de champ sont circulaires.
+\end{enumerate}
+\subsubsection{Bilan énergétique à l'intérieur du conducteur}\label{s:bilanen}
+\deuxcol{.31}{\cylBilan}{\textbf{Système :} on délimite un volume cylindrique de rayon \(r\), d'axe \(Oz\) et de hauteur \(h\).\par Cf. chapitre B2.}
+\petittitre{Bilan local}
+\bmath{\pd{\uem}{t}+\divg\vPi=-\vj\cdot\E.}
+\petittitre{Bilan macroscopique}
+\bmath{\frac{\dd\Uem}{\dd t}=-\oiint_\Sigma\vPi\cdot\dds-\iiint_V\vj\cdot\E\,\dtau.}
+Dans le conducteur, \(\vj=\sigma_0\E\) et
+\[
+ \left\{\begin{aligned}
+ \B&=\frac{\mu_0jr}{2}\ut,\\
+ \vj&=j\uz,\\
+ \E&=\frac j{\sigma_0}\uz.
+ \end{aligned}\right.
+\]
+L'énergie électromagnétique est indépendante du temps :
+\[
+ \Uem=\iiint_V\left(\frac12\varepsilon_0 E^2+\frac{B^2}{2\mu_0}\right)\dtau.
+\]
+\[
+ \Uem=\frac12\varepsilon_0\left(\frac j{\sigma_0}\right)^2\pi r^2h
+ +\frac1{2\mu_0}\int_0^r\left(\frac{\mu_0ju}{2}\right)^2 2\pi u\,\dd u\,h.
+\]
+Ces termes sont indépendants de \(t\), donc \(\displaystyle\frac{\dd\Uem}{\dd t}=0\).
+
+Vérifions ce résultat. D'une part,
+\[
+ \vPi=\frac{\E\wedge\B}{\mu_0}
+ =\frac1{\mu_0}\frac j{\sigma_0}\uz\wedge\left(\frac{\mu_0jr}{2}\right)\ut.
+\]
+\begin{cadre}\deuxcol{.44}{\(\displaystyle\vPi=-\frac{j^2r}{2\sigma_0}\ur\).}{La puissance est transférée vers le système.}\end{cadre}
+D'où
+\[
+ \oiint_\Sigma\vPi\cdot\dds
+ =-\frac{j^2r}{2\sigma_0}\oiint\ur\cdot\dd^2S\,\ur
+ =-\frac{j^2r}{2\sigma_0}\,2\pi rh.
+\]
+\begin{cadre}\deuxcol{.46}{\(\displaystyle\oiint_\Sigma\vPi\cdot\dds=-\frac{j^2\pi r^2h}{\sigma_0}\).}{Il s'agit de la puissance totale transférée vers le système.}\end{cadre}
+D'autre part,
+\[
+ \iiint_V\vj\cdot\E\,\dtau=\iiint_V\dtau\,\frac{j^2}{\sigma_0}
+ =\frac{j^2}{\sigma_0}\pi r^2h.
+\]
+Le bilan s'écrit donc :
+\[
+ \frac{\dd\Uem}{\dd t}
+ =-\oiint\vPi\cdot\dds-\iiint\vj\cdot\E\,\dtau
+ =\frac{j^2\pi r^2h}{\sigma_0}-\frac{j^2\pi r^2h}{\sigma_0}=0.
+\]
+Le bilan est vérifié.
+\begin{cadre}Toute la puissance électromagnétique entrant dans le système est dissipée par effet Joule.\end{cadre}
+\end{exemple}
+
+% Manuscrit, pages 23 à 28.
+\Needspace{118pt}\subsection{Solénoïde long}\label{s:sole}
+\begin{exemple}
+\paires{\solemodel{0}\par\(\vec j_s=j_s\ut\).}{\solemodel{1}\par \(n\) est le nombre de spires par unité de longueur. \(I\) est le courant dans chaque fil.}
+\bmath{j_s=nI.}
+\subsubsection{Calcul du champ magnétique}\label{s:calcul}
+Les composantes du champ se simplifient grâce à la symétrie cylindrique autour de \(\Delta\) :
+\[
+ \B\ \left|\begin{array}{l}B_r(r,\theta,z)\\B_\theta(r,\theta,z)\\B_z(r,\theta,z)\end{array}\right.
+ \qquad\longrightarrow\qquad
+ \left|\begin{array}{l}B_r(r)\\B_\theta(r)\\B_z(r)\end{array}\right. .
+\]
+Le plan \((M,\ur,\ut)\) est un plan de symétrie de \(\D\), donc un plan d'antisymétrie de \(\B\). Le champ \(\B\) est parallèle à \(Oz\).
+\textbf{Bilan :}
+\bmath{\B=B_z(r)\uz.}
+\begin{result}[5]\textbf{Au programme de PC :} on admet que, pour \(r>R\), \(\B=\vzero\).\end{result}
+Pour le démontrer, il faut utiliser la loi de Biot et Savart.
+
+\petittitre{Théorème d'Ampère pour un système de haute symétrie}
+\deuxcol{.47}{\solecontours}{\textbf{Contour \(\Cc_1\) :}
+\[
+ \begin{aligned}\oint_{\Cc_1}\B\cdot\dM
+ &=B_z(r_1)\ell-B_z(r_2)\ell\\
+ &=\mu_0(0).\end{aligned}
+\]
+On en déduit que \(B_z(r_1)=B_z(r_2)\) pour tous \(r_1,r_2\) à l'intérieur du solénoïde. Le champ \(\B\) y est uniforme.}
+
+\textbf{Contour \(\Cc_2\) :} le même raisonnement montre que \(\B\) est uniforme à l'extérieur du solénoïde, où \(\B=\vzero\).
+
+\textbf{Contour \(\Cc\) :}
+\[
+ \oint_{\Cc}\B\cdot\dM=B_z(r)\ell-0=\mu_0(j_s\ell)=\mu_0(n\ell)I.
+\]
+\betoile{5}{B_z(r)=\mu_0nI=\mu_0j_s.}
+\par\noindent
+\begin{minipage}[c]{.486\linewidth}\centering\solechamp\end{minipage}\hfill
+\begin{minipage}[c]{.486\linewidth}\centering\solesaut\end{minipage}\par
+Le champ \(\B\) est discontinu à la surface du solénoïde en raison de la distribution surfacique de courant.
+\subsubsection{Considérations énergétiques}\label{s:energie}
+\textbf{Rappel de première année :} \(\Phi=LI\).
+\par\smallskip
+\deuxcol{.43}{\soleenergie}{Comme \(\ell\gg R\), on néglige les effets de bord.}
+\[
+ \Phi_{\mathrm{tot}}=(n\ell)\Phi_{\mathrm{spire}}=n\ell\,\pi R^2\mu_0 nI,\qquad
+ \Phi_{\mathrm{tot}}=\pi R^2\mu_0n^2\ell I.
+\]
+\betoile{1}{L=\pi R^2\mu_0n^2\ell.}
+\petittitre{Énergie magnétique « stockée »}
+\[
+ \Uem=\iiint_V\dtau\,\frac{B^2}{2\mu_0}
+ =V\frac{B^2}{2\mu_0}\qquad (B\ \text{uniforme}).
+\]
+\[
+ \Uem=\pi R^2\ell\left(\frac1{2\mu_0}\right)(\mu_0nI)^2
+ =\frac{\pi R^2\mu_0 n^2\ell}{2}I^2.
+\]
+\betoile{5}{\Uem=\frac12 LI^2.}
+\end{exemple}
+% Manuscrit, pages 28 à 31. Planches et annotations imprimées et manuscrites.
+\subsection{Exemples de cartes de champs}\label{s:cartes}
+\begin{exemple}
+\petittitre{Une spire de courant}
+\paires{\lignesUne\par\small Lignes de champ magnétique d'une spire.}
+{\profilUne\par\small Champ sur l'axe d'une spire.}
+\end{exemple}
+\begin{exemple}
+\petittitre{Cinq spires de courant}
+\paires{\lignesCinq\par\small Lignes de champ magnétique d'un ensemble de cinq spires parcourues par des courants identiques.}
+{\profilCinq\par\small Allure de \(B(z)\) dans le cas de cinq spires parcourues par des courants identiques.}
+\end{exemple}
+\begin{exemple}
+\petittitre{Solénoïde}
+\paires{\lignesLong\par\small Lignes de champ magnétique d'un ensemble de vingt et une spires régulièrement réparties et parcourues par des courants identiques.}
+{\profilLong\par\small Allure de \(B(z)\) pour un solénoïde constitué de vingt et une spires régulièrement réparties et parcourues par des courants identiques.}
+\end{exemple}
+\begin{exemple}
+\petittitre{Champ créé par deux fils perpendiculaires au plan de la figure et parcourus par un courant}
+\deuxcol{.66}{\resizebox{\linewidth}{!}{\deuxFils}}{Loin des fils, on retrouve des lignes de champ circulaires.}
+\end{exemple}
+\begin{exemple}
+\petittitre{Champ créé par un fil perpendiculaire au plan de la figure et parcouru par un courant, en présence d'un champ magnétostatique uniforme contenu dans le plan de la figure}
+\deuxcol{.66}{\resizebox{\linewidth}{!}{\filUniforme}}{Loin du fil, on retrouve le champ uniforme \(\Be\).\par
+En \(P\), \(\B_{\mathrm{tot}}=\vzero\). Il y a un point où \(\B\) s'annule.
+\fig{\begin{tikzpicture}[scale=.78]
+\draw[bG,thin,sens=.73] (1,0) arc[start angle=0,end angle=355,radius=.7];
+\filpoint{.3}{0}{black}\node[right]at(.40,-.02){$O$};
+\draw[vec,bG] (.30,.70)--(-.55,.70)node[above]{$\B_{\mathrm{fil}}$};
+\draw[vec,bI] (.30,.70)--(1.15,.70)node[above]{$\Be$};\end{tikzpicture}}}
+\end{exemple}
+\Needspace{90pt}\subsection{Bilan}\label{s:bilan}
+\petittitre{Méthodologie}
+On commence par des considérations d'invariance et de symétrie. On dispose ensuite de trois méthodes en magnétostatique :
+\begin{enumerate}[label=\arabic*.]
+\item On utilise le théorème de superposition en décomposant la distribution en éléments connus.
+\item On part de \(\rot\B=\mu_0\vj\), puis on intègre.
+\item On applique le théorème d'Ampère pour les systèmes de haute symétrie.
+\end{enumerate}
+% Manuscrit, pages 31 à 37.
+\Needspace{190pt}\section{Dipôle magnétostatique}\label{p:dip}
+\subsection{Moment magnétique}\label{s:moment}
+\subsubsection{Boucle de courant plane}\label{s:boucle}
+\deuxcol{.35}{\boucleplane}{\begin{cadre}\textbf{Définition :} le moment magnétique \(\vm\) d'une boucle de courant est défini par
+\[\vm=I\vec S.\]\end{cadre}}
+Le vecteur surface \(\vec S\) est orienté par \(I\), selon la règle de la main droite. On a donc
+\[
+ \vm=IS\vec n.
+\]
+Unité : \(\mathrm{A\,m^2}\).
+\begin{exemple}
+\petittitre{Boucle de courant usuelle en travaux pratiques}
+Pour \(I\sim 1\,\mathrm A\) et \(S\sim 1\,\mathrm{cm^2}\), on obtient
+\[
+ m\sim 1\,\mathrm{A\,cm^2}.
+\]\end{exemple}
+\subsubsection{Moment magnétique atomique}\label{s:atome}
+Cf. les différents modèles de l'atome. On utilise ici le modèle de Bohr.
+\deuxcol{.44}{\bohrorbite}{L'électron \(e^-\) décrit une orbite circulaire. Pour la boucle de courant atomique, une charge \(-e\) passe à chaque période \(T\), d'où
+\[
+ \vm=-\frac eT S\uz.
+\]}
+\remaq En 1908, Richardson a évoqué ce modèle de la boucle atomique.
+
+Pour un électron en mouvement circulaire uniforme, \(vT=2\pi R\), donc \(T=2\pi R/v\). Ainsi,
+\[
+ \vm=-\frac{ev}{2\pi R}\,\pi R^2\uz=-\frac{evR}{2}\uz.
+\]
+Or \(\vec L_O=\fle{OM}\wedge m\vv=mRv\uz\). On en déduit :
+\begin{result}[5]\[
+ \vm=-\frac{e}{2m_e}\vec L_O,\qquad \gamma=-\frac{e}{2m_e}.
+\]
+\(\gamma\) est le rapport gyromagnétique de l'électron.\end{result}
+\petittitre{Ordre de grandeur :}
+En norme, \(m=\dfrac{e}{2m_e}L_O\). Dans le modèle de Bohr, \(L_O=n\hbar\).
+\begin{result}[5]\[
+ \mu_{\mathrm B}=\frac{e\hbar}{2m_e}.
+\]
+Il s'agit du magnéton de Bohr.\end{result}
+\betoile{5}{\mu_{\mathrm B}\simeq 10^{-23}\,\mathrm{A\,m^2}.}
+\begin{exemple}
+\petittitre{Expérience d'Einstein et de Haas}
+\deuxcol{.40}{\barreau{0}\hspace{4mm}\barreau{1}}{Les dipôles magnétiques s'alignent en présence d'un champ magnétique extérieur.}
+Le théorème du moment cinétique appliqué à l'ensemble du barreau par rapport à l'axe \(Oz\) traduit la conservation du moment cinétique :
+\[
+ L_\Delta(t=0^-)=L_\Delta(t=0^+)=0.
+\]
+\[
+ L_\Delta(t=0^+)=
+ \underbrace{-\frac{N\,2m_e}{e}\,\mu_{\mathrm B}}_{\text{moment cinétique atomique}}
+ +J_{\mathrm{barreau}}\underbrace{\omega(t=0^+)}_{\substack{\text{rotation du barreau}\\{}\ne 0}}.
+\]
+Les résultats expérimentaux montrent un écart d'un facteur 2 :
+\[
+ \mM_{\mathrm{atomique}}=\sum_{e^-}\mM_{\mathrm{orbitaux}}+\sum_{e^-}\mM_{\mathrm{spin}}.
+\]
+\[
+ \mM_O=-\frac{e}{2m_e}\vec L_O,\qquad
+ \mM_{\mathrm{spin}}=-\frac{e}{m_e}\vec S,\qquad
+ S_z=\pm\frac{\hbar}{2},
+\]
+où \(S_z\) est la projection du spin de l'électron sur l'axe \(Oz\). La mécanique quantique confirme l'expression
+\bmath{\mu_{\mathrm B}=\frac{e\hbar}{2m_e}.}
+\end{exemple}
+\petittitre{Analyse dimensionnelle de \(\mu_{\mathrm B}\) :}
+\deuxcol{.31}{\paramNoyau}{Les paramètres physiques sont \(e\), \(m_e\) et \(\hbar\), avec \([\hbar]=[L_z]\).}
+\[
+ [\mu_{\mathrm B}]=\frac{[e][\hbar]}{[m_e]},\qquad
+ \mu_{\mathrm B}=\frac{e\hbar}{2m_e}.
+\]
+\remaq Les noyaux, chargés positivement, produisent aussi un moment magnétique. On néglige leurs mouvements, car ils sont \(2\,000\) fois plus lourds que les électrons.
+
+\subsubsection{Aimant permanent}\label{s:aimant}
+\deuxcol{.36}{\begin{tikzpicture}\node[left] at(0,0){atome};\draw[bI,vec] (.11,0)--(1.20,0)node[right]{$\mu_{\mathrm B}$};\end{tikzpicture}}{La densité atomique vaut \(n\sim 10^{29}\,\mathrm{m^{-3}}\).}
+\begin{result}[2]\textbf{Aimantation :}
+\[
+ \frac{\dd^3\mathcal M}{\dtau}\simeq n\mu_{\mathrm B}.
+\]
+\textbf{Application numérique :} \(10^6\,\mathrm{A\,m^{-1}}\).\end{result}
+Pour un aimant néodyme/bore de volume \(V\sim 1\,\mathrm{cm^3}\), on trouve
+\betoile{2}{\mathcal M_{\mathrm{aimant}}\sim 1\,\mathrm{A\,m^2}.}
+Pour le même aimant Na/bore, \(\mathcal M_{\mathrm{aimant}}\sim 10\,\mathrm{A\,m^2}\).
+
+% Manuscrit, pages 38 à 40.
+\subsection{Champ créé par un dipôle}\label{s:champdip}
+\deuxcol{.36}{\basespher}{On utilise la \textbf{base sphérique}. L'invariance par rotation autour de \(Oz\) donne \(\B(M)=\B(r,\theta)\).\par
+Le plan \((M,\ur,\ut)\) est un plan d'antisymétrie de \(\mM\), donc un plan de symétrie de \(\B\). Ainsi, \(\B(M)\in(M,\ur,\ut)\).}
+\bmath{\B(M)=B_r(r,\theta)\ur+B_\theta(r,\theta)\ut.}
+Conformément au programme, on admet que, dans l'approximation dipolaire \(r\gg a\),
+\begin{result}[5]\[
+ \B(M)=\frac{\mu_0\mathcal M}{4\pi r^3}
+ \left|\begin{array}{l}2\cos\theta\\ \sin\theta\\ 0\end{array}\right. .
+\]\end{result}
+\petittitre{Remarques :}
+\begin{itemize}
+\item On retrouve la même dépendance en \(r^{-3}\) et la même isotropie en \(\theta\) que pour un dipôle électrostatique.
+\item La formulation intrinsèque est
+\betoile{5}{\B=\frac{\mu_0}{4\pi r^5}\left[3(\mM\cdot\vec r)\vec r-r^2\mM\right].}
+\item On retrouve le résultat de l'électrostatique avec la correspondance
+\[
+ \frac p{4\pi\varepsilon_0}\longrightarrow\frac{\mu_0\mathcal M}{4\pi}.
+\]
+La carte de champ est la même.
+\end{itemize}
+
+% Manuscrit, pages 41 à 46.
+\subsection{Actions subies par un dipôle}\label{s:actions}
+\subsubsection{Force et moment résultants}\label{s:force}
+\deuxcol{.31}{\dipoleExterne}{La \textbf{force de Laplace} est à l'origine des actions extérieures.}
+\begin{cadre}\[
+ \begin{aligned}
+ \Fr&=\oint I\,\dd\vec\ell\wedge\Be(P),\\
+ \Mo&=\oint\fle{OP}\wedge\bigl(I\,\dd\vec\ell\wedge\Be(P)\bigr).
+ \end{aligned}
+\]\end{cadre}
+\petittitre{Champ extérieur uniforme}
+\[
+ \Fr=\underbrace{\left(\oint I\,\dd\vec\ell\right)}_{=\vzero}\wedge\Be.
+\]
+\par\noindent\begin{minipage}{\linewidth}
+\begin{result}[4]\centering \(\displaystyle\Fr=\vzero.\)\end{result}
+\begin{result}[4]{\centering \(\displaystyle\Mo=\mM\wedge\Be.\)\par}
+Ce résultat a été démontré en première année.\end{result}
+\end{minipage}\par
+\begin{cadre}Un dipôle magnétique placé dans un champ magnétique extérieur uniforme ne se déplace pas, car la force résultante est nulle. Il s'aligne avec le champ, dans le même sens.\end{cadre}
+\begin{cadre}Le dipôle magnétique possède deux positions d'équilibre :
+\begin{itemize}
+\item une position stable si \(\mM\) et \(\B\) sont alignés dans le même sens ;
+\item une position instable si \(\mM\) et \(\B\) sont antialignés.
+\end{itemize}\end{cadre}
+\petittitre{Champ extérieur non uniforme}
+\textbf{Hypothèse :}
+\begin{itemize}
+\item La distance caractéristique \(L\) de variation de \(\Be\) est très grande devant la taille \(a\) du dipôle : \(L\gg a\).
+\end{itemize}
+On admet les expressions
+\begin{result}[6]\[
+ \begin{aligned}
+ \Fr&=\bigl(\mM\cdot\grad\bigr)_O\Be,\\
+ \Mo&=\mM\wedge\Be(O).
+ \end{aligned}
+\]\end{result}
+La force \(\Fr\) est nulle à l'ordre 0 en \(a/L\) et non nulle à l'ordre 1 en \(a/L\). Le moment \(\Mo\) est non nul à l'ordre 0 en \(a/L\).
+\petittitre{Conséquences :}
+On retrouve les mêmes conséquences que pour le dipôle électrostatique.
+\fig{\gradchamp}
+\begin{cadre}Le dipôle subit surtout un moment et s'aligne avec le champ magnétique. Il subit ensuite une force résultante qui l'amène vers les zones de champ fort.\end{cadre}
+\petittitre{Remarques :}
+\begin{enumerate}[label=\arabic*)]
+\item Ces formules sont valables que le dipôle soit rigide ou non. Pour un dipôle magnétique rigide, \(I\) et \(\vec S\) sont constants.
+\item Si le dipôle est rigide, \(\Fr=-\grad\bigl(-\mM\cdot\Be\bigr)\).
+\end{enumerate}
+\subsubsection{Énergie potentielle d'interaction}\label{s:ep}
+\deuxcol{.32}{\dipoleExterne}{La force de Laplace \textbf{travaille}.\par
+\textbf{Hypothèse :}
+\begin{itemize}\item \(L\gg a\).\end{itemize}}
+\par\noindent\begin{minipage}{\linewidth}
+Pour un dipôle \textbf{rigide}, on admet que
+\betoile{5}{E_p=-\mM\cdot\Be(O).}
+\end{minipage}\par
+\petittitre{Remarques :}
+\begin{enumerate}[label=\arabic*)]
+\item \(\Fr=-\grad E_p\).
+\item On retrouve tous les résultats précédents à partir de l'énergie : pour que \(E_p\) soit minimale, \(\mM\) s'aligne avec \(\Be\), puis le dipôle se déplace vers les zones de champ fort.
+\item Si l'on oblige le dipôle à rester antialigné avec \(\Be\), il subit une force résultante qui l'amène vers les zones de \textbf{champ faible}.
+\end{enumerate}
+
+% Manuscrit, pages 47 et 48. La page 49 du fichier est blanche.
+\begin{exemple}
+\petittitre{Expérience : aimant et bobine}
+\paires{\champBobine}{\dessinBobine}
+\[
+ E_p=-\mM\cdot\B=-\mathcal M_zB_z.
+\]
+\paires{\epSimple{1}\par\textbf{Aimant et bobine antialignés.}\par L'aimant est repoussé vers les zones de champ faible, hors de la bobine.}
+{\epSimple{-1}\par\textbf{Aimant et bobine alignés.}\par L'aimant est attiré vers les zones de champ fort, au centre de la bobine.}
+\deuxcol{.46}{\bobineVerticale}{\[
+ E_p=mgz-\mathcal M_zB_z.
+\]}
+\paires{\epPesanteur{1}\par\textbf{Cas antialigné.}\par La position d'équilibre stable est au-dessus de la bobine.}
+{\epPesanteur{-1}\par\textbf{Cas aligné.}\par La position d'équilibre stable est proche du centre de la bobine.}
+\end{exemple}
+\subsection{Expérience de Stern et Gerlach}\label{s:stern}
+Cf. polycopié.
+\end{document}

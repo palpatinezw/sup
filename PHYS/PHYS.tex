@@ -83,7 +83,7 @@
 
 \tableofcontents
 
-\chapter{Optique}
+\chapter{[O] Optique}
 \section{Définitions}
 \subsection{Milieux}
 \begin{itemize}
@@ -240,7 +240,7 @@ L’appareil est modélisé par un diaphragme à l'entrée, un objectif juste de
 \end{itemize}
 
 \clearpage
-\chapter{Électrocinétique}
+\chapter{[E] Électrocinétique}
 
 \section{Définitions}
 
@@ -574,7 +574,7 @@ c.f. Annexe surtout pour passe-bande
 \end{enumerate}
 
 \clearpage
-\chapter{Superposition}
+\chapter{[S] Superposition}
 
 \section{Ondes planes progressives unidimensionnelle}
 
@@ -653,7 +653,7 @@ On cherche les 2 minimums de déviation (à gauche et à droite), pour obtenir $
 \[ \lambda = \frac{2n_{\text{milieu}}a}{n}\sin (\frac{D_{\text{min}}}{2}) \]
 
 \clearpage
-\chapter{Mécanique}
+\chapter{[M] Mécanique}
 
 \section{Définitions}
 \begin{itemize}
@@ -1128,7 +1128,7 @@ Une force est dérivante d'une énergie potentielle si son travail est indépend
 \end{itemize}
 
 \clearpage
-\chapter{Thermodynamique}
+\chapter{[T] Thermodynamique}
 
 \section{Définitions}
 \begin{itemize}
@@ -1497,7 +1497,7 @@ Avec $\alpha = \frac{V_{\max}}{V_{\min}}$ \\
 
 \clearpage
 
-\chapter{Mécanique des fluides}
+\chapter{[F] Mécanique des fluides}
 
 \section{Définitions}
 \begin{itemize}
@@ -1733,130 +1733,7 @@ Pour un écoulement parfait ($R_e$ très grand)
 
 \clearpage
 
-\chapter{Induction}
-
-\section{Champ magnétique}
-\subsection{Propriétés}
-\begin{itemize}
-    \item Les invariances du champ magnétique sont les invariances de ses sources
-    \item Les plans de symétrie du champ magnétique sont des plans d'antisymétrie de ses sources et inversement
-    \item Pour un solénoïde infini, $\overrightarrow{B_{\text{int}}} = \mu_0 n I \vec{e_z}$ et $\overrightarrow{B_{\text{ext}}} = \vec{0}$
-\end{itemize}
-
-\subsection{Dipôle magnétique}
-\[ \vec{\mathcal{M}} = I \vec{S} \]
-
-\begin{itemize}
-    \item À une distance très grande devant la taille caractéristique du dipôle, on a l'approximation dipôlaire
-    \item Le champ magnétique créé est $\frac{\mu_0}{4 \pi} \frac{3(\vec{\mathcal{M}} \cdot \vec{r})\vec{r} - \vec{\mathcal{M}}r^2}{r^5}$ [HP]
-    \item L'allure des lignes de champ magnétique est $r = \lambda \sin^2 \theta$ [HP]
-\end{itemize}
-
-\subsection{Flux}
-\[ \dd \phi = \vec{B}\cdot \dd \vec{S} \]
-
-\begin{itemize}
-    \item En Weber $\text{Wb}$
-    \item Flux propre $\phi_p = Li$ le flux à travers un circuit dû à son propre champ magnétique
-    \begin{itemize}
-        \item $L$ inductance propre
-        \item Pour une bobine assimilée à un solénoïde infini, $\phi_p = \mu_0 \frac{N^2}{l} i S$ donc $L = \mu_0 \frac{N^2}{L}S$
-    \end{itemize}
-    \item Inductance mutuelle $M$ entre deux circuits $\phi_{1 \rightarrow 2} = M i_1 \et \phi_{2 \rightarrow 1} = M i_2$ 
-    \begin{itemize}
-        \item Pour une grande bobine 1 contenant une bobine 2, $M = \mu_0 \frac{N_1 N_2}{l} S_2$
-    \end{itemize}
-\end{itemize}
-
-\section{Force de Laplace}
-\[ \overrightarrow{F_{\text{mag}}} = q \vec{v} \wedge \vec{B}  \]
-\[ \dd \overrightarrow{F_{L}} = I \vec{\dd l} \wedge \vec{B} \]
-
-\begin{itemize}
-    \item La force élémentaire de Laplace est dû à l'effet du Hall, et n'est pas directement à cause de la force magnétique
-    \item La force élémentaire de Laplace est une force électrique, donc elle peut travailler
-    \item Pour les rails de Laplce, pour un courant de $M$ vers $N$, $\vec{F_L} = I \overrightarrow{MN} \wedge \vec{B}$
-    \item Pour tout circuit fermé dans un champ magnétique uniforme et stationnaire, la résultante des forces de Laplace est nulle
-    \item Pour une spire en rotation autour de l'axe $\vec{e_z}$ avec un champ magnétique uniforme selon $\vec{e_x}$, $\vec{\Gamma_L} = ISB \cos \theta \vec{e_z} = \vec{\mathcal{M}} \wedge \vec{B}$ [On intègre $\dd M_O(M) = \overrightarrow{OM} \wedge \dd \vec{F_L}$ pour tout point $M$. On pourrait se limiter à intégrer uniquement sur les 2 côtés horizontals]
-\end{itemize}
-
-\subsection{Généralisation}
-Un moment dipolaire magnétique $\vec{\mathcal{M}}$ dans un champ $\vec{B}$ uniforme et stationnaire
-\begin{itemize}
-    \item La résultant des forces de Laplace est nulle
-    \item $\vec{\Gamma_L} = \vec{\mathcal{M}}\wedge \vec{B}$
-    \item $E_p = - \vec{\mathcal{M}} \cdot \vec{B}$
-    \begin{itemize}
-        \item Position d'équilibre stable correspondant à la position parallèle - alignement du dipôle avec le champ magnétique
-        \item Position d'équilibre instable correspondant à la position antiparallèle - dipôle opposé au champ magnétique
-    \end{itemize}
-\end{itemize}
-
-\subsection{Moteur synchrone}
-\begin{itemize}
-    \item 2 paires de bobines de Helmholtz réalise un champ magnétique tournant
-    \item Pour un angle $\alpha$ entre le champ magnétique tournant et le dipôle magnétique du moteur, $\Gamma_L = \mathcal{M}B \sin \alpha$
-\end{itemize}
-
-\section{Induction électromagnétique}
-\begin{enumerate}
-    \item Un courant est induit dans un circuit fermé (ou tension ux bornes d'un circuit ouvert), lorsque le circuit est dans un champ magnétique non-stationnaire, ou en mouvement dans un champ magnétique non-uniforme
-    \item Loi de Lenz - les phénomènes d'induction s'opposent, par leurs effets, aux causes qui leur ont donné naissance
-    \item Loi de Faraday - $e = - \frac{\dd \phi}{\dt}$ la force électromotrice induite
-\end{enumerate}
-
-\subsection{Induction de Neumann}
-Circuits fixes dans des champs magnétiques qui varient dans le temps.
-
-\begin{itemize}
-    \item Auto-inductance d'un circuit - $e = - L\frac{\dd i}{\dt}$ (cf. Bobines en électrocinétique)
-    \item Bobines couplées - $e_1 = -L_1 \frac{\dd i_1}{\dt} - M \frac{\dd i_2}{\dt}$ et $e_2 = -L_2 \frac{\dd i_2}{\dt} - M \frac{\dd i_1}{\dt}$
-    \item Énergie magnétique - $E_{\text{mag}} = \frac{1}{2}L_1i_1^2 + \frac{1}{2}L_2i_2^2 + Mi_1i_2$
-    \item Coefficient de couplage - $k = \frac{|M|}{\sqrt{L_1L_2}} \leq 1$ (couplage parfait - $M^2 = L_1L_2$)
-\end{itemize}
-
-\subsection{Induction de Lorentz}
-Circuits mobiles dans des champs magnétiques stationnaires
-
-\begin{enumerate}
-    \item Expliciter le phénomène d'induction
-    \begin{enumerate}
-        \item Cause (force externe / générateur)
-        \item Variation qui mène à une variation de $\phi$
-        \item Loi de Faraday - $e(t)$ induite, puis $i(t)$
-        \item Loi de Lenz - opposition à la cause
-    \end{enumerate}
-    \item Trouver les équations mécaniques et électriques
-    \item Résoudre les équations couplées
-\end{enumerate}
-
-La puissance de la force de Laplace dû au courant induit est égale et opposée à la puissance de force électromotrice induite 
-\[ \mathcal{P}_L + \mathcal{P}_{\text{fem}} = 0 \]
-
-Cette relation permet aussi de trouver la force électromotrice induite. 
-\begin{itemize}
-    \item Rails de Laplace générateurs - $F_{\text{ext}} \rightarrow \ddot{x} \rightarrow \dot{x} \rightarrow \frac{\dd \phi}{\dt} \rightarrow e(t) \rightarrow i(t) \rightarrow F_L$ 
-    \item Rails de Laplace moteurs - $E \rightarrow i(t) \rightarrow F_L \rightarrow \ddot{x} \rightarrow \dot{x} \rightarrow \frac{\dd \phi}{\dt} \rightarrow e(t)$
-    \item Alternateur - $\Gamma_{\text{ext}} \rightarrow \ddot{\theta} \rightarrow \omega \rightarrow \frac{\dd \phi}{\dt} \rightarrow e(t) \rightarrow i(t) \rightarrow \vec{\mathcal{M}} \rightarrow \Gamma_L$
-\end{itemize}
-
-\subsection{Transformateur parfait}
-\begin{enumerate}
-    \item Couplage parfait - ligne de champs magnétiques sont intégralement canalisées d'un enroulement vers l'autre
-    \item Les résistances des enroulements sont négligeables
-    \item Les pertes d'énergies sont négligeables
-\end{enumerate}
-On définit le rapport de transformation
-\[ m = \frac{N_2}{N_1} = \frac{u_2}{u_1} = \frac{\phi_2}{\phi_1} = \frac{\sqrt{L_2}}{\sqrt{L_1}} \]
-
-\begin{itemize}
-    \item Le couplage étant parfait, $M = \sqrt{L_1L_2}$
-    \item Les pertes d'énergies étant négaligeable, $u_1i_1 + u_2i_2 = 0$ donc $\frac{i_2}{i_1} = -\frac{1}{m}$
-\end{itemize}
-
-\clearpage
-
-\chapter{Électromagnétisme}
+\chapter{[B] Électromagnétisme}
 
 \section{Définitions}
 
@@ -2052,7 +1929,6 @@ On définit le rapport de transformation
 \end{itemize}
 
 \section{Magnétostatique}
-
 \[ \text{div} \, \vec{B} = 0 \]
 \[ \rot \vec{B} = \mu_0 \vec{j} \]
 
@@ -2068,11 +1944,136 @@ On définit le rapport de transformation
 
 \begin{itemize}
     \item Les champs magnétiques enlaçent les courants
+    \item Autour d'un fil rectilinge, $\vec{B} = \frac{\mu_0 I}{2 \pi r} \vec{u_\theta}$
+    \item Pour un solénoïde infini, $\vec{B}_{\text{int}} = \mu_0 n I \vec{e_z}$ et $\vec{B}_{\text{ext}} = \vec{0}$
+\end{itemize}
+
+\subsection{Dipôle magnétique}
+\[ \vec{\mathcal{M}} = I \vec{S} \]
+
+\begin{itemize}
+    \item À une distance très grande devant la taille caractéristique du dipôle, on a l'approximation dipôlaire
+    \item{} [HP] Le champ magnétique créé est $\frac{\mu_0}{4 \pi} \frac{3(\vec{\mathcal{M}} \cdot \vec{r})\vec{r} - \vec{\mathcal{M}}r^2}{r^5}$ 
+    \item{} [HP] L'allure des lignes de champ magnétique est $r = \lambda \sin^2 \theta$ 
+    \item Moment dipolaire atomique - $\vec{\mathcal{M}} = -\frac{e}{T}S \vec{u_z} = -\frac{e}{2m_e} \vec{L_0}$
+    \begin{itemize}
+        \item $\gamma = -\frac{e}{2m_e}$ rapport gyromagnétique de l'électron
+        \item Dans le modèle de Bohr, $L_0 = n \hbar$, d'où $\mu_B = \frac{e\hbar}{2m_e} = 10^{-23} \text{ A m}^2 $ magnéton de Bohr
+    \end{itemize}
+\end{itemize}
+
+\clearpage
+\chapter{[I] Induction}
+
+\section{Flux magnétique}
+\[ \dd \phi = \vec{B}\cdot \dd \vec{S} \]
+
+\begin{itemize}
+    \item En Weber $\text{Wb}$
+    \item Flux propre $\phi_p = Li$ le flux à travers un circuit dû à son propre champ magnétique
+    \begin{itemize}
+        \item $L$ inductance propre
+        \item Pour une bobine assimilée à un solénoïde infini, $\phi_p = \mu_0 \frac{N^2}{l} i S$ donc $L = \mu_0 \frac{N^2}{L}S$
+    \end{itemize}
+    \item Inductance mutuelle $M$ entre deux circuits $\phi_{1 \rightarrow 2} = M i_1 \et \phi_{2 \rightarrow 1} = M i_2$ 
+    \begin{itemize}
+        \item Pour une grande bobine 1 contenant une bobine 2, $M = \mu_0 \frac{N_1 N_2}{l} S_2$
+    \end{itemize}
+\end{itemize}
+
+\section{Force de Laplace}
+\[ \overrightarrow{F_{\text{mag}}} = q \vec{v} \wedge \vec{B}  \]
+\[ \dd \overrightarrow{F_{L}} = I \vec{\dd l} \wedge \vec{B} \]
+
+\begin{itemize}
+    \item La force élémentaire de Laplace est dû à l'effet du Hall, et n'est pas directement à cause de la force magnétique
+    \item La force élémentaire de Laplace est une force électrique, donc elle peut travailler
+    \item Pour les rails de Laplce, pour un courant de $M$ vers $N$, $\vec{F_L} = I \overrightarrow{MN} \wedge \vec{B}$
+    \item Pour tout circuit fermé dans un champ magnétique uniforme et stationnaire, la résultante des forces de Laplace est nulle
+    \item Pour une spire en rotation autour de l'axe $\vec{e_z}$ avec un champ magnétique uniforme selon $\vec{e_x}$, $\vec{\Gamma_L} = ISB \cos \theta \vec{e_z} = \vec{\mathcal{M}} \wedge \vec{B}$ [On intègre $\dd M_O(M) = \overrightarrow{OM} \wedge \dd \vec{F_L}$ pour tout point $M$. On pourrait se limiter à intégrer uniquement sur les 2 côtés horizontals]
+\end{itemize}
+
+\subsection{Généralisation}
+Un moment dipolaire magnétique $\vec{\mathcal{M}}$ dans un champ $\vec{B}$ uniforme et stationnaire
+\begin{itemize}
+    \item La résultant des forces de Laplace est nulle
+    \item $\vec{\Gamma_L} = \vec{\mathcal{M}}\wedge \vec{B}$
+    \item $E_p = - \vec{\mathcal{M}} \cdot \vec{B}$
+    \begin{itemize}
+        \item Position d'équilibre stable correspondant à la position parallèle - alignement du dipôle avec le champ magnétique
+        \item Position d'équilibre instable correspondant à la position antiparallèle - dipôle opposé au champ magnétique
+    \end{itemize}
+\end{itemize}
+
+\subsection{Moteur synchrone}
+\begin{itemize}
+    \item 2 paires de bobines de Helmholtz réalise un champ magnétique tournant
+    \item Pour un angle $\alpha$ entre le champ magnétique tournant et le dipôle magnétique du moteur, $\Gamma_L = \mathcal{M}B \sin \alpha$
+\end{itemize}
+
+\section{Induction électromagnétique}
+\begin{enumerate}
+    \item Un courant est induit dans un circuit fermé (ou tension ux bornes d'un circuit ouvert), lorsque le circuit est dans un champ magnétique non-stationnaire, ou en mouvement dans un champ magnétique non-uniforme
+    \item Loi de Lenz - les phénomènes d'induction s'opposent, par leurs effets, aux causes qui leur ont donné naissance
+    \item Loi de Faraday - $e = - \frac{\dd \phi}{\dt}$ la force électromotrice induite
+\end{enumerate}
+
+\subsection{Induction de Neumann}
+Circuits fixes dans des champs magnétiques qui varient dans le temps.
+
+\begin{itemize}
+    \item Auto-inductance d'un circuit - $e = - L\frac{\dd i}{\dt}$ (cf. Bobines en électrocinétique)
+    \item Bobines couplées - $e_1 = -L_1 \frac{\dd i_1}{\dt} - M \frac{\dd i_2}{\dt}$ et $e_2 = -L_2 \frac{\dd i_2}{\dt} - M \frac{\dd i_1}{\dt}$
+    \item Énergie magnétique - $E_{\text{mag}} = \frac{1}{2}L_1i_1^2 + \frac{1}{2}L_2i_2^2 + Mi_1i_2$
+    \item Coefficient de couplage - $k = \frac{|M|}{\sqrt{L_1L_2}} \leq 1$ (couplage parfait - $M^2 = L_1L_2$)
+\end{itemize}
+
+\subsection{Induction de Lorentz}
+Circuits mobiles dans des champs magnétiques stationnaires
+
+\begin{enumerate}
+    \item Expliciter le phénomène d'induction
+    \begin{enumerate}
+        \item Cause (force externe / générateur)
+        \item Variation qui mène à une variation de $\phi$
+        \item Loi de Faraday - $e(t)$ induite, puis $i(t)$
+        \item Loi de Lenz - opposition à la cause
+    \end{enumerate}
+    \item Trouver les équations mécaniques et électriques
+    \item Résoudre les équations couplées
+\end{enumerate}
+
+La puissance de la force de Laplace dû au courant induit est égale et opposée à la puissance de force électromotrice induite 
+\[ \mathcal{P}_L + \mathcal{P}_{\text{fem}} = 0 \]
+
+Cette relation permet aussi de trouver la force électromotrice induite. 
+\begin{itemize}
+    \item Rails de Laplace générateurs - $F_{\text{ext}} \rightarrow \ddot{x} \rightarrow \dot{x} \rightarrow \frac{\dd \phi}{\dt} \rightarrow e(t) \rightarrow i(t) \rightarrow F_L$ 
+    \item Rails de Laplace moteurs - $E \rightarrow i(t) \rightarrow F_L \rightarrow \ddot{x} \rightarrow \dot{x} \rightarrow \frac{\dd \phi}{\dt} \rightarrow e(t)$
+    \item Alternateur - $\Gamma_{\text{ext}} \rightarrow \ddot{\theta} \rightarrow \omega \rightarrow \frac{\dd \phi}{\dt} \rightarrow e(t) \rightarrow i(t) \rightarrow \vec{\mathcal{M}} \rightarrow \Gamma_L$
+\end{itemize}
+
+\subsection{Transformateur parfait}
+\begin{enumerate}
+    \item Couplage parfait - ligne de champs magnétiques sont intégralement canalisées d'un enroulement vers l'autre
+    \item Les résistances des enroulements sont négligeables
+    \item Les pertes d'énergies sont négligeables
+\end{enumerate}
+On définit le rapport de transformation
+\[ m = \frac{N_2}{N_1} = \frac{u_2}{u_1} = \frac{\phi_2}{\phi_1} = \frac{\sqrt{L_2}}{\sqrt{L_1}} \]
+
+\begin{itemize}
+    \item Le couplage étant parfait, $M = \sqrt{L_1L_2}$
+    \item Les pertes d'énergies étant négaligeable, $u_1i_1 + u_2i_2 = 0$ donc $\frac{i_2}{i_1} = -\frac{1}{m}$
 \end{itemize}
 
 \clearpage
 
-\chapter{Mécanique quantique}
+
+
+\clearpage
+
+\chapter{[Q] Mécanique quantique}
 
 \section{Dualité onde-particule de la lumière}
 \[ E = h\nu \]
@@ -2343,6 +2344,17 @@ Ici, notations anglo-saxonnes
     \item $\rot(\vec{v}) = \nabla \wedge \vec{v}$
     \item $\Delta u = \nabla^2 u$
     \item $\bgrad{b}v = (\vec{b}\cdot\nabla)\vec{v}$
+\end{itemize}
+
+\subsection{Identités}
+
+\begin{itemize}
+    \item $\text{div}(U \vec{a}) = U \text{div } \vec{a} + \vec{a} \cdot \grad U$
+    \item $\text{div}(\vec{a} \wedge \vec{b}) = \vec{b} \cdot \rot \vec{a} - \vec{a} \cdot \rot \vec{b}$
+    \item $\text{div}(\rot \vec{a}) = 0$
+    \item $\rot(\grad U) = \vec{0}$
+    \item $\rot(\rot \vec{a}) = \grad(\text{div}(\vec{a})) - \Delta \vec{a}$
+    \item $\bgrad{a}\vec{a} = \frac{1}{2}\grad a^2 + \rot \vec{a} \wedge \vec{a}$
 \end{itemize}
 
 \section{Approximations}

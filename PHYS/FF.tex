@@ -83,25 +83,21 @@
 
 \subsection*{Coordonnées cylindriques}
 
-\[ \frac{\dd \vec{e_r}}{dt}_{\repr} = \dot{\theta} \vec{e_{\theta}} \]
-\[ \frac{\dd \vec{e_{\theta}}}{dt}_{\repr} = -\dot{\theta} \vec{e_{r}} \]
+\[ \frac{\dd \vec{e_r}}{\dt}_{\repr} = \dot{\theta} \vec{e_{\theta}} \]
+\[ \frac{\dd \vec{e_{\theta}}}{\dt}_{\repr} = -\dot{\theta} \vec{e_{r}} \]
 \[ \vec{v}_{\repr} = \dot{r} \vec{e_r} + r \dot{\theta} \vec{e_{\theta}} + \dot{z} \vec{e_z} \]
 \[ \vec{a}_{\repr} = (\ddot{r} - r\dot{\theta}^2) \vec{e_r} + (r \ddot{\theta} + 2 \dot{r} \dot{\theta}) \vec{e_{\theta}} + \ddot{z} \vec{e_z} \]
 \[ \grad f = \frac{\partial f}{\partial r} \vec{e_r} + \frac{1}{r} \frac{\partial f}{\partial \theta} \vec{e_\theta} + \frac{\partial f}{\partial z} \vec{e_z} \]
 
 \subsection*{Coordonnées sphériques}
 
-\[ \frac{\dd \vec{e_r}}{dt}_{\repr} = \dot{\theta} \vec{e_{\theta}} + \dot{\phi}\sin \theta \vec{e_{\phi}} \]
+\[ \frac{\dd \vec{e_r}}{\dt}_{\repr} = \dot{\theta} \vec{e_{\theta}} + \dot{\phi}\sin \theta \vec{e_{\phi}} \]
 \[ \vec{v}_{\repr} = \dot{r} \vec{e_r} + r \dot{\theta} \vec{e_{\theta}} + r \dot{\phi} \sin \theta \vec{e_{\phi}} \]
 
 \subsection*{Changements de base}
 \[ \vec{v}_{\repr} (M) = \vec{v}_{\repr '} (M) + \vec{v}_{\repr} (O') + \vec{\Omega}_{\mathcal{R}' / \mathcal{R}} \wedge \overline{O'M} \]
 \[ \vec{v}_{\repr} (M) = \vec{v}_{\repr '} (M) + \vec{v_{e}} (M) \]
 \[ \vec{a}_{\repr}(M) = \vec{a}_{\repr '}(M) + 2 \vec{\Omega}_{\mathcal{R}' / \mathcal{R}}\wedge \vec{v}_{\repr '} (M) + \vec{a_e}(M) \]
-
-\subsection*{Moment cinétique}
-\[ \overrightarrow{L_{O\repr}}(M) = \overrightarrow{OM} \wedge \vec{p}_{\repr}(M) \]
-\[ \vec{M}_O = \overrightarrow{OM} \wedge \vec{F} \]
 
 \subsection*{Intéractions newtonniennes}
 
@@ -191,14 +187,6 @@
 
 \section{Mathématiques}
 
-\begin{itemize}
-    \item Pythagore généralisé - $ a^2 = b^2 + c^2 - 2bc\cos{\theta} $
-    \item Factorisation de cosinus - $ \cos{p} + \cos{q} = 2 \cos{\frac{p+q}{2}}\cos{\frac{p-q}{2}} $ 
-    \item Dérivée partielle et taux d'accroissement - $f(x+\dx) - f(x) = \frac{\partial f}{\partial x} dx$
-    \item Dérivée partielle - $\dd f(x, y) = \frac{\partial f}{\partial x} \dx + \frac{\partial f}{\partial y} \dy$
-    \item Calcul de période d'un oscillation quelconque - $T = 2 \int_{-x_0}^{x_0} \frac{1}{\dot{x}} \dx = 4 \int_{0}^{x_0} \frac{1}{\dot{x}} \dx$
-\end{itemize}
-
 \subsection*{Équations différentielles}
 \[ \dot{s}(t) + \frac{s(t)}{\tau} = f(t) \implies s(t) = Ae^{-\frac{t}{\tau}} + s_p(t) \] 
 \[ \ddot{s}(t) + \omega_0^2s = \omega_0^2s_{eq} \implies s(t) = A\cos(\omega_0t)+B\sin(\omega_0t) + s_{eq} = D\cos(\omega_0t + \phi) + s_{eq} \]
@@ -222,5 +210,36 @@
 \subsection*{Relations particulières}
 \[ \delta = |\ln{\frac{u(t) - u(t \rightarrow + \infty)}{u(t+T) - u(t \rightarrow + \infty)}}| = \frac{T}{\tau} = \frac{2\pi}{\sqrt{4Q^2-1}} \]
 \[ Q = \frac{\omega_0}{\Delta \omega} \]
+
+\section{Analyse vectorielle}
+
+\subsection*{Nabla en coordonnées cartésiennes}
+
+\[ \nabla = \begin{pmatrix}
+    \frac{\partial}{\partial x} \vec{e_x} \\
+    \frac{\partial}{\partial y} \vec{e_y} \\
+    \frac{\partial}{\partial z} \vec{e_z} \\
+\end{pmatrix} \]
+
+\begin{align*}
+    \grad(u) &= \nabla u \\
+    \text{div}(\vec{v}) &= \nabla \cdot \vec{v} \\
+    \text{div}(\vec{v}) &= \nabla \cdot \vec{v}\\
+    \rot(\vec{v}) &= \nabla \wedge \vec{v}\\
+    \Delta u &= \nabla^2 u\\
+    \bgrad{b}v &= (\vec{b}\cdot\nabla)\vec{v}\\
+\end{align*}
+
+
+\subsection*{Identités}
+
+\begin{align*}
+    \text{div}(U \vec{a}) &= U \text{div } \vec{a} + \vec{a} \cdot \grad U\\
+    \text{div}(\vec{a} \wedge \vec{b}) &= \vec{b} \cdot \rot \vec{a} - \vec{a} \cdot \rot \vec{b}\\
+    \text{div}(\rot \vec{a}) &= 0\\
+    \rot(\grad U) &= \vec{0}\\
+    \rot(\rot \vec{a}) &= \grad(\text{div}(\vec{a})) - \Delta \vec{a}\\
+    \bgrad{a}\vec{a} &= \frac{1}{2}\grad a^2 + \rot \vec{a} \wedge \vec{a}\\
+\end{align*}
 
 \end{document}
