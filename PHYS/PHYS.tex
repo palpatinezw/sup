@@ -1953,14 +1953,21 @@ Pour un écoulement parfait ($R_e$ très grand)
 
 \begin{itemize}
     \item À une distance très grande devant la taille caractéristique du dipôle, on a l'approximation dipôlaire
-    \item{} [HP] Le champ magnétique créé est $\frac{\mu_0}{4 \pi} \frac{3(\vec{\mathcal{M}} \cdot \vec{r})\vec{r} - \vec{\mathcal{M}}r^2}{r^5}$ 
-    \item{} [HP] L'allure des lignes de champ magnétique est $r = \lambda \sin^2 \theta$ 
     \item Moment dipolaire atomique - $\vec{\mathcal{M}} = -\frac{e}{T}S \vec{u_z} = -\frac{e}{2m_e} \vec{L_0}$
     \begin{itemize}
         \item $\gamma = -\frac{e}{2m_e}$ rapport gyromagnétique de l'électron
         \item Dans le modèle de Bohr, $L_0 = n \hbar$, d'où $\mu_B = \frac{e\hbar}{2m_e} = 10^{-23} \text{ A m}^2 $ magnéton de Bohr
+        \item Aimantation - $\frac{\dd^3 \mathcal{M}}{\dd^3 \tau} \simeq n \mu_B$
+    \end{itemize}
+    \item Formules analogues pour le dipôle magnétique que pour le dipôle électrique
+    \begin{itemize}
+        \item $\vec{B} = \frac{\mu_0 \mathcal{M}}{4 \pi r^3}(2 \cos\theta \vec{e_r} + \sin\theta \vec{e_\theta}) = \frac{\mu_0}{4 \pi r^5} (3(\vec{\mathcal{M}} \cdot \vec{r})\vec{r} - \vec{\mathcal{M}}r^2)$
+        \item $\vec{F} = \bgrad{\mathcal{M}}_O \vec{B} $
+        \item $\vec{M}_O = \vec{\mathcal{M}} \wedge \vec{B}(O)$
+        \item $E_p = - \vec{\mathcal{M}} \cdot \vec{B}(O) $
     \end{itemize}
 \end{itemize}
+
 
 \clearpage
 \chapter{[I] Induction}

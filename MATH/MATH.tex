@@ -794,7 +794,9 @@ Pour $ u_n \longrightarrow l \in \mathbb{C} , (\beta_n) \in (\mathbb{R}_+^*)^{\m
 
 \[ \frac{1}{\sum_{k=0}^{n} \beta_k} \sum_{k=0}^{n} \beta_k u_k \longrightarrow l \]
 
-\noindent La moyenne pondérée d'une suite tend vers sa limite. [Démonstration - $\frac{1}{\sum_{k=0}^{n} \beta_k} \sum_{k=0}^{n} \beta_k u_k - l = \frac{\sum_{k=0}^{n} \beta_k (u_k - l)}{\sum_{k=0}^{n} \beta_k}$, puis appliquer l'inégalité triangulaire et découper la somme au numérateur en $ 0 $ à $ n_0 - 1 $ (à valeur finie, donc la terme $\longrightarrow 0$ donc $\leq \frac{\epsilon}{2}$ APCR) et $ n_0 $ à $ n \longrightarrow +\infty $ avec $n_0$ pour $\frac{\epsilon}{2} > 0$ ]
+\noindent La moyenne pondérée d'une suite tend vers sa limite. \\
+
+[Démonstration - $\frac{1}{\sum_{k=0}^{n} \beta_k} \sum_{k=0}^{n} \beta_k u_k - l = \frac{\sum_{k=0}^{n} \beta_k (u_k - l)}{\sum_{k=0}^{n} \beta_k}$, puis appliquer l'inégalité triangulaire et découper la somme au numérateur en $ 0 $ à $ n_0 - 1 $ (numérateur à valeur finie, donc $\longrightarrow 0$, donc $\leq \frac{\epsilon}{2}$ APCR) et $ n_0 $ à $ n \longrightarrow +\infty $ avec $n_0$ pour $\frac{\epsilon}{2} > 0$ ]
 
 \clearpage
 
@@ -1363,7 +1365,7 @@ Continuité en $a \in U$ un ouvert de $\mathbb{R}^2$
 
 \clearpage
 
-\section{Intégration [spé VII]}
+\section{Intégration sur un intervalle quelconque [spé VII]}
 \subsection{Fonctions continues par morceaux sur un intervalle}
 
 \begin{itemize}
@@ -1454,8 +1456,8 @@ Pour $f(x, t)$ paramétrée par $x$ sur $J$ avec une variable d'intégration $t$
 Alors $\forall x \in J, t \mapsto f(x, t)$ est intégrable et $\int_{I} f(x, t) \, \dt \underset{x \rightarrow c}{\longrightarrow} \int_I l(t) \, \dt$
 
 \begin{itemize}
-    \item Si $x \mapsto f(x, t)$ est en plus continue sur $J$, $x \mapsto \int_{I} f(x, t) \, \dt $ est continue sur $J$
-    \item Le résultat est aussi valable si pour tout segment $[a, b] \subset J, \exists \phi_{a, b} : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t) \in [a, b] \times I, |f(x, t)| \leq \phi_{a, b}(t)$
+    \item Continuité sous l'$\int$ - si $x \mapsto f(x, t)$ est en plus continue sur $J$, $x \mapsto \int_{I} f(x, t) \, \dt $ est continue sur $J$
+    \item Continuité sous l'$\int$ est encore valable si pour tout segment $[a, b] \subset J, \exists \phi_{a, b} : I \rightarrow \mathbb{R}_+$ intégrable tel que $\forall (x, t) \in [a, b] \times I, |f(x, t)| \leq \phi_{a, b}(t)$
 \end{itemize}
 
 \subsubsection{Théorème de Leibniz}
@@ -1530,7 +1532,7 @@ Alors $\forall k \in \nint{1}{n}$
     \item Si $\sum u_n \et \sum v_n \conv, \sum_{n=0}^{+\infty} (\lambda u_n + v_n) = \lambda \sum_{n=0}^{+\infty} u_n + \sum_{n=0}^{+\infty} v_n $
     \item Théorème des séries alternées - pour une suite $(a_n)$ réelle de signe alterné, si $(|a_n|)$ est décroissante et $a_n \longrightarrow 0$, alors la séries converge, $S$ de même signe que $a_0$ et $|S| \leq |a_0|$
     \item Règle de d'Alembert - pour $u_n > 0$, $\frac{u_n}{u_{n+1}} \longrightarrow l$, $\sum u_n$ diverge grossièrement si $l > 1$ et $\sum u_n$ converge si $l < 1$
-    \item{} [HP] Transformation d'Abel - $\sum_{k=0}^{n} a_k b_k = b_n S_n + \sum_{k=0}^{n-1} S_k(b_k - b_{k+1})$ - la série $\sum a_k b_k$ CV si $(b_k)$ décroissante de limite nulle et $S_n = \sum a_k$ est bornée
+    \item{} [HP] Transformation d'Abel - $\sum_{k=0}^{n} a_k b_k = b_n S_n + \sum_{k=0}^{n-1} S_k(b_k - b_{k+1})$ - la série $\sum a_k b_k$ CV si $(b_k)$ décroissante de limite nulle et $S_n = \sum a_k$ est bornée [Démonstration - en écrivant $a_k = S_k - S_{k-1}$]
 \end{itemize}
 
 \subsubsection{Propriétés des séries à termes positifs}
